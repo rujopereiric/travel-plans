@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vesuvius Day Hike — September 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ash:   #1a1714;
+    --lava:  #c4380a;
+    --ember: #e8824a;
+    --dust:  #f0ebe3;
+    --stone: #7a7068;
+    --white: #fdfaf7;
+  }
+
+  body {
+    background: var(--ash);
+    color: var(--dust);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    height: 100vh;
+    min-height: 560px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 3rem 2.5rem;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background-image: url('https://images.unsplash.com/photo-1506852889966-0ec40a8bf2b5?fm=jpg&q=80&w=1600&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center 40%;
+    filter: brightness(0.42);
+  }
+  .hero-eyebrow {
+    position: relative;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ember);
+    margin-bottom: 0.75rem;
+  }
+  .hero h1 {
+    position: relative;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    font-weight: 400;
+    line-height: 1.05;
+    color: var(--white);
+    max-width: 14ch;
+  }
+  .hero h1 em { font-style: italic; color: var(--ember); }
+  .hero-meta {
+    position: relative;
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .hero-stat { display: flex; flex-direction: column; }
+  .hero-stat span:first-child { font-size: 1.4rem; font-weight: 500; color: var(--white); }
+  .hero-stat span:last-child {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--stone);
+  }
+  .scroll-hint {
+    position: absolute;
+    bottom: 1.5rem; right: 2.5rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--stone);
+  }
+
+  /* ── LAYOUT ── */
+  .container { max-width: 860px; margin: 0 auto; padding: 0 2rem; }
+
+  .section-intro { padding: 5rem 0 3rem; }
+  .section-intro h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 0.6rem;
+  }
+  .section-intro p { color: var(--stone); font-size: 0.95rem; max-width: 55ch; }
+
+  /* ── TIMELINE ── */
+  .timeline { padding-bottom: 5rem; }
+
+  .step {
+    display: grid;
+    grid-template-columns: 72px 1fr;
+    gap: 0 1.5rem;
+  }
+
+  .step-line { display: flex; flex-direction: column; align-items: center; }
+  .step-dot {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: var(--lava);
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+  .step-dot.major {
+    width: 16px; height: 16px;
+    background: var(--ember);
+    box-shadow: 0 0 0 4px rgba(232,130,74,0.2);
+    margin-top: 2px;
+  }
+  .step-connector {
+    width: 1px;
+    flex: 1;
+    background: linear-gradient(to bottom, var(--lava), rgba(196,56,10,0.15));
+    min-height: 20px;
+  }
+  .step:last-child .step-connector { display: none; }
+
+  .step-time {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--ember);
+    letter-spacing: 0.05em;
+    line-height: 1;
+    margin-top: 2px;
+    text-align: right;
+  }
+
+  .step-body { padding-bottom: 2.5rem; }
+  .step-body h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 0.3rem;
+    line-height: 1.2;
+  }
+  .transport {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--stone);
+    margin-bottom: 0.6rem;
+  }
+  .step-body p { font-size: 0.9rem; color: #b0a89e; max-width: 58ch; line-height: 1.65; }
+  .step-body .note {
+    margin-top: 0.6rem;
+    padding: 0.6rem 0.9rem;
+    border-left: 2px solid var(--lava);
+    font-size: 0.82rem;
+    color: var(--stone);
+    background: rgba(196,56,10,0.07);
+    border-radius: 0 4px 4px 0;
+  }
+
+  .step-image {
+    margin-top: 1rem;
+    border-radius: 6px;
+    overflow: hidden;
+    max-width: 480px;
+    aspect-ratio: 16/9;
+  }
+  .step-image img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.85) saturate(0.9);
+    transition: filter 0.4s;
+  }
+  .step-image img:hover { filter: brightness(1) saturate(1.05); }
+  .step-image figcaption {
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--stone);
+    padding: 0.4rem 0;
+  }
+
+  /* ── INFO GRID ── */
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 2rem 0 5rem;
+  }
+  .info-card { background: rgba(255,255,255,0.03); padding: 1.5rem; }
+  .info-card h4 {
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ember);
+    margin-bottom: 0.8rem;
+  }
+  .info-card ul { list-style: none; }
+  .info-card ul li {
+    font-size: 0.88rem;
+    color: #b0a89e;
+    padding: 0.3rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .info-card ul li:last-child { border-bottom: none; }
+  .info-card ul li strong { color: var(--white); font-weight: 500; white-space: nowrap; }
+  .info-card p { font-size: 0.88rem; color: #b0a89e; line-height: 1.65; }
+
+  /* ── CHECKLIST ── */
+  .checklist-section { padding-bottom: 6rem; }
+  .checklist {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+  }
+  .checklist-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: rgba(255,255,255,0.04);
+    border-radius: 4px;
+    padding: 0.55rem 0.8rem;
+    font-size: 0.85rem;
+    color: #b0a89e;
+  }
+  .checklist-item::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--lava);
+    flex-shrink: 0;
+  }
+
+  .divider { border: none; border-top: 1px solid rgba(255,255,255,0.07); margin: 0; }
+
+  .footer {
+    padding: 2rem;
+    text-align: center;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--stone);
+  }
+
+  @media (max-width: 540px) {
+    .hero { padding: 2rem 1.5rem; }
+    .container { padding: 0 1.25rem; }
+    .step { grid-template-columns: 58px 1fr; }
+    .step-time { font-size: 0.68rem; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <p class="hero-eyebrow">Campania · September 2026</p>
+  <h1>Climb <em>Vesuvius</em> the proper way</h1>
+  <div class="hero-meta">
+    <div class="hero-stat"><span>~15 km</span><span>Total walking</span></div>
+    <div class="hero-stat"><span>~950 m</span><span>Elevation gain</span></div>
+    <div class="hero-stat"><span>~8 hrs</span><span>Door to door</span></div>
+    <div class="hero-stat"><span>~€25</span><span>All-in budget</span></div>
+  </div>
+  <span class="scroll-hint">Scroll ↓</span>
+</section>
+
+<div class="container">
+
+  <div class="section-intro">
+    <h2>The day, step by step</h2>
+    <p>A one-way traverse: Naples by train to Trecase, up the historic Matrone route to the crater, then bus down to Ercolano and back to Naples by evening.</p>
+  </div>
+
+  <div class="timeline">
+
+    <!-- STEP 1 -->
+    <div class="step">
+      <div>
+        <div class="step-time">09:30</div>
+        <div class="step-line">
+          <div class="step-dot major"></div>
+          <div class="step-connector"></div>
+        </div>
+      </div>
+      <div class="step-body">
+        <h3>Leave Naples</h3>
+        <div class="transport">🚆 Circumvesuviana / EAV · ~40 min · €3.30</div>
+        <p>Board at Napoli Porta Nolana or Piazza Garibaldi. Take the Sorrento line toward Torre Annunziata and change — or take a direct service — to Trecase.</p>
+        <div class="note">Buy your ticket before boarding. Validate it at the yellow machine on the platform.</div>
+        <figure class="step-image">
+          <img src="https://images.unsplash.com/photo-1679350341644-4686572c2446?fm=jpg&q=80&w=900&auto=format&fit=crop"
+               alt="Naples with Vesuvius in background">
+          <figcaption>Naples, with Vesuvius dominating the horizon</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="step">
+      <div>
+        <div class="step-time">10:15</div>
+        <div class="step-line">
+          <div class="step-dot"></div>
+          <div class="step-connector"></div>
+        </div>
+      </div>
+      <div class="step-body">
+        <h3>Arrive Trecase — stock up</h3>
+        <div class="transport">☕ On foot in the village · 15 min</div>
+        <p>Your last chance for coffee, breakfast, water, and a packed lunch. Buy at least 2.5–3 L of water per person here — there is nothing reliable on the trail.</p>
+        <p style="margin-top:0.5rem">Try <strong>Spagnuolo Caffè</strong> (Via Regina Margherita) or <strong>Bar Tabacchi Vitiello</strong> (Piazza S. Gennaro) for coffee and sandwiches.</p>
+        <div class="note">Use the toilet here. The Park states there are currently no public toilets at Quota 1,000.</div>
+      </div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="step">
+      <div>
+        <div class="step-time">10:30</div>
+        <div class="step-line">
+          <div class="step-dot"></div>
+          <div class="step-connector"></div>
+        </div>
+      </div>
+      <div class="step-body">
+        <h3>Trecase → Matrone trailhead</h3>
+        <div class="transport">🚶 5.3 km road walk · ~1 h 15 min — or taxi (~€10)</div>
+        <p>A flat to gently rising road walk through the lower volcanic slopes. Perfectly manageable but exposed, so the early start helps. A taxi from the station saves an hour and arrives you fresher for the real climb.</p>
+        <figure class="step-image">
+          <img src="https://images.unsplash.com/photo-1573067512757-da284ca36fd7?fm=jpg&q=80&w=900&auto=format&fit=crop"
+               alt="Green volcanic slopes of Vesuvius">
+          <figcaption>The lower slopes — fertile volcanic soil before the ascent begins</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <!-- STEP 4 -->
+    <div class="step">
+      <div>
+        <div class="step-time">11:45</div>
+        <div class="step-line">
+          <div class="step-dot major"></div>
+          <div class="step-connector"></div>
+        </div>
+      </div>
+      <div class="step-body">
+        <h3>Sentiero 6 — La Strada Matrone</h3>
+        <div class="transport">🥾 ~8 km · ~900 m gain · ~3 hrs</div>
+        <p>The historic approach from the Trecase side — far quieter than the tourist route from Ercolano. The trail climbs through lava fields and sparse Mediterranean scrub, with increasingly dramatic views over the Bay of Naples as you gain height.</p>
+        <p style="margin-top:0.5rem">The route is currently listed as open by the Park. Check trail status the morning of your hike — temporary closures from weather or volcanic activity do occur.</p>
+        <figure class="step-image">
+          <img src="https://images.unsplash.com/photo-1573067512748-34962da41d07?fm=jpg&q=80&w=900&auto=format&fit=crop"
+               alt="Empty footpath on Vesuvius volcanic rock">
+          <figcaption>The Matrone path — volcanic rock, open sky, no crowds</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <!-- STEP 5 -->
+    <div class="step">
+      <div>
+        <div class="step-time">~14:45</div>
+        <div class="step-line">
+          <div class="step-dot major"></div>
+          <div class="step-connector"></div>
+        </div>
+      </div>
+      <div class="step-body">
+        <h3>🌋 The crater — 1,175 m</h3>
+        <div class="transport">🎟️ Pre-booked ticket required · €11.68 · open until 17:00</div>
+        <p>The Gran Cono: a 2 km circumference of volcanic sulphur vents, sheer inner walls dropping 300 m, and on a clear September day, views stretching from the Apennines to the islands of Capri and Ischia.</p>
+        <p style="margin-top:0.5rem">Book your slot at <strong>VivaTicket</strong> well in advance. No walk-up tickets. Arriving around 14:30–15:00 gives you a full hour at the top without rushing.</p>
+        <div class="note">⚠️ The Park still shows €10 on one page — the current booking price via VivaTicket is €11.68. Budget the higher figure.</div>
+        <figure class="step-image">
+          <img src="https://images.unsplash.com/photo-1573067512752-633306e3957b?fm=jpg&q=80&w=900&auto=format&fit=crop"
+               alt="Gray volcanic rock formation at Vesuvius crater">
+          <figcaption>The Gran Cono crater edge — raw volcanic rock at 1,175 m</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <!-- STEP 6 -->
+    <div class="step">
+      <div>
+        <div class="step-time">~16:00</div>
+        <div class="step-line">
+          <div class="step-dot"></div>
+          <div class="step-connector"></div>
+        </div>
+      </div>
+      <div class="step-body">
+        <h3>Descend to Quota 1,000</h3>
+        <div class="transport">🥾 ~1 km · 15–20 min</div>
+        <p>A short descent on Sentiero 5 to the Piazzale at Quota 1,000. With buses running every 10–20 minutes in high season, you won't wait long.</p>
+      </div>
+    </div>
+
+    <!-- STEP 7 -->
+    <div class="step">
+      <div>
+        <div class="step-time">~16:20</div>
+        <div class="step-line">
+          <div class="step-dot"></div>
+          <div class="step-connector"></div>
+        </div>
+      </div>
+      <div class="step-body">
+        <h3>Bus to Ercolano</h3>
+        <div class="transport">🚌 EAV 808 · €3.10 · every 10–20 min</div>
+        <p>The bus descends from Quota 1,000 to Ercolano Osservatorio in about 20–25 minutes. From there it's a short walk to Ercolano Scavi station.</p>
+        <figure class="step-image">
+          <img src="https://images.unsplash.com/photo-1717446871120-7a50254df895?fm=jpg&q=80&w=900&auto=format&fit=crop"
+               alt="Ancient roman ruins with Vesuvius in the background">
+          <figcaption>Ercolano below — the ruins of Herculaneum visible from the descent</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <!-- STEP 8 -->
+    <div class="step">
+      <div>
+        <div class="step-time">~17:30</div>
+        <div class="step-line">
+          <div class="step-dot major"></div>
+          <div class="step-connector"></div>
+        </div>
+      </div>
+      <div class="step-body">
+        <h3>Back in Naples</h3>
+        <div class="transport">🚆 Circumvesuviana · ~35 min · €2.60</div>
+        <p>Train from Ercolano Scavi back to Napoli Piazza Garibaldi. Back in the city well before 18:00 — more than enough time for a well-earned aperitivo and a long dinner.</p>
+        <figure class="step-image">
+          <img src="https://images.unsplash.com/photo-1567202170721-bd01fbdea30a?fm=jpg&q=80&w=900&auto=format&fit=crop"
+               alt="Aerial view of Naples city">
+          <figcaption>Naples from above — the reward waiting at the end of the day</figcaption>
+        </figure>
+      </div>
+    </div>
+
+  </div><!-- /timeline -->
+
+  <hr class="divider">
+
+  <div class="section-intro">
+    <h2>Budget & logistics</h2>
+  </div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h4>Transport costs</h4>
+      <ul>
+        <li><span>Naples → Trecase</span><strong>€3.30</strong></li>
+        <li><span>EAV 808 (Q.1000 → Ercolano)</span><strong>€3.10</strong></li>
+        <li><span>Ercolano → Naples</span><strong>€2.60</strong></li>
+        <li><span>Taxi (optional, Trecase→trail)</span><strong>~€10</strong></li>
+        <li style="border-top:1px solid rgba(255,255,255,0.1);margin-top:0.3rem;padding-top:0.5rem">
+          <span>Transport total (no taxi)</span><strong>~€9.00</strong>
+        </li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h4>Entry &amp; other</h4>
+      <ul>
+        <li><span>Gran Cono crater ticket</span><strong>€11.68</strong></li>
+        <li><span>Water (3 L per person)</span><strong>~€3</strong></li>
+        <li><span>Snacks / packed lunch</span><strong>~€6–8</strong></li>
+        <li style="border-top:1px solid rgba(255,255,255,0.1);margin-top:0.3rem;padding-top:0.5rem">
+          <span>All-in estimate</span><strong>~€25–30</strong>
+        </li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h4>Key info</h4>
+      <p>Crater open <strong>09:00–17:00</strong> in September. Book on <strong>VivaTicket</strong> — no walk-up sales. Check trail status at <strong>parconazionaledelvesuvio.it</strong> the morning of your hike. The 808 bus runs every ~10–20 min in season.</p>
+    </div>
+  </div>
+
+  <div class="checklist-section">
+    <div class="section-intro" style="padding-top:0">
+      <h2>What to carry</h2>
+      <p>Treat this like a mountain day, not a tourist attraction.</p>
+    </div>
+    <div class="checklist">
+      <div class="checklist-item">2.5–3 L water per person</div>
+      <div class="checklist-item">Packed lunch + snacks</div>
+      <div class="checklist-item">Proper walking shoes</div>
+      <div class="checklist-item">Sunscreen (factor 50)</div>
+      <div class="checklist-item">Wide-brim hat</div>
+      <div class="checklist-item">Sunglasses</div>
+      <div class="checklist-item">Light wind/rain layer</div>
+      <div class="checklist-item">Power bank</div>
+      <div class="checklist-item">Small first-aid kit</div>
+      <div class="checklist-item">Cash (coins for bus)</div>
+      <div class="checklist-item">Pre-booked crater ticket</div>
+      <div class="checklist-item">Offline map / GPS</div>
+      <div class="checklist-item">Local taxi number</div>
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+<hr class="divider">
+<div class="footer">Vesuvius National Park · September 2026 · Always verify trail status before setting out</div>
+
+</body>
+</html>

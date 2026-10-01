@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Travel Plans</title>
+<style>
+:root{
+  --ink:#1f2421;--muted:#6f7a73;--bg:#f6f4ef;--card:#fff;--line:#e4e0d6;--accent:#c4380a;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){--ink:#ece9e2;--muted:#9aa49d;--bg:#191c1a;--card:#222622;--line:#343a34;--accent:#e8824a}
+}
+:root[data-theme="dark"]{--ink:#ece9e2;--muted:#9aa49d;--bg:#191c1a;--card:#222622;--line:#343a34;--accent:#e8824a}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  line-height:1.5;
+}
+main{max-width:640px;margin:0 auto;padding:48px 16px}
+h1{font-size:28px;margin:0 0 4px}
+p.sub{color:var(--muted);margin:0 0 28px}
+a.plan{
+  display:block;background:var(--card);border:1px solid var(--line);border-radius:14px;
+  padding:18px 20px;text-decoration:none;color:inherit;margin-bottom:12px;
+}
+a.plan:hover{border-color:var(--accent)}
+a.plan b{font-size:17px}
+a.plan span{display:block;color:var(--muted);font-size:14px;margin-top:2px}
+</style>
+</head>
+<body>
+<main>
+  <h1>Travel Plans</h1>
+  <p class="sub">Trip plans that aren't bike trips — for those, see <a href="https://rujopereiric.github.io/bikepacking/">bikepacking</a>.</p>
+  <a class="plan" href="vesuvius-plan.html">
+    <b>Vesuvius Day Hike</b>
+    <span>September 2026 · climb the volcano, Naples day trip</span>
+  </a>
+</main>
+</body>
+</html>
