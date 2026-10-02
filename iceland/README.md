@@ -29,8 +29,11 @@ for the areas you have viewed. Before you leave Wi-Fi, pan and zoom over the reg
 - **✗ Doesn't fit:** you arrive after your cutoff, a stop falls more than 15 min outside sunrise–sunset, or the sightseeing span is longer than the usable window.
   **! Tight:** less than 30 min spare, or more than 30 min of driving after dark.
   Both thresholds can be changed in Settings.
-- Driving times come from `drives` in `data.json` (`[from, to, km, minutes]`, valid in both directions) plus a 15% winter buffer.
-  Pairs that aren't listed use a straight-line distance × 1.35 at 75 km/h and are marked "est.".
+- Driving times come from `drives` in `data.json` first (`[from, to, km, minutes]`, valid in both directions).
+  Next come road times and distances between all places from the free public [OSRM](https://project-osrm.org/) server, fetched once and cached.
+  The last resort is a straight-line distance × 1.35 at 75 km/h, marked "est.". A 15% winter buffer is added to all of them.
+- The map draws each day's route along roads (OSRM). Routes you've viewed are cached for offline use; until a route has loaded, the map shows dashed straight lines.
+  OSRM's car routing knows nothing about winter closures, so a route could in theory use a closed highland F-road. Trust road.is over the line on the map.
 
 ## Suggestions and auto-fill
 

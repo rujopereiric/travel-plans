@@ -137,12 +137,62 @@ function driveRaw(a, b) {
   const ov = (S.drives || []).find(x => (x[0] === a && x[1] === b) || (x[0] === b && x[1] === a));
   let km, min, est = false;
   if (ov) { km = ov[2]; min = ov[3]; }
+  else if (roadLeg(a, b)) ({ km, min } = roadLeg(a, b));
   else {
     const pa = place(a), pb = place(b);
     if (!pa || !pb) return { km: 0, min: 0, est: true };
     km = haversine(pa, pb) * set('roadFactor'); min = km / set('speedKmh') * 60; est = true;
   }
   return { km: Math.round(km), min: Math.round(min * (1 + set('winterBufferPct') / 100)), est };
+}
+
+/* ---------- road network (OSRM, free public server, no key) ---------- */
+// One "table" request gives road time + distance between every pair of places; used for any leg
+// not in the hand-made "drives" list. Day routes are fetched for the map shape. Both are cached offline.
+const OSRM = 'https://router.project-osrm.org';
+const LS_ROAD = 'iceland-roads', LS_ROUTES = 'iceland-routes';
+let ROAD = null, ROUTES = {}, ROAD_BUSY = false;
+try { ROAD = JSON.parse(localStorage.getItem(LS_ROAD) || 'null'); ROUTES = JSON.parse(localStorage.getItem(LS_ROUTES) || '{}'); } catch (e) { }
+const coordStr = ids => ids.map(id => `${place(id).lon.toFixed(5)},${place(id).lat.toFixed(5)}`).join(';');
+const placesKey = () => hash(S.places.map(p => p.id + p.lat + p.lon).join('|'));
+function roadLeg(a, b) {
+  if (!ROAD) return null;
+  const i = ROAD.ids.indexOf(a), j = ROAD.ids.indexOf(b);
+  if (i < 0 || j < 0) return null;
+  const d = ROAD.dur[i][j], m = ROAD.dist[i][j];
+  return d != null && m != null ? { km: m / 1000, min: d / 60 } : null;
+}
+async function fetchRoadMatrix() {
+  if (!S || ROAD_BUSY || !navigator.onLine) return;
+  const key = placesKey();
+  if (ROAD && ROAD.key === key) return;
+  ROAD_BUSY = true;
+  try {
+    const ids = S.places.map(p => p.id);
+    const res = await fetch(`${OSRM}/table/v1/driving/${coordStr(ids)}?annotations=duration,distance`);
+    const j = await res.json();
+    if (j.code !== 'Ok') throw new Error(j.code);
+    ROAD = { key, ids, dur: j.durations, dist: j.distances, at: Date.now() };
+    try { localStorage.setItem(LS_ROAD, JSON.stringify(ROAD)); } catch (e) { }
+    DRIVE_CACHE.clear(); render();
+  } catch (e) { console.warn('road matrix', e); }
+  ROAD_BUSY = false;
+}
+const ROUTE_BUSY = new Set();
+async function fetchRoute(ids) {
+  const k = ids.join('>');
+  if (ROUTES[k] || ROUTE_BUSY.has(k) || !navigator.onLine) return;
+  ROUTE_BUSY.add(k);
+  try {
+    const res = await fetch(`${OSRM}/route/v1/driving/${coordStr(ids)}?overview=simplified&geometries=geojson`);
+    const j = await res.json();
+    if (j.code !== 'Ok') throw new Error(j.code);
+    ROUTES[k] = { pts: j.routes[0].geometry.coordinates.map(([lon, lat]) => [+lat.toFixed(5), +lon.toFixed(5)]), km: j.routes[0].distance / 1000 };
+    const keys = Object.keys(ROUTES); if (keys.length > 60) delete ROUTES[keys[0]];
+    try { localStorage.setItem(LS_ROUTES, JSON.stringify(ROUTES)); } catch (e) { }
+    if (UI.tab === 'map') { drawRoute(); render(); }
+  } catch (e) { console.warn('route', e); }
+  ROUTE_BUSY.delete(k);
 }
 
 /* ---------- the fit check ---------- */
@@ -241,7 +291,7 @@ function simulate(date, opt) {
   r.slack = slack;
   if (isFinite(slack) && slack >= 0 && slack < set('slackMin')) issue('tight', `Only ${dur(slack)} spare before ${slackCut <= slackSun ? 'your cutoff' : 'sunset'}.`);
   const noDrive = r.items.filter(i => i.type === 'drive' && i.est).length;
-  if (noDrive) issue('info', `${noDrive} leg${noDrive > 1 ? 's' : ''} use a straight-line estimate (×${set('roadFactor')} at ${set('speedKmh')} km/h). Add exact values to "drives" in data.json.`);
+  if (noDrive) issue('info', `${noDrive} leg${noDrive > 1 ? 's' : ''} use a straight-line estimate (×${set('roadFactor')} at ${set('speedKmh')} km/h)${navigator.onLine ? '' : ' — road distances load when you are online'}. Or add exact values to "drives" in data.json.`);
 
   r.status = r.issues.reduce((s, [l]) => (RANK[l] || 0) > RANK[s] ? l : s, 'ok');
   return r;
@@ -452,7 +502,7 @@ function persist(dirty = true) {
   catch (e) { toast('Could not save to this browser — export to keep your edits'); }
 }
 function saveUI() { try { localStorage.setItem(LS_UI, JSON.stringify(UI)); } catch (e) { } }
-function changed() { DRIVE_CACHE.clear(); persist(true); render(); }
+function changed() { DRIVE_CACHE.clear(); persist(true); render(); fetchRoadMatrix(); }
 
 async function fetchData() {
   const r = await fetch('data.json', { cache: 'no-cache' });
@@ -872,13 +922,14 @@ function renderMapControls() {
       <select data-act="mapdaysel">${days.map(d => `<option value="${d.date}" ${d.date === UI.mapDay ? 'selected' : ''}>${dateLabel(d.date)} · ${esc(stateText(d))}${activeOpt(blockOf(d.date)) ? ' · ' + esc(activeOpt(blockOf(d.date)).id) : ''}</option>`).join('')}</select></label>
       ${r ? badge(r.status) : ''}</div>
     ${r && r.plan ? `<div class="small" style="margin-bottom:6px">${[r.start, ...r.plan.stops.filter(x => x.place !== '_break').map(x => x.place), r.end].map(placeName).map(esc).join(' → ')} · drive ${dur(r.driveMin)}</div>` : ''}
+    ${r && r.plan ? `<div class="tiny muted" style="margin:-2px 0 6px">${(() => { const ids = [r.start, ...r.plan.stops.filter(x => x.place !== '_break').map(x => x.place), r.end].filter((id, i, a) => id !== a[i - 1]); return ids.length < 2 ? '' : ROUTES[ids.join('>')] ? 'Route follows roads (OSRM).' : navigator.onLine ? 'Loading road route…' : 'Offline: straight lines until the road route has been loaded once.'; })()}</div>` : ''}
     <div class="row small" style="margin-bottom:8px"><button class="btn small" data-act="toplan" data-date="${UI.mapDay || ''}">Open day in planner</button>
       <button class="btn small" data-act="addmode" aria-pressed="${addMode}">${addMode ? 'Tap the map to place it…' : '+ Custom place'}</button></div>`;
 }
 function initMap() {
   if (MAP || typeof L === 'undefined') return;
   MAP = L.map('map', { zoomControl: true }).setView([64.0, -20.5], 7);
-  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '© OpenStreetMap contributors' }).addTo(MAP);
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '© OpenStreetMap contributors · routing OSRM' }).addTo(MAP);
   MAP.on('click', e => {
     if (!addMode) return;
     addMode = false;
@@ -916,8 +967,17 @@ function drawRoute() {
   if (!o) return;
   const r = simulate(UI.mapDay, o);
   const ids = [r.start, ...((r.plan && r.plan.stops) || []).filter(x => x.place !== '_break').map(x => x.place), r.end].filter(place);
-  const pts = ids.map(id => [place(id).lat, place(id).lon]);
-  if (pts.length > 1) L.polyline(pts, { color: getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#1f7a8c', weight: 3, dashArray: '6 6' }).addTo(routeLayer);
+  const color = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#1f7a8c';
+  const dedup = ids.filter((id, i) => id !== ids[i - 1]);
+  if (dedup.length > 1) {
+    const road = ROUTES[dedup.join('>')];
+    const line = road ? L.polyline(road.pts, { color, weight: 4, opacity: .85 })
+      : L.polyline(dedup.map(id => [place(id).lat, place(id).lon]), { color, weight: 3, dashArray: '6 6' });
+    line.addTo(routeLayer);
+    if (!road) fetchRoute(dedup);
+    // zoom to the day's route when you switch day (not on every redraw)
+    if (drawRoute.fitted !== UI.mapDay) { MAP.fitBounds(line.getBounds(), { padding: [30, 30], maxZoom: 11 }); drawRoute.fitted = UI.mapDay; }
+  }
   ids.slice(1, -1).forEach((id, i) => L.marker([place(id).lat, place(id).lon], { icon: L.divIcon({ className: '', html: `<div class="numicon">${i + 1}</div>`, iconSize: [24, 24], iconAnchor: [12, 26] }), interactive: false }).addTo(routeLayer));
 }
 function popupHTML(pid) {
@@ -1082,9 +1142,9 @@ document.addEventListener('change', e => {
 document.addEventListener('input', e => { if (e.target.dataset && e.target.dataset.fx) fxInput(e.target); });
 $('#importfile').addEventListener('change', e => { const f = e.target.files[0]; if (f) importJSON(f); e.target.value = ''; });
 const updOnline = () => { $('#offline').hidden = navigator.onLine; };
-addEventListener('online', () => { updOnline(); fetchRate(); }); addEventListener('offline', updOnline); updOnline();
+addEventListener('online', () => { updOnline(); fetchRate(); fetchRoadMatrix(); }); addEventListener('offline', updOnline); updOnline();
 setInterval(() => { if (S && UI.tab === 'plan' && S.days.find(d => d.date === todayISO()) && !document.activeElement?.matches('input,select,textarea')) render(); }, 5 * 60 * 1000);
 
 if ('serviceWorker' in navigator && location.protocol.startsWith('http')) navigator.serviceWorker.register('sw.js').catch(() => { });
-boot().then(() => fetchRate());
+boot().then(() => { fetchRate(); fetchRoadMatrix(); });
 setInterval(() => fetchRate(), 30 * 60 * 1000);
