@@ -89,6 +89,18 @@ Filter by type, region, must-see, skipped, or "not in plan".
   Photos and the "From Wikipedia" intro come from the Wikipedia API at runtime, using the `wiki` article title, with a search fallback. Places whose article has no lead image get a photo from a Wikimedia Commons search. To pin a specific picture, set `photo` to an image URL.
   They're cached for offline use, and the photos are cached by the service worker. Credit links point back to Wikipedia / Wikimedia Commons.
 
+## All of Iceland (OpenStreetMap)
+
+In the Places tab, switch to **All of Iceland** and tap **Load all of Iceland**. One query to the free OpenStreetMap Overpass API fetches every named sight it knows about in Iceland, usually several thousand:
+waterfalls, hot springs, pools, geysers, craters, caves, beaches, glaciers, viewpoints, museums, artworks, historic sites, lighthouses and nature reserves (peaks only if they have a Wikipedia article).
+They're stored compactly in the browser for offline use (a few hundred KB).
+
+- **Search:** by name (accents optional: "grindavik" finds Grindavík), filter by type, and sort by straight-line distance from any of your places.
+- **Map:** the map's layer menu has an **All of Iceland (OSM)** layer that shows every item as a small grey dot.
+- **+ My places:** turns an item into a normal place. It's priority 1 and marked unverified, with links to OSM, Wikipedia and its website, and a photo if Wikipedia has one.
+  You can then plan it, auto-plan it and mark it as a must-see. Its road distances are fetched for that place only.
+- These items have no summaries, fees or winter notes, so check them before you go. Data © OpenStreetMap contributors (ODbL).
+
 ## Euros and the currency tab
 
 Every ISK amount is also shown in € (totals, bookings, comparison, fuel, and ISK prices mentioned in notes).
