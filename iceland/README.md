@@ -46,6 +46,9 @@ A **planning block** is a run of consecutive days that aren't fully booked. Bloc
   Without road data, the app estimates the shortest path along the known `drives` legs, with every other place attached to its nearest place on those legs.
   That keeps long estimates on real roads rather than straight across Vatnajökull. Only as a last resort does it use a straight-line distance × 1.35 at 75 km/h. All estimates are marked "est.".
   The public OSRM server takes about 100 places per request, so road distances are fetched in chunks of 50 × 50, one request a second. A 15% winter buffer is added to all of them.
+- **Icons and filter**: every place shows its category icon, coloured by family: blue water, red hot water, brown volcanic and land, cyan ice, indigo coast, green nature, purple culture, orange tours, grey practical stops.
+  Must-sees have a gold ring. Zoomed out, pins shrink to dots; the All of Iceland layer shows coloured dots until zoom 10, then icons for what's on screen.
+  **Filter map** (above the map): show or hide each type, use ⦿ for that type only, tap a family name to toggle the whole family, or choose All, None or Must-sees only. It also switches My places and All of Iceland on and off.
 - **Whole-trip view**: pick *Whole trip* or a block in the map's selector, or tap **Map** next to the trip dates. Each day's route is drawn in its own colour, stops are numbered by day, and 🛏 labels show which nights you sleep where. The collapsible *Days* list shows each day's route and driving time; tap one to zoom in and edit it. Routes are requested one at a time, about a second apart, as the public OSRM server asks.
 - The map draws each day's route along roads (OSRM). Routes you've viewed are cached for offline use; until a route has loaded, the map shows dashed straight lines.
   OSRM's car routing knows nothing about winter closures, so a route could in theory use a closed highland F-road. Trust road.is over the line on the map.

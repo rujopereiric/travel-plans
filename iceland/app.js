@@ -1258,7 +1258,7 @@ function renderMyPlaces() {
       <div class="poiimg" style="--rc:${rg.color}"><span>${esc(p.cat || '')}</span>${img ? `<img src="${esc(img)}" alt="${esc(p.name)}" loading="lazy" referrerpolicy="no-referrer" onerror="imgFail(this,'${esc(p.id)}')" onload="imgOk('${esc(p.id)}', this)">` : ''}
         ${pk === 'must' ? '<span class="poistar">★ Must-see</span>' : ''}</div>
       <div class="poibody">
-        <div class="row"><h3 class="grow" style="margin:0">${esc(p.name)}</h3>${p.confidence === 'low' ? '<span class="chip partial">unverified</span>' : ''}<span class="chip">${esc(p.cat || 'Place')}</span></div>
+        <div class="row"><h3 class="grow" style="margin:0">${esc(p.name)}</h3>${p.confidence === 'low' ? '<span class="chip partial">unverified</span>' : ''}<span class="chip">${catInfo(p.cat).icon} ${esc(p.cat || 'Place')}</span></div>
         ${p.caution ? `<div class="small" style="color:var(--warn);margin:4px 0">⚠ ${withEur(esc(p.caution))}</div>` : ''}
         <div class="tiny" style="color:${rg.color};margin:2px 0 6px">${esc(rg.name)} · ~${p.visit ?? 45} min${p.id !== S.trip.home ? ` · ${drive(S.trip.home, p.id).km} km from ${esc(placeName(S.trip.home))}` : ''}</div>
         ${p.summary ? `<p style="margin:0 0 6px">${esc(p.summary)}</p>` : ''}
@@ -1342,7 +1342,7 @@ async function loadOSM() {
       }
       OSM = { at: Date.now(), src: url.split('/')[2], items };
       try { localStorage.setItem(LS_OSM, JSON.stringify(OSM)); } catch (e) { OSM_ERR = 'Loaded, but too big to keep offline on this device.'; }
-      OSM_BUSY = false; osmLayerDirty = true; render(); return;
+      OSM_BUSY = false; osmLayerDirty = true; mf().osm = true; UI.osmLayer = true; mapDirty = true; render(); return;
     } catch (e) { OSM_ERR = `${url.split('/')[2]}: ${e.message}`; }
   }
   OSM_BUSY = false; render();
@@ -1399,7 +1399,7 @@ function osmListHTML() {
   if (!list.length) return `<p class="empty">No matches.</p>`;
   return list.slice(0, n).map(({ o, d }) => {
     const mine = osmMine(o), wurl = wikiUrl(o.wiki);
-    return `<div class="card osmrow"><div class="row"><b class="grow">${esc(o.name)}</b><span class="chip">${esc(o.cat)}</span></div>
+    return `<div class="card osmrow"><div class="row"><b class="grow">${esc(o.name)}</b><span class="chip">${catInfo(o.cat).icon} ${esc(o.cat)}</span></div>
       <div class="tiny muted">${o.local ? esc(o.local) + ' · ' : ''}${Math.round(d)} km from ${esc(placeName(near.id))} (straight line)</div>
       ${o.desc ? `<div class="small" style="margin-top:3px">${esc(o.desc)}</div>` : ''}
       <div class="row small" style="margin-top:6px;gap:10px">
@@ -1414,25 +1414,101 @@ function osmListHTML() {
   }).join('') + (list.length > n ? `<button class="btn" data-act="osmmore" style="width:100%">Show more (${(list.length - n).toLocaleString('en-GB')} left)</button>` : `<p class="tiny muted">${list.length} shown.</p>`)
     + `<p class="tiny muted">Data © OpenStreetMap contributors (ODbL).</p>`;
 }
-let osmLayer = null, osmLayerDirty = true; const OSM_MARKERS = {};
-function fillOsmLayer() {
-  if (!osmLayer || !OSM || !osmLayerDirty) return;
-  osmLayer.clearLayers(); for (const k in OSM_MARKERS) delete OSM_MARKERS[k];
-  const renderer = L.canvas({ padding: .5 });
-  for (const a of OSM.items) {
-    const o = osmObj(a);
-    const m = L.circleMarker([o.lat, o.lon], { renderer, radius: 4, color: '#555', weight: 1, fillColor: '#ddd', fillOpacity: .9 });
-    m.bindPopup(() => osmPopup(o), { maxWidth: 240 });
-    m.addTo(osmLayer); OSM_MARKERS[o.id] = m;
+// OSM layer: canvas dots (category colour) when zoomed out; real icons for what's on screen from zoom 10.
+let osmLayer = null, osmIcons = null, osmLayerDirty = true; const OSM_MARKERS = {};
+const OSM_ICON_ZOOM = 10, OSM_ICON_MAX = 400;
+const osmShown = a => catShown(a[4]) && !mf().must;
+function refreshOsmView() {
+  if (!MAP) return;
+  const on = OSM && mf().osm;
+  if (!on) { osmLayer && osmLayer.remove(); osmIcons && osmIcons.remove(); return; }
+  if (MAP.getZoom() >= OSM_ICON_ZOOM) {
+    osmLayer && osmLayer.remove();
+    osmIcons = osmIcons || L.layerGroup();
+    osmIcons.clearLayers(); for (const k in OSM_MARKERS) delete OSM_MARKERS[k];
+    const bb = MAP.getBounds().pad(0.2); let n = 0;
+    for (const a of OSM.items) {
+      if (n >= OSM_ICON_MAX) break;
+      if (!osmShown(a) || !bb.contains([a[2], a[3]])) continue;
+      const o = osmObj(a), ci = catInfo(o.cat);
+      const m = L.marker([o.lat, o.lon], { icon: L.divIcon({ className: '', html: `<div class="pinw" style="width:22px;height:22px"><div class="pin osm" style="--c:${ci.color}">${ci.icon}</div></div>`, iconSize: [22, 22], iconAnchor: [11, 11], popupAnchor: [0, -10] }) });
+      m.bindPopup(() => osmPopup(o), { maxWidth: 240 }); m.bindTooltip(esc(o.name), { direction: 'top', offset: [0, -10] });
+      m.addTo(osmIcons); OSM_MARKERS[o.id] = m; n++;
+    }
+    if (!MAP.hasLayer(osmIcons)) osmIcons.addTo(MAP);
+  } else {
+    osmIcons && osmIcons.remove();
+    if (osmLayerDirty || !osmLayer) {
+      osmLayer = osmLayer || L.layerGroup();
+      osmLayer.clearLayers(); for (const k in OSM_MARKERS) delete OSM_MARKERS[k];
+      const renderer = refreshOsmView.r || (refreshOsmView.r = L.canvas({ padding: .5 }));
+      for (const a of OSM.items) {
+        if (!osmShown(a)) continue;
+        const o = osmObj(a);
+        const m = L.circleMarker([o.lat, o.lon], { renderer, radius: 3.5, color: '#fff', weight: .8, fillColor: catInfo(o.cat).color, fillOpacity: .85 });
+        m.bindPopup(() => osmPopup(o), { maxWidth: 240 });
+        m.addTo(osmLayer); OSM_MARKERS[o.id] = m;
+      }
+      osmLayerDirty = false;
+    }
+    if (!MAP.hasLayer(osmLayer)) osmLayer.addTo(MAP);
   }
-  osmLayerDirty = false;
 }
+function fillOsmLayer() { osmLayerDirty = true; refreshOsmView(); }
 function osmPopup(o) {
   const mine = osmMine(o), wurl = wikiUrl(o.wiki);
-  return `<h4>${esc(o.name)}</h4><div class="tiny muted">${esc(o.cat)} · OpenStreetMap${o.local ? ' · ' + esc(o.local) : ''}</div>
+  return `<h4>${catInfo(o.cat).icon} ${esc(o.name)}</h4><div class="tiny muted">${esc(o.cat)} · OpenStreetMap${o.local ? ' · ' + esc(o.local) : ''}</div>
     ${o.desc ? `<div style="margin:4px 0">${esc(o.desc)}</div>` : ''}
     <div class="small" style="margin:4px 0">${wurl ? `<a href="${esc(wurl)}" target="_blank" rel="noopener">Wikipedia ↗</a> · ` : ''}<a href="${esc(osmUrl(o.id))}" target="_blank" rel="noopener">OSM ↗</a></div>
     ${mine ? `<button class="btn small" data-act="pinfo" data-place="${esc(mine.id)}">In my places ✓</button>` : `<button class="btn small primary" data-act="osmadd" data-osm="${esc(o.id)}">+ Add to my places</button>`}`;
+}
+
+/* ---------- category icons & map filter ---------- */
+// Each category has an icon; colour comes from its family so related things read together on the map.
+const CAT_GROUPS = [
+  { id: 'water', name: 'Water', color: '#1976d2', cats: { Waterfall: '💦', Lake: '🏞️' } },
+  { id: 'hot', name: 'Hot water', color: '#d84315', cats: { 'Hot spring': '♨️', Spa: '🧖', Pool: '🏊', Geothermal: '💨' } },
+  { id: 'land', name: 'Volcanic & land', color: '#6d4c41', cats: { Crater: '🌋', Canyon: '🏜️', Cave: '🕳️', Mountain: '⛰️' } },
+  { id: 'ice', name: 'Ice', color: '#0097a7', cats: { Glacier: '🧊', 'Glacier lagoon': '❄️' } },
+  { id: 'coast', name: 'Coast', color: '#3949ab', cats: { Beach: '🏖️', Coast: '🌊', Lighthouse: '🗼' } },
+  { id: 'nature', name: 'Nature', color: '#2e7d32', cats: { 'National park': '🌲', 'Nature reserve': '🌿', Hike: '🥾', Viewpoint: '🔭' } },
+  { id: 'culture', name: 'Culture', color: '#8e24aa', cats: { Museum: '🏛️', Historic: '🏚️', Art: '🎨', Landmark: '📍', Attraction: '⭐' } },
+  { id: 'tours', name: 'Tours', color: '#ef6c00', cats: { Tour: '🚙' } },
+  { id: 'practical', name: 'Practical', color: '#546e7a', cats: { Town: '🏘️', Stay: '🛏️', Food: '🍲', Transport: '✈️' } },
+];
+const CAT_INFO = {};
+for (const g of CAT_GROUPS) for (const [c, icon] of Object.entries(g.cats)) CAT_INFO[c] = { icon, color: g.color, group: g.id };
+const catInfo = c => CAT_INFO[c] || { icon: '📍', color: '#757575', group: 'culture' };
+// map filter state lives in UI.mf: { hide: [categories], mine: bool, osm: bool, must: bool }
+const mf = () => (UI.mf = UI.mf || { hide: [], mine: true, osm: !!UI.osmLayer, must: false });
+const catShown = c => !mf().hide.includes(c || 'Landmark');
+const placeShown = p => mf().mine && catShown(p.cat) && (!mf().must || pick(p.id) === 'must');
+function mapFilterHTML() {
+  const f = mf(), mineCount = {}, osmCount = {};
+  for (const p of S.places) mineCount[p.cat] = (mineCount[p.cat] || 0) + 1;
+  if (OSM) for (const a of OSM.items) osmCount[a[4]] = (osmCount[a[4]] || 0) + 1;
+  const known = new Set([...Object.keys(mineCount), ...Object.keys(osmCount)]);
+  const extra = [...known].filter(c => !CAT_INFO[c]);
+  const groups = [...CAT_GROUPS.map(g => ({ ...g, list: Object.keys(g.cats).filter(c => known.has(c)) })), ...(extra.length ? [{ id: 'other', name: 'Other', color: '#757575', list: extra }] : [])].filter(g => g.list.length);
+  const hidden = f.hide.filter(c => known.has(c)).length;
+  const n = c => (f.mine ? mineCount[c] || 0 : 0) + (f.osm && OSM ? osmCount[c] || 0 : 0);
+  return `<details class="mlwrap mfilter" ${UI.filterOpen ? 'open' : ''} ontoggle="UI.filterOpen=this.open;saveUI()">
+    <summary>Filter map${hidden || f.must || !f.mine || (OSM && !f.osm) ? ` · <b>${[hidden ? `${hidden} type${hidden > 1 ? 's' : ''} hidden` : '', f.must ? 'must-sees only' : '', !f.mine ? 'my places hidden' : '', OSM && !f.osm ? '' : ''].filter(Boolean).join(', ') || 'custom'}</b>` : ''}</summary>
+    <div class="row" style="gap:6px;margin:6px 0">
+      <button class="pchip" data-act="msrc" data-v="mine" aria-pressed="${f.mine}">My places</button>
+      <button class="pchip" data-act="msrc" data-v="osm" aria-pressed="${!!(f.osm && OSM)}" ${OSM ? '' : 'disabled title="Load it in Places → All of Iceland"'}>All of Iceland${OSM ? '' : ' (not loaded)'}</button>
+      <button class="pchip" data-act="mmust" aria-pressed="${f.must}">★ Must-sees only</button>
+      <span class="grow"></span><button class="btn small" data-act="mcatall">All</button><button class="btn small" data-act="mcatnone">None</button></div>
+    <div class="mfbody">${groups.map(g => `<div class="mfgroup"><button class="mfgname" data-act="mgroup" data-v="${g.id}" style="color:${g.color}">${esc(g.name)}</button>
+      ${g.list.map(c => `<button class="pchip mfchip" data-act="mcat" data-v="${esc(c)}" aria-pressed="${catShown(c)}" title="Tap to show/hide">
+        <span class="mfi" style="background:${catInfo(c).color}">${catInfo(c).icon}</span>${esc(c)} <span class="muted">${n(c)}</span></button><button class="mfonly" data-act="mcatonly" data-v="${esc(c)}" aria-label="Only ${esc(c)}">⦿</button>`).join('')}
+      </div>`).join('')}</div>
+    <p class="tiny muted" style="margin:4px 0 0">Tap a type to show/hide it, ⦿ to show only that type, or a family name to toggle the whole family.</p>
+  </details>`;
+}
+function pinIcon(p) {
+  const ci = catInfo(p.cat), must = pick(p.id) === 'must';
+  return L.divIcon({ className: '', html: `<div class="pinw"><div class="pin${must ? ' must' : ''}" style="--c:${ci.color}">${ci.icon}</div></div>`, iconSize: [28, 28], iconAnchor: [14, 14], popupAnchor: [0, -12] });
 }
 
 /* ---------- render: map tab ---------- */
@@ -1453,7 +1529,8 @@ function mapDays() {
     return { date, o, r, ids, n, color: DAY_COLORS[(n - 1) % DAY_COLORS.length] };
   }).filter(Boolean);
 }
-function renderMapControls() {
+function renderMapControls() { return renderMapControlsInner() + mapFilterHTML(); }
+function renderMapControlsInner() {
   const days = S.days.filter(d => blockOf(d.date) && d.state !== 'booked');
   const valid = v => v === '__all' || (isOverview(v) && S.blocks.some(b => '__block:' + b.id === v)) || days.some(d => d.date === v);
   if (!valid(UI.mapDay)) UI.mapDay = days[0]?.date || '__all';
@@ -1499,24 +1576,21 @@ function initMap() {
 }
 function buildMarkers() {
   if (!MAP) return;
-  if (mapLayers) { mapLayers.control.remove(); Object.values(mapLayers.groups).forEach(g => g.remove()); }
-  const groups = {};
+  if (mapLayers) mapLayers.mine.remove();
+  const mine = L.layerGroup().addTo(MAP);
+  for (const k in MARKERS) delete MARKERS[k];
   for (const p of S.places) {
-    const rg = region(p.region);
-    const key = `<span style="color:${rg.color}">●</span> ${esc(rg.name)}`;
-    (groups[key] ||= L.layerGroup().addTo(MAP));
-    const m = L.circleMarker([p.lat, p.lon], { radius: 8, color: '#fff', weight: 2, fillColor: rg.color, fillOpacity: .95 });
+    if (!placeShown(p)) continue;
+    const m = L.marker([p.lat, p.lon], { icon: pinIcon(p), riseOnHover: true });
     m.bindPopup(() => popupHTML(p.id), { maxWidth: 260 });
-    m.bindTooltip(esc(p.name), { direction: 'top', offset: [0, -6] });
-    MARKERS[p.id] = m;
-    m.addTo(groups[key]);
+    m.bindTooltip(esc(p.name), { direction: 'top', offset: [0, -12] });
+    MARKERS[p.id] = m; m.addTo(mine);
   }
-  osmLayer = osmLayer || L.layerGroup();
-  const overlays = { ...groups, [`<span style="color:#888">●</span> All of Iceland (OSM)${OSM ? '' : ' — load in Places'}`]: osmLayer };
-  const control = L.control.layers(null, overlays, { collapsed: true }).addTo(MAP);
-  mapLayers = { groups, control };
-  if (!buildMarkers.hooked) { MAP.on('overlayadd', e => { if (e.layer === osmLayer) { UI.osmLayer = true; fillOsmLayer(); saveUI(); } }); MAP.on('overlayremove', e => { if (e.layer === osmLayer) { UI.osmLayer = false; saveUI(); } }); buildMarkers.hooked = true; }
-  if (UI.osmLayer && OSM && !MAP.hasLayer(osmLayer)) { osmLayer.addTo(MAP); fillOsmLayer(); }
+  mapLayers = { mine };
+  const zoomClass = () => { const z = MAP.getZoom(), c = MAP.getContainer().classList; c.toggle('z-low', z < 8); c.toggle('z-mid', z >= 8 && z < 10); };
+  if (!buildMarkers.hooked) { MAP.on('zoomend moveend', () => refreshOsmView()); MAP.on('zoomend', zoomClass); buildMarkers.hooked = true; }
+  zoomClass();
+  osmLayerDirty = true; refreshOsmView();
   mapDirty = false;
 }
 function drawRoute() {
@@ -1561,7 +1635,7 @@ function popupHTML(pid) {
       `<div class="small">From <b>${esc(placeName(prevId))}</b>: ${dur(dv.min)} · ${dv.km} km${dv.est ? ' (est.)' : ''}</div>`;
   }
   const first = (p.summary || '').split(/(?<=\.)\s/)[0];
-  return `<h4>${pick(pid) === 'must' ? '★ ' : ''}${esc(p.name)}</h4><div class="tiny" style="color:${rg.color}">${esc(p.cat || rg.name)} · ${esc(rg.name)} · ~${p.visit ?? 45} min visit</div>
+  return `<h4>${catInfo(p.cat).icon} ${pick(pid) === 'must' ? '★ ' : ''}${esc(p.name)}</h4><div class="tiny" style="color:${rg.color}">${esc(p.cat || rg.name)} · ${esc(rg.name)} · ~${p.visit ?? 45} min visit</div>
     ${first ? `<div style="margin:4px 0">${esc(first)}</div>` : ''}
     ${p.note && p.note !== p.caution ? `<div class="small muted" style="margin:4px 0">${withEur(esc(p.note))}</div>` : ''}${p.caution ? `<div class="small" style="color:var(--warn)">${withEur(esc(p.caution))}</div>` : ''}
     <button class="btn small" data-act="pinfo" data-place="${esc(pid)}" style="margin:2px 0 4px">More info & photo</button>
@@ -1675,6 +1749,14 @@ document.addEventListener('click', e => {
     case 'theme': UI.theme = el.dataset.v; applyTheme(); render(); break;
     case 'export': exportJSON(); break;
     case 'pmode': UI.pmode = el.dataset.v; render(); break;
+    case 'mcat': { const f = mf(), c = el.dataset.v; f.hide = f.hide.includes(c) ? f.hide.filter(x => x !== c) : [...f.hide, c]; mapDirty = true; render(); break; }
+    case 'mcatonly': { const f = mf(), c = el.dataset.v; f.hide = [...new Set([...Object.keys(CAT_INFO), ...S.places.map(p => p.cat), ...(OSM ? OSM.items.map(a => a[4]) : [])])].filter(x => x !== c); mapDirty = true; render(); break; }
+    case 'mgroup': { const f = mf(), g = CAT_GROUPS.find(x => x.id === el.dataset.v); const cs = g ? Object.keys(g.cats) : [];
+      const allShown = cs.every(c => !f.hide.includes(c)); f.hide = allShown ? [...new Set([...f.hide, ...cs])] : f.hide.filter(c => !cs.includes(c)); mapDirty = true; render(); break; }
+    case 'mcatall': mf().hide = []; mapDirty = true; render(); break;
+    case 'mcatnone': mf().hide = [...new Set([...Object.keys(CAT_INFO), ...S.places.map(p => p.cat), ...(OSM ? OSM.items.map(a => a[4]) : [])])]; mapDirty = true; render(); break;
+    case 'msrc': { const f = mf(); f[el.dataset.v] = !f[el.dataset.v]; if (el.dataset.v === 'osm') UI.osmLayer = f.osm; mapDirty = true; render(); break; }
+    case 'mmust': mf().must = !mf().must; mapDirty = true; render(); break;
     case 'osmload': loadOSM(); break;
     case 'osmcat': UI.osmCat = el.dataset.v; UI.osmN = 40; render(); break;
     case 'osmmore': UI.osmN = (UI.osmN || 40) + 60; $('#osmlist').innerHTML = osmListHTML(); break;
@@ -1684,8 +1766,8 @@ document.addEventListener('click', e => {
     }
     case 'osmmap': {
       const id = el.dataset.osm, a = OSM && OSM.items.find(x => x[0] === id); if (!a) break;
-      UI.osmLayer = true; goTab('map');
-      setTimeout(() => { if (!MAP) return; if (!MAP.hasLayer(osmLayer)) osmLayer.addTo(MAP); fillOsmLayer(); MAP.setView([a[2], a[3]], 11); OSM_MARKERS[id]?.openPopup(); }, 60);
+      mf().osm = true; UI.osmLayer = true; if (!catShown(a[4])) mf().hide = mf().hide.filter(c => c !== a[4]); mf().must = false; goTab('map');
+      setTimeout(() => { if (!MAP) return; MAP.setView([a[2], a[3]], 11); refreshOsmView(); OSM_MARKERS[id]?.openPopup(); }, 60);
       break;
     }
     case 'tripedit': UI.editTrip = !UI.editTrip; render(); break;
@@ -1694,7 +1776,7 @@ document.addEventListener('click', e => {
     case 'pick': { const id = el.dataset.place, v = el.dataset.v; S.picks[id] = S.picks[id] === v ? undefined : v; if (!S.picks[id]) delete S.picks[id]; changed(); break; }
     case 'pfilter': UI.pf = { ...(UI.pf || {}), [el.dataset.k]: el.dataset.v }; render(); break;
     case 'pinfo': UI.pf = {}; UI.pmode = 'mine'; MAP && MAP.closePopup(); goTab('places'); setTimeout(() => document.getElementById('poi-' + el.dataset.place)?.scrollIntoView({ block: 'start' }), 0); break;
-    case 'pmap': { const id = el.dataset.place; goTab('map'); setTimeout(() => { if (MAP && MARKERS[id]) { MAP.setView([place(id).lat, place(id).lon], 10); MARKERS[id].openPopup(); } }, 50); break; }
+    case 'pmap': { const id = el.dataset.place; mf().mine = true; mf().must = false; mf().hide = mf().hide.filter(c => c !== place(id)?.cat); mapDirty = true; goTab('map'); setTimeout(() => { if (MAP && MARKERS[id]) { MAP.setView([place(id).lat, place(id).lon], 10); MARKERS[id].openPopup(); } }, 50); break; }
     case 'fxrefresh': fetchRate(true); break;
     case 'fxset': UI.fxIsk = +el.dataset.v; render(); break;
     case 'import': $('#importfile').click(); break;
