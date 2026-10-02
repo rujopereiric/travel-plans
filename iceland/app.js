@@ -179,16 +179,21 @@ async function fetchRoadMatrix() {
   ROAD_BUSY = false;
 }
 const ROUTE_BUSY = new Set();
-async function fetchRoute(ids) {
+let ROUTE_Q = Promise.resolve();
+function fetchRoute(ids) {
   const k = ids.join('>');
   if (ROUTES[k] || ROUTE_BUSY.has(k) || !navigator.onLine) return;
   ROUTE_BUSY.add(k);
+  // one request at a time, ~1 s apart: the public OSRM server allows about one request per second
+  ROUTE_Q = ROUTE_Q.then(() => fetchRouteNow(ids, k)).then(() => new Promise(r => setTimeout(r, 1000)));
+}
+async function fetchRouteNow(ids, k) {
   try {
     const res = await fetch(`${OSRM}/route/v1/driving/${coordStr(ids)}?overview=simplified&geometries=geojson`);
     const j = await res.json();
     if (j.code !== 'Ok') throw new Error(j.code);
     ROUTES[k] = { pts: j.routes[0].geometry.coordinates.map(([lon, lat]) => [+lat.toFixed(5), +lon.toFixed(5)]), km: j.routes[0].distance / 1000 };
-    const keys = Object.keys(ROUTES); if (keys.length > 60) delete ROUTES[keys[0]];
+    const keys = Object.keys(ROUTES); if (keys.length > 120) delete ROUTES[keys[0]];
     try { localStorage.setItem(LS_ROUTES, JSON.stringify(ROUTES)); } catch (e) { }
     if (UI.tab === 'map') { drawRoute(); render(); }
   } catch (e) { console.warn('route', e); }
@@ -618,7 +623,7 @@ function setTripDates(from, to) {
 function tripCard() {
   const n = S.days.length, booked = S.days.filter(d => d.state === 'booked').length;
   if (!UI.editTrip) return `<div class="card row small" style="margin-bottom:10px"><span class="grow"><b>${dateLabel(S.trip.from)} – ${dateLabel(S.trip.to)}</b> · ${n} days · ${n - booked} free or partly free · ${S.blocks.length} planning block${S.blocks.length === 1 ? '' : 's'}</span>
-    <button class="btn small" data-act="tripedit">Change dates</button></div>`;
+    <button class="btn small" data-act="mapgo" data-date="__all">Map</button><button class="btn small" data-act="tripedit">Change dates</button></div>`;
   return `<div class="card" style="margin-bottom:10px"><h3 style="margin-top:0">Trip dates</h3>
     <div class="row"><label class="f">Arrive<input type="date" id="trip-from" value="${S.trip.from}"></label>
       <label class="f">Leave<input type="date" id="trip-to" value="${S.trip.to}"></label></div>
@@ -1222,16 +1227,46 @@ function renderPlaces() {
 /* ---------- render: map tab ---------- */
 let MARKERS = {};
 let MAP = null, mapLayers = null, routeLayer = null, mapDirty = true, addMode = false;
+// day colours for the whole-trip view (distinct on the OSM basemap)
+const DAY_COLORS = ['#e6194b', '#3cb44b', '#4363d8', '#f58231', '#911eb4', '#0aa5b8', '#f032e6', '#9a6324', '#6b8e23', '#000075'];
+const isOverview = v => typeof v === 'string' && v.startsWith('__');
+// the days shown by the current map selection, with their plan and route ids
+function mapDays() {
+  const sel = UI.mapDay;
+  const dates = !isOverview(sel) ? [sel] : S.days.map(d => d.date).filter(d => { const b = blockOf(d); return b && (sel === '__all' || sel === '__block:' + b.id); });
+  return dates.map(date => {
+    const o = activeOpt(blockOf(date)); if (!o) return null;
+    const r = simulate(date, o);
+    const ids = [r.start, ...((r.plan && r.plan.stops) || []).filter(x => x.place !== '_break').map(x => x.place), r.end].filter(place).filter((id, i, a) => id !== a[i - 1]);
+    const n = S.days.findIndex(d => d.date === date) + 1;
+    return { date, o, r, ids, n, color: DAY_COLORS[(n - 1) % DAY_COLORS.length] };
+  }).filter(Boolean);
+}
 function renderMapControls() {
   const days = S.days.filter(d => blockOf(d.date) && d.state !== 'booked');
-  if (!days.find(d => d.date === UI.mapDay)) UI.mapDay = days[0]?.date;
+  const valid = v => v === '__all' || (isOverview(v) && S.blocks.some(b => '__block:' + b.id === v)) || days.some(d => d.date === v);
+  if (!valid(UI.mapDay)) UI.mapDay = days[0]?.date || '__all';
+  const sel = `<select data-act="mapdaysel"><optgroup label="Overview"><option value="__all" ${UI.mapDay === '__all' ? 'selected' : ''}>Whole trip (selected plans)</option>
+      ${S.blocks.map(b => `<option value="__block:${b.id}" ${UI.mapDay === '__block:' + b.id ? 'selected' : ''}>${esc(b.name)}</option>`).join('')}</optgroup>
+      <optgroup label="One day">${days.map(d => `<option value="${d.date}" ${d.date === UI.mapDay ? 'selected' : ''}>${dateLabel(d.date)} · ${esc(stateText(d))}${activeOpt(blockOf(d.date)) ? ' · ' + esc(activeOpt(blockOf(d.date)).id) : ''}</option>`).join('')}</optgroup></select>`;
+  if (isOverview(UI.mapDay)) {
+    const md = mapDays(), moving = md.filter(x => x.ids.length > 1);
+    const km = md.reduce((a, x) => a + x.r.driveKm, 0), min = md.reduce((a, x) => a + x.r.driveMin, 0);
+    const loading = moving.some(x => !ROUTES[x.ids.join('>')]);
+    return `<div class="row" style="margin-bottom:6px"><label class="f grow">Showing${sel}</label></div>
+      <div class="small" style="margin-bottom:4px"><b>${moving.length} driving day${moving.length === 1 ? '' : 's'}</b> · ${dur(min)} · ${Math.round(km)} km${loading ? ` · <span class="muted">${navigator.onLine ? 'loading road routes…' : 'offline: some routes are straight lines'}</span>` : ''}</div>
+      <details class="mlwrap" ${UI.legendOpen ? 'open' : ''} ontoggle="UI.legendOpen=this.open;saveUI()"><summary>Days (${md.length}) — tap one to zoom in and edit</summary>
+      <div class="maplegend">${md.map(x => `<button data-act="mapgo" data-date="${x.date}" class="mlrow"><i style="background:${x.color}"></i>
+        <span class="grow"><b>Day ${x.n} · ${dateLabel(x.date, { weekday: 'short', day: 'numeric', month: 'short' })}</b> ${badge(x.r.status)}<br>
+        <span class="tiny muted">${x.ids.length > 1 ? x.ids.map(placeName).map(esc).join(' → ') + ` · ${dur(x.r.driveMin)}` : `Stay in ${esc(placeName(x.r.start || S.trip.home))}`}</span></span></button>`).join('')}</div></details>`;
+  }
   const b = UI.mapDay && blockOf(UI.mapDay), o = activeOpt(b), r = UI.mapDay ? simulate(UI.mapDay, o) : null;
-  return `<div class="row" style="margin-bottom:8px"><label class="f grow">Adding stops to
-      <select data-act="mapdaysel">${days.map(d => `<option value="${d.date}" ${d.date === UI.mapDay ? 'selected' : ''}>${dateLabel(d.date)} · ${esc(stateText(d))}${activeOpt(blockOf(d.date)) ? ' · ' + esc(activeOpt(blockOf(d.date)).id) : ''}</option>`).join('')}</select></label>
+  return `<div class="row" style="margin-bottom:8px"><label class="f grow">Adding stops to${sel}</label>
       ${r ? badge(r.status) : ''}</div>
     ${r && r.plan ? `<div class="small" style="margin-bottom:6px">${[r.start, ...r.plan.stops.filter(x => x.place !== '_break').map(x => x.place), r.end].map(placeName).map(esc).join(' → ')} · drive ${dur(r.driveMin)}</div>` : ''}
     ${r && r.plan ? `<div class="tiny muted" style="margin:-2px 0 6px">${(() => { const ids = [r.start, ...r.plan.stops.filter(x => x.place !== '_break').map(x => x.place), r.end].filter((id, i, a) => id !== a[i - 1]); return ids.length < 2 ? '' : ROUTES[ids.join('>')] ? 'Route follows roads (OSRM).' : navigator.onLine ? 'Loading road route…' : 'Offline: straight lines until the road route has been loaded once.'; })()}</div>` : ''}
     <div class="row small" style="margin-bottom:8px"><button class="btn small" data-act="toplan" data-date="${UI.mapDay || ''}">Open day in planner</button>
+      <button class="btn small" data-act="mapgo" data-date="__all">Whole trip</button>
       <button class="btn small" data-act="addmode" aria-pressed="${addMode}">${addMode ? 'Tap the map to place it…' : '+ Custom place'}</button></div>`;
 }
 function initMap() {
@@ -1272,22 +1307,31 @@ function drawRoute() {
   if (!MAP) return;
   if (routeLayer) routeLayer.remove();
   routeLayer = L.layerGroup().addTo(MAP);
-  const b = UI.mapDay && blockOf(UI.mapDay), o = activeOpt(b);
-  if (!o) return;
-  const r = simulate(UI.mapDay, o);
-  const ids = [r.start, ...((r.plan && r.plan.stops) || []).filter(x => x.place !== '_break').map(x => x.place), r.end].filter(place);
-  const color = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#1f7a8c';
-  const dedup = ids.filter((id, i) => id !== ids[i - 1]);
-  if (dedup.length > 1) {
-    const road = ROUTES[dedup.join('>')];
-    const line = road ? L.polyline(road.pts, { color, weight: 4, opacity: .85 })
-      : L.polyline(dedup.map(id => [place(id).lat, place(id).lon]), { color, weight: 3, dashArray: '6 6' });
-    line.addTo(routeLayer);
-    if (!road) fetchRoute(dedup);
-    // zoom to the day's route when you switch day (not on every redraw)
-    if (drawRoute.fitted !== UI.mapDay) { MAP.fitBounds(line.getBounds(), { padding: [30, 30], maxZoom: 11 }); drawRoute.fitted = UI.mapDay; }
-  }
-  ids.slice(1, -1).forEach((id, i) => L.marker([place(id).lat, place(id).lon], { icon: L.divIcon({ className: '', html: `<div class="numicon">${i + 1}</div>`, iconSize: [24, 24], iconAnchor: [12, 26] }), interactive: false }).addTo(routeLayer));
+  const overview = isOverview(UI.mapDay), md = mapDays(), bounds = [];
+  const accent = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#1f7a8c';
+  const beds = new Map();
+  md.forEach(x => {
+    const color = overview ? x.color : accent;
+    if (x.ids.length > 1) {
+      const road = ROUTES[x.ids.join('>')];
+      const line = road ? L.polyline(road.pts, { color, weight: overview ? 4 : 4, opacity: .85 })
+        : L.polyline(x.ids.map(id => [place(id).lat, place(id).lon]), { color, weight: 3, dashArray: '6 6', opacity: .85 });
+      if (overview) line.bindTooltip(`Day ${x.n} · ${dateLabel(x.date)} · ${dur(x.r.driveMin)}`, { sticky: true }).on('click', () => { UI.mapDay = x.date; render(); });
+      line.addTo(routeLayer); bounds.push(...line.getLatLngs());
+      if (!road) fetchRoute(x.ids);
+    }
+    // stops: numbered within the day; in the overview they carry the day's colour and number
+    x.ids.slice(1, -1).forEach((id, i) => L.marker([place(id).lat, place(id).lon], {
+      icon: L.divIcon({ className: '', html: `<div class="numicon" style="${overview ? `background:${color}` : ''}">${overview ? x.n : i + 1}</div>`, iconSize: [24, 24], iconAnchor: [12, 26] }), interactive: false
+    }).addTo(routeLayer));
+    if (overview && x.r.end) beds.set(x.r.end, [...(beds.get(x.r.end) || []), x.n]);
+  });
+  // overnight stops in the overview: a bed marker listing which nights you sleep there
+  if (overview) beds.forEach((nights, id) => { if (!place(id)) return;
+    L.marker([place(id).lat, place(id).lon], { icon: L.divIcon({ className: '', html: `<div class="bedicon">🛏 ${nights.length > 3 ? nights.length + ' nights' : nights.join(',')}</div>`, iconSize: null, iconAnchor: [-6, 10] }), interactive: false }).addTo(routeLayer);
+    bounds.push(L.latLng(place(id).lat, place(id).lon)); });
+  // zoom to the selection when it changes (not on every redraw)
+  if (drawRoute.fitted !== UI.mapDay && bounds.length) { MAP.fitBounds(L.latLngBounds(bounds), { padding: [30, 30], maxZoom: 11 }); drawRoute.fitted = UI.mapDay; }
 }
 function popupHTML(pid) {
   const p = place(pid), rg = region(p.region);
@@ -1306,7 +1350,7 @@ function popupHTML(pid) {
     ${p.note && p.note !== p.caution ? `<div class="small muted" style="margin:4px 0">${withEur(esc(p.note))}</div>` : ''}${p.caution ? `<div class="small" style="color:var(--warn)">${withEur(esc(p.caution))}</div>` : ''}
     <button class="btn small" data-act="pinfo" data-place="${esc(pid)}" style="margin:2px 0 4px">More info & photo</button>
     ${from}${o ? `<div class="row" style="gap:6px"><button class="btn small primary" data-act="madd" data-place="${esc(pid)}">Add to ${dateLabel(date)}</button>
-    <button class="btn small" data-act="msleep" data-place="${esc(pid)}">Sleep here</button></div>` : '<div class="small muted">Pick a plannable day above.</div>'}`;
+    <button class="btn small" data-act="msleep" data-place="${esc(pid)}">Sleep here</button></div>` : '<div class="small muted">Pick a single day above to add stops here.</div>'}`;
 }
 
 /* ---------- main render ---------- */
@@ -1367,6 +1411,7 @@ document.addEventListener('click', e => {
     }
     case 'undo': { const o = optById(UI.undo.opt); if (o) planOf(o, date, true).stops = UI.undo.stops; UI.undo = null; changed(); break; }
     case 'mapday': UI.mapDay = date; goTab('map'); break;
+    case 'mapgo': UI.mapDay = date; if (UI.tab !== 'map') goTab('map'); else render(); break;
     case 'toplan': UI.open[date] = true; goTab('plan'); setTimeout(() => document.getElementById('day-' + date)?.scrollIntoView({ block: 'start' }), 0); break;
     case 'gocompare': UI.cmpBlock = el.dataset.block; goTab('compare'); break;
     case 'cmpblock': UI.cmpBlock = el.dataset.block; render(); break;

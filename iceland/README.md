@@ -44,6 +44,7 @@ A **planning block** is a run of consecutive days that aren't fully booked. Bloc
 - Driving times come from `drives` in `data.json` first (`[from, to, km, minutes]`, valid in both directions).
   Next come road times and distances between all places from the free public [OSRM](https://project-osrm.org/) server, fetched once and cached.
   The last resort is a straight-line distance × 1.35 at 75 km/h, marked "est.". A 15% winter buffer is added to all of them.
+- **Whole-trip view**: pick *Whole trip* or a block in the map's selector, or tap **Map** next to the trip dates. Each day's route is drawn in its own colour, stops are numbered by day, and 🛏 labels show which nights you sleep where. The collapsible *Days* list shows each day's route and driving time; tap one to zoom in and edit it. Routes are requested one at a time, about a second apart, as the public OSRM server asks.
 - The map draws each day's route along roads (OSRM). Routes you've viewed are cached for offline use; until a route has loaded, the map shows dashed straight lines.
   OSRM's car routing knows nothing about winter closures, so a route could in theory use a closed highland F-road. Trust road.is over the line on the map.
 
