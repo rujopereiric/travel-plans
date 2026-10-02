@@ -183,6 +183,21 @@ table.sun td,table.sun th{padding:5px 4px;border-bottom:1px solid var(--line);te
 .fxconv input{font-size:22px;font-weight:600;width:100%;min-height:50px;font-variant-numeric:tabular-nums}
 .fxeq{font-size:22px;color:var(--muted);padding-bottom:10px}
 @media (max-width:420px){.fxconv{grid-template-columns:1fr}.fxeq{display:none}}
+.leaflet-popup-content-wrapper,.leaflet-popup-tip{background:var(--card);color:var(--ink)}
+.leaflet-container a.leaflet-popup-close-button{color:var(--muted)}
+.pchips{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px;margin:0 -16px 4px;padding-left:16px;padding-right:16px;scrollbar-width:none}
+.pchip{flex:none;border:1px solid var(--line);background:var(--card);border-radius:99px;padding:5px 11px;font-size:13px;cursor:pointer}
+.pchip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:600}
+.poi{padding:0;overflow:hidden}
+.poi.pk-skip{opacity:.6}
+.poi.pk-must{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+.poiimg{position:relative;aspect-ratio:16/9;background:linear-gradient(135deg,var(--rc),var(--night));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;opacity:.95}
+.poiimg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.poistar{position:absolute;left:10px;top:10px;background:var(--accent);color:var(--accent-ink);font-size:12px;font-weight:700;padding:3px 9px;border-radius:99px}
+.poibody{padding:12px}
+.facts{margin:0;padding-left:18px;font-size:13px;color:var(--muted)}
+details summary{cursor:pointer;color:var(--accent)}
+nav.tabs button{font-size:10.5px}
 .toast{position:fixed;left:50%;bottom:calc(76px + env(safe-area-inset-bottom));transform:translateX(-50%);background:var(--ink);color:var(--bg);
   padding:8px 14px;border-radius:99px;font-size:13px;z-index:2000;opacity:0;transition:opacity .2s;pointer-events:none}
 .toast.show{opacity:.95}
@@ -202,10 +217,11 @@ body.on-map main{padding-bottom:8px}
 <nav class="tabs" id="tabs">
   <button data-tab="plan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Plan</button>
   <button data-tab="map"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2zM9 4v14M15 6v14"/></svg>Map</button>
+  <button data-tab="places"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Places</button>
   <button data-tab="compare"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="7" height="16" rx="1.5"/><rect x="14" y="4" width="7" height="16" rx="1.5"/></svg>Compare</button>
-  <button data-tab="book"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16v12H4zM8 7V5h8v2M4 12h16"/></svg>Bookings</button>
+  <button data-tab="book"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16v12H4zM8 7V5h8v2M4 12h16"/></svg>Costs</button>
   <button data-tab="fx"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h11l-3-3M17 17H6l3 3"/><path d="M5 7h0M19 17h0"/></svg>€ / kr</button>
-  <button data-tab="cond"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M5 19l1.5-1.5M17.5 6.5 19 5"/></svg>Conditions</button>
+  <button data-tab="cond"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M5 19l1.5-1.5M17.5 6.5 19 5"/></svg>Safety</button>
 </nav>
 <div class="toast" id="toast"></div>
 <input type="file" id="importfile" accept="application/json,.json" hidden>

@@ -302,13 +302,14 @@ const withStops = (opt, date, stops) => {
   const p = opt.days[date] || { stops: [], sleep: null };
   return { ...opt, days: { ...opt.days, [date]: { ...p, stops } } };
 };
-const prio = p => p.priority ?? 2;
+const pick = id => (S.picks || {})[id];
+const prio = p => pick(p.id) === 'must' ? 10 : (p.priority ?? 2);
 function suggestable(opt, date) {
   // skip places already on this option or on the selected plan of any other block (already seen on the trip)
   const used = new Set();
   const opts = [opt, ...S.blocks.map(activeOpt).filter(x => x && x.block !== opt.block)];
   for (const o of opts) for (const p of Object.values(o.days)) for (const st of p.stops || []) used.add(st.place);
-  return S.places.filter(p => !used.has(p.id) && p.suggest !== false && p.id !== S.trip.home && (p.visit ?? 45) > 0);
+  return S.places.filter(p => !used.has(p.id) && pick(p.id) !== 'skip' && (p.suggest !== false || pick(p.id) === 'must') && p.id !== S.trip.home && (p.visit ?? 45) > 0);
 }
 // Places that can be inserted into the day without making it "doesn't fit", each at its cheapest position.
 function suggestFor(date, opt) {
@@ -341,11 +342,12 @@ function suggestFor(date, opt) {
 function autoFill(date, opt) {
   let added = 0;
   for (let n = 0; n < 10; n++) {
-    const sg = suggestFor(date, opt).add.filter(x => x.status === 'ok');
+    // must-sees may make a day 'tight'; everything else has to keep it a clean fit
+    const sg = suggestFor(date, opt).add.filter(x => x.status === 'ok' || (x.status === 'tight' && pick(x.place) === 'must'));
     if (!sg.length) break;
     sg.sort((a, b) => (prio(place(b.place)) * 60 - b.extra) - (prio(place(a.place)) * 60 - a.extra));
-    const pick = sg[0], p = planOf(opt, date, true);
-    p.stops.splice(pick.pos, 0, { place: pick.place });
+    const top = sg[0], p = planOf(opt, date, true);
+    p.stops.splice(top.pos, 0, { place: top.place });
     added++;
   }
   return added;
@@ -404,7 +406,10 @@ function autoPlan(bid) {
   o.name = `Auto-plan (≤${set('maxDriveH')}h driving/day)`;
   const far = Object.values(o.days).flatMap(p => p.stops.map(s => s.place)).sort((x, y) => drive(S.trip.home, y).km - drive(S.trip.home, x).km)[0];
   o.note = `Generated ${new Date().toISOString().slice(0, 10)} from ${tried} overnight combinations.` + (far ? ` Furthest: ${placeName(far)}.` : '');
-  return { opt: o, tried };
+  const planned = new Set([o, ...S.blocks.map(activeOpt).filter(x => x && x.block !== bid)].flatMap(x => Object.values(x.days).flatMap(p => p.stops.map(s => s.place))));
+  const missing = Object.keys(S.picks || {}).filter(id => S.picks[id] === 'must' && place(id) && !planned.has(id));
+  if (missing.length) o.note += ` Must-sees not fitted: ${missing.map(placeName).join(', ')}.`;
+  return { opt: o, tried, missing };
 }
 
 /* ---------- exchange rate ---------- */
@@ -490,6 +495,7 @@ function normalize(s) {
   s.settings = { ...DEFAULT_SETTINGS, ...(s.settings || {}) };
   for (const k of ['days', 'blocks', 'options', 'regions', 'places', 'drives', 'bookings', 'links', 'checklist']) if (!Array.isArray(s[k])) s[k] = [];
   s.checks = s.checks || {};
+  s.picks = s.picks || {};
   s.days.sort((a, b) => a.date < b.date ? -1 : 1);
   for (const o of s.options) { o.days = o.days || {}; for (const p of Object.values(o.days)) p.stops = p.stops || []; }
   for (const b of s.bookings) if (!b.id) b.id = uid('b');
@@ -912,7 +918,98 @@ function renderCond() {
   return h;
 }
 
+/* ---------- places tab (POIs) ---------- */
+// Photos + an encyclopedic intro come from Wikipedia at runtime (CORS-enabled, no key), cached for offline.
+const LS_WIKI = 'iceland-wiki';
+let WIKI = {}, WIKI_BUSY = false;
+try { WIKI = JSON.parse(localStorage.getItem(LS_WIKI) || '{}'); } catch (e) { }
+const WAPI = 'https://en.wikipedia.org/w/api.php?format=json&origin=*&action=query';
+const WPROPS = '&redirects=1&prop=pageimages|extracts|info&inprop=url&pithumbsize=800&exintro=1&explaintext=1&exsentences=3&exlimit=20';
+async function wikiPages(titles) {
+  const j = await (await fetch(`${WAPI}${WPROPS}&titles=${encodeURIComponent(titles.join('|'))}`)).json();
+  const q = j.query || {}, alias = {};
+  for (const x of [...(q.normalized || []), ...(q.redirects || [])]) alias[x.from] = x.to;
+  const final = t => { let n = 0; while (alias[t] && n++ < 3) t = alias[t]; return t; };
+  const pages = Object.values(q.pages || {});
+  return t => { const pg = pages.find(x => x.title === final(t)); return pg && !('missing' in pg) ? pg : null; };
+}
+async function fetchWiki() {
+  if (!S || WIKI_BUSY || !navigator.onLine) return;
+  const need = S.places.filter(p => !WIKI[p.id] || (!WIKI[p.id].img && Date.now() - WIKI[p.id].at > 7 * 864e5));
+  if (!need.length) return;
+  WIKI_BUSY = true;
+  const store = (p, pg) => { WIKI[p.id] = pg ? { title: pg.title, img: pg.thumbnail?.source, extract: pg.extract, url: pg.fullurl, at: Date.now() } : { none: true, at: Date.now() }; };
+  try {
+    const missing = [];
+    for (let i = 0; i < need.length; i += 20) {
+      const chunk = need.slice(i, i + 20), get = await wikiPages(chunk.map(p => p.wiki || p.name));
+      for (const p of chunk) { const pg = get(p.wiki || p.name); if (pg) store(p, pg); else missing.push(p); }
+    }
+    for (const p of missing) { // fall back to a search, e.g. if an article was renamed
+      const j = await (await fetch(`${WAPI}&list=search&srlimit=1&srsearch=${encodeURIComponent(p.name + ' Iceland')}`)).json();
+      const t = j.query?.search?.[0]?.title;
+      store(p, t ? (await wikiPages([t]))(t) : null);
+    }
+    try { localStorage.setItem(LS_WIKI, JSON.stringify(WIKI)); } catch (e) { }
+    if (UI.tab === 'places') render();
+  } catch (e) { console.warn('wiki', e); }
+  WIKI_BUSY = false;
+}
+function plannedIn(id) {
+  const out = [];
+  for (const o of S.options) for (const [d, p] of Object.entries(o.days)) if (p.stops.some(s => s.place === id)) out.push({ o, d, active: S.blocks.find(b => b.id === o.block)?.active === o.id });
+  return out;
+}
+function renderPlaces() {
+  const pf = UI.pf || {}, cat = pf.cat || 'all', reg = pf.region || 'all', only = pf.only || 'all';
+  const cats = (S.categories || []).filter(c => S.places.some(p => p.cat === c));
+  const musts = S.places.filter(p => pick(p.id) === 'must'), skips = S.places.filter(p => pick(p.id) === 'skip');
+  const chip = (k, v, label, on) => `<button class="pchip" data-act="pfilter" data-k="${k}" data-v="${esc(v)}" aria-pressed="${on}">${label}</button>`;
+  let h = `<div class="card small" style="margin-bottom:10px">Mark the places you really want to see as <b>★ Must-see</b>, and the ones you don't care about as <b>Skip</b>.
+      <b>Auto-plan</b> builds each block around your must-sees, and suggestions never offer skipped places.
+      <div class="muted" style="margin-top:8px">★ ${musts.length} must-see · ${skips.length} skipped</div>
+      <div class="row" style="margin-top:6px">${S.blocks.map(b => `<button class="btn small primary" data-act="autoplan" data-block="${b.id}">Auto-plan ${esc(b.name.split('·')[0].trim())}</button>`).join('')}</div></div>
+    <div class="pchips">${chip('only', 'all', 'All', only === 'all')}${chip('only', 'must', '★ Must-see', only === 'must')}${chip('only', 'unplanned', 'Not in plan', only === 'unplanned')}${chip('only', 'skip', 'Skipped', only === 'skip')}</div>
+    <div class="pchips">${chip('cat', 'all', 'All types', cat === 'all')}${cats.map(c => chip('cat', c, esc(c), cat === c)).join('')}</div>
+    <div class="pchips">${chip('region', 'all', 'All regions', reg === 'all')}${S.regions.map(r => chip('region', r.id, `<span style="color:${r.color}">●</span> ${esc(r.name)}`, reg === r.id)).join('')}</div>`;
+  const days = S.days.filter(d => blockOf(d.date) && d.state !== 'booked');
+  const list = S.places.filter(p => (cat === 'all' || p.cat === cat) && (reg === 'all' || p.region === reg)
+    && (only === 'all' ? pick(p.id) !== 'skip' : only === 'unplanned' ? !plannedIn(p.id).some(x => x.active) && pick(p.id) !== 'skip' : pick(p.id) === only));
+  if (!list.length) h += `<p class="empty">No places match these filters.</p>`;
+  for (const p of list) {
+    const rg = region(p.region), w = WIKI[p.id] || {}, pk = pick(p.id), where = plannedIn(p.id);
+    const img = w.img ? w.img.replace(/\/\d+px-/, '/800px-') : null;
+    const wurl = w.url || `https://en.wikipedia.org/wiki/Special:Search?search=${encodeURIComponent(p.wiki || p.name)}`;
+    h += `<article class="card poi ${pk ? 'pk-' + pk : ''}" id="poi-${esc(p.id)}">
+      <div class="poiimg" style="--rc:${rg.color}">${img ? `<img src="${esc(img)}" alt="${esc(p.name)}" loading="lazy">` : `<span>${esc(p.cat || '')}</span>`}
+        ${pk === 'must' ? '<span class="poistar">★ Must-see</span>' : ''}</div>
+      <div class="poibody">
+        <div class="row"><h3 class="grow" style="margin:0">${esc(p.name)}</h3><span class="chip">${esc(p.cat || 'Place')}</span></div>
+        <div class="tiny" style="color:${rg.color};margin:2px 0 6px">${esc(rg.name)} · ~${p.visit ?? 45} min${p.id !== S.trip.home ? ` · ${drive(S.trip.home, p.id).km} km from ${esc(placeName(S.trip.home))}` : ''}</div>
+        ${p.summary ? `<p style="margin:0 0 6px">${esc(p.summary)}</p>` : ''}
+        ${p.facts && p.facts.length ? `<ul class="facts">${p.facts.map(f => `<li>${withEur(esc(f))}</li>`).join('')}</ul>` : ''}
+        ${p.winter ? `<div class="seasonal" style="margin:6px 0">❄ ${withEur(esc(p.winter))}</div>` : ''}
+        ${w.extract ? `<details class="small"><summary>From Wikipedia</summary><p class="muted" style="margin:4px 0">${esc(w.extract)}</p></details>` : ''}
+        <div class="row small" style="margin:8px 0">
+          <a href="${esc(wurl)}" target="_blank" rel="noopener">Wikipedia ↗</a>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=${p.lat},${p.lon}" target="_blank" rel="noopener">Directions ↗</a>
+          ${(p.links || []).map(l => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.name)} ↗</a>`).join('')}</div>
+        ${where.length ? `<div class="tiny muted" style="margin-bottom:6px">In plans: ${where.map(x => `${x.active ? '<b>' : ''}${esc(x.o.id)} ${dateLabel(x.d, { day: 'numeric', month: 'short' })}${x.active ? '</b>' : ''}`).join(', ')}</div>` : ''}
+        <div class="row" style="gap:6px">
+          <button class="btn small ${pk === 'must' ? 'primary' : ''}" data-act="pick" data-v="must" data-place="${esc(p.id)}" aria-pressed="${pk === 'must'}">★ Must-see</button>
+          <button class="btn small ${pk === 'skip' ? 'danger' : ''}" data-act="pick" data-v="skip" data-place="${esc(p.id)}" aria-pressed="${pk === 'skip'}">${pk === 'skip' ? 'Skipped' : 'Skip'}</button>
+          <button class="btn small" data-act="pmap" data-place="${esc(p.id)}">Map</button>
+          <select data-act="padd" data-place="${esc(p.id)}" class="grow" style="min-width:110px"><option value="">Add to day…</option>${days.map(d => `<option value="${d.date}">${dateLabel(d.date)}</option>`).join('')}</select>
+        </div>
+        ${img ? `<div class="tiny muted" style="margin-top:6px">Photo: <a href="${esc(wurl)}" target="_blank" rel="noopener">Wikipedia / Wikimedia Commons</a></div>` : ''}
+      </div></article>`;
+  }
+  if (!navigator.onLine && S.places.some(p => !WIKI[p.id])) h += `<p class="tiny muted">Photos load the first time you open this tab online, and are kept for offline use.</p>`;
+  return h;
+}
+
 /* ---------- render: map tab ---------- */
+let MARKERS = {};
 let MAP = null, mapLayers = null, routeLayer = null, mapDirty = true, addMode = false;
 function renderMapControls() {
   const days = S.days.filter(d => blockOf(d.date) && d.state !== 'booked');
@@ -953,6 +1050,7 @@ function buildMarkers() {
     const m = L.circleMarker([p.lat, p.lon], { radius: 8, color: '#fff', weight: 2, fillColor: rg.color, fillOpacity: .95 });
     m.bindPopup(() => popupHTML(p.id), { maxWidth: 260 });
     m.bindTooltip(esc(p.name), { direction: 'top', offset: [0, -6] });
+    MARKERS[p.id] = m;
     m.addTo(groups[key]);
   }
   const control = L.control.layers(null, groups, { collapsed: true }).addTo(MAP);
@@ -991,8 +1089,11 @@ function popupHTML(pid) {
     from = prevId === pid ? `<div class="small muted">This is the previous stop.</div>` :
       `<div class="small">From <b>${esc(placeName(prevId))}</b>: ${dur(dv.min)} · ${dv.km} km${dv.est ? ' (est.)' : ''}</div>`;
   }
-  return `<h4>${esc(p.name)}</h4><div class="tiny" style="color:${rg.color}">${esc(rg.name)} · ~${p.visit ?? 45} min visit</div>
-    ${p.note ? `<div style="margin:4px 0">${withEur(esc(p.note))}</div>` : ''}${p.caution ? `<div class="small" style="color:var(--warn)">${withEur(esc(p.caution))}</div>` : ''}
+  const first = (p.summary || '').split(/(?<=\.)\s/)[0];
+  return `<h4>${pick(pid) === 'must' ? '★ ' : ''}${esc(p.name)}</h4><div class="tiny" style="color:${rg.color}">${esc(p.cat || rg.name)} · ${esc(rg.name)} · ~${p.visit ?? 45} min visit</div>
+    ${first ? `<div style="margin:4px 0">${esc(first)}</div>` : ''}
+    ${p.note && p.note !== p.caution ? `<div class="small muted" style="margin:4px 0">${withEur(esc(p.note))}</div>` : ''}${p.caution ? `<div class="small" style="color:var(--warn)">${withEur(esc(p.caution))}</div>` : ''}
+    <button class="btn small" data-act="pinfo" data-place="${esc(pid)}" style="margin:2px 0 4px">More info & photo</button>
     ${from}${o ? `<div class="row" style="gap:6px"><button class="btn small primary" data-act="madd" data-place="${esc(pid)}">Add to ${dateLabel(date)}</button>
     <button class="btn small" data-act="msleep" data-place="${esc(pid)}">Sleep here</button></div>` : '<div class="small muted">Pick a plannable day above.</div>'}`;
 }
@@ -1011,7 +1112,7 @@ function render() {
   $('#fxchip').textContent = `1€ = ${Math.round(rate())} kr`;
   const scroll = window.scrollY;
   const tab = UI.tab;
-  v.innerHTML = tab === 'plan' ? renderPlan() : tab === 'map' ? renderMapControls() : tab === 'compare' ? renderCompare() : tab === 'book' ? renderBook() : tab === 'fx' ? renderFx() : renderCond();
+  v.innerHTML = tab === 'plan' ? renderPlan() : tab === 'map' ? renderMapControls() : tab === 'compare' ? renderCompare() : tab === 'book' ? renderBook() : tab === 'fx' ? renderFx() : tab === 'places' ? renderPlaces() : renderCond();
   mw.hidden = tab !== 'map';
   document.body.classList.toggle('on-map', tab === 'map');
   if (tab === 'map') {
@@ -1074,6 +1175,7 @@ document.addEventListener('click', e => {
         if (!res) { el.disabled = false; el.textContent = 'Auto-plan'; alert('No combination of overnight stops fits your free time and driving limit. Try a higher max driving time.'); return; }
         S.options.push(res.opt); UI.cmpBlock = bid; UI.cmpFocus = res.opt.id; persist();
         toast(`Created ${res.opt.id} · tried ${res.tried} routes in ${Math.round(performance.now() - t0)} ms`);
+        if (res.missing.length) setTimeout(() => alert(`${res.opt.id} couldn't fit these must-sees (in this block, within your free time and ${set('maxDriveH')} h/day driving):\n\n• ${res.missing.map(placeName).join('\n• ')}\n\nThey may fit in the other block, or with a higher driving limit.`), 300);
         goTab('compare');
       }, 30);
       break;
@@ -1099,6 +1201,10 @@ document.addEventListener('click', e => {
     case 'setbool': S.settings[el.dataset.k] = el.checked; SUN_CACHE.clear(); changed(); break;
     case 'theme': UI.theme = el.dataset.v; applyTheme(); render(); break;
     case 'export': exportJSON(); break;
+    case 'pick': { const id = el.dataset.place, v = el.dataset.v; S.picks[id] = S.picks[id] === v ? undefined : v; if (!S.picks[id]) delete S.picks[id]; changed(); break; }
+    case 'pfilter': UI.pf = { ...(UI.pf || {}), [el.dataset.k]: el.dataset.v }; render(); break;
+    case 'pinfo': UI.pf = {}; MAP && MAP.closePopup(); goTab('places'); setTimeout(() => document.getElementById('poi-' + el.dataset.place)?.scrollIntoView({ block: 'start' }), 0); break;
+    case 'pmap': { const id = el.dataset.place; goTab('map'); setTimeout(() => { if (MAP && MARKERS[id]) { MAP.setView([place(id).lat, place(id).lon], 10); MARKERS[id].openPopup(); } }, 50); break; }
     case 'fxrefresh': fetchRate(true); break;
     case 'fxset': UI.fxIsk = +el.dataset.v; render(); break;
     case 'import': $('#importfile').click(); break;
@@ -1127,6 +1233,7 @@ document.addEventListener('change', e => {
     case 'sleep': stopOp(date, p => { p.sleep = v || null; }); break;
     case 'depart': stopOp(date, p => { p.depart = v || null; }); break;
     case 'mapdaysel': UI.mapDay = v; render(); break;
+    case 'padd': if (v) { stopOp(v, p => p.stops.push({ place: el.dataset.place })); toast(`Added to ${dateLabel(v)}`); } break;
     case 'oname': optById(el.dataset.id).name = v; changed(); break;
     case 'onote': optById(el.dataset.id).note = v; changed(); break;
     case 'bset': {
@@ -1142,9 +1249,9 @@ document.addEventListener('change', e => {
 document.addEventListener('input', e => { if (e.target.dataset && e.target.dataset.fx) fxInput(e.target); });
 $('#importfile').addEventListener('change', e => { const f = e.target.files[0]; if (f) importJSON(f); e.target.value = ''; });
 const updOnline = () => { $('#offline').hidden = navigator.onLine; };
-addEventListener('online', () => { updOnline(); fetchRate(); fetchRoadMatrix(); }); addEventListener('offline', updOnline); updOnline();
+addEventListener('online', () => { updOnline(); fetchRate(); fetchRoadMatrix(); fetchWiki(); }); addEventListener('offline', updOnline); updOnline();
 setInterval(() => { if (S && UI.tab === 'plan' && S.days.find(d => d.date === todayISO()) && !document.activeElement?.matches('input,select,textarea')) render(); }, 5 * 60 * 1000);
 
 if ('serviceWorker' in navigator && location.protocol.startsWith('http')) navigator.serviceWorker.register('sw.js').catch(() => { });
-boot().then(() => { fetchRate(); fetchRoadMatrix(); });
+boot().then(() => { fetchRate(); fetchRoadMatrix(); fetchWiki(); });
 setInterval(() => fetchRate(), 30 * 60 * 1000);

@@ -152,7 +152,16 @@
       "needsDaylight": false,
       "suggest": false,
       "priority": 2,
-      "sleep": true
+      "sleep": true,
+      "cat": "Town",
+      "wiki": "Reykjavík",
+      "summary": "Iceland's small, walkable capital and your base. Hallgrímskirkja church (lift to the tower), Harpa concert hall, the Sun Voyager sculpture and the Old Harbour are all within a 30-minute walk of each other.",
+      "facts": [
+        "Free to wander; Hallgrímskirkja tower has a small fee",
+        "Geothermal pools (e.g. Sundhöllin, Vesturbæjarlaug) are cheap and very local"
+      ],
+      "winter": "Good aurora spot if you walk to the Grótta lighthouse, away from city lights.",
+      "links": [{"name": "Visit Reykjavík", "url": "https://visitreykjavik.is/"}]
     },
     {
       "id": "seljalandsfoss",
@@ -162,7 +171,13 @@
       "lon": -19.9886,
       "visit": 45,
       "note": "You can walk behind the falls — waterproofs, and the path gets icy. Gljúfrabúi (hidden falls) is a short walk north.",
-      "priority": 3
+      "priority": 3,
+      "cat": "Waterfall",
+      "wiki": "Seljalandsfoss",
+      "summary": "A slender ~60 m waterfall dropping over an old sea cliff right by the Ring Road. A path loops behind the curtain of water — you will get wet. Gljúfrabúi, a waterfall hidden inside a narrow canyon, is a 10-minute walk north.",
+      "facts": ["Time: 45–60 min", "Paid parking", "Waterproof jacket + shoes with grip"],
+      "winter": "The path behind the falls is often closed or treacherous with ice — bring microspikes or just view from the front.",
+      "links": []
     },
     {
       "id": "skogafoss",
@@ -172,7 +187,13 @@
       "lon": -19.5114,
       "visit": 45,
       "note": "Stairs up to a viewing platform on the right side.",
-      "priority": 3
+      "priority": 3,
+      "cat": "Waterfall",
+      "wiki": "Skógafoss",
+      "summary": "One of Iceland's biggest waterfalls: a 60 m high, 25 m wide wall of water you can walk right up to. A staircase of several hundred steps on the right leads to a viewing platform at the top, where the Fimmvörðuháls trail begins.",
+      "facts": ["Time: 45 min (more if you climb)", "Skógar Museum next door", "Rainbows on sunny days"],
+      "winter": "The stairs can be icy. Spray freezes on the ground close to the falls.",
+      "links": []
     },
     {
       "id": "kvernufoss",
@@ -182,7 +203,13 @@
       "lon": -19.4814,
       "visit": 40,
       "note": "3 min from Skógafoss, almost always empty.",
-      "priority": 2
+      "priority": 2,
+      "cat": "Waterfall",
+      "wiki": "Kvernufoss",
+      "summary": "A quieter waterfall in a mossy gorge just east of Skógar. A short walk from the parking near the Skógar Museum, and like Seljalandsfoss you can walk behind it — but with a fraction of the crowds.",
+      "facts": ["Time: ~40 min", "Walk ~15–20 min each way, a stile and a stream crossing"],
+      "winter": "Muddy or icy path; can be slippery in the gorge.",
+      "links": []
     },
     {
       "id": "dc3",
@@ -193,7 +220,17 @@
       "visit": 150,
       "note": "4 km walk each way across the sand, or shuttle ~3400 ISK return, runs 10:00–17:00.",
       "caution": "Long exposed walk; shuttle runs 10:00–17:00 only.",
-      "priority": 2
+      "priority": 2,
+      "cat": "Landmark",
+      "wiki": "Sólheimasandur",
+      "summary": "The fuselage of a US Navy Douglas DC-3 (C-117) that crash-landed on the black sand plain in 1973 — everyone survived. The stark wreck in an empty black desert is one of the most photographed sights in the south.",
+      "facts": [
+        "Time: ~2.5 h on foot (4 km each way, flat)",
+        "Shuttle from the parking ~3400 ISK return, 10:00–17:00",
+        "No facilities at the wreck"
+      ],
+      "winter": "Exposed and windy with no shelter; in the dark it is easy to lose the path. Start early.",
+      "links": []
     },
     {
       "id": "solheimajokull",
@@ -203,7 +240,13 @@
       "lon": -19.3686,
       "visit": 60,
       "note": "Glacier tongue — you can drive almost to the ice. Don't go onto the glacier without a guide.",
-      "priority": 2
+      "priority": 2,
+      "cat": "Glacier",
+      "wiki": "Sólheimajökull",
+      "summary": "An outlet glacier tongue of Mýrdalsjökull, the ice cap that covers the Katla volcano. A short walk from the car park brings you to a lagoon at the foot of the ice. Guided glacier walks with crampons start here.",
+      "facts": ["Time: ~1 h to view; glacier walks ~3 h", "Paid parking", "Signs show how far the ice has retreated"],
+      "winter": "Never walk onto the glacier without a guide — crevasses and moulins.",
+      "links": []
     },
     {
       "id": "dyrholaey",
@@ -213,7 +256,13 @@
       "lon": -19.1263,
       "visit": 40,
       "note": "Rock arch and lighthouse viewpoint. Upper road is steep and can be slippery.",
-      "priority": 2
+      "priority": 2,
+      "cat": "Viewpoint",
+      "wiki": "Dyrhólaey",
+      "summary": "A 120 m promontory with a huge natural rock arch and a lighthouse on top. From here you look along endless black beaches west and across to the Reynisdrangar sea stacks east.",
+      "facts": ["Time: 40 min", "Two parts: lower (beach & arch view) and upper (lighthouse, steep road)", "Free"],
+      "winter": "The steep road to the top can be icy or closed in high winds. Gusts on the cliff edge are dangerous.",
+      "links": []
     },
     {
       "id": "reynisfjara",
@@ -223,7 +272,17 @@
       "lon": -19.104,
       "visit": 40,
       "note": "Never turn your back to the sea — sneaker waves are deadly here.",
-      "priority": 3
+      "priority": 3,
+      "cat": "Beach",
+      "wiki": "Reynisfjara",
+      "summary": "The famous black sand beach west of Vík, with hexagonal basalt columns, a sea cave and the Reynisdrangar sea stacks offshore. Dramatic and beautiful — and genuinely dangerous.",
+      "facts": [
+        "Time: 40 min",
+        "Café and toilets at the car park",
+        "A warning-light system at the entrance shows the sea conditions"
+      ],
+      "winter": "Sneaker waves sweep far up the beach without warning and have killed visitors. Stay well back from the water, especially in winter swell.",
+      "links": []
     },
     {
       "id": "vik",
@@ -236,7 +295,13 @@
       "needsDaylight": false,
       "suggest": false,
       "priority": 2,
-      "sleep": true
+      "sleep": true,
+      "cat": "Town",
+      "wiki": "Vík í Mýrdal",
+      "summary": "Iceland's southernmost village (~300 people): a red-roofed church on the hill, a black beach and views of Reynisdrangar. The last decent supermarket and fuel before the long stretch east. Katla ice cave tours start here.",
+      "facts": ["Krónan supermarket, fuel, several restaurants", "Good overnight base for the south coast"],
+      "winter": "The road east of Vík (Mýrdalssandur) is exposed to strong crosswinds — check road.is.",
+      "links": []
     },
     {
       "id": "fjadrargljufur",
@@ -245,9 +310,15 @@
       "lat": 63.7714,
       "lon": -18.1716,
       "visit": 45,
-      "note": "Often closed in winter — check before you commit to it.",
+      "note": "",
       "caution": "Often closed in winter — check before you commit to it.",
-      "priority": 1
+      "priority": 1,
+      "cat": "Canyon",
+      "wiki": "Fjaðrárgljúfur",
+      "summary": "A serpentine canyon about 100 m deep and 2 km long, carved into soft rock with moss-covered walls. A trail follows the rim with viewing platforms looking down into the gorge.",
+      "facts": ["Time: 45 min–1 h", "Paid parking", "Just off the Ring Road on a short gravel road"],
+      "winter": "The trail is often closed in winter and spring to protect the vegetation when the ground is wet — check before you drive there.",
+      "links": []
     },
     {
       "id": "kirkjubaejarklaustur",
@@ -260,7 +331,12 @@
       "needsDaylight": false,
       "suggest": false,
       "priority": 2,
-      "sleep": true
+      "sleep": true,
+      "cat": "Town",
+      "wiki": "Kirkjubæjarklaustur",
+      "summary": "A tiny village (\"Klaustur\") on the Ring Road between Vík and Skaftafell. Near the village are Kirkjugólf, a natural floor of basalt columns, and the Systrafoss waterfall.",
+      "facts": ["Fuel, small shop, guesthouses", "Useful overnight stop for the far east"],
+      "links": []
     },
     {
       "id": "skaftafell",
@@ -271,7 +347,17 @@
       "visit": 90,
       "note": "Visitor centre; Svartifoss hike ~1.5 h return.",
       "priority": 2,
-      "sleep": true
+      "sleep": true,
+      "cat": "National park",
+      "wiki": "Skaftafell",
+      "summary": "Part of Vatnajökull National Park, below Iceland's highest peaks. The classic walk climbs to Svartifoss, a waterfall framed by black basalt columns. Another easy trail leads to the face of the Skaftafellsjökull glacier.",
+      "facts": [
+        "Svartifoss: ~1.5 h return, uphill",
+        "Glacier viewpoint: ~1 h return, flat",
+        "Visitor centre; paid parking"
+      ],
+      "winter": "Trails can be icy. Glacier hikes and ice-cave tours often meet here.",
+      "links": [{"name": "Vatnajökull National Park", "url": "https://www.vatnajokulsthjodgardur.is/en"}]
     },
     {
       "id": "jokulsarlon",
@@ -281,7 +367,13 @@
       "lon": -16.2306,
       "visit": 60,
       "note": "380 km from Reykjavík. Diamond Beach is across the road. Blue ice cave tours (Nov–Mar) leave from this area.",
-      "priority": 3
+      "priority": 3,
+      "cat": "Glacier lagoon",
+      "wiki": "Jökulsárlón",
+      "summary": "A lagoon full of icebergs calved from the Breiðamerkurjökull glacier, often with seals swimming among them. Across the road, ice chunks wash up on the black sand of \"Diamond Beach\". The highlight of the south coast for most visitors.",
+      "facts": ["Time: 1 h+ (lagoon + Diamond Beach)", "Café and toilets", "380 km / ~5 h from Reykjavík"],
+      "winter": "Natural blue ice caves under Vatnajökull can only be visited on guided tours, roughly November to March. Many tours meet here or in Skaftafell.",
+      "links": [{"name": "Vatnajökull National Park", "url": "https://www.vatnajokulsthjodgardur.is/en"}]
     },
     {
       "id": "thingvellir",
@@ -291,7 +383,13 @@
       "lon": -21.0764,
       "visit": 60,
       "note": "Rift valley national park. Paid parking.",
-      "priority": 3
+      "priority": 3,
+      "cat": "National park",
+      "wiki": "Þingvellir",
+      "summary": "A UNESCO site where Iceland's parliament, the Alþingi, met in the open air from 930 AD. It sits in a rift valley where you walk between the North American and Eurasian plates; Almannagjá gorge is the main path. Silfra fissure, famous for snorkelling, is here too.",
+      "facts": ["Time: 1 h", "Paid parking", "First stop of the Golden Circle, ~45 min from Reykjavík"],
+      "winter": "Paths can be icy; the open plain is good for aurora on clear nights.",
+      "links": [{"name": "Þingvellir National Park", "url": "https://www.thingvellir.is/en/"}]
     },
     {
       "id": "geysir",
@@ -301,7 +399,13 @@
       "lon": -20.2995,
       "visit": 40,
       "note": "Strokkur erupts every few minutes.",
-      "priority": 2
+      "priority": 2,
+      "cat": "Geothermal",
+      "wiki": "Geysir",
+      "summary": "The geothermal field that gave all geysers their name. The Great Geysir itself is mostly dormant, but Strokkur next to it erupts every few minutes, shooting boiling water 15–30 m up. Bubbling hot pools and steaming vents surround it.",
+      "facts": ["Time: 40 min", "Free entry", "Hotel, restaurant and shops across the road"],
+      "winter": "Ground around the pools can be icy. Stay behind the ropes — the water is near boiling.",
+      "links": []
     },
     {
       "id": "gullfoss",
@@ -311,7 +415,13 @@
       "lon": -20.1244,
       "visit": 40,
       "note": "Lower path can be closed when icy.",
-      "priority": 3
+      "priority": 3,
+      "cat": "Waterfall",
+      "wiki": "Gullfoss",
+      "summary": "\"Golden Falls\": the Hvítá river drops in two stages into a deep crevice, about 32 m in total. It is one of Iceland's most powerful waterfalls and the third stop of the Golden Circle.",
+      "facts": ["Time: 40 min", "Free; café and toilets at the top", "10 min from Geysir"],
+      "winter": "The lower path to the edge of the falls is often closed because of ice. The upper viewpoint stays open.",
+      "links": []
     },
     {
       "id": "kirkjufell",
@@ -322,7 +432,13 @@
       "visit": 30,
       "note": "Sleep in Grundarfjörður, next to the mountain.",
       "priority": 3,
-      "sleep": true
+      "sleep": true,
+      "cat": "Mountain",
+      "wiki": "Kirkjufell",
+      "summary": "The steep, arrowhead-shaped mountain (463 m) beside the village of Grundarfjörður, possibly the most photographed in Iceland. The classic view is from the small Kirkjufellsfoss waterfall across the road. It also appears in Game of Thrones.",
+      "facts": ["Time: 30 min for the photo stop", "Grundarfjörður has fuel, a shop and guesthouses"],
+      "winter": "A favourite aurora foreground on clear nights.",
+      "links": []
     },
     {
       "id": "arnarstapi",
@@ -332,7 +448,13 @@
       "lon": -23.623,
       "visit": 45,
       "note": "Coastal path to Hellnar (~2.5 km).",
-      "priority": 2
+      "priority": 2,
+      "cat": "Coast",
+      "wiki": "Arnarstapi",
+      "summary": "A small fishing hamlet beneath Snæfellsjökull, with dramatic basalt sea cliffs, the Gatklettur rock arch and a big stone statue of the half-troll Bárður. An easy coastal trail runs to Hellnar.",
+      "facts": ["Time: 45 min (1.5 h with the Hellnar walk)", "Coastal path to Hellnar ~2.5 km each way"],
+      "winter": "Cliff edges have no fences — keep back in wind and ice.",
+      "links": []
     },
     {
       "id": "djupalonssandur",
@@ -342,7 +464,13 @@
       "lon": -23.905,
       "visit": 40,
       "note": "Black pebble beach with shipwreck remains.",
-      "priority": 2
+      "priority": 2,
+      "cat": "Beach",
+      "wiki": "Djúpalónssandur",
+      "summary": "A black pebble beach in Snæfellsjökull National Park, reached by a short path through lava formations. The rusted remains of the British trawler Epine, wrecked in 1948, lie across the beach. Four old lifting stones once tested fishermen's strength.",
+      "facts": ["Time: 40 min", "Short walk down from the car park", "Toilets at the car park"],
+      "winter": "Like Reynisfjara, the surf here is dangerous — don't go near the water's edge.",
+      "links": []
     },
     {
       "id": "bluelagoon",
@@ -353,7 +481,13 @@
       "visit": 150,
       "note": "20 min from Keflavík. Book a time slot.",
       "needsDaylight": false,
-      "priority": 2
+      "priority": 2,
+      "cat": "Spa",
+      "wiki": "Blue Lagoon (geothermal spa)",
+      "summary": "A geothermal spa with milky-blue, silica-rich water at about 37–39 °C, set in a lava field on the Reykjanes peninsula. It's pricey and touristy, but very relaxing. Only 20 minutes from the airport, so it works well before a flight.",
+      "facts": ["Book a time slot in advance", "Time: 2–3 h", "Lockers and towels in the basic ticket"],
+      "winter": "Since 2023 the Reykjanes peninsula has had repeated volcanic eruptions nearby. The lagoon closes temporarily when there's eruption risk, so check its status before you go.",
+      "links": [{"name": "Blue Lagoon", "url": "https://www.bluelagoon.com/"}]
     },
     {
       "id": "kef",
@@ -365,7 +499,12 @@
       "note": "Departure on 8 Nov.",
       "needsDaylight": false,
       "suggest": false,
-      "priority": 2
+      "priority": 2,
+      "cat": "Transport",
+      "wiki": "Keflavík International Airport",
+      "summary": "Iceland's international airport, about 45 minutes from Reykjavík. Most car-rental returns are close by, with shuttles to the terminal.",
+      "facts": ["Allow time to return the rental car", "Fill up the tank before the return"],
+      "links": [{"name": "Keflavík Airport", "url": "https://www.kefairport.is/en"}]
     }
   ],
   "drives": [
@@ -590,5 +729,22 @@
     "Fill up when you can — fuel stations are sparse east of Vík.",
     "Plan to be off the road before dark where possible; keep headlights on at all times (required)."
   ],
-  "checks": {}
+  "checks": {},
+  "categories": [
+    "Waterfall",
+    "Beach",
+    "Glacier",
+    "Glacier lagoon",
+    "Canyon",
+    "Viewpoint",
+    "Mountain",
+    "Coast",
+    "National park",
+    "Geothermal",
+    "Spa",
+    "Landmark",
+    "Town",
+    "Transport"
+  ],
+  "picks": {}
 }

@@ -59,6 +59,17 @@ A collapsed day card shows "+N more could fit". If a day doesn't fit, it shows w
   Compare it with your other options, then **Select** or **Copy** it and tweak.
 - For a fair comparison, each night away that has no hostel booking linked to the option is costed at the "Unbooked night" estimate.
 
+## Places tab
+
+There's one card per place, with a photo, category, summary, practical facts, winter notes, and links (Wikipedia, Google Maps directions, official sites).
+Filter by type, region, must-see, skipped, or "not in plan".
+
+- **★ Must-see / Skip**: Must-sees get top priority in suggestions, auto-fill and auto-plan. Auto-plan builds each block around them and lists any it couldn't fit.
+  Skipped places are never suggested. Your picks are saved in `picks` and included in exports.
+- The summaries live in `data.json` (`summary`, `facts`, `winter`, `cat`, `links`).
+  Photos and the "From Wikipedia" intro come from the Wikipedia API at runtime, using the `wiki` article title, with a search fallback.
+  They're cached for offline use, and the photos are cached by the service worker. Credit links point back to Wikipedia / Wikimedia Commons.
+
 ## Euros and the currency tab
 
 Every ISK amount is also shown in € (totals, bookings, comparison, fuel, and ISK prices mentioned in notes).
@@ -76,7 +87,7 @@ The **€ / kr** tab is a two-way converter with quick tables. The header chip s
 - `days[]`: `state` is `free`, `booked` or `partial`. A partial day also needs `mode` (`until` or `from`) and `time` (`"HH:MM"`).
 - `blocks[]`: date ranges you plan as a unit. `active` names the selected option.
 - `options[]`: alternative itineraries for a block. `days[date] = { stops: [{place, min?, note?}], sleep, depart? }`.
-- `places[]`: `visit` is the default number of minutes at the place. Set `needsDaylight: false` for towns and the lagoon. `caution` shows a warning. `priority` (1–3) steers auto-fill. `suggest: false` keeps a place out of suggestions. `sleep: true` makes it an overnight candidate for auto-plan.
+- `places[]`: `summary`, `facts[]`, `winter`, `cat`, `wiki` (Wikipedia title), `links[]` for the Places tab; `visit` is the default number of minutes at the place. Set `needsDaylight: false` for towns and the lagoon. `caution` shows a warning. `priority` (1–3) steers auto-fill. `suggest: false` keeps a place out of suggestions. `sleep: true` makes it an overnight candidate for auto-plan.
 - `bookings[]`: `option` is `null` for a shared booking or an option id. Bookings tied to an option count only when that option is selected.
 
 Your edits in the app are saved in the browser's localStorage. **Export** writes a file in the same format as `data.json`,
