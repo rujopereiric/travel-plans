@@ -345,13 +345,24 @@ function suggestFor(date, opt) {
 // value of visiting a place: cubic in priority, so must-sees (10) and top sights (3) dominate and fillers (1) barely count
 const placeValue = p => prio(p) ** 3;
 // net gain of adding a suggested stop: its value minus the extra driving and the time it takes
-const stopGain = x => placeValue(place(x.place)) - Math.max(0, x.extra) / 10 - x.visit / 30;
+// driving costs 1 point per hour and visit time 1 per 2 h: enough to choose between alternatives, while a good
+// place is still worth a day trip; the daylight/driving limits already stop days getting too long
+const DRIVE_COST = 1 / 60, VISIT_COST = 1 / 120;
+const stopGain = x => placeValue(place(x.place)) - Math.max(0, x.extra) * DRIVE_COST - x.visit * VISIT_COST;
 function autoFill(date, opt) {
   let added = 0;
   for (let n = 0; n < 10; n++) {
     // must-sees may make a day 'tight'; everything else has to keep it a clean fit, and be worth the detour
-    const sg = suggestFor(date, opt).add.filter(x => (x.status === 'ok' || (x.status === 'tight' && pick(x.place) === 'must')) && stopGain(x) > 0);
-    if (!sg.length) break;
+    const sg = suggestFor(date, opt).add.filter(x => (x.status === 'ok' || (x.status === 'tight' && pick(x.place) === 'must')) && stopGain(x) >= 1);
+    if (!sg.length) {
+      // nothing worthwhile left: give an otherwise empty day a filler or two rather than nothing
+      const p = planOf(opt, date, false);
+      if (p && p.stops.length) break;
+      const fill = suggestFor(date, opt).add.filter(x => x.status === 'ok' && stopGain(x) > 0).sort((a, b) => stopGain(b) - stopGain(a));
+      if (!fill.length) break;
+      planOf(opt, date, true).stops.splice(fill[0].pos, 0, { place: fill[0].place }); added++;
+      continue;
+    }
     sg.sort((a, b) => stopGain(b) - stopGain(a));
     const top = sg[0], p = planOf(opt, date, true);
     p.stops.splice(top.pos, 0, { place: top.place });
@@ -373,12 +384,22 @@ function scoreOption(opt, dates) {
   for (const date of dates) {
     const r = simulate(date, opt);
     if (r.status === 'bad') return null;
-    for (const st of (opt.days[date]?.stops || [])) if (!seen.has(st.place) && place(st.place)) { seen.add(st.place); score += placeValue(place(st.place)) - (place(st.place).visit ?? 45) / 30; }
+    for (const st of (opt.days[date]?.stops || [])) if (!seen.has(st.place) && place(st.place)) { seen.add(st.place); score += placeValue(place(st.place)) - (place(st.place).visit ?? 45) * VISIT_COST; }
     if (r.status === 'tight') score -= 15;
     drive += r.driveMin;
   }
   const nightsMoved = dates.slice(1).filter((d, i) => opt.days[d]?.sleep !== opt.days[dates[i]]?.sleep).length;
-  return score - drive / 10 - nightsMoved * 5;
+  // small cost per night away from base (hostel, packing), so leftover days drift back to Reykjavík
+  const nightsAway = dates.filter(d => (opt.days[d]?.sleep || S.trip.home) !== S.trip.home).length;
+  return score - drive * DRIVE_COST - nightsMoved * 3 - nightsAway * 0.5;
+}
+// value of the best unvisited places reachable from a bed: full value next door, fading to 0 at a full day's drive
+function potential(opt, bed, lim) {
+  const seen = new Set(Object.values(opt.days).flatMap(p => p.stops.map(s => s.place)));
+  for (const o of S.blocks.map(activeOpt)) if (o && o.block !== opt.block) for (const p of Object.values(o.days)) for (const st of p.stops) seen.add(st.place);
+  const vals = S.places.filter(p => !seen.has(p.id) && p.suggest !== false && pick(p.id) !== 'skip' && (p.visit ?? 45) > 0 && p.id !== S.trip.home)
+    .map(p => placeValue(p) * Math.max(0, 1 - drive(bed, p.id).min / lim)).sort((x, y) => y - x);
+  return vals.slice(0, 8).reduce((a, v) => a + v, 0) * 0.6;
 }
 function autoPlan(bid) {
   const b = S.blocks.find(x => x.id === bid), dates = blockDates(b).filter(d => freeWin(dayObj(d)));
@@ -388,7 +409,7 @@ function autoPlan(bid) {
   const cands = sleepCandidates();
   // Beam search over overnight stops: build the plan day by day, auto-filling each day, and keep only the
   // BEAM best partial plans after each day (instead of fully planning every combination).
-  const BEAM = 20;
+  const BEAM = dates.length > 10 ? 10 : 20;
   let beam = [{ opt: { id: '_auto', block: bid, name: '', note: '', days: {} }, prev: S.trip.home }], tried = 0;
   for (let i = 0; i < dates.length; i++) {
     const date = dates[i], lim = maxDriveOf(dayObj(date)), lastLim = maxDriveOf(dayObj(last)), next = [];
@@ -401,14 +422,20 @@ function autoPlan(bid) {
         if (simulate(date, opt).status === 'bad') continue;
         autoFill(date, opt); tried++;
         const sc = scoreOption(opt, dates.slice(0, i + 1));
-        if (sc != null) next.push({ opt, prev: c, score: sc });
+        if (sc == null) continue;
+        // rank partial plans by what they've seen *plus* what is still within reach of tonight's bed,
+        // so the search is willing to spend a day moving on to unvisited regions
+        const rank = i === dates.length - 1 ? sc : sc + potential(opt, c, Math.min(lim, lastLim));
+        next.push({ opt, prev: c, score: sc, rank });
       }
     }
-    next.sort((x, y) => y.score - x.score);
-    beam = next.slice(0, BEAM);
+    next.sort((x, y) => y.rank - x.rank);
+    // keep the beam diverse: at most 4 partial plans ending in the same place
+    const perBed = {};
+    beam = next.filter(x => (perBed[x.prev] = (perBed[x.prev] || 0) + 1) <= 4).slice(0, BEAM);
     if (!beam.length) return null;
   }
-  const best = beam[0];
+  const best = beam.sort((x, y) => y.score - x.score)[0];
   if (!best) return null;
   let n = optsOf(bid).length + 1, id;
   do id = bid + (n++); while (optById(id));
@@ -420,7 +447,9 @@ function autoPlan(bid) {
   const planned = new Set([o, ...S.blocks.map(activeOpt).filter(x => x && x.block !== bid)].flatMap(x => Object.values(x.days).flatMap(p => p.stops.map(s => s.place))));
   const missing = Object.keys(S.picks || {}).filter(id => S.picks[id] === 'must' && place(id) && !planned.has(id));
   if (missing.length) o.note += ` Must-sees not fitted: ${missing.map(placeName).join(', ')}.`;
-  return { opt: o, tried, missing };
+  const empty = dates.filter(d => !o.days[d]?.stops?.length);
+  if (empty.length) o.note += ` ${empty.length} day${empty.length > 1 ? 's' : ''} left free: nothing new worth the drive within ${set('maxDriveH')} h. Add more places or regions (e.g. the North), or raise the driving limit.`;
+  return { opt: o, tried, missing, empty: empty.length };
 }
 
 /* ---------- exchange rate ---------- */
@@ -1357,6 +1386,7 @@ document.addEventListener('click', e => {
         if (!res) { el.disabled = false; el.textContent = 'Auto-plan'; alert('No combination of overnight stops fits your free time and driving limit. Try a higher max driving time.'); return; }
         S.options.push(res.opt); UI.cmpBlock = bid; UI.cmpFocus = res.opt.id; persist();
         toast(`Created ${res.opt.id} · tried ${res.tried} routes in ${Math.round(performance.now() - t0)} ms`);
+        if (res.empty) toast(`${res.opt.id}: ${res.empty} day${res.empty > 1 ? 's' : ''} left free — nothing new within reach`);
         if (res.missing.length) setTimeout(() => alert(`${res.opt.id} couldn't fit these must-sees (in this block, within your free time and ${set('maxDriveH')} h/day driving):\n\n• ${res.missing.map(placeName).join('\n• ')}\n\nThey may fit in the other block, or with a higher driving limit.`), 300);
         goTab('compare');
       }, 30);

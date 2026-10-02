@@ -65,8 +65,11 @@ A collapsed day card shows "+N more could fit". If a day doesn't fit, it shows w
 - **Auto-plan** (Compare tab, Places tab, or next to the plan picker): builds a block day by day.
   For each day it tries every possible overnight place (places marked `sleep: true` in `data.json`, plus Reykjavík).
   It auto-fills that day, and keeps the 20 best partial plans before moving on to the next day (a beam search).
-  A place is worth priority³: must-see = 10, so 1000; top sight = 3, so 27; filler = 1, so 1.
-  A stop is only added when its value outweighs the extra driving and the time it takes.
+  A place is worth priority³: must-see = 10, so 1000; top sight = 3, so 27; normal = 2, so 8; filler = 1, so 1.
+  Driving costs 1 point per hour and visit time 1 point per 2 hours, so a good place is always worth a day trip. Fillers only go on days that would otherwise be empty.
+  Plans are also ranked by the unvisited places still within reach of where they sleep, so the search will spend a day moving to a new region.
+  The kept plans are kept varied, with at most 4 ending in the same place.
+  If the block runs out of places worth the drive, the plan's note says how many days were left free.
   The block's final night is kept where the selected option ends it: Reykjavík on 2 Nov, Keflavík on 8 Nov.
   The best plan is added as a new option, for example `A3 · Auto-plan (≤5h driving/day)`, but it isn't selected.
   Compare it with your other options, then **Select** or **Copy** it and tweak.
