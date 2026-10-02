@@ -67,7 +67,7 @@ Filter by type, region, must-see, skipped, or "not in plan".
 - **★ Must-see / Skip**: Must-sees get top priority in suggestions, auto-fill and auto-plan. Auto-plan builds each block around them and lists any it couldn't fit.
   Skipped places are never suggested. Your picks are saved in `picks` and included in exports.
 - The summaries live in `data.json` (`summary`, `facts`, `winter`, `cat`, `links`).
-  Photos and the "From Wikipedia" intro come from the Wikipedia API at runtime, using the `wiki` article title, with a search fallback.
+  Photos and the "From Wikipedia" intro come from the Wikipedia API at runtime, using the `wiki` article title, with a search fallback. Places whose article has no lead image get a photo from a Wikimedia Commons search. To pin a specific picture, set `photo` to an image URL.
   They're cached for offline use, and the photos are cached by the service worker. Credit links point back to Wikipedia / Wikimedia Commons.
 
 ## Euros and the currency tab
@@ -87,7 +87,7 @@ The **€ / kr** tab is a two-way converter with quick tables. The header chip s
 - `days[]`: `state` is `free`, `booked` or `partial`. A partial day also needs `mode` (`until` or `from`) and `time` (`"HH:MM"`).
 - `blocks[]`: date ranges you plan as a unit. `active` names the selected option.
 - `options[]`: alternative itineraries for a block. `days[date] = { stops: [{place, min?, note?}], sleep, depart? }`.
-- `places[]`: `summary`, `facts[]`, `winter`, `cat`, `wiki` (Wikipedia title), `links[]` for the Places tab; `visit` is the default number of minutes at the place. Set `needsDaylight: false` for towns and the lagoon. `caution` shows a warning. `priority` (1–3) steers auto-fill. `suggest: false` keeps a place out of suggestions. `sleep: true` makes it an overnight candidate for auto-plan.
+- `places[]`: `summary`, `facts[]`, `winter`, `cat`, `wiki` (Wikipedia title), `links[]`, `photo` (optional image URL) for the Places tab; `visit` is the default number of minutes at the place. Set `needsDaylight: false` for towns and the lagoon. `caution` shows a warning. `priority` (1–3) steers auto-fill. `suggest: false` keeps a place out of suggestions. `sleep: true` makes it an overnight candidate for auto-plan.
 - `bookings[]`: `option` is `null` for a shared booking or an option id. Bookings tied to an option count only when that option is selected.
 
 Your edits in the app are saved in the browser's localStorage. **Export** writes a file in the same format as `data.json`,

@@ -540,7 +540,7 @@ async function boot() {
 }
 // Descriptive place fields aren't edited in the app, so newer data.json content can be merged into a locally edited plan
 // without asking: new places, categories, summaries, photos titles, links, priorities and sleep flags.
-const INFO_FIELDS = ['cat', 'summary', 'facts', 'winter', 'wiki', 'links', 'caution', 'note', 'priority', 'sleep', 'suggest', 'needsDaylight'];
+const INFO_FIELDS = ['cat', 'summary', 'facts', 'winter', 'wiki', 'links', 'photo', 'caution', 'note', 'priority', 'sleep', 'suggest', 'needsDaylight'];
 function mergePlaceInfo(local, file) {
   local.places = local.places || [];
   for (const fp of file.places || []) {
@@ -967,6 +967,18 @@ async function fetchWiki() {
         if (j.thumbnail?.source) w.img = j.thumbnail.source;
       } catch (e) { }
     }
+    // still no photo: search Wikimedia Commons for a picture of the place
+    for (const p of need) {
+      const w = WIKI[p.id];
+      if (!w || w.img || w.none) continue;
+      try {
+        const q = encodeURIComponent(`${p.wiki || p.name} filetype:bitmap`);
+        const j = await (await fetch(`https://commons.wikimedia.org/w/api.php?format=json&origin=*&action=query&generator=search&gsrnamespace=6&gsrlimit=5&gsrsearch=${q}&prop=imageinfo&iiprop=url&iiurlwidth=960`)).json();
+        const hits = Object.values(j.query?.pages || {}).sort((x, y) => x.index - y.index);
+        const hit = hits.find(h => h.imageinfo?.[0]?.thumburl);
+        if (hit) { w.img = hit.imageinfo[0].thumburl; w.commons = hit.imageinfo[0].descriptionurl; }
+      } catch (e) { }
+    }
     for (const p of missing) { // fall back to a search, e.g. if an article was renamed
       const j = await (await fetch(`${WAPI}&list=search&srlimit=1&srsearch=${encodeURIComponent(p.name + ' Iceland')}`)).json();
       const t = j.query?.search?.[0]?.title;
@@ -1005,7 +1017,7 @@ function imgOk(id, el) {
   if (m && +m[1] !== IMG_W) { IMG_W = +m[1]; try { localStorage.setItem('iceland-imgw', IMG_W); } catch (e) { } }
   clearTimeout(imgSaveT); imgSaveT = setTimeout(() => { try { localStorage.setItem(LS_WIKI, JSON.stringify(WIKI)); } catch (e) { } }, 500); }
 function photoStatus() {
-  const n = S.places.length, got = S.places.filter(p => WIKI[p.id]?.img && !IMG_FAIL[p.id]).length, failed = Object.keys(IMG_FAIL).length;
+  const n = S.places.length, got = S.places.filter(p => (p.photo || WIKI[p.id]?.img) && !IMG_FAIL[p.id]).length, failed = Object.keys(IMG_FAIL).length;
   let msg = WIKI_BUSY ? 'Loading photos from Wikipedia…' : !navigator.onLine && got < n ? `Offline — ${got} of ${n} photos available.`
     : `Photos: ${got} of ${n}` + (failed ? ` · ${failed} failed to display` : '') + (WIKI_ERR ? ` · Wikipedia lookup failed: ${WIKI_ERR}` : '');
   const sample = failed ? Object.values(IMG_FAIL)[0] : '';
@@ -1036,7 +1048,7 @@ function renderPlaces() {
   if (!list.length) h += `<p class="empty">No places match these filters.</p>`;
   for (const p of list) {
     const rg = region(p.region), w = WIKI[p.id] || {}, pk = pick(p.id), where = plannedIn(p.id);
-    const img = imgSrc(w.img) || null;
+    const img = p.photo || imgSrc(w.img) || null;
     const wurl = w.url || `https://en.wikipedia.org/wiki/Special:Search?search=${encodeURIComponent(p.wiki || p.name)}`;
     h += `<article class="card poi ${pk ? 'pk-' + pk : ''}" id="poi-${esc(p.id)}">
       <div class="poiimg" style="--rc:${rg.color}"><span>${esc(p.cat || '')}</span>${img ? `<img src="${esc(img)}" alt="${esc(p.name)}" loading="lazy" referrerpolicy="no-referrer" onerror="imgFail(this,'${esc(p.id)}')" onload="imgOk('${esc(p.id)}', this)">` : ''}
@@ -1059,7 +1071,7 @@ function renderPlaces() {
           <button class="btn small" data-act="pmap" data-place="${esc(p.id)}">Map</button>
           <select data-act="padd" data-place="${esc(p.id)}" class="grow" style="min-width:110px"><option value="">Add to day…</option>${days.map(d => `<option value="${d.date}">${dateLabel(d.date)}</option>`).join('')}</select>
         </div>
-        ${img ? `<div class="tiny muted" style="margin-top:6px">Photo: <a href="${esc(wurl)}" target="_blank" rel="noopener">Wikipedia / Wikimedia Commons</a></div>` : ''}
+        ${img ? `<div class="tiny muted" style="margin-top:6px">Photo: <a href="${esc(p.photo ? p.photo : w.commons || wurl)}" target="_blank" rel="noopener">${p.photo ? 'custom' : w.commons ? 'Wikimedia Commons' : 'Wikipedia / Wikimedia Commons'}</a></div>` : ''}
       </div></article>`;
   }
   if (!navigator.onLine && S.places.some(p => !WIKI[p.id])) h += `<p class="tiny muted">Photos load the first time you open this tab online, and are kept for offline use.</p>`;
