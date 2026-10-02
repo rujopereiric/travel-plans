@@ -1,0 +1,559 @@
+{
+  "version": 1,
+  "trip": {
+    "name": "Iceland · Erasmus+ training",
+    "from": "2026-10-30",
+    "to": "2026-11-08",
+    "sunLat": 64.1466,
+    "sunLon": -21.9426,
+    "home": "reykjavik"
+  },
+  "settings": {
+    "speedKmh": 75,
+    "roadFactor": 1.35,
+    "winterBufferPct": 15,
+    "fuelLper100": 7.5,
+    "fuelIskPerL": 330,
+    "eurIsk": 145,
+    "slackMin": 30,
+    "localSun": true,
+    "darkDriveMin": 30,
+    "earliestDepart": "07:00"
+  },
+  "days": [
+    {"date": "2026-10-30", "state": "free", "label": "Arrival day"},
+    {"date": "2026-10-31", "state": "free"},
+    {"date": "2026-11-01", "state": "free"},
+    {
+      "date": "2026-11-02",
+      "state": "partial",
+      "mode": "until",
+      "time": "19:00",
+      "label": "Back in Reykjavík for dinner — time TBC"
+    },
+    {"date": "2026-11-03", "state": "booked", "label": "Training"},
+    {"date": "2026-11-04", "state": "booked", "label": "Training"},
+    {"date": "2026-11-05", "state": "booked", "label": "Training"},
+    {
+      "date": "2026-11-06",
+      "state": "partial",
+      "mode": "from",
+      "time": "13:00",
+      "label": "Free once the programme ends — time TBC"
+    },
+    {"date": "2026-11-07", "state": "free"},
+    {
+      "date": "2026-11-08",
+      "state": "partial",
+      "mode": "until",
+      "time": "18:00",
+      "label": "Evening flight from Keflavík — set to when you must be at KEF"
+    }
+  ],
+  "blocks": [
+    {"id": "A", "name": "Block A · before training", "from": "2026-10-30", "to": "2026-11-02", "active": "A1"},
+    {"id": "B", "name": "Block B · after training", "from": "2026-11-06", "to": "2026-11-08", "active": "B1"}
+  ],
+  "options": [
+    {
+      "id": "A1",
+      "block": "A",
+      "name": "East to Jökulsárlón",
+      "note": "Uses the 2 Nov half-day to drive back from Kirkjubæjarklaustur.",
+      "days": {
+        "2026-10-30": {
+          "stops": [{"place": "seljalandsfoss"}, {"place": "skogafoss"}, {"place": "kvernufoss"}],
+          "sleep": "vik"
+        },
+        "2026-10-31": {
+          "stops": [{"place": "reynisfjara"}, {"place": "fjadrargljufur"}, {"place": "skaftafell"}],
+          "sleep": "skaftafell"
+        },
+        "2026-11-01": {
+          "stops": [{"place": "jokulsarlon", "min": 240, "note": "Blue ice cave tour + Diamond Beach"}],
+          "sleep": "kirkjubaejarklaustur"
+        },
+        "2026-11-02": {"stops": [{"place": "dyrholaey"}, {"place": "solheimajokull"}], "sleep": "reykjavik"}
+      }
+    },
+    {
+      "id": "A2",
+      "block": "A",
+      "name": "No further east than Vík",
+      "note": "Golden Circle first, then two nights in Vík.",
+      "days": {
+        "2026-10-30": {
+          "stops": [{"place": "thingvellir"}, {"place": "geysir"}, {"place": "gullfoss"}],
+          "sleep": "reykjavik"
+        },
+        "2026-10-31": {
+          "stops": [
+            {"place": "seljalandsfoss"},
+            {"place": "skogafoss"},
+            {"place": "kvernufoss"},
+            {"place": "solheimajokull"}
+          ],
+          "sleep": "vik"
+        },
+        "2026-11-01": {"stops": [{"place": "dc3"}, {"place": "dyrholaey"}, {"place": "reynisfjara"}], "sleep": "vik"},
+        "2026-11-02": {"stops": [{"place": "vik", "min": 180, "note": "Katla ice cave tour"}], "sleep": "reykjavik"}
+      }
+    },
+    {
+      "id": "B1",
+      "block": "B",
+      "name": "Snæfellsnes + Blue Lagoon",
+      "note": "",
+      "days": {
+        "2026-11-06": {"stops": [{"place": "thingvellir"}], "sleep": "reykjavik"},
+        "2026-11-07": {
+          "stops": [{"place": "kirkjufell"}, {"place": "djupalonssandur"}, {"place": "arnarstapi"}],
+          "sleep": "reykjavik"
+        },
+        "2026-11-08": {"stops": [{"place": "bluelagoon"}], "sleep": "kef"}
+      }
+    },
+    {
+      "id": "B2",
+      "block": "B",
+      "name": "Golden Circle + Reykjanes",
+      "note": "",
+      "days": {
+        "2026-11-06": {"stops": [{"place": "reykjavik", "min": 120, "note": "City afternoon"}], "sleep": "reykjavik"},
+        "2026-11-07": {
+          "stops": [{"place": "thingvellir"}, {"place": "geysir"}, {"place": "gullfoss"}],
+          "sleep": "reykjavik"
+        },
+        "2026-11-08": {"stops": [{"place": "bluelagoon"}], "sleep": "kef"}
+      }
+    }
+  ],
+  "regions": [
+    {"id": "reykjavik", "name": "Reykjavík", "color": "#7b61c9"},
+    {"id": "golden", "name": "Golden Circle", "color": "#d1a020"},
+    {"id": "south", "name": "South Coast", "color": "#2a8fbd"},
+    {"id": "snaefellsnes", "name": "Snæfellsnes", "color": "#2f9e6a"},
+    {"id": "reykjanes", "name": "Reykjanes", "color": "#d0573a"}
+  ],
+  "places": [
+    {
+      "id": "reykjavik",
+      "name": "Reykjavík centre",
+      "region": "reykjavik",
+      "lat": 64.1466,
+      "lon": -21.9426,
+      "visit": 60,
+      "note": "Base. Training venue and organisers' accommodation.",
+      "needsDaylight": false
+    },
+    {
+      "id": "seljalandsfoss",
+      "name": "Seljalandsfoss",
+      "region": "south",
+      "lat": 63.6156,
+      "lon": -19.9886,
+      "visit": 45,
+      "note": "You can walk behind the falls — waterproofs, and the path gets icy. Gljúfrabúi (hidden falls) is a short walk north."
+    },
+    {
+      "id": "skogafoss",
+      "name": "Skógafoss",
+      "region": "south",
+      "lat": 63.5321,
+      "lon": -19.5114,
+      "visit": 45,
+      "note": "Stairs up to a viewing platform on the right side."
+    },
+    {
+      "id": "kvernufoss",
+      "name": "Kvernufoss",
+      "region": "south",
+      "lat": 63.5288,
+      "lon": -19.4814,
+      "visit": 40,
+      "note": "3 min from Skógafoss, almost always empty."
+    },
+    {
+      "id": "dc3",
+      "name": "Sólheimasandur DC-3 wreck",
+      "region": "south",
+      "lat": 63.4591,
+      "lon": -19.3647,
+      "visit": 150,
+      "note": "4 km walk each way across the sand, or shuttle ~3400 ISK return, runs 10:00–17:00.",
+      "caution": "Long exposed walk; shuttle runs 10:00–17:00 only."
+    },
+    {
+      "id": "solheimajokull",
+      "name": "Sólheimajökull",
+      "region": "south",
+      "lat": 63.5311,
+      "lon": -19.3686,
+      "visit": 60,
+      "note": "Glacier tongue — you can drive almost to the ice. Don't go onto the glacier without a guide."
+    },
+    {
+      "id": "dyrholaey",
+      "name": "Dyrhólaey",
+      "region": "south",
+      "lat": 63.4014,
+      "lon": -19.1263,
+      "visit": 40,
+      "note": "Rock arch and lighthouse viewpoint. Upper road is steep and can be slippery."
+    },
+    {
+      "id": "reynisfjara",
+      "name": "Reynisfjara",
+      "region": "south",
+      "lat": 63.4034,
+      "lon": -19.104,
+      "visit": 40,
+      "note": "Never turn your back to the sea — sneaker waves are deadly here."
+    },
+    {
+      "id": "vik",
+      "name": "Vík",
+      "region": "south",
+      "lat": 63.4187,
+      "lon": -19.006,
+      "visit": 30,
+      "note": "Fuel and supermarket. Katla ice cave tours (year-round) start here.",
+      "needsDaylight": false
+    },
+    {
+      "id": "fjadrargljufur",
+      "name": "Fjaðrárgljúfur",
+      "region": "south",
+      "lat": 63.7714,
+      "lon": -18.1716,
+      "visit": 45,
+      "note": "Often closed in winter — check before you commit to it.",
+      "caution": "Often closed in winter — check before you commit to it."
+    },
+    {
+      "id": "kirkjubaejarklaustur",
+      "name": "Kirkjubæjarklaustur",
+      "region": "south",
+      "lat": 63.7906,
+      "lon": -18.0594,
+      "visit": 20,
+      "note": "Small village with fuel and a shop.",
+      "needsDaylight": false
+    },
+    {
+      "id": "skaftafell",
+      "name": "Skaftafell",
+      "region": "south",
+      "lat": 64.0166,
+      "lon": -16.9664,
+      "visit": 90,
+      "note": "Visitor centre; Svartifoss hike ~1.5 h return."
+    },
+    {
+      "id": "jokulsarlon",
+      "name": "Jökulsárlón",
+      "region": "south",
+      "lat": 64.0784,
+      "lon": -16.2306,
+      "visit": 60,
+      "note": "380 km from Reykjavík. Diamond Beach is across the road. Blue ice cave tours (Nov–Mar) leave from this area."
+    },
+    {
+      "id": "thingvellir",
+      "name": "Þingvellir",
+      "region": "golden",
+      "lat": 64.2822,
+      "lon": -21.0764,
+      "visit": 60,
+      "note": "Rift valley national park. Paid parking."
+    },
+    {
+      "id": "geysir",
+      "name": "Geysir",
+      "region": "golden",
+      "lat": 64.3138,
+      "lon": -20.2995,
+      "visit": 40,
+      "note": "Strokkur erupts every few minutes."
+    },
+    {
+      "id": "gullfoss",
+      "name": "Gullfoss",
+      "region": "golden",
+      "lat": 64.3262,
+      "lon": -20.1244,
+      "visit": 40,
+      "note": "Lower path can be closed when icy."
+    },
+    {
+      "id": "kirkjufell",
+      "name": "Kirkjufell",
+      "region": "snaefellsnes",
+      "lat": 64.927,
+      "lon": -23.307,
+      "visit": 30,
+      "note": ""
+    },
+    {
+      "id": "arnarstapi",
+      "name": "Arnarstapi",
+      "region": "snaefellsnes",
+      "lat": 64.767,
+      "lon": -23.623,
+      "visit": 45,
+      "note": "Coastal path to Hellnar (~2.5 km)."
+    },
+    {
+      "id": "djupalonssandur",
+      "name": "Djúpalónssandur",
+      "region": "snaefellsnes",
+      "lat": 64.748,
+      "lon": -23.905,
+      "visit": 40,
+      "note": "Black pebble beach with shipwreck remains."
+    },
+    {
+      "id": "bluelagoon",
+      "name": "Blue Lagoon",
+      "region": "reykjanes",
+      "lat": 63.8807,
+      "lon": -22.4473,
+      "visit": 150,
+      "note": "20 min from Keflavík. Book a time slot.",
+      "needsDaylight": false
+    },
+    {
+      "id": "kef",
+      "name": "Keflavík Airport",
+      "region": "reykjanes",
+      "lat": 63.985,
+      "lon": -22.6056,
+      "visit": 0,
+      "note": "Departure on 8 Nov.",
+      "needsDaylight": false
+    }
+  ],
+  "drives": [
+    ["reykjavik", "seljalandsfoss", 128, 100],
+    ["reykjavik", "vik", 187, 150],
+    ["reykjavik", "jokulsarlon", 375, 290],
+    ["reykjavik", "thingvellir", 45, 45],
+    ["reykjavik", "geysir", 110, 95],
+    ["reykjavik", "kirkjufell", 180, 150],
+    ["reykjavik", "arnarstapi", 195, 150],
+    ["reykjavik", "bluelagoon", 47, 45],
+    ["reykjavik", "kef", 50, 45],
+    ["seljalandsfoss", "skogafoss", 30, 25],
+    ["seljalandsfoss", "vik", 63, 50],
+    ["skogafoss", "kvernufoss", 2, 3],
+    ["skogafoss", "solheimajokull", 12, 15],
+    ["kvernufoss", "solheimajokull", 11, 13],
+    ["solheimajokull", "dc3", 10, 12],
+    ["dc3", "dyrholaey", 20, 20],
+    ["dyrholaey", "reynisfjara", 13, 15],
+    ["reynisfjara", "vik", 12, 13],
+    ["vik", "fjadrargljufur", 66, 50],
+    ["vik", "kirkjubaejarklaustur", 72, 55],
+    ["vik", "jokulsarlon", 192, 150],
+    ["fjadrargljufur", "kirkjubaejarklaustur", 9, 10],
+    ["kirkjubaejarklaustur", "skaftafell", 70, 55],
+    ["skaftafell", "jokulsarlon", 57, 45],
+    ["thingvellir", "geysir", 60, 55],
+    ["geysir", "gullfoss", 10, 10],
+    ["gullfoss", "reykjavik", 115, 100],
+    ["kirkjufell", "djupalonssandur", 55, 50],
+    ["djupalonssandur", "arnarstapi", 20, 20],
+    ["arnarstapi", "kirkjufell", 50, 45],
+    ["bluelagoon", "kef", 23, 20],
+    ["kirkjubaejarklaustur", "dyrholaey", 85, 70],
+    ["solheimajokull", "reykjavik", 160, 125],
+    ["kvernufoss", "vik", 33, 30],
+    ["reynisfjara", "fjadrargljufur", 75, 60],
+    ["fjadrargljufur", "skaftafell", 80, 65],
+    ["jokulsarlon", "kirkjubaejarklaustur", 130, 100],
+    ["vik", "dc3", 25, 20],
+    ["reykjavik", "skogafoss", 155, 125],
+    ["kvernufoss", "reykjavik", 158, 125]
+  ],
+  "bookings": [
+    {
+      "id": "b1",
+      "item": "Car rental — Block A (4×4, winter tyres)",
+      "type": "car",
+      "option": null,
+      "status": "todo",
+      "est": 60000,
+      "actual": null,
+      "seasonal": "",
+      "note": "Check wind/gravel cover."
+    },
+    {
+      "id": "b2",
+      "item": "Car rental — Block B",
+      "type": "car",
+      "option": null,
+      "status": "todo",
+      "est": 45000,
+      "actual": null,
+      "seasonal": "",
+      "note": ""
+    },
+    {
+      "id": "b3",
+      "item": "Hostel Vík — 30 Oct",
+      "type": "hostel",
+      "option": "A1",
+      "status": "todo",
+      "est": 9000,
+      "actual": null,
+      "seasonal": "",
+      "note": ""
+    },
+    {
+      "id": "b4",
+      "item": "Hostel Skaftafell area — 31 Oct",
+      "type": "hostel",
+      "option": "A1",
+      "status": "todo",
+      "est": 11000,
+      "actual": null,
+      "seasonal": "",
+      "note": "Few options east of Klaustur — book early."
+    },
+    {
+      "id": "b5",
+      "item": "Hostel Kirkjubæjarklaustur — 1 Nov",
+      "type": "hostel",
+      "option": "A1",
+      "status": "todo",
+      "est": 10000,
+      "actual": null,
+      "seasonal": "",
+      "note": ""
+    },
+    {
+      "id": "b6",
+      "item": "Blue ice cave tour, Vatnajökull",
+      "type": "tour",
+      "option": "A1",
+      "status": "todo",
+      "est": 25000,
+      "actual": null,
+      "seasonal": "Nov–Mar only (natural ice caves). Early-season dates depend on conditions.",
+      "note": ""
+    },
+    {
+      "id": "b7",
+      "item": "Hostel Reykjavík — 30 Oct",
+      "type": "hostel",
+      "option": "A2",
+      "status": "todo",
+      "est": 8000,
+      "actual": null,
+      "seasonal": "",
+      "note": ""
+    },
+    {
+      "id": "b8",
+      "item": "Hostel Vík — 31 Oct + 1 Nov",
+      "type": "hostel",
+      "option": "A2",
+      "status": "todo",
+      "est": 18000,
+      "actual": null,
+      "seasonal": "",
+      "note": ""
+    },
+    {
+      "id": "b9",
+      "item": "Katla ice cave tour (from Vík)",
+      "type": "tour",
+      "option": "A2",
+      "status": "todo",
+      "est": 23000,
+      "actual": null,
+      "seasonal": "Runs year-round.",
+      "note": ""
+    },
+    {
+      "id": "b10",
+      "item": "DC-3 shuttle (return)",
+      "type": "tour",
+      "option": "A2",
+      "status": "todo",
+      "est": 3400,
+      "actual": null,
+      "seasonal": "Runs 10:00–17:00.",
+      "note": "Or walk 4 km each way."
+    },
+    {
+      "id": "b11",
+      "item": "Hostel Reykjavík — 6 + 7 Nov",
+      "type": "hostel",
+      "option": null,
+      "status": "todo",
+      "est": 16000,
+      "actual": null,
+      "seasonal": "",
+      "note": ""
+    },
+    {
+      "id": "b12",
+      "item": "Northern lights tour",
+      "type": "tour",
+      "option": null,
+      "status": "todo",
+      "est": 12000,
+      "actual": null,
+      "seasonal": "Sep–Apr; book for a night with a good aurora + cloud forecast.",
+      "note": "Most operators rebook free if no lights."
+    },
+    {
+      "id": "b13",
+      "item": "Blue Lagoon slot — 8 Nov",
+      "type": "tour",
+      "option": null,
+      "status": "todo",
+      "est": 13000,
+      "actual": null,
+      "seasonal": "",
+      "note": "Pick a slot that leaves time to reach KEF."
+    }
+  ],
+  "links": [
+    {
+      "name": "Road status",
+      "url": "https://www.road.is/",
+      "host": "road.is",
+      "note": "Icelandic Road Administration — live road status, closures and webcams. Phone 1777."
+    },
+    {
+      "name": "Weather forecast",
+      "url": "https://en.vedur.is/weather/forecasts/areas/",
+      "host": "vedur.is",
+      "note": "Wind is the thing to watch."
+    },
+    {
+      "name": "Aurora forecast",
+      "url": "https://en.vedur.is/weather/forecasts/aurora/",
+      "host": "vedur.is",
+      "note": "Cloud cover + activity."
+    },
+    {
+      "name": "Safetravel",
+      "url": "https://safetravel.is/",
+      "host": "safetravel.is",
+      "note": "Alerts; leave a travel plan. Emergency: 112."
+    }
+  ],
+  "checklist": [
+    "Highland F-roads are all closed in November, regardless of vehicle.",
+    "Winter tyres are required from 1 November.",
+    "Wind damage is usually not covered by standard rental insurance — check the policy.",
+    "Open car doors with both hands — gusts rip doors off hinges.",
+    "Check road.is and vedur.is the evening before and the morning of each drive.",
+    "Fill up when you can — fuel stations are sparse east of Vík.",
+    "Plan to be off the road before dark where possible; keep headlights on at all times (required)."
+  ],
+  "checks": {}
+}

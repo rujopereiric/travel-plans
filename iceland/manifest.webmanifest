@@ -1,0 +1,10 @@
+{
+  "name": "Iceland free days",
+  "short_name": "Iceland",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#14202b",
+  "theme_color": "#14202b",
+  "icons": [{ "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+}
