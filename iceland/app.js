@@ -133,11 +133,41 @@ function drive(a, b) {
   if (!DRIVE_CACHE.has(key)) DRIVE_CACHE.set(key, driveRaw(a, b));
   return DRIVE_CACHE.get(key);
 }
+// Fallback when there's no road data: shortest path over the known legs ("drives") plus short straight hops
+// (≤ 60 km). This keeps long estimates on real roads instead of a straight line across glaciers and highlands.
+let GRAPH = null; const GRAPH_DIST = new Map();
+function graphLeg(a, b) {
+  if (!GRAPH) {
+    GRAPH = new Map(S.places.map(p => [p.id, []]));
+    const add = (x, y, km, min) => { if (GRAPH.has(x) && GRAPH.has(y)) { GRAPH.get(x).push([y, km, min]); GRAPH.get(y).push([x, km, min]); } };
+    for (const [x, y, km, min] of S.drives || []) add(x, y, km, min);
+    for (let i = 0; i < S.places.length; i++) for (let j = i + 1; j < S.places.length; j++) {
+      const pa = S.places[i], pb = S.places[j], hv = haversine(pa, pb);
+      if (hv <= 60) { const km = hv * set('roadFactor'); add(pa.id, pb.id, km, km / set('speedKmh') * 60); }
+    }
+  }
+  if (!GRAPH_DIST.has(a)) { // Dijkstra from a (small graph, so a simple array scan is fine)
+    const dist = new Map([[a, { min: 0, km: 0 }]]), done = new Set();
+    while (true) {
+      let u = null, best = Infinity;
+      for (const [k, v] of dist) if (!done.has(k) && v.min < best) { best = v.min; u = k; }
+      if (u == null) break;
+      done.add(u);
+      for (const [v, km, min] of GRAPH.get(u) || []) {
+        const nd = best + min;
+        if (!dist.has(v) || nd < dist.get(v).min) dist.set(v, { min: nd, km: dist.get(u).km + km });
+      }
+    }
+    GRAPH_DIST.set(a, dist);
+  }
+  return GRAPH_DIST.get(a).get(b) || null;
+}
 function driveRaw(a, b) {
   const ov = (S.drives || []).find(x => (x[0] === a && x[1] === b) || (x[0] === b && x[1] === a));
   let km, min, est = false;
   if (ov) { km = ov[2]; min = ov[3]; }
   else if (roadLeg(a, b)) ({ km, min } = roadLeg(a, b));
+  else if (graphLeg(a, b)) { ({ km, min } = graphLeg(a, b)); est = true; }
   else {
     const pa = place(a), pb = place(b);
     if (!pa || !pb) return { km: 0, min: 0, est: true };
@@ -174,7 +204,7 @@ async function fetchRoadMatrix() {
     if (j.code !== 'Ok') throw new Error(j.code);
     ROAD = { key, ids, dur: j.durations, dist: j.distances, at: Date.now() };
     try { localStorage.setItem(LS_ROAD, JSON.stringify(ROAD)); } catch (e) { }
-    DRIVE_CACHE.clear(); render();
+    DRIVE_CACHE.clear(); GRAPH = null; GRAPH_DIST.clear(); render();
   } catch (e) { console.warn('road matrix', e); }
   ROAD_BUSY = false;
 }
@@ -643,14 +673,14 @@ function normalize(s) {
   for (const b of s.bookings) if (!b.id) b.id = uid('b');
   return s;
 }
-function reindex() { PLACE_IDX = {}; for (const p of S.places) PLACE_IDX[p.id] = p; DRIVE_CACHE.clear(); }
+function reindex() { PLACE_IDX = {}; for (const p of S.places) PLACE_IDX[p.id] = p; DRIVE_CACHE.clear(); GRAPH = null; GRAPH_DIST.clear(); }
 function persist(dirty = true) {
   if (dirty) DIRTY = true;
   try { localStorage.setItem(LS_STATE, JSON.stringify({ state: S, base: BASE_HASH, dirty: DIRTY, saved: new Date().toISOString() })); }
   catch (e) { toast('Could not save to this browser — export to keep your edits'); }
 }
 function saveUI() { try { localStorage.setItem(LS_UI, JSON.stringify(UI)); } catch (e) { } }
-function changed() { DRIVE_CACHE.clear(); persist(true); render(); fetchRoadMatrix(); }
+function changed() { DRIVE_CACHE.clear(); GRAPH = null; GRAPH_DIST.clear(); persist(true); render(); fetchRoadMatrix(); }
 
 async function fetchData() {
   const r = await fetch('data.json', { cache: 'no-cache' });
@@ -1272,6 +1302,7 @@ function renderMapControls() {
 function initMap() {
   if (MAP || typeof L === 'undefined') return;
   MAP = L.map('map', { zoomControl: true }).setView([64.0, -20.5], 7);
+  if (S.places.length) MAP.fitBounds(L.latLngBounds(S.places.map(p => [p.lat, p.lon])), { padding: [20, 20] });
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '© OpenStreetMap contributors · routing OSRM' }).addTo(MAP);
   MAP.on('click', e => {
     if (!addMode) return;
