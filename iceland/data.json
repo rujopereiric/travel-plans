@@ -18,7 +18,9 @@
     "slackMin": 30,
     "localSun": true,
     "darkDriveMin": 30,
-    "earliestDepart": "07:00"
+    "earliestDepart": "07:00",
+    "maxDriveH": 5,
+    "nightIsk": 10000
   },
   "days": [
     {"date": "2026-10-30", "state": "free", "label": "Arrival day"},
@@ -146,7 +148,8 @@
       "note": "Base. Training venue and organisers' accommodation.",
       "needsDaylight": false,
       "suggest": false,
-      "priority": 2
+      "priority": 2,
+      "sleep": true
     },
     {
       "id": "seljalandsfoss",
@@ -229,7 +232,8 @@
       "note": "Fuel and supermarket. Katla ice cave tours (year-round) start here.",
       "needsDaylight": false,
       "suggest": false,
-      "priority": 2
+      "priority": 2,
+      "sleep": true
     },
     {
       "id": "fjadrargljufur",
@@ -240,7 +244,7 @@
       "visit": 45,
       "note": "Often closed in winter — check before you commit to it.",
       "caution": "Often closed in winter — check before you commit to it.",
-      "priority": 2
+      "priority": 1
     },
     {
       "id": "kirkjubaejarklaustur",
@@ -252,7 +256,8 @@
       "note": "Small village with fuel and a shop.",
       "needsDaylight": false,
       "suggest": false,
-      "priority": 2
+      "priority": 2,
+      "sleep": true
     },
     {
       "id": "skaftafell",
@@ -262,7 +267,8 @@
       "lon": -16.9664,
       "visit": 90,
       "note": "Visitor centre; Svartifoss hike ~1.5 h return.",
-      "priority": 2
+      "priority": 2,
+      "sleep": true
     },
     {
       "id": "jokulsarlon",
@@ -311,8 +317,9 @@
       "lat": 64.927,
       "lon": -23.307,
       "visit": 30,
-      "note": "",
-      "priority": 3
+      "note": "Sleep in Grundarfjörður, next to the mountain.",
+      "priority": 3,
+      "sleep": true
     },
     {
       "id": "arnarstapi",

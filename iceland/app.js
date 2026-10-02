@@ -7,7 +7,7 @@ const LS_UI = 'iceland-planner-ui';
 const AX0 = 5 * 60, AX1 = 23 * 60;           // timeline axis 05:00–23:00
 const DEFAULT_SETTINGS = {
   speedKmh: 75, roadFactor: 1.35, winterBufferPct: 15, fuelLper100: 7.5, fuelIskPerL: 330,
-  eurIsk: 145, slackMin: 30, darkDriveMin: 30, earliestDepart: '07:00', localSun: true
+  eurIsk: 145, slackMin: 30, darkDriveMin: 30, earliestDepart: '07:00', localSun: true, maxDriveH: 5, nightIsk: 10000
 };
 
 let S = null;            // the plan (same shape as data.json)
@@ -108,6 +108,7 @@ function freeWin(d) {
   if (d.state === 'partial') { const t = toMin(d.time) ?? 720; return d.mode === 'from' ? [t, 1440] : [0, t]; }
   return [0, 1440];
 }
+const maxDriveOf = d => Math.round(((d && d.maxDriveH != null && d.maxDriveH !== '') ? +d.maxDriveH : +set('maxDriveH')) * 60);
 function stateText(d) {
   if (d.state === 'booked') return 'Booked';
   if (d.state === 'partial') return (d.mode === 'from' ? 'Free from ' : 'Free until ') + (d.time || '?');
@@ -120,8 +121,14 @@ function haversine(a, b) {
   const h = Math.sin(dLat / 2) ** 2 + Math.cos(rad(a.lat)) * Math.cos(rad(b.lat)) * Math.sin(dLon / 2) ** 2;
   return 2 * R * Math.asin(Math.sqrt(h));
 }
+const DRIVE_CACHE = new Map();
 function drive(a, b) {
   if (!a || !b || a === b) return { km: 0, min: 0, est: false };
+  const key = a + '|' + b;
+  if (!DRIVE_CACHE.has(key)) DRIVE_CACHE.set(key, driveRaw(a, b));
+  return DRIVE_CACHE.get(key);
+}
+function driveRaw(a, b) {
   const ov = (S.drives || []).find(x => (x[0] === a && x[1] === b) || (x[0] === b && x[1] === a));
   let km, min, est = false;
   if (ov) { km = ov[2]; min = ov[3]; }
@@ -212,6 +219,8 @@ function simulate(date, opt) {
     `Arrives at ${placeName(end)} at ${hhmm(t)} — ${dur(t - free[1])} after your ${hhmm(free[1])} cutoff.`);
   if (r.usable && r.need > r.usable[1] - r.usable[0]) issue('bad', `Sightseeing span is ${dur(r.need)}, but there are only ${dur(r.usable[1] - r.usable[0])} of usable daylight.`);
   if (!r.usable && seq.some(x => x.min > 0)) issue('bad', 'No daylight overlaps your free time on this day.');
+  r.maxDrive = maxDriveOf(d);
+  if (r.driveMin > r.maxDrive) issue('bad', `${dur(r.driveMin)} of driving is over your ${dur(r.maxDrive)} limit for this day.`);
 
   // softer warnings
   if (r.darkEve > 0) {
@@ -287,6 +296,62 @@ function autoFill(date, opt) {
   return added;
 }
 
+/* ---------- auto-plan a whole block ---------- */
+// Tries every sequence of overnight stops (places with sleep:true, plus home), auto-fills each day in order,
+// keeps the combination with the best score. The block's last night stays where the selected option ends it.
+function sleepCandidates() {
+  const flagged = S.places.filter(p => p.sleep).map(p => p.id);
+  return [...new Set([S.trip.home, ...(flagged.length ? flagged : S.places.filter(p => p.needsDaylight === false && p.visit).map(p => p.id))])];
+}
+function scoreOption(opt, dates) {
+  let score = 0, drive = 0;
+  const seen = new Set();
+  for (const date of dates) {
+    const r = simulate(date, opt);
+    if (r.status === 'bad') return null;
+    for (const st of (opt.days[date]?.stops || [])) if (!seen.has(st.place)) { seen.add(st.place); score += prio(place(st.place) || {}) ** 2 * 10; }
+    if (r.status === 'tight') score -= 15;
+    drive += r.driveMin;
+  }
+  const nightsMoved = dates.slice(1).filter((d, i) => opt.days[d]?.sleep !== opt.days[dates[i]]?.sleep).length;
+  return score - drive / 10 - nightsMoved * 5;
+}
+function autoPlan(bid) {
+  const b = S.blocks.find(x => x.id === bid), dates = blockDates(b).filter(d => freeWin(dayObj(d)));
+  if (!dates.length) return null;
+  const cur = activeOpt(b), last = dates[dates.length - 1];
+  const finalEnd = (cur && cur.days[last]?.sleep) || S.trip.home;
+  const cands = sleepCandidates();
+  let best = null, tried = 0;
+  const rec = (i, prevSleep, seqs) => {
+    if (i === dates.length - 1) { tryPlan([...seqs, finalEnd]); return; }
+    for (const c of cands) {
+      // prune: the bare transfer has to fit under that day's driving limit
+      if (drive(prevSleep, c).min > maxDriveOf(dayObj(dates[i]))) continue;
+      rec(i + 1, c, [...seqs, c]);
+    }
+  };
+  const tryPlan = sleeps => {
+    if (drive(sleeps[sleeps.length - 2] || S.trip.home, finalEnd).min > maxDriveOf(dayObj(last))) return;
+    tried++;
+    const opt = { id: '_auto', block: bid, name: '', note: '', days: {} };
+    dates.forEach((d, k) => { opt.days[d] = { stops: [], sleep: sleeps[k] }; });
+    for (const d of dates) { if (simulate(d, opt).status === 'bad') return; autoFill(d, opt); }
+    const sc = scoreOption(opt, dates);
+    if (sc != null && (!best || sc > best.score)) best = { score: sc, opt };
+  };
+  rec(0, S.trip.home, []);
+  if (!best) return null;
+  let n = optsOf(bid).length + 1, id;
+  do id = bid + (n++); while (optById(id));
+  const o = best.opt;
+  o.id = id;
+  o.name = `Auto-plan (≤${set('maxDriveH')}h driving/day)`;
+  const far = Object.values(o.days).flatMap(p => p.stops.map(s => s.place)).sort((x, y) => drive(S.trip.home, y).km - drive(S.trip.home, x).km)[0];
+  o.note = `Generated ${new Date().toISOString().slice(0, 10)} from ${tried} overnight combinations.` + (far ? ` Furthest: ${placeName(far)}.` : '');
+  return { opt: o, tried };
+}
+
 /* ---------- persistence ---------- */
 function normalize(s) {
   s.settings = { ...DEFAULT_SETTINGS, ...(s.settings || {}) };
@@ -297,14 +362,14 @@ function normalize(s) {
   for (const b of s.bookings) if (!b.id) b.id = uid('b');
   return s;
 }
-function reindex() { PLACE_IDX = {}; for (const p of S.places) PLACE_IDX[p.id] = p; }
+function reindex() { PLACE_IDX = {}; for (const p of S.places) PLACE_IDX[p.id] = p; DRIVE_CACHE.clear(); }
 function persist(dirty = true) {
   if (dirty) DIRTY = true;
   try { localStorage.setItem(LS_STATE, JSON.stringify({ state: S, base: BASE_HASH, dirty: DIRTY, saved: new Date().toISOString() })); }
   catch (e) { toast('Could not save to this browser — export to keep your edits'); }
 }
 function saveUI() { try { localStorage.setItem(LS_UI, JSON.stringify(UI)); } catch (e) { } }
-function changed() { persist(true); render(); }
+function changed() { DRIVE_CACHE.clear(); persist(true); render(); }
 
 async function fetchData() {
   const r = await fetch('data.json', { cache: 'no-cache' });
@@ -439,7 +504,8 @@ function blockSummary(b) {
   if (!o) return `<p class="small muted">No itinerary options for this block yet. <button class="btn small" data-act="onew" data-block="${b.id}">Create one</button></p>`;
   return `<div class="row small" style="margin:-2px 0 8px"><span class="muted">Plan:</span>
     <select data-act="useopt" data-block="${b.id}">${opts.map(x => `<option value="${esc(x.id)}" ${x.id === o.id ? 'selected' : ''}>${esc(x.id)} · ${esc(x.name)}</option>`).join('')}</select>
-    <button class="btn small" data-act="gocompare" data-block="${b.id}">Compare</button></div>`;
+    <button class="btn small" data-act="gocompare" data-block="${b.id}">Compare</button>
+    <button class="btn small" data-act="autoplan" data-block="${b.id}">Auto-plan</button></div>`;
 }
 function dayCard(d, b) {
   const o = activeOpt(b), r = simulate(d.date, o), open = !!UI.open[d.date];
@@ -477,7 +543,8 @@ function dayBody(d, b, o, r) {
     ${d.state === 'partial' ? `<label class="f">Free<select data-act="dmode" data-date="${d.date}"><option value="until" ${d.mode !== 'from' ? 'selected' : ''}>until</option><option value="from" ${d.mode === 'from' ? 'selected' : ''}>from</option></select></label>
     <label class="f">Time<input type="time" value="${esc(d.time || '')}" data-act="dtime" data-date="${d.date}"></label>` : ''}
     </div>
-    <label class="f" style="margin-top:8px">Note<input type="text" value="${esc(d.label || '')}" data-act="dlabel" data-date="${d.date}" placeholder="e.g. dinner with the group"></label>`;
+    <div class="row" style="margin-top:8px"><label class="f grow">Note<input type="text" value="${esc(d.label || '')}" data-act="dlabel" data-date="${d.date}" placeholder="e.g. dinner with the group"></label>
+    ${d.state !== 'booked' ? `<label class="f">Max driving (h)<input type="number" min="0" step="0.5" value="${d.maxDriveH ?? ''}" placeholder="${set('maxDriveH')}" data-act="dmaxdrive" data-date="${d.date}"></label>` : ''}</div>`;
   if (!b) return h + `<p class="small muted">This day isn't in a planning block. Add a block covering it in data.json to plan stops.</p>`;
   if (!o) return h + `<p class="small muted">No itinerary option yet for ${esc(b.name)}.</p>`;
   if (!r.free) return h + (r.issues.length ? issuesHTML(r) : '');
@@ -513,7 +580,7 @@ function dayBody(d, b, o, r) {
   h += `<div class="row" style="margin-top:8px"><label class="f grow">Sleep tonight / end the day at
       <select data-act="sleep" data-date="${d.date}">${placeOptions(plan.sleep || S.trip.home)}</select></label></div>`;
   h += `<div class="kv" style="margin-top:10px">
-      <span>Driving</span><b>${dur(r.driveMin)} · ${r.driveKm} km</b>
+      <span>Driving</span><b>${dur(r.driveMin)} · ${r.driveKm} km <span class="muted" style="font-weight:400">(limit ${dur(r.maxDrive)})</span></b>
       <span>At stops</span><b>${dur(r.stopMin)}</b>
       <span>Daylight span used</span><b>${dur(r.need)} of ${r.usable ? dur(r.usable[1] - r.usable[0]) : '0m'}</b>
     </div>`;
@@ -524,6 +591,9 @@ function dayBody(d, b, o, r) {
 function suggestHTML(date, o) {
   const sg = suggestFor(date, o);
   let h = `<h3>Could also fit</h3>`;
+  if (sg.base.status === 'bad' && !sg.drop.length) {
+    return h + `<p class="small muted" style="margin:0">Removing a single stop isn't enough to make this day fit. Options: sleep somewhere closer, raise this day's max driving, or use <b>Auto-plan</b> for the block.</p>`;
+  }
   if (sg.drop.length) {
     return h + `<p class="small muted" style="margin:0 0 6px">The day doesn't fit as planned. Removing one of these fixes it:</p>` +
       sg.drop.map(x => `<div class="sugg"><span class="grow"><b>${esc(placeName(x.place))}</b><div class="tiny muted">then ${STATUS_TXT[x.r.status].toLowerCase()} · back ${hhmm(x.r.arrive)}</div></span>
@@ -568,7 +638,11 @@ function optionStats(o) {
     }
   }
   st.fuel = st.driveKm * set('fuelLper100') / 100 * set('fuelIskPerL');
-  st.book = S.bookings.filter(x => x.option === o.id && x.status !== 'cancelled').reduce((a, x) => a + (+(x.actual ?? x.est) || 0), 0);
+  const own = S.bookings.filter(x => x.option === o.id && x.status !== 'cancelled');
+  st.book = own.reduce((a, x) => a + (+(x.actual ?? x.est) || 0), 0);
+  // nights away without a hostel booking linked to this option are costed at the per-night estimate
+  st.unbookedNights = Math.max(0, st.nights.length - own.filter(x => x.type === 'hostel').length);
+  st.book += st.unbookedNights * set('nightIsk');
   st.cost = st.fuel + st.book;
   return st;
 }
@@ -577,13 +651,13 @@ function renderCompare() {
   const b = S.blocks.find(x => x.id === UI.cmpBlock) || S.blocks[0];
   const opts = optsOf(b.id), ds = blockDates(b);
   let h = `<div class="row" style="margin-bottom:10px"><div class="seg">${S.blocks.map(x => `<button data-act="cmpblock" data-block="${x.id}" aria-pressed="${x.id === b.id}">${esc(x.name.split('·')[0].trim())}</button>`).join('')}</div>
-    <span class="grow"></span><button class="btn small primary" data-act="onew" data-block="${b.id}">+ New option</button></div>
+    <span class="grow"></span><button class="btn small primary" data-act="autoplan" data-block="${b.id}">Auto-plan</button><button class="btn small" data-act="onew" data-block="${b.id}">+ New</button></div>
     <p class="small muted" style="margin-top:0">${esc(b.name)} · ${dateLabel(b.from)} – ${dateLabel(b.to)}. Costs are fuel plus bookings linked to that option (shared bookings like car rental are left out).</p>`;
   if (!opts.length) return h + '<p class="empty">No options yet.</p>';
   const stats = opts.map(optionStats);
   const minOf = k => Math.min(...stats.map(s => s[k])), maxOf = k => Math.max(...stats.map(s => s[k]));
   const best = (v, k, hi) => opts.length > 1 && v === (hi ? maxOf(k) : minOf(k)) ? 'best' : '';
-  const cell = (fn) => opts.map((o, i) => `<td class="${o.id === b.active ? 'active' : ''}">${fn(o, stats[i])}</td>`).join('');
+  const cell = (fn) => opts.map((o, i) => `<td class="${o.id === b.active ? 'active' : ''}" data-optcol="${esc(o.id)}">${fn(o, stats[i])}</td>`).join('');
   const row = (label, fn) => `<tr><th class="rl">${label}</th>${cell(fn)}</tr>`;
   h += `<div class="cmpwrap"><table class="cmp"><thead><tr><th class="rl">Option</th>${cell(o => `
       <input type="text" value="${esc(o.name)}" data-act="oname" data-id="${esc(o.id)}" aria-label="Option name">
@@ -607,7 +681,7 @@ function renderCompare() {
   h += row('Furthest', (o, s) => s.far ? `${esc(placeName(s.far.pid))}<div class="tiny muted">${s.far.km} km from ${esc(placeName(S.trip.home))}</div>` : '—');
   h += row('Nights away', (o, s) => s.nights.length ? `${s.nights.length}<div class="tiny muted">${s.nights.map(placeName).map(esc).join(', ')}</div>` : '0');
   h += row('Fuel', (o, s) => `${isk(s.fuel)}<div class="tiny muted">${eur(s.fuel)}</div>`);
-  h += row('Bookings', (o, s) => `${isk(s.book)}<div class="tiny muted">${S.bookings.filter(x => x.option === o.id && x.status !== 'cancelled').length} items</div>`);
+  h += row('Bookings', (o, s) => `${isk(s.book)}<div class="tiny muted">${S.bookings.filter(x => x.option === o.id && x.status !== 'cancelled').length} items${s.unbookedNights ? ` + ${s.unbookedNights} night${s.unbookedNights > 1 ? 's' : ''} at ${isk(set('nightIsk'))} est.` : ''}</div>`);
   h += row('<b>Total</b>', (o, s) => `<b class="${best(s.cost, 'cost')}">${isk(s.cost)}</b><div class="tiny muted">${eur(s.cost)}</div>`);
   h += row('Note', o => `<textarea data-act="onote" data-id="${esc(o.id)}" rows="2">${esc(o.note || '')}</textarea>`);
   h += `</tbody></table></div>`;
@@ -691,9 +765,9 @@ function renderCond() {
   const num = (k, label, step = 1) => `<label class="f">${label}<input type="number" step="${step}" value="${esc(set(k))}" data-act="set" data-k="${k}"></label>`;
   h += `<h2>Settings</h2><div class="card"><div class="row">
       ${num('speedKmh', 'Avg speed (km/h)')}${num('roadFactor', 'Road factor', 0.05)}${num('winterBufferPct', 'Winter buffer %')}
-      ${num('slackMin', 'Min. spare (min)', 5)}${num('darkDriveMin', 'Dark-drive warn (min)', 5)}
+      ${num('maxDriveH', 'Max driving/day (h)', 0.5)}${num('slackMin', 'Min. spare (min)', 5)}${num('darkDriveMin', 'Dark-drive warn (min)', 5)}
       <label class="f">Earliest auto start<input type="time" value="${esc(set('earliestDepart'))}" data-act="set" data-k="earliestDepart"></label>
-      ${num('fuelLper100', 'Fuel L/100 km', 0.1)}${num('fuelIskPerL', 'Fuel ISK/L', 5)}${num('eurIsk', 'ISK per €', 1)}
+      ${num('nightIsk', 'Unbooked night (ISK)', 500)}${num('fuelLper100', 'Fuel L/100 km', 0.1)}${num('fuelIskPerL', 'Fuel ISK/L', 5)}${num('eurIsk', 'ISK per €', 1)}
     </div>
     <label class="check" style="border:0"><input type="checkbox" data-act="setbool" data-k="localSun" ${set('localSun') ? 'checked' : ''}><span>Check each stop against its own local sunrise/sunset (sun sets ~25 min earlier at Jökulsárlón than in Reykjavík)</span></label>
     <label class="f">Theme<div class="seg">${['auto', 'light', 'dark'].map(t => `<button data-act="theme" data-v="${t}" aria-pressed="${UI.theme === t}">${t}</button>`).join('')}</div></label>
@@ -801,6 +875,11 @@ function render() {
     else { initMap(); if (mapDirty) buildMarkers(); drawRoute(); setTimeout(() => MAP && MAP.invalidateSize(), 0); }
   }
   if (render.keepScroll) window.scrollTo(0, scroll);
+  if (tab === 'compare' && UI.cmpFocus) {
+    const td = document.querySelector(`[data-optcol="${CSS.escape(UI.cmpFocus)}"]`), wrap = $('.cmpwrap');
+    if (td && wrap) wrap.scrollLeft = td.offsetLeft - 96;
+    UI.cmpFocus = null;
+  }
   render.keepScroll = true;
   saveUI();
 }
@@ -842,12 +921,24 @@ document.addEventListener('click', e => {
       const c = JSON.parse(JSON.stringify(o)); c.id = id; c.name = o.name + ' (copy)';
       S.options.splice(S.options.indexOf(o) + 1, 0, c); changed(); toast('Copied as ' + id); break;
     }
+    case 'autoplan': {
+      const bid = el.dataset.block;
+      el.disabled = true; el.textContent = 'Planning…';
+      setTimeout(() => {
+        const t0 = performance.now(), res = autoPlan(bid);
+        if (!res) { el.disabled = false; el.textContent = 'Auto-plan'; alert('No combination of overnight stops fits your free time and driving limit. Try a higher max driving time.'); return; }
+        S.options.push(res.opt); UI.cmpBlock = bid; UI.cmpFocus = res.opt.id; persist();
+        toast(`Created ${res.opt.id} · tried ${res.tried} routes in ${Math.round(performance.now() - t0)} ms`);
+        goTab('compare');
+      }, 30);
+      break;
+    }
     case 'onew': {
       const bid = el.dataset.block; let n = optsOf(bid).length + 1, id;
       do id = bid + (n++); while (optById(id));
       S.options.push({ id, block: bid, name: 'New option', note: '', days: {} });
       const b = S.blocks.find(x => x.id === bid); if (!b.active || !optById(b.active)) b.active = id;
-      UI.cmpBlock = bid; changed(); break;
+      UI.cmpBlock = bid; UI.cmpFocus = id; changed(); break;
     }
     case 'odel': {
       const o = optById(el.dataset.id);
@@ -881,6 +972,7 @@ document.addEventListener('change', e => {
     case 'dmode': d.mode = v; changed(); break;
     case 'dtime': if (v) { d.time = v; changed(); } break;
     case 'dlabel': d.label = v; changed(); break;
+    case 'dmaxdrive': if (v === '') delete d.maxDriveH; else d.maxDriveH = Math.max(0, +v); changed(); break;
     case 'useopt': S.blocks.find(b => b.id === el.dataset.block).active = v; changed(); break;
     case 'smin': stopOp(date, p => { p.stops[i].min = v === '' ? undefined : Math.max(0, +v); }); break;
     case 'snote': stopOp(date, p => { p.stops[i].note = v || undefined; }); break;

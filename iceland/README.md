@@ -43,12 +43,25 @@ A collapsed day card shows "+N more could fit". If a day doesn't fit, it shows w
 - **Auto-fill** keeps adding the place with the best score while the day still fits. The score is `priority` (1–3, default 2) weighed against extra driving.
   Use **Undo auto-fill** to go back.
 
+## Driving limit and auto-plan
+
+- **Max driving per day**: set in Settings (default 5 h). You can override it per day in the day editor.
+  A day with more driving than its limit is marked ✗, so suggestions, auto-fill and auto-plan all stay under it.
+- **Auto-plan** (Compare tab, or next to the plan picker): for a block, it tries every sequence of overnight stops.
+  Overnight places are the ones marked `sleep: true` in `data.json`, plus Reykjavík.
+  It drops any sequence where a single transfer already exceeds the driving limit, auto-fills each day in order, and scores the result.
+  The score is priority² per place, minus driving, minus a penalty for each change of hostel.
+  The block's final night is kept where the selected option ends it: Reykjavík on 2 Nov, Keflavík on 8 Nov.
+  The best plan is added as a new option, for example `A3 · Auto-plan (≤5h driving/day)`, but it isn't selected.
+  Compare it with your other options, then **Select** or **Copy** it and tweak.
+- For a fair comparison, each night away that has no hostel booking linked to the option is costed at the "Unbooked night" estimate.
+
 ## Editing data.json
 
 - `days[]`: `state` is `free`, `booked` or `partial`. A partial day also needs `mode` (`until` or `from`) and `time` (`"HH:MM"`).
 - `blocks[]`: date ranges you plan as a unit. `active` names the selected option.
 - `options[]`: alternative itineraries for a block. `days[date] = { stops: [{place, min?, note?}], sleep, depart? }`.
-- `places[]`: `visit` is the default number of minutes at the place. Set `needsDaylight: false` for towns and the lagoon. `caution` shows a warning. `priority` (1–3) steers auto-fill. `suggest: false` keeps a place out of suggestions.
+- `places[]`: `visit` is the default number of minutes at the place. Set `needsDaylight: false` for towns and the lagoon. `caution` shows a warning. `priority` (1–3) steers auto-fill. `suggest: false` keeps a place out of suggestions. `sleep: true` makes it an overnight candidate for auto-plan.
 - `bookings[]`: `option` is `null` for a shared booking or an option id. Bookings tied to an option count only when that option is selected.
 
 Your edits in the app are saved in the browser's localStorage. **Export** writes a file in the same format as `data.json`,
