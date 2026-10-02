@@ -7,7 +7,7 @@ const LS_UI = 'iceland-planner-ui';
 const AX0 = 5 * 60, AX1 = 23 * 60;           // timeline axis 05:00–23:00
 const DEFAULT_SETTINGS = {
   speedKmh: 75, roadFactor: 1.35, winterBufferPct: 15, fuelLper100: 7.5, fuelIskPerL: 330,
-  eurIsk: 145, slackMin: 30, darkDriveMin: 30, earliestDepart: '07:00', localSun: true, maxDriveH: 5, nightIsk: 10000
+  eurIsk: 145, slackMin: 30, darkDriveMin: 30, earliestDepart: '07:00', localSun: true, maxDriveH: 5, nightIsk: 10000, fxMarkupPct: 0, fxWeekendPct: 1, fxManual: null
 };
 
 let S = null;            // the plan (same shape as data.json)
@@ -25,7 +25,12 @@ const toMin = t => { if (!t) return null; const [h, m] = String(t).split(':').ma
 const hhmm = m => { if (m == null || !isFinite(m)) return '–'; m = ((Math.round(m) % 1440) + 1440) % 1440; return String(Math.floor(m / 60)).padStart(2, '0') + ':' + String(m % 60).padStart(2, '0'); };
 const dur = m => { m = Math.round(Math.max(0, m)); const h = Math.floor(m / 60), r = m % 60; return h ? `${h}h${r ? ' ' + String(r).padStart(2, '0') + 'm' : ''}` : `${r}m`; };
 const isk = n => (Math.round(n || 0)).toLocaleString('en-GB') + ' ISK';
-const eur = n => '≈ €' + Math.round((n || 0) / (set('eurIsk') || 145)).toLocaleString('en-GB');
+const toEur = n => (n || 0) / rate();
+const fmtEur = (v, dp) => '€' + (Math.round(v * 100) === 0 ? '0' : v.toLocaleString('en-GB', { minimumFractionDigits: dp ?? (Math.abs(v) < 100 ? 2 : 0), maximumFractionDigits: dp ?? (Math.abs(v) < 100 ? 2 : 0) }));
+const eur = n => '≈ ' + fmtEur(toEur(n));
+const money = n => `${isk(n)} <span class="eur">· ${fmtEur(toEur(n))}</span>`;
+// append € to any "1234 ISK" / "3,400 ISK" in free text (already escaped)
+const withEur = html => html.replace(/(~?\d[\d,.]*)\s?(ISK|kr)\b/g, (m, num) => { const v = +num.replace(/[~,]/g, ''); return isFinite(v) && v > 0 ? `${m} <span class="eur">(${fmtEur(toEur(v))})</span>` : m; });
 const dateLabel = (d, opts = { weekday: 'short', day: 'numeric', month: 'short' }) => new Date(d + 'T12:00:00Z').toLocaleDateString('en-GB', { ...opts, timeZone: 'UTC' });
 const todayISO = () => new Date().toISOString().slice(0, 10);
 const nowMin = () => { const d = new Date(); return d.getUTCHours() * 60 + d.getUTCMinutes(); };
@@ -352,6 +357,84 @@ function autoPlan(bid) {
   return { opt: o, tried };
 }
 
+/* ---------- exchange rate ---------- */
+// Revolut has no public rates API. On weekdays Revolut converts at (close to) the mid-market rate,
+// so we fetch the mid-market rate from free no-key sources and apply your own markup on top.
+const LS_FX = 'iceland-fx';
+let FX = null; // { mid: ISK per EUR, src, date, at }
+try { FX = JSON.parse(localStorage.getItem(LS_FX) || 'null'); } catch (e) { }
+let FX_BUSY = false, FX_ERR = null;
+const FX_SOURCES = [
+  { name: 'ECB via Frankfurter', url: 'https://api.frankfurter.dev/v1/latest?base=EUR&symbols=ISK', parse: j => ({ mid: j.rates.ISK, date: j.date }) },
+  { name: 'ExchangeRate-API', url: 'https://open.er-api.com/v6/latest/EUR', parse: j => ({ mid: j.rates.ISK, date: new Date(j.time_last_update_unix * 1000).toISOString().slice(0, 10) }) },
+  { name: 'fawazahmed0 currency-api', url: 'https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/eur.json', parse: j => ({ mid: j.eur.isk, date: j.date }) },
+];
+const isWeekend = (d = new Date()) => d.getUTCDay() === 0 || d.getUTCDay() === 6;
+const fxMarkup = () => +(isWeekend() ? set('fxWeekendPct') : set('fxMarkupPct')) || 0;
+function rate() { // ISK you get per €1, after markup
+  const man = +set('fxManual');
+  if (man > 0) return man;
+  if (FX && FX.mid > 0) return FX.mid / (1 + fxMarkup() / 100);
+  return +set('eurIsk') || 145;
+}
+const rateSource = () => +set('fxManual') > 0 ? 'your manual rate' : FX && FX.mid ? FX.src : 'fallback rate from settings';
+const rateLabel = () => `1 € = ${rate().toFixed(2)} kr (${rateSource()})`;
+async function fetchRate(force) {
+  if (FX_BUSY || !navigator.onLine) return;
+  if (!force && FX && Date.now() - FX.at < 60 * 60 * 1000) return;
+  FX_BUSY = true; FX_ERR = null; if (UI.tab === 'fx') render();
+  for (const src of FX_SOURCES) {
+    try {
+      const ctl = new AbortController(), to = setTimeout(() => ctl.abort(), 7000);
+      const res = await fetch(src.url, { signal: ctl.signal, cache: 'no-store' }); clearTimeout(to);
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const { mid, date } = src.parse(await res.json());
+      if (!(mid > 50 && mid < 500)) throw new Error('odd rate ' + mid);
+      FX = { mid, src: src.name, date, at: Date.now() }; FX_ERR = null;
+      try { localStorage.setItem(LS_FX, JSON.stringify(FX)); } catch (e) { }
+      FX_BUSY = false; if (S) render(); return;
+    } catch (e) { FX_ERR = `${src.name}: ${e.message}`; }
+  }
+  FX_BUSY = false; if (S) render();
+}
+const ago = ms => { const m = Math.round((Date.now() - ms) / 60000); return m < 1 ? 'just now' : m < 60 ? `${m} min ago` : m < 48 * 60 ? `${Math.round(m / 60)} h ago` : `${Math.round(m / 1440)} days ago`; };
+function renderFx() {
+  const r = rate(), man = +set('fxManual') > 0;
+  const stale = FX && Date.now() - FX.at > 24 * 3600 * 1000;
+  const val = UI.fxIsk ?? 1000;
+  let h = `<div class="card fxrate"><div class="row"><div class="grow"><div class="fxbig tabular">1 € = ${r.toFixed(2)} kr</div>
+      <div class="small muted tabular">1,000 kr = ${fmtEur(1000 / r)} · 10,000 kr = ${fmtEur(10000 / r)}</div></div>
+      <button class="btn small" data-act="fxrefresh" ${FX_BUSY ? 'disabled' : ''}>${FX_BUSY ? 'Updating…' : 'Refresh'}</button></div>
+    <div class="tiny muted" style="margin-top:6px">${man ? 'Using your manual rate.' : FX ? `Mid-market ${FX.mid.toFixed(2)} from ${esc(FX.src)} (rate date ${esc(FX.date || '?')}), fetched ${ago(FX.at)}${fxMarkup() ? ` · +${fxMarkup()}% ${isWeekend() ? 'weekend ' : ''}markup applied` : ''}.` : 'No live rate fetched yet — using the fallback from settings.'}
+      ${stale && !man ? ' <b style="color:var(--warn)">Rate is over a day old.</b>' : ''}${FX_ERR && !FX_BUSY && !navigator.onLine ? '' : FX_ERR && !FX_BUSY ? `<br>Last attempt failed (${esc(FX_ERR)}).` : ''}${!navigator.onLine ? '<br>Offline — showing the last saved rate.' : ''}</div></div>
+  <div class="card"><div class="fxconv">
+    <label class="f">Icelandic króna (ISK)<input type="text" inputmode="decimal" id="fx-isk" data-fx="isk" value="${val}" autocomplete="off"></label>
+    <div class="fxeq">=</div>
+    <label class="f">Euro (EUR)<input type="text" inputmode="decimal" id="fx-eur" data-fx="eur" value="${(val / r).toFixed(2)}" autocomplete="off"></label>
+  </div><div class="row" style="margin-top:8px;gap:6px">${[500, 1000, 2500, 5000, 10000, 25000].map(v => `<button class="btn small" data-act="fxset" data-v="${v}">${v.toLocaleString('en-GB')} kr</button>`).join('')}</div></div>
+  <div class="row" style="align-items:flex-start;gap:10px">
+  <div class="card grow"><h3 style="margin-top:0">kr → €</h3><table class="sun">${[100, 250, 500, 750, 1000, 1500, 2000, 3000, 4000, 5000, 7500, 10000, 15000, 20000, 30000, 50000].map(v => `<tr><td>${v.toLocaleString('en-GB')} kr</td><td style="text-align:right"><b>${fmtEur(v / r)}</b></td></tr>`).join('')}</table></div>
+  <div class="card grow"><h3 style="margin-top:0">€ → kr</h3><table class="sun">${[1, 2, 5, 10, 15, 20, 30, 50, 75, 100, 150, 200, 300, 500].map(v => `<tr><td>€${v}</td><td style="text-align:right"><b>${Math.round(v * r).toLocaleString('en-GB')} kr</b></td></tr>`).join('')}</table></div>
+  </div>
+  <h2>Rate settings</h2><div class="card">
+    <p class="small" style="margin-top:0">Revolut doesn't publish a public rates API, so the app uses the mid-market rate (the rate Revolut converts at on weekdays, within your plan's allowance) and adds the markup you set below.
+    To match your Revolut app exactly, type the rate it shows into <b>Manual rate</b>. Leave that field empty to go back to the live rate.</p>
+    <div class="row">
+      <label class="f">Weekday markup %<input type="number" step="0.1" min="0" value="${esc(set('fxMarkupPct'))}" data-act="set" data-k="fxMarkupPct"></label>
+      <label class="f">Weekend markup %<input type="number" step="0.1" min="0" value="${esc(set('fxWeekendPct'))}" data-act="set" data-k="fxWeekendPct"></label>
+      <label class="f">Manual rate (kr per €)<input type="number" step="0.01" min="0" value="${esc(set('fxManual') ?? '')}" placeholder="live" data-act="set" data-k="fxManual"></label>
+    </div>
+    <p class="tiny muted">Check your Revolut plan for its current weekend and fair-usage fees. Every € amount in the app uses this rate.</p>
+  </div>`;
+  return h;
+}
+function fxInput(el) {
+  const r = rate(), raw = el.value.replace(/[\s,]/g, '').replace(/[^\d.]/g, ''), v = parseFloat(raw);
+  if (el.dataset.fx === 'isk') { UI.fxIsk = isFinite(v) ? v : 0; $('#fx-eur').value = isFinite(v) ? (v / r).toFixed(2) : ''; }
+  else { UI.fxIsk = isFinite(v) ? Math.round(v * r) : 0; $('#fx-isk').value = isFinite(v) ? Math.round(v * r) : ''; }
+  saveUI();
+}
+
 /* ---------- persistence ---------- */
 function normalize(s) {
   s.settings = { ...DEFAULT_SETTINGS, ...(s.settings || {}) };
@@ -619,7 +702,7 @@ function suggestHTML(date, o) {
 }
 function issuesHTML(r) {
   if (!r.issues.length) return r.status === 'ok' ? `<ul class="issues"><li class="ok">Fits inside the usable window.</li></ul>` : '';
-  return `<ul class="issues">${r.issues.map(([l, m]) => `<li class="${l}">${esc(m)}</li>`).join('')}</ul>`;
+  return `<ul class="issues">${r.issues.map(([l, m]) => `<li class="${l}">${withEur(esc(m))}</li>`).join('')}</ul>`;
 }
 
 /* ---------- render: compare tab ---------- */
@@ -680,12 +763,12 @@ function renderCompare() {
   h += row('Time at stops', (o, s) => `<span class="${best(s.stopMin, 'stopMin', true)}">${dur(s.stopMin)}</span>`);
   h += row('Furthest', (o, s) => s.far ? `${esc(placeName(s.far.pid))}<div class="tiny muted">${s.far.km} km from ${esc(placeName(S.trip.home))}</div>` : '—');
   h += row('Nights away', (o, s) => s.nights.length ? `${s.nights.length}<div class="tiny muted">${s.nights.map(placeName).map(esc).join(', ')}</div>` : '0');
-  h += row('Fuel', (o, s) => `${isk(s.fuel)}<div class="tiny muted">${eur(s.fuel)}</div>`);
-  h += row('Bookings', (o, s) => `${isk(s.book)}<div class="tiny muted">${S.bookings.filter(x => x.option === o.id && x.status !== 'cancelled').length} items${s.unbookedNights ? ` + ${s.unbookedNights} night${s.unbookedNights > 1 ? 's' : ''} at ${isk(set('nightIsk'))} est.` : ''}</div>`);
-  h += row('<b>Total</b>', (o, s) => `<b class="${best(s.cost, 'cost')}">${isk(s.cost)}</b><div class="tiny muted">${eur(s.cost)}</div>`);
+  h += row('Fuel', (o, s) => `${isk(s.fuel)}<div class="tiny muted">${fmtEur(toEur(s.fuel))}</div>`);
+  h += row('Bookings', (o, s) => `${isk(s.book)}<div class="tiny muted">${fmtEur(toEur(s.book))} · ${S.bookings.filter(x => x.option === o.id && x.status !== 'cancelled').length} items${s.unbookedNights ? ` + ${s.unbookedNights} night${s.unbookedNights > 1 ? 's' : ''} at ${isk(set('nightIsk'))} est.` : ''}</div>`);
+  h += row('<b>Total</b>', (o, s) => `<b class="${best(s.cost, 'cost')}">${isk(s.cost)}</b><div class="tiny muted">${fmtEur(toEur(s.cost))}</div>`);
   h += row('Note', o => `<textarea data-act="onote" data-id="${esc(o.id)}" rows="2">${esc(o.note || '')}</textarea>`);
   h += `</tbody></table></div>`;
-  h += `<p class="tiny muted">Fuel: ${set('fuelLper100')} L/100 km × ${set('fuelIskPerL')} ISK/L. Green = best in row. “Edit” selects the option and opens it in the planner.</p>`;
+  h += `<p class="tiny muted">Fuel: ${set('fuelLper100')} L/100 km × ${set('fuelIskPerL')} ISK/L (${fmtEur(toEur(set('fuelIskPerL')))}). € at ${rateLabel()}. Green = best in row. “Edit” selects the option and opens it in the planner.</p>`;
   return h;
 }
 
@@ -710,11 +793,11 @@ function renderBook() {
   }
   const fuel = S.blocks.reduce((a, b) => { const o = activeOpt(b); return a + (o ? optionStats(o).fuel : 0); }, 0);
   let h = `<div class="totals">
-    <div class="tile"><div class="l">Running total</div><div class="v">${isk(total)}</div><div class="tiny muted">${eur(total)} · actual where known</div></div>
-    <div class="tile"><div class="l">Estimated</div><div class="v">${isk(est)}</div><div class="tiny muted">${eur(est)}</div></div>
-    <div class="tile"><div class="l">Actual so far</div><div class="v">${isk(act)}</div><div class="tiny ${delta > 0 ? '' : 'muted'}" style="${delta > 0 ? 'color:var(--bad)' : ''}">${delta ? (delta > 0 ? '+' : '−') + isk(Math.abs(delta)) + ' vs estimate' : 'on estimate'}</div></div>
-    <div class="tile"><div class="l">Booked / paid</div><div class="v">${isk(committed)}</div><div class="tiny muted">${todo} still to book</div></div>
-    <div class="tile"><div class="l">+ Fuel (selected plans)</div><div class="v">${isk(fuel)}</div><div class="tiny muted">all-in ${isk(total + fuel)}</div></div>
+    <div class="tile"><div class="l">Running total</div><div class="v">${isk(total)}</div><div class="tiny muted">${fmtEur(toEur(total))} · actual where known</div></div>
+    <div class="tile"><div class="l">Estimated</div><div class="v">${isk(est)}</div><div class="tiny muted">${fmtEur(toEur(est))}</div></div>
+    <div class="tile"><div class="l">Actual so far</div><div class="v">${isk(act)}</div><div class="tiny muted">${fmtEur(toEur(act))}</div><div class="tiny ${delta > 0 ? '' : 'muted'}" style="${delta > 0 ? 'color:var(--bad)' : ''}">${delta ? (delta > 0 ? '+' : '−') + money(Math.abs(delta)) + ' vs estimate' : 'on estimate'}</div></div>
+    <div class="tile"><div class="l">Booked / paid</div><div class="v">${isk(committed)}</div><div class="tiny muted">${fmtEur(toEur(committed))} · ${todo} still to book</div></div>
+    <div class="tile"><div class="l">+ Fuel (selected plans)</div><div class="v">${isk(fuel)}</div><div class="tiny muted">${fmtEur(toEur(fuel))} · all-in ${money(total + fuel)}</div></div>
   </div>
   <div class="row" style="margin-bottom:10px"><span class="small muted grow">Bookings tied to an unselected option are greyed out and left out of the totals.</span>
   <button class="btn small primary" data-act="bnew">+ Add</button></div>`;
@@ -722,12 +805,12 @@ function renderBook() {
     const [c, why] = bookingCounted(x);
     if (c) run += +(x.actual ?? x.est) || 0;
     const open = UI.bkOpen && UI.bkOpen[x.id];
-    const amt = x.actual != null ? isk(x.actual) : isk(x.est) + '<span class="tiny muted"> est.</span>';
+    const amt = (x.actual != null ? isk(x.actual) : isk(x.est) + '<span class="tiny muted"> est.</span>') + `<div class="tiny muted" style="text-align:right">${fmtEur(toEur(x.actual ?? x.est))}</div>`;
     h += `<div class="card bkrow ${c ? '' : 'dim'}"><button class="bkhead" data-act="btoggle" data-id="${esc(x.id)}" aria-expanded="${!!open}">
         <div class="row"><b class="grow">${esc(x.item)}</b><span class="tabular">${amt}</span></div>
         <div class="row tiny" style="margin-top:3px"><span class="chip st-${esc(x.status)}">${esc(BK_STATUS[x.status] || x.status)}</span>
-          <span class="chip">${x.option ? esc(x.option) : 'shared'}</span><span class="muted grow">${c ? 'running ' + isk(run) : esc(why)}</span></div>
-        ${x.seasonal ? `<div class="seasonal" style="margin-top:6px">Season: ${esc(x.seasonal)}</div>` : ''}
+          <span class="chip">${x.option ? esc(x.option) : 'shared'}</span><span class="muted grow">${c ? 'running ' + money(run) : esc(why)}</span></div>
+        ${x.seasonal ? `<div class="seasonal" style="margin-top:6px">Season: ${withEur(esc(x.seasonal))}</div>` : ''}
       </button>`;
     if (open) h += `<div class="bk" style="margin-top:10px">
         <label class="f full">Item<input type="text" value="${esc(x.item)}" data-act="bset" data-k="item" data-i="${i}"></label>
@@ -735,13 +818,13 @@ function renderBook() {
         <label class="f">Status<select data-act="bset" data-k="status" data-i="${i}">${Object.entries(BK_STATUS).map(([k, v]) => `<option value="${k}" ${k === x.status ? 'selected' : ''}>${v}</option>`).join('')}</select></label>
         <label class="f full">Applies to<select data-act="bset" data-k="option" data-i="${i}"><option value="">All plans (shared)</option>
           ${S.options.map(o => `<option value="${esc(o.id)}" ${o.id === x.option ? 'selected' : ''}>${esc(o.id)} · ${esc(o.name)}</option>`).join('')}</select></label>
-        <label class="f">Estimate (ISK)<input type="number" min="0" step="500" value="${x.est ?? ''}" data-act="bset" data-k="est" data-i="${i}"></label>
-        <label class="f">Actual (ISK)<input type="number" min="0" step="1" value="${x.actual ?? ''}" data-act="bset" data-k="actual" data-i="${i}"></label>
+        <label class="f">Estimate (ISK)${x.est ? ' · ' + fmtEur(toEur(x.est)) : ''}<input type="number" min="0" step="500" value="${x.est ?? ''}" data-act="bset" data-k="est" data-i="${i}"></label>
+        <label class="f">Actual (ISK)${x.actual ? ' · ' + fmtEur(toEur(x.actual)) : ''}<input type="number" min="0" step="1" value="${x.actual ?? ''}" data-act="bset" data-k="actual" data-i="${i}"></label>
         <label class="f full">Season note<input type="text" value="${esc(x.seasonal || '')}" data-act="bset" data-k="seasonal" data-i="${i}" placeholder="e.g. Nov–Mar only"></label>
         <label class="f full">Notes / ref<input type="text" value="${esc(x.note || '')}" data-act="bset" data-k="note" data-i="${i}"></label>
         <div class="full row"><span class="grow"></span><button class="btn small danger" data-act="bdel" data-i="${i}">Delete booking</button></div>
       </div>`;
-    else if (x.note) h += `<div class="tiny muted" style="margin-top:4px">${esc(x.note)}</div>`;
+    else if (x.note) h += `<div class="tiny muted" style="margin-top:4px">${withEur(esc(x.note))}</div>`;
     h += `</div>`;
   });
   return h;
@@ -767,7 +850,7 @@ function renderCond() {
       ${num('speedKmh', 'Avg speed (km/h)')}${num('roadFactor', 'Road factor', 0.05)}${num('winterBufferPct', 'Winter buffer %')}
       ${num('maxDriveH', 'Max driving/day (h)', 0.5)}${num('slackMin', 'Min. spare (min)', 5)}${num('darkDriveMin', 'Dark-drive warn (min)', 5)}
       <label class="f">Earliest auto start<input type="time" value="${esc(set('earliestDepart'))}" data-act="set" data-k="earliestDepart"></label>
-      ${num('nightIsk', 'Unbooked night (ISK)', 500)}${num('fuelLper100', 'Fuel L/100 km', 0.1)}${num('fuelIskPerL', 'Fuel ISK/L', 5)}${num('eurIsk', 'ISK per €', 1)}
+      ${num('nightIsk', 'Unbooked night (ISK)', 500)}${num('fuelLper100', 'Fuel L/100 km', 0.1)}${num('fuelIskPerL', 'Fuel ISK/L', 5)}${num('eurIsk', 'Fallback ISK per €', 1)}
     </div>
     <label class="check" style="border:0"><input type="checkbox" data-act="setbool" data-k="localSun" ${set('localSun') ? 'checked' : ''}><span>Check each stop against its own local sunrise/sunset (sun sets ~25 min earlier at Jökulsárlón than in Reykjavík)</span></label>
     <label class="f">Theme<div class="seg">${['auto', 'light', 'dark'].map(t => `<button data-act="theme" data-v="${t}" aria-pressed="${UI.theme === t}">${t}</button>`).join('')}</div></label>
@@ -849,7 +932,7 @@ function popupHTML(pid) {
       `<div class="small">From <b>${esc(placeName(prevId))}</b>: ${dur(dv.min)} · ${dv.km} km${dv.est ? ' (est.)' : ''}</div>`;
   }
   return `<h4>${esc(p.name)}</h4><div class="tiny" style="color:${rg.color}">${esc(rg.name)} · ~${p.visit ?? 45} min visit</div>
-    ${p.note ? `<div style="margin:4px 0">${esc(p.note)}</div>` : ''}${p.caution ? `<div class="small" style="color:var(--warn)">${esc(p.caution)}</div>` : ''}
+    ${p.note ? `<div style="margin:4px 0">${withEur(esc(p.note))}</div>` : ''}${p.caution ? `<div class="small" style="color:var(--warn)">${withEur(esc(p.caution))}</div>` : ''}
     ${from}${o ? `<div class="row" style="gap:6px"><button class="btn small primary" data-act="madd" data-place="${esc(pid)}">Add to ${dateLabel(date)}</button>
     <button class="btn small" data-act="msleep" data-place="${esc(pid)}">Sleep here</button></div>` : '<div class="small muted">Pick a plannable day above.</div>'}`;
 }
@@ -865,9 +948,10 @@ function render() {
     mw.hidden = true; return;
   }
   if (S.trip.name) $('#title').innerHTML = `${esc(S.trip.name)} <span class="sub">${dateLabel(S.trip.from, { day: 'numeric', month: 'short' })} – ${dateLabel(S.trip.to, { day: 'numeric', month: 'short' })}</span>`;
+  $('#fxchip').textContent = `1€ = ${Math.round(rate())} kr`;
   const scroll = window.scrollY;
   const tab = UI.tab;
-  v.innerHTML = tab === 'plan' ? renderPlan() : tab === 'map' ? renderMapControls() : tab === 'compare' ? renderCompare() : tab === 'book' ? renderBook() : renderCond();
+  v.innerHTML = tab === 'plan' ? renderPlan() : tab === 'map' ? renderMapControls() : tab === 'compare' ? renderCompare() : tab === 'book' ? renderBook() : tab === 'fx' ? renderFx() : renderCond();
   mw.hidden = tab !== 'map';
   document.body.classList.toggle('on-map', tab === 'map');
   if (tab === 'map') {
@@ -893,6 +977,7 @@ function stopOp(date, fn) {
 }
 document.addEventListener('click', e => {
   const tabBtn = e.target.closest('#tabs button'); if (tabBtn) return goTab(tabBtn.dataset.tab);
+  const go = e.target.closest('[data-tab-go]'); if (go) return goTab(go.dataset.tabGo);
   const el = e.target.closest('[data-act]'); if (!el || el.tagName === 'SELECT' || (el.tagName === 'INPUT' && el.type !== 'checkbox')) return;
   const a = el.dataset.act, date = el.dataset.date, i = +el.dataset.i;
   switch (a) {
@@ -954,6 +1039,8 @@ document.addEventListener('click', e => {
     case 'setbool': S.settings[el.dataset.k] = el.checked; SUN_CACHE.clear(); changed(); break;
     case 'theme': UI.theme = el.dataset.v; applyTheme(); render(); break;
     case 'export': exportJSON(); break;
+    case 'fxrefresh': fetchRate(true); break;
+    case 'fxset': UI.fxIsk = +el.dataset.v; render(); break;
     case 'import': $('#importfile').click(); break;
     case 'reset': resetToFile(); break;
     case 'pending-load': S = normalize(PENDING.file); BASE_HASH = PENDING.hash; PENDING = null; DIRTY = false; reindex(); mapDirty = true; persist(false); render(); break;
@@ -988,14 +1075,16 @@ document.addEventListener('change', e => {
       changed(); break;
     }
     case 'set': {
-      const k = el.dataset.k; S.settings[k] = el.type === 'number' ? (v === '' ? DEFAULT_SETTINGS[k] : +v) : v; changed(); break;
+      const k = el.dataset.k; S.settings[k] = el.type === 'number' ? (v === '' ? DEFAULT_SETTINGS[k] : +v) : v; if (k === 'fxManual' && !(+v > 0)) S.settings[k] = null; changed(); break;
     }
   }
 });
+document.addEventListener('input', e => { if (e.target.dataset && e.target.dataset.fx) fxInput(e.target); });
 $('#importfile').addEventListener('change', e => { const f = e.target.files[0]; if (f) importJSON(f); e.target.value = ''; });
 const updOnline = () => { $('#offline').hidden = navigator.onLine; };
-addEventListener('online', updOnline); addEventListener('offline', updOnline); updOnline();
+addEventListener('online', () => { updOnline(); fetchRate(); }); addEventListener('offline', updOnline); updOnline();
 setInterval(() => { if (S && UI.tab === 'plan' && S.days.find(d => d.date === todayISO()) && !document.activeElement?.matches('input,select,textarea')) render(); }, 5 * 60 * 1000);
 
 if ('serviceWorker' in navigator && location.protocol.startsWith('http')) navigator.serviceWorker.register('sw.js').catch(() => { });
-boot();
+boot().then(() => fetchRate());
+setInterval(() => fetchRate(), 30 * 60 * 1000);

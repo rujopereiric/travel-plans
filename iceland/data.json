@@ -20,7 +20,10 @@
     "darkDriveMin": 30,
     "earliestDepart": "07:00",
     "maxDriveH": 5,
-    "nightIsk": 10000
+    "nightIsk": 10000,
+    "fxMarkupPct": 0,
+    "fxWeekendPct": 1,
+    "fxManual": null
   },
   "days": [
     {"date": "2026-10-30", "state": "free", "label": "Arrival day"},

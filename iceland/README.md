@@ -56,6 +56,18 @@ A collapsed day card shows "+N more could fit". If a day doesn't fit, it shows w
   Compare it with your other options, then **Select** or **Copy** it and tweak.
 - For a fair comparison, each night away that has no hostel booking linked to the option is costed at the "Unbooked night" estimate.
 
+## Euros and the currency tab
+
+Every ISK amount is also shown in € (totals, bookings, comparison, fuel, and ISK prices mentioned in notes).
+The **€ / kr** tab is a two-way converter with quick tables. The header chip shows the current rate; tap it to open the tab.
+
+- Revolut has no public rates API. The app fetches the mid-market EUR→ISK rate from free sources that need no key, trying them in order:
+  Frankfurter (ECB), then ExchangeRate-API, then fawazahmed0/currency-api.
+  It refreshes every 30 min while open and saves the last rate for offline use.
+- Revolut converts at roughly mid-market on weekdays within your plan's allowance. Set a weekday and weekend markup %, or type the
+  rate your Revolut app shows into **Manual rate** to match it exactly. Clear that field to go back to the live rate.
+- Without any fetched rate, the app falls back to `settings.eurIsk`.
+
 ## Editing data.json
 
 - `days[]`: `state` is `free`, `booked` or `partial`. A partial day also needs `mode` (`until` or `from`) and `time` (`"HH:MM"`).
