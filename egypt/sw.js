@@ -1,6 +1,7 @@
 // Offline support: app files network-first (so edits to data.json show up when online),
 // Leaflet and map tiles cache-first (tiles you've viewed stay available offline).
-const APP = 'iceland-app-v4', TILES = 'iceland-tiles-v1', IMGS = 'iceland-imgs-v2', MAX_TILES = 3000;
+// Only egypt-* caches are touched: other apps on this origin (iceland/) keep theirs.
+const APP = 'egypt-app-v1', TILES = 'egypt-tiles-v1', IMGS = 'egypt-imgs-v1', MAX_TILES = 3000;
 const SHELL = ['./', 'index.html', 'app.js', 'data.json', 'manifest.webmanifest', 'icon.svg',
   'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css', 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js'];
 
@@ -8,7 +9,7 @@ self.addEventListener('install', e => {
   e.waitUntil(caches.open(APP).then(c => Promise.all(SHELL.map(u => c.add(u).catch(() => {})))).then(() => self.skipWaiting()));
 });
 self.addEventListener('activate', e => {
-  e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k.startsWith('iceland-') && k !== APP && k !== TILES && k !== IMGS).map(k => caches.delete(k))))
+  e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k.startsWith('egypt-') && k !== APP && k !== TILES && k !== IMGS).map(k => caches.delete(k))))
     .then(() => self.clients.claim()));
 });
 

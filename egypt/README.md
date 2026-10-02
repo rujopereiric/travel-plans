@@ -1,0 +1,57 @@
+# Egypt Trip Planner
+
+A day-by-day planner for Egypt, built from the [Iceland planner](../iceland/README.md). It focuses on the Red Sea and South Sinai (Hurghada, El Gouna, Marsa Alam, Sharm el-Sheikh, Dahab, St Catherine) and on Luxor, and also covers Cairo & Giza, Alexandria and Aswan.
+It's one page with no backend and no build step. It works offline once it has loaded.
+
+- `index.html`: the page and its styles
+- `app.js`: all the logic (sun maths, opening hours, travel legs, fit checks, map, comparison, bookings)
+- `data.json`: the plan, places and travel legs. Edit this by hand.
+- `sw.js`: the service worker that handles offline use
+
+## Running it
+
+- **Online:** https://rujopereiric.github.io/travel-plans/egypt/. Open it once on your phone, then use "Add to Home Screen".
+- **Locally:** run `python3 -m http.server` in the repo root and open http://localhost:8000/egypt/.
+
+Everything else works as in the Iceland app: dates and planning blocks, suggestions and auto-fill, auto-plan,
+the whole-trip map, the Places tab with Wikipedia photos, bookings, and export/import.
+
+## The sample plan
+
+The sample trip runs **20 Nov – 3 Dec 2026**. These are placeholder dates: tap **Change dates** on the Plan tab.
+The first day is set to "free from 14:00" (landing in Cairo) and the last to "free until 11:00" (flight home). Change both to match your flights.
+
+- **A1 · Cairo → Luxor → Hurghada → Sharm & Dahab**: 4 nights in Cairo/Giza, then a flight to Luxor for 3 nights. A road day goes to Hurghada via Dendera, followed by a Giftun snorkel day. Then the ferry to Sharm for Ras Mohammed, the Blue Hole in Dahab, and a flight from Sharm back to Cairo.
+- **A2 · Alexandria + Mount Sinai, no Hurghada**: adds a night in Alexandria, the Mount Sinai sunrise hike and St Catherine's Monastery. It flies Luxor → Cairo → Sharm.
+- **Auto-plan** builds more options from your ★ must-sees. Compare them on the Compare tab.
+
+## What's different from Iceland
+
+- **Time zone:** times are Egypt time (`trip.tz`, Africa/Cairo). Since 2023 Egypt is UTC+2 in winter and UTC+3 from the last Friday of April to the last Thursday of October.
+  The browser's time-zone database handles the switch, so sunrise, sunset and "now" are correct on both sides of it.
+- **Opening hours:** a place can have `hours: "06:00-17:30"` and `closed: [5, 0]` (weekday numbers, 0 = Sunday).
+  A stop more than 15 min outside its hours, or on a closed day, makes the day ✗. Up to 15 min outside makes it "tight".
+  Daylight is still checked for outdoor places. Museums, Luxor Temple and town stops have `needsDaylight: false`.
+- **Early starts:** places marked `early: true` (the Luxor balloon, the Mount Sinai night hike) set the day's start themselves: you get there for their opening time, even before the "earliest auto start".
+  Otherwise the auto start aims for sunrise or opening time, whichever is later.
+- **Flights, ferries and trains:** each `drives` entry is `[from, to, km, minutes, mode?, fareEgp?]`. `mode` is `road` (the default), `flight`, `ferry` or `train`.
+  - Flight minutes are airport to airport, door to door: about 75 min early at check-in, the flight, and 15 min to get out. Ferry and train minutes run centre to centre.
+  - Road minutes get the traffic buffer. Flight, ferry and train minutes are used as given.
+  - For every leg, the planner takes the faster of road only, or a mix using at least one flight/ferry/train. For example, Karnak → Giza is a drive to Luxor airport, a flight to Cairo, then a drive to Giza.
+  - Turn modes off in Settings to plan by road only.
+  - Road-only fallbacks (offline, before OSRM data arrives) follow the hand-made road legs, because a straight line from Hurghada to Sharm would cross the Gulf of Suez.
+- **Daily limits:** *Max travel per day* (default 6 h) counts all modes. *Max sightseeing per day* (default 8.5 h, breaks not counted) stops auto-fill from cramming seven temples into one day.
+  Dark-road warnings only count road time.
+- **Auto-plan** costs each flight (10 points), ferry (6) and train (3) on top of its hours, so it flies to change region rather than for a single sight.
+  Each hotel change costs 8 points, so plans stay two or three nights per base. Every night counts as a hotel night (at the "Unbooked night" estimate unless a hotel booking is linked), except the last day's.
+- **Costs:** *Transport* = road km × *Taxi/driver EGP per km* (default 12) + the fares in `drives` (per person). Domestic fares are in Transport, so don't also add them as bookings.
+- **Money:** amounts are in EGP with € alongside. The live rate comes from ExchangeRate-API or fawazahmed0/currency-api; the ECB doesn't publish EGP. The fallback is `settings.eurEgp`.
+  Free text like "550 EGP" or "550 LE" gets a € amount added.
+- **Service worker:** caches are named `egypt-*`, and each app only deletes its own old caches, so the Iceland and Egypt apps can both stay offline on the same site.
+
+## About the data
+
+Places, hours, prices and travel times are from general knowledge as of 2025, **not verified against live sources**.
+- Ticket prices for antiquities sites rise often and are marked with `~`. The official source is [egymonuments.gov.eg](https://egymonuments.gov.eg/).
+- Places marked `confidence: "low"` show an "unverified" chip.
+- Domestic fares and the Hurghada–Sharm ferry (timetable irregular, cancelled in wind) are estimates. Check before booking.
