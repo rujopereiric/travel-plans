@@ -144,7 +144,9 @@
       "lon": -21.9426,
       "visit": 60,
       "note": "Base. Training venue and organisers' accommodation.",
-      "needsDaylight": false
+      "needsDaylight": false,
+      "suggest": false,
+      "priority": 2
     },
     {
       "id": "seljalandsfoss",
@@ -153,7 +155,8 @@
       "lat": 63.6156,
       "lon": -19.9886,
       "visit": 45,
-      "note": "You can walk behind the falls — waterproofs, and the path gets icy. Gljúfrabúi (hidden falls) is a short walk north."
+      "note": "You can walk behind the falls — waterproofs, and the path gets icy. Gljúfrabúi (hidden falls) is a short walk north.",
+      "priority": 3
     },
     {
       "id": "skogafoss",
@@ -162,7 +165,8 @@
       "lat": 63.5321,
       "lon": -19.5114,
       "visit": 45,
-      "note": "Stairs up to a viewing platform on the right side."
+      "note": "Stairs up to a viewing platform on the right side.",
+      "priority": 3
     },
     {
       "id": "kvernufoss",
@@ -171,7 +175,8 @@
       "lat": 63.5288,
       "lon": -19.4814,
       "visit": 40,
-      "note": "3 min from Skógafoss, almost always empty."
+      "note": "3 min from Skógafoss, almost always empty.",
+      "priority": 2
     },
     {
       "id": "dc3",
@@ -181,7 +186,8 @@
       "lon": -19.3647,
       "visit": 150,
       "note": "4 km walk each way across the sand, or shuttle ~3400 ISK return, runs 10:00–17:00.",
-      "caution": "Long exposed walk; shuttle runs 10:00–17:00 only."
+      "caution": "Long exposed walk; shuttle runs 10:00–17:00 only.",
+      "priority": 2
     },
     {
       "id": "solheimajokull",
@@ -190,7 +196,8 @@
       "lat": 63.5311,
       "lon": -19.3686,
       "visit": 60,
-      "note": "Glacier tongue — you can drive almost to the ice. Don't go onto the glacier without a guide."
+      "note": "Glacier tongue — you can drive almost to the ice. Don't go onto the glacier without a guide.",
+      "priority": 2
     },
     {
       "id": "dyrholaey",
@@ -199,7 +206,8 @@
       "lat": 63.4014,
       "lon": -19.1263,
       "visit": 40,
-      "note": "Rock arch and lighthouse viewpoint. Upper road is steep and can be slippery."
+      "note": "Rock arch and lighthouse viewpoint. Upper road is steep and can be slippery.",
+      "priority": 2
     },
     {
       "id": "reynisfjara",
@@ -208,7 +216,8 @@
       "lat": 63.4034,
       "lon": -19.104,
       "visit": 40,
-      "note": "Never turn your back to the sea — sneaker waves are deadly here."
+      "note": "Never turn your back to the sea — sneaker waves are deadly here.",
+      "priority": 3
     },
     {
       "id": "vik",
@@ -218,7 +227,9 @@
       "lon": -19.006,
       "visit": 30,
       "note": "Fuel and supermarket. Katla ice cave tours (year-round) start here.",
-      "needsDaylight": false
+      "needsDaylight": false,
+      "suggest": false,
+      "priority": 2
     },
     {
       "id": "fjadrargljufur",
@@ -228,7 +239,8 @@
       "lon": -18.1716,
       "visit": 45,
       "note": "Often closed in winter — check before you commit to it.",
-      "caution": "Often closed in winter — check before you commit to it."
+      "caution": "Often closed in winter — check before you commit to it.",
+      "priority": 2
     },
     {
       "id": "kirkjubaejarklaustur",
@@ -238,7 +250,9 @@
       "lon": -18.0594,
       "visit": 20,
       "note": "Small village with fuel and a shop.",
-      "needsDaylight": false
+      "needsDaylight": false,
+      "suggest": false,
+      "priority": 2
     },
     {
       "id": "skaftafell",
@@ -247,7 +261,8 @@
       "lat": 64.0166,
       "lon": -16.9664,
       "visit": 90,
-      "note": "Visitor centre; Svartifoss hike ~1.5 h return."
+      "note": "Visitor centre; Svartifoss hike ~1.5 h return.",
+      "priority": 2
     },
     {
       "id": "jokulsarlon",
@@ -256,7 +271,8 @@
       "lat": 64.0784,
       "lon": -16.2306,
       "visit": 60,
-      "note": "380 km from Reykjavík. Diamond Beach is across the road. Blue ice cave tours (Nov–Mar) leave from this area."
+      "note": "380 km from Reykjavík. Diamond Beach is across the road. Blue ice cave tours (Nov–Mar) leave from this area.",
+      "priority": 3
     },
     {
       "id": "thingvellir",
@@ -265,7 +281,8 @@
       "lat": 64.2822,
       "lon": -21.0764,
       "visit": 60,
-      "note": "Rift valley national park. Paid parking."
+      "note": "Rift valley national park. Paid parking.",
+      "priority": 3
     },
     {
       "id": "geysir",
@@ -274,7 +291,8 @@
       "lat": 64.3138,
       "lon": -20.2995,
       "visit": 40,
-      "note": "Strokkur erupts every few minutes."
+      "note": "Strokkur erupts every few minutes.",
+      "priority": 2
     },
     {
       "id": "gullfoss",
@@ -283,7 +301,8 @@
       "lat": 64.3262,
       "lon": -20.1244,
       "visit": 40,
-      "note": "Lower path can be closed when icy."
+      "note": "Lower path can be closed when icy.",
+      "priority": 3
     },
     {
       "id": "kirkjufell",
@@ -292,7 +311,8 @@
       "lat": 64.927,
       "lon": -23.307,
       "visit": 30,
-      "note": ""
+      "note": "",
+      "priority": 3
     },
     {
       "id": "arnarstapi",
@@ -301,7 +321,8 @@
       "lat": 64.767,
       "lon": -23.623,
       "visit": 45,
-      "note": "Coastal path to Hellnar (~2.5 km)."
+      "note": "Coastal path to Hellnar (~2.5 km).",
+      "priority": 2
     },
     {
       "id": "djupalonssandur",
@@ -310,7 +331,8 @@
       "lat": 64.748,
       "lon": -23.905,
       "visit": 40,
-      "note": "Black pebble beach with shipwreck remains."
+      "note": "Black pebble beach with shipwreck remains.",
+      "priority": 2
     },
     {
       "id": "bluelagoon",
@@ -320,7 +342,8 @@
       "lon": -22.4473,
       "visit": 150,
       "note": "20 min from Keflavík. Book a time slot.",
-      "needsDaylight": false
+      "needsDaylight": false,
+      "priority": 2
     },
     {
       "id": "kef",
@@ -330,7 +353,9 @@
       "lon": -22.6056,
       "visit": 0,
       "note": "Departure on 8 Nov.",
-      "needsDaylight": false
+      "needsDaylight": false,
+      "suggest": false,
+      "priority": 2
     }
   ],
   "drives": [

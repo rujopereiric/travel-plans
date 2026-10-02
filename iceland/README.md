@@ -32,12 +32,23 @@ for the areas you have viewed. Before you leave Wi-Fi, pan and zoom over the reg
 - Driving times come from `drives` in `data.json` (`[from, to, km, minutes]`, valid in both directions) plus a 15% winter buffer.
   Pairs that aren't listed use a straight-line distance × 1.35 at 75 km/h and are marked "est.".
 
+## Suggestions and auto-fill
+
+Each open day has a **Could also fit** list. It shows every place you can still add without making the day "doesn't fit".
+Each place goes in at the position that adds the least driving, and the list shows the extra drive time and when you'd get back.
+The list updates whenever you change free time, stops or settings.
+A collapsed day card shows "+N more could fit". If a day doesn't fit, it shows which stop to drop instead.
+
+- Places already on this option or on the selected plan of another block are skipped, as are places with `suggest: false`.
+- **Auto-fill** keeps adding the place with the best score while the day still fits. The score is `priority` (1–3, default 2) weighed against extra driving.
+  Use **Undo auto-fill** to go back.
+
 ## Editing data.json
 
 - `days[]`: `state` is `free`, `booked` or `partial`. A partial day also needs `mode` (`until` or `from`) and `time` (`"HH:MM"`).
 - `blocks[]`: date ranges you plan as a unit. `active` names the selected option.
 - `options[]`: alternative itineraries for a block. `days[date] = { stops: [{place, min?, note?}], sleep, depart? }`.
-- `places[]`: `visit` is the default number of minutes at the place. Set `needsDaylight: false` for towns and the lagoon. `caution` shows a warning.
+- `places[]`: `visit` is the default number of minutes at the place. Set `needsDaylight: false` for towns and the lagoon. `caution` shows a warning. `priority` (1–3) steers auto-fill. `suggest: false` keeps a place out of suggestions.
 - `bookings[]`: `option` is `null` for a shared booking or an option id. Bookings tied to an option count only when that option is selected.
 
 Your edits in the app are saved in the browser's localStorage. **Export** writes a file in the same format as `data.json`,

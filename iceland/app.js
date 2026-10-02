@@ -233,6 +233,60 @@ function simulate(date, opt) {
   return r;
 }
 
+/* ---------- suggestions & auto-fill ---------- */
+const withStops = (opt, date, stops) => {
+  const p = opt.days[date] || { stops: [], sleep: null };
+  return { ...opt, days: { ...opt.days, [date]: { ...p, stops } } };
+};
+const prio = p => p.priority ?? 2;
+function suggestable(opt, date) {
+  // skip places already on this option or on the selected plan of any other block (already seen on the trip)
+  const used = new Set();
+  const opts = [opt, ...S.blocks.map(activeOpt).filter(x => x && x.block !== opt.block)];
+  for (const o of opts) for (const p of Object.values(o.days)) for (const st of p.stops || []) used.add(st.place);
+  return S.places.filter(p => !used.has(p.id) && p.suggest !== false && p.id !== S.trip.home && (p.visit ?? 45) > 0);
+}
+// Places that can be inserted into the day without making it "doesn't fit", each at its cheapest position.
+function suggestFor(date, opt) {
+  const base = simulate(date, opt);
+  const out = { base, add: [], drop: [] };
+  if (!opt || !base.free || !blockOf(date)) return out;
+  const stops = (opt.days[date] && opt.days[date].stops) || [];
+  if (base.status === 'bad') {
+    stops.forEach((st, i) => {
+      const r = simulate(date, withStops(opt, date, stops.filter((_, j) => j !== i)));
+      if (r.status !== 'bad') out.drop.push({ i, place: st.place, r });
+    });
+    return out;
+  }
+  for (const c of suggestable(opt, date)) {
+    let best = null;
+    for (let pos = 0; pos <= stops.length; pos++) {
+      const ns = [...stops.slice(0, pos), { place: c.id }, ...stops.slice(pos)];
+      const r = simulate(date, withStops(opt, date, ns));
+      if (r.status === 'bad') continue;
+      const cand = { place: c.id, pos, r, extra: r.driveMin - base.driveMin, visit: c.visit ?? 45, status: r.status };
+      if (!best || RANK[cand.status] < RANK[best.status] || (cand.status === best.status && cand.extra < best.extra)) best = cand;
+    }
+    if (best) out.add.push(best);
+  }
+  out.add.sort((a, b) => RANK[a.status] - RANK[b.status] || a.extra - b.extra);
+  return out;
+}
+// Greedy: keep adding the highest-priority, cheapest-to-reach place while the day stays "fits".
+function autoFill(date, opt) {
+  let added = 0;
+  for (let n = 0; n < 10; n++) {
+    const sg = suggestFor(date, opt).add.filter(x => x.status === 'ok');
+    if (!sg.length) break;
+    sg.sort((a, b) => (prio(place(b.place)) * 60 - b.extra) - (prio(place(a.place)) * 60 - a.extra));
+    const pick = sg[0], p = planOf(opt, date, true);
+    p.stops.splice(pick.pos, 0, { place: pick.place });
+    added++;
+  }
+  return added;
+}
+
 /* ---------- persistence ---------- */
 function normalize(s) {
   s.settings = { ...DEFAULT_SETTINGS, ...(s.settings || {}) };
@@ -397,6 +451,12 @@ function dayCard(d, b) {
     route = `<div class="small" style="margin-top:3px">${[r.start, ...r.plan.stops.map(x => x.place === '_break' ? '_break' : x.place)].filter(x => x !== '_break').map(placeName).map(esc).join(' → ')}${r.end !== r.start || r.plan.stops.length ? ' → <b>' + esc(placeName(r.end)) + '</b>' : ''}</div>`;
     sum += ` · drive ${dur(r.driveMin)}`;
   }
+  if (o && r.free) {
+    const sg = suggestFor(d.date, o);
+    const okN = sg.add.filter(x => x.status === 'ok').length;
+    if (okN) sum += ` · <span style="color:var(--ok)">+${okN} more could fit</span>`;
+    else if (sg.drop.length) sum += ` · <span style="color:var(--bad)">drop ${esc(placeName(sg.drop[0].place))} to fit</span>`;
+  }
   return `<section class="card day ${d.state}" id="day-${d.date}">
     <button class="head" data-act="toggle" data-date="${d.date}" aria-expanded="${open}">
       <div class="row"><span class="date">${dateLabel(d.date)}</span><span class="chip ${d.state}">${esc(stateText(d))}</span>
@@ -458,6 +518,33 @@ function dayBody(d, b, o, r) {
       <span>Daylight span used</span><b>${dur(r.need)} of ${r.usable ? dur(r.usable[1] - r.usable[0]) : '0m'}</b>
     </div>`;
   h += issuesHTML(r);
+  h += suggestHTML(d.date, o);
+  return h;
+}
+function suggestHTML(date, o) {
+  const sg = suggestFor(date, o);
+  let h = `<h3>Could also fit</h3>`;
+  if (sg.drop.length) {
+    return h + `<p class="small muted" style="margin:0 0 6px">The day doesn't fit as planned. Removing one of these fixes it:</p>` +
+      sg.drop.map(x => `<div class="sugg"><span class="grow"><b>${esc(placeName(x.place))}</b><div class="tiny muted">then ${STATUS_TXT[x.r.status].toLowerCase()} · back ${hhmm(x.r.arrive)}</div></span>
+        <button class="btn small danger" data-act="srm" data-date="${date}" data-i="${x.i}">Remove</button></div>`).join('');
+  }
+  const undo = UI.undo && UI.undo.date === date && UI.undo.opt === o.id;
+  const undoBtn = undo ? `<button class="btn small" data-act="undo" data-date="${date}">Undo auto-fill</button>` : '';
+  if (!sg.add.length) return h + `<div class="row"><p class="empty grow">Nothing else fits in today's usable window.</p>${undoBtn}</div>`;
+  h += `<div class="row" style="margin-bottom:8px"><span class="small muted grow">Recalculated whenever you change free time, stops or settings.</span>
+    ${sg.add.some(x => x.status === 'ok') ? `<button class="btn small primary" data-act="autofill" data-date="${date}">Auto-fill</button>` : ''}
+    ${undoBtn}</div>`;
+  const show = UI.suggAll && UI.suggAll[date] ? sg.add : sg.add.slice(0, 6);
+  h += show.map(x => {
+    const p = place(x.place), rg = region(p.region);
+    const after = x.pos === 0 ? 'first' : 'after ' + placeName(((o.days[date] || {}).stops || [])[x.pos - 1].place);
+    return `<div class="sugg"><span class="grow"><span style="color:${rg.color}">●</span> <b>${esc(p.name)}</b>${prio(p) >= 3 ? ' <span class="tiny" title="High priority">★</span>' : ''}
+      <div class="tiny muted">+${dur(Math.max(0, x.extra))} drive · ${dur(x.visit)} visit · ${esc(after)} · back ${hhmm(x.r.arrive)}</div></span>
+      <span class="badge ${x.status}">${x.status === 'ok' ? '✓' : '!'}</span>
+      <button class="btn small" data-act="sugadd" data-date="${date}" data-place="${esc(x.place)}" data-pos="${x.pos}">Add</button></div>`;
+  }).join('');
+  if (sg.add.length > show.length) h += `<button class="btn small" data-act="suggall" data-date="${date}">Show all ${sg.add.length}</button>`;
   return h;
 }
 function issuesHTML(r) {
@@ -734,6 +821,15 @@ document.addEventListener('click', e => {
     case 'sup': stopOp(date, p => { const s = p.stops; [s[i - 1], s[i]] = [s[i], s[i - 1]]; }); break;
     case 'sdown': stopOp(date, p => { const s = p.stops; [s[i + 1], s[i]] = [s[i], s[i + 1]]; }); break;
     case 'srm': stopOp(date, p => p.stops.splice(i, 1)); break;
+    case 'sugadd': stopOp(date, p => p.stops.splice(+el.dataset.pos, 0, { place: el.dataset.place })); toast('Added ' + placeName(el.dataset.place)); break;
+    case 'suggall': (UI.suggAll = UI.suggAll || {})[date] = true; render(); break;
+    case 'autofill': {
+      const o = activeOpt(blockOf(date)); const before = JSON.parse(JSON.stringify(planOf(o, date, true).stops));
+      const n = autoFill(date, o);
+      UI.undo = { date, opt: o.id, stops: before };
+      changed(); toast(n ? `Added ${n} stop${n > 1 ? 's' : ''}` : 'Nothing more fits'); break;
+    }
+    case 'undo': { const o = optById(UI.undo.opt); if (o) planOf(o, date, true).stops = UI.undo.stops; UI.undo = null; changed(); break; }
     case 'mapday': UI.mapDay = date; goTab('map'); break;
     case 'toplan': UI.open[date] = true; goTab('plan'); setTimeout(() => document.getElementById('day-' + date)?.scrollIntoView({ block: 'start' }), 0); break;
     case 'gocompare': UI.cmpBlock = el.dataset.block; goTab('compare'); break;
