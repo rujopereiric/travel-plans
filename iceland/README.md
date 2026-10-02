@@ -17,6 +17,18 @@ It's one page with no backend and no build step. It works offline once it has lo
 Offline: the app files, Leaflet and `data.json` are cached on first load. The browser keeps the map tiles
 for the areas you have viewed. Before you leave Wi-Fi, pan and zoom over the regions you'll visit.
 
+## Changing the dates
+
+Tap **Change dates** at the top of the Plan tab to set when you arrive and leave. New days are added as fully free.
+If you remove days that have stops planned, the app asks first. To mark training or other busy days, open the day and set it to **Fully booked** or **Partially free**.
+
+A **planning block** is a run of consecutive days that aren't fully booked. Blocks are recalculated whenever dates or day states change:
+- **Growing or shrinking:** a block keeps its letter and plans.
+- **Merging:** the merged block gets all the plans from both.
+- **Splitting:** each plan goes to the part that contains all of its planned days, keeping its id (B1 and B2 return to block B).
+  A brand-new part with no plans gets copies of whatever was planned for its days.
+- **Auto-plan:** a block that ends on your last day finishes at Keflavík Airport.
+
 ## How the fit check works
 
 - Sunrise, sunset and civil twilight come from the NOAA solar algorithm, computed from the date.

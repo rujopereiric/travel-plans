@@ -384,7 +384,7 @@ function autoPlan(bid) {
   const b = S.blocks.find(x => x.id === bid), dates = blockDates(b).filter(d => freeWin(dayObj(d)));
   if (!dates.length) return null;
   const cur = activeOpt(b), last = dates[dates.length - 1];
-  const finalEnd = (cur && cur.days[last]?.sleep) || S.trip.home;
+  const finalEnd = (cur && cur.days[last]?.sleep) || (last === S.trip.to && place('kef') ? 'kef' : S.trip.home);
   const cands = sleepCandidates();
   // Beam search over overnight stops: build the plan day by day, auto-filling each day, and keep only the
   // BEAM best partial plans after each day (instead of fully planning every combination).
@@ -499,6 +499,103 @@ function fxInput(el) {
   if (el.dataset.fx === 'isk') { UI.fxIsk = isFinite(v) ? v : 0; $('#fx-eur').value = isFinite(v) ? (v / r).toFixed(2) : ''; }
   else { UI.fxIsk = isFinite(v) ? Math.round(v * r) : 0; $('#fx-isk').value = isFinite(v) ? Math.round(v * r) : ''; }
   saveUI();
+}
+
+/* ---------- trip dates & planning blocks ---------- */
+// A planning block is a run of consecutive days that aren't fully booked. Blocks are recomputed whenever dates
+// or day states change; existing blocks keep their id, options and selected plan where they overlap.
+const DAY_MS = 864e5;
+const addDays = (iso, n) => new Date(Date.parse(iso + 'T00:00:00Z') + n * DAY_MS).toISOString().slice(0, 10);
+const blockName = (id, from, to) => `Block ${id} · ${dateLabel(from, { day: 'numeric', month: 'short' })}${from !== to ? ' – ' + dateLabel(to, { day: 'numeric', month: 'short' }) : ''}`;
+function freeRuns() {
+  const runs = []; let cur = null, prev = null;
+  for (const d of S.days) {
+    const free = d.state !== 'booked', next = prev && addDays(prev, 1) === d.date;
+    if (free && cur && next) cur.push(d.date); else if (free) runs.push(cur = [d.date]); else cur = null;
+    prev = d.date;
+  }
+  return runs;
+}
+function newOptId(bid) { let n = optsOf(bid).length + 1, id; do id = bid + (n++); while (optById(id)); return id; }
+const plannedDates = o => Object.entries(o.days).filter(([, p]) => (p.stops && p.stops.length) || p.sleep).map(([d]) => d);
+function recomputeBlocks() {
+  const old = S.blocks, runs = freeRuns();
+  // 1. match old blocks to runs: prefer the run holding most of the block's *selected plan*, then plain overlap
+  const pairs = [];
+  runs.forEach((run, ri) => old.forEach(b => {
+    const ov = run.filter(x => x >= b.from && x <= b.to), act = optById(b.active);
+    const planned = act ? plannedDates(act).filter(x => ov.includes(x)).length : 0;
+    if (ov.length) pairs.push({ ri, b, score: planned * 10 + ov.length });
+  }));
+  pairs.sort((x, y) => y.score - x.score);
+  const ids = new Array(runs.length).fill(null), taken = new Set();
+  for (const pr of pairs) if (!ids[pr.ri] && !taken.has(pr.b.id)) { ids[pr.ri] = pr.b.id; taken.add(pr.b.id); }
+  // 2. every option belongs to the run that contains all of its planned days
+  const home = o => { const pd = plannedDates(o); return pd.length ? runs.findIndex(r => pd.every(d => r.includes(d))) : -1; };
+  // new runs reuse the letter of the options moving into them (B1, B2 → block B) when it's free
+  runs.forEach((run, ri) => { // first pass: claim letters from moving options
+    if (ids[ri]) return;
+    const movers = S.options.filter(o => home(o) === ri);
+    const pre = movers.length && movers.every(o => o.id[0] === movers[0].id[0]) ? movers[0].id[0] : null;
+    if (pre && !ids.includes(pre)) ids[ri] = pre;
+  });
+  runs.forEach((run, ri) => { // second pass: any free letter
+    if (!ids[ri]) ids[ri] = [...'ABCDEFGHIJKLMNOPQRSTUVWXYZ'].find(c => !ids.includes(c)) || 'X' + ri;
+  });
+  const out = runs.map((run, ri) => {
+    const ob = old.find(b => b.id === ids[ri]), from = run[0], to = run[run.length - 1];
+    const b = ob ? { ...ob } : { id: ids[ri], active: null };
+    if (b.from !== from || b.to !== to || !b.name) { b.from = from; b.to = to; b.name = blockName(b.id, from, to); }
+    return b;
+  });
+  const wasActive = new Set(old.map(b => b.active));
+  for (const o of S.options) {
+    const ri = home(o);
+    if (ri >= 0) o.block = ids[ri];
+    else if (!ids.includes(o.block)) { // spans runs or has no plans: keep it with the block covering its first day, if any
+      const first = Object.keys(o.days).sort()[0], ri2 = first ? runs.findIndex(r => r.includes(first)) : -1;
+      if (ri2 >= 0) o.block = ids[ri2];
+    }
+  }
+  // 3. a new block with no options gets copies of the days other options had planned in it
+  runs.forEach((run, ri) => {
+    const b = out[ri];
+    if (S.options.some(o => o.block === b.id)) return;
+    for (const o of S.options.filter(o => plannedDates(o).some(d => run.includes(d)))) {
+      const days = {}; for (const x of run) if (o.days[x]) days[x] = JSON.parse(JSON.stringify(o.days[x]));
+      const nid = newOptId(b.id); S.options.push({ id: nid, block: b.id, name: o.name, note: `Copied from ${o.id}`, days });
+      if (wasActive.has(o.id) && !b.active) b.active = nid;
+    }
+  });
+  for (const b of out) {
+    const mine = S.options.filter(o => o.block === b.id);
+    if (!mine.some(o => o.id === b.active)) b.active = (mine.find(o => wasActive.has(o.id)) || mine[0])?.id || null;
+  }
+  S.blocks = out;
+}
+function setTripDates(from, to) {
+  if (!from || !to || from > to) { alert('The arrival date must be on or before the departure date.'); return false; }
+  const n = Math.round((Date.parse(to) - Date.parse(from)) / DAY_MS) + 1;
+  if (n > 60) { alert('That is more than 60 days — check the dates.'); return false; }
+  const dates = Array.from({ length: n }, (_, i) => addDays(from, i));
+  const dropped = S.days.filter(d => !dates.includes(d.date));
+  const planned = dropped.filter(d => S.options.some(o => o.days[d.date]?.stops?.length));
+  if (planned.length && !confirm(`Remove ${planned.map(d => dateLabel(d.date)).join(', ')}? ${planned.length > 1 ? 'They have' : 'It has'} stops planned.`)) return false;
+  S.days = dates.map(x => dayObj(x) || { date: x, state: 'free' });
+  S.trip.from = from; S.trip.to = to;
+  recomputeBlocks();
+  return true;
+}
+function tripCard() {
+  const n = S.days.length, booked = S.days.filter(d => d.state === 'booked').length;
+  if (!UI.editTrip) return `<div class="card row small" style="margin-bottom:10px"><span class="grow"><b>${dateLabel(S.trip.from)} – ${dateLabel(S.trip.to)}</b> · ${n} days · ${n - booked} free or partly free · ${S.blocks.length} planning block${S.blocks.length === 1 ? '' : 's'}</span>
+    <button class="btn small" data-act="tripedit">Change dates</button></div>`;
+  return `<div class="card" style="margin-bottom:10px"><h3 style="margin-top:0">Trip dates</h3>
+    <div class="row"><label class="f">Arrive<input type="date" id="trip-from" value="${S.trip.from}"></label>
+      <label class="f">Leave<input type="date" id="trip-to" value="${S.trip.to}"></label></div>
+    <p class="tiny muted">New days are added as fully free. To mark training or other busy days, open a day and set it to <b>Fully booked</b> (or partly free).
+      Planning blocks follow the free days automatically; existing plans are kept when blocks grow, merge or split.</p>
+    <div class="row"><button class="btn small primary" data-act="tripsave">Apply</button><button class="btn small" data-act="tripedit">Cancel</button></div></div>`;
 }
 
 /* ---------- persistence ---------- */
@@ -643,7 +740,7 @@ function placeOptions(sel, { blank = '', exclude = [] } = {}) {
 
 /* ---------- render: plan tab ---------- */
 function renderPlan() {
-  let h = '';
+  let h = tripCard();
   if (PENDING) h += `<div class="banner"><b>data.json has changed</b> since your local copy was made, and you have local edits. New place info has already been merged in; you only need the file version if you want its days, plans or bookings.
     <div class="row" style="margin-top:8px"><button class="btn small primary" data-act="pending-load">Use data.json</button>
     <button class="btn small" data-act="pending-keep">Keep my edits</button><button class="btn small" data-act="export">Export mine first</button></div></div>`;
@@ -654,7 +751,7 @@ function renderPlan() {
   for (const d of S.days) {
     const b = blockOf(d.date) || null;
     if ((b && b.id) !== (lastBlock && lastBlock.id)) {
-      h += `<h2>${b ? esc(b.name) : 'Training'}</h2>`;
+      h += `<h2>${b ? esc(b.name) : 'Booked'}</h2>`;
       if (b) h += blockSummary(b);
     }
     lastBlock = b;
@@ -709,7 +806,7 @@ function dayBody(d, b, o, r) {
     </div>
     <div class="row" style="margin-top:8px"><label class="f grow">Note<input type="text" value="${esc(d.label || '')}" data-act="dlabel" data-date="${d.date}" placeholder="e.g. dinner with the group"></label>
     ${d.state !== 'booked' ? `<label class="f">Max driving (h)<input type="number" min="0" step="0.5" value="${d.maxDriveH ?? ''}" placeholder="${set('maxDriveH')}" data-act="dmaxdrive" data-date="${d.date}"></label>` : ''}</div>`;
-  if (!b) return h + `<p class="small muted">This day isn't in a planning block. Add a block covering it in data.json to plan stops.</p>`;
+  if (!b) return h + `<p class="small muted">This day is fully booked. Set it to fully or partly free to plan stops.</p>`;
   if (!o) return h + `<p class="small muted">No itinerary option yet for ${esc(b.name)}.</p>`;
   if (!r.free) return h + (r.issues.length ? issuesHTML(r) : '');
   const plan = planOf(o, d.date, false) || { stops: [] };
@@ -1286,6 +1383,8 @@ document.addEventListener('click', e => {
     case 'setbool': S.settings[el.dataset.k] = el.checked; SUN_CACHE.clear(); changed(); break;
     case 'theme': UI.theme = el.dataset.v; applyTheme(); render(); break;
     case 'export': exportJSON(); break;
+    case 'tripedit': UI.editTrip = !UI.editTrip; render(); break;
+    case 'tripsave': if (setTripDates($('#trip-from').value, $('#trip-to').value)) { UI.editTrip = false; mapDirty = true; changed(); toast('Dates updated'); } break;
     case 'wikiretry': IMG_W = null; try { localStorage.removeItem('iceland-imgw'); } catch (e) { } WIKI = {}; for (const k in IMG_FAIL) delete IMG_FAIL[k]; try { localStorage.removeItem(LS_WIKI); } catch (e) { } fetchWiki(); break;
     case 'pick': { const id = el.dataset.place, v = el.dataset.v; S.picks[id] = S.picks[id] === v ? undefined : v; if (!S.picks[id]) delete S.picks[id]; changed(); break; }
     case 'pfilter': UI.pf = { ...(UI.pf || {}), [el.dataset.k]: el.dataset.v }; render(); break;
@@ -1307,7 +1406,7 @@ document.addEventListener('change', e => {
   const a = el.dataset.act, date = el.dataset.date, i = +el.dataset.i, v = el.value;
   const d = date && dayObj(date);
   switch (a) {
-    case 'dstate': d.state = v; if (v === 'partial') { d.mode = d.mode || 'until'; d.time = d.time || '17:00'; } changed(); break;
+    case 'dstate': d.state = v; if (v === 'partial') { d.mode = d.mode || 'until'; d.time = d.time || '17:00'; } recomputeBlocks(); changed(); break;
     case 'dmode': d.mode = v; changed(); break;
     case 'dtime': if (v) { d.time = v; changed(); } break;
     case 'dlabel': d.label = v; changed(); break;
