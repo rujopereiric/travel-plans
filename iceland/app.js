@@ -324,7 +324,10 @@ function suggestFor(date, opt) {
     });
     return out;
   }
+  const lim = maxDriveOf(dayObj(date));
   for (const c of suggestable(opt, date)) {
+    // cheap bound: if even a direct start → place → end trip breaks the driving limit, skip it
+    if (drive(base.start, c.id).min + drive(c.id, base.end).min > lim) continue;
     let best = null;
     for (let pos = 0; pos <= stops.length; pos++) {
       const ns = [...stops.slice(0, pos), { place: c.id }, ...stops.slice(pos)];
@@ -339,13 +342,17 @@ function suggestFor(date, opt) {
   return out;
 }
 // Greedy: keep adding the highest-priority, cheapest-to-reach place while the day stays "fits".
+// value of visiting a place: cubic in priority, so must-sees (10) and top sights (3) dominate and fillers (1) barely count
+const placeValue = p => prio(p) ** 3;
+// net gain of adding a suggested stop: its value minus the extra driving and the time it takes
+const stopGain = x => placeValue(place(x.place)) - Math.max(0, x.extra) / 10 - x.visit / 30;
 function autoFill(date, opt) {
   let added = 0;
   for (let n = 0; n < 10; n++) {
-    // must-sees may make a day 'tight'; everything else has to keep it a clean fit
-    const sg = suggestFor(date, opt).add.filter(x => x.status === 'ok' || (x.status === 'tight' && pick(x.place) === 'must'));
+    // must-sees may make a day 'tight'; everything else has to keep it a clean fit, and be worth the detour
+    const sg = suggestFor(date, opt).add.filter(x => (x.status === 'ok' || (x.status === 'tight' && pick(x.place) === 'must')) && stopGain(x) > 0);
     if (!sg.length) break;
-    sg.sort((a, b) => (prio(place(b.place)) * 60 - b.extra) - (prio(place(a.place)) * 60 - a.extra));
+    sg.sort((a, b) => stopGain(b) - stopGain(a));
     const top = sg[0], p = planOf(opt, date, true);
     p.stops.splice(top.pos, 0, { place: top.place });
     added++;
@@ -366,7 +373,7 @@ function scoreOption(opt, dates) {
   for (const date of dates) {
     const r = simulate(date, opt);
     if (r.status === 'bad') return null;
-    for (const st of (opt.days[date]?.stops || [])) if (!seen.has(st.place)) { seen.add(st.place); score += prio(place(st.place) || {}) ** 2 * 10; }
+    for (const st of (opt.days[date]?.stops || [])) if (!seen.has(st.place) && place(st.place)) { seen.add(st.place); score += placeValue(place(st.place)) - (place(st.place).visit ?? 45) / 30; }
     if (r.status === 'tight') score -= 15;
     drive += r.driveMin;
   }
@@ -379,25 +386,29 @@ function autoPlan(bid) {
   const cur = activeOpt(b), last = dates[dates.length - 1];
   const finalEnd = (cur && cur.days[last]?.sleep) || S.trip.home;
   const cands = sleepCandidates();
-  let best = null, tried = 0;
-  const rec = (i, prevSleep, seqs) => {
-    if (i === dates.length - 1) { tryPlan([...seqs, finalEnd]); return; }
-    for (const c of cands) {
-      // prune: the bare transfer has to fit under that day's driving limit
-      if (drive(prevSleep, c).min > maxDriveOf(dayObj(dates[i]))) continue;
-      rec(i + 1, c, [...seqs, c]);
+  // Beam search over overnight stops: build the plan day by day, auto-filling each day, and keep only the
+  // BEAM best partial plans after each day (instead of fully planning every combination).
+  const BEAM = 20;
+  let beam = [{ opt: { id: '_auto', block: bid, name: '', note: '', days: {} }, prev: S.trip.home }], tried = 0;
+  for (let i = 0; i < dates.length; i++) {
+    const date = dates[i], lim = maxDriveOf(dayObj(date)), lastLim = maxDriveOf(dayObj(last)), next = [];
+    for (const st of beam) {
+      const sleeps = i === dates.length - 1 ? [finalEnd] : cands.filter(c => drive(st.prev, c).min <= lim
+        // the night before the last day must still let you reach the block's final stop in time
+        && (i < dates.length - 2 || drive(c, finalEnd).min <= lastLim));
+      for (const c of sleeps) {
+        const opt = { ...st.opt, days: { ...st.opt.days, [date]: { stops: [], sleep: c } } };
+        if (simulate(date, opt).status === 'bad') continue;
+        autoFill(date, opt); tried++;
+        const sc = scoreOption(opt, dates.slice(0, i + 1));
+        if (sc != null) next.push({ opt, prev: c, score: sc });
+      }
     }
-  };
-  const tryPlan = sleeps => {
-    if (drive(sleeps[sleeps.length - 2] || S.trip.home, finalEnd).min > maxDriveOf(dayObj(last))) return;
-    tried++;
-    const opt = { id: '_auto', block: bid, name: '', note: '', days: {} };
-    dates.forEach((d, k) => { opt.days[d] = { stops: [], sleep: sleeps[k] }; });
-    for (const d of dates) { if (simulate(d, opt).status === 'bad') return; autoFill(d, opt); }
-    const sc = scoreOption(opt, dates);
-    if (sc != null && (!best || sc > best.score)) best = { score: sc, opt };
-  };
-  rec(0, S.trip.home, []);
+    next.sort((x, y) => y.score - x.score);
+    beam = next.slice(0, BEAM);
+    if (!beam.length) return null;
+  }
+  const best = beam[0];
   if (!best) return null;
   let n = optsOf(bid).length + 1, id;
   do id = bid + (n++); while (optById(id));
@@ -549,6 +560,7 @@ function mergePlaceInfo(local, file) {
     for (const k of INFO_FIELDS) if (fp[k] !== undefined) lp[k] = fp[k];
   }
   if (file.categories) local.categories = file.categories;
+  for (const fr of file.regions || []) if (!(local.regions || []).some(r => r.id === fr.id)) (local.regions = local.regions || []).push(fr);
   for (const k of Object.keys(file.settings || {})) if (local.settings && local.settings[k] === undefined) local.settings[k] = file.settings[k];
 }
 const firstPlanDay = () => (S.days.find(d => d.date >= todayISO() && blockOf(d.date)) || S.days.find(d => blockOf(d.date)))?.date;
