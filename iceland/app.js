@@ -133,17 +133,22 @@ function drive(a, b) {
   if (!DRIVE_CACHE.has(key)) DRIVE_CACHE.set(key, driveRaw(a, b));
   return DRIVE_CACHE.get(key);
 }
-// Fallback when there's no road data: shortest path over the known legs ("drives") plus short straight hops
-// (≤ 60 km). This keeps long estimates on real roads instead of a straight line across glaciers and highlands.
+// Fallback when there's no road data: shortest path over the known legs ("drives"), with other places attached
+// to their nearest known place. This keeps long estimates on real roads instead of a straight line across glaciers and highlands.
 let GRAPH = null; const GRAPH_DIST = new Map();
 function graphLeg(a, b) {
   if (!GRAPH) {
     GRAPH = new Map(S.places.map(p => [p.id, []]));
     const add = (x, y, km, min) => { if (GRAPH.has(x) && GRAPH.has(y)) { GRAPH.get(x).push([y, km, min]); GRAPH.get(y).push([x, km, min]); } };
     for (const [x, y, km, min] of S.drives || []) add(x, y, km, min);
-    for (let i = 0; i < S.places.length; i++) for (let j = i + 1; j < S.places.length; j++) {
-      const pa = S.places[i], pb = S.places[j], hv = haversine(pa, pb);
-      if (hv <= 60) { const km = hv * set('roadFactor'); add(pa.id, pb.id, km, km / set('speedKmh') * 60); }
+    // places on known legs ("hubs") connect only through those legs; any other place hangs off its nearest hub.
+    // Straight hops between hubs would cut across fjords and passes (Djúpivogur–Breiðdalsvík: 19 km vs 63 km by road).
+    const hubs = S.places.filter(p => GRAPH.get(p.id).length);
+    for (const p of S.places) {
+      if (GRAPH.get(p.id).length || !hubs.length) continue;
+      let near = null, nd = Infinity;
+      for (const h of hubs) { const hv = haversine(p, h); if (hv < nd) { nd = hv; near = h; } }
+      const km = nd * set('roadFactor'); add(p.id, near.id, km, km / set('speedKmh') * 60);
     }
   }
   if (!GRAPH_DIST.has(a)) { // Dijkstra from a (small graph, so a simple array scan is fine)
@@ -192,20 +197,33 @@ function roadLeg(a, b) {
   const d = ROAD.dur[i][j], m = ROAD.dist[i][j];
   return d != null && m != null ? { km: m / 1000, min: d / 60 } : null;
 }
+// The public server only takes ~100 coordinates per table request, so ask in chunks of 50 × 50
+// (≤ 100 coordinates each), one request per second; missing pairs fall back to the road-graph estimate.
 async function fetchRoadMatrix() {
   if (!S || ROAD_BUSY || !navigator.onLine) return;
   const key = placesKey();
   if (ROAD && ROAD.key === key) return;
   ROAD_BUSY = true;
-  try {
-    const ids = S.places.map(p => p.id);
-    const res = await fetch(`${OSRM}/table/v1/driving/${coordStr(ids)}?annotations=duration,distance`);
-    const j = await res.json();
-    if (j.code !== 'Ok') throw new Error(j.code);
-    ROAD = { key, ids, dur: j.durations, dist: j.distances, at: Date.now() };
+  const ids = S.places.map(p => p.id), n = ids.length, C = 50;
+  const dur = ids.map(() => new Array(n).fill(null)), dist = ids.map(() => new Array(n).fill(null));
+  const chunks = []; for (let i = 0; i < n; i += C) chunks.push(ids.slice(i, i + C).map((_, k) => i + k));
+  let ok = 0;
+  for (const A of chunks) for (const B of chunks) {
+    const all = [...new Set([...A, ...B])], idx = new Map(all.map((g, k) => [g, k]));
+    try {
+      const res = await fetch(`${OSRM}/table/v1/driving/${coordStr(all.map(g => ids[g]))}?annotations=duration,distance&sources=${A.map(g => idx.get(g)).join(';')}&destinations=${B.map(g => idx.get(g)).join(';')}`);
+      const j = await res.json();
+      if (j.code !== 'Ok') throw new Error(j.code);
+      A.forEach((g, r) => B.forEach((h, c) => { dur[g][h] = j.durations[r][c]; dist[g][h] = j.distances[r][c]; }));
+      ok++;
+    } catch (e) { console.warn('road matrix chunk', e); }
+    if (chunks.length > 1) await new Promise(r => setTimeout(r, 1100));
+  }
+  if (ok) {
+    ROAD = { key: ok === chunks.length ** 2 ? key : 'partial', ids, dur, dist, at: Date.now() };
     try { localStorage.setItem(LS_ROAD, JSON.stringify(ROAD)); } catch (e) { }
     DRIVE_CACHE.clear(); GRAPH = null; GRAPH_DIST.clear(); render();
-  } catch (e) { console.warn('road matrix', e); }
+  }
   ROAD_BUSY = false;
 }
 const ROUTE_BUSY = new Set();
