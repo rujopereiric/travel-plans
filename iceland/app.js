@@ -528,7 +528,7 @@ async function boot() {
   if (saved && saved.state) {
     S = saved.state; BASE_HASH = saved.base; DIRTY = !!saved.dirty;
     if (file && fh !== saved.base) {
-      if (!DIRTY) { S = file; BASE_HASH = fh; } else PENDING = { file, hash: fh };
+      if (!DIRTY) { S = file; BASE_HASH = fh; } else { PENDING = { file, hash: fh }; mergePlaceInfo(S, file); }
     }
   } else if (file) { S = file; BASE_HASH = fh; }
   if (S) { S = normalize(S); reindex(); persist(DIRTY); }
@@ -537,6 +537,19 @@ async function boot() {
   const t = todayISO();
   if (S && dayObj(t) && UI.lastAutoOpen !== t) { UI.open[t] = true; UI.lastAutoOpen = t; }
   render();
+}
+// Descriptive place fields aren't edited in the app, so newer data.json content can be merged into a locally edited plan
+// without asking: new places, categories, summaries, photos titles, links, priorities and sleep flags.
+const INFO_FIELDS = ['cat', 'summary', 'facts', 'winter', 'wiki', 'links', 'caution', 'note', 'priority', 'sleep', 'suggest', 'needsDaylight'];
+function mergePlaceInfo(local, file) {
+  local.places = local.places || [];
+  for (const fp of file.places || []) {
+    const lp = local.places.find(p => p.id === fp.id);
+    if (!lp) { local.places.push(fp); continue; }
+    for (const k of INFO_FIELDS) if (fp[k] !== undefined) lp[k] = fp[k];
+  }
+  if (file.categories) local.categories = file.categories;
+  for (const k of Object.keys(file.settings || {})) if (local.settings && local.settings[k] === undefined) local.settings[k] = file.settings[k];
 }
 const firstPlanDay = () => (S.days.find(d => d.date >= todayISO() && blockOf(d.date)) || S.days.find(d => blockOf(d.date)))?.date;
 
@@ -619,7 +632,7 @@ function placeOptions(sel, { blank = '', exclude = [] } = {}) {
 /* ---------- render: plan tab ---------- */
 function renderPlan() {
   let h = '';
-  if (PENDING) h += `<div class="banner"><b>data.json has changed</b> since your local copy was made, and you have local edits.
+  if (PENDING) h += `<div class="banner"><b>data.json has changed</b> since your local copy was made, and you have local edits. New place info has already been merged in; you only need the file version if you want its days, plans or bookings.
     <div class="row" style="margin-top:8px"><button class="btn small primary" data-act="pending-load">Use data.json</button>
     <button class="btn small" data-act="pending-keep">Keep my edits</button><button class="btn small" data-act="export">Export mine first</button></div></div>`;
   h += `<div class="legend"><span><i style="background:var(--day)"></i>Daylight</span><span><i style="background:var(--twilight)"></i>Twilight</span>
