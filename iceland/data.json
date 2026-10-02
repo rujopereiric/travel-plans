@@ -171,14 +171,26 @@
       "lat": 63.6156,
       "lon": -19.9886,
       "visit": 45,
-      "note": "You can walk behind the falls — waterproofs, and the path gets icy. Gljúfrabúi (hidden falls) is a short walk north.",
+      "note": "Walk behind the falls (often closed when icy). Gljúfrabúi is on the same parking ticket.",
       "priority": 3,
       "cat": "Waterfall",
       "wiki": "Seljalandsfoss",
       "summary": "A slender ~60 m waterfall dropping over an old sea cliff right by the Ring Road. A path loops behind the curtain of water — you will get wet. Gljúfrabúi, a waterfall hidden inside a narrow canyon, is a 10-minute walk north.",
-      "facts": ["Time: 45–60 min", "Paid parking", "Waterproof jacket + shoes with grip"],
-      "winter": "The path behind the falls is often closed or treacherous with ice — bring microspikes or just view from the front.",
-      "links": []
+      "facts": [
+        "45 min incl. Gljúfrabúi",
+        "5 min flat walk; loop behind falls ~10–15 min",
+        "Parking 900–1,000 ISK (Check-it/kiosk), covers Gljúfrabúi",
+        "Toilets, kiosk"
+      ],
+      "winter": "The path behind the falls is usually closed in icy conditions (and in thaw for rockfall). Bring microspikes. Floodlit after dark.",
+      "links": [],
+      "sources": [
+        "https://www.iceland.org/waterfall/seljalandsfoss",
+        "https://www.travelreykjavik.com/attractions/seljalandsfoss-waterfall",
+        "https://www.icelandia.com/attractions/seljalandsfoss-waterfall"
+      ],
+      "confidence": "high",
+      "checked": "2026-10-02"
     },
     {
       "id": "skogafoss",
@@ -208,9 +220,12 @@
       "cat": "Waterfall",
       "wiki": "Kvernufoss",
       "summary": "A quieter waterfall in a mossy gorge just east of Skógar. A short walk from the parking near the Skógar Museum, and like Seljalandsfoss you can walk behind it — but with a fraction of the crowds.",
-      "facts": ["Time: ~40 min", "Walk ~15–20 min each way, a stile and a stream crossing"],
+      "facts": ["45 min", "~1.5 km return", "Parking 750 ISK (Parka)", "Uses Skógar museum area"],
       "winter": "Muddy or icy path; can be slippery in the gorge.",
-      "links": []
+      "links": [],
+      "sources": ["https://happycampers.is/driving-in-iceland-parking-fees-and-road-tolls/"],
+      "confidence": "medium",
+      "checked": "2026-10-02"
     },
     {
       "id": "dc3",
@@ -226,12 +241,19 @@
       "wiki": "Sólheimasandur",
       "summary": "The fuselage of a US Navy Douglas DC-3 (C-117) that crash-landed on the black sand plain in 1973 — everyone survived. The stark wreck in an empty black desert is one of the most photographed sights in the south.",
       "facts": [
-        "Time: ~2.5 h on foot (4 km each way, flat)",
-        "Shuttle from the parking ~3400 ISK return, 10:00–17:00",
-        "No facilities at the wreck"
+        "2–2.5 h",
+        "~7.5 km return on flat sand (shuttle extra when running)",
+        "Parking 750 ISK (Parka)",
+        "Toilets at car park"
       ],
-      "winter": "Exposed and windy with no shelter; in the dark it is easy to lose the path. Start early.",
-      "links": []
+      "winter": "Start with 3+ hours of daylight left; easy to get disoriented in snow or fog on the open sand.",
+      "links": [],
+      "sources": [
+        "https://happycampers.is/driving-in-iceland-parking-fees-and-road-tolls/",
+        "https://www.rexby.com/is/arontphotos/t/iceland-parking-and-entrance-fee-guide-updated-2025"
+      ],
+      "confidence": "medium",
+      "checked": "2026-10-02"
     },
     {
       "id": "solheimajokull",
@@ -241,13 +263,27 @@
       "lon": -19.3686,
       "visit": 60,
       "note": "Glacier tongue — you can drive almost to the ice. Don't go onto the glacier without a guide.",
-      "priority": 2,
+      "priority": 1,
       "cat": "Glacier",
       "wiki": "Sólheimajökull",
       "summary": "An outlet glacier tongue of Mýrdalsjökull, the ice cap that covers the Katla volcano. A short walk from the car park brings you to a lagoon at the foot of the ice. Guided glacier walks with crampons start here.",
-      "facts": ["Time: ~1 h to view; glacier walks ~3 h", "Paid parking", "Signs show how far the ice has retreated"],
-      "winter": "Never walk onto the glacier without a guide — crevasses and moulins.",
-      "links": []
+      "facts": ["45–60 min", "~1 km to viewpoint (route changing)", "Parking 750 ISK (Parka)", "Toilets at car park"],
+      "winter": "IMO warning (22 Jul 2026): new lagoon, thinning ice ridge on the access route and rockfall from Jökulhaus. Operators cancelled ice trips and scouted new routes; the site stays open but at your own risk. View from the moraine only; do not step onto the ice unguided. Ask operators which glacier walks actually run in November.",
+      "links": [
+        {
+          "name": "IMO warning",
+          "url": "https://en.vedur.is/about-imo/news/increased-hazard-due-to-changing-conditions-at-the-margin-of-solheimajokull-glacier"
+        }
+      ],
+      "sources": [
+        "https://en.vedur.is/about-imo/news/increased-hazard-due-to-changing-conditions-at-the-margin-of-solheimajokull-glacier",
+        "https://www.south.is/en/travel-info/newsblog/increased-hazard-at-solheimajokull-glacier",
+        "https://www.icelandreview.com/news/nature-travel/solheimajokull-helicopter-rescue-glacier-safety/",
+        "https://happycampers.is/driving-in-iceland-parking-fees-and-road-tolls/"
+      ],
+      "confidence": "high",
+      "checked": "2026-10-02",
+      "caution": "IMO hazard warning 2026: changing glacier margin and rockfall. View from the moraine only."
     },
     {
       "id": "dyrholaey",
@@ -261,9 +297,12 @@
       "cat": "Viewpoint",
       "wiki": "Dyrhólaey",
       "summary": "A 120 m promontory with a huge natural rock arch and a lighthouse on top. From here you look along endless black beaches west and across to the Reynisdrangar sea stacks east.",
-      "facts": ["Time: 40 min", "Two parts: lower (beach & arch view) and upper (lighthouse, steep road)", "Free"],
-      "winter": "The steep road to the top can be icy or closed in high winds. Gusts on the cliff edge are dangerous.",
-      "links": []
+      "facts": ["45 min", "Short walks", "Parking 750 ISK (Parka)", "None"],
+      "winter": "Steep gravel road to the upper lighthouse can be slippery; lower lot is easier. (Seasonal nesting closure is spring only.)",
+      "links": [],
+      "sources": ["https://happycampers.is/driving-in-iceland-parking-fees-and-road-tolls/"],
+      "confidence": "medium",
+      "checked": "2026-10-02"
     },
     {
       "id": "reynisfjara",
@@ -278,12 +317,21 @@
       "wiki": "Reynisfjara",
       "summary": "The famous black sand beach west of Vík, with hexagonal basalt columns, a sea cave and the Reynisdrangar sea stacks offshore. Dramatic and beautiful — and genuinely dangerous.",
       "facts": [
-        "Time: 40 min",
-        "Café and toilets at the car park",
-        "A warning-light system at the entrance shows the sea conditions"
+        "45–60 min",
+        "Short walk",
+        "Parking 1,000 ISK (near lot) or 750 ISK (far lot), Parka",
+        "Café/restaurant by car park"
       ],
-      "winter": "Sneaker waves sweep far up the beach without warning and have killed visitors. Stay well back from the water, especially in winter swell.",
-      "links": []
+      "winter": "Feb 2026 storms caused a landslide and heavy erosion: narrower beach, damaged viewing platform, cave mouth exposed. Obey the warning lights: yellow = stay out of the marked zone; red = beach closed, Hálsanefshellir cave and basalt columns closed. Autumn surf is at its worst.",
+      "links": [],
+      "sources": [
+        "https://guidetoiceland.is/travel-iceland/drive/reynisfjara",
+        "https://adventures.is/iceland/attractions/reynisfjara/",
+        "https://ondatravel.pl/en/reynisfjara-black-sand-beach-iceland-why-the-beach-kills-tourists/"
+      ],
+      "confidence": "high",
+      "checked": "2026-10-02",
+      "caution": "Obey the warning lights: red = beach closed."
     },
     {
       "id": "vik",
@@ -308,18 +356,31 @@
       "id": "fjadrargljufur",
       "name": "Fjaðrárgljúfur",
       "region": "south",
-      "lat": 63.7714,
-      "lon": -18.1716,
+      "lat": 63.7713,
+      "lon": -18.1723,
       "visit": 45,
       "note": "",
-      "caution": "Often closed in winter — check before you commit to it.",
+      "caution": "Lower car park only (F206 to the upper lot is an F-road). Trail may be closed in thaw.",
       "priority": 1,
       "cat": "Canyon",
       "wiki": "Fjaðrárgljúfur",
       "summary": "A serpentine canyon about 100 m deep and 2 km long, carved into soft rock with moss-covered walls. A trail follows the rim with viewing platforms looking down into the gorge.",
-      "facts": ["Time: 45 min–1 h", "Paid parking", "Just off the Ring Road on a short gravel road"],
-      "winter": "The trail is often closed in winter and spring to protect the vegetation when the ground is wet — check before you drive there.",
-      "links": []
+      "facts": [
+        "1–1.5 h",
+        "Rim trail ~3.4 km return from lower lot",
+        "Parking 1,000 ISK (Parka), valid to midnight",
+        "Toilets at lower lot"
+      ],
+      "winter": "Use the LOWER car park at the end of Road 206 (gravel, OK for 2WD driven slowly). The upper lot is reached via F206, an F-road, so skip it. The Environment Agency has closed the trail during wet thaw periods to protect vegetation; Road 206 can be blocked after heavy snow. Never enter the canyon floor.",
+      "links": [],
+      "sources": [
+        "https://guidetoiceland.is/travel-iceland/drive/fjadrargljufur",
+        "https://annatee.co/fjadrargljufur-canyon-hike/",
+        "https://adventures.is/iceland/attractions/fjadrargljufur/",
+        "https://www.icelandtours.is/travel-guide/parking-in-iceland/"
+      ],
+      "confidence": "high",
+      "checked": "2026-10-02"
     },
     {
       "id": "kirkjubaejarklaustur",
@@ -351,30 +412,52 @@
       "sleep": true,
       "cat": "National park",
       "wiki": "Skaftafell",
-      "summary": "Part of Vatnajökull National Park, below Iceland's highest peaks. The classic walk climbs to Svartifoss, a waterfall framed by black basalt columns. Another easy trail leads to the face of the Skaftafellsjökull glacier.",
+      "summary": "Part of Vatnajökull National Park, below Iceland's highest peaks. The classic walk climbs to Svartifoss, a waterfall framed by black basalt columns. Another easy trail leads to the face of the Skaftafellsjökull glacier. Svartifoss is ~5.5 km return and uphill; plan 1.5–2 h and bring microspikes.",
       "facts": [
-        "Svartifoss: ~1.5 h return, uphill",
-        "Glacier viewpoint: ~1 h return, flat",
-        "Visitor centre; paid parking"
+        "2–3 h (Svartifoss loop)",
+        "Svartifoss ~5.5 km return",
+        "Regional parking fee ~1,100 ISK; 50% off same-day second VNP area",
+        "Visitor centre, toilets, café"
       ],
       "winter": "Trails can be icy. Glacier hikes and ice-cave tours often meet here.",
-      "links": [{"name": "Vatnajökull National Park", "url": "https://www.vatnajokulsthjodgardur.is/en"}]
+      "links": [{"name": "Vatnajökull National Park", "url": "https://www.vatnajokulsthjodgardur.is/en"}],
+      "sources": [
+        "https://www.vatnajokulsthjodgardur.is/en/payment-of-camping-and-regional-fees",
+        "https://www.icelandtours.is/travel-guide/parking-in-iceland/"
+      ],
+      "confidence": "medium",
+      "checked": "2026-10-02"
     },
     {
       "id": "jokulsarlon",
       "name": "Jökulsárlón",
       "region": "south",
-      "lat": 64.0784,
-      "lon": -16.2306,
+      "lat": 64.0479,
+      "lon": -16.179,
       "visit": 60,
       "note": "380 km from Reykjavík. Diamond Beach is across the road. Blue ice cave tours (Nov–Mar) leave from this area.",
       "priority": 3,
       "cat": "Glacier lagoon",
       "wiki": "Jökulsárlón",
       "summary": "A lagoon full of icebergs calved from the Breiðamerkurjökull glacier, often with seals swimming among them. Across the road, ice chunks wash up on the black sand of \"Diamond Beach\". The highlight of the south coast for most visitors.",
-      "facts": ["Time: 1 h+ (lagoon + Diamond Beach)", "Café and toilets", "380 km / ~5 h from Reykjavík"],
+      "facts": [
+        "1–2 h (half day with tours)",
+        "Short walks along shore",
+        "Regional parking fee ~1,000–1,100 ISK/day (Parka zone 7202); same zone as Diamond Beach; 50% off if you paid another Vatnajökull NP area the same day",
+        "Café, toilets, tour meeting points"
+      ],
       "winter": "Natural blue ice caves under Vatnajökull can only be visited on guided tours, roughly November to March. Many tours meet here or in Skaftafell.",
-      "links": [{"name": "Vatnajökull National Park", "url": "https://www.vatnajokulsthjodgardur.is/en"}]
+      "links": [
+        {"name": "Vatnajökull National Park", "url": "https://www.vatnajokulsthjodgardur.is/en"},
+        {"name": "Vatnajökull NP price list", "url": "https://www.vatnajokulsthjodgardur.is/en/pricelist"}
+      ],
+      "sources": [
+        "https://www.vatnajokulsthjodgardur.is/en/payment-of-camping-and-regional-fees",
+        "https://www.icelandtours.is/travel-guide/parking-in-iceland/",
+        "https://jokulsarlon-glacier-lagoon.com/parking/"
+      ],
+      "confidence": "medium",
+      "checked": "2026-10-02"
     },
     {
       "id": "thingvellir",
@@ -388,9 +471,17 @@
       "cat": "National park",
       "wiki": "Þingvellir",
       "summary": "A UNESCO site where Iceland's parliament, the Alþingi, met in the open air from 930 AD. It sits in a rift valley where you walk between the North American and Eurasian plates; Almannagjá gorge is the main path. Silfra fissure, famous for snorkelling, is here too.",
-      "facts": ["Time: 1 h", "Paid parking", "First stop of the Golden Circle, ~45 min from Reykjavík"],
+      "facts": [
+        "1.5–3 h",
+        "Almannagjá walk ~1–2 km",
+        "Parking 1,000 ISK (car ≤5 seats), 1,200 ISK (6–9 seats); one fee valid all day in P1–P3 and P5",
+        "Visitor centre at Hakið (P1)"
+      ],
       "winter": "Paths can be icy; the open plain is good for aurora on clear nights.",
-      "links": [{"name": "Þingvellir National Park", "url": "https://www.thingvellir.is/en/"}]
+      "links": [{"name": "Þingvellir National Park", "url": "https://www.thingvellir.is/en/"}],
+      "sources": ["https://www.thingvellir.is/en/service/parking-service/"],
+      "confidence": "high",
+      "checked": "2026-10-02"
     },
     {
       "id": "geysir",
@@ -404,9 +495,12 @@
       "cat": "Geothermal",
       "wiki": "Geysir",
       "summary": "The geothermal field that gave all geysers their name. The Great Geysir itself is mostly dormant, but Strokkur next to it erupts every few minutes, shooting boiling water 15–30 m up. Bubbling hot pools and steaming vents surround it.",
-      "facts": ["Time: 40 min", "Free entry", "Hotel, restaurant and shops across the road"],
+      "facts": ["45–60 min", "Short paths", "Parking 1,000 ISK (Parka)", "Food court, toilets"],
       "winter": "Ground around the pools can be icy. Stay behind the ropes — the water is near boiling.",
-      "links": []
+      "links": [],
+      "sources": ["https://happycampers.is/driving-in-iceland-parking-fees-and-road-tolls/"],
+      "confidence": "medium",
+      "checked": "2026-10-02"
     },
     {
       "id": "gullfoss",
@@ -431,15 +525,25 @@
       "lat": 64.927,
       "lon": -23.307,
       "visit": 30,
-      "note": "Sleep in Grundarfjörður, next to the mountain.",
+      "note": "Sleep in Grundarfjörður (hostel ~3 km away).",
       "priority": 3,
-      "sleep": true,
       "cat": "Mountain",
       "wiki": "Kirkjufell",
       "summary": "The steep, arrowhead-shaped mountain (463 m) beside the village of Grundarfjörður, possibly the most photographed in Iceland. The classic view is from the small Kirkjufellsfoss waterfall across the road. It also appears in Game of Thrones.",
-      "facts": ["Time: 30 min for the photo stop", "Grundarfjörður has fuel, a shop and guesthouses"],
-      "winter": "A favourite aurora foreground on clear nights.",
-      "links": []
+      "facts": [
+        "30 min at Kirkjufellsfoss viewpoint",
+        "Short loop path",
+        "Parking 700–1,000 ISK",
+        "No toilets reported"
+      ],
+      "winter": "Do not attempt the mountain itself; it has seen fatal falls. Good aurora foreground.",
+      "links": [],
+      "sources": [
+        "https://hiticeland.com/post/mt-kirkjufell-and-kirkjufellsfoss-waterfall",
+        "https://happycampers.is/driving-in-iceland-parking-fees-and-road-tolls/"
+      ],
+      "confidence": "medium",
+      "checked": "2026-10-02"
     },
     {
       "id": "arnarstapi",
@@ -469,9 +573,21 @@
       "cat": "Beach",
       "wiki": "Djúpalónssandur",
       "summary": "A black pebble beach in Snæfellsjökull National Park, reached by a short path through lava formations. The rusted remains of the British trawler Epine, wrecked in 1948, lie across the beach. Four old lifting stones once tested fishermen's strength.",
-      "facts": ["Time: 40 min", "Short walk down from the car park", "Toilets at the car park"],
+      "facts": [
+        "45–60 min",
+        "~10 min walk down to beach",
+        "NEW: Snæfellsjökull NP service fee since 13 Aug 2026, ~1,100 ISK per car, one payment valid park-wide until midnight (Parka zone 3200 or Malarrif kiosk)",
+        "Toilets at car park"
+      ],
       "winter": "Like Reynisfjara, the surf here is dangerous — don't go near the water's edge.",
-      "links": []
+      "links": [{"name": "Official site", "url": "https://snaefellsjokull.is/en/"}],
+      "sources": [
+        "https://snaefellsjokull.is/en/",
+        "https://happycampers.is/driving-in-iceland-parking-fees-and-road-tolls/",
+        "https://www.fartravel.is/iceland/attractions/snaefellsjokull-national-park"
+      ],
+      "confidence": "high",
+      "checked": "2026-10-02"
     },
     {
       "id": "bluelagoon",
@@ -486,9 +602,25 @@
       "cat": "Spa",
       "wiki": "Blue Lagoon (geothermal spa)",
       "summary": "A geothermal spa with milky-blue, silica-rich water at about 37–39 °C, set in a lava field on the Reykjanes peninsula. It's pricey and touristy, but very relaxing. Only 20 minutes from the airport, so it works well before a flight.",
-      "facts": ["Book a time slot in advance", "Time: 2–3 h", "Lockers and towels in the basic ticket"],
-      "winter": "Since 2023 the Reykjanes peninsula has had repeated volcanic eruptions nearby. The lagoon closes temporarily when there's eruption risk, so check its status before you go.",
-      "links": [{"name": "Blue Lagoon", "url": "https://www.bluelagoon.com/"}]
+      "facts": [
+        "2–3 h",
+        "Short walk from car park",
+        "Comfort from ~11,990 ISK, Premium ~14,990 ISK (2026, varies by slot)",
+        "Timed entry; book ahead"
+      ],
+      "winter": "Open as of late 2026, but magma under Svartsengi has passed the volume drained in the last eruption; IMO says a new intrusion/eruption on the Sundhnúkur crater row is the most likely scenario and the spa evacuates at short notice. Check bluelagoon.com and vedur.is the day before; keep a Sky Lagoon backup.",
+      "links": [
+        {"name": "Blue Lagoon", "url": "https://www.bluelagoon.com/"},
+        {"name": "IMO hazard map", "url": "https://en.vedur.is/volcanoes/fagradalsfjall-eruption/hazard-map/"}
+      ],
+      "sources": [
+        "https://en.vedur.is/about-imo/news/ground-uplift-and-magma-accumulation-continue-beneath-svartsengi",
+        "https://en.vedur.is/volcanoes/fagradalsfjall-eruption/hazard-map/",
+        "https://www.iceland-highlights.com/iceland-geothermal-lagoons-compared/"
+      ],
+      "confidence": "medium",
+      "checked": "2026-10-02",
+      "caution": "Volcanic risk at Svartsengi: can close/evacuate at short notice. Check the day before."
     },
     {
       "id": "kef",
@@ -511,16 +643,27 @@
       "id": "kerid",
       "name": "Kerið crater",
       "region": "golden",
-      "lat": 64.0411,
-      "lon": -20.8851,
+      "lat": 64.0419,
+      "lon": -20.8853,
       "visit": 30,
       "cat": "Crater",
       "summary": "A volcanic explosion crater about 55 m deep, with red and black walls and a lake at the bottom. A path runs round the rim and down to the water. It's an easy stop between Selfoss and the Golden Circle.",
-      "facts": ["Time: 30 min", "Small entrance fee", "Rim walk ~1 km"],
-      "wiki": "Kerið crater",
+      "facts": [
+        "30–45 min",
+        "Rim loop ~270 m circumference plus stairs to lake",
+        "Entrance 700 ISK per person; parking free",
+        "Food truck; card kiosk"
+      ],
+      "wiki": "Kerið",
       "priority": 2,
       "winter": "The rim path can be icy; the lake may be frozen.",
-      "links": []
+      "links": [{"name": "Official site", "url": "https://kerid.is/"}],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Keri%C3%B0",
+        "https://www.goldencircledaytours.is/blog/kerid-crater-entrance-fee-hours"
+      ],
+      "confidence": "high",
+      "checked": "2026-10-02"
     },
     {
       "id": "faxi",
@@ -561,26 +704,50 @@
       "visit": 90,
       "cat": "Spa",
       "summary": "Geothermal baths, hot pools and natural steam rooms on the shore of Lake Laugarvatn. Ask about the rye bread baked in the hot ground; there are demonstrations.",
-      "facts": ["Time: 1–2 h", "Paid entry", "On the road between Þingvellir and Geysir"],
+      "facts": [
+        "1.5–2 h",
+        "None",
+        "From 7,490 ISK adult (2026)",
+        "Rebuilt: infinity pools, sauna, cold plunge, geyser steam bath; rye-bread tour extra"
+      ],
       "wiki": "Laugarvatn",
       "priority": 1,
       "needsDaylight": false,
-      "links": []
+      "links": [{"name": "Official site", "url": "https://www.fontana.is"}],
+      "winter": "Closed Oct 2025–Jun 2026 for expansion; now fully reopened.",
+      "sources": [
+        "https://www.south.is/en/travel-info/newsblog/laugarvatn-fontana-reopens-after-full-renovation",
+        "https://www.iceland-highlights.com/iceland-geothermal-lagoons-compared/"
+      ],
+      "confidence": "high",
+      "checked": "2026-10-02"
     },
     {
       "id": "bruararfoss",
       "name": "Brúarárfoss",
       "region": "golden",
-      "lat": 64.2643,
-      "lon": -20.5157,
+      "lat": 64.2621,
+      "lon": -20.5209,
       "visit": 60,
       "cat": "Waterfall",
       "summary": "A small waterfall famous for its vivid turquoise water rushing into a narrow crack. Access and parking have changed over the years: check what's current before you go.",
-      "facts": ["Time: ~1 h", "Walk length depends on which car park you use"],
-      "wiki": "Brúarárfoss",
+      "facts": [
+        "30–45 min from new lot; 2–3 h via trail",
+        "~350 m from new lot; ~3.5 km each way from free trail lot (64.2401, -20.5241)",
+        "New lot 750 ISK (up to 4 h)",
+        "No toilets"
+      ],
+      "wiki": "Brúarfoss",
       "priority": 1,
-      "winter": "Riverside trail can be muddy or icy.",
-      "links": []
+      "winter": "New lot reached via ~3 km of gravel Brúarfossvegur off Road 37 (potholes); fine for 2WD in normal conditions. Riverside trail can be icy.",
+      "links": [],
+      "sources": [
+        "https://www.laidbacktrip.com/posts/bruarfoss-waterfall-hike-iceland",
+        "https://guidetoiceland.is/travel-iceland/drive/bruarfoss-waterfall",
+        "https://perlan.is/articles/bruarfoss-waterfall-iceland"
+      ],
+      "confidence": "high",
+      "checked": "2026-10-02"
     },
     {
       "id": "reykjadalur",
@@ -622,10 +789,13 @@
       "visit": 20,
       "cat": "Waterfall",
       "summary": "Iceland's highest-volume waterfall: the wide Þjórsá river pours over a low ledge. It's a 5-minute detour from the Ring Road east of Selfoss.",
-      "facts": ["Time: 15–20 min", "Free"],
+      "facts": ["20 min", "Short", "Parking 750 ISK (Parka)", "None"],
       "wiki": "Urriðafoss",
       "priority": 1,
-      "links": []
+      "links": [],
+      "sources": ["https://happycampers.is/driving-in-iceland-parking-fees-and-road-tolls/"],
+      "confidence": "medium",
+      "checked": "2026-10-02"
     },
     {
       "id": "selfoss",
@@ -714,14 +884,23 @@
       "region": "south",
       "lat": 64.0072,
       "lon": -16.8728,
-      "visit": 45,
+      "visit": 20,
       "cat": "Glacier",
       "summary": "A glacier tongue just past Skaftafell, with a jumble of blue ice right in front of the viewpoint. Scenes from Batman Begins and Interstellar were filmed here.",
       "facts": ["Time: 45 min", "Short gravel access road"],
       "wiki": "Svínafellsjökull",
-      "priority": 2,
-      "winter": "Access has been restricted at times because of rockslide risk. Check locally, and never step onto the ice.",
-      "links": []
+      "priority": 1,
+      "winter": "Civil Protection advises against travel on the glacier because of a monitored rock-slope crack; guided tours are suspended indefinitely. The two unpaved access roads are unmaintained and not ploughed in winter. If accessible, stop only briefly at the viewpoint. Treat as optional; Fjallsárlón/Falljökull are safer substitutes.",
+      "links": [],
+      "sources": [
+        "https://www.icelandia.com/attractions/svinafellsjokull",
+        "https://fjallsarlon.is/blog/svinafellsjokull-glacier-iceland-what-to-do-and-where-to-stay",
+        "https://localguide.is/category/our-favourites-in-iceland/"
+      ],
+      "confidence": "medium",
+      "checked": "2026-10-02",
+      "caution": "Tours suspended (rock-slope crack); access roads not ploughed in winter. Optional at best.",
+      "suggest": false
     },
     {
       "id": "fjallsarlon",
@@ -732,10 +911,21 @@
       "visit": 40,
       "cat": "Glacier lagoon",
       "summary": "A smaller, quieter glacier lagoon 10 km before Jökulsárlón, where the glacier comes right down to the water. Many people prefer it to its famous neighbour.",
-      "facts": ["Time: 30–45 min", "Short walk from the car park"],
+      "facts": [
+        "30–45 min",
+        "~100 m to viewpoint",
+        "Parking reported free (one Jan 2026 list shows 1,000 ISK; check signage)",
+        "Frost restaurant"
+      ],
       "wiki": "Fjallsárlón",
       "priority": 2,
-      "links": []
+      "links": [],
+      "sources": [
+        "https://fjallsarlonglacier.com/visit-fjallsarlon-parking-directions-tips.html",
+        "https://www.rexby.com/fr/mishamartin/t/paid-parking-in-iceland-smart-travel-tips-you-should-know"
+      ],
+      "confidence": "low",
+      "checked": "2026-10-02"
     },
     {
       "id": "diamondbeach",
@@ -746,11 +936,22 @@
       "visit": 30,
       "cat": "Beach",
       "summary": "Across the road from Jökulsárlón, chunks of glacier ice wash up and glitter on the black sand of Breiðamerkursandur. It's best at sunrise or sunset.",
-      "facts": ["Time: 20–30 min", "Both sides of the river mouth"],
+      "facts": [
+        "30–45 min",
+        "Short walk",
+        "Covered by the Jökulsárlón regional fee (Eystri and Vestri-Fellsfjara lots)",
+        "No facilities at beach; use Jökulsárlón"
+      ],
       "wiki": "Breiðamerkursandur",
       "priority": 2,
       "winter": "The same sneaker-wave danger as other black beaches. Never climb on the ice blocks in the surf.",
-      "links": []
+      "links": [],
+      "sources": [
+        "https://www.icelandtours.is/travel-guide/parking-in-iceland/",
+        "https://planpackexplore.com/your-complete-guide-to-diamond-beach-in-iceland/"
+      ],
+      "confidence": "medium",
+      "checked": "2026-10-02"
     },
     {
       "id": "hofn",
@@ -879,10 +1080,18 @@
       "visit": 30,
       "cat": "Coast",
       "summary": "Two dramatic basalt pinnacles, the eroded remains of a crater, standing on the coast below Snæfellsjökull.",
-      "facts": ["Time: 20–30 min", "Short walk from the viewpoint car park"],
+      "facts": [
+        "30–45 min",
+        "~1 km to viewpoint",
+        "Covered by the Snæfellsjökull NP fee (~1,100 ISK/day)",
+        "Malarrif visitor centre nearby"
+      ],
       "wiki": "Lóndrangar",
       "priority": 2,
-      "links": []
+      "links": [],
+      "sources": ["https://www.icelandtours.is/travel-guide/parking-in-iceland/", "https://snaefellsjokull.is/en/"],
+      "confidence": "high",
+      "checked": "2026-10-02"
     },
     {
       "id": "saxholl",
@@ -893,11 +1102,19 @@
       "visit": 30,
       "cat": "Crater",
       "summary": "A small scoria crater with a metal staircase of a few hundred steps to the rim. From the top there's a sweeping view over lava fields and the coast in Snæfellsjökull National Park.",
-      "facts": ["Time: 30 min", "Free"],
+      "facts": [
+        "20–30 min",
+        "Steel staircase ~400 steps",
+        "Inside the NP, so expect the park-wide parking fee (~1,100 ISK/day)",
+        "No facilities"
+      ],
       "wiki": "Saxhóll crater",
       "priority": 1,
       "winter": "The stairs can be icy and the rim very windy.",
-      "links": []
+      "links": [],
+      "sources": ["https://snaefellsjokull.is/en/", "https://www.iceland.org/snaefellsnes"],
+      "confidence": "medium",
+      "checked": "2026-10-02"
     },
     {
       "id": "stykkisholmur",
@@ -939,24 +1156,34 @@
       "visit": 30,
       "cat": "Coast",
       "summary": "Iceland's oldest lighthouse site, on a wild headland of sea cliffs. You can see the bird rock Eldey offshore and scramble up Valahnúkur hill.",
-      "facts": ["Time: 20–30 min", "Free"],
+      "facts": ["30–45 min", "Short scramble up Valahnúkur", "Parking 1,000 ISK (Parka)", "No facilities"],
       "wiki": "Reykjanesviti",
       "priority": 1,
-      "links": []
+      "links": [],
+      "winter": "Road 425 is open; the SW cluster (lighthouse, Gunnuhver, Bridge Between Continents, Brimketill) has had temporary closures during eruptions.",
+      "sources": [
+        "https://happycampers.is/driving-in-iceland-parking-fees-and-road-tolls/",
+        "https://www.iceland-highlights.com/things-to-do-and-see-in-reykjanes-peninsula/"
+      ],
+      "confidence": "medium",
+      "checked": "2026-10-02"
     },
     {
       "id": "bridgecontinents",
       "name": "Bridge Between Continents",
       "region": "reykjanes",
       "lat": 63.8682,
-      "lon": -22.6755,
+      "lon": -22.6754,
       "visit": 20,
       "cat": "Landmark",
       "summary": "A footbridge across a sandy fissure that marks the boundary between the North American and Eurasian plates. It's touristy but fun, and right on the road.",
       "facts": ["Time: 15–20 min", "Free"],
       "wiki": "Bridge Between Continents",
       "priority": 1,
-      "links": []
+      "links": [],
+      "sources": ["https://www.visitreykjanes.is/en/place/bridge-between-continents"],
+      "confidence": "high",
+      "checked": "2026-10-02"
     },
     {
       "id": "seltun",
@@ -967,10 +1194,23 @@
       "visit": 30,
       "cat": "Geothermal",
       "summary": "Colourful hills streaked yellow and red around hissing steam vents and mud pots, with a boardwalk loop. It's on the Krýsuvík road south of Hafnarfjörður.",
-      "facts": ["Time: 30 min", "Free"],
+      "facts": [
+        "30–45 min",
+        "Boardwalk loop",
+        "Parking 750 ISK (Check-it camera billing; many guides still wrongly say free)",
+        "Toilets"
+      ],
       "wiki": "Krýsuvík",
       "priority": 1,
-      "links": []
+      "links": [],
+      "winter": "Boardwalks can be icy. IMO has also reported faster subsidence at Krýsuvík in 2026; no closure, but stay on paths.",
+      "sources": [
+        "https://www.checkit.is/en-gb/seltun",
+        "https://www.icelandreview.com/news/parking-fees-introduced-at-popular-krysuvik-geothermal-site/",
+        "https://en.vedur.is/about-imo/news/earthquake-in-brennisteinsfjoll-faster-subsidence-in-krysuvik-and-continued-magma-accumulation-at-svartsengi"
+      ],
+      "confidence": "high",
+      "checked": "2026-10-02"
     },
     {
       "id": "kleifarvatn",
@@ -995,11 +1235,22 @@
       "visit": 120,
       "cat": "Spa",
       "summary": "An oceanside geothermal lagoon in Kópavogur with an infinity edge looking out to sea. Its 7-step ritual includes a cold plunge, sauna and scrub. It's 15 minutes from the centre.",
-      "facts": ["Book a time slot", "Time: 2 h"],
+      "facts": [
+        "2 h",
+        "None",
+        "Passes renamed Saman (ex-Pure) and Sér (ex-Sky); Saman from ~13,990 ISK in 2026",
+        "Timed entry, age 12+"
+      ],
       "wiki": "Sky Lagoon",
       "priority": 1,
       "needsDaylight": false,
-      "links": [{"name": "Sky Lagoon", "url": "https://www.skylagoon.com/"}]
+      "links": [{"name": "Sky Lagoon", "url": "https://www.skylagoon.com/"}],
+      "sources": [
+        "https://www.northbound.is/blog/306/complete-guide-to-sky-lagoon-in-Iceland",
+        "https://www.iceland-highlights.com/iceland-geothermal-lagoons-compared/"
+      ],
+      "confidence": "medium",
+      "checked": "2026-10-02"
     },
     {
       "id": "hallgrimskirkja",
@@ -1061,6 +1312,385 @@
       "winter": "Good spot for aurora on clear nights. Watch the tide if you cross to the islet.",
       "needsDaylight": false,
       "links": []
+    },
+    {
+      "id": "katlacave",
+      "name": "Katla Ice Cave tour (from Vík)",
+      "region": "south",
+      "lat": 63.419,
+      "lon": -19.01,
+      "visit": 180,
+      "cat": "Tour",
+      "summary": "Super-jeep trip from Vík to a natural ice cave in Kötlujökull, striped with black ash from the Katla volcano. The only natural ice cave that runs year-round, so it is the safest bet in early November when Vatnajökull caves may not be open yet.",
+      "facts": [
+        "~3 h",
+        "Moderate glacier walk with crampons",
+        "Book online; crampons, helmet, headlamp included",
+        "Meet Troll Expeditions at Víkurbraut, Vík"
+      ],
+      "winter": "Runs all year; cave shape changes. Good weather back-up for a Vík night.",
+      "wiki": "Mýrdalsjökull",
+      "links": [
+        {
+          "name": "Troll Expeditions",
+          "url": "https://troll.is/tour/dragon-glass-katla-ice-cave-super-jeep-from-vik"
+        }
+      ],
+      "priority": 2,
+      "sources": [
+        "https://troll.is/tour/dragon-glass-katla-ice-cave-super-jeep-from-vik",
+        "https://dra.tourdesk.is/en/Tour/Item/35145/1/Katla_Ice_Cave_|_Super_Jeep_from_Vik"
+      ],
+      "confidence": "medium",
+      "checked": "2026-10-02"
+    },
+    {
+      "id": "icecave",
+      "name": "Vatnajökull blue ice cave tours (Jökulsárlón meeting point)",
+      "region": "south",
+      "lat": 64.0479,
+      "lon": -16.179,
+      "visit": 210,
+      "cat": "Tour",
+      "summary": "Natural blue ice caves in Breiðamerkurjökull, reached by modified 4×4 from the Jökulsárlón car park. The classic Iceland winter image; operators include Local Guide (black trucks, main lot), Arctic Adventures (Crystal Ice Cave) and others.",
+      "facts": ["2.5–4 h", "1–5 km on uneven ground/ice", "From ~$166–195 pp; book ahead", "Gear provided"],
+      "winter": "Season is roughly Nov–Mar and is set only after guides scout caves in Sep/Oct; early-November availability is thin, and in 2025 Local Guide substituted a blue-ice glacier tour when its cave was unsafe. Book refundable and confirm the week before.",
+      "wiki": "Breiðamerkurjökull",
+      "links": [
+        {"name": "Local Guide", "url": "https://localguide.is/ice-cave-tour/"},
+        {"name": "Arctic Adventures", "url": "https://adventures.is/iceland/day-tours/ice-caves/"}
+      ],
+      "priority": 3,
+      "sources": [
+        "https://localguide.is/ice-cave-tour/",
+        "https://www.getyourguide.com/jokulsarlon-l2030/vatnajokull-glacier-ice-cave-tour-t381404/",
+        "https://vatnajokullicecaves.com/",
+        "https://jokulsarlon-glacier-lagoon.com/ice-cave-tours/"
+      ],
+      "confidence": "medium",
+      "checked": "2026-10-02"
+    },
+    {
+      "id": "glacieradventure",
+      "name": "Glacier Adventure base camp (Hali)",
+      "region": "south",
+      "lat": 64.1295,
+      "lon": -16.0161,
+      "visit": 240,
+      "cat": "Tour",
+      "summary": "Family-run operator whose ice-cave tours start from Hali, 10 min east of Jökulsárlón, with an ice cave + zodiac combo listed for November. Handy if you sleep at Hali/Skyrhúsið.",
+      "facts": ["3.5–4 h", "Moderate", "Book online", "Next to Hali Country Hotel"],
+      "winter": "November departures listed at 08:30 or 10:00; cave opening subject to conditions.",
+      "wiki": "Breiðamerkurjökull",
+      "links": [
+        {
+          "name": "Official site",
+          "url": "https://glacieradventure.is/tour/ice-cave-magic-zodiac-boat-ice-cave-tour/"
+        }
+      ],
+      "priority": 2,
+      "sources": ["https://glacieradventure.is/tour/ice-cave-magic-zodiac-boat-ice-cave-tour/"],
+      "confidence": "medium",
+      "checked": "2026-10-02"
+    },
+    {
+      "id": "falljokull",
+      "name": "Falljökull glacier hike (Skaftafell)",
+      "region": "south",
+      "lat": 64.0162,
+      "lon": -16.9667,
+      "visit": 210,
+      "cat": "Glacier",
+      "summary": "Guided crampon hike on Falljökull, a Vatnajökull outlet glacier with seracs and crevasses. The reliable glacier-walk alternative while Sólheimajökull is unstable.",
+      "facts": [
+        "2.5–5 h",
+        "Short bus + hike to ice",
+        "~$155–160 pp",
+        "Icelandic Mountain Guides at Skaftafell campsite base; Melrakki at Skaftafell Terminal; Troll at Hof (free parking)"
+      ],
+      "winter": "Runs in winter; some tours add a natural blue ice cave in season.",
+      "wiki": "Falljökull",
+      "links": [
+        {
+          "name": "Icelandic Mountain Guides",
+          "url": "https://www.mountainguides.is/tour/glacier-walk-express"
+        },
+        {"name": "Troll Expeditions", "url": "https://www.troll.is/skaftafell"}
+      ],
+      "priority": 2,
+      "sources": [
+        "https://www.mountainguides.is/tour/glacier-walk-express",
+        "https://www.troll.is/skaftafell",
+        "https://www.funiceland.is/things-to-do/day-tours/skaftafell-glacier-adventure"
+      ],
+      "confidence": "medium",
+      "checked": "2026-10-02"
+    },
+    {
+      "id": "gljufrabui",
+      "name": "Gljúfrabúi",
+      "region": "south",
+      "lat": 63.6206,
+      "lon": -19.9862,
+      "visit": 20,
+      "cat": "Waterfall",
+      "summary": "Hidden waterfall inside a narrow gorge, a short walk north of Seljalandsfoss. Same parking ticket.",
+      "facts": [
+        "20 min",
+        "~750 m flat from Seljalandsfoss; shallow stream wade to enter gorge",
+        "Included in Seljalandsfoss parking",
+        "Shared facilities"
+      ],
+      "winter": "Stream and rocks icy; viewing from outside is fine.",
+      "wiki": "Gljúfrabúi",
+      "links": [],
+      "priority": 2,
+      "sources": [
+        "https://www.iceland-highlights.com/destination/seljalandsfoss-waterfall/",
+        "https://guidetoiceland.is/travel-iceland/drive/seljalandsfoss"
+      ],
+      "confidence": "medium",
+      "checked": "2026-10-02"
+    },
+    {
+      "id": "intotheglacier",
+      "name": "Into the Glacier – Langjökull ice tunnel",
+      "region": "west",
+      "lat": 64.6992,
+      "lon": -20.8686,
+      "visit": 240,
+      "cat": "Tour",
+      "summary": "Man-made ice tunnel high on Langjökull, reached by 8×8 glacier truck from Húsafell. Runs year-round and pairs well with Hraunfossar and Deildartunguhver.",
+      "facts": ["~4 h from Húsafell", "~1 h walk inside tunnel", "Paid tour; book online", "Meet at Húsafell Center"],
+      "winter": "Winter schedule from 16 Oct; truck ride ~75 min each way. Operator says to use Roads 1, 50 and 518 to Húsafell in winter (all paved).",
+      "wiki": "Langjökull",
+      "links": [
+        {
+          "name": "Official site",
+          "url": "https://intotheglacier.is/tour/unique-cinema-experience-inside-langjokull-glacier/"
+        }
+      ],
+      "priority": 2,
+      "sources": ["https://intotheglacier.is/tour/unique-cinema-experience-inside-langjokull-glacier/"],
+      "confidence": "high",
+      "checked": "2026-10-02"
+    },
+    {
+      "id": "vatnshellir",
+      "name": "Vatnshellir lava cave",
+      "region": "snaefellsnes",
+      "lat": 64.75,
+      "lon": -23.817,
+      "visit": 60,
+      "cat": "Tour",
+      "summary": "8,000-year-old lava tube entered by spiral staircases, guided by Summit Adventure Guides. A good wind- and rain-proof stop on the Snæfellsnes loop.",
+      "facts": [
+        "45 min tour",
+        "Two spiral staircases, uneven floor",
+        "Paid tour; age 5+",
+        "Meet at hut above car park off Road 574"
+      ],
+      "winter": "Runs year-round with 3 tours/day in winter; NP parking fee applies.",
+      "wiki": "Vatnshellir",
+      "links": [{"name": "Summit Adventure Guides", "url": "https://www.west.is/en/service/summit-adventure-guides-1"}],
+      "priority": 2,
+      "sources": [
+        "https://www.icelandtours.is/attractions/vatnshellir-lava-cave/",
+        "https://www.iceland-highlights.com/tour/vatnshellir-cave-admission/"
+      ],
+      "confidence": "medium",
+      "checked": "2026-10-02",
+      "needsDaylight": false
+    },
+    {
+      "id": "bjarnarhofn",
+      "name": "Bjarnarhöfn Shark Museum",
+      "region": "snaefellsnes",
+      "lat": 65.011,
+      "lon": -22.964,
+      "visit": 60,
+      "cat": "Museum",
+      "summary": "Farm museum on Iceland's fermented-shark tradition, with a tasting. A warm indoor stop between Stykkishólmur and Grundarfjörður.",
+      "facts": ["45–60 min", "None", "Paid entry incl. tasting", "Short gravel spur off Road 54"],
+      "winter": "Check opening hours ahead in November.",
+      "wiki": "Bjarnarhöfn",
+      "links": [],
+      "priority": 1,
+      "sources": ["https://www.hostel.is/en/hostels/hi-grundarfjordur"],
+      "confidence": "low",
+      "checked": "2026-10-02",
+      "needsDaylight": false,
+      "caution": "Not fully verified — confirm it's open (and the location) before you go."
+    },
+    {
+      "id": "brimketill",
+      "name": "Brimketill",
+      "region": "reykjanes",
+      "lat": 63.823,
+      "lon": -22.58,
+      "visit": 20,
+      "cat": "Coast",
+      "summary": "Lava-rock sea pool where Atlantic swells explode against the cliffs, best on rough days. Free, short boardwalk.",
+      "facts": ["15–20 min", "Short boardwalk", "Free", "None"],
+      "winter": "Stay on the platform: waves overtop it. Part of the Road 425 cluster that can close during eruptions.",
+      "wiki": "Brimketill",
+      "links": [],
+      "priority": 1,
+      "sources": [
+        "https://www.visitreykjanes.is/en/blogg/access-around-reykjanes",
+        "https://www.iceland-highlights.com/things-to-do-and-see-in-reykjanes-peninsula/"
+      ],
+      "confidence": "medium",
+      "checked": "2026-10-02"
+    },
+    {
+      "id": "laugaras",
+      "name": "Laugarás Lagoon",
+      "region": "golden",
+      "lat": 64.122,
+      "lon": -20.493,
+      "visit": 120,
+      "cat": "Spa",
+      "summary": "New geothermal lagoon on the Golden Circle near Skálholt, opened October 2025. An alternative to Secret Lagoon/Fontana on the Gullfoss leg.",
+      "facts": ["1.5–2 h", "None", "Mid-range; confirm when booking", "Changing rooms"],
+      "winter": "Open year-round.",
+      "wiki": "Laugarás",
+      "links": [],
+      "priority": 1,
+      "sources": ["https://www.iceland-highlights.com/iceland-geothermal-lagoons-compared/"],
+      "confidence": "low",
+      "checked": "2026-10-02",
+      "needsDaylight": false,
+      "caution": "Not fully verified — confirm it's open (and the location) before you go."
+    },
+    {
+      "id": "hvammsvik",
+      "name": "Hvammsvík Hot Springs",
+      "region": "west",
+      "lat": 64.38,
+      "lon": -21.61,
+      "visit": 120,
+      "cat": "Hot spring",
+      "summary": "Tidal hot pools on the Hvalfjörður shore, en route between Reykjavík and Borgarfjörður. Capped numbers make it calmer than the big lagoons.",
+      "facts": ["2 h", "None", "From ~7,900 ISK", "Book ahead"],
+      "winter": "Open; daily numbers capped.",
+      "wiki": "Hvalfjörður",
+      "links": [],
+      "priority": 1,
+      "sources": ["https://www.iceland-highlights.com/iceland-geothermal-lagoons-compared/"],
+      "confidence": "low",
+      "checked": "2026-10-02",
+      "needsDaylight": false,
+      "caution": "Not fully verified — confirm it's open (and the location) before you go."
+    },
+    {
+      "id": "hali",
+      "name": "Skyrhúsið HI Hostel (Hali, Suðursveit)",
+      "region": "south",
+      "lat": 64.1295,
+      "lon": -16.0161,
+      "visit": 0,
+      "cat": "Stay",
+      "summary": "Renovated farmhouse hostel 10 min from Jökulsárlón and Diamond Beach, next to the Þórbergssetur restaurant and the Glacier Adventure base.",
+      "facts": ["Open all year", "Kitchen, linen included", "Restaurant across the road", "Dark sky for aurora"],
+      "winter": "Ideal for an early ice-cave departure.",
+      "wiki": "Suðursveit",
+      "links": [{"name": "Official site", "url": "https://www.hostel.is/en/hostels/hi-skyrhusid"}],
+      "priority": 0,
+      "sources": ["https://www.hostel.is/en/hostels/hi-skyrhusid", "https://hihostels.com/hostels/skyrhusid-hi-hostel/"],
+      "confidence": "high",
+      "checked": "2026-10-02",
+      "needsDaylight": false,
+      "suggest": false,
+      "sleep": true
+    },
+    {
+      "id": "gerdi",
+      "name": "Gerði Guesthouse (Suðursveit)",
+      "region": "south",
+      "lat": 64.133,
+      "lon": -15.998,
+      "visit": 0,
+      "cat": "Stay",
+      "summary": "Farm guesthouse about 13 km east of Jökulsárlón with private and shared-bath rooms and on-site dining.",
+      "facts": ["Open all year", "22 rooms ensuite, 10 shared", "Restaurant", "Coordinates approximate"],
+      "winter": "Open in November.",
+      "wiki": "Suðursveit",
+      "links": [{"name": "Listing", "url": "https://www.south.is/en/service/gerdi-guesthouse"}],
+      "priority": 0,
+      "sources": ["https://www.south.is/en/service/gerdi-guesthouse"],
+      "confidence": "medium",
+      "checked": "2026-10-02",
+      "needsDaylight": false,
+      "suggest": false
+    },
+    {
+      "id": "vagnsstadir",
+      "name": "Vagnsstaðir HI Hostel",
+      "region": "south",
+      "lat": 64.17,
+      "lon": -15.8,
+      "visit": 0,
+      "cat": "Stay",
+      "summary": "Budget farm hostel 28 km east of Jökulsárlón with dorms, private rooms and cottages; remote enough for good aurora watching.",
+      "facts": ["Open all year", "Shared kitchen", "Nearest restaurants 7–13 km", "Coordinates approximate"],
+      "winter": "Bring food; few dining options nearby in the evening.",
+      "wiki": "Suðursveit",
+      "links": [],
+      "priority": 0,
+      "sources": [
+        "https://visitvatnajokull.is/accommodation/vagnsstadir-hostel/",
+        "https://guidetoiceland.is/accommodation/hofn/vagnsstadir-hi-hostel-2"
+      ],
+      "confidence": "medium",
+      "checked": "2026-10-02",
+      "needsDaylight": false,
+      "suggest": false
+    },
+    {
+      "id": "grundarfjordur",
+      "name": "Grundarfjörður HI Hostel",
+      "region": "snaefellsnes",
+      "lat": 64.924,
+      "lon": -23.2602,
+      "visit": 0,
+      "cat": "Stay",
+      "summary": "Two colourful houses in Grundarfjörður, ~3 km from Kirkjufell. Central for both sides of the peninsula and for aurora shots at Kirkjufellsfoss.",
+      "facts": ["Open all year", "Kitchen, linen, parking", "Shops and restaurants in town", "Private rooms available"],
+      "winter": "Best Snæfellsnes base in November.",
+      "wiki": "Grundarfjörður",
+      "links": [{"name": "Official site", "url": "https://www.hostel.is/en/hostels/hi-grundarfjordur"}],
+      "priority": 0,
+      "sources": ["https://www.hostel.is/en/hostels/hi-grundarfjordur", "https://hihostels.com/hostels/grundarfjordur/"],
+      "confidence": "high",
+      "checked": "2026-10-02",
+      "needsDaylight": false,
+      "suggest": false,
+      "sleep": true
+    },
+    {
+      "id": "hellissandur",
+      "name": "The Freezer Hostel & Culture Centre (Hellissandur)",
+      "region": "snaefellsnes",
+      "lat": 64.915,
+      "lon": -23.885,
+      "visit": 0,
+      "cat": "Stay",
+      "summary": "Arty hostel and theatre in a former fish factory at the western tip, close to the national park, Vatnshellir and Djúpalónssandur.",
+      "facts": ["Hostel dorms/privates", "Shared kitchen", "Free WiFi", "Coordinates approximate"],
+      "winter": "Confirm November opening when booking.",
+      "wiki": "Hellissandur",
+      "links": [],
+      "priority": 0,
+      "sources": [
+        "https://www.booking.com/hostels/region/is/snaefellsnes.hi.html",
+        "https://www.west.is/en/food-accommodation/accommodation/guesthouses"
+      ],
+      "confidence": "medium",
+      "checked": "2026-10-02",
+      "needsDaylight": false,
+      "suggest": false,
+      "sleep": true
     }
   ],
   "drives": [
@@ -1169,8 +1799,8 @@
       "status": "todo",
       "est": 25000,
       "actual": null,
-      "seasonal": "Nov–Mar only (natural ice caves). Early-season dates depend on conditions.",
-      "note": ""
+      "seasonal": "Nov–Mar, but the season only opens once guides have scouted safe caves; early November is thin. Book refundable and confirm the week before (fallback: blue-ice glacier walk).",
+      "note": "Meet at Jökulsárlón (Local Guide, Arctic Adventures) or Hali (Glacier Adventure)."
     },
     {
       "id": "b7",
@@ -1203,7 +1833,7 @@
       "est": 23000,
       "actual": null,
       "seasonal": "Runs year-round.",
-      "note": ""
+      "note": "Troll Expeditions, meet at Víkurbraut in Vík. ~3 h."
     },
     {
       "id": "b10",
@@ -1244,10 +1874,10 @@
       "type": "tour",
       "option": null,
       "status": "todo",
-      "est": 13000,
+      "est": 11990,
       "actual": null,
       "seasonal": "",
-      "note": "Pick a slot that leaves time to reach KEF."
+      "note": "Comfort from ~11,990 ISK. Volcanic risk at Svartsengi: check status the day before; Sky Lagoon as backup."
     }
   ],
   "links": [
@@ -1256,6 +1886,12 @@
       "url": "https://www.road.is/",
       "host": "road.is",
       "note": "Icelandic Road Administration — live road status, closures and webcams. Phone 1777."
+    },
+    {
+      "name": "Live road map",
+      "url": "https://umferdin.is/en",
+      "host": "umferdin.is",
+      "note": "The Road Administration's live map: closures, conditions, webcams."
     },
     {
       "name": "Weather forecast",
@@ -1281,6 +1917,7 @@
     "Winter tyres are required from 1 November.",
     "Wind damage is usually not covered by standard rental insurance — check the policy.",
     "Open car doors with both hands — gusts rip doors off hinges.",
+    "Most sites charge parking by number-plate camera (Parka / Check-it apps or kiosks), typically 750–1,100 ISK; pay within the deadline shown to avoid a fine.",
     "Check road.is and vedur.is the evening before and the morning of each drive.",
     "Fill up when you can — fuel stations are sparse east of Vík.",
     "Plan to be off the road before dark where possible; keep headlights on at all times (required)."
@@ -1305,8 +1942,10 @@
     "Museum",
     "Food",
     "Lake",
+    "Tour",
     "Town",
-    "Transport"
+    "Transport",
+    "Stay"
   ],
   "picks": {}
 }

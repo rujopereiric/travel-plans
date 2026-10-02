@@ -551,7 +551,7 @@ async function boot() {
 }
 // Descriptive place fields aren't edited in the app, so newer data.json content can be merged into a locally edited plan
 // without asking: new places, categories, summaries, photos titles, links, priorities and sleep flags.
-const INFO_FIELDS = ['cat', 'summary', 'facts', 'winter', 'wiki', 'links', 'photo', 'caution', 'note', 'priority', 'sleep', 'suggest', 'needsDaylight'];
+const INFO_FIELDS = ['lat', 'lon', 'visit', 'sources', 'confidence', 'checked', 'cat', 'summary', 'facts', 'winter', 'wiki', 'links', 'photo', 'caution', 'note', 'priority', 'sleep', 'suggest', 'needsDaylight'];
 function mergePlaceInfo(local, file) {
   local.places = local.places || [];
   for (const fp of file.places || []) {
@@ -1066,7 +1066,8 @@ function renderPlaces() {
       <div class="poiimg" style="--rc:${rg.color}"><span>${esc(p.cat || '')}</span>${img ? `<img src="${esc(img)}" alt="${esc(p.name)}" loading="lazy" referrerpolicy="no-referrer" onerror="imgFail(this,'${esc(p.id)}')" onload="imgOk('${esc(p.id)}', this)">` : ''}
         ${pk === 'must' ? '<span class="poistar">★ Must-see</span>' : ''}</div>
       <div class="poibody">
-        <div class="row"><h3 class="grow" style="margin:0">${esc(p.name)}</h3><span class="chip">${esc(p.cat || 'Place')}</span></div>
+        <div class="row"><h3 class="grow" style="margin:0">${esc(p.name)}</h3>${p.confidence === 'low' ? '<span class="chip partial">unverified</span>' : ''}<span class="chip">${esc(p.cat || 'Place')}</span></div>
+        ${p.caution ? `<div class="small" style="color:var(--warn);margin:4px 0">⚠ ${withEur(esc(p.caution))}</div>` : ''}
         <div class="tiny" style="color:${rg.color};margin:2px 0 6px">${esc(rg.name)} · ~${p.visit ?? 45} min${p.id !== S.trip.home ? ` · ${drive(S.trip.home, p.id).km} km from ${esc(placeName(S.trip.home))}` : ''}</div>
         ${p.summary ? `<p style="margin:0 0 6px">${esc(p.summary)}</p>` : ''}
         ${p.facts && p.facts.length ? `<ul class="facts">${p.facts.map(f => `<li>${withEur(esc(f))}</li>`).join('')}</ul>` : ''}
@@ -1076,6 +1077,8 @@ function renderPlaces() {
           <a href="${esc(wurl)}" target="_blank" rel="noopener">Wikipedia ↗</a>
           <a href="https://www.google.com/maps/dir/?api=1&destination=${p.lat},${p.lon}" target="_blank" rel="noopener">Directions ↗</a>
           ${(p.links || []).map(l => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.name)} ↗</a>`).join('')}</div>
+        ${p.sources && p.sources.length ? `<details class="tiny" style="margin-bottom:6px"><summary>Sources${p.checked ? ` · checked ${esc(dateLabel(p.checked, { day: 'numeric', month: 'short', year: 'numeric' }))}` : ''}${p.confidence ? ` · ${esc(p.confidence)} confidence` : ''}</summary>
+          <ul class="facts" style="margin-top:4px">${p.sources.map(u => `<li><a href="${esc(u)}" target="_blank" rel="noopener">${esc(u.replace(/^https?:\/\/(www\.)?/, '').slice(0, 60))}</a></li>`).join('')}</ul></details>` : ''}
         ${where.length ? `<div class="tiny muted" style="margin-bottom:6px">In plans: ${where.map(x => `${x.active ? '<b>' : ''}${esc(x.o.id)} ${dateLabel(x.d, { day: 'numeric', month: 'short' })}${x.active ? '</b>' : ''}`).join(', ')}</div>` : ''}
         <div class="row" style="gap:6px">
           <button class="btn small ${pk === 'must' ? 'primary' : ''}" data-act="pick" data-v="must" data-place="${esc(p.id)}" aria-pressed="${pk === 'must'}">★ Must-see</button>
