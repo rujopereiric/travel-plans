@@ -1,6 +1,6 @@
 // Offline support: app files network-first (so edits to data.json show up when online),
 // Leaflet and map tiles cache-first (tiles you've viewed stay available offline).
-const APP = 'iceland-app-v2', TILES = 'iceland-tiles-v1', IMGS = 'iceland-imgs-v1', MAX_TILES = 3000;
+const APP = 'iceland-app-v3', TILES = 'iceland-tiles-v1', IMGS = 'iceland-imgs-v2', MAX_TILES = 3000;
 const SHELL = ['./', 'index.html', 'app.js', 'data.json', 'manifest.webmanifest', 'icon.svg',
   'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css', 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js'];
 
@@ -12,10 +12,11 @@ self.addEventListener('activate', e => {
     .then(() => self.clients.claim()));
 });
 
-async function trimTiles() {
-  const c = await caches.open(TILES), keys = await c.keys();
-  for (let i = 0; i < keys.length - MAX_TILES; i++) await c.delete(keys[i]);
+async function trimCache(name, max) {
+  const c = await caches.open(name), keys = await c.keys();
+  for (let i = 0; i < keys.length - max; i++) await c.delete(keys[i]);
 }
+const trimTiles = () => trimCache(TILES, MAX_TILES);
 
 self.addEventListener('fetch', e => {
   const req = e.request;
@@ -35,8 +36,17 @@ self.addEventListener('fetch', e => {
     return;
   }
   if (url.hostname === 'upload.wikimedia.org') { // place photos: keep for offline
-    e.respondWith(caches.open(IMGS).then(async c => (await c.match(req)) || fetch(req).then(res => { if (res.ok || res.type === 'opaque') c.put(req, res.clone()); return res; })
-      .catch(() => new Response('', { status: 504 }))));
+    // fetch in CORS mode (Wikimedia allows it) so we can see the status and only cache real images,
+    // never an opaque error page
+    e.respondWith(caches.open(IMGS).then(async c => {
+      const hit = await c.match(req.url);
+      if (hit) return hit;
+      try {
+        const res = await fetch(req.url, { mode: 'cors', credentials: 'omit' });
+        if (res.ok) c.put(req.url, res.clone()).then(() => trimCache(IMGS, 200)).catch(() => {});
+        return res;
+      } catch (err) { return fetch(req); }
+    }));
     return;
   }
   if (url.hostname === 'unpkg.com') {

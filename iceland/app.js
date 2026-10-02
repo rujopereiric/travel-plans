@@ -934,10 +934,10 @@ function renderCond() {
 /* ---------- places tab (POIs) ---------- */
 // Photos + an encyclopedic intro come from Wikipedia at runtime (CORS-enabled, no key), cached for offline.
 const LS_WIKI = 'iceland-wiki';
-let WIKI = {}, WIKI_BUSY = false;
+let WIKI = {}, WIKI_BUSY = false, WIKI_ERR = null;
 try { WIKI = JSON.parse(localStorage.getItem(LS_WIKI) || '{}'); } catch (e) { }
 const WAPI = 'https://en.wikipedia.org/w/api.php?format=json&origin=*&action=query';
-const WPROPS = '&redirects=1&prop=pageimages|extracts|info&inprop=url&pithumbsize=800&exintro=1&explaintext=1&exsentences=3&exlimit=20';
+const WPROPS = '&redirects=1&prop=pageimages|extracts|info&inprop=url&pithumbsize=960&exintro=1&explaintext=1&exsentences=3&exlimit=20';
 async function wikiPages(titles) {
   const j = await (await fetch(`${WAPI}${WPROPS}&titles=${encodeURIComponent(titles.join('|'))}`)).json();
   const q = j.query || {}, alias = {};
@@ -948,15 +948,24 @@ async function wikiPages(titles) {
 }
 async function fetchWiki() {
   if (!S || WIKI_BUSY || !navigator.onLine) return;
-  const need = S.places.filter(p => !WIKI[p.id] || (!WIKI[p.id].img && Date.now() - WIKI[p.id].at > 7 * 864e5));
+  const need = S.places.filter(p => !WIKI[p.id] || (!WIKI[p.id].img && Date.now() - WIKI[p.id].at > 10 * 60 * 1000));
   if (!need.length) return;
-  WIKI_BUSY = true;
+  WIKI_BUSY = true; WIKI_ERR = null; if (UI.tab === 'places') render();
   const store = (p, pg) => { WIKI[p.id] = pg ? { title: pg.title, img: pg.thumbnail?.source, extract: pg.extract, url: pg.fullurl, at: Date.now() } : { none: true, at: Date.now() }; };
   try {
     const missing = [];
     for (let i = 0; i < need.length; i += 20) {
       const chunk = need.slice(i, i + 20), get = await wikiPages(chunk.map(p => p.wiki || p.name));
       for (const p of chunk) { const pg = get(p.wiki || p.name); if (pg) store(p, pg); else missing.push(p); }
+    }
+    // pages without a lead image: try the REST summary endpoint, which picks images differently
+    for (const p of need) {
+      const w = WIKI[p.id];
+      if (!w || w.img || !w.title) continue;
+      try {
+        const j = await (await fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(w.title.replace(/ /g, '_'))}`)).json();
+        if (j.thumbnail?.source) w.img = j.thumbnail.source;
+      } catch (e) { }
     }
     for (const p of missing) { // fall back to a search, e.g. if an article was renamed
       const j = await (await fetch(`${WAPI}&list=search&srlimit=1&srsearch=${encodeURIComponent(p.name + ' Iceland')}`)).json();
@@ -965,8 +974,22 @@ async function fetchWiki() {
     }
     try { localStorage.setItem(LS_WIKI, JSON.stringify(WIKI)); } catch (e) { }
     if (UI.tab === 'places') render();
-  } catch (e) { console.warn('wiki', e); }
+  } catch (e) { console.warn('wiki', e); WIKI_ERR = e.message || String(e); }
   WIKI_BUSY = false;
+  if (UI.tab === 'places') render();
+}
+const IMG_FAIL = {};
+function imgFail(el, id) { // broken image: remember why and fall back to the coloured placeholder
+  IMG_FAIL[id] = el.src; el.remove();
+  const st = document.getElementById('photostatus'); if (st) st.outerHTML = photoStatus();
+}
+function photoStatus() {
+  const n = S.places.length, got = S.places.filter(p => WIKI[p.id]?.img && !IMG_FAIL[p.id]).length, failed = Object.keys(IMG_FAIL).length;
+  let msg = WIKI_BUSY ? 'Loading photos from Wikipedia…' : !navigator.onLine && got < n ? `Offline — ${got} of ${n} photos available.`
+    : `Photos: ${got} of ${n}` + (failed ? ` · ${failed} failed to display` : '') + (WIKI_ERR ? ` · Wikipedia lookup failed: ${WIKI_ERR}` : '');
+  const sample = failed ? Object.values(IMG_FAIL)[0] : '';
+  return `<div id="photostatus" class="row tiny muted" style="margin-bottom:8px"><span class="grow">${esc(msg)}${sample ? `<br>e.g. <a href="${esc(sample)}" target="_blank" rel="noopener">open a failing image</a>` : ''}</span>
+    ${got < n && !WIKI_BUSY ? `<button class="btn small" data-act="wikiretry">Retry photos</button>` : ''}</div>`;
 }
 function plannedIn(id) {
   const out = [];
@@ -982,6 +1005,7 @@ function renderPlaces() {
       <b>Auto-plan</b> builds each block around your must-sees, and suggestions never offer skipped places.
       <div class="muted" style="margin-top:8px">★ ${musts.length} must-see · ${skips.length} skipped</div>
       <div class="row" style="margin-top:6px">${S.blocks.map(b => `<button class="btn small primary" data-act="autoplan" data-block="${b.id}">Auto-plan ${esc(b.name.split('·')[0].trim())}</button>`).join('')}</div></div>
+    ${photoStatus()}
     <div class="pchips">${chip('only', 'all', 'All', only === 'all')}${chip('only', 'must', '★ Must-see', only === 'must')}${chip('only', 'unplanned', 'Not in plan', only === 'unplanned')}${chip('only', 'skip', 'Skipped', only === 'skip')}</div>
     <div class="pchips">${chip('cat', 'all', 'All types', cat === 'all')}${cats.map(c => chip('cat', c, esc(c), cat === c)).join('')}</div>
     <div class="pchips">${chip('region', 'all', 'All regions', reg === 'all')}${S.regions.map(r => chip('region', r.id, `<span style="color:${r.color}">●</span> ${esc(r.name)}`, reg === r.id)).join('')}</div>`;
@@ -991,10 +1015,10 @@ function renderPlaces() {
   if (!list.length) h += `<p class="empty">No places match these filters.</p>`;
   for (const p of list) {
     const rg = region(p.region), w = WIKI[p.id] || {}, pk = pick(p.id), where = plannedIn(p.id);
-    const img = w.img ? w.img.replace(/\/\d+px-/, '/800px-') : null;
+    const img = w.img || null;
     const wurl = w.url || `https://en.wikipedia.org/wiki/Special:Search?search=${encodeURIComponent(p.wiki || p.name)}`;
     h += `<article class="card poi ${pk ? 'pk-' + pk : ''}" id="poi-${esc(p.id)}">
-      <div class="poiimg" style="--rc:${rg.color}">${img ? `<img src="${esc(img)}" alt="${esc(p.name)}" loading="lazy">` : `<span>${esc(p.cat || '')}</span>`}
+      <div class="poiimg" style="--rc:${rg.color}"><span>${esc(p.cat || '')}</span>${img ? `<img src="${esc(img)}" alt="${esc(p.name)}" loading="lazy" referrerpolicy="no-referrer" onerror="imgFail(this,'${esc(p.id)}')">` : ''}
         ${pk === 'must' ? '<span class="poistar">★ Must-see</span>' : ''}</div>
       <div class="poibody">
         <div class="row"><h3 class="grow" style="margin:0">${esc(p.name)}</h3><span class="chip">${esc(p.cat || 'Place')}</span></div>
@@ -1141,7 +1165,7 @@ function render() {
   render.keepScroll = true;
   saveUI();
 }
-function goTab(t) { UI.tab = t; render.keepScroll = false; render(); window.scrollTo(0, 0); }
+function goTab(t) { if (t === 'places') setTimeout(fetchWiki, 0); UI.tab = t; render.keepScroll = false; render(); window.scrollTo(0, 0); }
 function applyTheme() { if (UI.theme === 'auto') document.documentElement.removeAttribute('data-theme'); else document.documentElement.setAttribute('data-theme', UI.theme); }
 
 /* ---------- events ---------- */
@@ -1214,6 +1238,7 @@ document.addEventListener('click', e => {
     case 'setbool': S.settings[el.dataset.k] = el.checked; SUN_CACHE.clear(); changed(); break;
     case 'theme': UI.theme = el.dataset.v; applyTheme(); render(); break;
     case 'export': exportJSON(); break;
+    case 'wikiretry': WIKI = {}; for (const k in IMG_FAIL) delete IMG_FAIL[k]; try { localStorage.removeItem(LS_WIKI); } catch (e) { } fetchWiki(); break;
     case 'pick': { const id = el.dataset.place, v = el.dataset.v; S.picks[id] = S.picks[id] === v ? undefined : v; if (!S.picks[id]) delete S.picks[id]; changed(); break; }
     case 'pfilter': UI.pf = { ...(UI.pf || {}), [el.dataset.k]: el.dataset.v }; render(); break;
     case 'pinfo': UI.pf = {}; MAP && MAP.closePopup(); goTab('places'); setTimeout(() => document.getElementById('poi-' + el.dataset.place)?.scrollIntoView({ block: 'start' }), 0); break;
