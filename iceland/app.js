@@ -979,10 +979,31 @@ async function fetchWiki() {
   if (UI.tab === 'places') render();
 }
 const IMG_FAIL = {};
-function imgFail(el, id) { // broken image: remember why and fall back to the coloured placeholder
-  IMG_FAIL[id] = el.src; el.remove();
+// Wikimedia rejects thumbnail widths outside its standard list (HTTP 400, "Use thumbnail sizes listed on w.wiki/GHai").
+// We don't hard-code that list: try likely widths, remember the first that works, and fall back to the original file.
+const IMG_CHAIN = [960, 1280, 500, 330, 250];
+let IMG_W = +(localStorage.getItem('iceland-imgw') || 0) || null;
+const isThumb = u => /\/thumb\/.+\/\d+px-[^/]+$/.test(u || '');
+const thumbAt = (u, w) => u.replace(/\/\d+px-([^/]+)$/, `/${w}px-$1`);
+const origOf = u => u.replace('/thumb/', '/').replace(/\/\d+px-[^/]+$/, '');
+const imgSrc = u => (u && isThumb(u) && IMG_W ? thumbAt(u, IMG_W) : u);
+function imgFail(el, id) {
+  const tried = (el.dataset.tried || '').split(',').filter(Boolean), cur = el.src;
+  tried.push(isThumb(cur) ? cur.match(/\/(\d+)px-[^/]+$/)[1] : 'orig');
+  el.dataset.tried = tried.join(',');
+  if (isThumb(cur)) {
+    const w = IMG_CHAIN.find(x => !tried.includes(String(x)));
+    el.src = w ? thumbAt(cur, w) : origOf(cur);
+    return;
+  }
+  IMG_FAIL[id] = cur; el.remove();
   const st = document.getElementById('photostatus'); if (st) st.outerHTML = photoStatus();
 }
+let imgSaveT = null;
+function imgOk(id, el) {
+  const m = el && el.src.match(/\/thumb\/.+\/(\d+)px-[^/]+$/);
+  if (m && +m[1] !== IMG_W) { IMG_W = +m[1]; try { localStorage.setItem('iceland-imgw', IMG_W); } catch (e) { } }
+  clearTimeout(imgSaveT); imgSaveT = setTimeout(() => { try { localStorage.setItem(LS_WIKI, JSON.stringify(WIKI)); } catch (e) { } }, 500); }
 function photoStatus() {
   const n = S.places.length, got = S.places.filter(p => WIKI[p.id]?.img && !IMG_FAIL[p.id]).length, failed = Object.keys(IMG_FAIL).length;
   let msg = WIKI_BUSY ? 'Loading photos from Wikipedia…' : !navigator.onLine && got < n ? `Offline — ${got} of ${n} photos available.`
@@ -1015,10 +1036,10 @@ function renderPlaces() {
   if (!list.length) h += `<p class="empty">No places match these filters.</p>`;
   for (const p of list) {
     const rg = region(p.region), w = WIKI[p.id] || {}, pk = pick(p.id), where = plannedIn(p.id);
-    const img = w.img || null;
+    const img = imgSrc(w.img) || null;
     const wurl = w.url || `https://en.wikipedia.org/wiki/Special:Search?search=${encodeURIComponent(p.wiki || p.name)}`;
     h += `<article class="card poi ${pk ? 'pk-' + pk : ''}" id="poi-${esc(p.id)}">
-      <div class="poiimg" style="--rc:${rg.color}"><span>${esc(p.cat || '')}</span>${img ? `<img src="${esc(img)}" alt="${esc(p.name)}" loading="lazy" referrerpolicy="no-referrer" onerror="imgFail(this,'${esc(p.id)}')">` : ''}
+      <div class="poiimg" style="--rc:${rg.color}"><span>${esc(p.cat || '')}</span>${img ? `<img src="${esc(img)}" alt="${esc(p.name)}" loading="lazy" referrerpolicy="no-referrer" onerror="imgFail(this,'${esc(p.id)}')" onload="imgOk('${esc(p.id)}', this)">` : ''}
         ${pk === 'must' ? '<span class="poistar">★ Must-see</span>' : ''}</div>
       <div class="poibody">
         <div class="row"><h3 class="grow" style="margin:0">${esc(p.name)}</h3><span class="chip">${esc(p.cat || 'Place')}</span></div>
@@ -1238,7 +1259,7 @@ document.addEventListener('click', e => {
     case 'setbool': S.settings[el.dataset.k] = el.checked; SUN_CACHE.clear(); changed(); break;
     case 'theme': UI.theme = el.dataset.v; applyTheme(); render(); break;
     case 'export': exportJSON(); break;
-    case 'wikiretry': WIKI = {}; for (const k in IMG_FAIL) delete IMG_FAIL[k]; try { localStorage.removeItem(LS_WIKI); } catch (e) { } fetchWiki(); break;
+    case 'wikiretry': IMG_W = null; try { localStorage.removeItem('iceland-imgw'); } catch (e) { } WIKI = {}; for (const k in IMG_FAIL) delete IMG_FAIL[k]; try { localStorage.removeItem(LS_WIKI); } catch (e) { } fetchWiki(); break;
     case 'pick': { const id = el.dataset.place, v = el.dataset.v; S.picks[id] = S.picks[id] === v ? undefined : v; if (!S.picks[id]) delete S.picks[id]; changed(); break; }
     case 'pfilter': UI.pf = { ...(UI.pf || {}), [el.dataset.k]: el.dataset.v }; render(); break;
     case 'pinfo': UI.pf = {}; MAP && MAP.closePopup(); goTab('places'); setTimeout(() => document.getElementById('poi-' + el.dataset.place)?.scrollIntoView({ block: 'start' }), 0); break;
@@ -1290,6 +1311,11 @@ const updOnline = () => { $('#offline').hidden = navigator.onLine; };
 addEventListener('online', () => { updOnline(); fetchRate(); fetchRoadMatrix(); fetchWiki(); }); addEventListener('offline', updOnline); updOnline();
 setInterval(() => { if (S && UI.tab === 'plan' && S.days.find(d => d.date === todayISO()) && !document.activeElement?.matches('input,select,textarea')) render(); }, 5 * 60 * 1000);
 
-if ('serviceWorker' in navigator && location.protocol.startsWith('http')) navigator.serviceWorker.register('sw.js').catch(() => { });
+if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
+  // when a new version of the app takes over, reload once so you're not left running the old code
+  const hadController = !!navigator.serviceWorker.controller;
+  navigator.serviceWorker.addEventListener('controllerchange', () => { if (hadController && !document.activeElement?.matches('input,textarea')) location.reload(); });
+  navigator.serviceWorker.register('sw.js').then(r => r.update()).catch(() => { });
+}
 boot().then(() => { fetchRate(); fetchRoadMatrix(); fetchWiki(); });
 setInterval(() => fetchRate(), 30 * 60 * 1000);

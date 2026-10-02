@@ -1,6 +1,6 @@
 // Offline support: app files network-first (so edits to data.json show up when online),
 // Leaflet and map tiles cache-first (tiles you've viewed stay available offline).
-const APP = 'iceland-app-v3', TILES = 'iceland-tiles-v1', IMGS = 'iceland-imgs-v2', MAX_TILES = 3000;
+const APP = 'iceland-app-v4', TILES = 'iceland-tiles-v1', IMGS = 'iceland-imgs-v2', MAX_TILES = 3000;
 const SHELL = ['./', 'index.html', 'app.js', 'data.json', 'manifest.webmanifest', 'icon.svg',
   'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css', 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js'];
 
@@ -56,7 +56,9 @@ self.addEventListener('fetch', e => {
     return;
   }
   if (url.origin === location.origin) {
-    e.respondWith(fetch(req).then(res => {
+    // revalidate with the server every time (cheap 304s) so a new deploy shows up immediately,
+    // instead of waiting out GitHub Pages' 10-minute browser cache
+    e.respondWith(fetch(req, { cache: 'no-cache' }).then(res => {
       if (res.ok) { const copy = res.clone(); caches.open(APP).then(c => c.put(req, copy)); }
       return res;
     }).catch(() => caches.match(req, { ignoreSearch: true }).then(hit => hit || caches.match('index.html'))));
