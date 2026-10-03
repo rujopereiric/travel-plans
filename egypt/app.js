@@ -6,7 +6,7 @@ const LS_STATE = 'egypt-planner-v1';
 const LS_UI = 'egypt-planner-ui';
 // Bump on every change. The app compares it with the app.js on the server, so a phone that kept an old tab open
 // (no reload, so still the old code) is told a newer version exists.
-const APP_BUILD = '2026-10-03.3';
+const APP_BUILD = '2026-10-03.4';
 let NEWER = null; // the newer build found on the server, if any
 const AX0 = 5 * 60, AX1 = 23 * 60;           // timeline axis 05:00–23:00
 const DEFAULT_SETTINGS = {
@@ -1454,17 +1454,19 @@ try {
 const OVERPASS = ['https://overpass-api.de/api/interpreter', 'https://overpass.private.coffee/api/interpreter',
   'https://maps.mail.ru/osm/tools/overpass/api/interpreter', 'https://overpass.kumi.systems/api/interpreter'];
 // One download per region: small queries that come back in seconds, so you fetch what your trip needs. The first six
-// match the trip's regions; the rest cover other parts of Egypt. Each is restricted to Egypt (area filter), so the
-// boxes' slices of Libya, Sudan, Israel or Saudi Arabia are left out.
+// match the trip's regions; the rest cover other parts of Egypt. Plain bounding boxes only: an "inside Egypt" area
+// filter made every query time out (testing each object against the detailed border took 70+ s). Instead the boxes
+// stop at the borders: Taba but not Eilat/Aqaba (east edge 34.92), Siwa but not Libya (west edge 25.0), south of
+// Abu Simbel but not Sudan (22.2).
 const OSM_AREAS = [ // [id, name, south, west, north, east, region colour/id]
   ['cairo', 'Cairo & Giza', 29.6, 30.9, 30.25, 31.55],
   ['alex', 'Alexandria & El Alamein', 30.7, 28.8, 31.45, 30.5],
   ['luxor', 'Luxor, Dendera & Abydos', 25.5, 31.85, 26.3, 32.9],
   ['aswan', 'Aswan, Edfu & Abu Simbel', 22.2, 31.5, 25.1, 33.1],
   ['redsea', 'Hurghada & Red Sea coast', 24.5, 33.2, 27.6, 35.3],
-  ['sinai', 'South Sinai', 27.6, 32.7, 29.6, 34.95],
+  ['sinai', 'South Sinai', 27.6, 32.7, 29.6, 34.92],
   ['fayoum', 'Fayoum & Middle Egypt', 27.4, 29.9, 29.6, 31.0],
-  ['oases', 'Western Desert oases (Siwa, Bahariya, Dakhla…)', 24.5, 24.6, 29.6, 30.8],
+  ['oases', 'Western Desert oases (Siwa, Bahariya, Dakhla…)', 24.5, 25.0, 29.6, 30.8],
   ['suez', 'Suez, Ain Sokhna & the Red Sea monasteries', 28.5, 31.9, 30.3, 32.75],
 ];
 const osmArea = id => OSM_AREAS.find(x => x[0] === id);
@@ -1474,19 +1476,19 @@ function osmMerge() { // rebuild the merged view from the downloaded areas (area
   OSM = items.length || Object.keys(OSM_STORE.areas).length ? { items } : null;
   osmLayerDirty = true;
 }
-const osmQuery = ([, , s, w, n, e]) => { const f = `(area.eg)(${s},${w},${n},${e})`; return `[out:json][timeout:60];area["ISO3166-1"="EG"][admin_level=2]->.eg;(
-nwr["historic"~"^(archaeological_site|tomb|castle|fort|ruins|monument|city_gate|monastery|temple|pyramid)$"]["name"]${f};
-nwr["historic"]["name"]["wikipedia"]${f};
-nwr["tourism"~"^(attraction|viewpoint|museum|gallery|zoo|theme_park)$"]["name"]${f};
-nwr["tourism"="artwork"]["name"]["wikipedia"]${f};
-nwr["amenity"="place_of_worship"]["name"]["wikipedia"]${f};
-nwr["natural"~"^(reef|beach|cave_entrance|arch|rock|spring|hot_spring|sand|dune|cape)$"]["name"]${f};
-nwr["sport"="scuba_diving"]["name"]${f};
-nwr["natural"="peak"]["name"]["wikipedia"]${f};
-nwr["leisure"="nature_reserve"]["name"]${f};
-nwr["boundary"~"^(national_park|protected_area)$"]["name"]${f};
-nwr["man_made"="lighthouse"]["name"]${f};
-);out center tags qt;`; };
+const osmQuery = ([, , s, w, n, e]) => `[out:json][timeout:60][bbox:${s},${w},${n},${e}];(
+nwr["historic"~"^(archaeological_site|tomb|castle|fort|ruins|monument|city_gate|monastery|temple|pyramid)$"]["name"];
+nwr["historic"]["name"]["wikipedia"];
+nwr["tourism"~"^(attraction|viewpoint|museum|gallery|zoo|theme_park)$"]["name"];
+nwr["tourism"="artwork"]["name"]["wikipedia"];
+nwr["amenity"="place_of_worship"]["name"]["wikipedia"];
+nwr["natural"~"^(reef|beach|cave_entrance|arch|rock|spring|hot_spring|sand|dune|cape)$"]["name"];
+nwr["sport"="scuba_diving"]["name"];
+nwr["natural"="peak"]["name"]["wikipedia"];
+nwr["leisure"="nature_reserve"]["name"];
+nwr["boundary"~"^(national_park|protected_area)$"]["name"];
+nwr["man_made"="lighthouse"]["name"];
+);out center tags qt;`;
 function osmCat(t, name = '') {
   const n = t.natural, tr = t.tourism, h = t.historic, nm = name.toLowerCase();
   if (n === 'reef' || t.sport === 'scuba_diving') return 'Snorkel & dive';
