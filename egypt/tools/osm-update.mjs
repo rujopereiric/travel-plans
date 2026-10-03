@@ -62,7 +62,26 @@ async function fetchBox(area, box, depth = 0) {
   }
   return null;
 }
-const fetchArea = area => fetchBox(area, area.slice(2, 6));
+// Small boxes (≤ 1° each way) answer in 1–3 s; big ones time out. So cut every region into ≤ 1° boxes up front
+// instead of first waiting for a big box to time out, and only split further if a small box still times out.
+const MAX_SPAN = 1;
+function tile([s, w, n, e]) {
+  const rows = Math.ceil((n - s) / MAX_SPAN - 1e-9), cols = Math.ceil((e - w) / MAX_SPAN - 1e-9), out = [];
+  for (let i = 0; i < rows; i++) for (let j = 0; j < cols; j++)
+    out.push([s + (n - s) * i / rows, w + (e - w) * j / cols, s + (n - s) * (i + 1) / rows, w + (e - w) * (j + 1) / cols]);
+  return out;
+}
+async function fetchArea(area) {
+  const boxes = tile(area.slice(2, 6)), all = [];
+  if (boxes.length > 1) console.log(`  ${boxes.length} boxes of ≤ ${MAX_SPAN}°`);
+  for (const b of boxes) {
+    const els = await fetchBox(area, b, 1);   // depth 1: up to two more splits if a box still times out
+    if (!els) return null;
+    all.push(...els);
+    await sleep(2000);
+  }
+  return all;
+}
 
 const want = process.argv.slice(2);
 const out = path.join(dir, 'osm');
