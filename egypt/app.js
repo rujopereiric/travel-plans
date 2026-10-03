@@ -164,18 +164,29 @@ function drive(a, b) {
   if (!DRIVE_CACHE.has(key)) DRIVE_CACHE.set(key, driveRaw(a, b));
   return DRIVE_CACHE.get(key);
 }
-// Road fallback when there's no OSRM data: shortest path over the known road legs plus short straight hops
-// (≤ 60 km). A straight line would cross the Gulf of Suez (Hurghada → Sharm is ~100 km as the crow flies,
-// ~900 km by road round through the Suez tunnel), so long estimates have to follow known roads.
+// Road fallback when there's no OSRM data: shortest path over the known road legs, with other places attached to
+// their nearest known place, plus short hops. A straight line would cross the Gulf of Suez (Hurghada → Sharm is ~100 km as the crow
+// flies, ~900 km by road round through the Suez tunnel), so long estimates have to follow known roads.
 let GRAPH = null; const GRAPH_DIST = new Map();
 function graphLeg(a, b) {
   if (!GRAPH) {
     GRAPH = new Map(S.places.map(p => [p.id, []]));
     const add = (x, y, km, min) => { if (GRAPH.has(x) && GRAPH.has(y)) { GRAPH.get(x).push([y, km, min]); GRAPH.get(y).push([x, km, min]); } };
     for (const x of legsList()) if (x.mode === 'road') add(x.a, x.b, x.km, x.min);
+    // places on known road legs ("hubs") connect only through those legs; any other place hangs off its nearest hub
+    // (straight hops between hubs could cross the Gulf of Suez, or the Nile where there's no bridge)
+    const hubs = S.places.filter(p => GRAPH.get(p.id).length);
+    for (const p of S.places) {
+      if (GRAPH.get(p.id).length || !hubs.length) continue;
+      let near = null, nd = Infinity;
+      for (const h of hubs) { const hv = haversine(p, h); if (hv < nd) { nd = hv; near = h; } }
+      const km = nd * set('roadFactor'); add(p.id, near.id, km, km / set('speedKmh') * 60);
+    }
+    // plus short straight hops (≤ 30 km) inside a city or a cluster of sites, e.g. Giza → Saqqara. The Gulf of Suez is
+    // far wider than that, so these never jump the sea.
     for (let i = 0; i < S.places.length; i++) for (let j = i + 1; j < S.places.length; j++) {
       const pa = S.places[i], pb = S.places[j], hv = haversine(pa, pb);
-      if (hv <= 60) { const km = hv * set('roadFactor'); add(pa.id, pb.id, km, km / set('speedKmh') * 60); }
+      if (hv <= 30) { const km = hv * set('roadFactor'); add(pa.id, pb.id, km, km / set('speedKmh') * 60); }
     }
   }
   if (!GRAPH_DIST.has(a)) { // Dijkstra from a (small graph, so a simple array scan is fine)
@@ -274,20 +285,40 @@ function roadLeg(a, b) {
   const d = ROAD.dur[i][j], m = ROAD.dist[i][j];
   return d != null && m != null ? { km: m / 1000, min: d / 60 } : null;
 }
+// The public server only takes ~100 coordinates per table request, so ask in chunks of 50 × 50
+// (≤ 100 coordinates each), one request per second; missing pairs fall back to the road-graph estimate.
 async function fetchRoadMatrix() {
   if (!S || ROAD_BUSY || !navigator.onLine) return;
   const key = placesKey();
   if (ROAD && ROAD.key === key) return;
   ROAD_BUSY = true;
-  try {
-    const ids = S.places.map(p => p.id);
-    const res = await fetch(`${OSRM}/table/v1/driving/${coordStr(ids)}?annotations=duration,distance`);
-    const j = await res.json();
-    if (j.code !== 'Ok') throw new Error(j.code);
-    ROAD = { key, ids, dur: j.durations, dist: j.distances, at: Date.now() };
+  const ids = S.places.map(p => p.id), n = ids.length, C = 50;
+  const dur = ids.map(() => new Array(n).fill(null)), dist = ids.map(() => new Array(n).fill(null));
+  if (ROAD) { // keep what we already know, so adding a place only fetches its rows and columns
+    const oi = new Map(ROAD.ids.map((id, k) => [id, k]));
+    ids.forEach((a, r) => { const ra = oi.get(a); if (ra == null) return; ids.forEach((b, c) => { const cb = oi.get(b); if (cb != null) { dur[r][c] = ROAD.dur[ra][cb]; dist[r][c] = ROAD.dist[ra][cb]; } }); });
+  }
+  const chunks = []; for (let i = 0; i < n; i += C) chunks.push(ids.slice(i, i + C).map((_, k) => i + k));
+  let ok = 0;
+  let need = 0;
+  for (const A of chunks) for (const B of chunks) {
+    if (A.every(g => B.every(h => dur[g][h] != null || g === h))) { ok++; continue; } // block already known
+    need++;
+    const all = [...new Set([...A, ...B])], idx = new Map(all.map((g, k) => [g, k]));
+    try {
+      const res = await fetch(`${OSRM}/table/v1/driving/${coordStr(all.map(g => ids[g]))}?annotations=duration,distance&sources=${A.map(g => idx.get(g)).join(';')}&destinations=${B.map(g => idx.get(g)).join(';')}`);
+      const j = await res.json();
+      if (j.code !== 'Ok') throw new Error(j.code);
+      A.forEach((g, r) => B.forEach((h, c) => { dur[g][h] = j.durations[r][c]; dist[g][h] = j.distances[r][c]; }));
+      ok++;
+    } catch (e) { console.warn('road matrix chunk', e); }
+    await new Promise(r => setTimeout(r, 1100));
+  }
+  if (ok) {
+    ROAD = { key: ok === chunks.length ** 2 ? key : 'partial', ids, dur, dist, at: Date.now() };
     try { localStorage.setItem(LS_ROAD, JSON.stringify(ROAD)); } catch (e) { }
     clearTravel(); render();
-  } catch (e) { console.warn('road matrix', e); }
+  }
   ROAD_BUSY = false;
 }
 const ROUTE_BUSY = new Set();
@@ -1338,6 +1369,13 @@ function plannedIn(id) {
   return out;
 }
 function renderPlaces() {
+  const seg = `<div class="seg" style="margin-bottom:10px;display:flex"><button style="flex:1" data-act="pmode" data-v="mine" aria-pressed="${UI.pmode !== 'osm'}">My places (${S.places.length})</button>
+    <button style="flex:1" data-act="pmode" data-v="osm" aria-pressed="${UI.pmode === 'osm'}">All of Egypt${OSM ? ` (${OSM.items.length.toLocaleString('en-GB')})` : ''}</button></div>`;
+  if (UI.pmode === 'osm') return seg + renderOsm();
+  return seg + renderMyPlaces();
+}
+function renderMyPlaces() {
+
   const pf = UI.pf || {}, cat = pf.cat || 'all', reg = pf.region || 'all', only = pf.only || 'all';
   const cats = (S.categories || []).filter(c => S.places.some(p => p.cat === c));
   const musts = S.places.filter(p => pick(p.id) === 'must'), skips = S.places.filter(p => pick(p.id) === 'skip');
@@ -1362,7 +1400,7 @@ function renderPlaces() {
       <div class="poiimg" style="--rc:${rg.color}"><span>${esc(p.cat || '')}</span>${img ? `<img src="${esc(img)}" alt="${esc(p.name)}" loading="lazy" referrerpolicy="no-referrer" onerror="imgFail(this,'${esc(p.id)}')" onload="imgOk('${esc(p.id)}', this)">` : ''}
         ${pk === 'must' ? '<span class="poistar">★ Must-see</span>' : ''}</div>
       <div class="poibody">
-        <div class="row"><h3 class="grow" style="margin:0">${esc(p.name)}</h3>${p.confidence === 'low' ? '<span class="chip partial">unverified</span>' : ''}<span class="chip">${esc(p.cat || 'Place')}</span></div>
+        <div class="row"><h3 class="grow" style="margin:0">${esc(p.name)}</h3>${p.confidence === 'low' ? '<span class="chip partial">unverified</span>' : ''}<span class="chip">${catInfo(p.cat).icon} ${esc(p.cat || 'Place')}</span></div>
         ${p.caution ? `<div class="small" style="color:var(--warn);margin:4px 0">⚠ ${withEur(esc(p.caution))}</div>` : ''}
         <div class="tiny" style="color:${rg.color};margin:2px 0 6px">${esc(rg.name)} · ~${p.visit ?? 45} min${p.id !== S.trip.home ? ` · ${drive(S.trip.home, p.id).km} km from ${esc(placeName(S.trip.home))}` : ''}</div>
         ${p.summary ? `<p style="margin:0 0 6px">${esc(p.summary)}</p>` : ''}
@@ -1388,6 +1426,238 @@ function renderPlaces() {
   }
   if (!navigator.onLine && S.places.some(p => !WIKI[p.id])) h += `<p class="tiny muted">Photos load the first time you open this tab online, and are kept for offline use.</p>`;
   return h;
+}
+
+/* ---------- "All of Egypt": every named sight from OpenStreetMap ---------- */
+// One Overpass query (free, no key) fetches every named archaeological site, temple, tomb, museum, dive reef,
+// beach, viewpoint… in Egypt. Stored compactly for offline use; any item can be promoted into "My places".
+// Egypt has tens of thousands of "historic" objects (every old Cairo house is one), so minor historic objects,
+// artworks and places of worship are only included when they have a Wikipedia article.
+const LS_OSM = 'egypt-osm';
+let OSM = null, OSM_BUSY = false, OSM_ERR = null;
+try { OSM = JSON.parse(localStorage.getItem(LS_OSM) || 'null'); } catch (e) { }
+const OVERPASS = ['https://overpass-api.de/api/interpreter', 'https://overpass.kumi.systems/api/interpreter'];
+const OSM_QUERY = `[out:json][timeout:180];area["ISO3166-1"="EG"][admin_level=2]->.eg;(
+nwr["historic"~"^(archaeological_site|tomb|castle|fort|ruins|monument|city_gate|monastery|temple|pyramid)$"]["name"](area.eg);
+nwr["historic"]["name"]["wikipedia"](area.eg);
+nwr["tourism"~"^(attraction|viewpoint|museum|gallery|zoo|theme_park)$"]["name"](area.eg);
+nwr["tourism"="artwork"]["name"]["wikipedia"](area.eg);
+nwr["amenity"="place_of_worship"]["name"]["wikipedia"](area.eg);
+nwr["natural"~"^(reef|beach|cave_entrance|arch|rock|spring|hot_spring|sand|dune|valley|cape)$"]["name"](area.eg);
+nwr["sport"="scuba_diving"]["name"](area.eg);
+nwr["natural"="peak"]["name"]["wikipedia"](area.eg);
+nwr["leisure"="nature_reserve"]["name"](area.eg);
+nwr["boundary"~"^(national_park|protected_area)$"]["name"](area.eg);
+nwr["man_made"="lighthouse"]["name"](area.eg);
+);out center tags qt;`;
+function osmCat(t, name = '') {
+  const n = t.natural, tr = t.tourism, h = t.historic, nm = name.toLowerCase();
+  if (n === 'reef' || t.sport === 'scuba_diving') return 'Snorkel & dive';
+  if (n === 'beach') return 'Beach';
+  if (h === 'pyramid' || /pyramid/.test(nm)) return 'Pyramids';
+  if (h === 'temple' || /temple/.test(nm)) return 'Temple';
+  if (h === 'tomb' || /tomb|mastaba|necropolis|mausoleum/.test(nm)) return 'Tomb';
+  if (h === 'monastery' || t.religion === 'christian' || /monastery|church|cathedral|convent/.test(nm)) return 'Church & monastery';
+  if (t.religion === 'muslim' || /mosque|masjid|madrasa|sabil/.test(nm)) return 'Mosque';
+  if (h === 'castle' || h === 'fort' || /citadel|fortress|\bfort\b/.test(nm)) return 'Fortress';
+  if (h === 'monument' || h === 'city_gate' || /obelisk|statue|colossus|sphinx/.test(nm)) return 'Monument';
+  if (h === 'archaeological_site' || h === 'ruins') return 'Ruins';
+  if (tr === 'museum' || tr === 'gallery') return 'Museum';
+  if (tr === 'artwork') return 'Art';
+  if (n === 'spring' || n === 'hot_spring' || /oasis|spring/.test(nm)) return 'Oasis & spring';
+  if (n === 'cave_entrance') return 'Cave';
+  if (n === 'peak') return 'Mountain';
+  if (n === 'sand' || n === 'dune' || n === 'valley' || /desert|wadi|canyon/.test(nm)) return 'Desert';
+  if (n === 'arch' || n === 'rock' || n === 'cape') return 'Landmark';
+  if (t.man_made === 'lighthouse') return 'Lighthouse';
+  if (tr === 'viewpoint') return 'Viewpoint';
+  if (t.leisure === 'nature_reserve' || t.boundary) return 'Nature reserve';
+  if (h) return 'Historic';
+  return 'Attraction';
+}
+async function loadOSM() {
+  if (OSM_BUSY) return;
+  if (!navigator.onLine) { OSM_ERR = 'You are offline.'; render(); return; }
+  OSM_BUSY = true; OSM_ERR = null; render();
+  for (const url of OVERPASS) {
+    try {
+      const res = await fetch(url, { method: 'POST', body: 'data=' + encodeURIComponent(OSM_QUERY), headers: { 'Content-Type': 'application/x-www-form-urlencoded' } });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const j = await res.json(), seen = new Set(), items = [];
+      for (const el of j.elements || []) {
+        const t = el.tags || {}, lat = el.lat ?? el.center?.lat, lon = el.lon ?? el.center?.lon, name = t['name:en'] || t['int_name'] || t.name;
+        if (!name || lat == null) continue;
+        const key = name.toLowerCase() + '|' + lat.toFixed(3) + '|' + lon.toFixed(3);
+        if (seen.has(key)) continue; seen.add(key);
+        items.push([el.type[0] + el.id, name, +lat.toFixed(5), +lon.toFixed(5), osmCat(t, name), t.wikipedia || '', t.website || t['contact:website'] || '', (t['description:en'] || t.description || '').slice(0, 200), t.name !== name ? t.name || '' : '']);
+      }
+      OSM = { at: Date.now(), src: url.split('/')[2], items };
+      try { localStorage.setItem(LS_OSM, JSON.stringify(OSM)); } catch (e) { OSM_ERR = 'Loaded, but too big to keep offline on this device.'; }
+      OSM_BUSY = false; osmLayerDirty = true; mf().osm = true; UI.osmLayer = true; mapDirty = true; render(); return;
+    } catch (e) { OSM_ERR = `${url.split('/')[2]}: ${e.message}`; }
+  }
+  OSM_BUSY = false; render();
+}
+const osmObj = a => ({ id: a[0], name: a[1], lat: a[2], lon: a[3], cat: a[4], wiki: a[5], web: a[6], desc: a[7], local: a[8] });
+const osmUrl = id => `https://www.openstreetmap.org/${{ n: 'node', w: 'way', r: 'relation' }[id[0]]}/${id.slice(1)}`;
+const wikiUrl = w => { const m = /^([a-z-]+):(.+)$/.exec(w || ''); return m ? `https://${m[1]}.wikipedia.org/wiki/${encodeURIComponent(m[2].replace(/ /g, '_'))}` : null; };
+const osmPlaceId = o => 'osm_' + o.id;
+function osmMine(o) { // already one of my places? (same OSM id, or same name within ~1 km)
+  if (place(osmPlaceId(o))) return place(osmPlaceId(o));
+  const nm = o.name.toLowerCase();
+  return S.places.find(p => haversine(p, o) < 1 && (p.name.toLowerCase().includes(nm) || nm.includes(p.name.toLowerCase().split(' ')[0]))) || null;
+}
+const OSM_VISIT = { Pyramids: 90, Temple: 75, Tomb: 45, Ruins: 45, Monument: 15, Museum: 75, Mosque: 30, 'Church & monastery': 45, Fortress: 60, Historic: 20, Art: 10,
+  'Snorkel & dive': 180, Beach: 120, Lighthouse: 20, Desert: 120, Mountain: 120, Cave: 45, Landmark: 20, 'Oasis & spring': 60, 'Nature reserve': 90, Viewpoint: 15, Attraction: 30 };
+function promoteOSM(o) {
+  if (osmMine(o)) return osmMine(o);
+  let near = null, nd = Infinity;
+  for (const p of S.places) { const d = haversine(p, o); if (d < nd) { nd = d; near = p; } }
+  const w = /^en:(.+)$/.exec(o.wiki || '');
+  const p = { id: osmPlaceId(o), name: o.name, region: near ? near.region : S.regions[0]?.id, lat: o.lat, lon: o.lon, visit: OSM_VISIT[o.cat] ?? 30, cat: o.cat,
+    summary: o.desc || `${o.cat} listed on OpenStreetMap${o.local ? ` (local name: ${o.local})` : ''}. No details checked yet.`, facts: [], wiki: w ? w[1] : o.name,
+    links: [{ name: 'OpenStreetMap', url: osmUrl(o.id) }, ...(wikiUrl(o.wiki) && !w ? [{ name: 'Wikipedia', url: wikiUrl(o.wiki) }] : []), ...(o.web ? [{ name: 'Website', url: o.web }] : [])],
+    priority: 1, sources: [osmUrl(o.id)], confidence: 'low', checked: todayISO() };
+  if (['Museum', 'Mosque', 'Church & monastery', 'Art'].includes(o.cat)) p.needsDaylight = false;
+  S.places.push(p);
+  if (!(S.categories || []).includes(o.cat)) (S.categories = S.categories || []).push(o.cat);
+  reindex(); mapDirty = true; delete WIKI[p.id];
+  return p;
+}
+function renderOsm() {
+  if (!OSM) return `<div class="card"><h3 style="margin-top:0">Every named sight in Egypt</h3>
+    <p class="small">This loads every archaeological site, temple, tomb, museum, fortress, dive reef, beach, desert landmark, viewpoint, lighthouse and nature reserve that OpenStreetMap knows about in Egypt, plus famous mosques and churches — usually several thousand. It's a one-off download (a few MB), kept on your phone for offline use.</p>
+    <p class="small muted">These come with names, types and links only — not my summaries, opening hours or prices. Add the ones you like to <b>My places</b> to plan them, then set their hours.</p>
+    ${OSM_ERR ? `<p class="small" style="color:var(--bad)">${esc(OSM_ERR)}</p>` : ''}
+    <button class="btn primary" data-act="osmload" ${OSM_BUSY ? 'disabled' : ''}>${OSM_BUSY ? 'Loading… (can take 30–60 s)' : 'Load all of Egypt'}</button></div>`;
+  const cats = [...new Set(OSM.items.map(a => a[4]))].sort();
+  const counts = Object.fromEntries(cats.map(c => [c, OSM.items.filter(a => a[4] === c).length]));
+  const cat = UI.osmCat || 'all', near = place(UI.osmNear) ? UI.osmNear : S.trip.home;
+  const chip = (v, label, on) => `<button class="pchip" data-act="osmcat" data-v="${esc(v)}" aria-pressed="${on}">${label}</button>`;
+  return `<div class="row tiny muted" style="margin-bottom:8px"><span class="grow">${OSM.items.length.toLocaleString('en-GB')} places from OpenStreetMap · loaded ${esc(dateLabel(new Date(OSM.at).toISOString().slice(0, 10), { day: 'numeric', month: 'short' }))}${OSM_ERR ? ` · ${esc(OSM_ERR)}` : ''}</span>
+      <button class="btn small" data-act="osmload" ${OSM_BUSY ? 'disabled' : ''}>${OSM_BUSY ? 'Updating…' : 'Refresh'}</button></div>
+    <div class="row" style="margin-bottom:8px"><input type="search" id="osmq" data-osmq placeholder="Search ${OSM.items.length.toLocaleString('en-GB')} places…" value="${esc(UI.osmQ || '')}" class="grow" autocomplete="off">
+      <label class="f">Nearest to<select data-act="osmnear">${placeOptions(near)}</select></label></div>
+    <div class="pchips">${chip('all', 'All types', cat === 'all')}${cats.map(c => chip(c, `${esc(c)} <span class="muted">${counts[c]}</span>`, cat === c)).join('')}</div>
+    <div id="osmlist">${osmListHTML()}</div>`;
+}
+function osmListHTML() {
+  const q = (UI.osmQ || '').trim().toLowerCase(), cat = UI.osmCat || 'all', near = place(UI.osmNear) || place(S.trip.home);
+  const fold = x => x.normalize('NFD').replace(/[\u0300-\u036f\u064b-\u0652\u0640]/g, '').replace(/[أإآ]/g, 'ا').replace(/ى/g, 'ي').replace(/ة/g, 'ه').replace(/['‘’ʿʾ-]/g, '');
+  const fq = fold(q);
+  const list = OSM.items.filter(a => (cat === 'all' || a[4] === cat) && (!q || fold(a[1].toLowerCase()).includes(fq) || fold((a[8] || '').toLowerCase()).includes(fq)))
+    .map(a => ({ o: osmObj(a), d: haversine(near, { lat: a[2], lon: a[3] }) })).sort((x, y) => x.d - y.d);
+  const n = UI.osmN || 40;
+  if (!list.length) return `<p class="empty">No matches.</p>`;
+  return list.slice(0, n).map(({ o, d }) => {
+    const mine = osmMine(o), wurl = wikiUrl(o.wiki);
+    return `<div class="card osmrow"><div class="row"><b class="grow">${esc(o.name)}</b><span class="chip">${catInfo(o.cat).icon} ${esc(o.cat)}</span></div>
+      <div class="tiny muted">${o.local ? '<bdi dir="auto">' + esc(o.local) + '</bdi>' + ' · ' : ''}${Math.round(d)} km from ${esc(placeName(near.id))} (straight line)</div>
+      ${o.desc ? `<div class="small" style="margin-top:3px">${esc(o.desc)}</div>` : ''}
+      <div class="row small" style="margin-top:6px;gap:10px">
+        ${wurl ? `<a href="${esc(wurl)}" target="_blank" rel="noopener">Wikipedia ↗</a>` : ''}
+        <a href="https://www.google.com/maps/dir/?api=1&destination=${o.lat},${o.lon}" target="_blank" rel="noopener">Directions ↗</a>
+        <a href="${esc(osmUrl(o.id))}" target="_blank" rel="noopener">OSM ↗</a>
+        ${o.web ? `<a href="${esc(o.web)}" target="_blank" rel="noopener">Website ↗</a>` : ''}
+        <span class="grow"></span>
+        <button class="btn small" data-act="osmmap" data-osm="${esc(o.id)}">Map</button>
+        ${mine ? `<button class="btn small" data-act="pinfo" data-place="${esc(mine.id)}">In my places ✓</button>` : `<button class="btn small primary" data-act="osmadd" data-osm="${esc(o.id)}">+ My places</button>`}
+      </div></div>`;
+  }).join('') + (list.length > n ? `<button class="btn" data-act="osmmore" style="width:100%">Show more (${(list.length - n).toLocaleString('en-GB')} left)</button>` : `<p class="tiny muted">${list.length} shown.</p>`)
+    + `<p class="tiny muted">Data © OpenStreetMap contributors (ODbL).</p>`;
+}
+// OSM layer: canvas dots (category colour) when zoomed out; real icons for what's on screen from zoom 10.
+let osmLayer = null, osmIcons = null, osmLayerDirty = true; const OSM_MARKERS = {};
+const OSM_ICON_ZOOM = 10, OSM_ICON_MAX = 400;
+const osmShown = a => catShown(a[4]) && !mf().must;
+function refreshOsmView() {
+  if (!MAP) return;
+  const on = OSM && mf().osm;
+  if (!on) { osmLayer && osmLayer.remove(); osmIcons && osmIcons.remove(); return; }
+  if (MAP.getZoom() >= OSM_ICON_ZOOM) {
+    osmLayer && osmLayer.remove();
+    osmIcons = osmIcons || L.layerGroup();
+    osmIcons.clearLayers(); for (const k in OSM_MARKERS) delete OSM_MARKERS[k];
+    const bb = MAP.getBounds().pad(0.2); let n = 0;
+    for (const a of OSM.items) {
+      if (n >= OSM_ICON_MAX) break;
+      if (!osmShown(a) || !bb.contains([a[2], a[3]])) continue;
+      const o = osmObj(a), ci = catInfo(o.cat);
+      const m = L.marker([o.lat, o.lon], { icon: L.divIcon({ className: '', html: `<div class="pinw" style="width:22px;height:22px"><div class="pin osm" style="--c:${ci.color}">${ci.icon}</div></div>`, iconSize: [22, 22], iconAnchor: [11, 11], popupAnchor: [0, -10] }) });
+      m.bindPopup(() => osmPopup(o), { maxWidth: 240 }); m.bindTooltip(esc(o.name), { direction: 'top', offset: [0, -10] });
+      m.addTo(osmIcons); OSM_MARKERS[o.id] = m; n++;
+    }
+    if (!MAP.hasLayer(osmIcons)) osmIcons.addTo(MAP);
+  } else {
+    osmIcons && osmIcons.remove();
+    if (osmLayerDirty || !osmLayer) {
+      osmLayer = osmLayer || L.layerGroup();
+      osmLayer.clearLayers(); for (const k in OSM_MARKERS) delete OSM_MARKERS[k];
+      const renderer = refreshOsmView.r || (refreshOsmView.r = L.canvas({ padding: .5 }));
+      for (const a of OSM.items) {
+        if (!osmShown(a)) continue;
+        const o = osmObj(a);
+        const m = L.circleMarker([o.lat, o.lon], { renderer, radius: 3.5, color: '#fff', weight: .8, fillColor: catInfo(o.cat).color, fillOpacity: .85 });
+        m.bindPopup(() => osmPopup(o), { maxWidth: 240 });
+        m.addTo(osmLayer); OSM_MARKERS[o.id] = m;
+      }
+      osmLayerDirty = false;
+    }
+    if (!MAP.hasLayer(osmLayer)) osmLayer.addTo(MAP);
+  }
+}
+function fillOsmLayer() { osmLayerDirty = true; refreshOsmView(); }
+function osmPopup(o) {
+  const mine = osmMine(o), wurl = wikiUrl(o.wiki);
+  return `<h4>${catInfo(o.cat).icon} ${esc(o.name)}</h4><div class="tiny muted">${esc(o.cat)} · OpenStreetMap${o.local ? ' · ' + '<bdi dir="auto">' + esc(o.local) + '</bdi>' : ''}</div>
+    ${o.desc ? `<div style="margin:4px 0">${esc(o.desc)}</div>` : ''}
+    <div class="small" style="margin:4px 0">${wurl ? `<a href="${esc(wurl)}" target="_blank" rel="noopener">Wikipedia ↗</a> · ` : ''}<a href="${esc(osmUrl(o.id))}" target="_blank" rel="noopener">OSM ↗</a></div>
+    ${mine ? `<button class="btn small" data-act="pinfo" data-place="${esc(mine.id)}">In my places ✓</button>` : `<button class="btn small primary" data-act="osmadd" data-osm="${esc(o.id)}">+ Add to my places</button>`}`;
+}
+
+/* ---------- category icons & map filter ---------- */
+// Each category has an icon; colour comes from its family so related things read together on the map.
+const CAT_GROUPS = [
+  { id: 'ancient', name: 'Ancient Egypt', color: '#b26a00', cats: { Pyramids: '🔺', Temple: '🏛️', Tomb: '⚱️', Monument: '🗿', Ruins: '🏺' } },
+  { id: 'old', name: 'Old cities & faith', color: '#8e24aa', cats: { 'Old city': '🕌', Mosque: '🕌', 'Church & monastery': '⛪', Fortress: '🏰', Historic: '🏚️', Memorial: '🎖️' } },
+  { id: 'culture', name: 'Museums & culture', color: '#3949ab', cats: { Museum: '🖼️', Art: '🎨', Village: '🏡', Experience: '🎈', Attraction: '⭐' } },
+  { id: 'sea', name: 'Sea', color: '#0277bd', cats: { 'Snorkel & dive': '🤿', Beach: '🏖️', 'Boat trip': '⛵', Lighthouse: '🗼' } },
+  { id: 'nature', name: 'Desert & nature', color: '#2e7d32', cats: { Desert: '🐪', Hike: '🥾', Mountain: '⛰️', Cave: '🕳️', Landmark: '📍', 'Oasis & spring': '🌴', 'Nature reserve': '🌿', Garden: '🌳', Viewpoint: '🔭' } },
+  { id: 'practical', name: 'Practical', color: '#546e7a', cats: { Town: '🏘️', Base: '🛏️', Airport: '✈️' } },
+];
+const CAT_INFO = {};
+for (const g of CAT_GROUPS) for (const [c, icon] of Object.entries(g.cats)) CAT_INFO[c] = { icon, color: g.color, group: g.id };
+const catInfo = c => CAT_INFO[c] || { icon: '📍', color: '#757575', group: 'culture' };
+// map filter state lives in UI.mf: { hide: [categories], mine: bool, osm: bool, must: bool }
+const mf = () => (UI.mf = UI.mf || { hide: [], mine: true, osm: !!UI.osmLayer, must: false });
+const catShown = c => !mf().hide.includes(c || 'Landmark');
+const placeShown = p => mf().mine && catShown(p.cat) && (!mf().must || pick(p.id) === 'must');
+function mapFilterHTML() {
+  const f = mf(), mineCount = {}, osmCount = {};
+  for (const p of S.places) mineCount[p.cat] = (mineCount[p.cat] || 0) + 1;
+  if (OSM) for (const a of OSM.items) osmCount[a[4]] = (osmCount[a[4]] || 0) + 1;
+  const known = new Set([...Object.keys(mineCount), ...Object.keys(osmCount)]);
+  const extra = [...known].filter(c => !CAT_INFO[c]);
+  const groups = [...CAT_GROUPS.map(g => ({ ...g, list: Object.keys(g.cats).filter(c => known.has(c)) })), ...(extra.length ? [{ id: 'other', name: 'Other', color: '#757575', list: extra }] : [])].filter(g => g.list.length);
+  const hidden = f.hide.filter(c => known.has(c)).length;
+  const n = c => (f.mine ? mineCount[c] || 0 : 0) + (f.osm && OSM ? osmCount[c] || 0 : 0);
+  return `<details class="mlwrap mfilter" ${UI.filterOpen ? 'open' : ''} ontoggle="UI.filterOpen=this.open;saveUI()">
+    <summary>Filter map${hidden || f.must || !f.mine || (OSM && !f.osm) ? ` · <b>${[hidden ? `${hidden} type${hidden > 1 ? 's' : ''} hidden` : '', f.must ? 'must-sees only' : '', !f.mine ? 'my places hidden' : '', OSM && !f.osm ? '' : ''].filter(Boolean).join(', ') || 'custom'}</b>` : ''}</summary>
+    <div class="row" style="gap:6px;margin:6px 0">
+      <button class="pchip" data-act="msrc" data-v="mine" aria-pressed="${f.mine}">My places</button>
+      <button class="pchip" data-act="msrc" data-v="osm" aria-pressed="${!!(f.osm && OSM)}" ${OSM ? '' : 'disabled title="Load it in Places → All of Egypt"'}>All of Egypt${OSM ? '' : ' (not loaded)'}</button>
+      <button class="pchip" data-act="mmust" aria-pressed="${f.must}">★ Must-sees only</button>
+      <span class="grow"></span><button class="btn small" data-act="mcatall">All</button><button class="btn small" data-act="mcatnone">None</button></div>
+    <div class="mfbody">${groups.map(g => `<div class="mfgroup"><button class="mfgname" data-act="mgroup" data-v="${g.id}" style="color:${g.color}">${esc(g.name)}</button>
+      ${g.list.map(c => `<button class="pchip mfchip" data-act="mcat" data-v="${esc(c)}" aria-pressed="${catShown(c)}" title="Tap to show/hide">
+        <span class="mfi" style="background:${catInfo(c).color}">${catInfo(c).icon}</span>${esc(c)} <span class="muted">${n(c)}</span></button><button class="mfonly" data-act="mcatonly" data-v="${esc(c)}" aria-label="Only ${esc(c)}">⦿</button>`).join('')}
+      </div>`).join('')}</div>
+    <p class="tiny muted" style="margin:4px 0 0">Tap a type to show/hide it, ⦿ to show only that type, or a family name to toggle the whole family.</p>
+  </details>`;
+}
+function pinIcon(p) {
+  const ci = catInfo(p.cat), must = pick(p.id) === 'must';
+  return L.divIcon({ className: '', html: `<div class="pinw"><div class="pin${must ? ' must' : ''}" style="--c:${ci.color}">${ci.icon}</div></div>`, iconSize: [28, 28], iconAnchor: [14, 14], popupAnchor: [0, -12] });
 }
 
 /* ---------- render: map tab ---------- */
@@ -1422,7 +1692,8 @@ function mapDays() {
     return { date, o, r, ids, n, parts: routeParts(r), color: DAY_COLORS[(n - 1) % DAY_COLORS.length] };
   }).filter(Boolean);
 }
-function renderMapControls() {
+function renderMapControls() { return renderMapControlsInner() + mapFilterHTML(); }
+function renderMapControlsInner() {
   const days = S.days.filter(d => blockOf(d.date) && d.state !== 'booked');
   const valid = v => v === '__all' || (isOverview(v) && S.blocks.some(b => '__block:' + b.id === v)) || days.some(d => d.date === v);
   if (!valid(UI.mapDay)) UI.mapDay = days[0]?.date || '__all';
@@ -1469,20 +1740,21 @@ function initMap() {
 }
 function buildMarkers() {
   if (!MAP) return;
-  if (mapLayers) { mapLayers.control.remove(); Object.values(mapLayers.groups).forEach(g => g.remove()); }
-  const groups = {};
+  if (mapLayers) mapLayers.mine.remove();
+  const mine = L.layerGroup().addTo(MAP);
+  for (const k in MARKERS) delete MARKERS[k];
   for (const p of S.places) {
-    const rg = region(p.region);
-    const key = `<span style="color:${rg.color}">●</span> ${esc(rg.name)}`;
-    (groups[key] ||= L.layerGroup().addTo(MAP));
-    const m = L.circleMarker([p.lat, p.lon], { radius: 8, color: '#fff', weight: 2, fillColor: rg.color, fillOpacity: .95 });
+    if (!placeShown(p)) continue;
+    const m = L.marker([p.lat, p.lon], { icon: pinIcon(p), riseOnHover: true });
     m.bindPopup(() => popupHTML(p.id), { maxWidth: 260 });
-    m.bindTooltip(esc(p.name), { direction: 'top', offset: [0, -6] });
-    MARKERS[p.id] = m;
-    m.addTo(groups[key]);
+    m.bindTooltip(esc(p.name), { direction: 'top', offset: [0, -12] });
+    MARKERS[p.id] = m; m.addTo(mine);
   }
-  const control = L.control.layers(null, groups, { collapsed: true }).addTo(MAP);
-  mapLayers = { groups, control };
+  mapLayers = { mine };
+  const zoomClass = () => { const z = MAP.getZoom(), c = MAP.getContainer().classList; c.toggle('z-low', z < 8); c.toggle('z-mid', z >= 8 && z < 10); };
+  if (!buildMarkers.hooked) { MAP.on('zoomend moveend', () => refreshOsmView()); MAP.on('zoomend', zoomClass); buildMarkers.hooked = true; }
+  zoomClass();
+  osmLayerDirty = true; refreshOsmView();
   mapDirty = false;
 }
 function drawRoute() {
@@ -1530,7 +1802,7 @@ function popupHTML(pid) {
       `<div class="small">From <b>${esc(placeName(prevId))}</b>: ${MODE_ICON[dv.mode]} ${dur(dv.min)} · ${dv.km} km${dv.est ? ' (est.)' : ''}</div>${dv.segs ? `<div class="tiny muted">${esc(legText(dv))}</div>` : ''}`;
   }
   const first = (p.summary || '').split(/(?<=\.)\s/)[0];
-  return `<h4>${pick(pid) === 'must' ? '★ ' : ''}${esc(p.name)}</h4><div class="tiny" style="color:${rg.color}">${esc(p.cat || rg.name)} · ${esc(rg.name)} · ~${p.visit ?? 45} min visit</div>
+  return `<h4>${catInfo(p.cat).icon} ${pick(pid) === 'must' ? '★ ' : ''}${esc(p.name)}</h4><div class="tiny" style="color:${rg.color}">${esc(p.cat || rg.name)} · ${esc(rg.name)} · ~${p.visit ?? 45} min visit</div>
     ${first ? `<div style="margin:4px 0">${esc(first)}</div>` : ''}
     ${p.hours ? `<div class="tiny muted">🕘 ${esc(p.hours.replace('-', '–'))}${p.closed?.length ? ' · closed ' + p.closed.map(x => DOW[x]).join(', ') : ''}</div>` : ''}
     ${p.note && p.note !== p.caution ? `<div class="small muted" style="margin:4px 0">${withEur(esc(p.note))}</div>` : ''}${p.caution ? `<div class="small" style="color:var(--warn)">${withEur(esc(p.caution))}</div>` : ''}
@@ -1644,13 +1916,35 @@ document.addEventListener('click', e => {
     case 'setbool': S.settings[el.dataset.k] = el.checked; SUN_CACHE.clear(); changed(); break;
     case 'theme': UI.theme = el.dataset.v; applyTheme(); render(); break;
     case 'export': exportJSON(); break;
+    case 'pmode': UI.pmode = el.dataset.v; render(); break;
+    case 'mcat': { const f = mf(), c = el.dataset.v; f.hide = f.hide.includes(c) ? f.hide.filter(x => x !== c) : [...f.hide, c]; mapDirty = true; render(); break; }
+    case 'mcatonly': { const f = mf(), c = el.dataset.v; f.hide = [...new Set([...Object.keys(CAT_INFO), ...S.places.map(p => p.cat), ...(OSM ? OSM.items.map(a => a[4]) : [])])].filter(x => x !== c); mapDirty = true; render(); break; }
+    case 'mgroup': { const f = mf(), g = CAT_GROUPS.find(x => x.id === el.dataset.v); const cs = g ? Object.keys(g.cats) : [];
+      const allShown = cs.every(c => !f.hide.includes(c)); f.hide = allShown ? [...new Set([...f.hide, ...cs])] : f.hide.filter(c => !cs.includes(c)); mapDirty = true; render(); break; }
+    case 'mcatall': mf().hide = []; mapDirty = true; render(); break;
+    case 'mcatnone': mf().hide = [...new Set([...Object.keys(CAT_INFO), ...S.places.map(p => p.cat), ...(OSM ? OSM.items.map(a => a[4]) : [])])]; mapDirty = true; render(); break;
+    case 'msrc': { const f = mf(); f[el.dataset.v] = !f[el.dataset.v]; if (el.dataset.v === 'osm') UI.osmLayer = f.osm; mapDirty = true; render(); break; }
+    case 'mmust': mf().must = !mf().must; mapDirty = true; render(); break;
+    case 'osmload': loadOSM(); break;
+    case 'osmcat': UI.osmCat = el.dataset.v; UI.osmN = 40; render(); break;
+    case 'osmmore': UI.osmN = (UI.osmN || 40) + 60; $('#osmlist').innerHTML = osmListHTML(); break;
+    case 'osmadd': {
+      const a = OSM && OSM.items.find(x => x[0] === el.dataset.osm); if (!a) break;
+      const p = promoteOSM(osmObj(a)); MAP && MAP.closePopup(); changed(); fetchWiki(); toast(`Added ${p.name} to My places`); break;
+    }
+    case 'osmmap': {
+      const id = el.dataset.osm, a = OSM && OSM.items.find(x => x[0] === id); if (!a) break;
+      mf().osm = true; UI.osmLayer = true; if (!catShown(a[4])) mf().hide = mf().hide.filter(c => c !== a[4]); mf().must = false; goTab('map');
+      setTimeout(() => { if (!MAP) return; MAP.setView([a[2], a[3]], 11); refreshOsmView(); OSM_MARKERS[id]?.openPopup(); }, 60);
+      break;
+    }
     case 'tripedit': UI.editTrip = !UI.editTrip; render(); break;
     case 'tripsave': if (setTripDates($('#trip-from').value, $('#trip-to').value)) { UI.editTrip = false; mapDirty = true; changed(); toast('Dates updated'); } break;
     case 'wikiretry': IMG_W = null; try { localStorage.removeItem('egypt-imgw'); } catch (e) { } WIKI = {}; for (const k in IMG_FAIL) delete IMG_FAIL[k]; try { localStorage.removeItem(LS_WIKI); } catch (e) { } fetchWiki(); break;
     case 'pick': { const id = el.dataset.place, v = el.dataset.v; S.picks[id] = S.picks[id] === v ? undefined : v; if (!S.picks[id]) delete S.picks[id]; changed(); break; }
     case 'pfilter': UI.pf = { ...(UI.pf || {}), [el.dataset.k]: el.dataset.v }; render(); break;
-    case 'pinfo': UI.pf = {}; MAP && MAP.closePopup(); goTab('places'); setTimeout(() => document.getElementById('poi-' + el.dataset.place)?.scrollIntoView({ block: 'start' }), 0); break;
-    case 'pmap': { const id = el.dataset.place; goTab('map'); setTimeout(() => { if (MAP && MARKERS[id]) { MAP.setView([place(id).lat, place(id).lon], 10); MARKERS[id].openPopup(); } }, 50); break; }
+    case 'pinfo': UI.pf = {}; UI.pmode = 'mine'; MAP && MAP.closePopup(); goTab('places'); setTimeout(() => document.getElementById('poi-' + el.dataset.place)?.scrollIntoView({ block: 'start' }), 0); break;
+    case 'pmap': { const id = el.dataset.place; mf().mine = true; mf().must = false; mf().hide = mf().hide.filter(c => c !== place(id)?.cat); mapDirty = true; goTab('map'); setTimeout(() => { if (MAP && MARKERS[id]) { MAP.setView([place(id).lat, place(id).lon], 10); MARKERS[id].openPopup(); } }, 50); break; }
     case 'fxrefresh': fetchRate(true); break;
     case 'fxset': UI.fxEgp = +el.dataset.v; render(); break;
     case 'import': $('#importfile').click(); break;
@@ -1679,6 +1973,7 @@ document.addEventListener('change', e => {
     case 'sleep': stopOp(date, p => { p.sleep = v || null; }); break;
     case 'depart': stopOp(date, p => { p.depart = v || null; }); break;
     case 'mapdaysel': UI.mapDay = v; render(); break;
+    case 'osmnear': UI.osmNear = v; UI.osmN = 40; $('#osmlist').innerHTML = osmListHTML(); saveUI(); break;
     case 'padd': if (v) { stopOp(v, p => p.stops.push({ place: el.dataset.place })); toast(`Added to ${dateLabel(v)}`); } break;
     case 'oname': optById(el.dataset.id).name = v; changed(); break;
     case 'onote': optById(el.dataset.id).note = v; changed(); break;
@@ -1692,7 +1987,11 @@ document.addEventListener('change', e => {
     }
   }
 });
-document.addEventListener('input', e => { if (e.target.dataset && e.target.dataset.fx) fxInput(e.target); });
+document.addEventListener('input', e => {
+  if (e.target.dataset && e.target.dataset.fx) fxInput(e.target);
+  if (e.target.id === 'osmq') { UI.osmQ = e.target.value; UI.osmN = 40; clearTimeout(document.osmT); document.osmT = setTimeout(() => { $('#osmlist').innerHTML = osmListHTML(); saveUI(); }, 150); }
+});
+
 $('#importfile').addEventListener('change', e => { const f = e.target.files[0]; if (f) importJSON(f); e.target.value = ''; });
 const updOnline = () => { $('#offline').hidden = navigator.onLine; };
 addEventListener('online', () => { updOnline(); fetchRate(); fetchRoadMatrix(); fetchWiki(); }); addEventListener('offline', updOnline); updOnline();
