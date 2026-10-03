@@ -1,9 +1,9 @@
 {
-  "id": "/travel-plans/iceland/?app=iceland-planner-2",
+  "id": "/travel-plans/iceland-planner/",
   "name": "Iceland free days",
   "short_name": "Iceland",
   "description": "Daylight-aware planner for free days in Iceland",
-  "start_url": "./?app=2",
+  "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "orientation": "any",

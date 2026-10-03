@@ -1,6 +1,6 @@
 # Egypt Trip Planner
 
-A day-by-day planner for Egypt, built from the [Iceland planner](../iceland/README.md). It focuses on the Red Sea and South Sinai (Hurghada, El Gouna, Marsa Alam, Sharm el-Sheikh, Dahab, St Catherine) and on Luxor, and also covers Cairo & Giza, Alexandria and Aswan.
+A day-by-day planner for Egypt, built from the [Iceland planner](../iceland-planner/README.md). It focuses on the Red Sea and South Sinai (Hurghada, El Gouna, Marsa Alam, Sharm el-Sheikh, Dahab, St Catherine) and on Luxor, and also covers Cairo & Giza, Alexandria and Aswan.
 It's one page with no backend and no build step. It works offline once it has loaded.
 
 - `index.html`: the page and its styles

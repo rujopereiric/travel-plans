@@ -10,8 +10,11 @@ It's one page with no backend and no build step. It works offline once it has lo
 
 ## Running it
 
-- **Online:** https://rujopereiric.github.io/travel-plans/iceland/. Open it once on your phone, then use "Add to Home Screen".
-- **Locally:** run `python3 -m http.server` in the repo root and open http://localhost:8000/iceland/.
+The app moved from `/iceland/` to `/iceland-planner/` (October 2026) to get round a stuck Android install; the old address redirects here. Saved plans are kept, because browser storage is shared across the whole site.
+
+
+- **Online:** https://rujopereiric.github.io/travel-plans/iceland-planner/. Open it once on your phone, then use "Add to Home Screen".
+- **Locally:** run `python3 -m http.server` in the repo root and open http://localhost:8000/iceland-planner/.
   If you open `index.html` straight from disk (`file://`), the browser won't let it read `data.json`. Use **Import** instead.
 
 Offline: the app files, Leaflet and `data.json` are cached on first load. The browser keeps the map tiles
