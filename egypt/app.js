@@ -6,7 +6,7 @@ const LS_STATE = 'egypt-planner-v1';
 const LS_UI = 'egypt-planner-ui';
 // Bump on every change. The app compares it with the app.js on the server, so a phone that kept an old tab open
 // (no reload, so still the old code) is told a newer version exists.
-const APP_BUILD = '2026-10-03.6';
+const APP_BUILD = '2026-10-03.7';
 let NEWER = null; // the newer build found on the server, if any
 const AX0 = 5 * 60, AX1 = 23 * 60;           // timeline axis 05:00–23:00
 const DEFAULT_SETTINGS = {
@@ -1855,7 +1855,20 @@ function initMap() {
   if (MAP || typeof L === 'undefined') return;
   MAP = L.map('map', { zoomControl: true }).setView([26.8, 31.5], 6);
   if (S.places.length) MAP.fitBounds(L.latLngBounds(S.places.map(p => [p.lat, p.lon])), { padding: [20, 20] });
-  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '© OpenStreetMap contributors · routing OSRM' }).addTo(MAP);
+  // Base maps. OpenStreetMap's standard style labels everything in the local language (Arabic here), so the default is
+  // CARTO's, which draws the same OSM data with Latin-script names (name:en where mapped) and has a dark version.
+  const dark = matchMedia('(prefers-color-scheme: dark)').matches ? UI.theme !== 'light' : UI.theme === 'dark';
+  const carto = style => L.tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/${style}/{z}/{x}/{y}{r}.png`,
+    { subdomains: 'abcd', maxZoom: 19, attribution: '© OpenStreetMap contributors © CARTO · routing OSRM' });
+  const bases = {
+    'English labels': carto('voyager'),
+    'English labels, dark': carto('dark_all'),
+    'OpenStreetMap (Arabic labels)': L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '© OpenStreetMap contributors · routing OSRM' }),
+  };
+  const pickBase = bases[UI.basemap] ? UI.basemap : dark ? 'English labels, dark' : 'English labels';
+  bases[pickBase].addTo(MAP);
+  L.control.layers(bases, null, { collapsed: true, position: 'topright' }).addTo(MAP);
+  MAP.on('baselayerchange', e => { UI.basemap = e.name; saveUI(); });
   MAP.on('click', e => {
     if (!addMode) return;
     addMode = false;

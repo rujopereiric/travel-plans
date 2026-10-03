@@ -55,6 +55,11 @@ The first day is set to "free from 14:00" (landing in Cairo) and the last to "fr
   Free text like "550 EGP" or "550 LE" gets a € amount added.
 - **Service worker:** caches are named `egypt-*`, and each app only deletes its own old caches, so the Iceland and Egypt apps can both stay offline on the same site.
 
+## Map labels
+
+OpenStreetMap's standard map labels places in the local language, so in Egypt everything is in Arabic. The default map is therefore **CARTO Voyager**: the same OpenStreetMap data, with Latin-script names where the English name is mapped. Dark mode uses CARTO's dark version.
+The layer button (top right of the map) switches between *English labels*, *English labels, dark*, and *OpenStreetMap (Arabic labels)*. Your choice is remembered. Tiles from either source are kept for offline use.
+
 ## Map icons and filter
 
 Every place shows its category icon, coloured by family:
