@@ -4,6 +4,10 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  # the Egypt OSM job pushes with GITHUB_TOKEN, which doesn't trigger "push"; deploy after it instead
+  workflow_run:
+    workflows: ["Update Egypt OSM data"]
+    types: [completed]
 
 permissions:
   contents: read

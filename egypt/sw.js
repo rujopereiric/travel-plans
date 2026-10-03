@@ -1,7 +1,7 @@
 // Offline support: app files network-first (so edits to data.json show up when online),
 // Leaflet and map tiles cache-first (tiles you've viewed stay available offline).
 // Only egypt-* caches are touched: other apps on this origin (iceland/) keep theirs.
-const APP = 'egypt-app-v1', TILES = 'egypt-tiles-v1', IMGS = 'egypt-imgs-v1', MAX_TILES = 3000;
+const APP = 'egypt-app-v3', TILES = 'egypt-tiles-v2', IMGS = 'egypt-imgs-v1', MAX_TILES = 3000;
 const SHELL = ['./', 'index.html', 'app.js', 'data.json', 'manifest.webmanifest', 'icon.svg',
   'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css', 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js'];
 
@@ -24,7 +24,7 @@ self.addEventListener('fetch', e => {
   if (req.method !== 'GET') return;
   const url = new URL(req.url);
 
-  if (url.hostname.endsWith('tile.openstreetmap.org')) {
+  if (url.hostname.endsWith('tile.openstreetmap.org') || url.hostname === 'server.arcgisonline.com') {
     e.respondWith(caches.open(TILES).then(async c => {
       const hit = await c.match(req);
       if (hit) return hit;

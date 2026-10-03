@@ -1,0 +1,48 @@
+name: Update Egypt OSM data
+
+# Prepares egypt/osm/<region>.json (every named sight per region, from OpenStreetMap) so the Egypt planner
+# downloads ready files instead of querying the public Overpass servers from a phone.
+on:
+  workflow_dispatch:
+    inputs:
+      regions:
+        description: 'Region ids separated by spaces (empty = all)'
+        required: false
+        default: ''
+      diagnose:
+        description: 'Only time each query statement for these regions (no files written)'
+        type: boolean
+        default: false
+  schedule:
+    - cron: '17 4 3 * *'   # monthly, 3rd at 04:17 UTC
+
+permissions:
+  contents: write
+
+concurrency:
+  group: osm-egypt
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Diagnose (time each query statement)
+        if: ${{ github.event.inputs.diagnose == 'true' }}
+        run: node egypt/tools/osm-diagnose.mjs ${{ github.event.inputs.regions }}
+
+      - name: Fetch regions from Overpass (each region is committed and pushed when done)
+        if: ${{ github.event.inputs.diagnose != 'true' }}
+        env:
+          OSM_COMMIT: '1'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          node egypt/tools/osm-update.mjs ${{ github.event.inputs.regions }}

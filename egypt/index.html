@@ -79,7 +79,7 @@ button,select,input,textarea{font:inherit;color:inherit}
 .btn.icon{padding:4px 8px;min-width:34px}
 .btn.danger{color:var(--bad)}
 .btn:disabled{opacity:.4}
-select,input[type=text],input[type=number],input[type=time],textarea{
+select,input[type=text],input[type=search],input[type=number],input[type=time],input[type=date],textarea{
   background:var(--bg);border:1px solid var(--line);border-radius:9px;padding:6px 8px;min-height:36px;max-width:100%}
 input[type=number]{width:90px}
 textarea{width:100%;min-height:54px}
@@ -146,6 +146,30 @@ label.f > *{color:var(--ink);font-size:15px}
 .mlrow i{flex:none;width:14px;height:14px;border-radius:4px;margin-top:3px}
 .mlrow .badge{font-size:10.5px;padding:0 6px}
 .bedicon{background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:1px 6px;font-size:11px;font-weight:600;white-space:nowrap;box-shadow:0 1px 3px rgba(0,0,0,.25)}
+.osmrow{padding:10px 12px;margin-bottom:8px}
+select[data-act=osmnear]{max-width:170px}
+#osmq{min-width:0}
+.pinw{width:28px;height:28px;display:flex;align-items:center;justify-content:center}
+.pin{width:26px;height:26px;border-radius:50%;background:var(--c);border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.35);display:flex;align-items:center;justify-content:center;font-size:14px;line-height:1;transition:width .15s,height .15s}
+.pin.must{box-shadow:0 0 0 3px #f5b400,0 1px 4px rgba(0,0,0,.35)}
+.pin.osm{width:20px;height:20px;font-size:11px;border-width:1.5px;opacity:.92}
+.z-low .pin{width:15px;height:15px;font-size:0;border-width:1.5px}
+.z-low .pin.must{width:19px;height:19px;font-size:10px}
+.z-mid .pin{width:21px;height:21px;font-size:11px}
+.mfilter{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:4px 10px}
+.mfbody{max-height:34vh;overflow-y:auto;margin:0 -4px;padding:0 4px}
+.mfgroup{display:flex;flex-wrap:wrap;gap:4px;align-items:center;margin:5px 0}
+.mfgname{border:0;background:none;font-weight:700;font-size:11.5px;padding:2px 2px 2px 0;cursor:pointer;margin-right:2px}
+.pchip.mfchip[aria-pressed]{display:inline-flex;align-items:center;gap:4px;padding:2px 7px 2px 2px;font-size:12px;background:var(--card);color:var(--ink);border-color:var(--line);font-weight:400}
+.pchip.mfchip[aria-pressed="true"]{border-color:var(--ink)}
+.pchip.mfchip[aria-pressed="false"]{opacity:.4;text-decoration:line-through}
+.mfi{width:18px;height:18px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:10px}
+.mfonly{border:0;background:none;color:var(--muted);font-size:13px;padding:0 3px 0 0;margin-left:-3px;cursor:pointer}
+.osmbar{position:relative;height:6px;border-radius:3px;background:var(--chip);overflow:hidden;margin:5px 0 3px}
+.osmbar i{display:block;height:100%;background:var(--accent);border-radius:3px;transition:width .3s}
+.osmbar i.ind{position:absolute;left:0;top:0;width:35%!important;animation:osmind 1.3s ease-in-out infinite}
+@keyframes osmind{0%{left:-35%}100%{left:100%}}
+@media (prefers-reduced-motion:reduce){.osmbar i.ind{animation:none;width:100%!important;opacity:.5}}
 .modeicon{background:var(--card);border:1px solid var(--line);border-radius:50%;width:26px;height:26px;line-height:24px;text-align:center;font-size:14px;box-shadow:0 1px 3px rgba(0,0,0,.3)}
 .numicon{background:var(--accent);color:var(--accent-ink);border-radius:50%;width:20px;height:20px;line-height:20px;text-align:center;font-size:11px;font-weight:700;border:2px solid #fff}
 
