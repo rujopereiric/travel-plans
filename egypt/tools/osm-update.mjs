@@ -21,26 +21,48 @@ const SERVERS = ['https://overpass-api.de/api/interpreter', 'https://overpass.pr
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 const UA = 'travel-plans Egypt planner (github.com/rujopereiric/travel-plans)';
 
-async function fetchArea(area) {
-  // a few rounds over all servers, with growing pauses: here we can afford to wait
+// One box: try the servers; if they all time out, the box is too heavy for them (Alexandria with the western Delta
+// timed out on every server at 90 s while Cairo took 12 s), so split it into four and fetch those, up to 3 levels.
+const isTimeout = msg => /timed out|timeout|aborted/i.test(msg);
+async function fetchBox(area, box, depth = 0) {
+  const [s, w, n, e] = box, label = `${'  '.repeat(depth + 1)}[${box.map(x => x.toFixed(2)).join(',')}]`;
+  let timeouts = 0, tries = 0;
   for (let round = 0; round < 2; round++) {
     for (const url of SERVERS) {
-      const host = new URL(url).host, t0 = Date.now();
+      const host = new URL(url).host, t0 = Date.now(); tries++;
       try {
-        const res = await fetch(url, { method: 'POST', body: 'data=' + encodeURIComponent(osmQuery(area, 90)),
+        const res = await fetch(url, { method: 'POST', body: 'data=' + encodeURIComponent(osmQuery([area[0], area[1], s, w, n, e], 90)),
           headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'User-Agent': UA }, signal: AbortSignal.timeout(110000) });
         if (!res.ok) throw new Error('HTTP ' + res.status);
         const j = await res.json();
         if (j.remark && /runtime error|timed out|out of memory/i.test(j.remark)) throw new Error(j.remark.slice(0, 120));
-        console.log(`  ${host}: ${j.elements.length} elements in ${Math.round((Date.now() - t0) / 1000)} s`);
+        console.log(`${label} ${host}: ${j.elements.length} elements in ${Math.round((Date.now() - t0) / 1000)} s`);
         return j.elements;
-      } catch (e) { console.log(`  ${host}: ${e.message} (${Math.round((Date.now() - t0) / 1000)} s)`); }
+      } catch (err) {
+        console.log(`${label} ${host}: ${err.message} (${Math.round((Date.now() - t0) / 1000)} s)`);
+        if (isTimeout(err.message)) timeouts++;
+      }
+      // two timeouts mean the box is too heavy: split rather than wait on every server
+      if (timeouts >= 2 && depth < 3) break;
       await sleep(5000);
     }
+    if (timeouts >= 2 && depth < 3) break;
     await sleep(30000);
+  }
+  if (timeouts >= 2 && depth < 3) {
+    const mlat = (s + n) / 2, mlon = (w + e) / 2, all = [];
+    console.log(`${label} too heavy, splitting into 4`);
+    for (const q of [[s, w, mlat, mlon], [s, mlon, mlat, e], [mlat, w, n, mlon], [mlat, mlon, n, e]]) {
+      const els = await fetchBox(area, q, depth + 1);
+      if (!els) return null;
+      all.push(...els);
+      await sleep(3000);
+    }
+    return all;
   }
   return null;
 }
+const fetchArea = area => fetchBox(area, area.slice(2, 6));
 
 const want = process.argv.slice(2);
 const out = path.join(dir, 'osm');
