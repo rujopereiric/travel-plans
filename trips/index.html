@@ -27,6 +27,10 @@ a.trip:active{transform:scale(.99)}
 .blurb{font-size:13px;color:var(--muted);margin-top:3px}
 .go{color:var(--muted);font-size:22px}
 .note{font-size:12.5px;color:var(--muted);margin-top:18px}
+details.how{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-top:6px}
+details.how summary{font-weight:600;cursor:pointer;color:var(--accent)}
+details.how ol{margin:8px 0 2px;padding-left:20px;font-size:13.5px}
+details.how li{margin-bottom:5px}
 .chip{display:inline-block;padding:2px 8px;border-radius:99px;background:var(--line);font-size:12px}
 </style>
 </head>
@@ -35,6 +39,15 @@ a.trip:active{transform:scale(.99)}
   <h1>Travel Plans</h1>
   <p class="sub">Choose a trip. Each one works offline once you've opened it.</p>
   <div id="list"><p class="sub">Loading…</p></div>
+  <details class="how">
+    <summary>How it works</summary>
+    <ol>
+      <li>Tap a trip. Each one starts as a <b>sample trip</b>: set your own dates on its Plan tab (<b>Change dates</b>).</li>
+      <li>Mark the days you are busy, star the places you want to see, then tap <b>Auto-plan</b> to fill your free days.</li>
+      <li>Every trip has a <b>? Help</b> button at the top right with the full guide.</li>
+      <li>Your plans live <b>only on this phone</b>. Use <b>Safety → Export JSON</b> in a trip to back it up or send it to a friend.</li>
+    </ol>
+  </details>
   <p class="note" id="install"></p>
 </main>
 <script>

@@ -8,6 +8,10 @@ It's one page with no backend and no build step. It works offline once it has lo
 - `data.json`: the plan. Edit this by hand.
 - `sw.js`: the service worker that handles offline use
 
+## Help
+
+Tap **? Help** at the top right of the app for a built-in guide: quick start, what each tab does, how to read a day, auto-plan, backups and offline use.
+
 ## The sample trip
 
 `data.json` holds no personal plan. A new user gets an 8-day sample trip starting about a month after they first open the app (`"from": "auto"`), with arrival and departure days marked and one empty plan.

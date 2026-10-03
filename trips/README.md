@@ -8,6 +8,7 @@ Chrome on Android only allows **one installed app per site address**, and everyt
 - **Home screen** (`index.html`): a card per trip with your dates and how many free days are planned. Tap one to open it.
   The list comes from `trips.json`.
 - **Each trip** (`iceland/`, `egypt/`) is the full planner, with a **← Trips** link back to the home screen.
+- **Help:** the home screen has a short *How it works*, and every trip has a **? Help** button with the full guide.
 - **Install once:** Chrome menu ⋮ → Add to home screen. Long-press the icon for **Iceland** and **Egypt** shortcuts.
 
 ## How the copies are made

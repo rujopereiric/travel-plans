@@ -20,7 +20,7 @@ const LS_UI = 'tp-egypt-planner-ui';
 
 // Bump on every change. The app compares it with the app.js on the server, so a phone that kept an old tab open
 // (no reload, so still the old code) is told a newer version exists.
-const APP_BUILD = '2026-10-03.10';
+const APP_BUILD = '2026-10-03.11';
 let NEWER = null; // the newer build found on the server, if any
 const AX0 = 5 * 60, AX1 = 23 * 60;           // timeline axis 05:00–23:00
 const DEFAULT_SETTINGS = {
@@ -1996,6 +1996,70 @@ function popupHTML(pid) {
     <button class="btn small" data-act="msleep" data-place="${esc(pid)}">Sleep here</button></div>` : '<div class="small muted">Pick a single day above to add stops here.</div>'}`;
 }
 
+const HELP_TEXT = {
+  country: 'Egypt', fxTab: '€ / EGP',
+  intro: 'A trip planner for Egypt that knows about opening hours, daylight, and how to get between regions by road, flight, ferry or train. It checks that every stop happens while it is open and that you get back in time.',
+  busy: 'A flight, a dive trip you already booked, a rest day: any time you are not free.',
+  bar: '<b>Yellow</b> = daylight, <b>blue-grey</b> = twilight, dark = night. All times are <b>Egypt time</b>.',
+  badExtra: ', a stop is outside its opening hours or on its closed day',
+  specialTitle: '🕌 Opening hours and getting around (Egypt)',
+  special: `<ul>
+    <li>Temples, museums and sites have <b>opening hours and closing days</b>. A stop outside them makes the day ✗ (up to 15 min over makes it ! Tight).</li>
+    <li>Long distances use <b>flights, the ferry or trains</b> automatically when faster (e.g. Cairo ↔ Luxor). Their times include getting to the airport or station.</li>
+    <li>Times are in <b>Egypt time</b>, including the summer clock change.</li>
+    <li>Ticket prices change often and some sites need separate tickets: check before you go.</li></ul>`,
+  check: 'Check official site hours and prices, and current travel advice for the regions you plan to visit. Emergency numbers: police 122, ambulance 123, tourist police 126.'
+};
+/* ---------- Help ---------- */
+function renderHelp() {
+  const C = HELP_TEXT;
+  const sec = (title, body, open) => `<details class="card help"${open ? ' open' : ''}><summary>${title}</summary><div class="helpbody">${body}</div></details>`;
+  return `<h2 style="margin-top:4px">How this planner works</h2>
+  <p class="small muted" style="margin-top:0">${C.intro}</p>
+  ${sec('🚀 Quick start (2 minutes)', `<ol>
+    <li><b>Set your dates.</b> Plan tab → <b>Change dates</b>. The sample trip is just a placeholder.</li>
+    <li><b>Mark busy time.</b> Open a day and set it to <b>Fully booked</b> or <b>Partially free</b> (e.g. "free until 18:00" for your flight). ${C.busy}</li>
+    <li><b>Pick what you want to see.</b> Places tab → tap <b>★ Must-see</b> on the places you care about, <b>Skip</b> on the ones you don't.</li>
+    <li><b>Let it plan.</b> Tap <b>Auto-plan</b> (Plan or Compare tab). It builds a day-by-day route around your must-sees and adds it as a new plan option.</li>
+    <li><b>Check and tweak.</b> Every day shows <b>✓ Fits</b>, <b>! Tight</b> or <b>✗ Doesn't fit</b>. Open a day to add, remove or reorder stops.</li>
+    <li><b>Back it up.</b> Safety tab → <b>Export JSON</b>. Your plan lives only on this phone.</li></ol>`, true)}
+  ${sec('🗂️ The tabs', `<ul>
+    <li><b>Plan</b>: your days, one card each: the day's route, the time bar, and whether it fits. Tap a day to edit it.</li>
+    <li><b>Map</b>: the selected day's route, or the <b>Whole trip</b>. <b>Filter map</b> shows only the kinds of places you want.</li>
+    <li><b>Places</b>: everything you can visit, with photos, tips and links. <b>All of ${C.country}</b> searches thousands more places from OpenStreetMap.</li>
+    <li><b>Compare</b>: alternative plans side by side: driving time, what you see, and cost.</li>
+    <li><b>Costs</b>: things to book, estimated vs actual cost, running total in both currencies.</li>
+    <li><b>${C.fxTab}</b>: a currency converter with the live rate.</li>
+    <li><b>Safety</b>: official road and weather links, a safety checklist, daylight table, settings, and backup.</li></ul>`)}
+  ${sec('📊 Reading a day', `<ul>
+    <li>The <b>bar</b> runs from 05:00 to 23:00. ${C.bar}</li>
+    <li><b>Hatched</b> = time you're not free. The <b>outlined part</b> is your <b>usable window</b>: daylight and free time together.</li>
+    <li>Under the bar: <b>blocks = stops</b>, <b>grey = travel</b>.</li>
+    <li><b>✓ Fits</b>: everything fits in the window. <b>! Tight</b>: little spare time, or a long drive in the dark. <b>✗ Doesn't fit</b>: something falls outside your free time${C.badExtra}, or you'd drive more than your daily limit.</li>
+    <li><b>"+N more could fit"</b>: open the day to see suggestions. <b>Auto-fill</b> adds the best ones for you.</li></ul>`)}
+  ${sec('🧭 Plans, blocks and auto-plan', `<ul>
+    <li>A <b>block</b> is a run of free days in a row. Busy days split your trip into blocks, and they update automatically when you change dates or days.</li>
+    <li>Each block can have several <b>plan options</b> (A1, A2…). Pick one with the <b>Plan:</b> menu and compare them on the <b>Compare</b> tab.</li>
+    <li><b>Auto-plan</b> tries different overnight stops and fills each day with the best places within your <b>max driving per day</b> (Safety → Settings, or per day). It never changes your other options.</li>
+    <li>Set <b>Sleep tonight</b> on a day so the next day starts from there.</li></ul>`)}
+  ${sec(C.specialTitle, C.special)}
+  ${sec('💾 Your data, backup and sharing', `<ul>
+    <li>Your plan is saved <b>only in this browser on this phone</b>. Nothing is uploaded, and nobody else can see it.</li>
+    <li><b>Export JSON</b> (Safety tab) saves a file with your whole plan. <b>Import JSON</b> loads it back on this or another phone.</li>
+    <li>To <b>share a plan with a friend</b>, send them your exported file; they tap Import JSON.</li>
+    <li>Clearing Chrome's data for this site deletes your plan, so export first.</li>
+    <li>If you see <b>"data.json has changed"</b>, the app's built-in sample was updated. Tap <b>Keep my edits</b> to keep your plan.</li></ul>`)}
+  ${sec('📶 Offline and installing', `<ul>
+    <li>Open the app once on Wi-Fi: after that it works offline. Map areas, photos and routes you've viewed are kept for offline use too.</li>
+    <li>Install it: Chrome menu ⋮ → <b>Add to home screen</b>. If Chrome says "already installed", another trip app from this website is installed: use the <b>Trips</b> app, which holds every trip.</li>
+    <li>When a new version is published, close and reopen the app to get it.</li></ul>`)}
+  ${sec('⚠️ Good to know', `<ul>
+    <li>Driving times, fees and opening hours are <b>estimates</b> and can be out of date. Places marked <b>unverified</b> haven't been checked.</li>
+    <li>${C.check}</li>
+    <li>Map data © OpenStreetMap contributors; routing by OSRM; photos from Wikipedia / Wikimedia Commons; exchange rates from free public sources.</li></ul>`)}
+  <p class="tiny muted">Questions or ideas? Tell whoever sent you this app.</p>`;
+}
+
 /* ---------- main render ---------- */
 function render() {
   document.querySelectorAll('#tabs button').forEach(b => b.setAttribute('aria-current', b.dataset.tab === UI.tab ? 'page' : 'false'));
@@ -2011,7 +2075,7 @@ function render() {
   const scroll = window.scrollY;
   const tab = UI.tab;
   const upd = NEWER ? `<div class="banner row"><span class="grow">A newer version of the app is available.</span><button class="btn small primary" data-act="reload">Reload</button></div>` : '';
-  v.innerHTML = upd + (tab === 'plan' ? renderPlan() : tab === 'map' ? renderMapControls() : tab === 'compare' ? renderCompare() : tab === 'book' ? renderBook() : tab === 'fx' ? renderFx() : tab === 'places' ? renderPlaces() : renderCond());
+  v.innerHTML = upd + (tab === 'plan' ? renderPlan() : tab === 'map' ? renderMapControls() : tab === 'compare' ? renderCompare() : tab === 'book' ? renderBook() : tab === 'fx' ? renderFx() : tab === 'places' ? renderPlaces() : tab === 'help' ? renderHelp() : renderCond());
   mw.hidden = tab !== 'map';
   document.body.classList.toggle('on-map', tab === 'map');
   if (tab === 'map') {

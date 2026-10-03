@@ -8,6 +8,10 @@ It's one page with no backend and no build step. It works offline once it has lo
 - `data.json`: the plan, places and travel legs. Edit this by hand.
 - `sw.js`: the service worker that handles offline use
 
+## Help
+
+Tap **? Help** at the top right of the app for a built-in guide: quick start, what each tab does, how to read a day, auto-plan, backups and offline use.
+
 ## Running it
 
 - **Online:** https://rujopereiric.github.io/travel-plans/egypt/. Open it once on your phone, then use "Add to Home Screen".

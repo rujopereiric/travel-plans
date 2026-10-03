@@ -231,6 +231,11 @@ table.sun td,table.sun th{padding:5px 4px;border-bottom:1px solid var(--line);te
 .facts{margin:0;padding-left:18px;font-size:13px;color:var(--muted)}
 details summary{cursor:pointer;color:var(--accent)}
 nav.tabs button{font-size:10.5px}
+.help summary{font-weight:700;cursor:pointer;padding:2px 0}
+.helpbody{font-size:14px;margin-top:6px}
+.helpbody ol,.helpbody ul{margin:0;padding-left:20px}
+.helpbody li{margin-bottom:6px}
+#helpbtn{border:0;cursor:pointer;font-weight:700}
 .toast{position:fixed;left:50%;bottom:calc(76px + env(safe-area-inset-bottom));transform:translateX(-50%);background:var(--ink);color:var(--bg);
   padding:8px 14px;border-radius:99px;font-size:13px;z-index:2000;opacity:0;transition:opacity .2s;pointer-events:none}
 .toast.show{opacity:.95}
@@ -244,6 +249,7 @@ body.on-map main{padding-bottom:8px}
   <a class="chip" href="../" style="text-decoration:none;flex:none" title="All trips">← Trips</a>
   <h1 id="title">Egypt trip</h1>
   <button id="fxchip" class="chip" data-tab-go="fx" style="border:0;cursor:pointer"></button>
+  <button id="helpbtn" class="chip" data-tab-go="help" aria-label="Help">? Help</button>
   <span id="offline" class="chip" hidden>offline</span>
 </header>
 <main id="view"><p class="muted">Loading…</p></main>
