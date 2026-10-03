@@ -1,0 +1,44 @@
+{
+  "destinations": [
+    {
+      "id": "iceland",
+      "name": "Iceland",
+      "source": "iceland-planner",
+      "flag": "🇮🇸",
+      "color": "#1f7a8c",
+      "blurb": "Free days around the Erasmus+ training in Reykjavík. Daylight-aware planner, ring road, glaciers and hot springs.",
+      "copyKeys": {
+        "iceland-planner-v1": "tp-iceland-planner-v1",
+        "iceland-planner-ui": "tp-iceland-planner-ui"
+      },
+      "uiKey": "iceland-planner-ui",
+      "swReplace": {
+        "icelandp-": "tp-iceland-",
+        "(k.startsWith('iceland-') || k.startsWith('tp-iceland-'))": "k.startsWith('tp-iceland-')"
+      }
+    },
+    {
+      "id": "egypt",
+      "name": "Egypt",
+      "source": "egypt",
+      "flag": "🇪🇬",
+      "color": "#b5761f",
+      "blurb": "Cairo, Luxor, the Red Sea and Sinai. Opening hours, flights, ferry and trains.",
+      "copyKeys": {
+        "egypt-planner-v1": "tp-egypt-planner-v1",
+        "egypt-planner-ui": "tp-egypt-planner-ui"
+      },
+      "uiKey": "egypt-planner-ui",
+      "skip": [
+        "osm",
+        "tools"
+      ],
+      "jsReplace": {
+        "fetch(`osm/${id}.json`": "fetch(`../../egypt/osm/${id}.json`"
+      },
+      "swReplace": {
+        "'egypt-": "'tp-egypt-"
+      }
+    }
+  ]
+}

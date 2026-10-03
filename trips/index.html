@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#14202b">
+<title>Travel Plans</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="icon" href="icon-192.png" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<style>
+:root{--bg:#f3f5f7;--card:#fff;--ink:#18232d;--muted:#66727d;--line:#dde3e8;--accent:#1f7a8c}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#0f1820;--card:#18242f;--ink:#e6edf2;--muted:#93a1ad;--line:#2a3946;--accent:#4fb3c6}}
+:root[data-theme="dark"]{--bg:#0f1820;--card:#18242f;--ink:#e6edf2;--muted:#93a1ad;--line:#2a3946;--accent:#4fb3c6}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+main{max-width:640px;margin:0 auto;padding:calc(20px + env(safe-area-inset-top)) 16px calc(28px + env(safe-area-inset-bottom))}
+h1{font-size:26px;margin:4px 0 2px}
+.sub{color:var(--muted);margin:0 0 18px;font-size:14px}
+a.trip{display:flex;gap:14px;align-items:center;background:var(--card);border:1px solid var(--line);border-left:5px solid var(--c);border-radius:14px;padding:14px;margin-bottom:12px;text-decoration:none;color:inherit}
+a.trip:active{transform:scale(.99)}
+.flag{font-size:38px;line-height:1;flex:none}
+.t{flex:1;min-width:0}
+.t b{font-size:18px}
+.dates{font-size:13.5px;font-weight:600;color:var(--c);margin-top:1px}
+.blurb{font-size:13px;color:var(--muted);margin-top:3px}
+.go{color:var(--muted);font-size:22px}
+.note{font-size:12.5px;color:var(--muted);margin-top:18px}
+.chip{display:inline-block;padding:2px 8px;border-radius:99px;background:var(--line);font-size:12px}
+</style>
+</head>
+<body>
+<main>
+  <h1>Travel Plans</h1>
+  <p class="sub">Choose a trip. Each one works offline once you've opened it.</p>
+  <div id="list"><p class="sub">Loading…</p></div>
+  <p class="note" id="install"></p>
+</main>
+<script>
+'use strict';
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const fmt = d => new Date(d + 'T12:00:00Z').toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
+// a trip's dates and progress: from your saved plan if there is one, otherwise from its sample data
+async function summary(d) {
+  let st = null, mine = false;
+  try { const s = JSON.parse(localStorage.getItem(d.copyKeys[Object.keys(d.copyKeys)[0]]) || 'null'); if (s && s.state) { st = s.state; mine = true; } } catch (e) { }
+  if (!st) try { st = await (await fetch(d.id + '/data.json')).json(); } catch (e) { }
+  if (!st || !st.trip) return '';
+  const free = (st.days || []).filter(x => x.state !== 'booked').length;
+  const active = (st.blocks || []).map(b => (st.options || []).find(o => o.id === b.active)).filter(Boolean);
+  const planned = new Set(active.flatMap(o => Object.entries(o.days || {}).filter(([, p]) => p.stops && p.stops.length).map(([k]) => k))).size;
+  return `${fmt(st.trip.from)} – ${fmt(st.trip.to)}${free ? ` · ${planned} of ${free} free days planned` : ''}${mine ? '' : ' <span class="chip">sample</span>'}`;
+}
+(async () => {
+  let list = [];
+  try { list = (await (await fetch('trips.json', { cache: 'no-cache' })).json()).destinations; } catch (e) { document.getElementById('list').innerHTML = '<p class="sub">Could not load the trip list (offline before it was ever opened?).</p>'; return; }
+  const rows = await Promise.all(list.map(async d => `<a class="trip" href="${esc(d.id)}/" style="--c:${esc(d.color)}">
+      <span class="flag">${esc(d.flag)}</span>
+      <span class="t"><b>${esc(d.name)}</b><div class="dates">${await summary(d)}</div><div class="blurb">${esc(d.blurb)}</div></span>
+      <span class="go">›</span></a>`));
+  document.getElementById('list').innerHTML = rows.join('');
+})();
+const standalone = matchMedia('(display-mode: standalone)').matches;
+document.getElementById('install').innerHTML = standalone ? 'Tip: long-press the Trips icon on your home screen to jump straight to a trip.'
+  : 'Install: Chrome menu ⋮ → <b>Add to home screen</b>. One app holds every trip; long-press its icon for shortcuts.';
+if ('serviceWorker' in navigator && location.protocol.startsWith('http')) navigator.serviceWorker.register('sw.js').catch(() => { });
+</script>
+</body>
+</html>
