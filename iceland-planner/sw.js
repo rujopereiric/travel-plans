@@ -1,7 +1,7 @@
 // Offline support: app files network-first (so edits to data.json show up when online),
 // Leaflet and map tiles cache-first (tiles you've viewed stay available offline).
 // caches are prefixed 'icelandp-' (the app moved from /iceland/, whose old 'iceland-*' caches are removed here)
-const APP = 'icelandp-app-v1', TILES = 'icelandp-tiles-v1', IMGS = 'icelandp-imgs-v1', MAX_TILES = 3000;
+const APP = 'icelandp-app-v2', TILES = 'icelandp-tiles-v2', IMGS = 'icelandp-imgs-v1', MAX_TILES = 2000;
 const SHELL = ['./', 'index.html', 'app.js', 'data.json', 'app-v2.webmanifest', 'icon.svg', 'icon-192.png', 'icon-512.png', 'icon-maskable-512.png',
   'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css', 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js'];
 
@@ -26,13 +26,17 @@ self.addEventListener('fetch', e => {
 
   if (url.hostname.endsWith('tile.openstreetmap.org')) {
     e.respondWith(caches.open(TILES).then(async c => {
-      const hit = await c.match(req);
+      const hit = await c.match(req.url);
       if (hit) return hit;
       try {
-        const res = await fetch(req);
-        if (res.ok || res.type === 'opaque') { c.put(req, res.clone()); trimTiles(); }
+        // fetch in CORS mode (OSM tiles allow it) and cache only real successes: an opaque no-cors response
+        // is counted by Chrome as several MB of storage each, which made the cache report gigabytes
+        const res = await fetch(req.url, { mode: 'cors', credentials: 'omit' });
+        if (res.ok) c.put(req.url, res.clone()).then(trimTiles).catch(() => {});
         return res;
-      } catch (err) { return new Response('', { status: 504 }); }
+      } catch (err) {
+        try { return await fetch(req); } catch (e2) { return new Response('', { status: 504 }); }
+      }
     }));
     return;
   }
