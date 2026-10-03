@@ -29,10 +29,18 @@ The app moved from `/iceland/` to `/iceland-planner/` (October 2026) to get roun
 Offline: the app files, Leaflet and `data.json` are cached on first load. The browser keeps the map tiles
 for the areas you have viewed. Before you leave Wi-Fi, pan and zoom over the regions you'll visit.
 
-## Changing the dates
+## Changing the dates and flights
 
-Tap **Change dates** at the top of the Plan tab to set when you arrive and leave. New days are added as fully free.
+Tap **Dates & flights** at the top of the Plan tab to set when you arrive and leave. New days are added as fully free.
 If you remove days that have stops planned, the app asks first. To mark busy days (work, a course, a wedding…), open the day and set it to **Fully booked** or **Partially free**.
+
+Under **Flights**, enter when you land and when you take off, the airport (Keflavík by default), and the buffers:
+- **Landing day:** starts at the airport. Plans begin after landing plus *minutes to get going* (default 60, for passport, bags and the rental car).
+- **Departure day:** ends at the airport. You must be there *minutes before* takeoff (default 150, to return the car and check in).
+- **Auto-plan:** starts at the arrival airport and ends at the departure one. Before an early flight it keeps the last night close to the airport. A pre-dawn drive of more than 90 minutes to catch the flight counts as not fitting.
+
+Leave a time empty for no flight. Saving a flight time resets a hand-set "free from" or "free until" on that day, because the flight now sets it.
+In `data.json` these are `trip.arrive` and `trip.leave`: `{"time": "15:00", "at": "kef", "buf": 60}`.
 
 A **planning block** is a run of consecutive days that aren't fully booked. Blocks are recalculated whenever dates or day states change:
 - **Growing or shrinking:** a block keeps its letter and plans.

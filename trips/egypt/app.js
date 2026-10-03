@@ -20,7 +20,7 @@ const LS_UI = 'tp-egypt-planner-ui';
 
 // Bump on every change. The app compares it with the app.js on the server, so a phone that kept an old tab open
 // (no reload, so still the old code) is told a newer version exists.
-const APP_BUILD = '2026-10-03.11';
+const APP_BUILD = '2026-10-03.12';
 let NEWER = null; // the newer build found on the server, if any
 const AX0 = 5 * 60, AX1 = 23 * 60;           // timeline axis 05:00–23:00
 const DEFAULT_SETTINGS = {
@@ -139,23 +139,44 @@ function planOf(opt, date, create) {
   if (!opt.days[date] && create) opt.days[date] = { stops: [], sleep: null };
   return opt.days[date] || null;
 }
+// arrival and departure flights (S.trip.arrive / S.trip.leave = { time, at, buf }): the landing day starts at the
+// airport once you're through it, and the departure day ends there in time to check in
+const FLIGHT_BUF = { in: 90, out: 180 };
+const airports = () => { const a = S.places.filter(p => p.cat === 'Airport' || /airport/i.test(p.name)); return a.length ? a : S.places; };
+const defAirport = () => place(S.trip.end) ? S.trip.end : (airports()[0]?.id || S.trip.home);
+function flightOf(k) {
+  const f = S.trip[k]; if (!f || !f.time) return null;
+  const buf = f.buf != null && f.buf !== '' ? +f.buf : FLIGHT_BUF[k === 'arrive' ? 'in' : 'out'];
+  return { t: toMin(f.time), at: place(f.at) ? f.at : defAirport(), buf };
+}
+// the flight that shapes this day, if the day isn't booked anyway
+const flightIn = date => date === S.trip.from && dayObj(date)?.state !== 'booked' ? flightOf('arrive') : null;
+const flightOut = date => date === S.trip.to && dayObj(date)?.state !== 'booked' ? flightOf('leave') : null;
 function startLoc(opt, date) {
+  const fi = flightIn(date); if (fi) return fi.at;
   const b = blockOf(date); if (!b) return S.trip.home;
   const ds = blockDates(b), i = ds.indexOf(date);
   if (i > 0) { const p = opt.days[ds[i - 1]]; if (p && p.sleep) return p.sleep; }
   return S.trip.home;
 }
-const endLoc = (opt, date) => (opt.days[date] && opt.days[date].sleep) || S.trip.home;
+const endLoc = (opt, date) => flightOut(date)?.at || (opt.days[date] && opt.days[date].sleep) || S.trip.home;
 function freeWin(d) {
   if (!d || d.state === 'booked') return null;
-  if (d.state === 'partial') { const t = toMin(d.time) ?? 720; return d.mode === 'from' ? [t, 1440] : [0, t]; }
-  return [0, 1440];
+  let w = [0, 1440];
+  if (d.state === 'partial') { const t = toMin(d.time) ?? 720; w = d.mode === 'from' ? [t, 1440] : [0, t]; }
+  const fi = flightIn(d.date), fo = flightOut(d.date);
+  // a late landing still leaves time to get to the first bed, even past midnight
+  if (fi) { w[0] = Math.max(w[0], fi.t + fi.buf); w[1] = Math.max(w[1], Math.min(w[0] + 120, 1620)); }
+  if (fo) w[1] = Math.min(w[1], fo.t - fo.buf);
+  return w[1] > w[0] ? w : null;
 }
 // opening hours "HH:MM-HH:MM" → [open, close] in minutes; a close before the open runs past midnight
 const hoursOf = id => { const h = place(id)?.hours; if (!h) return null; const [a, b] = h.split('-').map(toMin); return [a, b <= a ? b + 1440 : b]; };
 const maxDriveOf = d => Math.round(((d && d.maxDriveH != null && d.maxDriveH !== '') ? +d.maxDriveH : +set('maxDriveH')) * 60);
 function stateText(d) {
   if (d.state === 'booked') return 'Booked';
+  const fi = flightIn(d.date), fo = flightOut(d.date);
+  if (fi || fo) { const w = freeWin(d); return !w ? '✈ No free time' : '✈ Free ' + (fi ? 'from ' + hhmm(w[0]) : '') + (fi && fo ? ' ' : '') + (fo ? 'until ' + hhmm(w[1]) : ''); }
   if (d.state === 'partial') return (d.mode === 'from' ? 'Free from ' : 'Free until ') + (d.time || '?');
   return 'Free';
 }
@@ -406,6 +427,7 @@ function simulate(date, opt) {
     dep = Math.ceil(Math.max(free[0], ideal, early) / 5) * 5;
     dep = Math.round(dep / 5) * 5;
   }
+  if (!(plan && plan.depart) && !seq.length && free[1] < 1440) dep = Math.max(free[0], Math.min(dep, Math.floor((free[1] - back.min - 10) / 5) * 5));
   r.depart = dep;
 
   // walk the day
@@ -469,7 +491,9 @@ function simulate(date, opt) {
     issue(r.darkEve > set('darkDriveMin') ? 'tight' : 'info', `${dur(r.darkEve)} on the road after dark — reach ${placeName(tail.to)} at ${hhmm(tail.end)}; sunset ${hhmm(sun.set)}, dark from ${hhmm(sun.dusk)}.${r.darkEve > set('darkDriveMin') ? ' Long-distance roads are best done in daylight (unlit, trucks, checkpoints).' : ''}`);
   }
   const morning = r.darkDrive - r.darkEve;
-  if (morning > 0) issue('info', `${dur(morning)} of driving before first light (${hhmm(sun.dawn)}).`);
+  // before an early flight a long night drive is worth avoiding: sleep nearer the airport
+  const earlyFlight = flightOut(date) && free[1] < sun.dawn + 60 && morning > set('darkDriveMin');
+  if (morning > 0) issue(earlyFlight ? (morning > 90 ? 'bad' : 'tight') : 'info', `${dur(morning)} of driving before first light (${hhmm(sun.dawn)}).${earlyFlight ? ' Sleeping nearer the airport the night before makes this shorter.' : ''}`);
   const slackCut = free[1] < 1440 ? free[1] - t : Infinity;
   const lastDl = [...r.items].reverse().find(i => i.type === 'stop' && i.daylight);
   const slackSun = lastDl ? lastDl.sun.set - lastDl.dep : Infinity;
@@ -598,12 +622,12 @@ function autoPlan(bid) {
   const b = S.blocks.find(x => x.id === bid), dates = blockDates(b).filter(d => freeWin(dayObj(d)));
   if (!dates.length) return null;
   const cur = activeOpt(b), last = dates[dates.length - 1];
-  const finalEnd = (cur && cur.days[last]?.sleep) || (last === S.trip.to && place(S.trip.end) ? S.trip.end : S.trip.home);
+  const finalEnd = flightOut(last)?.at || (cur && cur.days[last]?.sleep) || (last === S.trip.to && place(S.trip.end) ? S.trip.end : S.trip.home);
   const cands = sleepCandidates();
   // Beam search over overnight stops: build the plan day by day, auto-filling each day, and keep only the
   // BEAM best partial plans after each day (instead of fully planning every combination).
   const BEAM = dates.length > 10 ? 10 : 20;
-  let beam = [{ opt: { id: '_auto', block: bid, name: '', note: '', days: {} }, prev: S.trip.home }], tried = 0;
+  let beam = [{ opt: { id: '_auto', block: bid, name: '', note: '', days: {} }, prev: startLoc({ days: {} }, dates[0]) }], tried = 0;
   for (let i = 0; i < dates.length; i++) {
     const date = dates[i], lim = maxDriveOf(dayObj(date)), lastLim = maxDriveOf(dayObj(last)), next = [];
     for (const st of beam) {
@@ -816,13 +840,41 @@ function setTripDates(from, to) {
   recomputeBlocks();
   return true;
 }
+function flightRow(k, label, bufLabel) {
+  const f = S.trip[k] || {}, at = place(f.at) ? f.at : defAirport();
+  return `<div class="row"><label class="f">${label}<input type="time" id="fl-${k}-t" value="${esc(f.time || '')}"></label>
+      <label class="f grow">Airport<select id="fl-${k}-at">${airports().map(p => `<option value="${esc(p.id)}" ${p.id === at ? 'selected' : ''}>${esc(p.name)}</option>`).join('')}</select></label>
+      <label class="f">${bufLabel}<input type="number" min="0" step="15" id="fl-${k}-b" value="${f.buf ?? FLIGHT_BUF[k === 'arrive' ? 'in' : 'out']}"></label></div>`;
+}
+function flightLine() {
+  const fi = flightOf('arrive'), fo = flightOf('leave');
+  if (!fi && !fo) return `<div class="tiny muted" style="margin:-4px 0 10px">✈ No flights set. Add them under <b>Dates &amp; flights</b> so the first and last days start and end at the airport.</div>`;
+  return `<div class="tiny muted" style="margin:-4px 0 10px">${fi ? `✈ Land ${hhmm(fi.t)} ${esc(placeName(fi.at))}` : '✈ No arrival flight'} · ${fo ? `take off ${hhmm(fo.t)} ${esc(placeName(fo.at))}` : 'no departure flight'}</div>`;
+}
+// save the flight fields; the first and last days then follow the flights instead of a hand-set "free from/until"
+function saveFlights() {
+  for (const k of ['arrive', 'leave']) {
+    const t = $(`#fl-${k}-t`).value;
+    if (!t) { delete S.trip[k]; continue; }
+    const b = $(`#fl-${k}-b`).value;
+    S.trip[k] = { time: t, at: $(`#fl-${k}-at`).value, ...(b !== '' ? { buf: +b } : {}) };
+    const d = dayObj(k === 'arrive' ? S.trip.from : S.trip.to);
+    if (d && d.state === 'partial' && d.mode === (k === 'arrive' ? 'from' : 'until')) { d.state = 'free'; delete d.mode; delete d.time; }
+    if (d && /^(Arrival|Departure):/.test(d.label || '')) d.label = k === 'arrive' ? 'Arrival day' : 'Departure day';
+  }
+}
 function tripCard() {
   const n = S.days.length, booked = S.days.filter(d => d.state === 'booked').length;
   if (!UI.editTrip) return `<div class="card row small" style="margin-bottom:10px"><span class="grow"><b>${dateLabel(S.trip.from)} – ${dateLabel(S.trip.to)}</b> · ${n} days · ${n - booked} free or partly free · ${S.blocks.length} planning block${S.blocks.length === 1 ? '' : 's'}</span>
-    <button class="btn small" data-act="mapgo" data-date="__all">Map</button><button class="btn small" data-act="tripedit">Change dates</button></div>`;
+    <button class="btn small" data-act="mapgo" data-date="__all">Map</button><button class="btn small" data-act="tripedit">Dates &amp; flights</button></div>
+    ${flightLine()}`;
   return `<div class="card" style="margin-bottom:10px"><h3 style="margin-top:0">Trip dates</h3>
     <div class="row"><label class="f">Arrive<input type="date" id="trip-from" value="${S.trip.from}"></label>
       <label class="f">Leave<input type="date" id="trip-to" value="${S.trip.to}"></label></div>
+    <h3>Flights</h3>
+    ${flightRow('arrive', 'Land at', 'Minutes to get going')}
+    ${flightRow('leave', 'Take off at', 'Be there (min before)')}
+    <p class="tiny muted">The landing day starts at the airport once you are through passport control${S.trip.country ? ' and out' : ', with bags and the rental car'}; the departure day ends at the airport in time to ${S.trip.country ? 'check in' : 'return the car and check in'}. Leave a time empty for no flight.</p>
     <p class="tiny muted">New days are added as fully free. To mark training or other busy days, open a day and set it to <b>Fully booked</b> (or partly free).
       Planning blocks follow the free days automatically; existing plans are kept when blocks grow, merge or split.</p>
     <div class="row"><button class="btn small primary" data-act="tripsave">Apply</button><button class="btn small" data-act="tripedit">Cancel</button></div></div>`;
@@ -1048,6 +1100,9 @@ function dayBody(d, b, o, r) {
     </div>
     <div class="row" style="margin-top:8px"><label class="f grow">Note<input type="text" value="${esc(d.label || '')}" data-act="dlabel" data-date="${d.date}" placeholder="e.g. dinner with the group"></label>
     ${d.state !== 'booked' ? `<label class="f">Max travel (h)<input type="number" min="0" step="0.5" value="${d.maxDriveH ?? ''}" placeholder="${set('maxDriveH')}" data-act="dmaxdrive" data-date="${d.date}"></label>` : ''}</div>`;
+  const fi = flightIn(d.date), fo = flightOut(d.date);
+  if (fi) h += `<p class="small flight">✈ Land <b>${hhmm(fi.t)}</b> at ${esc(placeName(fi.at))} · ${fi.buf} min for passport, bags${S.trip.country ? '' : ' and the car'} · plans start <b>${hhmm(fi.t + fi.buf)}</b> <button class="btn small" data-act="flightedit">Change</button></p>`;
+  if (fo) h += `<p class="small flight">✈ Take off <b>${hhmm(fo.t)}</b> from ${esc(placeName(fo.at))} · be there by <b>${hhmm(fo.t - fo.buf)}</b> (${fo.buf} min before) <button class="btn small" data-act="flightedit">Change</button></p>`;
   if (!b) return h + `<p class="small muted">This day is fully booked. Set it to fully or partly free to plan stops.</p>`;
   if (!o) return h + `<p class="small muted">No itinerary option yet for ${esc(b.name)}.</p>`;
   if (!r.free) return h + (r.issues.length ? issuesHTML(r) : '');
@@ -1085,7 +1140,8 @@ function dayBody(d, b, o, r) {
   h += `<div class="row" style="margin-top:10px"><select data-act="sadd" data-date="${d.date}" class="grow">
       <option value="">+ Add a stop…</option><option value="_break">Break (lunch, rest)</option>${placeOptions(null)}</select>
       <button class="btn small" data-act="mapday" data-date="${d.date}">On map</button></div>`;
-  h += `<div class="row" style="margin-top:8px"><label class="f grow">Sleep tonight / end the day at
+  h += fo ? `<div class="small" style="margin-top:8px">End the day at <b>${esc(placeName(fo.at))}</b> for your ${hhmm(fo.t)} flight.</div>`
+    : `<div class="row" style="margin-top:8px"><label class="f grow">Sleep tonight / end the day at
       <select data-act="sleep" data-date="${d.date}">${placeOptions(plan.sleep || S.trip.home)}</select></label></div>`;
   h += `<div class="kv" style="margin-top:10px">
       <span>Travel</span><b>${dur(r.driveMin)} · ${r.driveKm} km <span class="muted" style="font-weight:400">(limit ${dur(r.maxDrive)})</span></b>
@@ -2017,8 +2073,8 @@ function renderHelp() {
   return `<h2 style="margin-top:4px">How this planner works</h2>
   <p class="small muted" style="margin-top:0">${C.intro}</p>
   ${sec('🚀 Quick start (2 minutes)', `<ol>
-    <li><b>Set your dates.</b> Plan tab → <b>Change dates</b>. The sample trip is just a placeholder.</li>
-    <li><b>Mark busy time.</b> Open a day and set it to <b>Fully booked</b> or <b>Partially free</b> (e.g. "free until 18:00" for your flight). ${C.busy}</li>
+    <li><b>Set your dates and flights.</b> Plan tab → <b>Dates &amp; flights</b>. Enter when you land and take off: day 1 then starts at the airport after landing, and the last day ends there in time for check-in. The sample trip is just a placeholder.</li>
+    <li><b>Mark busy time.</b> Open a day and set it to <b>Fully booked</b> or <b>Partially free</b> (e.g. "free until 18:00"). ${C.busy}</li>
     <li><b>Pick what you want to see.</b> Places tab → tap <b>★ Must-see</b> on the places you care about, <b>Skip</b> on the ones you don't.</li>
     <li><b>Let it plan.</b> Tap <b>Auto-plan</b> (Plan or Compare tab). It builds a day-by-day route around your must-sees and adds it as a new plan option.</li>
     <li><b>Check and tweak.</b> Every day shows <b>✓ Fits</b>, <b>! Tight</b> or <b>✗ Doesn't fit</b>. Open a day to add, remove or reorder stops.</li>
@@ -2192,7 +2248,8 @@ document.addEventListener('click', e => {
       break;
     }
     case 'tripedit': UI.editTrip = !UI.editTrip; render(); break;
-    case 'tripsave': if (setTripDates($('#trip-from').value, $('#trip-to').value)) { UI.editTrip = false; mapDirty = true; changed(); toast('Dates updated'); } break;
+    case 'tripsave': if (setTripDates($('#trip-from').value, $('#trip-to').value)) { saveFlights(); UI.editTrip = false; mapDirty = true; changed(); toast('Dates and flights updated'); } break;
+    case 'flightedit': UI.editTrip = true; render(); scrollTo(0, 0); break;
     case 'wikiretry': IMG_W = null; try { localStorage.removeItem('egypt-imgw'); } catch (e) { } WIKI = {}; for (const k in IMG_FAIL) delete IMG_FAIL[k]; try { localStorage.removeItem(LS_WIKI); } catch (e) { } fetchWiki(); break;
     case 'pick': { const id = el.dataset.place, v = el.dataset.v; S.picks[id] = S.picks[id] === v ? undefined : v; if (!S.picks[id]) delete S.picks[id]; changed(); break; }
     case 'pfilter': UI.pf = { ...(UI.pf || {}), [el.dataset.k]: el.dataset.v }; render(); break;

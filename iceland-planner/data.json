@@ -8,15 +8,9 @@
     "sunLon": -21.9426,
     "home": "reykjavik",
     "autoDays": 8,
-    "autoEnds": {
-      "first": {"label": "Arrival: set the time you land"},
-      "last": {
-        "state": "partial",
-        "mode": "until",
-        "time": "18:00",
-        "label": "Departure: set when you must be at Keflavík airport"
-      }
-    }
+    "autoEnds": {"first": {"label": "Arrival day"}, "last": {"label": "Departure day"}},
+    "arrive": {"time": "15:00", "at": "kef"},
+    "leave": {"time": "20:00", "at": "kef"}
   },
   "settings": {
     "speedKmh": 75,

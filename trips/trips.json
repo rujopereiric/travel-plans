@@ -7,10 +7,7 @@
       "flag": "🇮🇸",
       "color": "#1f7a8c",
       "blurb": "Waterfalls, glaciers, hot springs and the ring road. A daylight-aware planner for short winter days.",
-      "copyKeys": {
-        "iceland-planner-v1": "tp-iceland-planner-v1",
-        "iceland-planner-ui": "tp-iceland-planner-ui"
-      },
+      "copyKeys": {"iceland-planner-v1": "tp-iceland-planner-v1", "iceland-planner-ui": "tp-iceland-planner-ui"},
       "uiKey": "iceland-planner-ui",
       "swReplace": {
         "icelandp-": "tp-iceland-",
@@ -19,15 +16,8 @@
       "generic": {
         "name": "Iceland",
         "autoDays": 8,
-        "first": {
-          "label": "Arrival: set the time you land"
-        },
-        "last": {
-          "state": "partial",
-          "mode": "until",
-          "time": "18:00",
-          "label": "Departure: set when you must be at Keflavík airport"
-        },
+        "first": {"label": "Arrival day"},
+        "last": {"label": "Departure day"},
         "placeNotes": {
           "reykjavik": "The capital and the natural base for day trips.",
           "kef": "Iceland's international airport, ~45 min from Reykjavík."
@@ -80,43 +70,18 @@
       "flag": "🇪🇬",
       "color": "#b5761f",
       "blurb": "Cairo, Luxor, the Red Sea and Sinai. Opening hours, flights, ferry and trains.",
-      "copyKeys": {
-        "egypt-planner-v1": "tp-egypt-planner-v1",
-        "egypt-planner-ui": "tp-egypt-planner-ui"
-      },
+      "copyKeys": {"egypt-planner-v1": "tp-egypt-planner-v1", "egypt-planner-ui": "tp-egypt-planner-ui"},
       "uiKey": "egypt-planner-ui",
-      "skip": [
-        "osm",
-        "tools"
-      ],
-      "jsReplace": {
-        "fetch(`osm/${id}.json`": "fetch(`../../egypt/osm/${id}.json`"
-      },
-      "swReplace": {
-        "'egypt-": "'tp-egypt-"
-      },
+      "skip": ["osm", "tools"],
+      "jsReplace": {"fetch(`osm/${id}.json`": "fetch(`../../egypt/osm/${id}.json`"},
+      "swReplace": {"'egypt-": "'tp-egypt-"},
       "generic": {
         "name": "Egypt",
         "autoDays": 10,
-        "first": {
-          "state": "partial",
-          "mode": "from",
-          "time": "14:00",
-          "label": "Arrival: set the time you land"
-        },
-        "last": {
-          "state": "partial",
-          "mode": "until",
-          "time": "11:00",
-          "label": "Departure: be at the airport ~3 h before your flight"
-        },
-        "bookingsDrop": [
-          "b5",
-          "b9"
-        ],
-        "bookingsRename": {
-          "b4": "Site tickets (estimate)"
-        }
+        "first": {"label": "Arrival day"},
+        "last": {"label": "Departure day"},
+        "bookingsDrop": ["b5", "b9"],
+        "bookingsRename": {"b4": "Site tickets (estimate)"}
       }
     }
   ]

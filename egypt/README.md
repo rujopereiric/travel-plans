@@ -26,6 +26,15 @@ The app shows its version at the bottom of the Safety tab. When you come back to
 If so, a banner offers **Reload**: an open tab or home-screen app otherwise keeps running the old code. Your edits are saved in the browser, so reloading loses nothing.
 When you change `app.js`, bump `APP_BUILD` at the top.
 
+## Flights in and out
+
+Plan tab → **Dates & flights** → **Flights**: set your landing and takeoff times and airports. Cairo is the default.
+- **Landing day:** starts at the airport after landing plus 90 minutes (visa and passport).
+- **Departure day:** ends at the airport 180 minutes before takeoff.
+- **Auto-plan:** starts and ends at those airports.
+
+In `data.json` these are `trip.arrive` and `trip.leave`: `{"time": "13:00", "at": "cai", "buf": 90}`.
+
 ## The sample plan
 
 `data.json` holds no personal plan. A new user gets a 10-day sample trip starting about a month after they first open the app (`"from": "auto"`).

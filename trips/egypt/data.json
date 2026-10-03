@@ -11,15 +11,9 @@
     "tz": "Africa/Cairo",
     "country": "Egypt",
     "autoDays": 10,
-    "autoEnds": {
-      "first": {"state": "partial", "mode": "from", "time": "14:00", "label": "Arrival: set the time you land"},
-      "last": {
-        "state": "partial",
-        "mode": "until",
-        "time": "11:00",
-        "label": "Departure: be at the airport ~3 h before your flight"
-      }
-    }
+    "autoEnds": {"first": {"label": "Arrival day"}, "last": {"label": "Departure day"}},
+    "arrive": {"time": "13:00", "at": "cai"},
+    "leave": {"time": "14:00", "at": "cai"}
   },
   "settings": {
     "speedKmh": 80,

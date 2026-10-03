@@ -8,6 +8,10 @@ It's one page with no backend and no build step. It works offline once it has lo
 - `data.json`: the plan, places and travel legs. Edit this by hand.
 - `sw.js`: the service worker that handles offline use
 
+## Help
+
+Tap **? Help** at the top right of the app for a built-in guide: quick start, what each tab does, how to read a day, auto-plan, backups and offline use.
+
 ## Running it
 
 - **Online:** https://rujopereiric.github.io/travel-plans/egypt/. Open it once on your phone, then use "Add to Home Screen".
@@ -21,6 +25,15 @@ the whole-trip map, the Places tab with Wikipedia photos, bookings, and export/i
 The app shows its version at the bottom of the Safety tab. When you come back to it, and every 15 minutes, it checks whether the server has a newer `app.js`.
 If so, a banner offers **Reload**: an open tab or home-screen app otherwise keeps running the old code. Your edits are saved in the browser, so reloading loses nothing.
 When you change `app.js`, bump `APP_BUILD` at the top.
+
+## Flights in and out
+
+Plan tab → **Dates & flights** → **Flights**: set your landing and takeoff times and airports. Cairo is the default.
+- **Landing day:** starts at the airport after landing plus 90 minutes (visa and passport).
+- **Departure day:** ends at the airport 180 minutes before takeoff.
+- **Auto-plan:** starts and ends at those airports.
+
+In `data.json` these are `trip.arrive` and `trip.leave`: `{"time": "13:00", "at": "cai", "buf": 90}`.
 
 ## The sample plan
 
