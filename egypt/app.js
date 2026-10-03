@@ -6,7 +6,7 @@ const LS_STATE = 'egypt-planner-v1';
 const LS_UI = 'egypt-planner-ui';
 // Bump on every change. The app compares it with the app.js on the server, so a phone that kept an old tab open
 // (no reload, so still the old code) is told a newer version exists.
-const APP_BUILD = '2026-10-03.7';
+const APP_BUILD = '2026-10-03.8';
 let NEWER = null; // the newer build found on the server, if any
 const AX0 = 5 * 60, AX1 = 23 * 60;           // timeline axis 05:00–23:00
 const DEFAULT_SETTINGS = {
@@ -1855,18 +1855,35 @@ function initMap() {
   if (MAP || typeof L === 'undefined') return;
   MAP = L.map('map', { zoomControl: true }).setView([26.8, 31.5], 6);
   if (S.places.length) MAP.fitBounds(L.latLngBounds(S.places.map(p => [p.lat, p.lon])), { padding: [20, 20] });
-  // Base maps. OpenStreetMap's standard style labels everything in the local language (Arabic here), so the default is
-  // CARTO's, which draws the same OSM data with Latin-script names (name:en where mapped) and has a dark version.
+  // Base maps. OpenStreetMap's standard style labels everything in the local language (Arabic here). Esri's maps label
+  // in English and need no API key (CARTO's now do), so they're the default; dark mode gets Esri's dark canvas.
   const dark = matchMedia('(prefers-color-scheme: dark)').matches ? UI.theme !== 'light' : UI.theme === 'dark';
-  const carto = style => L.tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/${style}/{z}/{x}/{y}{r}.png`,
-    { subdomains: 'abcd', maxZoom: 19, attribution: '© OpenStreetMap contributors © CARTO · routing OSRM' });
+  const esri = (svc, o = {}) => L.tileLayer(`https://server.arcgisonline.com/ArcGIS/rest/services/${svc}/MapServer/tile/{z}/{y}/{x}`,
+    { maxZoom: 19, maxNativeZoom: 18, attribution: 'Tiles © Esri, HERE, Garmin, © OpenStreetMap contributors · routing OSRM', ...o });
   const bases = {
-    'English labels': carto('voyager'),
-    'English labels, dark': carto('dark_all'),
+    'English labels': esri('World_Street_Map'),
+    'English labels, dark': L.layerGroup([esri('Canvas/World_Dark_Gray_Base', { maxNativeZoom: 16 }), esri('Canvas/World_Dark_Gray_Reference', { maxNativeZoom: 16 })]),
+    'Satellite': L.layerGroup([esri('World_Imagery', { attribution: 'Imagery © Esri, Maxar, Earthstar Geographics · routing OSRM' }), esri('Reference/World_Boundaries_and_Places')]),
     'OpenStreetMap (Arabic labels)': L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '© OpenStreetMap contributors · routing OSRM' }),
   };
   const pickBase = bases[UI.basemap] ? UI.basemap : dark ? 'English labels, dark' : 'English labels';
   bases[pickBase].addTo(MAP);
+  // safety net: if a third-party map won't load (blocked, or starts asking for a key), fall back to OpenStreetMap's
+  // own tiles rather than leave a blank or watermarked map. Only when online, and only before any tile has loaded.
+  const osmBase = bases['OpenStreetMap (Arabic labels)'];
+  for (const [name, layer] of Object.entries(bases)) {
+    if (layer === osmBase) continue;
+    let ok = 0, bad = 0;
+    const tiles = layer.getLayers ? layer.getLayers() : [layer];
+    for (const t of tiles) {
+      t.on('tileload', () => { ok++; });
+      t.on('tileerror', () => {
+        if (!navigator.onLine || ok || ++bad < 6 || !MAP.hasLayer(layer)) return;
+        MAP.removeLayer(layer); osmBase.addTo(MAP);
+        toast(`“${name}” map didn't load; showing OpenStreetMap instead`);
+      });
+    }
+  }
   L.control.layers(bases, null, { collapsed: true, position: 'topright' }).addTo(MAP);
   MAP.on('baselayerchange', e => { UI.basemap = e.name; saveUI(); });
   MAP.on('click', e => {
