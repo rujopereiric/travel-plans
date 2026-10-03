@@ -22,12 +22,12 @@ const UA = 'travel-plans Egypt planner (github.com/rujopereiric/travel-plans)';
 
 async function fetchArea(area) {
   // a few rounds over all servers, with growing pauses: here we can afford to wait
-  for (let round = 0; round < 3; round++) {
+  for (let round = 0; round < 2; round++) {
     for (const url of SERVERS) {
       const host = new URL(url).host, t0 = Date.now();
       try {
-        const res = await fetch(url, { method: 'POST', body: 'data=' + encodeURIComponent(osmQuery(area, 300)),
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'User-Agent': UA }, signal: AbortSignal.timeout(330000) });
+        const res = await fetch(url, { method: 'POST', body: 'data=' + encodeURIComponent(osmQuery(area, 150)),
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'User-Agent': UA }, signal: AbortSignal.timeout(180000) });
         if (!res.ok) throw new Error('HTTP ' + res.status);
         const j = await res.json();
         if (j.remark && /runtime error|timed out|out of memory/i.test(j.remark)) throw new Error(j.remark.slice(0, 120));
@@ -36,7 +36,7 @@ async function fetchArea(area) {
       } catch (e) { console.log(`  ${host}: ${e.message} (${Math.round((Date.now() - t0) / 1000)} s)`); }
       await sleep(5000);
     }
-    await sleep(30000 * (round + 1));
+    await sleep(30000);
   }
   return null;
 }
