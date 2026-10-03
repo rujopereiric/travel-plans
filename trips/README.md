@@ -22,6 +22,10 @@ The standalone planners (`../iceland-planner/`, `../egypt/`) stay the source of 
 - **Separate offline caches:** these are prefixed `tp-<id>-`, so neither app's service worker deletes the other's files.
   Map tiles are cached as proper CORS responses; opaque ones were being counted as several MB each.
 - **Egypt map data:** Egypt reads its OpenStreetMap files from `../../egypt/osm/`, which the daily GitHub Action keeps up to date.
+- **Shareable sample data:** the copies contain no personal dates, plans or bookings (the `generic` settings in `trips.json`).
+  A new user gets a sample trip that starts about a month after they first open it, with arrival and departure days marked.
+  It has one empty plan and a generic bookings checklist. Places, photos, drive times, settings and safety info are all kept.
+  Your own plan only appears if you accept the one-time "copy from the standalone app" offer.
 - **Shared manifest:** every page links to `trips/manifest.webmanifest`, so the whole thing is one app.
 
 After changing a standalone planner, refresh the copies with:

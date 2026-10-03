@@ -47,6 +47,7 @@ async function summary(d) {
   try { const s = JSON.parse(localStorage.getItem(d.copyKeys[Object.keys(d.copyKeys)[0]]) || 'null'); if (s && s.state) { st = s.state; mine = true; } } catch (e) { }
   if (!st) try { st = await (await fetch(d.id + '/data.json')).json(); } catch (e) { }
   if (!st || !st.trip) return '';
+  if (st.trip.from === 'auto') return 'Sample trip · tap to set your dates';
   const free = (st.days || []).filter(x => x.state !== 'booked').length;
   const active = (st.blocks || []).map(b => (st.options || []).find(o => o.id === b.active)).filter(Boolean);
   const planned = new Set(active.flatMap(o => Object.entries(o.days || {}).filter(([, p]) => p.stops && p.stops.length).map(([k]) => k))).size;

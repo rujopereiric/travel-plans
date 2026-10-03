@@ -6,7 +6,7 @@
       "source": "iceland-planner",
       "flag": "🇮🇸",
       "color": "#1f7a8c",
-      "blurb": "Free days around the Erasmus+ training in Reykjavík. Daylight-aware planner, ring road, glaciers and hot springs.",
+      "blurb": "Waterfalls, glaciers, hot springs and the ring road. A daylight-aware planner for short winter days.",
       "copyKeys": {
         "iceland-planner-v1": "tp-iceland-planner-v1",
         "iceland-planner-ui": "tp-iceland-planner-ui"
@@ -15,6 +15,62 @@
       "swReplace": {
         "icelandp-": "tp-iceland-",
         "(k.startsWith('iceland-') || k.startsWith('tp-iceland-'))": "k.startsWith('tp-iceland-')"
+      },
+      "generic": {
+        "name": "Iceland",
+        "autoDays": 8,
+        "first": {
+          "label": "Arrival: set the time you land"
+        },
+        "last": {
+          "state": "partial",
+          "mode": "until",
+          "time": "18:00",
+          "label": "Departure: set when you must be at Keflavík airport"
+        },
+        "placeNotes": {
+          "reykjavik": "The capital and the natural base for day trips.",
+          "kef": "Iceland's international airport, ~45 min from Reykjavík."
+        },
+        "bookings": [
+          {
+            "item": "Car rental (4×4 with winter tyres in the cold months)",
+            "type": "car",
+            "est": 70000,
+            "note": "Check wind and gravel cover; standard insurance often excludes wind damage."
+          },
+          {
+            "item": "Accommodation",
+            "type": "hostel",
+            "est": 60000,
+            "note": "Book early outside Reykjavík: few options in the south-east and the north."
+          },
+          {
+            "item": "Blue ice cave tour, Vatnajökull",
+            "type": "tour",
+            "est": 25000,
+            "seasonal": "Natural ice caves: roughly Nov–Mar only, once guides have found safe caves."
+          },
+          {
+            "item": "Katla ice cave tour (from Vík)",
+            "type": "tour",
+            "est": 23000,
+            "seasonal": "Runs year-round."
+          },
+          {
+            "item": "Northern lights tour",
+            "type": "tour",
+            "est": 12000,
+            "seasonal": "Sep–Apr; book for a night with a good aurora and cloud forecast.",
+            "note": "Most operators rebook free if there are no lights."
+          },
+          {
+            "item": "Geothermal lagoon (Blue Lagoon, Sky Lagoon…)",
+            "type": "tour",
+            "est": 13000,
+            "note": "Book a time slot."
+          }
+        ]
       }
     },
     {
@@ -38,6 +94,29 @@
       },
       "swReplace": {
         "'egypt-": "'tp-egypt-"
+      },
+      "generic": {
+        "name": "Egypt",
+        "autoDays": 10,
+        "first": {
+          "state": "partial",
+          "mode": "from",
+          "time": "14:00",
+          "label": "Arrival: set the time you land"
+        },
+        "last": {
+          "state": "partial",
+          "mode": "until",
+          "time": "11:00",
+          "label": "Departure: be at the airport ~3 h before your flight"
+        },
+        "bookingsDrop": [
+          "b5",
+          "b9"
+        ],
+        "bookingsRename": {
+          "b4": "Site tickets (estimate)"
+        }
       }
     }
   ]
