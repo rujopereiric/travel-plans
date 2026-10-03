@@ -689,6 +689,16 @@ function tripCard() {
 
 /* ---------- persistence ---------- */
 function normalize(s) {
+
+  // "from": "auto" makes a sample trip starting about a month from today, so friends never see someone else's dates.
+  if (s.trip && s.trip.from === 'auto') {
+    const n = s.trip.autoDays || 7, start = Date.now() + 30 * 864e5, iso = t => new Date(t).toISOString().slice(0, 10);
+    const dates = Array.from({ length: n }, (_, i) => iso(start + i * 864e5)), ends = s.trip.autoEnds || {};
+    s.trip.from = dates[0]; s.trip.to = dates[n - 1];
+    s.days = dates.map((date, i) => ({ date, state: 'free', ...(i === 0 ? ends.first : i === n - 1 ? ends.last : null) }));
+    s.blocks = [{ id: 'A', name: 'Block A', from: dates[0], to: dates[n - 1], active: (s.options && s.options[0] && s.options[0].id) || null }];
+    delete s.trip.autoDays; delete s.trip.autoEnds;
+  }
   s.settings = { ...DEFAULT_SETTINGS, ...(s.settings || {}) };
   for (const k of ['days', 'blocks', 'options', 'regions', 'places', 'drives', 'bookings', 'links', 'checklist']) if (!Array.isArray(s[k])) s[k] = [];
   s.checks = s.checks || {};

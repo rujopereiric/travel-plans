@@ -1,12 +1,17 @@
 # Iceland Free Days
 
-A planner for the free days around the Erasmus+ training in Reykjavík (30 Oct – 8 Nov 2026).
+A daylight-aware trip planner for Iceland: waterfalls, glaciers, hot springs and the ring road, built for short winter days.
 It's one page with no backend and no build step. It works offline once it has loaded.
 
 - `index.html`: the page and its styles
 - `app.js`: all the logic (sun maths, fit checks, map, comparison, bookings)
 - `data.json`: the plan. Edit this by hand.
 - `sw.js`: the service worker that handles offline use
+
+## The sample trip
+
+`data.json` holds no personal plan. A new user gets an 8-day sample trip starting about a month after they first open the app (`"from": "auto"`), with arrival and departure days marked and one empty plan.
+Set your own dates with **Change dates**. Your plan is saved in your browser only; export it to keep a copy.
 
 ## Running it
 
@@ -23,7 +28,7 @@ for the areas you have viewed. Before you leave Wi-Fi, pan and zoom over the reg
 ## Changing the dates
 
 Tap **Change dates** at the top of the Plan tab to set when you arrive and leave. New days are added as fully free.
-If you remove days that have stops planned, the app asks first. To mark training or other busy days, open the day and set it to **Fully booked** or **Partially free**.
+If you remove days that have stops planned, the app asks first. To mark busy days (work, a course, a wedding…), open the day and set it to **Fully booked** or **Partially free**.
 
 A **planning block** is a run of consecutive days that aren't fully booked. Blocks are recalculated whenever dates or day states change:
 - **Growing or shrinking:** a block keeps its letter and plans.

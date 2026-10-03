@@ -85,24 +85,19 @@ def build(d):
     open(p, 'w').write(w)
     print(f'built trips/{d["id"]}/ from {d["source"]}/')
 
-AUTO_DATES = """
-  // ---- added by trips/tools/build.py: shareable sample dates ----
-  // "from": "auto" makes a sample trip starting about a month from today, so friends never see someone else's dates.
-  if (s.trip && s.trip.from === 'auto') {
-    const n = s.trip.autoDays || 7, start = Date.now() + 30 * 864e5, iso = t => new Date(t).toISOString().slice(0, 10);
-    const dates = Array.from({ length: n }, (_, i) => iso(start + i * 864e5)), ends = s.trip.autoEnds || {};
-    s.trip.from = dates[0]; s.trip.to = dates[n - 1];
-    s.days = dates.map((date, i) => ({ date, state: 'free', ...(i === 0 ? ends.first : i === n - 1 ? ends.last : null) }));
-    s.blocks = [{ id: 'A', name: 'Block A', from: dates[0], to: dates[n - 1], active: (s.options && s.options[0] && s.options[0].id) || null }];
-    delete s.trip.autoDays; delete s.trip.autoEnds;
-  }
-"""
+def pretty(v, ind=0):
+    """Same layout as the hand-edited data.json files: short things on one line."""
+    one = json.dumps(v, ensure_ascii=False, separators=(', ', ': '))
+    if not isinstance(v, (dict, list)) or len(one) + ind * 2 <= 110: return one
+    pad = '  ' * (ind + 1)
+    if isinstance(v, list): return '[\n' + ',\n'.join(pad + pretty(x, ind + 1) for x in v) + '\n' + '  ' * ind + ']'
+    return '{\n' + ',\n'.join(pad + json.dumps(k, ensure_ascii=False) + ': ' + pretty(x, ind + 1) for k, x in v.items()) + '\n' + '  ' * ind + '}'
 
-def genericize(d):
-    """Make the copy's sample data shareable: no personal dates, plans or bookings."""
+def genericize_file(d, p):
+    """Make a data.json shareable: no personal dates, plans or bookings (rules: "generic" in trips.json)."""
     g = d.get('generic')
     if not g: return
-    p = os.path.join(TRIPS, d['id'], 'data.json'); data = json.load(open(p))
+    data = json.load(open(p))
     data['trip'].update({'name': g['name'], 'from': 'auto', 'to': 'auto', 'autoDays': g['autoDays'], 'autoEnds': {'first': g.get('first', {}), 'last': g.get('last', {})}})
     data['days'], data['blocks'] = [], []
     data['options'] = [{'id': 'A1', 'block': 'A', 'name': 'My plan', 'note': '', 'days': {}}]
@@ -116,10 +111,16 @@ def genericize(d):
         for x in data['bookings']:
             x['option'] = None; x['status'] = 'todo'; x['actual'] = None
             if x['id'] in g.get('bookingsRename', {}): x['item'] = g['bookingsRename'][x['id']]
-    open(p, 'w').write(json.dumps(data, ensure_ascii=False, indent=1) + '\n')
-    js = os.path.join(TRIPS, d['id'], 'app.js'); t = open(js).read()
-    t = patch(t, "function normalize(s) {\n", "function normalize(s) {\n" + AUTO_DATES, f'{d["id"]} auto dates')
-    open(js, 'w').write(t)
+    open(p, 'w').write(pretty(data) + '\n')
 
-for d in DESTS: build(d); genericize(d)
+def genericize(d):
+    genericize_file(d, os.path.join(TRIPS, d['id'], 'data.json'))
+    if "s.trip.from === 'auto'" not in open(os.path.join(TRIPS, d['id'], 'app.js')).read():
+        sys.exit(f'build: {d["id"]} app.js has no sample-dates support ("from": "auto"); add it to the standalone app')
+
+if __name__ == '__main__':
+    if '--genericize-sources' in sys.argv:  # also clear the standalone apps' own sample data
+        for d in DESTS: genericize_file(d, os.path.join(ROOT, d['source'], 'data.json')); print(f'genericized {d["source"]}/data.json')
+    else:
+        for d in DESTS: build(d); genericize(d)
 

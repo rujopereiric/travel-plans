@@ -1,12 +1,22 @@
 {
   "version": 1,
   "trip": {
-    "name": "Iceland · Erasmus+ training",
-    "from": "2026-10-30",
-    "to": "2026-11-08",
+    "name": "Iceland",
+    "from": "auto",
+    "to": "auto",
     "sunLat": 64.1466,
     "sunLon": -21.9426,
-    "home": "reykjavik"
+    "home": "reykjavik",
+    "autoDays": 8,
+    "autoEnds": {
+      "first": {"label": "Arrival: set the time you land"},
+      "last": {
+        "state": "partial",
+        "mode": "until",
+        "time": "18:00",
+        "label": "Departure: set when you must be at Keflavík airport"
+      }
+    }
   },
   "settings": {
     "speedKmh": 75,
@@ -25,114 +35,9 @@
     "fxWeekendPct": 1,
     "fxManual": null
   },
-  "days": [
-    {"date": "2026-10-30", "state": "free", "label": "Arrival day"},
-    {"date": "2026-10-31", "state": "free"},
-    {"date": "2026-11-01", "state": "free"},
-    {
-      "date": "2026-11-02",
-      "state": "partial",
-      "mode": "until",
-      "time": "19:00",
-      "label": "Back in Reykjavík for dinner — time TBC"
-    },
-    {"date": "2026-11-03", "state": "booked", "label": "Training"},
-    {"date": "2026-11-04", "state": "booked", "label": "Training"},
-    {"date": "2026-11-05", "state": "booked", "label": "Training"},
-    {
-      "date": "2026-11-06",
-      "state": "partial",
-      "mode": "from",
-      "time": "13:00",
-      "label": "Free once the programme ends — time TBC"
-    },
-    {"date": "2026-11-07", "state": "free"},
-    {
-      "date": "2026-11-08",
-      "state": "partial",
-      "mode": "until",
-      "time": "18:00",
-      "label": "Evening flight from Keflavík — set to when you must be at KEF"
-    }
-  ],
-  "blocks": [
-    {"id": "A", "name": "Block A · before training", "from": "2026-10-30", "to": "2026-11-02", "active": "A1"},
-    {"id": "B", "name": "Block B · after training", "from": "2026-11-06", "to": "2026-11-08", "active": "B1"}
-  ],
-  "options": [
-    {
-      "id": "A1",
-      "block": "A",
-      "name": "East to Jökulsárlón",
-      "note": "Uses the 2 Nov half-day to drive back from Kirkjubæjarklaustur.",
-      "days": {
-        "2026-10-30": {
-          "stops": [{"place": "seljalandsfoss"}, {"place": "skogafoss"}, {"place": "kvernufoss"}],
-          "sleep": "vik"
-        },
-        "2026-10-31": {
-          "stops": [{"place": "reynisfjara"}, {"place": "fjadrargljufur"}, {"place": "skaftafell"}],
-          "sleep": "skaftafell"
-        },
-        "2026-11-01": {
-          "stops": [{"place": "jokulsarlon", "min": 240, "note": "Blue ice cave tour + Diamond Beach"}],
-          "sleep": "kirkjubaejarklaustur"
-        },
-        "2026-11-02": {"stops": [{"place": "dyrholaey"}, {"place": "solheimajokull"}], "sleep": "reykjavik"}
-      }
-    },
-    {
-      "id": "A2",
-      "block": "A",
-      "name": "No further east than Vík",
-      "note": "Golden Circle first, then two nights in Vík.",
-      "days": {
-        "2026-10-30": {
-          "stops": [{"place": "thingvellir"}, {"place": "geysir"}, {"place": "gullfoss"}],
-          "sleep": "reykjavik"
-        },
-        "2026-10-31": {
-          "stops": [
-            {"place": "seljalandsfoss"},
-            {"place": "skogafoss"},
-            {"place": "kvernufoss"},
-            {"place": "solheimajokull"}
-          ],
-          "sleep": "vik"
-        },
-        "2026-11-01": {"stops": [{"place": "dc3"}, {"place": "dyrholaey"}, {"place": "reynisfjara"}], "sleep": "vik"},
-        "2026-11-02": {"stops": [{"place": "vik", "min": 180, "note": "Katla ice cave tour"}], "sleep": "reykjavik"}
-      }
-    },
-    {
-      "id": "B1",
-      "block": "B",
-      "name": "Snæfellsnes + Blue Lagoon",
-      "note": "",
-      "days": {
-        "2026-11-06": {"stops": [{"place": "thingvellir"}], "sleep": "reykjavik"},
-        "2026-11-07": {
-          "stops": [{"place": "kirkjufell"}, {"place": "djupalonssandur"}, {"place": "arnarstapi"}],
-          "sleep": "reykjavik"
-        },
-        "2026-11-08": {"stops": [{"place": "bluelagoon"}], "sleep": "kef"}
-      }
-    },
-    {
-      "id": "B2",
-      "block": "B",
-      "name": "Golden Circle + Reykjanes",
-      "note": "",
-      "days": {
-        "2026-11-06": {"stops": [{"place": "reykjavik", "min": 120, "note": "City afternoon"}], "sleep": "reykjavik"},
-        "2026-11-07": {
-          "stops": [{"place": "thingvellir"}, {"place": "geysir"}, {"place": "gullfoss"}],
-          "sleep": "reykjavik"
-        },
-        "2026-11-08": {"stops": [{"place": "bluelagoon"}], "sleep": "kef"}
-      }
-    }
-  ],
+  "days": [],
+  "blocks": [],
+  "options": [{"id": "A1", "block": "A", "name": "My plan", "note": "", "days": {}}],
   "regions": [
     {"id": "reykjavik", "name": "Reykjavík", "color": "#7b61c9"},
     {"id": "golden", "name": "Golden Circle", "color": "#d1a020"},
@@ -152,7 +57,7 @@
       "lat": 64.1466,
       "lon": -21.9426,
       "visit": 60,
-      "note": "Base. Training venue and organisers' accommodation.",
+      "note": "The capital and the natural base for day trips.",
       "needsDaylight": false,
       "suggest": false,
       "priority": 2,
@@ -632,7 +537,7 @@
       "lat": 63.985,
       "lon": -22.6056,
       "visit": 0,
-      "note": "Departure on 8 Nov.",
+      "note": "Iceland's international airport, ~45 min from Reykjavík.",
       "needsDaylight": false,
       "suggest": false,
       "priority": 2,
@@ -2614,146 +2519,69 @@
   "bookings": [
     {
       "id": "b1",
-      "item": "Car rental — Block A (4×4, winter tyres)",
-      "type": "car",
       "option": null,
       "status": "todo",
-      "est": 60000,
       "actual": null,
       "seasonal": "",
-      "note": "Check wind/gravel cover."
+      "note": "Check wind and gravel cover; standard insurance often excludes wind damage.",
+      "item": "Car rental (4×4 with winter tyres in the cold months)",
+      "type": "car",
+      "est": 70000
     },
     {
       "id": "b2",
-      "item": "Car rental — Block B",
-      "type": "car",
       "option": null,
       "status": "todo",
-      "est": 45000,
       "actual": null,
       "seasonal": "",
-      "note": ""
+      "note": "Book early outside Reykjavík: few options in the south-east and the north.",
+      "item": "Accommodation",
+      "type": "hostel",
+      "est": 60000
     },
     {
       "id": "b3",
-      "item": "Hostel Vík — 30 Oct",
-      "type": "hostel",
-      "option": "A1",
+      "option": null,
       "status": "todo",
-      "est": 9000,
       "actual": null,
-      "seasonal": "",
-      "note": ""
+      "seasonal": "Natural ice caves: roughly Nov–Mar only, once guides have found safe caves.",
+      "note": "",
+      "item": "Blue ice cave tour, Vatnajökull",
+      "type": "tour",
+      "est": 25000
     },
     {
       "id": "b4",
-      "item": "Hostel Skaftafell area — 31 Oct",
-      "type": "hostel",
-      "option": "A1",
+      "option": null,
       "status": "todo",
-      "est": 11000,
       "actual": null,
-      "seasonal": "",
-      "note": "Few options east of Klaustur — book early."
+      "seasonal": "Runs year-round.",
+      "note": "",
+      "item": "Katla ice cave tour (from Vík)",
+      "type": "tour",
+      "est": 23000
     },
     {
       "id": "b5",
-      "item": "Hostel Kirkjubæjarklaustur — 1 Nov",
-      "type": "hostel",
-      "option": "A1",
+      "option": null,
       "status": "todo",
-      "est": 10000,
       "actual": null,
-      "seasonal": "",
-      "note": ""
+      "seasonal": "Sep–Apr; book for a night with a good aurora and cloud forecast.",
+      "note": "Most operators rebook free if there are no lights.",
+      "item": "Northern lights tour",
+      "type": "tour",
+      "est": 12000
     },
     {
       "id": "b6",
-      "item": "Blue ice cave tour, Vatnajökull",
-      "type": "tour",
-      "option": "A1",
-      "status": "todo",
-      "est": 25000,
-      "actual": null,
-      "seasonal": "Nov–Mar, but the season only opens once guides have scouted safe caves; early November is thin. Book refundable and confirm the week before (fallback: blue-ice glacier walk).",
-      "note": "Meet at Jökulsárlón (Local Guide, Arctic Adventures) or Hali (Glacier Adventure)."
-    },
-    {
-      "id": "b7",
-      "item": "Hostel Reykjavík — 30 Oct",
-      "type": "hostel",
-      "option": "A2",
-      "status": "todo",
-      "est": 8000,
-      "actual": null,
-      "seasonal": "",
-      "note": ""
-    },
-    {
-      "id": "b8",
-      "item": "Hostel Vík — 31 Oct + 1 Nov",
-      "type": "hostel",
-      "option": "A2",
-      "status": "todo",
-      "est": 18000,
-      "actual": null,
-      "seasonal": "",
-      "note": ""
-    },
-    {
-      "id": "b9",
-      "item": "Katla ice cave tour (from Vík)",
-      "type": "tour",
-      "option": "A2",
-      "status": "todo",
-      "est": 23000,
-      "actual": null,
-      "seasonal": "Runs year-round.",
-      "note": "Troll Expeditions, meet at Víkurbraut in Vík. ~3 h."
-    },
-    {
-      "id": "b10",
-      "item": "DC-3 shuttle (return)",
-      "type": "tour",
-      "option": "A2",
-      "status": "todo",
-      "est": 3400,
-      "actual": null,
-      "seasonal": "Runs 10:00–17:00.",
-      "note": "Or walk 4 km each way."
-    },
-    {
-      "id": "b11",
-      "item": "Hostel Reykjavík — 6 + 7 Nov",
-      "type": "hostel",
       "option": null,
       "status": "todo",
-      "est": 16000,
       "actual": null,
       "seasonal": "",
-      "note": ""
-    },
-    {
-      "id": "b12",
-      "item": "Northern lights tour",
+      "note": "Book a time slot.",
+      "item": "Geothermal lagoon (Blue Lagoon, Sky Lagoon…)",
       "type": "tour",
-      "option": null,
-      "status": "todo",
-      "est": 12000,
-      "actual": null,
-      "seasonal": "Sep–Apr; book for a night with a good aurora + cloud forecast.",
-      "note": "Most operators rebook free if no lights."
-    },
-    {
-      "id": "b13",
-      "item": "Blue Lagoon slot — 8 Nov",
-      "type": "tour",
-      "option": null,
-      "status": "todo",
-      "est": 11990,
-      "actual": null,
-      "seasonal": "",
-      "note": "Comfort from ~11,990 ISK. Volcanic risk at Svartsengi: check status the day before; Sky Lagoon as backup."
+      "est": 13000
     }
   ],
   "links": [

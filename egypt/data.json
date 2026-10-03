@@ -2,14 +2,24 @@
   "version": 1,
   "trip": {
     "name": "Egypt",
-    "from": "2026-11-20",
-    "to": "2026-12-03",
+    "from": "auto",
+    "to": "auto",
     "sunLat": 30.0444,
     "sunLon": 31.2357,
     "home": "cairo",
     "end": "cai",
     "tz": "Africa/Cairo",
-    "country": "Egypt"
+    "country": "Egypt",
+    "autoDays": 10,
+    "autoEnds": {
+      "first": {"state": "partial", "mode": "from", "time": "14:00", "label": "Arrival: set the time you land"},
+      "last": {
+        "state": "partial",
+        "mode": "until",
+        "time": "11:00",
+        "label": "Departure: be at the airport ~3 h before your flight"
+      }
+    }
   },
   "settings": {
     "speedKmh": 80,
@@ -31,102 +41,9 @@
     "useFerry": true,
     "useTrain": true
   },
-  "days": [
-    {
-      "date": "2026-11-20",
-      "state": "partial",
-      "mode": "from",
-      "time": "14:00",
-      "label": "Land in Cairo: set your arrival time"
-    },
-    {"date": "2026-11-21", "state": "free"},
-    {"date": "2026-11-22", "state": "free"},
-    {"date": "2026-11-23", "state": "free"},
-    {"date": "2026-11-24", "state": "free"},
-    {"date": "2026-11-25", "state": "free"},
-    {"date": "2026-11-26", "state": "free"},
-    {"date": "2026-11-27", "state": "free"},
-    {"date": "2026-11-28", "state": "free"},
-    {"date": "2026-11-29", "state": "free"},
-    {"date": "2026-11-30", "state": "free"},
-    {"date": "2026-12-01", "state": "free"},
-    {"date": "2026-12-02", "state": "free"},
-    {
-      "date": "2026-12-03",
-      "state": "partial",
-      "mode": "until",
-      "time": "11:00",
-      "label": "Flight home: be at the airport ~3 h before"
-    }
-  ],
-  "blocks": [{"id": "A", "name": "Block A · 20 Nov – 3 Dec", "from": "2026-11-20", "to": "2026-12-03", "active": "A1"}],
-  "options": [
-    {
-      "id": "A1",
-      "block": "A",
-      "name": "Cairo → Luxor → Hurghada → Sharm & Dahab",
-      "note": "Flies Cairo–Luxor, drives Luxor–Hurghada via Dendera, ferry to Sharm, flies Sharm–Cairo at the end.",
-      "days": {
-        "2026-11-20": {"stops": [{"place": "islamic_cairo"}], "sleep": "cairo"},
-        "2026-11-21": {"stops": [{"place": "giza_pyr"}, {"place": "gem"}], "sleep": "giza"},
-        "2026-11-22": {"stops": [{"place": "saqqara"}, {"place": "dahshur"}, {"place": "memphis"}], "sleep": "cairo"},
-        "2026-11-23": {"stops": [{"place": "egyptian_museum"}, {"place": "citadel"}, {"place": "coptic"}], "sleep": "cairo"},
-        "2026-11-24": {"stops": [{"place": "karnak"}, {"place": "luxor_temple"}], "sleep": "luxor"},
-        "2026-11-25": {
-          "stops": [{"place": "balloon"}, {"place": "valley_kings"}, {"place": "hatshepsut"}, {"place": "colossi"}],
-          "sleep": "luxor_west"
-        },
-        "2026-11-26": {
-          "stops": [
-            {"place": "medinet_habu"},
-            {"place": "deir_medina"},
-            {"place": "valley_queens"},
-            {"place": "luxor_museum"}
-          ],
-          "sleep": "luxor"
-        },
-        "2026-11-27": {"stops": [{"place": "dendera"}], "sleep": "hurghada"},
-        "2026-11-28": {"stops": [{"place": "giftun"}], "sleep": "hurghada"},
-        "2026-11-29": {"stops": [], "sleep": "sharm"},
-        "2026-11-30": {"stops": [{"place": "ras_mohammed"}], "sleep": "sharm"},
-        "2026-12-01": {"stops": [{"place": "blue_hole"}], "sleep": "dahab"},
-        "2026-12-02": {"stops": [], "sleep": "cai"},
-        "2026-12-03": {"stops": [], "sleep": "cai"}
-      }
-    },
-    {
-      "id": "A2",
-      "block": "A",
-      "name": "Alexandria + Mount Sinai, no Hurghada",
-      "note": "Adds an Alexandria night and the Mount Sinai sunrise; flies Cairo–Luxor and Luxor–Cairo–Sharm.",
-      "days": {
-        "2026-11-20": {"stops": [{"place": "islamic_cairo"}], "sleep": "cairo"},
-        "2026-11-21": {"stops": [{"place": "giza_pyr"}, {"place": "gem"}], "sleep": "giza"},
-        "2026-11-22": {"stops": [{"place": "saqqara"}, {"place": "dahshur"}], "sleep": "cairo"},
-        "2026-11-23": {"stops": [{"place": "qaitbay"}, {"place": "bibalex"}], "sleep": "alexandria"},
-        "2026-11-24": {"stops": [{"place": "kom_shoqafa"}, {"place": "pompey"}], "sleep": "cairo"},
-        "2026-11-25": {"stops": [{"place": "luxor_temple"}], "sleep": "luxor"},
-        "2026-11-26": {
-          "stops": [{"place": "balloon"}, {"place": "valley_kings"}, {"place": "hatshepsut"}, {"place": "colossi"}],
-          "sleep": "luxor_west"
-        },
-        "2026-11-27": {"stops": [{"place": "medinet_habu"}, {"place": "karnak"}], "sleep": "luxor"},
-        "2026-11-28": {"stops": [], "sleep": "sharm"},
-        "2026-11-29": {"stops": [{"place": "ras_mohammed"}], "sleep": "sharm"},
-        "2026-11-30": {"stops": [{"place": "blue_hole"}], "sleep": "dahab"},
-        "2026-12-01": {"stops": [], "sleep": "st_catherine_town"},
-        "2026-12-02": {
-          "stops": [
-            {"place": "mount_sinai"},
-            {"place": "_break", "min": 30, "note": "Breakfast at the monastery café"},
-            {"place": "st_catherine"}
-          ],
-          "sleep": "sharm"
-        },
-        "2026-12-03": {"stops": [], "sleep": "sharm"}
-      }
-    }
-  ],
+  "days": [],
+  "blocks": [],
+  "options": [{"id": "A1", "block": "A", "name": "My plan", "note": "", "days": {}}],
   "regions": [
     {"id": "cairo", "name": "Cairo & Giza", "color": "#7b61c9"},
     {"id": "alex", "name": "Alexandria & the Med", "color": "#2f7fd1"},
@@ -1298,9 +1215,9 @@
     },
     {
       "id": "b4",
-      "item": "Site tickets (A1 estimate)",
+      "item": "Site tickets (estimate)",
       "type": "tickets",
-      "option": "A1",
+      "option": null,
       "status": "todo",
       "est": 9500,
       "actual": null,
@@ -1308,21 +1225,10 @@
       "note": "Paid by card at each gate. Luxor Pass may be cheaper."
     },
     {
-      "id": "b5",
-      "item": "Site tickets (A2 estimate)",
-      "type": "tickets",
-      "option": "A2",
-      "status": "todo",
-      "est": 8500,
-      "actual": null,
-      "seasonal": "",
-      "note": "Paid by card at each gate."
-    },
-    {
       "id": "b6",
       "item": "Giftun snorkel boat, Hurghada",
       "type": "tour",
-      "option": "A1",
+      "option": null,
       "status": "todo",
       "est": 2500,
       "actual": null,
@@ -1344,23 +1250,12 @@
       "id": "b8",
       "item": "Mount Sinai Bedouin guide",
       "type": "tour",
-      "option": "A2",
+      "option": null,
       "status": "todo",
       "est": 800,
       "actual": null,
       "seasonal": "",
       "note": "Required; arranged at the gate or by the guesthouse."
-    },
-    {
-      "id": "b9",
-      "item": "Sharm → Cairo flight home leg / open-jaw",
-      "type": "flight",
-      "option": "A2",
-      "status": "todo",
-      "est": 0,
-      "actual": null,
-      "seasonal": "",
-      "note": "A2 ends in Sharm: fly home from SSH, or add the SSH–CAI flight."
     },
     {
       "id": "b10",

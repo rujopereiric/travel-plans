@@ -6,7 +6,7 @@ const LS_STATE = 'egypt-planner-v1';
 const LS_UI = 'egypt-planner-ui';
 // Bump on every change. The app compares it with the app.js on the server, so a phone that kept an old tab open
 // (no reload, so still the old code) is told a newer version exists.
-const APP_BUILD = '2026-10-03.9';
+const APP_BUILD = '2026-10-03.10';
 let NEWER = null; // the newer build found on the server, if any
 const AX0 = 5 * 60, AX1 = 23 * 60;           // timeline axis 05:00–23:00
 const DEFAULT_SETTINGS = {
@@ -816,6 +816,16 @@ function tripCard() {
 
 /* ---------- persistence ---------- */
 function normalize(s) {
+
+  // "from": "auto" makes a sample trip starting about a month from today, so friends never see someone else's dates.
+  if (s.trip && s.trip.from === 'auto') {
+    const n = s.trip.autoDays || 7, start = Date.now() + 30 * 864e5, iso = t => new Date(t).toISOString().slice(0, 10);
+    const dates = Array.from({ length: n }, (_, i) => iso(start + i * 864e5)), ends = s.trip.autoEnds || {};
+    s.trip.from = dates[0]; s.trip.to = dates[n - 1];
+    s.days = dates.map((date, i) => ({ date, state: 'free', ...(i === 0 ? ends.first : i === n - 1 ? ends.last : null) }));
+    s.blocks = [{ id: 'A', name: 'Block A', from: dates[0], to: dates[n - 1], active: (s.options && s.options[0] && s.options[0].id) || null }];
+    delete s.trip.autoDays; delete s.trip.autoEnds;
+  }
   s.settings = { ...DEFAULT_SETTINGS, ...(s.settings || {}) };
   for (const k of ['days', 'blocks', 'options', 'regions', 'places', 'drives', 'bookings', 'links', 'checklist']) if (!Array.isArray(s[k])) s[k] = [];
   s.checks = s.checks || {};

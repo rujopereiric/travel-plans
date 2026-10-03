@@ -704,7 +704,6 @@ function tripCard() {
 /* ---------- persistence ---------- */
 function normalize(s) {
 
-  // ---- added by trips/tools/build.py: shareable sample dates ----
   // "from": "auto" makes a sample trip starting about a month from today, so friends never see someone else's dates.
   if (s.trip && s.trip.from === 'auto') {
     const n = s.trip.autoDays || 7, start = Date.now() + 30 * 864e5, iso = t => new Date(t).toISOString().slice(0, 10);

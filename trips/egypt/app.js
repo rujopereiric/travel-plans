@@ -20,7 +20,7 @@ const LS_UI = 'tp-egypt-planner-ui';
 
 // Bump on every change. The app compares it with the app.js on the server, so a phone that kept an old tab open
 // (no reload, so still the old code) is told a newer version exists.
-const APP_BUILD = '2026-10-03.9';
+const APP_BUILD = '2026-10-03.10';
 let NEWER = null; // the newer build found on the server, if any
 const AX0 = 5 * 60, AX1 = 23 * 60;           // timeline axis 05:00–23:00
 const DEFAULT_SETTINGS = {
@@ -831,7 +831,6 @@ function tripCard() {
 /* ---------- persistence ---------- */
 function normalize(s) {
 
-  // ---- added by trips/tools/build.py: shareable sample dates ----
   // "from": "auto" makes a sample trip starting about a month from today, so friends never see someone else's dates.
   if (s.trip && s.trip.from === 'auto') {
     const n = s.trip.autoDays || 7, start = Date.now() + 30 * 864e5, iso = t => new Date(t).toISOString().slice(0, 10);

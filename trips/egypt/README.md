@@ -24,12 +24,9 @@ When you change `app.js`, bump `APP_BUILD` at the top.
 
 ## The sample plan
 
-The sample trip runs **20 Nov – 3 Dec 2026**. These are placeholder dates: tap **Change dates** on the Plan tab.
-The first day is set to "free from 14:00" (landing in Cairo) and the last to "free until 11:00" (flight home). Change both to match your flights.
-
-- **A1 · Cairo → Luxor → Hurghada → Sharm & Dahab**: 4 nights in Cairo/Giza, then a flight to Luxor for 3 nights. A road day goes to Hurghada via Dendera, followed by a Giftun snorkel day. Then the ferry to Sharm for Ras Mohammed, the Blue Hole in Dahab, and a flight from Sharm back to Cairo.
-- **A2 · Alexandria + Mount Sinai, no Hurghada**: adds a night in Alexandria, the Mount Sinai sunrise hike and St Catherine's Monastery. It flies Luxor → Cairo → Sharm.
-- **Auto-plan** builds more options from your ★ must-sees. Compare them on the Compare tab.
+`data.json` holds no personal plan. A new user gets a 10-day sample trip starting about a month after they first open the app (`"from": "auto"`).
+The first day is "free from 14:00" (landing) and the last "free until 11:00" (flight home). There's one empty plan: add stops, or let **Auto-plan** build one from your ★ must-sees.
+Set your own dates with **Change dates**. Your plan is saved in your browser only; export it to keep a copy.
 
 ## What's different from Iceland
 
