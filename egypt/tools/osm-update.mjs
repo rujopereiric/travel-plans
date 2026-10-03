@@ -5,6 +5,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
+import { execSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
 const dir = path.dirname(path.dirname(fileURLToPath(import.meta.url)));   // egypt/
@@ -26,8 +27,8 @@ async function fetchArea(area) {
     for (const url of SERVERS) {
       const host = new URL(url).host, t0 = Date.now();
       try {
-        const res = await fetch(url, { method: 'POST', body: 'data=' + encodeURIComponent(osmQuery(area, 150)),
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'User-Agent': UA }, signal: AbortSignal.timeout(180000) });
+        const res = await fetch(url, { method: 'POST', body: 'data=' + encodeURIComponent(osmQuery(area, 90)),
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'User-Agent': UA }, signal: AbortSignal.timeout(110000) });
         if (!res.ok) throw new Error('HTTP ' + res.status);
         const j = await res.json();
         if (j.remark && /runtime error|timed out|out of memory/i.test(j.remark)) throw new Error(j.remark.slice(0, 120));
@@ -57,7 +58,14 @@ for (const area of OSM_AREAS) {
   const old = fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, 'utf8')) : null;
   if (old && JSON.stringify(old.items) === JSON.stringify(items)) { console.log(`  ${items.length} places, unchanged`); continue; }
   fs.writeFileSync(file, JSON.stringify({ at: Date.now(), area: area[0], name: area[1], source: 'OpenStreetMap contributors (ODbL)', items }) + '\n');
-  console.log(`  ${items.length} places → osm/${area[0]}.json`);
+  console.log(`  ${items.length} places, ${Math.round(fs.statSync(file).size / 1024)} KB → osm/${area[0]}.json`);
+  // in the GitHub Action, publish each region as soon as it's done, so one slow region doesn't hold up (or lose) the rest
+  if (process.env.OSM_COMMIT) {
+    const sh = c => execSync(c, { stdio: 'inherit', cwd: path.dirname(dir) });
+    sh(`git add egypt/osm/${area[0]}.json`);
+    sh(`git commit -q -m "Egypt planner: update OpenStreetMap data for ${area[1]}"`);
+    for (let i = 0; i < 3; i++) { try { sh('git pull -q --rebase origin main && git push -q origin HEAD:main'); break; } catch (e) { await sleep(5000); } }
+  }
   await sleep(10000);   // be gentle with the public servers
 }
 if (failed) { console.log(`${failed} region(s) failed`); process.exitCode = failed === OSM_AREAS.length ? 1 : 0; }

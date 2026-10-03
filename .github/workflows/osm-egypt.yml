@@ -30,15 +30,10 @@ jobs:
         with:
           node-version: 20
 
-      - name: Fetch regions from Overpass
-        run: node egypt/tools/osm-update.mjs ${{ github.event.inputs.regions }}
-
-      - name: Commit changed files
+      - name: Fetch regions from Overpass (each region is committed and pushed when done)
+        env:
+          OSM_COMMIT: '1'
         run: |
-          git add egypt/osm
-          if git diff --cached --quiet; then echo "No changes"; exit 0; fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "Egypt planner: update OpenStreetMap region files"
-          git pull --rebase origin main
-          git push origin HEAD:main
+          node egypt/tools/osm-update.mjs ${{ github.event.inputs.regions }}
