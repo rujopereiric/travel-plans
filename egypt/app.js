@@ -6,7 +6,7 @@ const LS_STATE = 'egypt-planner-v1';
 const LS_UI = 'egypt-planner-ui';
 // Bump on every change. The app compares it with the app.js on the server, so a phone that kept an old tab open
 // (no reload, so still the old code) is told a newer version exists.
-const APP_BUILD = '2026-10-03.8';
+const APP_BUILD = '2026-10-03.9';
 let NEWER = null; // the newer build found on the server, if any
 const AX0 = 5 * 60, AX1 = 23 * 60;           // timeline axis 05:00–23:00
 const DEFAULT_SETTINGS = {
@@ -1479,7 +1479,9 @@ function osmMerge() { // rebuild the merged view from the downloaded areas (area
 }
 // Placing a relation (a multipolygon: a national park, a desert sand sea) at its centre means loading its whole outline,
 // which is what made these queries crawl. So: nodes and ways for everything, relations only for named sites with
-// a Wikipedia article (small, and worth it), and no protected-area boundaries or sand/dune areas at all.
+// a Wikipedia article (small, and worth it), and no protected areas, nature reserves or sand/dune areas at all:
+// the GitHub job's log showed every timeout, in every region and even in near-empty desert boxes, at the
+// nature_reserve statement. (The parks that matter, Ras Mohammed, Wadi el-Gemal, Giftun, are in My places anyway.)
 const osmQuery = ([, , s, w, n, e], timeout = 60) => `[out:json][timeout:${timeout}][bbox:${s},${w},${n},${e}];(
 nw["historic"~"^(archaeological_site|tomb|castle|fort|ruins|monument|city_gate|monastery|temple|pyramid)$"]["name"];
 nw["historic"]["name"]["wikipedia"];
@@ -1492,7 +1494,6 @@ nw["natural"~"^(reef|beach)$"]["name"];
 node["natural"~"^(cave_entrance|arch|rock|spring|hot_spring|cape)$"]["name"];
 nw["sport"="scuba_diving"]["name"];
 node["natural"="peak"]["name"]["wikipedia"];
-nw["leisure"="nature_reserve"]["name"];
 nw["man_made"="lighthouse"]["name"];
 );out center tags qt;`;
 function osmCat(t, name = '') {
