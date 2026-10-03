@@ -1434,24 +1434,40 @@ function renderMyPlaces() {
 // Egypt has tens of thousands of "historic" objects (every old Cairo house is one), so minor historic objects,
 // artworks and places of worship are only included when they have a Wikipedia article.
 const LS_OSM = 'egypt-osm';
-let OSM = null, OSM_BUSY = false, OSM_ERR = null;
-try { OSM = JSON.parse(localStorage.getItem(LS_OSM) || 'null'); } catch (e) { }
+// Downloaded region by region (see OSM_AREAS): OSM_STORE.areas[id] = { at, items }. OSM is the merged, de-duplicated
+// view the list, map layer and filter use ({ items }), or null when nothing is downloaded.
+let OSM = null, OSM_STORE = { v: 2, areas: {} }, OSM_BUSY = null, OSM_QUEUE = [], OSM_ERRS = {};
+try {
+  const st = JSON.parse(localStorage.getItem(LS_OSM) || 'null');
+  if (st && st.v === 2) OSM_STORE = st;
+  else if (st && st.items?.length) OSM_STORE.areas.earlier = { at: st.at, items: st.items }; // whole-country download from before
+} catch (e) { }
 // Public Overpass servers, tried in turn. All send CORS headers on success; their error pages (timeouts, rate
 // limits) don't, which the browser can only report as "Failed to fetch".
 const OVERPASS = ['https://overpass-api.de/api/interpreter', 'https://overpass.private.coffee/api/interpreter',
   'https://maps.mail.ru/osm/tools/overpass/api/interpreter', 'https://overpass.kumi.systems/api/interpreter'];
-// Egypt in one query is too heavy for the public servers (it times out), so ask area by area: small, fast queries,
-// one at a time, each restricted to Egypt so the bounding boxes' slices of Libya, Sudan, Israel or Saudi are left out.
-const OSM_TILES = [ // [name, south, west, north, east]
-  ['Alexandria, Delta & west coast', 29.0, 24.6, 31.7, 31.0],
-  ['Cairo, Giza & east Delta', 29.0, 31.0, 31.7, 32.0],
-  ['Suez Canal & North Sinai', 29.0, 32.0, 31.7, 36.9],
-  ['Middle Egypt & the oases', 26.0, 24.6, 29.0, 31.0],
-  ['Red Sea north & South Sinai', 26.0, 31.0, 29.0, 36.9],
-  ['Upper Egypt & Western Desert south', 21.9, 24.6, 26.0, 31.0],
-  ['Luxor, Aswan & Red Sea south', 21.9, 31.0, 26.0, 36.9],
+// One download per region: small queries that come back in seconds, so you fetch what your trip needs. The first six
+// match the trip's regions; the rest cover other parts of Egypt. Each is restricted to Egypt (area filter), so the
+// boxes' slices of Libya, Sudan, Israel or Saudi Arabia are left out.
+const OSM_AREAS = [ // [id, name, south, west, north, east, region colour/id]
+  ['cairo', 'Cairo & Giza', 29.6, 30.9, 30.25, 31.55],
+  ['alex', 'Alexandria & El Alamein', 30.7, 28.8, 31.45, 30.5],
+  ['luxor', 'Luxor, Dendera & Abydos', 25.5, 31.85, 26.3, 32.9],
+  ['aswan', 'Aswan, Edfu & Abu Simbel', 22.2, 31.5, 25.1, 33.1],
+  ['redsea', 'Hurghada & Red Sea coast', 24.5, 33.2, 27.6, 35.3],
+  ['sinai', 'South Sinai', 27.6, 32.7, 29.6, 34.95],
+  ['fayoum', 'Fayoum & Middle Egypt', 27.4, 29.9, 29.6, 31.0],
+  ['oases', 'Western Desert oases (Siwa, Bahariya, Dakhla…)', 24.5, 24.6, 29.6, 30.8],
+  ['suez', 'Suez, Ain Sokhna & the Red Sea monasteries', 28.5, 31.9, 30.3, 32.75],
 ];
-const osmQuery = ([, s, w, n, e]) => { const f = `(area.eg)(${s},${w},${n},${e})`; return `[out:json][timeout:90];area["ISO3166-1"="EG"][admin_level=2]->.eg;(
+const osmArea = id => OSM_AREAS.find(x => x[0] === id);
+function osmMerge() { // rebuild the merged view from the downloaded areas (areas overlap a little)
+  const seen = new Set(), items = [];
+  for (const k of Object.keys(OSM_STORE.areas)) for (const a of OSM_STORE.areas[k].items) if (!seen.has(a[0])) { seen.add(a[0]); items.push(a); }
+  OSM = items.length || Object.keys(OSM_STORE.areas).length ? { items } : null;
+  osmLayerDirty = true;
+}
+const osmQuery = ([, , s, w, n, e]) => { const f = `(area.eg)(${s},${w},${n},${e})`; return `[out:json][timeout:60];area["ISO3166-1"="EG"][admin_level=2]->.eg;(
 nwr["historic"~"^(archaeological_site|tomb|castle|fort|ruins|monument|city_gate|monastery|temple|pyramid)$"]["name"]${f};
 nwr["historic"]["name"]["wikipedia"]${f};
 nwr["tourism"~"^(attraction|viewpoint|museum|gallery|zoo|theme_park)$"]["name"]${f};
@@ -1489,7 +1505,6 @@ function osmCat(t, name = '') {
   if (h) return 'Historic';
   return 'Attraction';
 }
-let OSM_PROGRESS = '';
 const osmRow = el => {
   const t = el.tags || {}, lat = el.lat ?? el.center?.lat, lon = el.lon ?? el.center?.lon, name = t['name:en'] || t['int_name'] || t.name;
   if (!name || lat == null) return null;
@@ -1510,30 +1525,36 @@ async function osmTile(tile, errs) { // one area, trying each server in turn; nu
   }
   return null;
 }
-// Loads every area, or with retry=true only the areas a previous load missed. Areas that fail are listed in
-// OSM.missing; what did load is kept and usable.
-async function loadOSM(retry) {
-  if (OSM_BUSY) return;
-  if (!navigator.onLine) { OSM_ERR = 'You are offline.'; render(); return; }
-  OSM_BUSY = true; OSM_ERR = null;
-  const todo = retry && OSM?.missing?.length ? OSM.missing : OSM_TILES.map(t => t[0]);
-  const keep = retry && OSM ? OSM.items : [], missing = [], errs = [];
-  const seen = new Set(keep.map(a => a[0])), items = [...keep];
-  for (const [i, name] of todo.entries()) {
-    const tile = OSM_TILES.find(t => t[0] === name); if (!tile) continue;
-    OSM_PROGRESS = `${name} (${i + 1} of ${todo.length})…`; render();
-    const els = await osmTile(tile, errs);
-    if (!els) { missing.push(name); continue; }
+// Queue one or more areas; they download one at a time. A failed area keeps its previous data, if any.
+function loadOSM(ids) {
+  for (const id of ids) if (osmArea(id) && OSM_BUSY !== id && !OSM_QUEUE.includes(id)) OSM_QUEUE.push(id);
+  if (!OSM_BUSY) osmNext(); else render();
+}
+async function osmNext() {
+  const id = OSM_QUEUE.shift();
+  if (!id) { OSM_BUSY = null; render(); return; }
+  if (!navigator.onLine) { OSM_ERRS[id] = 'You are offline.'; OSM_QUEUE = []; OSM_BUSY = null; render(); return; }
+  OSM_BUSY = id; delete OSM_ERRS[id]; render();
+  const errs = [], els = await osmTile(osmArea(id), errs);
+  if (els) {
+    const seen = new Set(), items = [];
     for (const el of els) { const row = osmRow(el); if (row && !seen.has(row[0])) { seen.add(row[0]); items.push(row); } }
-  }
-  OSM_PROGRESS = '';
-  if (items.length || !missing.length) {
-    OSM = { at: Date.now(), items, missing };
-    try { localStorage.setItem(LS_OSM, JSON.stringify(OSM)); } catch (e) { OSM_ERR = 'Loaded, but too big to keep offline on this device.'; }
-    osmLayerDirty = true; mf().osm = true; UI.osmLayer = true; mapDirty = true;
-  }
-  if (missing.length) OSM_ERR = `${missing.length} of ${todo.length} area${todo.length > 1 ? 's' : ''} didn't load (${missing.join(', ')}). Last errors: ${[...new Set(errs)].slice(-OVERPASS.length).join('; ')}`;
-  OSM_BUSY = false; render();
+    OSM_STORE.areas[id] = { at: Date.now(), items };
+    try { localStorage.setItem(LS_OSM, JSON.stringify(OSM_STORE)); } catch (e) { OSM_ERRS[id] = 'Loaded, but too big to keep offline on this device.'; }
+    osmMerge(); mf().osm = true; UI.osmLayer = true; mapDirty = true;
+  } else OSM_ERRS[id] = [...new Set(errs)].join('; ');
+  osmNext();
+}
+function osmRemove(id) {
+  delete OSM_STORE.areas[id];
+  try { localStorage.setItem(LS_OSM, JSON.stringify(OSM_STORE)); } catch (e) { }
+  osmMerge(); mapDirty = true; render();
+}
+// the areas this trip uses: the regions of every place in the selected plans
+function osmTripAreas() {
+  const regs = new Set();
+  for (const b of S.blocks) { const o = activeOpt(b); if (!o) continue; for (const p of Object.values(o.days)) for (const id of [p.sleep, ...p.stops.map(x => x.place)]) if (place(id)) regs.add(place(id).region); }
+  return OSM_AREAS.filter(a => regs.has(a[0])).map(a => a[0]);
 }
 const osmObj = a => ({ id: a[0], name: a[1], lat: a[2], lon: a[3], cat: a[4], wiki: a[5], web: a[6], desc: a[7], local: a[8] });
 const osmUrl = id => `https://www.openstreetmap.org/${{ n: 'node', w: 'way', r: 'relation' }[id[0]]}/${id.slice(1)}`;
@@ -1562,19 +1583,26 @@ function promoteOSM(o) {
   return p;
 }
 function renderOsm() {
-  if (!OSM) return `<div class="card"><h3 style="margin-top:0">Every named sight in Egypt</h3>
-    <p class="small">This loads every archaeological site, temple, tomb, museum, fortress, dive reef, beach, desert landmark, viewpoint, lighthouse and nature reserve that OpenStreetMap knows about in Egypt, plus famous mosques and churches — usually several thousand. It's a one-off download (a few MB), kept on your phone for offline use.</p>
-    <p class="small muted">These come with names, types and links only — not my summaries, opening hours or prices. Add the ones you like to <b>My places</b> to plan them, then set their hours.</p>
-    ${OSM_ERR ? `<p class="small" style="color:var(--bad)">${esc(OSM_ERR)}</p>` : ''}
-    <button class="btn primary" data-act="osmload" ${OSM_BUSY ? 'disabled' : ''}>${OSM_BUSY ? 'Loading…' : OSM_ERR ? 'Try again' : 'Load all of Egypt'}</button>
-    ${OSM_BUSY ? `<p class="small muted" style="margin-bottom:0">Loading ${esc(OSM_PROGRESS)} It's done in 7 parts, usually 1–3 minutes in all; keep this tab open.</p>` : ''}</div>`;
+  const trip = osmTripAreas().filter(id => !OSM_STORE.areas[id]);
+  const row = ([id, name]) => {
+    const got = OSM_STORE.areas[id], busy = OSM_BUSY === id, queued = OSM_QUEUE.includes(id), err = OSM_ERRS[id], rg = S.regions.find(r => r.id === id);
+    return `<div class="row" style="padding:7px 0;border-top:1px solid var(--line)"><span class="grow"><b>${rg ? `<span style="color:${rg.color}">●</span> ` : ''}${esc(name)}</b>
+      <div class="tiny ${err ? '' : 'muted'}" style="${err ? 'color:var(--bad)' : ''}">${busy ? 'Downloading… (usually 5–30 s)' : queued ? 'Waiting…' : err ? esc(err) : got ? `${got.items.length.toLocaleString('en-GB')} places · ${esc(dateLabel(new Date(got.at).toISOString().slice(0, 10), { day: 'numeric', month: 'short' }))}` : 'Not downloaded'}</div></span>
+      ${busy || queued || !osmArea(id) ? '' : `<button class="btn small ${got ? '' : 'primary'}" data-act="osmload" data-v="${id}">${got ? '↻' : err ? 'Retry' : 'Download'}</button>`}
+      ${got && !busy ? `<button class="btn small danger" data-act="osmrm" data-v="${id}" aria-label="Remove ${esc(name)}">✕</button>` : ''}</div>`;
+  };
+  const areasCard = `<details class="card" ${!OSM || UI.osmAreasOpen || OSM_BUSY ? 'open' : ''} ontoggle="UI.osmAreasOpen=this.open;saveUI()" style="padding:10px 12px">
+    <summary><b>Download sights by region</b> <span class="tiny muted">· ${Object.keys(OSM_STORE.areas).filter(k => osmArea(k)).length} of ${OSM_AREAS.length} downloaded</span></summary>
+    <p class="small muted" style="margin:6px 0">Everything OpenStreetMap knows in each region: archaeological sites, temples, tombs, museums, fortresses, dive reefs, beaches, desert landmarks, viewpoints and reserves, plus famous mosques and churches. Names, types and links only, so set opening hours after adding one to <b>My places</b>. Kept on your phone for offline use.</p>
+    ${trip.length ? `<button class="btn small primary" data-act="osmtrip" style="margin-bottom:6px">Download my trip's regions (${trip.length})</button>` : ''}
+    ${OSM_AREAS.map(row).join('')}
+    ${OSM_STORE.areas.earlier ? row(['earlier', 'Earlier whole-Egypt download']) : ''}</details>`;
+  if (!OSM) return areasCard;
   const cats = [...new Set(OSM.items.map(a => a[4]))].sort();
   const counts = Object.fromEntries(cats.map(c => [c, OSM.items.filter(a => a[4] === c).length]));
   const cat = UI.osmCat || 'all', near = place(UI.osmNear) ? UI.osmNear : S.trip.home;
   const chip = (v, label, on) => `<button class="pchip" data-act="osmcat" data-v="${esc(v)}" aria-pressed="${on}">${label}</button>`;
-  return `<div class="row tiny muted" style="margin-bottom:8px"><span class="grow">${OSM.items.length.toLocaleString('en-GB')} places from OpenStreetMap · loaded ${esc(dateLabel(new Date(OSM.at).toISOString().slice(0, 10), { day: 'numeric', month: 'short' }))}${OSM_BUSY ? ` · loading ${esc(OSM_PROGRESS)}` : ''}${OSM_ERR ? `<br><span style="color:var(--bad)">${esc(OSM_ERR)}</span>` : OSM.missing?.length ? `<br>Missing: ${esc(OSM.missing.join(', '))}` : ''}</span>
-      ${OSM.missing?.length && !OSM_BUSY ? `<button class="btn small primary" data-act="osmretry">Load missing</button>` : ''}
-      <button class="btn small" data-act="osmload" ${OSM_BUSY ? 'disabled' : ''}>${OSM_BUSY ? 'Updating…' : 'Refresh'}</button></div>
+  return areasCard + `
     <div class="row" style="margin-bottom:8px"><input type="search" id="osmq" data-osmq placeholder="Search ${OSM.items.length.toLocaleString('en-GB')} places…" value="${esc(UI.osmQ || '')}" class="grow" autocomplete="off">
       <label class="f">Nearest to<select data-act="osmnear">${placeOptions(near)}</select></label></div>
     <div class="pchips">${chip('all', 'All types', cat === 'all')}${cats.map(c => chip(c, `${esc(c)} <span class="muted">${counts[c]}</span>`, cat === c)).join('')}</div>
@@ -1607,6 +1635,7 @@ function osmListHTML() {
 }
 // OSM layer: canvas dots (category colour) when zoomed out; real icons for what's on screen from zoom 10.
 let osmLayer = null, osmIcons = null, osmLayerDirty = true; const OSM_MARKERS = {};
+osmMerge();
 const OSM_ICON_ZOOM = 10, OSM_ICON_MAX = 400;
 const osmShown = a => catShown(a[4]) && !mf().must;
 function refreshOsmView() {
@@ -1684,7 +1713,7 @@ function mapFilterHTML() {
     <summary>Filter map${hidden || f.must || !f.mine || (OSM && !f.osm) ? ` · <b>${[hidden ? `${hidden} type${hidden > 1 ? 's' : ''} hidden` : '', f.must ? 'must-sees only' : '', !f.mine ? 'my places hidden' : '', OSM && !f.osm ? '' : ''].filter(Boolean).join(', ') || 'custom'}</b>` : ''}</summary>
     <div class="row" style="gap:6px;margin:6px 0">
       <button class="pchip" data-act="msrc" data-v="mine" aria-pressed="${f.mine}">My places</button>
-      <button class="pchip" data-act="msrc" data-v="osm" aria-pressed="${!!(f.osm && OSM)}" ${OSM ? '' : 'disabled title="Load it in Places → All of Egypt"'}>All of Egypt${OSM ? '' : ' (not loaded)'}</button>
+      <button class="pchip" data-act="msrc" data-v="osm" aria-pressed="${!!(f.osm && OSM)}" ${OSM ? '' : 'disabled title="Download regions in Places → All of Egypt"'}>All of Egypt${OSM ? '' : ' (none downloaded)'}</button>
       <button class="pchip" data-act="mmust" aria-pressed="${f.must}">★ Must-sees only</button>
       <span class="grow"></span><button class="btn small" data-act="mcatall">All</button><button class="btn small" data-act="mcatnone">None</button></div>
     <div class="mfbody">${groups.map(g => `<div class="mfgroup"><button class="mfgname" data-act="mgroup" data-v="${g.id}" style="color:${g.color}">${esc(g.name)}</button>
@@ -1964,8 +1993,9 @@ document.addEventListener('click', e => {
     case 'mcatnone': mf().hide = [...new Set([...Object.keys(CAT_INFO), ...S.places.map(p => p.cat), ...(OSM ? OSM.items.map(a => a[4]) : [])])]; mapDirty = true; render(); break;
     case 'msrc': { const f = mf(); f[el.dataset.v] = !f[el.dataset.v]; if (el.dataset.v === 'osm') UI.osmLayer = f.osm; mapDirty = true; render(); break; }
     case 'mmust': mf().must = !mf().must; mapDirty = true; render(); break;
-    case 'osmload': loadOSM(); break;
-    case 'osmretry': loadOSM(true); break;
+    case 'osmload': loadOSM([el.dataset.v]); break;
+    case 'osmtrip': loadOSM(osmTripAreas().filter(id => !OSM_STORE.areas[id])); break;
+    case 'osmrm': if (confirm('Remove the downloaded sights for this region? Places you added to My places stay.')) osmRemove(el.dataset.v); break;
     case 'osmcat': UI.osmCat = el.dataset.v; UI.osmN = 40; render(); break;
     case 'osmmore': UI.osmN = (UI.osmN || 40) + 60; $('#osmlist').innerHTML = osmListHTML(); break;
     case 'osmadd': {

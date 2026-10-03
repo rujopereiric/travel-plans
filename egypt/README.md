@@ -64,9 +64,12 @@ Must-sees have a gold ring. Zoomed out to the whole country, pins shrink to dots
 
 ## All of Egypt (OpenStreetMap)
 
-In the Places tab, switch to **All of Egypt** and tap **Load all of Egypt**. The app asks the free OpenStreetMap Overpass API for the named sights it knows about in Egypt, usually several thousand, and keeps them in the browser for offline use.
-Egypt in one query is too heavy for the public servers (they time out), so it loads 7 areas one after another, usually 1–3 minutes in all. Each area tries four public servers in turn (overpass-api.de, private.coffee, mail.ru, kumi.systems).
-If some areas still fail (busy or down servers), what did load is kept and usable, the missing areas are listed, and **Load missing** fetches just those.
+In the Places tab, switch to **All of Egypt**. Sights download **per region**, so you only fetch what you need, and each region takes seconds instead of minutes. The sights come from the free OpenStreetMap Overpass API and are kept in the browser for offline use.
+- **Regions:** the six trip regions (Cairo & Giza, Alexandria & El Alamein, Luxor with Dendera and Abydos, Aswan to Abu Simbel, Hurghada & the Red Sea coast, South Sinai), plus Fayoum & Middle Egypt, the Western Desert oases, and Suez / Ain Sokhna.
+- **Download my trip's regions** fetches every region that has a stop or a night in your selected plans. Downloads run one at a time.
+- Each region can be refreshed (↻) or removed (✕). If one fails, its error is shown with **Retry**, and the others are unaffected. Each request tries four public servers in turn (overpass-api.de, private.coffee, mail.ru, kumi.systems).
+- A whole-Egypt download from the earlier version stays as "Earlier whole-Egypt download" until you remove it.
+
 It loads:
 - archaeological sites, temples, tombs, pyramids, monuments, fortresses
 - museums, viewpoints, attractions
