@@ -127,7 +127,7 @@ They're stored compactly in the browser for offline use (a few hundred KB).
 ## Euros and the currency tab
 
 Every ISK amount is also shown in € (totals, bookings, comparison, fuel, and ISK prices mentioned in notes).
-The **€ / kr** tab is a two-way converter with quick tables. The header chip shows the current rate; tap it to open the tab.
+The **€** chip at the top right shows the current rate. Tap it to open a two-way converter with quick tables. Next to it, **?** opens the help and **⚙** opens Settings: road and weather links, the checklist, the daylight table, settings and backup.
 
 - Revolut has no public rates API. The app fetches the mid-market EUR→ISK rate from free sources that need no key, trying them in order:
   Frankfurter (ECB), then ExchangeRate-API, then fawazahmed0/currency-api.

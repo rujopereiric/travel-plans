@@ -235,7 +235,11 @@ nav.tabs button{font-size:10.5px}
 .helpbody{font-size:14px;margin-top:6px}
 .helpbody ol,.helpbody ul{margin:0;padding-left:20px}
 .helpbody li{margin-bottom:6px}
-#helpbtn{border:0;cursor:pointer;font-weight:700}
+h2[id^="sec-"]{scroll-margin-top:60px}
+.hbtn{border:0;cursor:pointer;color:inherit;font:inherit;font-size:12px;min-height:30px;flex:none}
+.hbtn.icon{width:30px;height:30px;padding:0;justify-content:center;font-size:15px;font-weight:700}
+.hbtn svg{width:17px;height:17px}
+.hbtn[aria-current="page"]{background:var(--accent);color:#fff}
 p.flight{margin:8px 0 0;padding:6px 10px;border-radius:10px;background:color-mix(in srgb,var(--accent) 12%,transparent)}
 p.flight .btn{margin-left:4px}
 .toast{position:fixed;left:50%;bottom:calc(76px + env(safe-area-inset-bottom));transform:translateX(-50%);background:var(--ink);color:var(--bg);
@@ -250,8 +254,9 @@ body.on-map main{padding-bottom:8px}
 <header class="top">
   <a class="chip" href="../" style="text-decoration:none;flex:none" title="All trips">← Trips</a>
   <h1 id="title">Egypt trip</h1>
-  <button id="fxchip" class="chip" data-tab-go="fx" style="border:0;cursor:pointer"></button>
-  <button id="helpbtn" class="chip" data-tab-go="help" aria-label="Help">? Help</button>
+  <button id="fxchip" class="chip hbtn" data-tab-go="fx" aria-label="Currency converter"></button>
+  <button id="helpbtn" class="chip hbtn icon" data-tab-go="help" aria-label="Help" title="Help">?</button>
+  <button id="setbtn" class="chip hbtn icon" data-tab-go="cond" aria-label="Settings" title="Settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h0a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51h0a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v0a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></button>
   <span id="offline" class="chip" hidden>offline</span>
 </header>
 <main id="view"><p class="muted">Loading…</p></main>
@@ -262,8 +267,6 @@ body.on-map main{padding-bottom:8px}
   <button data-tab="places"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Places</button>
   <button data-tab="compare"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="7" height="16" rx="1.5"/><rect x="14" y="4" width="7" height="16" rx="1.5"/></svg>Compare</button>
   <button data-tab="book"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16v12H4zM8 7V5h8v2M4 12h16"/></svg>Costs</button>
-  <button data-tab="fx"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h11l-3-3M17 17H6l3 3"/><path d="M5 7h0M19 17h0"/></svg>€ / EGP</button>
-  <button data-tab="cond"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M5 19l1.5-1.5M17.5 6.5 19 5"/></svg>Safety</button>
 </nav>
 <div class="toast" id="toast"></div>
 <input type="file" id="importfile" accept="application/json,.json" hidden>

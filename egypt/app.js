@@ -6,7 +6,7 @@ const LS_STATE = 'egypt-planner-v1';
 const LS_UI = 'egypt-planner-ui';
 // Bump on every change. The app compares it with the app.js on the server, so a phone that kept an old tab open
 // (no reload, so still the old code) is told a newer version exists.
-const APP_BUILD = '2026-10-03.12';
+const APP_BUILD = '2026-10-03.13';
 let NEWER = null; // the newer build found on the server, if any
 const AX0 = 5 * 60, AX1 = 23 * 60;           // timeline axis 05:00–23:00
 const DEFAULT_SETTINGS = {
@@ -1302,14 +1302,14 @@ function renderBook() {
 
 /* ---------- render: conditions tab ---------- */
 function renderCond() {
-  let h = `<h2>Check before you go</h2><div class="links">${S.links.map(l => `<a class="card" href="${esc(l.url)}" target="_blank" rel="noopener">
+  let h = `<h2 style="margin-bottom:6px">⚙ Settings</h2><div class="row" style="flex-wrap:wrap;gap:6px;margin-bottom:6px"><button class="chip hbtn" data-jump="sec-settings">Settings</button><button class="chip hbtn" data-jump="sec-your-data">Your data / backup</button><button class="chip hbtn" data-jump="sec-check-before-you-go">Check before you go</button><button class="chip hbtn" data-jump="sec-checklist">Checklist</button><button class="chip hbtn" data-jump="sec-daylight">Daylight</button></div><h2 id="sec-check-before-you-go">Check before you go</h2><div class="links">${S.links.map(l => `<a class="card" href="${esc(l.url)}" target="_blank" rel="noopener">
     <div class="row"><b>${esc(l.name)}</b><span class="grow"></span><span class="tiny muted">${esc(l.host || new URL(l.url).host)} ↗</span></div>
     ${l.note ? `<div class="small muted">${esc(l.note)}</div>` : ''}</a>`).join('')}</div>
     <div class="card small"><b>Emergency numbers</b><div class="kv" style="margin-top:6px">
       <span>Tourist police</span><b>126</b><span>Ambulance</span><b>123</b><span>Police</span><b>122</b><span>Fire</span><b>180</b></div>
       <div class="tiny muted" style="margin-top:6px">From a foreign phone 112 is usually routed too. Save your hotel's number and address in Arabic for taxi drivers.</div></div>
-    <h2>Checklist</h2><div class="card">${S.checklist.map((c, i) => `<label class="check"><input type="checkbox" data-act="check" data-i="${i}" ${S.checks[i] ? 'checked' : ''}><span>${esc(c)}</span></label>`).join('')}</div>
-    <h2>Daylight in ${esc(placeName(S.trip.home))}</h2><div class="card"><table class="sun"><thead><tr><th>Day</th><th>Rise</th><th>Set</th><th>Length</th><th>Δ</th><th>Dusk*</th></tr></thead><tbody>`;
+    <h2 id="sec-checklist">Checklist</h2><div class="card">${S.checklist.map((c, i) => `<label class="check"><input type="checkbox" data-act="check" data-i="${i}" ${S.checks[i] ? 'checked' : ''}><span>${esc(c)}</span></label>`).join('')}</div>
+    <h2 id="sec-daylight">Daylight in ${esc(placeName(S.trip.home))}</h2><div class="card"><table class="sun"><thead><tr><th>Day</th><th>Rise</th><th>Set</th><th>Length</th><th>Δ</th><th>Dusk*</th></tr></thead><tbody>`;
   let prev = null;
   for (const d of S.days) {
     const s = sunHome(d.date);
@@ -1319,7 +1319,7 @@ function renderCond() {
   h += `</tbody></table><div class="tiny muted" style="margin-top:6px">*End of civil twilight. Night falls fast this far south: about 25 minutes after sunset it's dark. Sunrise is ~15 min earlier in Luxor, Aswan and Sharm than in Cairo.</div></div>`;
   const num = (k, label, step = 1) => `<label class="f">${label}<input type="number" step="${step}" value="${esc(set(k))}" data-act="set" data-k="${k}"></label>`;
   const tog = (k, label) => `<label class="check" style="border:0;padding:4px 0"><input type="checkbox" data-act="setbool" data-k="${k}" ${set(k) ? 'checked' : ''}><span>${label}</span></label>`;
-  h += `<h2>Settings</h2><div class="card"><div class="row">
+  h += `<h2 id="sec-settings">Settings</h2><div class="card"><div class="row">
       ${num('speedKmh', 'Avg road speed (km/h)')}${num('roadFactor', 'Road factor', 0.05)}${num('trafficBufferPct', 'Traffic buffer %')}
       ${num('maxDriveH', 'Max travel/day (h)', 0.5)}${num('maxSeeH', 'Max sightseeing/day (h)', 0.5)}${num('slackMin', 'Min. spare (min)', 5)}${num('darkDriveMin', 'Dark-road warn (min)', 5)}
       <label class="f">Earliest auto start<input type="time" value="${esc(set('earliestDepart'))}" data-act="set" data-k="earliestDepart"></label>
@@ -1334,7 +1334,7 @@ function renderCond() {
     <label class="f">Theme<div class="seg">${['auto', 'light', 'dark'].map(t => `<button data-act="theme" data-v="${t}" aria-pressed="${UI.theme === t}">${t}</button>`).join('')}</div></label>
     </div>
     <p class="tiny muted">App version ${APP_BUILD}${NEWER ? ` · <b>newer version ${esc(NEWER)} available</b> <button class="btn small" data-act="reload">Reload</button>` : ''}</p>
-    <h2>Your data</h2><div class="card">
+    <h2 id="sec-your-data">Your data</h2><div class="card">
       <p class="small" style="margin-top:0">Edits are saved in this browser${DIRTY ? ' (you have local changes)' : ''}. Export to keep a copy — the file has the same format as <code>data.json</code>, so you can drop it in as the new data file.</p>
       <div class="row"><button class="btn primary" data-act="export">Export JSON</button><button class="btn" data-act="import">Import JSON</button><button class="btn danger" data-act="reset">Reset to data.json</button></div>
     </div>`;
@@ -2064,15 +2064,14 @@ function renderHelp() {
     <li><b>Pick what you want to see.</b> Places tab → tap <b>★ Must-see</b> on the places you care about, <b>Skip</b> on the ones you don't.</li>
     <li><b>Let it plan.</b> Tap <b>Auto-plan</b> (Plan or Compare tab). It builds a day-by-day route around your must-sees and adds it as a new plan option.</li>
     <li><b>Check and tweak.</b> Every day shows <b>✓ Fits</b>, <b>! Tight</b> or <b>✗ Doesn't fit</b>. Open a day to add, remove or reorder stops.</li>
-    <li><b>Back it up.</b> Safety tab → <b>Export JSON</b>. Your plan lives only on this phone.</li></ol>`, true)}
+    <li><b>Back it up.</b> ⚙ Settings (top right) → <b>Export JSON</b>. Your plan lives only on this phone.</li></ol>`, true)}
   ${sec('🗂️ The tabs', `<ul>
     <li><b>Plan</b>: your days, one card each: the day's route, the time bar, and whether it fits. Tap a day to edit it.</li>
     <li><b>Map</b>: the selected day's route, or the <b>Whole trip</b>. <b>Filter map</b> shows only the kinds of places you want.</li>
     <li><b>Places</b>: everything you can visit, with photos, tips and links. <b>All of ${C.country}</b> searches thousands more places from OpenStreetMap.</li>
     <li><b>Compare</b>: alternative plans side by side: driving time, what you see, and cost.</li>
     <li><b>Costs</b>: things to book, estimated vs actual cost, running total in both currencies.</li>
-    <li><b>${C.fxTab}</b>: a currency converter with the live rate.</li>
-    <li><b>Safety</b>: official road and weather links, a safety checklist, daylight table, settings, and backup.</li></ul>`)}
+    </ul><p>At the top right: <b>€</b> (the rate chip) opens the currency converter with the live rate, <b>?</b> is this help, and <b>⚙ Settings</b> has the official road and weather links, a safety checklist, the daylight table, settings, and backup.</p>`)}
   ${sec('📊 Reading a day', `<ul>
     <li>The <b>bar</b> runs from 05:00 to 23:00. ${C.bar}</li>
     <li><b>Hatched</b> = time you're not free. The <b>outlined part</b> is your <b>usable window</b>: daylight and free time together.</li>
@@ -2082,12 +2081,12 @@ function renderHelp() {
   ${sec('🧭 Plans, blocks and auto-plan', `<ul>
     <li>A <b>block</b> is a run of free days in a row. Busy days split your trip into blocks, and they update automatically when you change dates or days.</li>
     <li>Each block can have several <b>plan options</b> (A1, A2…). Pick one with the <b>Plan:</b> menu and compare them on the <b>Compare</b> tab.</li>
-    <li><b>Auto-plan</b> tries different overnight stops and fills each day with the best places within your <b>max driving per day</b> (Safety → Settings, or per day). It never changes your other options.</li>
+    <li><b>Auto-plan</b> tries different overnight stops and fills each day with the best places within your <b>max driving per day</b> (⚙ Settings, or per day). It never changes your other options.</li>
     <li>Set <b>Sleep tonight</b> on a day so the next day starts from there.</li></ul>`)}
   ${sec(C.specialTitle, C.special)}
   ${sec('💾 Your data, backup and sharing', `<ul>
     <li>Your plan is saved <b>only in this browser on this phone</b>. Nothing is uploaded, and nobody else can see it.</li>
-    <li><b>Export JSON</b> (Safety tab) saves a file with your whole plan. <b>Import JSON</b> loads it back on this or another phone.</li>
+    <li><b>Export JSON</b> (⚙ Settings) saves a file with your whole plan. <b>Import JSON</b> loads it back on this or another phone.</li>
     <li>To <b>share a plan with a friend</b>, send them your exported file; they tap Import JSON.</li>
     <li>Clearing Chrome's data for this site deletes your plan, so export first.</li>
     <li>If you see <b>"data.json has changed"</b>, the app's built-in sample was updated. Tap <b>Keep my edits</b> to keep your plan.</li></ul>`)}
@@ -2105,6 +2104,7 @@ function renderHelp() {
 /* ---------- main render ---------- */
 function render() {
   document.querySelectorAll('#tabs button').forEach(b => b.setAttribute('aria-current', b.dataset.tab === UI.tab ? 'page' : 'false'));
+  document.querySelectorAll('.hbtn').forEach(b => b.setAttribute('aria-current', b.dataset.tabGo === UI.tab ? 'page' : 'false'));
   const v = $('#view'), mw = $('#mapwrap');
   if (!S) {
     v.innerHTML = `<div class="banner"><b>No plan loaded.</b> ${esc(LOAD_ERROR || '')}<br>
@@ -2113,7 +2113,7 @@ function render() {
     mw.hidden = true; return;
   }
   if (S.trip.name) $('#title').innerHTML = `${esc(S.trip.name)} <span class="sub">${dateLabel(S.trip.from, { day: 'numeric', month: 'short' })} – ${dateLabel(S.trip.to, { day: 'numeric', month: 'short' })}</span>`;
-  $('#fxchip').textContent = `1€ = ${rate().toFixed(1)} EGP`;
+  $('#fxchip').textContent = `€ 1 = ${rate().toFixed(1)} EGP`;
   const scroll = window.scrollY;
   const tab = UI.tab;
   const upd = NEWER ? `<div class="banner row"><span class="grow">A newer version of the app is available.</span><button class="btn small primary" data-act="reload">Reload</button></div>` : '';
@@ -2144,6 +2144,7 @@ function stopOp(date, fn) {
 document.addEventListener('click', e => {
   const tabBtn = e.target.closest('#tabs button'); if (tabBtn) return goTab(tabBtn.dataset.tab);
   const go = e.target.closest('[data-tab-go]'); if (go) return goTab(go.dataset.tabGo);
+  const jp = e.target.closest('[data-jump]'); if (jp) return document.getElementById(jp.dataset.jump)?.scrollIntoView({ behavior: 'smooth' });
   const el = e.target.closest('[data-act]'); if (!el || el.tagName === 'SELECT' || (el.tagName === 'INPUT' && el.type !== 'checkbox')) return;
   const a = el.dataset.act, date = el.dataset.date, i = +el.dataset.i;
   switch (a) {

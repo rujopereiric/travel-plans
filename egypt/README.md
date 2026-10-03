@@ -22,7 +22,7 @@ the whole-trip map, the Places tab with Wikipedia photos, bookings, and export/i
 
 ## Updates
 
-The app shows its version at the bottom of the Safety tab. When you come back to it, and every 15 minutes, it checks whether the server has a newer `app.js`.
+The app shows its version at the bottom of ⚙ Settings. When you come back to it, and every 15 minutes, it checks whether the server has a newer `app.js`.
 If so, a banner offers **Reload**: an open tab or home-screen app otherwise keeps running the old code. Your edits are saved in the browser, so reloading loses nothing.
 When you change `app.js`, bump `APP_BUILD` at the top.
 
