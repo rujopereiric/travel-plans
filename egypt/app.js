@@ -4,6 +4,10 @@
 
 const LS_STATE = 'egypt-planner-v1';
 const LS_UI = 'egypt-planner-ui';
+// Bump on every change. The app compares it with the app.js on the server, so a phone that kept an old tab open
+// (no reload, so still the old code) is told a newer version exists.
+const APP_BUILD = '2026-10-03.3';
+let NEWER = null; // the newer build found on the server, if any
 const AX0 = 5 * 60, AX1 = 23 * 60;           // timeline axis 05:00–23:00
 const DEFAULT_SETTINGS = {
   speedKmh: 80, roadFactor: 1.3, trafficBufferPct: 15, roadEgpPerKm: 12,
@@ -1263,6 +1267,7 @@ function renderCond() {
     <label class="check" style="border:0"><input type="checkbox" data-act="setbool" data-k="localSun" ${set('localSun') ? 'checked' : ''}><span>Check each stop against its own local sunrise/sunset (the sun rises up to ~15 min earlier in Sinai and the south than in Cairo)</span></label>
     <label class="f">Theme<div class="seg">${['auto', 'light', 'dark'].map(t => `<button data-act="theme" data-v="${t}" aria-pressed="${UI.theme === t}">${t}</button>`).join('')}</div></label>
     </div>
+    <p class="tiny muted">App version ${APP_BUILD}${NEWER ? ` · <b>newer version ${esc(NEWER)} available</b> <button class="btn small" data-act="reload">Reload</button>` : ''}</p>
     <h2>Your data</h2><div class="card">
       <p class="small" style="margin-top:0">Edits are saved in this browser${DIRTY ? ' (you have local changes)' : ''}. Export to keep a copy — the file has the same format as <code>data.json</code>, so you can drop it in as the new data file.</p>
       <div class="row"><button class="btn primary" data-act="export">Export JSON</button><button class="btn" data-act="import">Import JSON</button><button class="btn danger" data-act="reset">Reset to data.json</button></div>
@@ -1548,7 +1553,7 @@ function osmStatusHTML() {
   const st = OSM_ST; if (!st) return '';
   const sec = Math.round((Date.now() - st.t0) / 1000), kb = st.bytes / 1024;
   const size = kb >= 1024 ? (kb / 1024).toFixed(1) + ' MB' : Math.round(kb) + ' KB';
-  const txt = st.phase === 'asking' ? `Waiting for ${esc(st.host)} to search${st.of > 1 ? ` (server ${st.n} of ${st.of})` : ''} · ${sec} s${sec >= 20 ? `, gives up at ${OSM_TIMEOUT / 60000} min` : ''}`
+  const txt = st.phase === 'starting' ? 'Starting…' : st.phase === 'asking' ? `Waiting for ${esc(st.host)} to search${st.of > 1 ? ` (server ${st.n} of ${st.of})` : ''} · ${sec} s${sec >= 20 ? `, gives up at ${OSM_TIMEOUT / 60000} min` : ''}`
     : st.phase === 'receiving' ? `Receiving from ${esc(st.host)} · ${size} · ${sec} s` : `Processing ${size}…`;
   return `<div class="osmbar"><i class="${st.phase === 'processing' ? '' : 'ind'}" style="width:100%"></i></div><div class="tiny muted">${txt}${st.failed ? ` · ${st.failed} server${st.failed > 1 ? 's' : ''} failed, trying the next` : ''}</div>`;
 }
@@ -1562,7 +1567,10 @@ async function osmNext() {
   const id = OSM_QUEUE.shift();
   if (!id) { OSM_BUSY = null; OSM_ST = null; render(); return; }
   if (!navigator.onLine) { OSM_ERRS[id] = 'You are offline.'; OSM_QUEUE = []; OSM_BUSY = null; render(); return; }
-  OSM_BUSY = id; delete OSM_ERRS[id]; render();
+  OSM_BUSY = id; delete OSM_ERRS[id];
+  OSM_ST = { host: '', n: 0, of: OVERPASS.length, t0: Date.now(), bytes: 0, phase: 'starting', failed: 0 }; // never a blank line
+  render();
+  setTimeout(() => document.getElementById('osmstatus')?.scrollIntoView({ block: 'center', behavior: 'smooth' }), 50);
   const errs = [], els = await osmTile(osmArea(id), errs);
   if (els) {
     const seen = new Set(), items = [];
@@ -1924,7 +1932,8 @@ function render() {
   $('#fxchip').textContent = `1€ = ${rate().toFixed(1)} EGP`;
   const scroll = window.scrollY;
   const tab = UI.tab;
-  v.innerHTML = tab === 'plan' ? renderPlan() : tab === 'map' ? renderMapControls() : tab === 'compare' ? renderCompare() : tab === 'book' ? renderBook() : tab === 'fx' ? renderFx() : tab === 'places' ? renderPlaces() : renderCond();
+  const upd = NEWER ? `<div class="banner row"><span class="grow">A newer version of the app is available.</span><button class="btn small primary" data-act="reload">Reload</button></div>` : '';
+  v.innerHTML = upd + (tab === 'plan' ? renderPlan() : tab === 'map' ? renderMapControls() : tab === 'compare' ? renderCompare() : tab === 'book' ? renderBook() : tab === 'fx' ? renderFx() : tab === 'places' ? renderPlaces() : renderCond());
   mw.hidden = tab !== 'map';
   document.body.classList.toggle('on-map', tab === 'map');
   if (tab === 'map') {
@@ -2015,6 +2024,7 @@ document.addEventListener('click', e => {
     case 'setbool': S.settings[el.dataset.k] = el.checked; SUN_CACHE.clear(); changed(); break;
     case 'theme': UI.theme = el.dataset.v; applyTheme(); render(); break;
     case 'export': exportJSON(); break;
+    case 'reload': location.reload(); break;
     case 'pmode': UI.pmode = el.dataset.v; render(); break;
     case 'mcat': { const f = mf(), c = el.dataset.v; f.hide = f.hide.includes(c) ? f.hide.filter(x => x !== c) : [...f.hide, c]; mapDirty = true; render(); break; }
     case 'mcatonly': { const f = mf(), c = el.dataset.v; f.hide = [...new Set([...Object.keys(CAT_INFO), ...S.places.map(p => p.cat), ...(OSM ? OSM.items.map(a => a[4]) : [])])].filter(x => x !== c); mapDirty = true; render(); break; }
@@ -2104,5 +2114,15 @@ if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
   navigator.serviceWorker.addEventListener('controllerchange', () => { if (hadController && !document.activeElement?.matches('input,textarea')) location.reload(); });
   navigator.serviceWorker.register('sw.js').then(r => r.update()).catch(() => { });
 }
-boot().then(() => { fetchRate(); fetchRoadMatrix(); fetchWiki(); });
+boot().then(() => { fetchRate(); fetchRoadMatrix(); fetchWiki(); checkUpdate(); });
+// newer app.js on the server than the code running here? (offer a reload; nothing is lost, edits are saved locally)
+async function checkUpdate() {
+  if (!navigator.onLine) return;
+  try {
+    const t = await (await fetch('app.js', { cache: 'no-cache' })).text(), m = /const APP_BUILD = '([^']+)'/.exec(t);
+    if (m && m[1] !== APP_BUILD && m[1] !== NEWER) { NEWER = m[1]; render(); }
+  } catch (e) { }
+}
+document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') checkUpdate(); });
+setInterval(checkUpdate, 15 * 60 * 1000);
 setInterval(() => fetchRate(), 30 * 60 * 1000);

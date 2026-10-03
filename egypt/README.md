@@ -16,6 +16,12 @@ It's one page with no backend and no build step. It works offline once it has lo
 Everything else works as in the Iceland app: dates and planning blocks, suggestions and auto-fill, auto-plan,
 the whole-trip map, the Places tab with Wikipedia photos, bookings, and export/import.
 
+## Updates
+
+The app shows its version at the bottom of the Safety tab. When you come back to it, and every 15 minutes, it checks whether the server has a newer `app.js`.
+If so, a banner offers **Reload**: an open tab or home-screen app otherwise keeps running the old code. Your edits are saved in the browser, so reloading loses nothing.
+When you change `app.js`, bump `APP_BUILD` at the top.
+
 ## The sample plan
 
 The sample trip runs **20 Nov – 3 Dec 2026**. These are placeholder dates: tap **Change dates** on the Plan tab.
