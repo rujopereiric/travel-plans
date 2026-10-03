@@ -3,7 +3,7 @@
   "name": "Iceland free days",
   "short_name": "Iceland",
   "description": "Daylight-aware planner for free days in Iceland",
-  "start_url": "./",
+  "start_url": "./?app=2",
   "scope": "./",
   "display": "standalone",
   "orientation": "any",
