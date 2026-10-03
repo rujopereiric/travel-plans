@@ -79,7 +79,9 @@ In the Places tab, switch to **All of Egypt**. Sights download **per region**, s
 
 Where the data comes from:
 - **Prepared files (normally):** the sights come from OpenStreetMap, prepared by a GitHub Action ("Update Egypt OSM data", `.github/workflows/osm-egypt.yml`, running `egypt/tools/osm-update.mjs`).
-  It runs monthly and on demand, writes `egypt/osm/<region>.json`, and the site redeploys. The phone then just downloads a ready file, which is fast.
+  It runs daily at a quiet hour, fetching only regions that are missing or older than 20 days. It also runs on demand (with region ids it always refetches), writes `egypt/osm/<region>.json`, and the site redeploys. The phone then just downloads a ready file, which is fast.
+  The public servers are often overloaded and answer "busy" (HTTP 504/429) even to tiny queries. The job then waits and tries another server, and leaves anything still missing to the next day's run.
+  `tools/osm-diagnose.mjs` (the workflow's *diagnose* option) times each query statement per region, if a region ever needs investigating.
   The public Overpass servers were too slow and throttled a phone that retried.
   To refresh now: GitHub → Actions → Update Egypt OSM data → Run workflow (optionally with region ids, e.g. `redsea sinai`).
 - **Live fallback:** only if a region has no prepared file does the app ask the public Overpass servers directly.

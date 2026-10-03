@@ -21,67 +21,49 @@ const SERVERS = ['https://overpass-api.de/api/interpreter', 'https://overpass.pr
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 const UA = 'travel-plans Egypt planner (github.com/rujopereiric/travel-plans)';
 
-// One box: try the servers; if they all time out, the box is too heavy for them (Alexandria with the western Delta
-// timed out on every server at 90 s while Cairo took 12 s), so split it into four and fetch those, up to 3 levels.
-const isTimeout = msg => /timed out|timeout|aborted/i.test(msg);
+// The public Overpass servers are often overloaded: a diagnostic run (tools/osm-diagnose.mjs) got HTTP 504 "gateway
+// timeout" after ~10 s even for trivial queries (lighthouses in Cairo), while the same queries take 1-2 s when they
+// get through. So "busy" (504, 429, no answer) means wait and try another server, NOT split the box: splitting only
+// multiplies requests. A box is split only when a server actually ran the query and reports it ran out of time.
+const isQueryTimeout = msg => /runtime error|Query timed out|out of memory/i.test(msg);
 async function fetchBox(area, box, depth = 0) {
   const [s, w, n, e] = box, label = `${'  '.repeat(depth + 1)}[${box.map(x => x.toFixed(2)).join(',')}]`;
-  let timeouts = 0, tries = 0;
-  for (let round = 0; round < 2; round++) {
+  let heavy = 0;
+  for (let round = 0; round < 4; round++) {
     for (const url of SERVERS) {
-      const host = new URL(url).host, t0 = Date.now(); tries++;
+      const host = new URL(url).host, t0 = Date.now();
       try {
-        const res = await fetch(url, { method: 'POST', body: 'data=' + encodeURIComponent(osmQuery([area[0], area[1], s, w, n, e], 90)),
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'User-Agent': UA }, signal: AbortSignal.timeout(110000) });
-        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const res = await fetch(url, { method: 'POST', body: 'data=' + encodeURIComponent(osmQuery([area[0], area[1], s, w, n, e], 120)),
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'User-Agent': UA }, signal: AbortSignal.timeout(140000) });
+        if (!res.ok) throw new Error('HTTP ' + res.status + (res.status === 504 || res.status === 429 ? ' (busy)' : ''));
         const j = await res.json();
-        if (j.remark && /runtime error|timed out|out of memory/i.test(j.remark)) throw new Error(j.remark.slice(0, 120));
+        if (j.remark && isQueryTimeout(j.remark)) throw new Error(j.remark.slice(0, 120));
         console.log(`${label} ${host}: ${j.elements.length} elements in ${Math.round((Date.now() - t0) / 1000)} s`);
         return j.elements;
       } catch (err) {
         console.log(`${label} ${host}: ${err.message} (${Math.round((Date.now() - t0) / 1000)} s)`);
-        if (isTimeout(err.message)) timeouts++;
+        if (isQueryTimeout(err.message)) heavy++;
       }
-      // two timeouts mean the box is too heavy: split rather than wait on every server
-      if (timeouts >= 2 && depth < 3) break;
-      await sleep(5000);
+      if (heavy >= 2 && depth < 2) break;
+      await sleep(15000);   // busy: give the servers a breather before the next one
     }
-    if (timeouts >= 2 && depth < 3) break;
-    await sleep(30000);
+    if (heavy >= 2 && depth < 2) break;
+    console.log(`${label} all servers busy, waiting 60 s (round ${round + 1} of 4)`);
+    await sleep(60000);
   }
-  if (timeouts >= 2 && depth < 3) {
+  if (heavy >= 2 && depth < 2) {
     const mlat = (s + n) / 2, mlon = (w + e) / 2, all = [];
-    console.log(`${label} too heavy, splitting into 4`);
+    console.log(`${label} query too heavy, splitting into 4`);
     for (const q of [[s, w, mlat, mlon], [s, mlon, mlat, e], [mlat, w, n, mlon], [mlat, mlon, n, e]]) {
       const els = await fetchBox(area, q, depth + 1);
       if (!els) return null;
       all.push(...els);
-      await sleep(3000);
     }
     return all;
   }
   return null;
 }
-// Small boxes (≤ 1° each way) answer in 1–3 s; big ones time out. So cut every region into ≤ 1° boxes up front
-// instead of first waiting for a big box to time out, and only split further if a small box still times out.
-const MAX_SPAN = 1;
-function tile([s, w, n, e]) {
-  const rows = Math.ceil((n - s) / MAX_SPAN - 1e-9), cols = Math.ceil((e - w) / MAX_SPAN - 1e-9), out = [];
-  for (let i = 0; i < rows; i++) for (let j = 0; j < cols; j++)
-    out.push([s + (n - s) * i / rows, w + (e - w) * j / cols, s + (n - s) * (i + 1) / rows, w + (e - w) * (j + 1) / cols]);
-  return out;
-}
-async function fetchArea(area) {
-  const boxes = tile(area.slice(2, 6)), all = [];
-  if (boxes.length > 1) console.log(`  ${boxes.length} boxes of ≤ ${MAX_SPAN}°`);
-  for (const b of boxes) {
-    const els = await fetchBox(area, b, 1);   // depth 1: up to two more splits if a box still times out
-    if (!els) return null;
-    all.push(...els);
-    await sleep(2000);
-  }
-  return all;
-}
+const fetchArea = area => fetchBox(area, area.slice(2, 6));
 
 const want = process.argv.slice(2);
 const out = path.join(dir, 'osm');
@@ -89,6 +71,10 @@ fs.mkdirSync(out, { recursive: true });
 let failed = 0;
 for (const area of OSM_AREAS) {
   if (want.length && !want.includes(area[0])) continue;
+  // scheduled runs (no region list) only fetch regions that are missing or older than 20 days, so a run that
+  // meets busy servers just leaves gaps for the next day's run to fill
+  const existing = path.join(out, area[0] + '.json');
+  if (!want.length && fs.existsSync(existing) && Date.now() - JSON.parse(fs.readFileSync(existing, 'utf8')).at < 20 * 864e5) { console.log(`${area[0]}: fresh, skipped`); continue; }
   console.log(`${area[0]} · ${area[1]}`);
   const els = await fetchArea(area);
   if (!els) { failed++; console.log('  FAILED, keeping the previous file if any'); continue; }
