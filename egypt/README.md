@@ -70,7 +70,16 @@ Must-sees have a gold ring. Zoomed out to the whole country, pins shrink to dots
 
 ## All of Egypt (OpenStreetMap)
 
-In the Places tab, switch to **All of Egypt**. Sights download **per region**, so you only fetch what you need, and each region takes seconds instead of minutes. The sights come from the free OpenStreetMap Overpass API and are kept in the browser for offline use.
+In the Places tab, switch to **All of Egypt**. Sights download **per region**, so you only fetch what you need. They're kept in the browser for offline use.
+
+Where the data comes from:
+- **Prepared files (normally):** the sights come from OpenStreetMap, prepared by a GitHub Action ("Update Egypt OSM data", `.github/workflows/osm-egypt.yml`, running `egypt/tools/osm-update.mjs`).
+  It runs monthly and on demand, writes `egypt/osm/<region>.json`, and the site redeploys. The phone then just downloads a ready file, which is fast.
+  The public Overpass servers were too slow and throttled a phone that retried.
+  To refresh now: GitHub → Actions → Update Egypt OSM data → Run workflow (optionally with region ids, e.g. `redsea sinai`).
+- **Live fallback:** only if a region has no prepared file does the app ask the public Overpass servers directly.
+- **Shared code:** the region list, query and parsing live once in `app.js`, between the `osm-shared` markers. The Action's script runs that same code.
+
 - **Regions:** the six trip regions (Cairo & Giza, Alexandria & El Alamein, Luxor with Dendera and Abydos, Aswan to Abu Simbel, Hurghada & the Red Sea coast, South Sinai), plus Fayoum & Middle Egypt, the Western Desert oases, and Suez / Ain Sokhna.
 - **Download my trip's regions** fetches every region that has a stop or a night in your selected plans. Downloads run one at a time.
 - **Progress:** an overall bar shows "Region 2 of 4". The current region's line updates every second: "Waiting for overpass.private.coffee to search · 23 s" (with the moving bar), then "Receiving · 340 KB", then "Processing". The server sends nothing, and no size, until its search is done, so the waiting part can't show a percentage. Each server gives up after 2 minutes, and the next one is tried.

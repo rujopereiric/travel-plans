@@ -6,7 +6,7 @@ const LS_STATE = 'egypt-planner-v1';
 const LS_UI = 'egypt-planner-ui';
 // Bump on every change. The app compares it with the app.js on the server, so a phone that kept an old tab open
 // (no reload, so still the old code) is told a newer version exists.
-const APP_BUILD = '2026-10-03.4';
+const APP_BUILD = '2026-10-03.5';
 let NEWER = null; // the newer build found on the server, if any
 const AX0 = 5 * 60, AX1 = 23 * 60;           // timeline axis 05:00–23:00
 const DEFAULT_SETTINGS = {
@@ -1453,6 +1453,7 @@ try {
 // limits) don't, which the browser can only report as "Failed to fetch".
 const OVERPASS = ['https://overpass-api.de/api/interpreter', 'https://overpass.private.coffee/api/interpreter',
   'https://maps.mail.ru/osm/tools/overpass/api/interpreter', 'https://overpass.kumi.systems/api/interpreter'];
+/* osm-shared-start: also run by tools/osm-update.mjs (GitHub Action) to prepare osm/<region>.json */
 // One download per region: small queries that come back in seconds, so you fetch what your trip needs. The first six
 // match the trip's regions; the rest cover other parts of Egypt. Plain bounding boxes only: an "inside Egypt" area
 // filter made every query time out (testing each object against the detailed border took 70+ s). Instead the boxes
@@ -1476,7 +1477,7 @@ function osmMerge() { // rebuild the merged view from the downloaded areas (area
   OSM = items.length || Object.keys(OSM_STORE.areas).length ? { items } : null;
   osmLayerDirty = true;
 }
-const osmQuery = ([, , s, w, n, e]) => `[out:json][timeout:60][bbox:${s},${w},${n},${e}];(
+const osmQuery = ([, , s, w, n, e], timeout = 60) => `[out:json][timeout:${timeout}][bbox:${s},${w},${n},${e}];(
 nwr["historic"~"^(archaeological_site|tomb|castle|fort|ruins|monument|city_gate|monastery|temple|pyramid)$"]["name"];
 nwr["historic"]["name"]["wikipedia"];
 nwr["tourism"~"^(attraction|viewpoint|museum|gallery|zoo|theme_park)$"]["name"];
@@ -1519,6 +1520,7 @@ const osmRow = el => {
   if (!name || lat == null) return null;
   return [el.type[0] + el.id, name, +lat.toFixed(5), +lon.toFixed(5), osmCat(t, name), t.wikipedia || '', t.website || t['contact:website'] || '', (t['description:en'] || t.description || '').slice(0, 200), t.name !== name ? t.name || '' : ''];
 };
+/* osm-shared-end */
 const OSM_TIMEOUT = 120000;
 async function osmTile(tile, errs) { // one area, trying each server in turn; null if all fail
   for (const [i, url] of OVERPASS.entries()) {
@@ -1555,7 +1557,7 @@ function osmStatusHTML() {
   const st = OSM_ST; if (!st) return '';
   const sec = Math.round((Date.now() - st.t0) / 1000), kb = st.bytes / 1024;
   const size = kb >= 1024 ? (kb / 1024).toFixed(1) + ' MB' : Math.round(kb) + ' KB';
-  const txt = st.phase === 'starting' ? 'Starting…' : st.phase === 'asking' ? `Waiting for ${esc(st.host)} to search${st.of > 1 ? ` (server ${st.n} of ${st.of})` : ''} · ${sec} s${sec >= 20 ? `, gives up at ${OSM_TIMEOUT / 60000} min` : ''}`
+  const txt = st.phase === 'starting' ? 'Starting…' : st.phase === 'file' ? 'Downloading the prepared file…' : st.phase === 'asking' ? `Waiting for ${esc(st.host)} to search${st.of > 1 ? ` (server ${st.n} of ${st.of})` : ''} · ${sec} s${sec >= 20 ? `, gives up at ${OSM_TIMEOUT / 60000} min` : ''}`
     : st.phase === 'receiving' ? `Receiving from ${esc(st.host)} · ${size} · ${sec} s` : `Processing ${size}…`;
   return `<div class="osmbar"><i class="${st.phase === 'processing' ? '' : 'ind'}" style="width:100%"></i></div><div class="tiny muted">${txt}${st.failed ? ` · ${st.failed} server${st.failed > 1 ? 's' : ''} failed, trying the next` : ''}</div>`;
 }
@@ -1573,11 +1575,25 @@ async function osmNext() {
   OSM_ST = { host: '', n: 0, of: OVERPASS.length, t0: Date.now(), bytes: 0, phase: 'starting', failed: 0 }; // never a blank line
   render();
   setTimeout(() => document.getElementById('osmstatus')?.scrollIntoView({ block: 'center', behavior: 'smooth' }), 50);
-  const errs = [], els = await osmTile(osmArea(id), errs);
-  if (els) {
-    const seen = new Set(), items = [];
-    for (const el of els) { const row = osmRow(el); if (row && !seen.has(row[0])) { seen.add(row[0]); items.push(row); } }
-    OSM_STORE.areas[id] = { at: Date.now(), items };
+  // 1. the prepared file on this site (made monthly by a GitHub Action: fast and reliable);
+  // 2. if there's none yet, ask the public Overpass servers live
+  const errs = [];
+  let items = null, at = Date.now();
+  try {
+    OSM_ST.phase = 'file'; osmTick();
+    const res = await fetch(`osm/${id}.json`, { cache: 'no-cache' });
+    if (res.ok) { const j = await res.json(); if (Array.isArray(j.items)) { items = j.items; at = j.at || at; } }
+    else if (res.status !== 404) errs.push(`osm/${id}.json: HTTP ${res.status}`);
+  } catch (e) { errs.push(`osm/${id}.json: ${e.message}`); }
+  if (!items) {
+    const els = await osmTile(osmArea(id), errs);
+    if (els) {
+      const seen = new Set(); items = [];
+      for (const el of els) { const row = osmRow(el); if (row && !seen.has(row[0])) { seen.add(row[0]); items.push(row); } }
+    }
+  }
+  if (items) {
+    OSM_STORE.areas[id] = { at, items };
     try { localStorage.setItem(LS_OSM, JSON.stringify(OSM_STORE)); } catch (e) { OSM_ERRS[id] = 'Loaded, but too big to keep offline on this device.'; }
     osmMerge(); mf().osm = true; UI.osmLayer = true; mapDirty = true;
   } else OSM_ERRS[id] = [...new Set(errs)].join('; ');
