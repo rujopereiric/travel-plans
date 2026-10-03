@@ -1,6 +1,6 @@
 // Offline support: app files network-first (so edits to data.json show up when online),
 // Leaflet and map tiles cache-first (tiles you've viewed stay available offline).
-const APP = 'iceland-app-v5', TILES = 'iceland-tiles-v1', IMGS = 'iceland-imgs-v2', MAX_TILES = 3000;
+const APP = 'iceland-app-v6', TILES = 'iceland-tiles-v1', IMGS = 'iceland-imgs-v2', MAX_TILES = 3000;
 const SHELL = ['./', 'index.html', 'app.js', 'data.json', 'manifest.webmanifest', 'icon.svg', 'icon-192.png', 'icon-512.png', 'icon-maskable-512.png',
   'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css', 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js'];
 
