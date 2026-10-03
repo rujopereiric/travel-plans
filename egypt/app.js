@@ -1437,6 +1437,8 @@ const LS_OSM = 'egypt-osm';
 // Downloaded region by region (see OSM_AREAS): OSM_STORE.areas[id] = { at, items }. OSM is the merged, de-duplicated
 // view the list, map layer and filter use ({ items }), or null when nothing is downloaded.
 let OSM = null, OSM_STORE = { v: 2, areas: {} }, OSM_BUSY = null, OSM_QUEUE = [], OSM_ERRS = {};
+// live download status: OSM_ST for the current request, OSM_RUN for the queue ("region 2 of 4")
+let OSM_ST = null, OSM_RUN = { done: 0, total: 0 }, OSM_TICK = null;
 try {
   const st = JSON.parse(localStorage.getItem(LS_OSM) || 'null');
   if (st && st.v === 2) OSM_STORE = st;
@@ -1510,13 +1512,24 @@ const osmRow = el => {
   if (!name || lat == null) return null;
   return [el.type[0] + el.id, name, +lat.toFixed(5), +lon.toFixed(5), osmCat(t, name), t.wikipedia || '', t.website || t['contact:website'] || '', (t['description:en'] || t.description || '').slice(0, 200), t.name !== name ? t.name || '' : ''];
 };
+const OSM_TIMEOUT = 120000;
 async function osmTile(tile, errs) { // one area, trying each server in turn; null if all fail
-  for (const url of OVERPASS) {
-    const host = url.split('/')[2], ctl = new AbortController(), to = setTimeout(() => ctl.abort(), 120000);
+  for (const [i, url] of OVERPASS.entries()) {
+    const host = url.split('/')[2], ctl = new AbortController(), to = setTimeout(() => ctl.abort(), OSM_TIMEOUT);
+    OSM_ST = { host, n: i + 1, of: OVERPASS.length, t0: Date.now(), bytes: 0, phase: 'asking', failed: errs.length }; osmTick();
     try {
       const res = await fetch(url, { method: 'POST', body: 'data=' + encodeURIComponent(osmQuery(tile)), headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, signal: ctl.signal });
       if (!res.ok) throw new Error('HTTP ' + res.status + (res.status === 429 ? ' (busy)' : res.status === 504 ? ' (timed out)' : ''));
-      const j = await res.json();
+      // the server sends nothing (and no size) until its query is done; after that we can count what arrives
+      OSM_ST.phase = 'receiving'; osmTick();
+      let text = '';
+      if (res.body && res.body.getReader) {
+        const rd = res.body.getReader(), dec = new TextDecoder();
+        for (;;) { const { done, value } = await rd.read(); if (done) break; OSM_ST.bytes += value.length; text += dec.decode(value, { stream: true }); osmTick(); }
+        text += dec.decode();
+      } else text = await res.text();
+      OSM_ST.phase = 'processing'; osmTick();
+      const j = JSON.parse(text);
       // a query that runs out of time or memory still answers 200, with a "remark" and partial elements
       if (j.remark && /runtime error|timed out|out of memory/i.test(j.remark)) throw new Error(j.remark.replace(/^.*?error:\s*/i, '').slice(0, 80));
       return j.elements || [];
@@ -1526,13 +1539,28 @@ async function osmTile(tile, errs) { // one area, trying each server in turn; nu
   return null;
 }
 // Queue one or more areas; they download one at a time. A failed area keeps its previous data, if any.
+// Updates just the status line (no full re-render), at most every 250 ms, and once a second while waiting.
+function osmTick() {
+  const now = Date.now(); if (osmTick.last && now - osmTick.last < 250 && OSM_ST?.phase === 'receiving') return; osmTick.last = now;
+  const el = document.getElementById('osmstatus'); if (el) el.innerHTML = osmStatusHTML();
+}
+function osmStatusHTML() {
+  const st = OSM_ST; if (!st) return '';
+  const sec = Math.round((Date.now() - st.t0) / 1000), kb = st.bytes / 1024;
+  const size = kb >= 1024 ? (kb / 1024).toFixed(1) + ' MB' : Math.round(kb) + ' KB';
+  const txt = st.phase === 'asking' ? `Waiting for ${esc(st.host)} to search${st.of > 1 ? ` (server ${st.n} of ${st.of})` : ''} · ${sec} s${sec >= 20 ? `, gives up at ${OSM_TIMEOUT / 60000} min` : ''}`
+    : st.phase === 'receiving' ? `Receiving from ${esc(st.host)} · ${size} · ${sec} s` : `Processing ${size}…`;
+  return `<div class="osmbar"><i class="${st.phase === 'processing' ? '' : 'ind'}" style="width:100%"></i></div><div class="tiny muted">${txt}${st.failed ? ` · ${st.failed} server${st.failed > 1 ? 's' : ''} failed, trying the next` : ''}</div>`;
+}
 function loadOSM(ids) {
-  for (const id of ids) if (osmArea(id) && OSM_BUSY !== id && !OSM_QUEUE.includes(id)) OSM_QUEUE.push(id);
+  if (!OSM_BUSY) OSM_RUN = { done: 0, total: 0 };
+  for (const id of ids) if (osmArea(id) && OSM_BUSY !== id && !OSM_QUEUE.includes(id)) { OSM_QUEUE.push(id); OSM_RUN.total++; }
+  if (!OSM_TICK) OSM_TICK = setInterval(() => { if (OSM_BUSY) osmTick(); else { clearInterval(OSM_TICK); OSM_TICK = null; } }, 1000);
   if (!OSM_BUSY) osmNext(); else render();
 }
 async function osmNext() {
   const id = OSM_QUEUE.shift();
-  if (!id) { OSM_BUSY = null; render(); return; }
+  if (!id) { OSM_BUSY = null; OSM_ST = null; render(); return; }
   if (!navigator.onLine) { OSM_ERRS[id] = 'You are offline.'; OSM_QUEUE = []; OSM_BUSY = null; render(); return; }
   OSM_BUSY = id; delete OSM_ERRS[id]; render();
   const errs = [], els = await osmTile(osmArea(id), errs);
@@ -1543,6 +1571,7 @@ async function osmNext() {
     try { localStorage.setItem(LS_OSM, JSON.stringify(OSM_STORE)); } catch (e) { OSM_ERRS[id] = 'Loaded, but too big to keep offline on this device.'; }
     osmMerge(); mf().osm = true; UI.osmLayer = true; mapDirty = true;
   } else OSM_ERRS[id] = [...new Set(errs)].join('; ');
+  OSM_RUN.done++;
   osmNext();
 }
 function osmRemove(id) {
@@ -1587,14 +1616,16 @@ function renderOsm() {
   const row = ([id, name]) => {
     const got = OSM_STORE.areas[id], busy = OSM_BUSY === id, queued = OSM_QUEUE.includes(id), err = OSM_ERRS[id], rg = S.regions.find(r => r.id === id);
     return `<div class="row" style="padding:7px 0;border-top:1px solid var(--line)"><span class="grow"><b>${rg ? `<span style="color:${rg.color}">●</span> ` : ''}${esc(name)}</b>
-      <div class="tiny ${err ? '' : 'muted'}" style="${err ? 'color:var(--bad)' : ''}">${busy ? 'Downloading… (usually 5–30 s)' : queued ? 'Waiting…' : err ? esc(err) : got ? `${got.items.length.toLocaleString('en-GB')} places · ${esc(dateLabel(new Date(got.at).toISOString().slice(0, 10), { day: 'numeric', month: 'short' }))}` : 'Not downloaded'}</div></span>
+      <div class="tiny ${err ? '' : 'muted'}" style="${err ? 'color:var(--bad)' : ''}">${busy ? `<div id="osmstatus">${osmStatusHTML()}</div>` : queued ? 'Waiting…' : err ? esc(err) : got ? `${got.items.length.toLocaleString('en-GB')} places · ${esc(dateLabel(new Date(got.at).toISOString().slice(0, 10), { day: 'numeric', month: 'short' }))}` : 'Not downloaded'}</div></span>
       ${busy || queued || !osmArea(id) ? '' : `<button class="btn small ${got ? '' : 'primary'}" data-act="osmload" data-v="${id}">${got ? '↻' : err ? 'Retry' : 'Download'}</button>`}
       ${got && !busy ? `<button class="btn small danger" data-act="osmrm" data-v="${id}" aria-label="Remove ${esc(name)}">✕</button>` : ''}</div>`;
   };
   const areasCard = `<details class="card" ${!OSM || UI.osmAreasOpen || OSM_BUSY ? 'open' : ''} ontoggle="UI.osmAreasOpen=this.open;saveUI()" style="padding:10px 12px">
     <summary><b>Download sights by region</b> <span class="tiny muted">· ${Object.keys(OSM_STORE.areas).filter(k => osmArea(k)).length} of ${OSM_AREAS.length} downloaded</span></summary>
     <p class="small muted" style="margin:6px 0">Everything OpenStreetMap knows in each region: archaeological sites, temples, tombs, museums, fortresses, dive reefs, beaches, desert landmarks, viewpoints and reserves, plus famous mosques and churches. Names, types and links only, so set opening hours after adding one to <b>My places</b>. Kept on your phone for offline use.</p>
-    ${trip.length ? `<button class="btn small primary" data-act="osmtrip" style="margin-bottom:6px">Download my trip's regions (${trip.length})</button>` : ''}
+    ${OSM_BUSY && OSM_RUN.total > 1 ? `<div class="small" style="margin:6px 0 2px"><b>Region ${Math.min(OSM_RUN.done + 1, OSM_RUN.total)} of ${OSM_RUN.total}</b> · ${esc(osmArea(OSM_BUSY)?.[1] || '')}</div>
+      <div class="osmbar"><i style="width:${Math.round(OSM_RUN.done / OSM_RUN.total * 100)}%"></i></div>` : ''}
+    ${trip.length && !OSM_BUSY ? `<button class="btn small primary" data-act="osmtrip" style="margin-bottom:6px">Download my trip's regions (${trip.length})</button>` : ''}
     ${OSM_AREAS.map(row).join('')}
     ${OSM_STORE.areas.earlier ? row(['earlier', 'Earlier whole-Egypt download']) : ''}</details>`;
   if (!OSM) return areasCard;

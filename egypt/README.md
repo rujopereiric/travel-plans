@@ -67,6 +67,7 @@ Must-sees have a gold ring. Zoomed out to the whole country, pins shrink to dots
 In the Places tab, switch to **All of Egypt**. Sights download **per region**, so you only fetch what you need, and each region takes seconds instead of minutes. The sights come from the free OpenStreetMap Overpass API and are kept in the browser for offline use.
 - **Regions:** the six trip regions (Cairo & Giza, Alexandria & El Alamein, Luxor with Dendera and Abydos, Aswan to Abu Simbel, Hurghada & the Red Sea coast, South Sinai), plus Fayoum & Middle Egypt, the Western Desert oases, and Suez / Ain Sokhna.
 - **Download my trip's regions** fetches every region that has a stop or a night in your selected plans. Downloads run one at a time.
+- **Progress:** an overall bar shows "Region 2 of 4". The current region's line updates every second: "Waiting for overpass.private.coffee to search · 23 s" (with the moving bar), then "Receiving · 340 KB", then "Processing". The server sends nothing, and no size, until its search is done, so the waiting part can't show a percentage. Each server gives up after 2 minutes, and the next one is tried.
 - Each region can be refreshed (↻) or removed (✕). If one fails, its error is shown with **Retry**, and the others are unaffected. Each request tries four public servers in turn (overpass-api.de, private.coffee, mail.ru, kumi.systems).
 - A whole-Egypt download from the earlier version stays as "Earlier whole-Egypt download" until you remove it.
 
