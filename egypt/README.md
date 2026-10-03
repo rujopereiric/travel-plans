@@ -64,7 +64,10 @@ Must-sees have a gold ring. Zoomed out to the whole country, pins shrink to dots
 
 ## All of Egypt (OpenStreetMap)
 
-In the Places tab, switch to **All of Egypt** and tap **Load all of Egypt**. One query to the free OpenStreetMap Overpass API fetches the named sights it knows about in Egypt, usually several thousand. They're kept in the browser for offline use. It loads:
+In the Places tab, switch to **All of Egypt** and tap **Load all of Egypt**. The app asks the free OpenStreetMap Overpass API for the named sights it knows about in Egypt, usually several thousand, and keeps them in the browser for offline use.
+Egypt in one query is too heavy for the public servers (they time out), so it loads 7 areas one after another, usually 1–3 minutes in all. Each area tries four public servers in turn (overpass-api.de, private.coffee, mail.ru, kumi.systems).
+If some areas still fail (busy or down servers), what did load is kept and usable, the missing areas are listed, and **Load missing** fetches just those.
+It loads:
 - archaeological sites, temples, tombs, pyramids, monuments, fortresses
 - museums, viewpoints, attractions
 - dive reefs and dive sites, beaches

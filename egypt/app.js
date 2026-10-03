@@ -1436,20 +1436,34 @@ function renderMyPlaces() {
 const LS_OSM = 'egypt-osm';
 let OSM = null, OSM_BUSY = false, OSM_ERR = null;
 try { OSM = JSON.parse(localStorage.getItem(LS_OSM) || 'null'); } catch (e) { }
-const OVERPASS = ['https://overpass-api.de/api/interpreter', 'https://overpass.kumi.systems/api/interpreter'];
-const OSM_QUERY = `[out:json][timeout:180];area["ISO3166-1"="EG"][admin_level=2]->.eg;(
-nwr["historic"~"^(archaeological_site|tomb|castle|fort|ruins|monument|city_gate|monastery|temple|pyramid)$"]["name"](area.eg);
-nwr["historic"]["name"]["wikipedia"](area.eg);
-nwr["tourism"~"^(attraction|viewpoint|museum|gallery|zoo|theme_park)$"]["name"](area.eg);
-nwr["tourism"="artwork"]["name"]["wikipedia"](area.eg);
-nwr["amenity"="place_of_worship"]["name"]["wikipedia"](area.eg);
-nwr["natural"~"^(reef|beach|cave_entrance|arch|rock|spring|hot_spring|sand|dune|valley|cape)$"]["name"](area.eg);
-nwr["sport"="scuba_diving"]["name"](area.eg);
-nwr["natural"="peak"]["name"]["wikipedia"](area.eg);
-nwr["leisure"="nature_reserve"]["name"](area.eg);
-nwr["boundary"~"^(national_park|protected_area)$"]["name"](area.eg);
-nwr["man_made"="lighthouse"]["name"](area.eg);
-);out center tags qt;`;
+// Public Overpass servers, tried in turn. All send CORS headers on success; their error pages (timeouts, rate
+// limits) don't, which the browser can only report as "Failed to fetch".
+const OVERPASS = ['https://overpass-api.de/api/interpreter', 'https://overpass.private.coffee/api/interpreter',
+  'https://maps.mail.ru/osm/tools/overpass/api/interpreter', 'https://overpass.kumi.systems/api/interpreter'];
+// Egypt in one query is too heavy for the public servers (it times out), so ask area by area: small, fast queries,
+// one at a time, each restricted to Egypt so the bounding boxes' slices of Libya, Sudan, Israel or Saudi are left out.
+const OSM_TILES = [ // [name, south, west, north, east]
+  ['Alexandria, Delta & west coast', 29.0, 24.6, 31.7, 31.0],
+  ['Cairo, Giza & east Delta', 29.0, 31.0, 31.7, 32.0],
+  ['Suez Canal & North Sinai', 29.0, 32.0, 31.7, 36.9],
+  ['Middle Egypt & the oases', 26.0, 24.6, 29.0, 31.0],
+  ['Red Sea north & South Sinai', 26.0, 31.0, 29.0, 36.9],
+  ['Upper Egypt & Western Desert south', 21.9, 24.6, 26.0, 31.0],
+  ['Luxor, Aswan & Red Sea south', 21.9, 31.0, 26.0, 36.9],
+];
+const osmQuery = ([, s, w, n, e]) => { const f = `(area.eg)(${s},${w},${n},${e})`; return `[out:json][timeout:90];area["ISO3166-1"="EG"][admin_level=2]->.eg;(
+nwr["historic"~"^(archaeological_site|tomb|castle|fort|ruins|monument|city_gate|monastery|temple|pyramid)$"]["name"]${f};
+nwr["historic"]["name"]["wikipedia"]${f};
+nwr["tourism"~"^(attraction|viewpoint|museum|gallery|zoo|theme_park)$"]["name"]${f};
+nwr["tourism"="artwork"]["name"]["wikipedia"]${f};
+nwr["amenity"="place_of_worship"]["name"]["wikipedia"]${f};
+nwr["natural"~"^(reef|beach|cave_entrance|arch|rock|spring|hot_spring|sand|dune|cape)$"]["name"]${f};
+nwr["sport"="scuba_diving"]["name"]${f};
+nwr["natural"="peak"]["name"]["wikipedia"]${f};
+nwr["leisure"="nature_reserve"]["name"]${f};
+nwr["boundary"~"^(national_park|protected_area)$"]["name"]${f};
+nwr["man_made"="lighthouse"]["name"]${f};
+);out center tags qt;`; };
 function osmCat(t, name = '') {
   const n = t.natural, tr = t.tourism, h = t.historic, nm = name.toLowerCase();
   if (n === 'reef' || t.sport === 'scuba_diving') return 'Snorkel & dive';
@@ -1475,27 +1489,50 @@ function osmCat(t, name = '') {
   if (h) return 'Historic';
   return 'Attraction';
 }
-async function loadOSM() {
+let OSM_PROGRESS = '';
+const osmRow = el => {
+  const t = el.tags || {}, lat = el.lat ?? el.center?.lat, lon = el.lon ?? el.center?.lon, name = t['name:en'] || t['int_name'] || t.name;
+  if (!name || lat == null) return null;
+  return [el.type[0] + el.id, name, +lat.toFixed(5), +lon.toFixed(5), osmCat(t, name), t.wikipedia || '', t.website || t['contact:website'] || '', (t['description:en'] || t.description || '').slice(0, 200), t.name !== name ? t.name || '' : ''];
+};
+async function osmTile(tile, errs) { // one area, trying each server in turn; null if all fail
+  for (const url of OVERPASS) {
+    const host = url.split('/')[2], ctl = new AbortController(), to = setTimeout(() => ctl.abort(), 120000);
+    try {
+      const res = await fetch(url, { method: 'POST', body: 'data=' + encodeURIComponent(osmQuery(tile)), headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, signal: ctl.signal });
+      if (!res.ok) throw new Error('HTTP ' + res.status + (res.status === 429 ? ' (busy)' : res.status === 504 ? ' (timed out)' : ''));
+      const j = await res.json();
+      // a query that runs out of time or memory still answers 200, with a "remark" and partial elements
+      if (j.remark && /runtime error|timed out|out of memory/i.test(j.remark)) throw new Error(j.remark.replace(/^.*?error:\s*/i, '').slice(0, 80));
+      return j.elements || [];
+    } catch (e) { errs.push(`${host}: ${e.name === 'AbortError' ? 'no answer in 2 min' : e.message}`); }
+    finally { clearTimeout(to); }
+  }
+  return null;
+}
+// Loads every area, or with retry=true only the areas a previous load missed. Areas that fail are listed in
+// OSM.missing; what did load is kept and usable.
+async function loadOSM(retry) {
   if (OSM_BUSY) return;
   if (!navigator.onLine) { OSM_ERR = 'You are offline.'; render(); return; }
-  OSM_BUSY = true; OSM_ERR = null; render();
-  for (const url of OVERPASS) {
-    try {
-      const res = await fetch(url, { method: 'POST', body: 'data=' + encodeURIComponent(OSM_QUERY), headers: { 'Content-Type': 'application/x-www-form-urlencoded' } });
-      if (!res.ok) throw new Error('HTTP ' + res.status);
-      const j = await res.json(), seen = new Set(), items = [];
-      for (const el of j.elements || []) {
-        const t = el.tags || {}, lat = el.lat ?? el.center?.lat, lon = el.lon ?? el.center?.lon, name = t['name:en'] || t['int_name'] || t.name;
-        if (!name || lat == null) continue;
-        const key = name.toLowerCase() + '|' + lat.toFixed(3) + '|' + lon.toFixed(3);
-        if (seen.has(key)) continue; seen.add(key);
-        items.push([el.type[0] + el.id, name, +lat.toFixed(5), +lon.toFixed(5), osmCat(t, name), t.wikipedia || '', t.website || t['contact:website'] || '', (t['description:en'] || t.description || '').slice(0, 200), t.name !== name ? t.name || '' : '']);
-      }
-      OSM = { at: Date.now(), src: url.split('/')[2], items };
-      try { localStorage.setItem(LS_OSM, JSON.stringify(OSM)); } catch (e) { OSM_ERR = 'Loaded, but too big to keep offline on this device.'; }
-      OSM_BUSY = false; osmLayerDirty = true; mf().osm = true; UI.osmLayer = true; mapDirty = true; render(); return;
-    } catch (e) { OSM_ERR = `${url.split('/')[2]}: ${e.message}`; }
+  OSM_BUSY = true; OSM_ERR = null;
+  const todo = retry && OSM?.missing?.length ? OSM.missing : OSM_TILES.map(t => t[0]);
+  const keep = retry && OSM ? OSM.items : [], missing = [], errs = [];
+  const seen = new Set(keep.map(a => a[0])), items = [...keep];
+  for (const [i, name] of todo.entries()) {
+    const tile = OSM_TILES.find(t => t[0] === name); if (!tile) continue;
+    OSM_PROGRESS = `${name} (${i + 1} of ${todo.length})…`; render();
+    const els = await osmTile(tile, errs);
+    if (!els) { missing.push(name); continue; }
+    for (const el of els) { const row = osmRow(el); if (row && !seen.has(row[0])) { seen.add(row[0]); items.push(row); } }
   }
+  OSM_PROGRESS = '';
+  if (items.length || !missing.length) {
+    OSM = { at: Date.now(), items, missing };
+    try { localStorage.setItem(LS_OSM, JSON.stringify(OSM)); } catch (e) { OSM_ERR = 'Loaded, but too big to keep offline on this device.'; }
+    osmLayerDirty = true; mf().osm = true; UI.osmLayer = true; mapDirty = true;
+  }
+  if (missing.length) OSM_ERR = `${missing.length} of ${todo.length} area${todo.length > 1 ? 's' : ''} didn't load (${missing.join(', ')}). Last errors: ${[...new Set(errs)].slice(-OVERPASS.length).join('; ')}`;
   OSM_BUSY = false; render();
 }
 const osmObj = a => ({ id: a[0], name: a[1], lat: a[2], lon: a[3], cat: a[4], wiki: a[5], web: a[6], desc: a[7], local: a[8] });
@@ -1529,12 +1566,14 @@ function renderOsm() {
     <p class="small">This loads every archaeological site, temple, tomb, museum, fortress, dive reef, beach, desert landmark, viewpoint, lighthouse and nature reserve that OpenStreetMap knows about in Egypt, plus famous mosques and churches — usually several thousand. It's a one-off download (a few MB), kept on your phone for offline use.</p>
     <p class="small muted">These come with names, types and links only — not my summaries, opening hours or prices. Add the ones you like to <b>My places</b> to plan them, then set their hours.</p>
     ${OSM_ERR ? `<p class="small" style="color:var(--bad)">${esc(OSM_ERR)}</p>` : ''}
-    <button class="btn primary" data-act="osmload" ${OSM_BUSY ? 'disabled' : ''}>${OSM_BUSY ? 'Loading… (can take 30–60 s)' : 'Load all of Egypt'}</button></div>`;
+    <button class="btn primary" data-act="osmload" ${OSM_BUSY ? 'disabled' : ''}>${OSM_BUSY ? 'Loading…' : OSM_ERR ? 'Try again' : 'Load all of Egypt'}</button>
+    ${OSM_BUSY ? `<p class="small muted" style="margin-bottom:0">Loading ${esc(OSM_PROGRESS)} It's done in 7 parts, usually 1–3 minutes in all; keep this tab open.</p>` : ''}</div>`;
   const cats = [...new Set(OSM.items.map(a => a[4]))].sort();
   const counts = Object.fromEntries(cats.map(c => [c, OSM.items.filter(a => a[4] === c).length]));
   const cat = UI.osmCat || 'all', near = place(UI.osmNear) ? UI.osmNear : S.trip.home;
   const chip = (v, label, on) => `<button class="pchip" data-act="osmcat" data-v="${esc(v)}" aria-pressed="${on}">${label}</button>`;
-  return `<div class="row tiny muted" style="margin-bottom:8px"><span class="grow">${OSM.items.length.toLocaleString('en-GB')} places from OpenStreetMap · loaded ${esc(dateLabel(new Date(OSM.at).toISOString().slice(0, 10), { day: 'numeric', month: 'short' }))}${OSM_ERR ? ` · ${esc(OSM_ERR)}` : ''}</span>
+  return `<div class="row tiny muted" style="margin-bottom:8px"><span class="grow">${OSM.items.length.toLocaleString('en-GB')} places from OpenStreetMap · loaded ${esc(dateLabel(new Date(OSM.at).toISOString().slice(0, 10), { day: 'numeric', month: 'short' }))}${OSM_BUSY ? ` · loading ${esc(OSM_PROGRESS)}` : ''}${OSM_ERR ? `<br><span style="color:var(--bad)">${esc(OSM_ERR)}</span>` : OSM.missing?.length ? `<br>Missing: ${esc(OSM.missing.join(', '))}` : ''}</span>
+      ${OSM.missing?.length && !OSM_BUSY ? `<button class="btn small primary" data-act="osmretry">Load missing</button>` : ''}
       <button class="btn small" data-act="osmload" ${OSM_BUSY ? 'disabled' : ''}>${OSM_BUSY ? 'Updating…' : 'Refresh'}</button></div>
     <div class="row" style="margin-bottom:8px"><input type="search" id="osmq" data-osmq placeholder="Search ${OSM.items.length.toLocaleString('en-GB')} places…" value="${esc(UI.osmQ || '')}" class="grow" autocomplete="off">
       <label class="f">Nearest to<select data-act="osmnear">${placeOptions(near)}</select></label></div>
@@ -1926,6 +1965,7 @@ document.addEventListener('click', e => {
     case 'msrc': { const f = mf(); f[el.dataset.v] = !f[el.dataset.v]; if (el.dataset.v === 'osm') UI.osmLayer = f.osm; mapDirty = true; render(); break; }
     case 'mmust': mf().must = !mf().must; mapDirty = true; render(); break;
     case 'osmload': loadOSM(); break;
+    case 'osmretry': loadOSM(true); break;
     case 'osmcat': UI.osmCat = el.dataset.v; UI.osmN = 40; render(); break;
     case 'osmmore': UI.osmN = (UI.osmN || 40) + 60; $('#osmlist').innerHTML = osmListHTML(); break;
     case 'osmadd': {
