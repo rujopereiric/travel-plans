@@ -11,7 +11,7 @@ const LS_STATE = 'ptkids-planner-v1';
 const LS_UI = 'ptkids-planner-ui';
 // Bump on every change. The app compares it with the app.js on the server, so a phone that kept an old tab open
 // (no reload, so still the old code) is told a newer version exists.
-const APP_BUILD = '2026-10-04.k3';
+const APP_BUILD = '2026-10-04.k4';
 let NEWER = null; // the newer build found on the server, if any
 const AX0 = 5 * 60, AX1 = 23 * 60;           // timeline axis 05:00–23:00
 const DEFAULT_SETTINGS = {
@@ -37,6 +37,10 @@ const isRainy = p => p.rainy === true || (p.needsDaylight === false && INDOOR.ha
 const minor = p => !!(p && p.minor);
 const anchorOf = id => { const p = place(id); return p && p.minor && place(p.near) ? p.near : null; };
 const HOP_KMH = 25; // short town hop, parking included
+// Towns, villages and overnight bases are there for sleeping and as stops; the Places list leads with things kids do.
+const TOWNISH = new Set(['Town', 'Base', 'Village', 'Old town']);
+const listedByDefault = p => !minor(p) && !TOWNISH.has(p.cat);
+const KID_FIRST = new Set(['Zoo', 'Aquarium', 'Theme park', 'Water park', 'Science centre', 'Park & playground', 'Farm & animals', 'Adventure park', 'Train ride', 'Indoor play', 'Trampoline park']);
 const STROLLER = { yes: '🚼 Buggy: yes', partly: '🚼 Buggy: partly', no: '🎒 Baby carrier' };
 
 let S = null;            // the plan (same shape as data.json)
@@ -1456,11 +1460,14 @@ function renderMyPlaces() {
     <div class="pchips">${chip('cat', 'all', 'All types', cat === 'all')}${cats.map(c => chip('cat', c, esc(c), cat === c)).join('')}</div>
     <div class="pchips">${chip('region', 'all', 'All regions', reg === 'all')}${S.regions.map(r => chip('region', r.id, `<span style="color:${r.color}">●</span> ${esc(r.name)}`, reg === r.id)).join('')}</div>`;
   const days = S.days.filter(d => blockOf(d.date) && d.state !== 'booked');
-  const nMinor = S.places.filter(p => minor(p) && (reg === 'all' || p.region === reg)).length;
-  if (cat === 'all' && nMinor) h += `<p class="tiny muted" style="margin:0 0 8px">${nMinor.toLocaleString('en-GB')} playgrounds aren't listed here: tap <b>🛝 Playground</b> above, pick a region, or turn them on in the map filter.</p>`;
-  const list = S.places.filter(p => (cat === 'all' ? !minor(p) : p.cat === cat) && (reg === 'all' || p.region === reg) && p.cat !== 'Airport'
+  const inReg = p => reg === 'all' || p.region === reg;
+  const nMinor = S.places.filter(p => minor(p) && inReg(p)).length, nTown = S.places.filter(p => TOWNISH.has(p.cat) && inReg(p)).length;
+  if (cat === 'all' && (nMinor || nTown)) h += `<p class="tiny muted" style="margin:0 0 8px">Not listed under All types: ${[nTown ? `${nTown} towns, villages and overnight bases` : '', nMinor ? `${nMinor.toLocaleString('en-GB')} playgrounds` : ''].filter(Boolean).join(' and ')}. Tap their type above to see them.</p>`;
+  const kidRank = p => (KID_FIRST.has(p.cat) ? 0 : 1) * 10 - (p.priority ?? 2);
+  const list = S.places.filter(p => (cat === 'all' ? listedByDefault(p) : p.cat === cat) && (reg === 'all' || p.region === reg) && p.cat !== 'Airport'
     && (fit === 'all' || (suitsUs(p) && (fit !== 'rainy' || isRainy(p))))
     && (only === 'all' ? pick(p.id) !== 'skip' : only === 'unplanned' ? !plannedIn(p.id).some(x => x.active) && pick(p.id) !== 'skip' : pick(p.id) === only));
+  list.sort((a, b) => kidRank(a) - kidRank(b));
   if (!list.length) h += `<p class="empty">No places match these filters.</p>`;
   for (const p of list) {
     const rg = region(p.region), w = WIKI[p.id] || {}, pk = pick(p.id), where = plannedIn(p.id);

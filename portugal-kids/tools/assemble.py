@@ -24,6 +24,8 @@ REUSE_FIELDS = KID_FIELDS + ['cat', 'visit', 'priority', 'caution', 'season']
 KID_CATS = ['Zoo', 'Aquarium', 'Theme park', 'Water park', 'Science centre', 'Park & playground', 'Farm & animals',
             'Adventure park', 'Train ride', 'Indoor play', 'Trampoline park', 'Mini golf', 'Playground']
 STROLLER = {'yes', 'partly', 'no'}
+ADULTISH = {'Monastery & church', 'Monument', 'Palace', 'Museum', 'Ruins', 'Viewpoint', 'Old town', 'Town', 'Village', 'Wine',
+            'Food & market', 'Lighthouse'}
 
 CHECKLIST = [
     'ID for every child: EU children need their own ID card or passport, even babies.',
@@ -69,6 +71,9 @@ def main():
         for r in d.get('reuse', []):
             if r['id'] not in pt: print(f'{part}: unknown reused id, skipped:', r['id']); continue
             p = keep.get(r['id']) or dict(pt[r['id']])
+            # the Portugal planner's priority is an adult's: a top monastery or viewpoint is "very good" here, not a
+            # family highlight, unless the kids research gives it a family priority
+            if 'priority' not in r and p['cat'] in ADULTISH: p['priority'] = min(p.get('priority', 2), 2)
             p.update({k: r[k] for k in REUSE_FIELDS if k in r})
             keep[r['id']] = p
         for p in d.get('places', []):
@@ -88,6 +93,9 @@ def main():
             for k in ['name', 'lat', 'lon', 'visit', 'priority', 'summary', 'ages', 'stroller', 'kids']:
                 if k not in p: fail(f"{p['id']} has no {k}")
             if not (29 < p['lat'] < 43 and -32 < p['lon'] < -6): fail(f"{p['id']} is outside Portugal: {p['lat']}, {p['lon']}")
+    # a town with no kids tip is in the planner only as an overnight base: auto-plan doesn't offer it as a day stop
+    for p in places:
+        if p['cat'] in ('Town', 'Base', 'Village', 'Old town') and 'kids' not in p and p['cat'] != 'Airport': p['suggest'] = False
     ids = {p['id'] for p in places}
     for p in places:
         if p.get('minor') and p.get('near') not in ids: fail(f"{p['id']} is near {p.get('near')}, which isn't a place")

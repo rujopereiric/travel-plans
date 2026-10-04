@@ -52,7 +52,8 @@
         "Many museums and monuments close on Mondays"
       ],
       "sleep": true,
-      "needsDaylight": false
+      "needsDaylight": false,
+      "suggest": false
     },
     {
       "id": "sintra",
@@ -73,7 +74,8 @@
       ],
       "sleep": true,
       "needsDaylight": false,
-      "season": "The hills are often misty and cooler than Lisbon; bring a layer."
+      "season": "The hills are often misty and cooler than Lisbon; bring a layer.",
+      "suggest": false
     },
     {
       "id": "cascais",
@@ -114,7 +116,8 @@
         "Casino open evenings"
       ],
       "sleep": true,
-      "needsDaylight": false
+      "needsDaylight": false,
+      "suggest": false
     },
     {
       "id": "setubal",
@@ -190,7 +193,7 @@
       "lon": -9.1571,
       "visit": 150,
       "cat": "Town",
-      "priority": 3,
+      "priority": 2,
       "sleep": true,
       "needsDaylight": false,
       "wiki": "Óbidos, Portugal",
@@ -223,7 +226,8 @@
         "Drive the coast loop to Cabo Carvoeiro and the Nau dos Corvos rock",
         "Departure port for boats to the Berlengas",
         "Good fresh grilled fish in the harbour area"
-      ]
+      ],
+      "suggest": false
     },
     {
       "id": "nazare",
@@ -243,7 +247,8 @@
         "Sítio viewpoint (Miradouro do Suberco) is the classic photo of the town",
         "Look for fish drying on racks on the beach",
         "Big-wave season is roughly October to March"
-      ]
+      ],
+      "suggest": false
     },
     {
       "id": "tomar",
@@ -263,7 +268,8 @@
         "The Festa dos Tabuleiros (trays festival) is held every four years in early July",
         "Synagogue of Tomar is one of the oldest in Portugal (small, free)",
         "Good base for Almourol and Fátima"
-      ]
+      ],
+      "suggest": false
     },
     {
       "id": "ericeira",
@@ -306,7 +312,8 @@
         "Santa Cruz Monastery holds the tombs of Portugal's first kings",
         "Catch a Coimbra fado show in the evening",
         "Park by the river and walk up"
-      ]
+      ],
+      "suggest": false
     },
     {
       "id": "aveiro",
@@ -326,7 +333,8 @@
         "Try ovos moles, the local egg-yolk sweet",
         "The old railway station has notable azulejo panels",
         "Good base for Costa Nova and Ílhavo"
-      ]
+      ],
+      "suggest": false
     },
     {
       "id": "manteigas",
@@ -345,7 +353,8 @@
         "Thermal spa at Caldas de Manteigas",
         "Burel wool factory and shop in town",
         "Covilhã (40 min) is a larger alternative base"
-      ]
+      ],
+      "suggest": false
     },
     {
       "id": "viseu",
@@ -365,7 +374,8 @@
         "Dão wine estates within 30 min",
         "Old town is compact and walkable",
         "Convenient base between Coimbra, the Douro and Serra da Estrela"
-      ]
+      ],
+      "suggest": false
     },
     {
       "id": "porto",
@@ -386,7 +396,8 @@
       ],
       "sleep": true,
       "needsDaylight": false,
-      "season": "Mild but rainy October–April; pack a rain jacket."
+      "season": "Mild but rainy October–April; pack a rain jacket.",
+      "suggest": false
     },
     {
       "id": "braga",
@@ -396,7 +407,7 @@
       "lon": -8.42,
       "visit": 150,
       "cat": "Town",
-      "priority": 3,
+      "priority": 2,
       "wiki": "Braga",
       "summary": "Lively university city and Portugal's religious capital, full of baroque churches. Pleasant old centre and gateway to Bom Jesus and Peneda-Gerês.",
       "facts": [
@@ -419,7 +430,7 @@
       "lon": -8.2918,
       "visit": 150,
       "cat": "Town",
-      "priority": 3,
+      "priority": 2,
       "wiki": "Guimarães",
       "summary": "'Birthplace of Portugal', with a beautifully preserved UNESCO medieval centre around Largo da Oliveira. Great atmosphere in the evenings.",
       "facts": [
@@ -519,7 +530,8 @@
         "Practical base with more services than Pinhão",
         "Scenic N222 runs east to Pinhão"
       ],
-      "sleep": true
+      "sleep": true,
+      "suggest": false
     },
     {
       "id": "pinhao",
@@ -539,7 +551,8 @@
         "Book accommodation early in harvest season (Sept)"
       ],
       "sleep": true,
-      "season": "Harvest in September; vines turn red and gold in late October."
+      "season": "Harvest in September; vines turn red and gold in late October.",
+      "suggest": false
     },
     {
       "id": "lamego",
@@ -559,7 +572,8 @@
         "Good base on the quieter south bank"
       ],
       "sleep": true,
-      "needsDaylight": false
+      "needsDaylight": false,
+      "suggest": false
     },
     {
       "id": "miranda_do_douro",
@@ -600,7 +614,8 @@
         "Cold winters, occasional snow",
         "Parking near the citadel"
       ],
-      "sleep": true
+      "sleep": true,
+      "suggest": false
     },
     {
       "id": "chaves",
@@ -620,7 +635,8 @@
         "Easy motorway link (A24) to Vila Real and Régua"
       ],
       "sleep": true,
-      "needsDaylight": false
+      "needsDaylight": false,
+      "suggest": false
     },
     {
       "id": "evora",
@@ -630,7 +646,7 @@
       "lon": -7.9092,
       "visit": 180,
       "cat": "Town",
-      "priority": 3,
+      "priority": 2,
       "wiki": "Évora",
       "summary": "Walled UNESCO World Heritage city and capital of the Alentejo, with a Roman temple, Gothic cathedral and whitewashed lanes around Praça do Giraldo. Compact, lively with students, and the best base for the inland Alentejo.",
       "facts": [
@@ -653,7 +669,7 @@
       "lon": -7.3801,
       "visit": 120,
       "cat": "Village",
-      "priority": 3,
+      "priority": 2,
       "wiki": "Monsaraz",
       "summary": "Tiny walled hilltop village with a castle overlooking the vast Alqueva lake and the Spanish border. Whitewashed slate-paved streets, superb sunsets and some of Europe's darkest night skies.",
       "facts": [
@@ -675,7 +691,7 @@
       "lon": -7.3764,
       "visit": 120,
       "cat": "Village",
-      "priority": 3,
+      "priority": 2,
       "wiki": "Marvão",
       "summary": "Walled eagle's-nest village on a granite crag at about 860 m, topped by a medieval castle with views deep into Spain. One of Portugal's most striking villages, especially at dawn and dusk.",
       "facts": [
@@ -706,7 +722,8 @@
         "Easy parking around the centre",
         "Good overnight stop on the way south"
       ],
-      "sleep": true
+      "sleep": true,
+      "suggest": false
     },
     {
       "id": "vila_nova_de_milfontes",
@@ -747,7 +764,8 @@
         "Lively nightlife in summer"
       ],
       "sleep": true,
-      "needsDaylight": false
+      "needsDaylight": false,
+      "suggest": false
     },
     {
       "id": "faro",
@@ -762,7 +780,8 @@
       "summary": "Algarve capital with a walled old town, a marina and boats into the Ria Formosa lagoon. Practical base, 10 minutes from the airport.",
       "facts": ["Airport is ~7 km away", "Free parking at Largo de São Francisco", "Good base for the eastern Algarve"],
       "sleep": true,
-      "needsDaylight": false
+      "needsDaylight": false,
+      "suggest": false
     },
     {
       "id": "tavira",
@@ -781,7 +800,8 @@
         "Pleasant in the evening"
       ],
       "sleep": true,
-      "needsDaylight": false
+      "needsDaylight": false,
+      "suggest": false
     },
     {
       "id": "funchal",
@@ -802,7 +822,8 @@
       ],
       "sleep": true,
       "needsDaylight": false,
-      "season": "Mild all year (about 18–23 °C in autumn/winter); the south coast is the sunniest part of the island."
+      "season": "Mild all year (about 18–23 °C in autumn/winter); the south coast is the sunniest part of the island.",
+      "suggest": false
     },
     {
       "id": "santana",
@@ -843,7 +864,8 @@
         "Good stop on a north coast loop with Seixal and São Vicente"
       ],
       "sleep": true,
-      "needsDaylight": false
+      "needsDaylight": false,
+      "suggest": false
     },
     {
       "id": "calheta",
@@ -863,7 +885,8 @@
         "Several resorts and guesthouses"
       ],
       "sleep": true,
-      "needsDaylight": false
+      "needsDaylight": false,
+      "suggest": false
     },
     {
       "id": "porto_santo",
@@ -907,7 +930,8 @@
       ],
       "sleep": true,
       "needsDaylight": false,
-      "season": "Mild but changeable (16–21 °C in autumn); expect showers and fast-moving cloud."
+      "season": "Mild but changeable (16–21 °C in autumn); expect showers and fast-moving cloud.",
+      "suggest": false
     },
     {
       "id": "furnas",
@@ -917,7 +941,7 @@
       "lon": -25.3083,
       "visit": 120,
       "cat": "Village",
-      "priority": 3,
+      "priority": 2,
       "wiki": "Furnas",
       "summary": "Spa village in a volcanic valley full of steaming fumaroles and mineral springs. Home to the Terra Nostra garden, Poça da Dona Beija and the famous cozido stew cooked in the ground.",
       "facts": [
@@ -941,7 +965,7 @@
       "lon": -27.22,
       "visit": 180,
       "cat": "Old town",
-      "priority": 3,
+      "priority": 2,
       "wiki": "Angra do Heroísmo",
       "summary": "UNESCO-listed Renaissance port town on Terceira with a grid of pastel streets, imperial chapels (impérios) and forts guarding the bay. The most elegant town in the Azores.",
       "facts": [
@@ -974,7 +998,8 @@
         "Good base for Faial and Pico"
       ],
       "sleep": true,
-      "needsDaylight": false
+      "needsDaylight": false,
+      "suggest": false
     },
     {
       "id": "madalena",
@@ -989,7 +1014,8 @@
       "summary": "Pico's main ferry port and small town, facing Faial across the channel. A convenient base for climbing Mount Pico and visiting the vineyards.",
       "facts": ["Ferry to Horta about 30 min", "Car hire near the port — book ahead", "Wine co-operative shop in town"],
       "sleep": true,
-      "needsDaylight": false
+      "needsDaylight": false,
+      "suggest": false
     },
     {
       "id": "castelo_sao_jorge",
@@ -1023,7 +1049,7 @@
       "lon": -9.1364,
       "visit": 60,
       "cat": "Monument",
-      "priority": 3,
+      "priority": 2,
       "wiki": "Praça do Comércio",
       "summary": "Grand riverside square rebuilt after the 1755 earthquake, opening onto the Pombaline grid of the Baixa with Rua Augusta and its triumphal arch.",
       "facts": [
@@ -1112,7 +1138,7 @@
       "lon": -9.216,
       "visit": 45,
       "cat": "Monument",
-      "priority": 3,
+      "priority": 2,
       "wiki": "Belém Tower",
       "summary": "Early-16th-century Manueline fortress on the Tagus shore, the symbol of Portugal's Age of Discovery and a UNESCO site with Jerónimos.",
       "facts": [
@@ -1405,7 +1431,7 @@
       "lon": -9.4989,
       "visit": 30,
       "cat": "Lighthouse",
-      "priority": 3,
+      "priority": 2,
       "wiki": "Cabo da Roca",
       "summary": "Windswept cape with a lighthouse that is mainland Europe's westernmost point, with high cliffs over the Atlantic.",
       "facts": [
@@ -1758,7 +1784,7 @@
       "lon": -9.0855,
       "visit": 60,
       "cat": "Viewpoint",
-      "priority": 3,
+      "priority": 2,
       "wiki": "Nazaré Canyon",
       "summary": "The headland fort and red lighthouse above Praia do Norte, where an undersea canyon focuses Atlantic swells into some of the biggest surfed waves on Earth. The fort has a small exhibition of big-wave surfboards.",
       "facts": [
@@ -1781,7 +1807,7 @@
       "lon": -8.98,
       "visit": 60,
       "cat": "Monastery & church",
-      "priority": 3,
+      "priority": 2,
       "hours": "09:00-18:00",
       "needsDaylight": false,
       "wiki": "Alcobaça Monastery",
@@ -1805,7 +1831,7 @@
       "lon": -8.825,
       "visit": 60,
       "cat": "Monastery & church",
-      "priority": 3,
+      "priority": 2,
       "hours": "09:00-18:00",
       "needsDaylight": false,
       "wiki": "Batalha Monastery",
@@ -1829,7 +1855,7 @@
       "lon": -8.4187,
       "visit": 90,
       "cat": "Monastery & church",
-      "priority": 3,
+      "priority": 2,
       "hours": "09:00-17:30",
       "needsDaylight": false,
       "wiki": "Convent of Christ (Tomar)",
@@ -1943,7 +1969,7 @@
       "lon": -8.426,
       "visit": 75,
       "cat": "Monument",
-      "priority": 3,
+      "priority": 2,
       "hours": "09:00-17:00",
       "needsDaylight": false,
       "wiki": "Biblioteca Joanina",
@@ -2032,7 +2058,7 @@
       "lon": -7.825,
       "visit": 90,
       "cat": "Village",
-      "priority": 3,
+      "priority": 2,
       "wiki": "Piódão",
       "summary": "A remote schist village stacked in terraces on a steep valley in the Serra do Açor, with dark stone houses and blue doors. One of Portugal's most photogenic historic villages.",
       "facts": [
@@ -2143,7 +2169,7 @@
       "lon": -7.114,
       "visit": 120,
       "cat": "Village",
-      "priority": 3,
+      "priority": 2,
       "wiki": "Monsanto, Idanha-a-Nova",
       "summary": "A hilltop village built among and under giant granite boulders, crowned by a ruined Templar castle with huge views over the plains toward Spain. One of the most striking villages in the country.",
       "facts": [
@@ -2275,7 +2301,7 @@
       "lon": -8.6131,
       "visit": 90,
       "cat": "Old town",
-      "priority": 3,
+      "priority": 2,
       "wiki": "Historic Centre of Oporto, Luiz I Bridge and Monastery of Serra do Pilar",
       "summary": "The UNESCO-listed riverside quarter of narrow lanes and colourful tall houses facing the Douro and Gaia's port lodges. The classic Porto scene, lively day and night.",
       "facts": [
@@ -2298,7 +2324,7 @@
       "lon": -8.6094,
       "visit": 30,
       "cat": "Monument",
-      "priority": 3,
+      "priority": 2,
       "wiki": "Dom Luís I Bridge",
       "summary": "Two-deck iron arch bridge (1886) linking Porto and Vila Nova de Gaia. Walk the upper deck, shared with the metro, for the best views of Ribeira and the river.",
       "facts": [
@@ -2342,7 +2368,7 @@
       "lon": -8.6087,
       "visit": 30,
       "cat": "Viewpoint",
-      "priority": 3,
+      "priority": 2,
       "wiki": "Monastery of Serra do Pilar",
       "summary": "Park and terrace on the Gaia end of Dom Luís I Bridge, below the Serra do Pilar monastery. The best panorama of Porto, especially at sunset.",
       "facts": [
@@ -2453,7 +2479,7 @@
       "lon": -8.6105,
       "visit": 15,
       "cat": "Monument",
-      "priority": 3,
+      "priority": 2,
       "wiki": "São Bento railway station",
       "summary": "Working railway station whose entrance hall is covered with some 20,000 blue-and-white azulejo tiles showing Portuguese history. Quick and free.",
       "facts": [
@@ -3099,7 +3125,7 @@
       "lon": -8.669,
       "visit": 45,
       "cat": "Viewpoint",
-      "priority": 3,
+      "priority": 2,
       "wiki": "Ponta da Piedade",
       "summary": "Headland of golden sea stacks, arches and grottoes just south of Lagos, with a lighthouse and steps down to the water. Best seen also from a small boat or kayak.",
       "facts": ["Free; small car park by the lighthouse", "Boat tours from Lagos marina ~€20–30", "Superb at sunset"],
@@ -3134,7 +3160,7 @@
       "lon": -8.996,
       "visit": 40,
       "cat": "Lighthouse",
-      "priority": 3,
+      "priority": 2,
       "wiki": "Cape St. Vincent",
       "summary": "South-western tip of mainland Europe, with a powerful lighthouse on 75 m cliffs. Classic sunset spot.",
       "facts": [
@@ -7112,6 +7138,10 @@
     "Farm & animals",
     "Adventure park",
     "Train ride",
+    "Indoor play",
+    "Trampoline park",
+    "Mini golf",
+    "Playground",
     "Town",
     "Base",
     "Old town",
