@@ -1,45 +1,394 @@
 {
  "places": [
   {
-   "id": "vf_w1495724926",
-   "name": "Via ferrata North Slope (near Monchique & Fóia)",
-   "region": "algarve",
-   "lat": 37.3289,
-   "lon": -8.4884,
-   "visit": 180,
+   "id": "vf_pinheirinhos",
+   "name": "Caminho do Mar (Via Ferrata dos Pinheirinhos)",
+   "region": "setubal",
+   "lat": 38.4411,
+   "lon": -9.1467,
+   "visit": 145,
    "cat": "Via ferrata",
    "priority": 2,
-   "summary": "A via ferrata (protected climbing route) 9 km from Monchique & Fóia. The grade is not mapped: check with the operator.",
+   "summary": "A short but airy coastal via ferrata on the limestone cliffs west of Sesimbra, with the ocean directly below. The equipment is sparse and the approach is tricky to find, so it suits people who already have some experience.",
    "facts": [
-    "You need a helmet, harness and via ferrata lanyard set; local operators rent kits and guide",
-    "Check it is open and the cables are maintained before you go (ask the town hall or tourist office)",
-    "Avoid it in rain or wind: rock and cables get slippery"
+    "Grade K3 (RocJumper) / C/D (ferrataguide, via-ferrata.de) · 430 m · +223 m · ~2 h 25 min in total",
+    "Getting there: Drive from Sesimbra toward Zambujal de Cima, then along Rua dos Almocreves to a small parking area. Walk dirt tracks toward the sea, then descend to the cliff with the help of fixed ropes. Allow 40–45 min.",
+    "Total about 2 h 25 min: 40 min approach, 1 h on the route, 45 min back",
+    "Length disagrees: 430 m equipped (RocJumper, 2025) vs 800 m (ferrataguide)",
+    "The approach descends steeply with fixed ropes; a GPS track helps",
+    "On the route: Sea-cliff traverse above the Atlantic, very exposed, sparsely equipped, fixed ropes on the approach, sea views throughout",
+    "Access: Free to self-guide; guided trips from about €45–65",
+    "Operator: No managing body found; guided by Vertente Natural (vertentenatural.com) and sold via Manawa",
+    "Kit: Vertente Natural includes harness and helmet in the trip price; no standalone rental found",
+    "Bring helmet, harness and a via ferrata lanyard set (EN 958); turn back in rain, wind or very high fire risk"
    ],
-   "osm": [
-    "w1495724926",
-    "w1495724929"
+   "wiki": false,
+   "photoSearch": "Via Ferrata dos Pinheirinhos",
+   "sources": [
+    "https://www.rocjumper.com/via-ferrata/dos-pinheirinhos-sesimbra/",
+    "https://ferrataguide.com/ferrata/Via_Ferrata_Pinheirinhos",
+    "https://www.via-ferrata.de/klettersteige/topo/via-ferrata-pinheirinhos",
+    "https://vertentenatural.com/en/pagina-de-atividade/via-ferrata-en/",
+    "https://monlisbonne.rezdy.com/476421/caminho-do-mar-via-ferrata"
    ],
-   "wiki": "Via ferrata"
+   "confidence": "high",
+   "checked": "2026-10-04",
+   "municipality": "Sesimbra, Setúbal",
+   "season": "Operators run it year-round; no official closure periods found"
   },
   {
-   "id": "vf_w1536553295",
-   "name": "Via Ferrata da Serra do Muradal",
-   "region": "centro",
-   "lat": 39.9454,
-   "lon": -7.7635,
-   "visit": 180,
+   "id": "vf_fenda_arrabida",
+   "name": "Fenda da Arrábida via ferrata and abseil circuit",
+   "region": "setubal",
+   "lat": 38.4813,
+   "lon": -8.9787,
+   "visit": 240,
    "cat": "Via ferrata",
    "priority": 2,
-   "summary": "A via ferrata (protected climbing route) 32 km from Piódão. Grade: moderate (B/K2).",
+   "summary": "A guided adventure circuit through a 700 m rock fissure inside Arrábida Natural Park, mixing short via ferrata sections with abseils and a cave. It suits beginners more than a classic self-guided via ferrata does.",
    "facts": [
-    "You need a helmet, harness and via ferrata lanyard set; local operators rent kits and guide",
-    "Check it is open and the cables are maintained before you go (ask the town hall or tourist office)",
-    "Avoid it in rain or wind: rock and cables get slippery"
+    "Grade not graded · 700 m · ~4 h 00 min in total",
+    "Getting there: Guided only. Meet at Praia do Creiro (Portinho da Arrábida), then a short van transfer to the Fenda. (Shown on the map at the meeting point.)",
+    "4 h guided activity, minimum age 8 (WIND)",
+    "No public, self-guided route found",
+    "Coordinates and length are unknown for the equipped sections; 700 m is the length of the fissure",
+    "On the route: A 700 m geological fissure; via ferrata sections, abseils of 10–30 m, a cave passage, sea views over Portinho",
+    "Access: Guided only; from €40 per person on Manawa",
+    "Operator: WIND (Praia do Creiro) and Discover The Nature (Portinho da Arrábida)",
+    "Kit: All equipment is included in the guided price",
+    "Bring helmet, harness and a via ferrata lanyard set (EN 958); turn back in rain, wind or very high fire risk"
    ],
-   "osm": [
-    "w1536553295"
+   "wiki": false,
+   "photoSearch": "Fenda da Arrábida via ferrata and abseil circuit",
+   "sources": [
+    "https://www.manawa.com/en-GB/activity/portugal/parque-natural-da-arrabida/via-ferrata/via-ferrata-and-abseiling-experience-in-arrabida-natural-park-near-lisbon/14105",
+    "https://flyplay.tourdesk.com/Destination/Porto/Tour/Item/354637/1/Arrabida_Adventure_Circuit",
+    "https://www.geocaching.com/geocache/GC7CGDH"
    ],
-   "wiki": "Via ferrata"
+   "confidence": "low",
+   "checked": "2026-10-04",
+   "municipality": "Setúbal, Setúbal",
+   "season": "Operators advertise it year-round"
+  },
+  {
+   "id": "vf_muradal",
+   "name": "Caminho sobre o Oceano Ordovícico (Via Ferrata da Serra do Muradal)",
+   "region": "centro",
+   "lat": 39.9467,
+   "lon": -7.7639,
+   "visit": 120,
+   "cat": "Via ferrata",
+   "priority": 2,
+   "summary": "Portugal's second via ferrata (2015), a short, staple-only climb on quartzite ridges in the Naturtejo Geopark. It's a good first via ferrata, and the views over the ancient folded ridges are the highlight.",
+   "facts": [
+    "Grade K2 (RocJumper 2025) / A/B (via-ferrata.de); officially 'algo difícil' (≈K3); OSM says B · 211 m · +150 m · ~2 h 00 min in total",
+    "Getting there: From the EN238 near Estreito, take the dirt road signed 'Parque eólico do Pinhal Interior' to a saddle with an info panel. Follow the GR38 path to the base of the rock, about 10–20 min.",
+    "About 2 h total: 20 min approach, 1.5 h route, 10 min back",
+    "Grade sources disagree, from A/B to K3; most recent (RocJumper 2025) says K2",
+    "Height: 75–90 m equipped, about 150 m total ascent including approach",
+    "No warning signs at the start, so put your helmet on during the approach",
+    "On the route: Staples on quartzite ridges, no bridges, wide views over the Muradal crest, part of the GR38 Pangeia route",
+    "Access: Free; guided €80 with Epic Land",
+    "Operator: Município de Oleiros with Naturtejo Geopark; guided trips by Epic Land (epicland.pt, bookable via bookinxisto.com)",
+    "Kit: Epic Land includes equipment in its €80 trip; no standalone rental found",
+    "Bring helmet, harness and a via ferrata lanyard set (EN 958); turn back in rain, wind or very high fire risk"
+   ],
+   "wiki": false,
+   "photoSearch": "Via Ferrata da Serra do Muradal",
+   "sources": [
+    "https://www.rocjumper.com/via-ferrata/muradal-sarnadas-sao-simao/",
+    "https://www.wikiloc.com/via-ferrata-trails/via-ferrata-caminho-sobre-o-oceano-ordovicico-muradal-18079017",
+    "https://www.outdooractive.com/en/route/via-ferrata/castelo-branco/via-ferrata-walk-on-the-ordovician-ocean-/803803654/",
+    "https://ferratashierroyroca.blogspot.com/2018/10/via-ferrata-sierra-de-muradal-o-caminho.html",
+    "https://bookinxisto.com/pt/experience-catalog/experience?id=690&ExperienceSearch%5Bdate_start%5D=2026-03-02&ExperienceSearch%5Bdate_end%5D=2026-03-07"
+   ],
+   "confidence": "high",
+   "checked": "2026-10-04",
+   "municipality": "Oleiros, Castelo Branco",
+   "season": "All year (Caminhantes); the area burned some years ago and is regrowing"
+  },
+  {
+   "id": "vf_talhadas",
+   "name": "Via Ferrata da Serra das Talhadas",
+   "region": "centro",
+   "lat": 39.7736,
+   "lon": -7.7751,
+   "visit": 141,
+   "cat": "Via ferrata",
+   "priority": 2,
+   "summary": "The longest via ferrata in Portugal, a ridge circuit with two bridges in the Naturtejo Geopark. It reopened in 2026 after repairs from the 2023 wildfires.",
+   "facts": [
+    "Grade K3 (RocJumper) / B/C (ferrataguide, via-ferrata.de) · 2190 m · +150 m · ~2 h 21 min in total",
+    "Getting there: From Catraia Cimeira take the M1313 toward Chão do Galego. Start at the watchtower designed by Álvaro Siza Vieira, then walk about 800 m (20 min) to sector 1. The circuit ends back at the tower.",
+    "Reopened mid-2026 after fire damage; it was listed as temporarily closed before that",
+    "Length disagrees: 2,190 m total (municipality) vs 1,400 m (2021 press)",
+    "The municipality recommends going with experience or with a guide",
+    "One person at a time on the Himalayan bridge, two on the suspension bridge",
+    "On the route: Circular traverse in 11 sectors, a 15 m Himalayan bridge, a 40 m suspension bridge, ladders, views over the Ocreza valley",
+    "Access: Free",
+    "Operator: Município de Proença-a-Nova; guided trips by Epic Land (epicland.pt)",
+    "Kit: Epic Land includes equipment in its guided trips; no standalone rental found",
+    "Bring helmet, harness and a via ferrata lanyard set (EN 958); turn back in rain, wind or very high fire risk"
+   ],
+   "wiki": false,
+   "photoSearch": "Via Ferrata da Serra das Talhadas",
+   "sources": [
+    "https://maisbeiras.sapo.pt/proenca-a-nova-via-ferrata-da-serra-das-talhadas-disponivel-para-receber-visitantes",
+    "https://jornalproenca.pt/via-ferrata-da-serra-das-talhadas-pronta-a-ser-explorada/",
+    "https://ferrataguide.com/ferrata/Via_Ferrata_Serra_das_Talhadas",
+    "https://www.via-ferrata.de/klettersteige/topo/via-ferrata-das-talhas",
+    "https://viaferrata.pt/via-ferrata-proenca-a-nova/"
+   ],
+   "confidence": "high",
+   "checked": "2026-10-04",
+   "municipality": "Proença-a-Nova, Castelo Branco",
+   "season": "The municipality says not to use it in bad weather or at very high fire risk"
+  },
+  {
+   "id": "vf_rabacal",
+   "name": "Via Ferrata do Rabaçal (Ecovia do Rabaçal)",
+   "region": "douro",
+   "lat": 41.6859,
+   "lon": -7.2158,
+   "visit": 135,
+   "cat": "Via ferrata",
+   "priority": 2,
+   "summary": "The only via ferrata in Trás-os-Montes, climbing a granite slope above the wild Rabaçal river, with an optional cable bridge at the top. It pairs well with the Ecovia walking trails and the river beach.",
+   "facts": [
+    "Grade K2 (deandar) / B (via-ferrata.de, OSM); officially 'algo difícil' ≈K3 · 120 m · +95 m · ~2 h 15 min in total",
+    "Getting there: Park on Rua Principal in Barreiros, by the cemetery and festival square. Walk down past a viewpoint to the river beach, then follow signs to the panel at the start. The loop is about 4.4 km.",
+    "Circular walk about 2 h 15 min in total (Wikiloc track)",
+    "Grade sources disagree, from K2 to K3; the steepest section is slightly overhanging",
+    "Opened in 2019–2020 as part of the Ecovia do Rabaçal",
+    "On the route: Granite wall above the Rabaçal river, a slightly overhanging section, an optional Tibetan/Himalayan bridge (~20 m) at the end, a river beach nearby",
+    "Access: Free; guided €30",
+    "Operator: Município de Valpaços; guided trips by Azibeiro House Nature (€30, minimum 3 people)",
+    "Kit: Azibeiro includes PPE in its €30 trip; no standalone rental found",
+    "Bring helmet, harness and a via ferrata lanyard set (EN 958); turn back in rain, wind or very high fire risk"
+   ],
+   "wiki": false,
+   "photoSearch": "Via Ferrata do Rabaçal",
+   "sources": [
+    "https://visitaltotamegaebarroso.pt/en/tour-item/ferrata-way/",
+    "https://deandar.com/ferratas/via-ferrata-rabacal-barreiros",
+    "https://www.wikiloc.com/via-ferrata-trails/via-ferrata-do-rabacal-45034758",
+    "https://valpacos.pt/pages/635?news_id=564&locale=pt",
+    "https://azibeirohousenature.com/via-ferrata-do-rabacal/"
+   ],
+   "confidence": "high",
+   "checked": "2026-10-04",
+   "municipality": "Valpaços, Vila Real",
+   "season": "No official closures found"
+  },
+  {
+   "id": "vf_barranco_do_demo",
+   "name": "Via Ferrata do Barranco do Demo",
+   "region": "algarve",
+   "lat": 37.3289,
+   "lon": -8.4845,
+   "visit": 40,
+   "cat": "Via ferrata",
+   "priority": 2,
+   "summary": "A short, very easy via ferrata from 2025, built off the Barranco do Demo walkways near Alferce. It makes a good family add-on to the walkway hike.",
+   "facts": [
+    "Grade K1 (RocJumper) / A (ferrataguide); a Wikiloc user rates it a very easy K2 · 300 m · +35 m · ~0 h 40 min in total",
+    "Getting there: Drive to Alferce and follow signs to the Passadiços do Barranco do Demo; parking is near the cemetery. The via ferrata starts off the walkways, about 5 min away.",
+    "About 30 min on the route plus 5 min each way",
+    "No managing body, fee, or kit rental found; check with Câmara de Monchique",
+    "Opened 2025 (Wikiloc track description)",
+    "On the route: A small suspension bridge, handrails, gorge views, combines with the walkways and their 50 m suspension bridge",
+    "Access: Unknown; the walkways are free to visit",
+    "Bring helmet, harness and a via ferrata lanyard set (EN 958); turn back in rain, wind or very high fire risk"
+   ],
+   "wiki": false,
+   "photoSearch": "Via Ferrata do Barranco do Demo",
+   "sources": [
+    "https://ferrataguide.com/ferrata/Via_Ferrata_de_Barranco_do_Demo",
+    "https://www.wikiloc.com/via-ferrata-trails/via-ferrata-barranco-do-demo-235589699",
+    "https://www.rocjumper.com/portugal/",
+    "https://www.walkalgarve.com/algarve/barranco-do-demo-trail-monchique"
+   ],
+   "confidence": "medium",
+   "checked": "2026-10-04",
+   "municipality": "Monchique, Faro"
+  },
+  {
+   "id": "vf_penha",
+   "name": "Via Ferrata da Penha (Senhora da Penha)",
+   "region": "alentejo",
+   "lat": 39.4111,
+   "lon": -7.4645,
+   "visit": 45,
+   "cat": "Via ferrata",
+   "priority": 2,
+   "summary": "A short beginner route built in 2015 up the cliff below the Penha hermitage, with wide views over Castelo de Vide. The sideways traverses are the most technical part.",
+   "facts": [
+    "Grade K2 (RocJumper) / B (via-ferrata.de) · 200 m · +54 m · ~0 h 45 min in total",
+    "Getting there: Park at the Ermida de Nossa Senhora da Penha car park above Castelo de Vide. Follow yellow dots downhill to the base of the cliff, about 10 min. Return by the chapel stairs.",
+    "About 45 min: 10 min approach, 30 min climb, 5 min back",
+    "Length disagrees: 160 m (RocJumper) vs 200 m (via-ferrata.de, Caminhantes)",
+    "Third via ferrata built in Portugal",
+    "GreenRoc minimum age is 14",
+    "On the route: Gneiss cliff, a short negatively-sloping traverse, views over Castelo de Vide, finishes at the hermitage",
+    "Access: Free",
+    "Operator: Câmara Municipal de Castelo de Vide with CIMAA (Alentejo Feel Nature); guided trips by GreenRoc (greenroc.pt) and via GetYourGuide",
+    "Kit: Guided trips include equipment; no standalone rental or price found",
+    "Bring helmet, harness and a via ferrata lanyard set (EN 958); turn back in rain, wind or very high fire risk"
+   ],
+   "wiki": false,
+   "photoSearch": "Via Ferrata da Penha",
+   "sources": [
+    "https://www.wikiloc.com/via-ferrata-trails/via-ferrata-da-penha-castelo-de-vide-18082318",
+    "https://www.rocjumper.com/via-ferrata/penha-castelo-vide/",
+    "https://www.via-ferrata.de/klettersteige/topo/via-ferrata-senhora-da-penha-castelo-de-vide",
+    "https://www.greenroc.pt/viaferrata"
+   ],
+   "confidence": "high",
+   "checked": "2026-10-04",
+   "municipality": "Castelo de Vide, Portalegre",
+   "season": "All year (Caminhantes); the area was recently burned"
+  },
+  {
+   "id": "vf_santa_luzia",
+   "name": "Via Ferrata da Barragem de Santa Luzia",
+   "region": "centro",
+   "lat": 40.0889,
+   "lon": -7.8589,
+   "visit": 92,
+   "cat": "Via ferrata",
+   "priority": 2,
+   "summary": "Portugal's hardest via ferrata, a short but strenuous climb up the granite wall beside the Santa Luzia dam. It's for experienced people with good arm strength.",
+   "facts": [
+    "Grade K4 (RocJumper, deandar) / D (ferrataguide) / C/D (via-ferrata.de) · 200 m · +150 m · ~1 h 32 min in total",
+    "Getting there: Park at the foot of the Santa Luzia dam (Casal da Lapa) and walk to the west wall, about 2 min. Return over the dam or via the viewpoint on the N344.",
+    "Duration disagrees: about 1.5 h total (RocJumper) vs about 2.5 h (ferrataguide)",
+    "Several overhanging sections make it strenuous; not for beginners",
+    "Go in the morning for shade",
+    "On the route: 5 sections, vertical slabs, several slightly overhanging passages, ledges, ladders, dam and reservoir views",
+    "Access: Free; guided from €90",
+    "Operator: Município de Pampilhosa da Serra with Aldeias do Xisto; guided trips by Epic Land",
+    "Kit: Epic Land guided trip from €90, equipment included",
+    "Bring helmet, harness and a via ferrata lanyard set (EN 958); turn back in rain, wind or very high fire risk"
+   ],
+   "wiki": false,
+   "photoSearch": "Via Ferrata da Barragem de Santa Luzia",
+   "sources": [
+    "https://ferrataguide.com/ferrata/Via_Ferrata_Barragem_de_Santa_Luzia",
+    "https://www.outdooractive.com/en/route/via-ferrata/portugal/via-ferrata-of-santa-luzia/38341001/",
+    "https://www.epicland.pt/vias-ferratas",
+    "https://www.wikiloc.com/via-ferrata-trails/via-ferrata-da-barragem-de-santa-luzia-18770542",
+    "https://www.rocjumper.com/portugal/"
+   ],
+   "confidence": "high",
+   "checked": "2026-10-04",
+   "municipality": "Pampilhosa da Serra, Coimbra",
+   "season": "Shaded in the morning, in sun in the afternoon; no official closures found"
+  },
+  {
+   "id": "vf_pombeira",
+   "name": "Via Ferrata da Pombeira (Pombeira Adventure Park)",
+   "region": "centro",
+   "lat": 40.9244,
+   "lon": -7.9383,
+   "visit": 155,
+   "cat": "Via ferrata",
+   "priority": 2,
+   "summary": "Often called the most complete via ferrata in Portugal, it follows a granite gorge with waterfalls and crosses three cable bridges. The park was officially inaugurated in 2026 after years of delays.",
+   "facts": [
+    "Grade C (ferrataguide, viaferrata.pt); mostly B to B/C with a C finish · 750 m · +200 m · ~2 h 35 min in total",
+    "Getting there: Park at the Pombeira Adventure Park near Lamelas / Codeçais, then walk about 30 min to the start. The return to the car is short.",
+    "About 2.5 h: 30 min approach, 2 h route, 5 min back",
+    "Length disagrees: 750 m (operators) vs 1,560 m (ferrataguide)",
+    "It was closed to the public from late 2023 until the park's official opening in 2026",
+    "Bridge descriptions vary between sources",
+    "On the route: River-canyon route along the Pombeiro, three bridges (Himalayan/Tibetan/monkey, 9–40 m), waterfalls, ends at a suspended viewpoint",
+    "Access: Unknown whether the park charges entry; guided €25–70 depending on operator and group size",
+    "Operator: Município de Castro Daire (Pombeira Adventure Park); guided by Latitude 41, Zona Canyoning, GreenTrekker and others",
+    "Kit: Latitude 41 €55–70 with kit; Zona Canyoning €45; viaferrata.pt €35; GreenTrekker €25 without kit or €40 with",
+    "Bring helmet, harness and a via ferrata lanyard set (EN 958); turn back in rain, wind or very high fire risk"
+   ],
+   "wiki": false,
+   "photoSearch": "Via Ferrata da Pombeira",
+   "sources": [
+    "https://www.ferrataguide.com/ferrata/Via_Ferrata_da_Pombeira",
+    "https://estacaodiariajornal.sapo.pt/castro-daire-secretario-de-estado-do-turismo-inaugurou-o-pombeira-park/",
+    "https://www.latitude41.pt/programas/via-ferrata/via-ferrata-pombeira.html",
+    "https://viaferrata.pt/via-ferrata-da-pombeira/",
+    "https://ondasdaserra.pt/index.php/portugal/item/1699-trilho-pombeira"
+   ],
+   "confidence": "medium",
+   "checked": "2026-10-04",
+   "municipality": "Castro Daire, Viseu",
+   "season": "Very little shade, so avoid hot summer middays"
+  },
+  {
+   "id": "vf_povoa_lanhoso",
+   "name": "Via Ferrata da Póvoa de Lanhoso (Monte do Pilar)",
+   "region": "minho",
+   "lat": 41.5873,
+   "lon": -8.2803,
+   "visit": 31,
+   "cat": "Via ferrata",
+   "priority": 2,
+   "summary": "Portugal's first via ferrata (2012), a short beginner climb up the country's largest granite monolith to Lanhoso castle. It is private, so you must book through DiverLanhoso.",
+   "facts": [
+    "Grade K2 officially, feels like K1 (ferrataguide) / A/B (via-ferrata.de) · 150 m · +55 m · ~0 h 31 min in total",
+    "Getting there: Drive up Rua do Pilar and park at the lower bend near the base of the monolith. The start is about 2 min away; walk down by road from the castle afterwards.",
+    "Signs at the start forbid using it without the operator",
+    "Directories report the cable isn't properly fixed at the anchors, and via-ferrata.de says it is no longer maintained",
+    "Length disagrees: 70 m (ferrataguide) vs 150 m (RocJumper, via-ferrata.de)",
+    "On the route: Granite monolith, staples, short traverses, ends at Lanhoso castle and the Pilar sanctuary; optional double abseil down",
+    "Access: Guided only (private); about €23–24 per person",
+    "Operator: DiverLanhoso (diverlanhoso.pt)",
+    "Kit: DiverLanhoso includes kit (via ferrata plus double abseil, €24)",
+    "Bring helmet, harness and a via ferrata lanyard set (EN 958); turn back in rain, wind or very high fire risk"
+   ],
+   "wiki": false,
+   "photoSearch": "Via Ferrata da Póvoa de Lanhoso",
+   "sources": [
+    "https://ferrataguide.com/ferrata/P%C3%B3voa_de_Lanhoso",
+    "https://www.rocjumper.com/via-ferrata/povoa-lanhoso/",
+    "https://diverlanhoso.pt/activity_details.php?id=10013",
+    "https://www.via-ferrata.de/klettersteige/topo/via-ferrata-de-povoa-de-lanhoso/reviews"
+   ],
+   "confidence": "high",
+   "checked": "2026-10-04",
+   "municipality": "Póvoa de Lanhoso, Braga"
+  },
+  {
+   "id": "vf_teto_do_mundo",
+   "name": "Via Ferrata Teto do Mundo",
+   "region": "douro",
+   "lat": 41.712,
+   "lon": -7.8249,
+   "visit": 55,
+   "cat": "Via ferrata",
+   "priority": 2,
+   "summary": "A short climb to a rocky summit viewpoint in the Barroso highlands, with a suspension bridge along the way. It's an easy add-on to a visit to the Barroso area.",
+   "facts": [
+    "Grade K3 (deandar) / C, mostly B (ferrataguide) · 153 m · +100 m · ~0 h 55 min in total",
+    "Getting there: Take the M520 southeast from the Alto Rabagão dam to the first farm, where a sign marks the access. Follow the fence and faint yellow arrows, about 10 min.",
+    "Status disagrees: listed as closed by Ferratas Hierro y Roca (2024), but RocJumper found it OK in 2025",
+    "Reopened by the municipality in March 2022 after fire damage to the bridge",
+    "Duration disagrees: about 55 min (RocJumper) vs about 80 min (ferrataguide)",
+    "On the route: Suspension bridge, ladders, rocky summit, viewpoint at the Teto do Mundo GIAHS observatory",
+    "Access: Free",
+    "Operator: Município de Boticas; guided outings have been run by Boticas Hotel Art & Spa and CEITA Montalegre",
+    "Bring helmet, harness and a via ferrata lanyard set (EN 958); turn back in rain, wind or very high fire risk"
+   ],
+   "wiki": false,
+   "photoSearch": "Via Ferrata Teto do Mundo",
+   "sources": [
+    "https://ferrataguide.com/ferrata/Ferrata_Teto_do_Mundo",
+    "https://www.cm-boticas.pt/noticias/default.php?id=MU",
+    "https://www.rocjumper.com/portugal/",
+    "https://ferratashierroyroca.blogspot.com/2024/10/listado-ferratas-portugal.html",
+    "https://www.ceita.pt/viaferrata.html"
+   ],
+   "confidence": "medium",
+   "checked": "2026-10-04",
+   "municipality": "Boticas, Vila Real",
+   "season": "It closed briefly after a 2021–22 wildfire; no other closure info found"
   },
   {
    "id": "vf_w1020660385",
@@ -52,6 +401,7 @@
    "priority": 2,
    "summary": "A via ferrata (protected climbing route) 4 km from Portinho da Arrábida. Grade: difficult (C/K3), very difficult (D/K4).",
    "facts": [
+    "Only known from OpenStreetMap: not confirmed by any guide or official source",
     "You need a helmet, harness and via ferrata lanyard set; local operators rent kits and guide",
     "Check it is open and the cables are maintained before you go (ask the town hall or tourist office)",
     "Avoid it in rain or wind: rock and cables get slippery"
@@ -60,47 +410,8 @@
     "w1020660385",
     "w975036766"
    ],
-   "wiki": "Via ferrata"
-  },
-  {
-   "id": "vf_w1423046860",
-   "name": "Via ferrata near Chaves",
-   "region": "douro",
-   "lat": 41.6865,
-   "lon": -7.2149,
-   "visit": 180,
-   "cat": "Via ferrata",
-   "priority": 2,
-   "summary": "A via ferrata (protected climbing route) 22 km from Chaves. Grade: moderate (B/K2).",
-   "facts": [
-    "You need a helmet, harness and via ferrata lanyard set; local operators rent kits and guide",
-    "Check it is open and the cables are maintained before you go (ask the town hall or tourist office)",
-    "Avoid it in rain or wind: rock and cables get slippery"
-   ],
-   "osm": [
-    "w1423046860"
-   ],
-   "wiki": "Via ferrata"
-  },
-  {
-   "id": "vf_w942931968",
-   "name": "Via ferrata near Sesimbra Castle",
-   "region": "setubal",
-   "lat": 38.4302,
-   "lon": -9.1348,
-   "visit": 180,
-   "cat": "Via ferrata",
-   "priority": 2,
-   "summary": "A via ferrata (protected climbing route) 3 km from Sesimbra Castle. The grade is not mapped: check with the operator.",
-   "facts": [
-    "You need a helmet, harness and via ferrata lanyard set; local operators rent kits and guide",
-    "Check it is open and the cables are maintained before you go (ask the town hall or tourist office)",
-    "Avoid it in rain or wind: rock and cables get slippery"
-   ],
-   "osm": [
-    "w942931968"
-   ],
-   "wiki": "Via ferrata"
+   "wiki": false,
+   "confidence": "low"
   }
  ],
  "drives": []

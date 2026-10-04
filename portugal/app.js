@@ -8,7 +8,7 @@ const LS_STATE = 'portugal-planner-v1';
 const LS_UI = 'portugal-planner-ui';
 // Bump on every change. The app compares it with the app.js on the server, so a phone that kept an old tab open
 // (no reload, so still the old code) is told a newer version exists.
-const APP_BUILD = '2026-10-04.3';
+const APP_BUILD = '2026-10-04.4';
 let NEWER = null; // the newer build found on the server, if any
 const AX0 = 5 * 60, AX1 = 23 * 60;           // timeline axis 05:00–23:00
 const DEFAULT_SETTINGS = {
@@ -1304,8 +1304,10 @@ async function wikiPages(titles) {
 }
 async function fetchWiki() {
   if (!S || WIKI_BUSY || !navigator.onLine) return;
-  const need = S.places.filter(p => !WIKI[p.id] || (!WIKI[p.id].img && Date.now() - WIKI[p.id].at > 10 * 60 * 1000));
-  if (!need.length) return;
+  const stale = p => !WIKI[p.id] || (!WIKI[p.id].img && Date.now() - WIKI[p.id].at > 10 * 60 * 1000);
+  // wiki: false = no article of its own (the general one would mislead): only look for a photo on Commons
+  const need = S.places.filter(p => p.wiki !== false && stale(p)), photoOnly = S.places.filter(p => p.wiki === false && p.photoSearch && stale(p));
+  if (!need.length && !photoOnly.length) return;
   WIKI_BUSY = true; WIKI_ERR = null; if (UI.tab === 'places') render();
   const store = (p, pg) => { WIKI[p.id] = pg ? { title: pg.title, img: pg.thumbnail?.source, extract: pg.extract, url: pg.fullurl, at: Date.now() } : { none: true, at: Date.now() }; };
   try {
@@ -1324,11 +1326,12 @@ async function fetchWiki() {
       } catch (e) { }
     }
     // still no photo: search Wikimedia Commons for a picture of the place
-    for (const p of need) {
+    for (const p of photoOnly) WIKI[p.id] = { at: Date.now() };
+    for (const p of [...need, ...photoOnly]) {
       const w = WIKI[p.id];
       if (!w || w.img || w.none) continue;
       try {
-        const q = encodeURIComponent(`${p.wiki || p.name} filetype:bitmap`);
+        const q = encodeURIComponent(`${p.photoSearch || p.wiki || p.name} filetype:bitmap`);
         const j = await (await fetch(`https://commons.wikimedia.org/w/api.php?format=json&origin=*&action=query&generator=search&gsrnamespace=6&gsrlimit=5&gsrsearch=${q}&prop=imageinfo&iiprop=url&iiurlwidth=960`)).json();
         const hits = Object.values(j.query?.pages || {}).sort((x, y) => x.index - y.index);
         const hit = hits.find(h => h.imageinfo?.[0]?.thumburl);
@@ -1426,7 +1429,7 @@ function renderMyPlaces() {
         ${p.season ? `<div class="seasonal" style="margin:6px 0">☀ ${withEur(esc(p.season))}</div>` : ''}
         ${w.extract ? `<details class="small"><summary>From Wikipedia</summary><p class="muted" style="margin:4px 0">${esc(w.extract)}</p></details>` : ''}
         <div class="row small" style="margin:8px 0">
-          <a href="${esc(wurl)}" target="_blank" rel="noopener">Wikipedia ↗</a>
+          ${p.wiki === false ? '' : `<a href="${esc(wurl)}" target="_blank" rel="noopener">Wikipedia ↗</a>`}
           <a href="https://www.google.com/maps/dir/?api=1&destination=${p.lat},${p.lon}" target="_blank" rel="noopener">Directions ↗</a>
           ${(p.links || []).map(l => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.name)} ↗</a>`).join('')}</div>
         ${p.sources && p.sources.length ? `<details class="tiny" style="margin-bottom:6px"><summary>Sources${p.checked ? ` · checked ${esc(dateLabel(p.checked, { day: 'numeric', month: 'short', year: 'numeric' }))}` : ''}${p.confidence ? ` · ${esc(p.confidence)} confidence` : ''}</summary>

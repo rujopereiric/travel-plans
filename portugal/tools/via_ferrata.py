@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
-"""Turns the via ferratas found in the OpenStreetMap files (portugal/osm/*.json, category "Via ferrata") into
-"My places" entries: portugal/parts/via_ferrata.json, picked up by assemble.py. Segments of the same route
+"""Builds the via ferratas in "My places" (portugal/parts/via_ferrata.json, picked up by assemble.py) from:
+1. parts/via_ferrata_research.json: researched routes (names, grades, approach, operators, sources). These win.
+2. the OpenStreetMap files (portugal/osm/*.json, category "Via ferrata"), for any route the research doesn't
+   cover (an OSM route within 3 km of a researched one is taken to be the same route). Segments of the same route
 (OSM often maps one via ferrata as several ways) are merged when they are within 1.5 km of each other.
 Run: python3 portugal/tools/via_ferrata.py && python3 portugal/tools/assemble.py"""
 import json, glob, math, os, re
@@ -16,7 +18,7 @@ for f in sorted(glob.glob(os.path.join(root, 'osm', '*.json'))):
     for it in json.load(open(f))['items']:
         if it[4] == 'Via ferrata': items[it[0]] = it
 # my places (not via ferratas) give each route a region and a "near" name
-mine = [p for part in glob.glob(os.path.join(root, 'parts', '*.json')) if not part.endswith('via_ferrata.json')
+mine = [p for part in glob.glob(os.path.join(root, 'parts', '*.json')) if not part.endswith(('via_ferrata.json', 'via_ferrata_research.json'))
         for p in json.load(open(part))['places']]
 towns = [p for p in mine if p['cat'] in ('Town', 'Base', 'Old town', 'Village') or p.get('sleep')]
 
@@ -26,8 +28,42 @@ for it in sorted(items.values(), key=lambda x: (x[1] == 'Via ferrata', x[0])):  
         if hv((it[2], it[3]), (g[0][2], g[0][3])) < 1.5: g.append(it); break
     else: groups.append([it])
 
+def photo_query(name):  # the name people search for: "Via Ferrata dos Pinheirinhos" rather than "Caminho do Mar"
+    m = re.search(r'\((Via Ferrata[^)]*)\)', name, re.I)
+    q = m.group(1) if m else re.sub(r'\s*\(.*?\)', '', name)
+    return q if 'ferrata' in q.lower() else q + ' via ferrata'
+def region_of(lat, lon): return min(mine, key=lambda p: hv((lat, lon), (p['lat'], p['lon'])))['region']
 places, used = [], {}
+research = json.load(open(os.path.join(root, 'parts', 'via_ferrata_research.json')))
+# where the nearest of my places points to the wrong region (by the municipality's district)
+REGION = {'vf_talhadas': 'centro', 'vf_pombeira': 'centro', 'vf_teto_do_mundo': 'douro', 'vf_rabacal': 'douro'}
+NOTE = re.compile(r"your OSM|I couldn't|No photo URL|No via ferrata found in the Azores", re.I)  # research notes, not traveller tips
+for r in research:
+    lat, lon = r['lat'], r['lon']
+    if r['id'] == 'vf_fenda_arrabida' and lat is None:  # guided only: place it at the meeting point, Praia do Creiro
+        meet = next((p for p in mine if p['id'] in ('portinho_da_arrabida', 'praia_do_creiro')), None)
+        if meet: lat, lon = meet['lat'], meet['lon']; r['approach'] += ' (Shown on the map at the meeting point.)'
+    if r['status'] == 'planned' or lat is None:
+        print('  skipped (not visitable or no location):', r['name'], '·', r['status']); continue
+    stats = ' · '.join(x for x in [r['grade'] and 'Grade ' + r['grade'], r['length_m'] and f"{r['length_m']} m", r['height_gain_m'] and f"+{r['height_gain_m']} m",
+                                   r['duration_min'] and f"~{r['duration_min'] // 60} h {r['duration_min'] % 60:02d} min in total"] if x)
+    facts = [stats, 'Getting there: ' + r['approach']] + [f for f in r['facts'] if not NOTE.search(f)]
+    if r.get('features'): facts.append('On the route: ' + r['features'])
+    facts.append('Access: ' + (r['access'] or 'unknown'))
+    if r.get('operator'): facts.append('Operator: ' + r['operator'])
+    if r.get('kitRental'): facts.append('Kit: ' + r['kitRental'])
+    facts.append('Bring helmet, harness and a via ferrata lanyard set (EN 958); turn back in rain, wind or very high fire risk')
+    p = {'id': r['id'], 'name': r['name'], 'region': REGION.get(r['id']) or region_of(lat, lon), 'lat': lat, 'lon': lon,
+         'visit': r['duration_min'] or 150, 'cat': 'Via ferrata', 'priority': 2, 'summary': r['summary'], 'facts': facts,
+         'wiki': False, 'photoSearch': photo_query(r['name']),
+         'sources': r['sources'], 'confidence': r['confidence'], 'checked': '2026-10-04', 'municipality': r['municipality']}
+    if r.get('season') and not r['season'].startswith('No information'): p['season'] = r['season']
+    if r['status'] != 'open': p['caution'] = 'Status: ' + r['status'] + '. Check before you go.'
+    if r.get('photo'): p['photo'] = r['photo']
+    places.append(p)
+known = [(p['lat'], p['lon']) for p in places]
 for g in groups:
+    if any(hv((x[2], x[3]), k) < 3 for x in g for k in known): continue  # same route as a researched one
     named = [x for x in g if x[1] != 'Via ferrata'] or g
     it = named[0]
     lat = round(sum(x[2] for x in g) / len(g), 4); lon = round(sum(x[3] for x in g) / len(g), 4)
@@ -53,8 +89,10 @@ for g in groups:
                    'Check it is open and the cables are maintained before you go (ask the town hall or tourist office)',
                    'Avoid it in rain or wind: rock and cables get slippery'],
          'osm': [x[0] for x in g]}
-    # its own Wikipedia article if OSM has one; otherwise the general article, for a representative photo
-    p['wiki'] = it[5].split(':', 1)[-1] if it[5] else 'Via ferrata'
+    # its own Wikipedia article if OSM has one; never the general "Via ferrata" article
+    p['wiki'] = it[5].split(':', 1)[-1] if it[5] else False
+    p['confidence'] = 'low'
+    p['facts'].insert(0, 'Only known from OpenStreetMap: not confirmed by any guide or official source')
     if it[6]: p['links'] = [{'name': 'Website', 'url': it[6]}]
     places.append(p)
 out = os.path.join(root, 'parts', 'via_ferrata.json')
