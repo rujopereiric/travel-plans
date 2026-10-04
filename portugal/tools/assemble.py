@@ -80,7 +80,7 @@ CATEGORIES = ['Town', 'Base', 'Old town', 'Castle', 'Palace', 'Monastery & churc
 
 def main():
     places, drives, seen = [], [], {a['id'] for a in AIRPORTS}
-    parts = ['lisbon_sintra_setubal', 'oeste_centro', 'north', 'south', 'islands']
+    parts = ['lisbon_sintra_setubal', 'oeste_centro', 'north', 'south', 'islands', 'via_ferrata']
     for part in parts:
         f = os.path.join(root, 'parts', part + '.json')
         if not os.path.exists(f): print('missing part', part); continue
