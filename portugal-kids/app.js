@@ -11,7 +11,7 @@ const LS_STATE = 'ptkids-planner-v1';
 const LS_UI = 'ptkids-planner-ui';
 // Bump on every change. The app compares it with the app.js on the server, so a phone that kept an old tab open
 // (no reload, so still the old code) is told a newer version exists.
-const APP_BUILD = '2026-10-04.k6';
+const APP_BUILD = '2026-10-04.k7';
 let NEWER = null; // the newer build found on the server, if any
 const AX0 = 5 * 60, AX1 = 23 * 60;           // timeline axis 05:00–23:00
 const DEFAULT_SETTINGS = {
@@ -41,6 +41,68 @@ const HOP_KMH = 25; // short town hop, parking included
 const TOWNISH = new Set(['Town', 'Base', 'Village', 'Old town']);
 const listedByDefault = p => !minor(p) && !TOWNISH.has(p.cat);
 const KID_FIRST = new Set(['Zoo', 'Aquarium', 'Theme park', 'Water park', 'Science centre', 'Park', 'Farm & animals', 'Adventure park', 'Train ride', 'Indoor play', 'Trampoline park']);
+/* ---------- where we are: live location for "Near me" ---------- */
+// The browser's position is watched only while Near me is on (UI.near) and the app is on screen: GPS left running drains
+// the battery, and a web app can't track in the background anyway. The position never leaves the phone.
+// The blue dot on the map follows you live; lists re-sort only after you've moved ~500 m, so cards don't jump around.
+let GEO = null, GEO_SORT = null, GEO_WATCH = null, GEO_ERR = null, geoDot = null, geoAcc = null;
+const RESORT_KM = 0.5;
+const geoKm = p => GEO_SORT ? haversine(GEO_SORT, p) : null;
+const kmText = km => { const m = Math.max(50, Math.round(km * 20) * 50); return m < 1000 ? `${m} m` : `${km < 9.95 ? Math.max(1, km).toFixed(1) : Math.round(km)} km`; };
+function geoStart() {
+  if (GEO_WATCH != null) return;
+  if (!navigator.geolocation) { GEO_ERR = "This browser can't share your location."; return; }
+  GEO_ERR = null;
+  GEO_WATCH = navigator.geolocation.watchPosition(pos => {
+    const first = !GEO;
+    GEO = { lat: pos.coords.latitude, lon: pos.coords.longitude, acc: pos.coords.accuracy, at: Date.now() };
+    GEO_ERR = null;
+    if (!GEO_SORT || haversine(GEO_SORT, GEO) >= RESORT_KM) {
+      GEO_SORT = { lat: GEO.lat, lon: GEO.lon };
+      if (UI.tab === 'map') { const s = $('#geostatus'); if (s) s.textContent = geoStatus(); } else render();
+    }
+    geoDraw(first);
+  }, err => {
+    GEO_ERR = err.code === 1 ? 'Location permission is off for this site. Allow it in the browser’s site settings to use Near me.' : `Couldn't find your location (${err.message || 'timed out'}).`;
+    if (err.code === 1) { UI.near = false; geoStop(); }
+    render();
+  }, { enableHighAccuracy: true, maximumAge: 10000, timeout: 30000 });
+}
+function geoStop() { if (GEO_WATCH != null && navigator.geolocation) navigator.geolocation.clearWatch(GEO_WATCH); GEO_WATCH = null; }
+function geoSync() { if (UI.near && document.visibilityState === 'visible') geoStart(); else geoStop(); geoDraw(); }
+function geoSet(on) { UI.near = on; if (!on) { GEO = GEO_SORT = null; UI.follow = false; if (UI.pf && UI.pf.sort === 'near') UI.pf.sort = 'best'; } geoSync(); render(); }
+const geoStatus = () => !UI.near ? '' : GEO_ERR ? GEO_ERR : !GEO ? 'Finding where you are…' : `Location found (±${GEO.acc < 1000 ? Math.round(GEO.acc) + ' m' : kmText(GEO.acc / 1000)})`;
+function geoDraw(first) {
+  if (!MAP || typeof L === 'undefined') return;
+  if (!UI.near || !GEO) { if (geoDot) geoDot.remove(); if (geoAcc) geoAcc.remove(); geoDot = geoAcc = null; return; }
+  const ll = [GEO.lat, GEO.lon];
+  if (!geoDot) {
+    geoAcc = L.circle(ll, { radius: GEO.acc, color: '#1a73e8', weight: 1, fillOpacity: .12, interactive: false }).addTo(MAP);
+    geoDot = L.circleMarker(ll, { radius: 8, color: '#fff', weight: 3, fillColor: '#1a73e8', fillOpacity: 1 }).addTo(MAP).bindTooltip('You are here');
+  } else { geoDot.setLatLng(ll); geoAcc.setLatLng(ll).setRadius(GEO.acc); }
+  if (UI.tab === 'map' && (UI.follow || first)) first ? MAP.setView(ll, Math.max(MAP.getZoom(), 13)) : MAP.panTo(ll);
+}
+// places near you that suit the kids: not skipped, not a town, base or airport; playgrounds included
+const nearbyList = (n, maxKm = Infinity, exclude = new Set()) => !GEO_SORT ? [] : S.places
+  .filter(p => !TOWNISH.has(p.cat) && p.cat !== 'Airport' && pick(p.id) !== 'skip' && suitsUs(p) && !exclude.has(p.id))
+  .map(p => [p, geoKm(p)]).filter(([, d]) => d <= maxKm).sort((a, b) => a[1] - b[1]).slice(0, n);
+function nearbyCard() {
+  const today = todayISO(), d = dayObj(today);
+  if (!d || !blockOf(today)) return '';
+  const o = activeOpt(blockOf(today)), planned = new Set((o?.days[today]?.stops || []).map(s => s.place));
+  let body;
+  if (!UI.near) body = `<button class="btn small primary" data-act="near">📍 Show what's nearby</button> <span class="tiny muted">Uses your location while the app is open.</span>`;
+  else if (!GEO_SORT) body = `<span class="small muted">${esc(geoStatus())}</span>`;
+  else {
+    // at most 2 playgrounds, so in a town centre they don't crowd out everything else
+    let nPg = 0; const list = nearbyList(40, 30, planned).filter(([p]) => !minor(p) || nPg++ < 2).slice(0, 5);
+    body = !list.length ? '<span class="small muted">Nothing suitable within 30 km.</span>' : list.map(([p, km]) => `<div class="row" style="gap:8px;margin:4px 0">
+        <span class="grow small">${catInfo(p.cat).icon} <b>${esc(p.name)}</b> <span class="muted">· ${kmText(km)}${p.ages ? ' · ' + esc(ageText(p)) : ''}</span></span>
+        <button class="btn small" data-act="nearadd" data-place="${esc(p.id)}">Add to today</button></div>`).join('')
+      + `<div class="tiny muted">Straight-line distances from where you are. <button class="btn small" data-act="near">Turn off</button></div>`;
+  }
+  return `<div class="card" style="margin-bottom:10px"><h3 style="margin:0 0 6px">📍 Nearby now</h3>${body}</div>`;
+}
 const STROLLER = { yes: '🚼 Buggy: yes', partly: '🚼 Buggy: partly', no: '🎒 Baby carrier' };
 
 let S = null;            // the plan (same shape as data.json)
@@ -1010,7 +1072,7 @@ function placeOptions(sel, { blank = '', exclude = [] } = {}) {
 
 /* ---------- render: plan tab ---------- */
 function renderPlan() {
-  let h = tripCard();
+  let h = tripCard() + nearbyCard();
   if (PENDING) h += `<div class="banner"><b>data.json has changed</b> since your local copy was made, and you have local edits. New place info has already been merged in; you only need the file version if you want its days, plans or bookings.
     <div class="row" style="margin-top:8px"><button class="btn small primary" data-act="pending-load">Use data.json</button>
     <button class="btn small" data-act="pending-keep">Keep my edits</button><button class="btn small" data-act="export">Export mine first</button></div></div>`;
@@ -1442,7 +1504,7 @@ function renderPlaces() { return renderMyPlaces(); }
 function renderMyPlaces() {
 
   const pf = UI.pf || {}, cat = pf.cat || 'all', reg = pf.region || 'all', only = pf.only || 'all', fit = pf.fit || 'us';
-  const ages = kidAges();
+  const ages = kidAges(), sort = UI.near && pf.sort === 'near' ? 'near' : 'best';
   const cats = (S.categories || []).filter(c => S.places.some(p => p.cat === c));
   const musts = S.places.filter(p => pick(p.id) === 'must'), skips = S.places.filter(p => pick(p.id) === 'skip');
   const chip = (k, v, label, on) => `<button class="pchip" data-act="pfilter" data-k="${k}" data-v="${esc(v)}" aria-pressed="${on}">${label}</button>`;
@@ -1457,6 +1519,7 @@ function renderMyPlaces() {
     ${photoStatus()}
     <div class="pchips">${chip('only', 'all', 'All', only === 'all')}${chip('only', 'must', '★ Must-see', only === 'must')}${chip('only', 'unplanned', 'Not in plan', only === 'unplanned')}${chip('only', 'skip', 'Skipped', only === 'skip')}</div>
     <div class="pchips">${chip('fit', 'us', ages.length ? '🧒 Suits our kids' : '🧒 All ages', fit === 'us')}${chip('fit', 'rainy', '🌧 Rainy day', fit === 'rainy')}${chip('fit', 'all', 'Everything', fit === 'all')}</div>
+    <div class="pchips">${chip('sort', 'best', 'Best first', sort === 'best')}${chip('sort', 'near', '📍 Near me', sort === 'near')}${sort === 'near' ? `<span class="tiny muted" style="align-self:center">${esc(GEO_SORT ? 'Nearest first, playgrounds included' : geoStatus())}</span>` : ''}</div>
     <div class="pchips">${chip('cat', 'all', 'All types', cat === 'all')}${cats.map(c => chip('cat', c, esc(c), cat === c)).join('')}</div>
     <div class="pchips">${chip('region', 'all', 'All regions', reg === 'all')}${S.regions.map(r => chip('region', r.id, `<span style="color:${r.color}">●</span> ${esc(r.name)}`, reg === r.id)).join('')}</div>`;
   const days = S.days.filter(d => blockOf(d.date) && d.state !== 'booked');
@@ -1466,10 +1529,11 @@ function renderMyPlaces() {
   const hidden = [nTown ? `${nTown} towns, villages and overnight bases` : '', ...Object.entries(nMinor).map(([c, n]) => `${n} × ${catInfo(c).icon} ${esc(c)}`)].filter(Boolean);
   if (cat === 'all' && hidden.length) h += `<p class="tiny muted" style="margin:0 0 8px">Not listed under All types: ${hidden.join(', ')}. Tap their type above to see them.</p>`;
   const kidRank = p => (KID_FIRST.has(p.cat) ? 0 : 1) * 10 - (p.priority ?? 2);
-  const list = S.places.filter(p => (cat === 'all' ? listedByDefault(p) : p.cat === cat) && (reg === 'all' || p.region === reg) && p.cat !== 'Airport'
+  const list = S.places.filter(p => (cat === 'all' ? (sort === 'near' ? !TOWNISH.has(p.cat) : listedByDefault(p)) : p.cat === cat) && (reg === 'all' || p.region === reg) && p.cat !== 'Airport'
     && (fit === 'all' || (suitsUs(p) && (fit !== 'rainy' || isRainy(p))))
     && (only === 'all' ? pick(p.id) !== 'skip' : only === 'unplanned' ? !plannedIn(p.id).some(x => x.active) && pick(p.id) !== 'skip' : pick(p.id) === only));
-  list.sort((a, b) => kidRank(a) - kidRank(b));
+  if (sort === 'near' && GEO_SORT) { const dk = new Map(list.map(p => [p.id, geoKm(p)])); list.sort((a, b) => dk.get(a.id) - dk.get(b.id)); }
+  else list.sort((a, b) => kidRank(a) - kidRank(b));
   if (!list.length) h += `<p class="empty">No places match these filters.</p>`;
   // a long list is slow to draw on a phone: show the first cards, then more on request
   const shown = list.slice(0, UI.pn || 60);
@@ -1489,7 +1553,7 @@ function renderMyPlaces() {
         ${pk === 'must' ? '<span class="poistar">★ Must-see</span>' : ''}${done ? '<span class="poidone">✓ Done</span>' : ''}</div>
       <div class="poibody">
         <div class="row"><h3 class="grow" style="margin:0">${esc(p.name)}</h3>${p.confidence === 'low' ? '<span class="chip partial">unverified</span>' : ''}<span class="chip">${catInfo(p.cat).icon} ${esc(p.cat || 'Place')}</span></div>
-        <div class="tiny" style="color:${rg.color};margin:2px 0 4px">${esc(rg.name)} · ~${dur(p.visit ?? 45)}${minor(p) && place(p.near) ? ` · ${Math.max(0.1, Math.round(haversine(p, place(p.near)) * 10) / 10)} km from ${esc(placeName(p.near))}` : p.id !== S.trip.home ? ` · ${drive(S.trip.home, p.id).km} km from ${esc(placeName(S.trip.home))}` : ''}</div>
+        <div class="tiny" style="color:${rg.color};margin:2px 0 4px">${sort === 'near' && GEO_SORT ? `<b>📍 ${kmText(geoKm(p))} away</b> · ` : ''}${esc(rg.name)} · ~${dur(p.visit ?? 45)}${minor(p) && place(p.near) ? ` · ${Math.max(0.1, Math.round(haversine(p, place(p.near)) * 10) / 10)} km from ${esc(placeName(p.near))}` : p.id !== S.trip.home ? ` · ${drive(S.trip.home, p.id).km} km from ${esc(placeName(S.trip.home))}` : ''}</div>
         ${p.caution ? `<div class="small" style="color:var(--warn);margin:2px 0 4px">⚠ ${withEur(esc(p.caution))}</div>` : ''}
         ${p.summary ? `<p class="clamp2" style="margin:0 0 4px">${esc(p.summary)}</p>` : ''}
         ${p.ages || p.stroller ? `<div class="small kidline">${p.ages ? `<b>🧒 ${esc(ageText(p))}</b>` : ''}${p.stroller ? ` · ${STROLLER[p.stroller] || ''}` : ''}${isRainy(p) ? ' · 🌧 rainy-day pick' : ''}${!fitsKids(p) ? ' · <span style="color:var(--warn)">not for all your kids</span>' : ''}</div>` : ''}
@@ -1600,7 +1664,11 @@ function mapDays() {
     return { date, o, r, ids, n, parts: routeParts(r), color: DAY_COLORS[(n - 1) % DAY_COLORS.length] };
   }).filter(Boolean);
 }
-function renderMapControls() { return renderMapControlsInner() + mapFilterHTML(); }
+function renderMapControls() { return renderMapControlsInner() + geoBar() + mapFilterHTML(); }
+const geoBar = () => `<div class="row small" style="gap:6px;margin-bottom:6px;flex-wrap:wrap">
+    <button class="btn small ${UI.near ? 'primary' : ''}" data-act="near" aria-pressed="${!!UI.near}">📍 Near me${UI.near ? ': on' : ''}</button>
+    ${UI.near ? `<button class="btn small" data-act="follow" aria-pressed="${!!UI.follow}">${UI.follow ? '✓ Following you' : 'Follow me'}</button>` : ''}
+    <span class="tiny muted grow" id="geostatus">${esc(geoStatus())}</span></div>`;
 function renderMapControlsInner() {
   const days = S.days.filter(d => blockOf(d.date) && d.state !== 'booked');
   const valid = v => v === '__all' || (isOverview(v) && S.blocks.some(b => '__block:' + b.id === v)) || days.some(d => d.date === v);
@@ -1692,6 +1760,7 @@ function buildMarkers() {
   const zoomClass = () => { const z = MAP.getZoom(), c = MAP.getContainer().classList; c.toggle('z-low', z < 8); c.toggle('z-mid', z >= 8 && z < 10); };
   if (!buildMarkers.hooked) { MAP.on('zoomend', zoomClass); buildMarkers.hooked = true; }
   zoomClass();
+  geoDot = geoAcc = null; geoDraw();
   mapDirty = false;
 }
 function drawRoute() {
@@ -1761,6 +1830,7 @@ const HELP_TEXT = {
     <li><b>🌧 Rainy day</b> on the Places tab lists indoor places: aquariums, science centres, museums.</li>
     <li>The days are gentler by default: up to <b>2.5 h</b> of driving and <b>5.5 h</b> of visits, starting at <b>09:00</b>, with 45 min spare. Change it in ⚙ Settings, or per day.</li>
     <li><b>Playgrounds and more from OpenStreetMap:</b> about 420 public playgrounds (up to 3 near each place in the planner), plus indoor play centres, trampoline parks, water parks, small zoos, farms and mini golf, marked <b>unverified</b>. Auto-plan never adds them on its own: tap <b>🛝 Playground</b> (or another type) on the Places tab and add one to a day. A playground's travel time is a short hop from the place it's next to.</li>
+    <li><b>📍 Near me</b> (Map tab, or the Places tab's sort pills): shows where you are on the map and sorts places by distance, playgrounds included. On a day of your trip, the Plan tab shows the closest suitable places with <b>Add to today</b>. Your location is used only while the app is open and Near me is on; it never leaves your phone. Distances are straight lines.</li>
     <li>Need a lunch or nap stop? Open a day → <b>+ Add a stop</b> → <b>Break</b>.</li>
     <li>Children's prices vary a lot: most places are free for under-3s, and many have family tickets. Prices are approximate.</li>
   </ul></details><details class="card help"><summary>🇵🇹 Opening hours and getting around (Portugal)</summary><div class="helpbody"><ul>
@@ -1943,7 +2013,10 @@ document.addEventListener('click', e => {
     case 'flightedit': UI.editTrip = true; render(); scrollTo(0, 0); break;
     case 'wikiretry': IMG_W = null; try { localStorage.removeItem('portugal-imgw'); } catch (e) { } WIKI = {}; for (const k in IMG_FAIL) delete IMG_FAIL[k]; try { localStorage.removeItem(LS_WIKI); } catch (e) { } fetchWiki(); break;
     case 'pick': { const id = el.dataset.place, v = el.dataset.v; S.picks[id] = S.picks[id] === v ? undefined : v; if (!S.picks[id]) delete S.picks[id]; changed(); break; }
-    case 'pfilter': UI.pf = { ...(UI.pf || {}), [el.dataset.k]: el.dataset.v }; UI.pn = 60; render(); break;
+    case 'pfilter': UI.pf = { ...(UI.pf || {}), [el.dataset.k]: el.dataset.v }; UI.pn = 60; if (el.dataset.k === 'sort' && el.dataset.v === 'near' && !UI.near) { UI.near = true; geoSync(); } render(); break;
+    case 'near': geoSet(!UI.near); break;
+    case 'follow': UI.follow = !UI.follow; if (UI.follow && GEO && MAP) MAP.setView([GEO.lat, GEO.lon], Math.max(MAP.getZoom(), 14)); render(); break;
+    case 'nearadd': { const today = todayISO(); stopOp(today, p => p.stops.push({ place: el.dataset.place })); toast(`Added ${placeName(el.dataset.place)} to today`); break; }
     case 'pmore': UI.pn = (UI.pn || 60) + 60; render(); break;
     case 'pinfo': UI.pf = {}; MAP && MAP.closePopup(); goTab('places'); setTimeout(() => document.getElementById('poi-' + el.dataset.place)?.scrollIntoView({ block: 'start' }), 0); break;
     case 'pmap': { const id = el.dataset.place; mf().mine = true; mf().must = false; mf().hide = mf().hide.filter(c => c !== place(id)?.cat); mapDirty = true; goTab('map'); setTimeout(() => { if (MAP && MARKERS[id]) { MAP.setView([place(id).lat, place(id).lon], 10); MARKERS[id].openPopup(); } }, 50); break; }
@@ -2003,7 +2076,7 @@ if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
   navigator.serviceWorker.addEventListener('controllerchange', () => { if (hadController && !document.activeElement?.matches('input,textarea')) location.reload(); });
   navigator.serviceWorker.register('sw.js').then(r => r.update()).catch(() => { });
 }
-boot().then(() => { fetchRate(); fetchRoadMatrix(); fetchWiki(); checkUpdate(); });
+boot().then(() => { fetchRate(); fetchRoadMatrix(); fetchWiki(); checkUpdate(); geoSync(); });
 // newer app.js on the server than the code running here? (offer a reload; nothing is lost, edits are saved locally)
 async function checkUpdate() {
   if (!navigator.onLine) return;
@@ -2012,6 +2085,6 @@ async function checkUpdate() {
     if (m && m[1] !== APP_BUILD && m[1] !== NEWER) { NEWER = m[1]; render(); }
   } catch (e) { }
 }
-document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') checkUpdate(); });
+document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') checkUpdate(); geoSync(); });
 setInterval(checkUpdate, 15 * 60 * 1000);
 setInterval(() => fetchRate(), 30 * 60 * 1000);

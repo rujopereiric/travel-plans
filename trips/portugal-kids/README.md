@@ -17,6 +17,10 @@ It is one page with no backend and no build step, and works offline once loaded.
   places where you'd need a baby carrier.
 - **A tip for parents** on every card (`kids`), plus facilities (baby-changing, café, picnic area) where known.
 - **🌧 Rainy day** filter on the Places tab: indoor places (aquariums, science centres, museums).
+- **📍 Near me:** shows where you are on the map (live blue dot, optional *Follow me*) and sorts the Places list by
+  distance, playgrounds included. On a day of your trip, the Plan tab's *Nearby now* card lists the closest suitable
+  places with *Add to today*. Location is watched only while Near me is on and the app is on screen, never stored or
+  sent anywhere. Lists re-sort after you've moved ~500 m, so cards don't jump around. Distances are straight lines.
 - **Gentler days by default:** up to 2.5 h of driving and 5.5 h of visits a day, starting at 09:00, with 45 min spare.
 - **A family checklist and booking list:** children's ID, consent letters, car seats, sun and sea safety.
 
