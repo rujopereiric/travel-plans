@@ -50,6 +50,20 @@ self.addEventListener('fetch', e => {
     }));
     return;
   }
+  if (req.destination === 'image' && url.origin !== location.origin) { // other place photos (E29.eu albums, guide sites)
+    // CORS if the site allows it (then only real images are cached); otherwise a plain image request, cached as an
+    // opaque response: browsers count each as a few MB of quota, which is fine for a few dozen photos
+    e.respondWith(caches.open(IMGS).then(async c => {
+      const hit = await c.match(req.url);
+      if (hit) return hit;
+      let res;
+      try { res = await fetch(req.url, { mode: 'cors', credentials: 'omit' }); }
+      catch (err) { try { res = await fetch(req); } catch (e2) { return new Response('', { status: 504 }); } }
+      if (res.ok || res.type === 'opaque') c.put(req.url, res.clone()).then(() => trimCache(IMGS, 200)).catch(() => {});
+      return res;
+    }));
+    return;
+  }
   if (url.hostname === 'unpkg.com') {
     e.respondWith(caches.match(req).then(hit => hit || fetch(req).then(res => {
       const copy = res.clone(); caches.open(APP).then(c => c.put(req, copy)); return res;

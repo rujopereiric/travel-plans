@@ -16,6 +16,7 @@
     "Total about 2 h 25 min: 40 min approach, 1 h on the route, 45 min back",
     "Length disagrees: 430 m equipped (RocJumper, 2025) vs 800 m (ferrataguide)",
     "The approach descends steeply with fixed ropes; a GPS track helps",
+    "The route starts near Praia do Ribeiro do Cavalo",
     "On the route: Sea-cliff traverse above the Atlantic, very exposed, sparsely equipped, fixed ropes on the approach, sea views throughout",
     "Access: Free to self-guide; guided trips from about €45–65",
     "Operator: No managing body found; guided by Vertente Natural (vertentenatural.com) and sold via Manawa",
@@ -23,7 +24,6 @@
     "Bring helmet, harness and a via ferrata lanyard set (EN 958); turn back in rain, wind or very high fire risk"
    ],
    "wiki": false,
-   "photoSearch": "Via Ferrata dos Pinheirinhos",
    "sources": [
     "https://www.rocjumper.com/via-ferrata/dos-pinheirinhos-sesimbra/",
     "https://ferrataguide.com/ferrata/Via_Ferrata_Pinheirinhos",
@@ -34,7 +34,9 @@
    "confidence": "high",
    "checked": "2026-10-04",
    "municipality": "Sesimbra, Setúbal",
-   "season": "Operators run it year-round; no official closure periods found"
+   "season": "Operators run it year-round; no official closure periods found",
+   "photo": "https://alpskyvudce.cz/images/ferrata/1421/5174098.jpg",
+   "photoCredit": "alpskyvudce.cz"
   },
   {
    "id": "vf_fenda_arrabida",
@@ -94,7 +96,6 @@
     "Bring helmet, harness and a via ferrata lanyard set (EN 958); turn back in rain, wind or very high fire risk"
    ],
    "wiki": false,
-   "photoSearch": "Via Ferrata da Serra do Muradal",
    "sources": [
     "https://www.rocjumper.com/via-ferrata/muradal-sarnadas-sao-simao/",
     "https://www.wikiloc.com/via-ferrata-trails/via-ferrata-caminho-sobre-o-oceano-ordovicico-muradal-18079017",
@@ -105,7 +106,9 @@
    "confidence": "high",
    "checked": "2026-10-04",
    "municipality": "Oleiros, Castelo Branco",
-   "season": "All year (Caminhantes); the area burned some years ago and is regrowing"
+   "season": "All year (Caminhantes); the area burned some years ago and is regrowing",
+   "photo": "https://static.wixstatic.com/media/d77c5f_40b59ad499bd4ff49850d39d3fa7350f~mv2.jpg/v1/fill/w_440,h_198,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/d77c5f_40b59ad499bd4ff49850d39d3fa7350f~mv2.jpg",
+   "photoCredit": "static.wixstatic.com"
   },
   {
    "id": "vf_talhadas",
@@ -131,7 +134,6 @@
     "Bring helmet, harness and a via ferrata lanyard set (EN 958); turn back in rain, wind or very high fire risk"
    ],
    "wiki": false,
-   "photoSearch": "Via Ferrata da Serra das Talhadas",
    "sources": [
     "https://maisbeiras.sapo.pt/proenca-a-nova-via-ferrata-da-serra-das-talhadas-disponivel-para-receber-visitantes",
     "https://jornalproenca.pt/via-ferrata-da-serra-das-talhadas-pronta-a-ser-explorada/",
@@ -142,7 +144,9 @@
    "confidence": "high",
    "checked": "2026-10-04",
    "municipality": "Proença-a-Nova, Castelo Branco",
-   "season": "The municipality says not to use it in bad weather or at very high fire risk"
+   "season": "The municipality says not to use it in bad weather or at very high fire risk",
+   "photo": "https://m.e29.eu/22OH2/22OH2-E07-PT-VF07-Serra-Das-Talhadas-20231028-0360-web.jpg",
+   "photoCredit": "E29.eu"
   },
   {
    "id": "vf_rabacal",
@@ -160,6 +164,7 @@
     "Circular walk about 2 h 15 min in total (Wikiloc track)",
     "Grade sources disagree, from K2 to K3; the steepest section is slightly overhanging",
     "Opened in 2019–2020 as part of the Ecovia do Rabaçal",
+    "Barreiros is 16 km from Valpaços and about 22 km from Chaves",
     "On the route: Granite wall above the Rabaçal river, a slightly overhanging section, an optional Tibetan/Himalayan bridge (~20 m) at the end, a river beach nearby",
     "Access: Free; guided €30",
     "Operator: Município de Valpaços; guided trips by Azibeiro House Nature (€30, minimum 3 people)",
@@ -167,7 +172,6 @@
     "Bring helmet, harness and a via ferrata lanyard set (EN 958); turn back in rain, wind or very high fire risk"
    ],
    "wiki": false,
-   "photoSearch": "Via Ferrata do Rabaçal",
    "sources": [
     "https://visitaltotamegaebarroso.pt/en/tour-item/ferrata-way/",
     "https://deandar.com/ferratas/via-ferrata-rabacal-barreiros",
@@ -178,7 +182,9 @@
    "confidence": "high",
    "checked": "2026-10-04",
    "municipality": "Valpaços, Vila Real",
-   "season": "No official closures found"
+   "season": "No official closures found",
+   "photo": "https://m.e29.eu/22OH2/22OH2-E18-PT-Rabacal-Ecovia-Adventure-photos-04-web.jpg",
+   "photoCredit": "E29.eu"
   },
   {
    "id": "vf_barranco_do_demo",
@@ -201,7 +207,6 @@
     "Bring helmet, harness and a via ferrata lanyard set (EN 958); turn back in rain, wind or very high fire risk"
    ],
    "wiki": false,
-   "photoSearch": "Via Ferrata do Barranco do Demo",
    "sources": [
     "https://ferrataguide.com/ferrata/Via_Ferrata_de_Barranco_do_Demo",
     "https://www.wikiloc.com/via-ferrata-trails/via-ferrata-barranco-do-demo-235589699",
@@ -210,7 +215,9 @@
    ],
    "confidence": "medium",
    "checked": "2026-10-04",
-   "municipality": "Monchique, Faro"
+   "municipality": "Monchique, Faro",
+   "photo": "https://alpskyvudce.cz/images/ferrata/2254/7885393.jpg",
+   "photoCredit": "alpskyvudce.cz"
   },
   {
    "id": "vf_penha",
@@ -236,7 +243,6 @@
     "Bring helmet, harness and a via ferrata lanyard set (EN 958); turn back in rain, wind or very high fire risk"
    ],
    "wiki": false,
-   "photoSearch": "Via Ferrata da Penha",
    "sources": [
     "https://www.wikiloc.com/via-ferrata-trails/via-ferrata-da-penha-castelo-de-vide-18082318",
     "https://www.rocjumper.com/via-ferrata/penha-castelo-vide/",
@@ -246,7 +252,9 @@
    "confidence": "high",
    "checked": "2026-10-04",
    "municipality": "Castelo de Vide, Portalegre",
-   "season": "All year (Caminhantes); the area was recently burned"
+   "season": "All year (Caminhantes); the area was recently burned",
+   "photo": "https://m.e29.eu/22OH2/22OH2-E17-ViaFerrataCastelodeVide-Photo-1-web.jpg",
+   "photoCredit": "E29.eu"
   },
   {
    "id": "vf_santa_luzia",
@@ -271,7 +279,6 @@
     "Bring helmet, harness and a via ferrata lanyard set (EN 958); turn back in rain, wind or very high fire risk"
    ],
    "wiki": false,
-   "photoSearch": "Via Ferrata da Barragem de Santa Luzia",
    "sources": [
     "https://ferrataguide.com/ferrata/Via_Ferrata_Barragem_de_Santa_Luzia",
     "https://www.outdooractive.com/en/route/via-ferrata/portugal/via-ferrata-of-santa-luzia/38341001/",
@@ -282,7 +289,9 @@
    "confidence": "high",
    "checked": "2026-10-04",
    "municipality": "Pampilhosa da Serra, Coimbra",
-   "season": "Shaded in the morning, in sun in the afternoon; no official closures found"
+   "season": "Shaded in the morning, in sun in the afternoon; no official closures found",
+   "photo": "https://bookinxisto.com/upload/media/original/66cc479a541c7.jpg",
+   "photoCredit": "bookinxisto.com"
   },
   {
    "id": "vf_pombeira",
@@ -308,7 +317,6 @@
     "Bring helmet, harness and a via ferrata lanyard set (EN 958); turn back in rain, wind or very high fire risk"
    ],
    "wiki": false,
-   "photoSearch": "Via Ferrata da Pombeira",
    "sources": [
     "https://www.ferrataguide.com/ferrata/Via_Ferrata_da_Pombeira",
     "https://estacaodiariajornal.sapo.pt/castro-daire-secretario-de-estado-do-turismo-inaugurou-o-pombeira-park/",
@@ -319,7 +327,9 @@
    "confidence": "medium",
    "checked": "2026-10-04",
    "municipality": "Castro Daire, Viseu",
-   "season": "Very little shade, so avoid hot summer middays"
+   "season": "Very little shade, so avoid hot summer middays",
+   "photo": "https://m.e29.eu/22OH2/22OH2-E17-GO-Pombeira-1-web.jpg",
+   "photoCredit": "E29.eu"
   },
   {
    "id": "vf_povoa_lanhoso",
@@ -344,7 +354,6 @@
     "Bring helmet, harness and a via ferrata lanyard set (EN 958); turn back in rain, wind or very high fire risk"
    ],
    "wiki": false,
-   "photoSearch": "Via Ferrata da Póvoa de Lanhoso",
    "sources": [
     "https://ferrataguide.com/ferrata/P%C3%B3voa_de_Lanhoso",
     "https://www.rocjumper.com/via-ferrata/povoa-lanhoso/",
@@ -353,7 +362,9 @@
    ],
    "confidence": "high",
    "checked": "2026-10-04",
-   "municipality": "Póvoa de Lanhoso, Braga"
+   "municipality": "Póvoa de Lanhoso, Braga",
+   "photo": "https://m.e29.eu/22OH2/22OH2-E16-EO-PovoaDeLanhoso-9-web.jpg",
+   "photoCredit": "E29.eu"
   },
   {
    "id": "vf_teto_do_mundo",
@@ -377,7 +388,6 @@
     "Bring helmet, harness and a via ferrata lanyard set (EN 958); turn back in rain, wind or very high fire risk"
    ],
    "wiki": false,
-   "photoSearch": "Via Ferrata Teto do Mundo",
    "sources": [
     "https://ferrataguide.com/ferrata/Ferrata_Teto_do_Mundo",
     "https://www.cm-boticas.pt/noticias/default.php?id=MU",
@@ -388,7 +398,9 @@
    "confidence": "medium",
    "checked": "2026-10-04",
    "municipality": "Boticas, Vila Real",
-   "season": "It closed briefly after a 2021–22 wildfire; no other closure info found"
+   "season": "It closed briefly after a 2021–22 wildfire; no other closure info found",
+   "photo": "https://m.e29.eu/22OH2/22OH2-E18-ViaFerrataTetodoMundo-Photo-4-web.jpg",
+   "photoCredit": "E29.eu"
   }
  ],
  "drives": []

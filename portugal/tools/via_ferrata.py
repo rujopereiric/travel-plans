@@ -39,7 +39,7 @@ places, used = [], {}
 research = json.load(open(os.path.join(root, 'parts', 'via_ferrata_research.json')))
 # where the nearest of my places points to the wrong region (by the municipality's district)
 REGION = {'vf_talhadas': 'centro', 'vf_pombeira': 'centro', 'vf_teto_do_mundo': 'douro', 'vf_rabacal': 'douro'}
-NOTE = re.compile(r"your OSM|I couldn't|No photo URL|No via ferrata found in the Azores", re.I)  # research notes, not traveller tips
+NOTE = re.compile(r"your OSM|I couldn't|No photo URL|No via ferrata found in the Azores|OSM name", re.I)  # research notes, not traveller tips
 for r in research:
     lat, lon = r['lat'], r['lon']
     if r['id'] == 'vf_fenda_arrabida' and lat is None:  # guided only: place it at the meeting point, Praia do Creiro
@@ -61,7 +61,10 @@ for r in research:
          'sources': r['sources'], 'confidence': r['confidence'], 'checked': '2026-10-04', 'municipality': r['municipality']}
     if r.get('season') and not r['season'].startswith('No information'): p['season'] = r['season']
     if r['status'] != 'open': p['caution'] = 'Status: ' + r['status'] + '. Check before you go.'
-    if r.get('photo'): p['photo'] = r['photo']
+    if r.get('photo'):  # our own photos (E29.eu albums) or a guide site's, credited on the card
+        p['photo'] = r['photo']; host = re.sub(r'^https?://(www\.|m\.)?', '', r['photo']).split('/')[0]
+        p['photoCredit'] = 'E29.eu' if host.endswith('e29.eu') else host
+        del p['photoSearch']
     places.append(p)
 known = [(p['lat'], p['lon']) for p in places]
 for g in groups:
