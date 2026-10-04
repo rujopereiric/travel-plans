@@ -35,39 +35,6 @@
     "confidence": "high"
   },
   {
-    "id": "vf_fenda_arrabida",
-    "name": "Fenda da Arrábida via ferrata and abseil circuit",
-    "municipality": "Setúbal, Setúbal",
-    "lat": null,
-    "lon": null,
-    "coordSource": "No source gives coordinates. The OSM point 38.4547, -9.0161 could not be matched to this site.",
-    "grade": "not graded",
-    "length_m": 700,
-    "height_gain_m": null,
-    "duration_min": 240,
-    "approach": "Guided only. Meet at Praia do Creiro (Portinho da Arrábida), then a short van transfer to the Fenda.",
-    "features": "A 700 m geological fissure; via ferrata sections, abseils of 10–30 m, a cave passage, sea views over Portinho",
-    "status": "open",
-    "access": "Guided only; from €40 per person on Manawa",
-    "operator": "WIND (Praia do Creiro) and Discover The Nature (Portinho da Arrábida)",
-    "kitRental": "All equipment is included in the guided price",
-    "season": "Operators advertise it year-round",
-    "photo": null,
-    "summary": "A guided adventure circuit through a 700 m rock fissure inside Arrábida Natural Park, mixing short via ferrata sections with abseils and a cave. It suits beginners more than a classic self-guided via ferrata does.",
-    "facts": [
-      "4 h guided activity, minimum age 8 (WIND)",
-      "No public, self-guided route found",
-      "Coordinates and length are unknown for the equipped sections; 700 m is the length of the fissure",
-      "Your OSM #1 is still unverified; it may be a misplaced Pinheirinhos entry"
-    ],
-    "sources": [
-      "https://www.manawa.com/en-GB/activity/portugal/parque-natural-da-arrabida/via-ferrata/via-ferrata-and-abseiling-experience-in-arrabida-natural-park-near-lisbon/14105",
-      "https://flyplay.tourdesk.com/Destination/Porto/Tour/Item/354637/1/Arrabida_Adventure_Circuit",
-      "https://www.geocaching.com/geocache/GC7CGDH"
-    ],
-    "confidence": "low"
-  },
-  {
     "id": "vf_muradal",
     "name": "Caminho sobre o Oceano Ordovícico (Via Ferrata da Serra do Muradal)",
     "municipality": "Oleiros, Castelo Branco",
@@ -135,7 +102,14 @@
       "https://www.via-ferrata.de/klettersteige/topo/via-ferrata-das-talhas",
       "https://viaferrata.pt/via-ferrata-proenca-a-nova/"
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "e29": [
+      {
+        "type": "video",
+        "url": "https://youtu.be/kLJpXayfQCI",
+        "date": "2021-10-01"
+      }
+    ]
   },
   {
     "id": "vf_rabacal",
@@ -170,7 +144,19 @@
       "https://valpacos.pt/pages/635?news_id=564&locale=pt",
       "https://azibeirohousenature.com/via-ferrata-do-rabacal/"
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "e29": [
+      {
+        "type": "blog",
+        "url": "https://e29.eu/rabacal-ecovia-adventure",
+        "date": "2024-10-31"
+      },
+      {
+        "type": "video",
+        "url": "https://youtu.be/-sQEWJvzgUw",
+        "date": "2024-10-31"
+      }
+    ]
   },
   {
     "id": "vf_barranco_do_demo",
@@ -238,7 +224,19 @@
       "https://www.via-ferrata.de/klettersteige/topo/via-ferrata-senhora-da-penha-castelo-de-vide",
       "https://www.greenroc.pt/viaferrata"
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "e29": [
+      {
+        "type": "blog",
+        "url": "https://e29.eu/via-ferrata-castelo-de-vide/",
+        "date": "2024-10-28"
+      },
+      {
+        "type": "video",
+        "url": "https://youtu.be/9644LKEzW_A",
+        "date": "2024-10-23"
+      }
+    ]
   },
   {
     "id": "vf_santa_luzia",
@@ -307,7 +305,24 @@
       "https://viaferrata.pt/via-ferrata-da-pombeira/",
       "https://ondasdaserra.pt/index.php/portugal/item/1699-trilho-pombeira"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "e29": [
+      {
+        "type": "blog",
+        "url": "https://e29.eu/via-ferrata-pombeira/",
+        "date": "2024-10-28"
+      },
+      {
+        "type": "video",
+        "url": "https://youtu.be/dcvDJi54sPE",
+        "date": "2024-09-13"
+      },
+      {
+        "type": "video",
+        "url": "https://youtu.be/t1kJlZcCYsI",
+        "date": "2024-03-25"
+      }
+    ]
   },
   {
     "id": "vf_povoa_lanhoso",
@@ -340,7 +355,26 @@
       "https://diverlanhoso.pt/activity_details.php?id=10013",
       "https://www.via-ferrata.de/klettersteige/topo/via-ferrata-de-povoa-de-lanhoso/reviews"
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "e29": [
+      {
+        "type": "blog",
+        "url": "https://e29.eu/via-ferrata-povoa-de-lanhoso/",
+        "date": "2024-10-28",
+        "label": "📝 Our blog post"
+      },
+      {
+        "type": "blog",
+        "url": "https://e29.eu/local-training-in-via-ferrata-povoa-do-lanhoso/",
+        "date": "2024-10-24",
+        "label": "📝 Our blog post (local training)"
+      },
+      {
+        "type": "video",
+        "url": "https://youtu.be/khGuUVYReH4",
+        "date": "2024-09-09"
+      }
+    ]
   },
   {
     "id": "vf_teto_do_mundo",
@@ -374,7 +408,19 @@
       "https://ferratashierroyroca.blogspot.com/2024/10/listado-ferratas-portugal.html",
       "https://www.ceita.pt/viaferrata.html"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "e29": [
+      {
+        "type": "blog",
+        "url": "https://e29.eu/via-ferrata-teto-do-mundo/",
+        "date": "2024-10-28"
+      },
+      {
+        "type": "video",
+        "url": "https://youtu.be/8PaaCGDUc7g",
+        "date": "2024-10-24"
+      }
+    ]
   },
   {
     "id": "vf_sao_vicente_madeira",

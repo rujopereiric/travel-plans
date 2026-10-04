@@ -30,6 +30,7 @@ for it in sorted(items.values(), key=lambda x: (x[1] == 'Via ferrata', x[0])):  
         if hv((it[2], it[3]), (g[0][2], g[0][3])) < 1.5: g.append(it); break
     else: groups.append([it])
 
+MON = ['', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 def photo_query(name):  # the name people search for: "Via Ferrata dos Pinheirinhos" rather than "Caminho do Mar"
     m = re.search(r'\((Via Ferrata[^)]*)\)', name, re.I)
     q = m.group(1) if m else re.sub(r'\s*\(.*?\)', '', name)
@@ -42,7 +43,7 @@ REGION = {'vf_talhadas': 'centro', 'vf_pombeira': 'centro', 'vf_teto_do_mundo': 
 NOTE = re.compile(r"your OSM|I couldn't|No photo URL|No via ferrata found in the Azores|OSM name", re.I)  # research notes, not traveller tips
 for r in research:
     lat, lon = r['lat'], r['lon']
-    if r['id'] == 'vf_fenda_arrabida' and lat is None:  # guided only: place it at the meeting point, Praia do Creiro
+    if False:  # (was: Fenda da Arrábida, dropped)  # guided only: place it at the meeting point, Praia do Creiro
         meet = next((p for p in mine if p['id'] in ('portinho_da_arrabida', 'praia_do_creiro')), None)
         if meet: lat, lon = meet['lat'], meet['lon']; r['approach'] += ' (Shown on the map at the meeting point.)'
     if r['status'] == 'planned' or lat is None:
@@ -65,6 +66,12 @@ for r in research:
         p['photo'] = r['photo']; host = re.sub(r'^https?://(www\.|m\.)?', '', r['photo']).split('/')[0]
         p['photoCredit'] = 'E29.eu' if host.endswith('e29.eu') else host
         del p['photoSearch']
+    # our own trip reports (from the E29 Dataverse "Communications" table): blog posts and videos first in the links
+    if r.get('e29'):
+        nb = sum(1 for x in r['e29'] if x['type'] == 'blog'); nv = sum(1 for x in r['e29'] if x['type'] == 'video')
+        p['links'] = [{'name': x.get('label') or (('📝 Our blog post' if x['type'] == 'blog' else '▶️ Our video') + (f" ({MON[int(x['date'][5:7])]} {x['date'][:4]})" if (nb if x['type'] == 'blog' else nv) > 1 else '')), 'url': x['url']} for x in r['e29']]
+        p['facts'].insert(0, f"We've done this one: E29 / CJE via ferrata activity ({min(x['date'] for x in r['e29'])[:4]})")
+        p['e29'] = True
     places.append(p)
 known = [(p['lat'], p['lon']) for p in places]
 for g in groups:

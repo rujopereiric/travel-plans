@@ -4541,40 +4541,6 @@
       "photoCredit": "alpskyvudce.cz"
     },
     {
-      "id": "vf_fenda_arrabida",
-      "name": "Fenda da Arrábida via ferrata and abseil circuit",
-      "region": "setubal",
-      "lat": 38.4813,
-      "lon": -8.9787,
-      "visit": 240,
-      "cat": "Via ferrata",
-      "priority": 2,
-      "summary": "A guided adventure circuit through a 700 m rock fissure inside Arrábida Natural Park, mixing short via ferrata sections with abseils and a cave. It suits beginners more than a classic self-guided via ferrata does.",
-      "facts": [
-        "Grade not graded · 700 m · ~4 h 00 min in total",
-        "Getting there: Guided only. Meet at Praia do Creiro (Portinho da Arrábida), then a short van transfer to the Fenda. (Shown on the map at the meeting point.)",
-        "4 h guided activity, minimum age 8 (WIND)",
-        "No public, self-guided route found",
-        "Coordinates and length are unknown for the equipped sections; 700 m is the length of the fissure",
-        "On the route: A 700 m geological fissure; via ferrata sections, abseils of 10–30 m, a cave passage, sea views over Portinho",
-        "Access: Guided only; from €40 per person on Manawa",
-        "Operator: WIND (Praia do Creiro) and Discover The Nature (Portinho da Arrábida)",
-        "Kit: All equipment is included in the guided price",
-        "Bring helmet, harness and a via ferrata lanyard set (EN 958); turn back in rain, wind or very high fire risk"
-      ],
-      "wiki": false,
-      "photoSearch": "Fenda da Arrábida via ferrata and abseil circuit",
-      "sources": [
-        "https://www.manawa.com/en-GB/activity/portugal/parque-natural-da-arrabida/via-ferrata/via-ferrata-and-abseiling-experience-in-arrabida-natural-park-near-lisbon/14105",
-        "https://flyplay.tourdesk.com/Destination/Porto/Tour/Item/354637/1/Arrabida_Adventure_Circuit",
-        "https://www.geocaching.com/geocache/GC7CGDH"
-      ],
-      "confidence": "low",
-      "checked": "2026-10-04",
-      "municipality": "Setúbal, Setúbal",
-      "season": "Operators advertise it year-round"
-    },
-    {
       "id": "vf_muradal",
       "name": "Caminho sobre o Oceano Ordovícico (Via Ferrata da Serra do Muradal)",
       "region": "centro",
@@ -4623,6 +4589,7 @@
       "priority": 2,
       "summary": "The longest via ferrata in Portugal, a ridge circuit with two bridges in the Naturtejo Geopark. It reopened in 2026 after repairs from the 2023 wildfires.",
       "facts": [
+        "We've done this one: E29 / CJE via ferrata activity (2021)",
         "Grade K3 (RocJumper) / B/C (ferrataguide, via-ferrata.de) · 2190 m · +150 m · ~2 h 21 min in total",
         "Getting there: From Catraia Cimeira take the M1313 toward Chão do Galego. Start at the watchtower designed by Álvaro Siza Vieira, then walk about 800 m (20 min) to sector 1. The circuit ends back at the tower.",
         "Reopened mid-2026 after fire damage; it was listed as temporarily closed before that",
@@ -4648,7 +4615,9 @@
       "municipality": "Proença-a-Nova, Castelo Branco",
       "season": "The municipality says not to use it in bad weather or at very high fire risk",
       "photo": "https://m.e29.eu/22OH2/22OH2-E07-PT-VF07-Serra-Das-Talhadas-20231028-0360-web.jpg",
-      "photoCredit": "E29.eu"
+      "photoCredit": "E29.eu",
+      "links": [{"name": "▶️ Our video", "url": "https://youtu.be/kLJpXayfQCI"}],
+      "e29": true
     },
     {
       "id": "vf_rabacal",
@@ -4661,6 +4630,7 @@
       "priority": 2,
       "summary": "The only via ferrata in Trás-os-Montes, climbing a granite slope above the wild Rabaçal river, with an optional cable bridge at the top. It pairs well with the Ecovia walking trails and the river beach.",
       "facts": [
+        "We've done this one: E29 / CJE via ferrata activity (2024)",
         "Grade K2 (deandar) / B (via-ferrata.de, OSM); officially 'algo difícil' ≈K3 · 120 m · +95 m · ~2 h 15 min in total",
         "Getting there: Park on Rua Principal in Barreiros, by the cemetery and festival square. Walk down past a viewpoint to the river beach, then follow signs to the panel at the start. The loop is about 4.4 km.",
         "Circular walk about 2 h 15 min in total (Wikiloc track)",
@@ -4686,7 +4656,12 @@
       "municipality": "Valpaços, Vila Real",
       "season": "No official closures found",
       "photo": "https://m.e29.eu/22OH2/22OH2-E18-PT-Rabacal-Ecovia-Adventure-photos-04-web.jpg",
-      "photoCredit": "E29.eu"
+      "photoCredit": "E29.eu",
+      "links": [
+        {"name": "📝 Our blog post", "url": "https://e29.eu/rabacal-ecovia-adventure"},
+        {"name": "▶️ Our video", "url": "https://youtu.be/-sQEWJvzgUw"}
+      ],
+      "e29": true
     },
     {
       "id": "vf_barranco_do_demo",
@@ -4732,6 +4707,7 @@
       "priority": 2,
       "summary": "A short beginner route built in 2015 up the cliff below the Penha hermitage, with wide views over Castelo de Vide. The sideways traverses are the most technical part.",
       "facts": [
+        "We've done this one: E29 / CJE via ferrata activity (2024)",
         "Grade K2 (RocJumper) / B (via-ferrata.de) · 200 m · +54 m · ~0 h 45 min in total",
         "Getting there: Park at the Ermida de Nossa Senhora da Penha car park above Castelo de Vide. Follow yellow dots downhill to the base of the cliff, about 10 min. Return by the chapel stairs.",
         "About 45 min: 10 min approach, 30 min climb, 5 min back",
@@ -4756,7 +4732,12 @@
       "municipality": "Castelo de Vide, Portalegre",
       "season": "All year (Caminhantes); the area was recently burned",
       "photo": "https://m.e29.eu/22OH2/22OH2-E17-ViaFerrataCastelodeVide-Photo-1-web.jpg",
-      "photoCredit": "E29.eu"
+      "photoCredit": "E29.eu",
+      "links": [
+        {"name": "📝 Our blog post", "url": "https://e29.eu/via-ferrata-castelo-de-vide/"},
+        {"name": "▶️ Our video", "url": "https://youtu.be/9644LKEzW_A"}
+      ],
+      "e29": true
     },
     {
       "id": "vf_santa_luzia",
@@ -4806,6 +4787,7 @@
       "priority": 2,
       "summary": "Often called the most complete via ferrata in Portugal, it follows a granite gorge with waterfalls and crosses three cable bridges. The park was officially inaugurated in 2026 after years of delays.",
       "facts": [
+        "We've done this one: E29 / CJE via ferrata activity (2024)",
         "Grade C (ferrataguide, viaferrata.pt); mostly B to B/C with a C finish · 750 m · +200 m · ~2 h 35 min in total",
         "Getting there: Park at the Pombeira Adventure Park near Lamelas / Codeçais, then walk about 30 min to the start. The return to the car is short.",
         "About 2.5 h: 30 min approach, 2 h route, 5 min back",
@@ -4831,7 +4813,13 @@
       "municipality": "Castro Daire, Viseu",
       "season": "Very little shade, so avoid hot summer middays",
       "photo": "https://m.e29.eu/22OH2/22OH2-E17-GO-Pombeira-1-web.jpg",
-      "photoCredit": "E29.eu"
+      "photoCredit": "E29.eu",
+      "links": [
+        {"name": "📝 Our blog post", "url": "https://e29.eu/via-ferrata-pombeira/"},
+        {"name": "▶️ Our video (Sep 2024)", "url": "https://youtu.be/dcvDJi54sPE"},
+        {"name": "▶️ Our video (Mar 2024)", "url": "https://youtu.be/t1kJlZcCYsI"}
+      ],
+      "e29": true
     },
     {
       "id": "vf_povoa_lanhoso",
@@ -4844,6 +4832,7 @@
       "priority": 2,
       "summary": "Portugal's first via ferrata (2012), a short beginner climb up the country's largest granite monolith to Lanhoso castle. It is private, so you must book through DiverLanhoso.",
       "facts": [
+        "We've done this one: E29 / CJE via ferrata activity (2024)",
         "Grade K2 officially, feels like K1 (ferrataguide) / A/B (via-ferrata.de) · 150 m · +55 m · ~0 h 31 min in total",
         "Getting there: Drive up Rua do Pilar and park at the lower bend near the base of the monolith. The start is about 2 min away; walk down by road from the castle afterwards.",
         "Signs at the start forbid using it without the operator",
@@ -4866,7 +4855,16 @@
       "checked": "2026-10-04",
       "municipality": "Póvoa de Lanhoso, Braga",
       "photo": "https://m.e29.eu/22OH2/22OH2-E16-EO-PovoaDeLanhoso-9-web.jpg",
-      "photoCredit": "E29.eu"
+      "photoCredit": "E29.eu",
+      "links": [
+        {"name": "📝 Our blog post", "url": "https://e29.eu/via-ferrata-povoa-de-lanhoso/"},
+        {
+          "name": "📝 Our blog post (local training)",
+          "url": "https://e29.eu/local-training-in-via-ferrata-povoa-do-lanhoso/"
+        },
+        {"name": "▶️ Our video", "url": "https://youtu.be/khGuUVYReH4"}
+      ],
+      "e29": true
     },
     {
       "id": "vf_teto_do_mundo",
@@ -4879,6 +4877,7 @@
       "priority": 2,
       "summary": "A short climb to a rocky summit viewpoint in the Barroso highlands, with a suspension bridge along the way. It's an easy add-on to a visit to the Barroso area.",
       "facts": [
+        "We've done this one: E29 / CJE via ferrata activity (2024)",
         "Grade K3 (deandar) / C, mostly B (ferrataguide) · 153 m · +100 m · ~0 h 55 min in total",
         "Getting there: Take the M520 southeast from the Alto Rabagão dam to the first farm, where a sign marks the access. Follow the fence and faint yellow arrows, about 10 min.",
         "Status disagrees: listed as closed by Ferratas Hierro y Roca (2024), but RocJumper found it OK in 2025",
@@ -4902,7 +4901,12 @@
       "municipality": "Boticas, Vila Real",
       "season": "It closed briefly after a 2021–22 wildfire; no other closure info found",
       "photo": "https://m.e29.eu/22OH2/22OH2-E18-ViaFerrataTetodoMundo-Photo-4-web.jpg",
-      "photoCredit": "E29.eu"
+      "photoCredit": "E29.eu",
+      "links": [
+        {"name": "📝 Our blog post", "url": "https://e29.eu/via-ferrata-teto-do-mundo/"},
+        {"name": "▶️ Our video", "url": "https://youtu.be/8PaaCGDUc7g"}
+      ],
+      "e29": true
     },
     {
       "id": "lis",

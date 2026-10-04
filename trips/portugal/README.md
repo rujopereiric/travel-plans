@@ -54,6 +54,8 @@ The 11 via ferratas in My places come from two sources:
 
 `tools/via_ferrata.py` merges both into `parts/via_ferrata.json`. Via ferratas have `"wiki": false`, so the app doesn't show the general Wikipedia article. Instead it looks for a photo on Wikimedia Commons using `photoSearch`.
 
+Photos: 10 routes have a `photo`, credited on the card through `photoCredit`. Six are from our own E29.eu albums (`m.e29.eu`); the others are from guide sites. The service worker keeps these photos for offline use, like the Wikimedia ones.
+
 To update after new research or a new OpenStreetMap download, run:
 ```
 python3 portugal/tools/via_ferrata.py && python3 portugal/tools/assemble.py && python3 trips/tools/build.py
