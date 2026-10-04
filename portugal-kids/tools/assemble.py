@@ -6,6 +6,8 @@
   facilities) and optionally a family visit time, priority or caution.
 - parts/<part>.json `places`: new kid-specific places (zoos, aquariums, science centres…), ids starting k_.
 - parts/<part>.json `drives`: road legs connecting the new places.
+- parts/osm_kids.json: playgrounds and kid venues from OpenStreetMap (ids osm_…), a one-off download from 2026-10-04.
+  Playgrounds are minor places (minor: true): each hangs off the planner place it's next to (near: id).
 See parts/SPEC.md for the format.
 
 Run after changing parts/ or portugal/data.json:  python3 portugal-kids/tools/assemble.py
@@ -16,11 +18,11 @@ here = os.path.dirname(os.path.abspath(__file__)); root = os.path.dirname(here);
 spec = importlib.util.spec_from_file_location('b', os.path.join(repo, 'trips', 'tools', 'build.py'))
 b = importlib.util.module_from_spec(spec); spec.loader.exec_module(b)
 
-PARTS = ['lisbon_sintra_setubal', 'oeste_centro', 'north', 'south', 'islands']
+PARTS = ['lisbon_sintra_setubal', 'oeste_centro', 'north', 'south', 'islands', 'osm_kids']
 KID_FIELDS = ['ages', 'stroller', 'kids', 'rainy', 'facilities']
 REUSE_FIELDS = KID_FIELDS + ['cat', 'visit', 'priority', 'caution', 'season']
 KID_CATS = ['Zoo', 'Aquarium', 'Theme park', 'Water park', 'Science centre', 'Park & playground', 'Farm & animals',
-            'Adventure park', 'Train ride']
+            'Adventure park', 'Train ride', 'Indoor play', 'Trampoline park', 'Mini golf', 'Playground']
 STROLLER = {'yes', 'partly', 'no'}
 
 CHECKLIST = [
@@ -87,6 +89,8 @@ def main():
                 if k not in p: fail(f"{p['id']} has no {k}")
             if not (29 < p['lat'] < 43 and -32 < p['lon'] < -6): fail(f"{p['id']} is outside Portugal: {p['lat']}, {p['lon']}")
     ids = {p['id'] for p in places}
+    for p in places:
+        if p.get('minor') and p.get('near') not in ids: fail(f"{p['id']} is near {p.get('near')}, which isn't a place")
     legs, seen = [], set()
     for x in base['drives'] + drives:
         if x[0] not in ids or x[1] not in ids: continue

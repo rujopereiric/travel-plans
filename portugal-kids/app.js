@@ -11,7 +11,7 @@ const LS_STATE = 'ptkids-planner-v1';
 const LS_UI = 'ptkids-planner-ui';
 // Bump on every change. The app compares it with the app.js on the server, so a phone that kept an old tab open
 // (no reload, so still the old code) is told a newer version exists.
-const APP_BUILD = '2026-10-04.k2';
+const APP_BUILD = '2026-10-04.k3';
 let NEWER = null; // the newer build found on the server, if any
 const AX0 = 5 * 60, AX1 = 23 * 60;           // timeline axis 05:00–23:00
 const DEFAULT_SETTINGS = {
@@ -32,6 +32,11 @@ const suitsUs = p => fitsKids(p) && buggyOk(p);
 // indoors: marked rainy by the research, or an indoor kind of place (needsDaylight: false alone also means "fine at night")
 const INDOOR = new Set(['Museum', 'Aquarium', 'Science centre', 'Palace', 'Monastery & church', 'Cave', 'Hot spring']);
 const isRainy = p => p.rainy === true || (p.needsDaylight === false && INDOOR.has(p.cat));
+// Minor places (playgrounds from OpenStreetMap, minor: true) hang off the place they're next to (near: id): drive times go
+// to that place plus a short hop, so they never join the road matrix or the road graph, and auto-plan doesn't suggest them.
+const minor = p => !!(p && p.minor);
+const anchorOf = id => { const p = place(id); return p && p.minor && place(p.near) ? p.near : null; };
+const HOP_KMH = 25; // short town hop, parking included
 const STROLLER = { yes: '🚼 Buggy: yes', partly: '🚼 Buggy: partly', no: '🎒 Baby carrier' };
 
 let S = null;            // the plan (same shape as data.json)
@@ -226,13 +231,14 @@ function drive(a, b) {
 let GRAPH = null; const GRAPH_DIST = new Map();
 function graphLeg(a, b) {
   if (!GRAPH) {
-    GRAPH = new Map(S.places.map(p => [p.id, []]));
+    const gp = S.places.filter(p => !minor(p));
+    GRAPH = new Map(gp.map(p => [p.id, []]));
     const add = (x, y, km, min) => { if (GRAPH.has(x) && GRAPH.has(y)) { GRAPH.get(x).push([y, km, min]); GRAPH.get(y).push([x, km, min]); } };
     for (const x of legsList()) if (x.mode === 'road') add(x.a, x.b, x.km, x.min);
     // places on known road legs ("hubs") connect only through those legs; any other place hangs off its nearest hub
     // (straight hops between hubs could cross the Gulf of Suez, or the Nile where there's no bridge)
-    const hubs = S.places.filter(p => GRAPH.get(p.id).length);
-    for (const p of S.places) {
+    const hubs = gp.filter(p => GRAPH.get(p.id).length);
+    for (const p of gp) {
       if (GRAPH.get(p.id).length || !hubs.length) continue;
       let near = null, nd = Infinity;
       for (const h of hubs) { const hv = haversine(p, h); if (hv < nd) { nd = hv; near = h; } }
@@ -240,8 +246,8 @@ function graphLeg(a, b) {
     }
     // plus short straight hops (≤ 30 km) inside a city or a cluster of sites, e.g. Giza → Saqqara. The Gulf of Suez is
     // far wider than that, so these never jump the sea.
-    for (let i = 0; i < S.places.length; i++) for (let j = i + 1; j < S.places.length; j++) {
-      const pa = S.places[i], pb = S.places[j], hv = haversine(pa, pb);
+    for (let i = 0; i < gp.length; i++) for (let j = i + 1; j < gp.length; j++) {
+      const pa = gp[i], pb = gp[j], hv = haversine(pa, pb);
       if (hv <= 30) { const km = hv * set('roadFactor'); add(pa.id, pb.id, km, km / set('speedKmh') * 60); }
     }
   }
@@ -266,6 +272,14 @@ function roadRaw(a, b) {
   if (a === b) return { km: 0, min: 0, est: false };
   const k = a + '|' + b;
   if (ROAD_CACHE.has(k)) return ROAD_CACHE.get(k);
+  const aa = anchorOf(a), ab = anchorOf(b);
+  if (aa || ab) {
+    const hop = (x, y) => { const km = haversine(place(x), place(y)) * set('roadFactor'); return { km, min: km / HOP_KMH * 60 }; };
+    const x = aa || a, y = ab || b, mid = x === y ? { km: 0, min: 0 } : roadRaw(x, y), h1 = aa ? hop(a, aa) : { km: 0, min: 0 }, h2 = ab ? hop(ab, b) : { km: 0, min: 0 };
+    const r = aa && ab && aa === ab ? (() => { const d = hop(a, b); return { km: Math.round(d.km), min: Math.round(d.min), est: true }; })()
+      : { km: Math.round(mid.km + h1.km + h2.km), min: Math.round(mid.min + h1.min + h2.min), est: true };
+    ROAD_CACHE.set(k, r); return r;
+  }
   const ov = legsList().find(x => x.mode === 'road' && ((x.a === a && x.b === b) || (x.a === b && x.b === a)));
   let km, min, est = false;
   if (ov) { km = ov.km; min = ov.min; }
@@ -334,7 +348,7 @@ const LS_ROAD = 'ptkids-roads', LS_ROUTES = 'portugal-routes';
 let ROAD = null, ROUTES = {}, ROAD_BUSY = false;
 try { ROAD = JSON.parse(localStorage.getItem(LS_ROAD) || 'null'); ROUTES = JSON.parse(localStorage.getItem(LS_ROUTES) || '{}'); } catch (e) { }
 const coordStr = ids => ids.map(id => `${place(id).lon.toFixed(5)},${place(id).lat.toFixed(5)}`).join(';');
-const placesKey = () => hash(S.places.map(p => p.id + p.lat + p.lon).join('|'));
+const placesKey = () => hash(S.places.filter(p => !minor(p)).map(p => p.id + p.lat + p.lon).join('|'));
 function roadLeg(a, b) {
   if (!ROAD) return null;
   const i = ROAD.ids.indexOf(a), j = ROAD.ids.indexOf(b);
@@ -349,7 +363,7 @@ async function fetchRoadMatrix() {
   const key = placesKey();
   if (ROAD && ROAD.key === key) return;
   ROAD_BUSY = true;
-  const ids = S.places.map(p => p.id), n = ids.length, C = 50;
+  const ids = S.places.filter(p => !minor(p)).map(p => p.id), n = ids.length, C = 50;
   const dur = ids.map(() => new Array(n).fill(null)), dist = ids.map(() => new Array(n).fill(null));
   if (ROAD) { // keep what we already know, so adding a place only fetches its rows and columns
     const oi = new Map(ROAD.ids.map((id, k) => [id, k]));
@@ -890,7 +904,7 @@ async function boot() {
 }
 // Descriptive place fields aren't edited in the app, so newer data.json content can be merged into a locally edited plan
 // without asking: new places, categories, summaries, photos titles, links, priorities and sleep flags.
-const INFO_FIELDS = ['ages', 'stroller', 'kids', 'rainy', 'facilities', 'name', 'region', 'lat', 'lon', 'visit', 'sources', 'confidence', 'checked', 'cat', 'summary', 'facts', 'season', 'wiki', 'links', 'photo', 'photoCredit', 'photoSearch', 'caution', 'note', 'priority', 'sleep', 'suggest', 'needsDaylight', 'hours', 'closed', 'early', 'municipality'];
+const INFO_FIELDS = ['minor', 'near', 'osm', 'ages', 'stroller', 'kids', 'rainy', 'facilities', 'name', 'region', 'lat', 'lon', 'visit', 'sources', 'confidence', 'checked', 'cat', 'summary', 'facts', 'season', 'wiki', 'links', 'photo', 'photoCredit', 'photoSearch', 'caution', 'note', 'priority', 'sleep', 'suggest', 'needsDaylight', 'hours', 'closed', 'early', 'municipality'];
 // fields that an update may remove (e.g. a researched photo replacing a photo search): dropped locally too
 const DROPPABLE = ['photo', 'photoCredit', 'photoSearch', 'caution', 'season', 'links', 'rainy', 'facilities', 'ages', 'stroller', 'kids'];
 function mergePlaceInfo(local, file) {
@@ -981,7 +995,7 @@ const badge = st => `<span class="badge ${st === 'booked' ? 'none' : st}">${STAT
 function placeOptions(sel, { blank = '', exclude = [] } = {}) {
   let h = blank ? `<option value="">${esc(blank)}</option>` : '';
   for (const rg of S.regions) {
-    const ps = S.places.filter(p => p.region === rg.id && !exclude.includes(p.id));
+    const ps = S.places.filter(p => p.region === rg.id && !exclude.includes(p.id) && (!minor(p) || p.id === sel));
     if (!ps.length) continue;
     h += `<optgroup label="${esc(rg.name)}">` + ps.map(p => `<option value="${esc(p.id)}" ${p.id === sel ? 'selected' : ''}>${esc(p.name)}</option>`).join('') + '</optgroup>';
   }
@@ -1442,7 +1456,9 @@ function renderMyPlaces() {
     <div class="pchips">${chip('cat', 'all', 'All types', cat === 'all')}${cats.map(c => chip('cat', c, esc(c), cat === c)).join('')}</div>
     <div class="pchips">${chip('region', 'all', 'All regions', reg === 'all')}${S.regions.map(r => chip('region', r.id, `<span style="color:${r.color}">●</span> ${esc(r.name)}`, reg === r.id)).join('')}</div>`;
   const days = S.days.filter(d => blockOf(d.date) && d.state !== 'booked');
-  const list = S.places.filter(p => (cat === 'all' || p.cat === cat) && (reg === 'all' || p.region === reg) && p.cat !== 'Airport'
+  const nMinor = S.places.filter(p => minor(p) && (reg === 'all' || p.region === reg)).length;
+  if (cat === 'all' && nMinor) h += `<p class="tiny muted" style="margin:0 0 8px">${nMinor.toLocaleString('en-GB')} playgrounds aren't listed here: tap <b>🛝 Playground</b> above, pick a region, or turn them on in the map filter.</p>`;
+  const list = S.places.filter(p => (cat === 'all' ? !minor(p) : p.cat === cat) && (reg === 'all' || p.region === reg) && p.cat !== 'Airport'
     && (fit === 'all' || (suitsUs(p) && (fit !== 'rainy' || isRainy(p))))
     && (only === 'all' ? pick(p.id) !== 'skip' : only === 'unplanned' ? !plannedIn(p.id).some(x => x.active) && pick(p.id) !== 'skip' : pick(p.id) === only));
   if (!list.length) h += `<p class="empty">No places match these filters.</p>`;
@@ -1462,7 +1478,7 @@ function renderMyPlaces() {
         ${pk === 'must' ? '<span class="poistar">★ Must-see</span>' : ''}${done ? '<span class="poidone">✓ Done</span>' : ''}</div>
       <div class="poibody">
         <div class="row"><h3 class="grow" style="margin:0">${esc(p.name)}</h3>${p.confidence === 'low' ? '<span class="chip partial">unverified</span>' : ''}<span class="chip">${catInfo(p.cat).icon} ${esc(p.cat || 'Place')}</span></div>
-        <div class="tiny" style="color:${rg.color};margin:2px 0 4px">${esc(rg.name)} · ~${dur(p.visit ?? 45)}${p.id !== S.trip.home ? ` · ${drive(S.trip.home, p.id).km} km from ${esc(placeName(S.trip.home))}` : ''}</div>
+        <div class="tiny" style="color:${rg.color};margin:2px 0 4px">${esc(rg.name)} · ~${dur(p.visit ?? 45)}${minor(p) && place(p.near) ? ` · ${Math.max(0.1, Math.round(haversine(p, place(p.near)) * 10) / 10)} km from ${esc(placeName(p.near))}` : p.id !== S.trip.home ? ` · ${drive(S.trip.home, p.id).km} km from ${esc(placeName(S.trip.home))}` : ''}</div>
         ${p.caution ? `<div class="small" style="color:var(--warn);margin:2px 0 4px">⚠ ${withEur(esc(p.caution))}</div>` : ''}
         ${p.summary ? `<p class="clamp2" style="margin:0 0 4px">${esc(p.summary)}</p>` : ''}
         ${p.ages || p.stroller ? `<div class="small kidline">${p.ages ? `<b>🧒 ${esc(ageText(p))}</b>` : ''}${p.stroller ? ` · ${STROLLER[p.stroller] || ''}` : ''}${isRainy(p) ? ' · 🌧 rainy-day pick' : ''}${!fitsKids(p) ? ' · <span style="color:var(--warn)">not for all your kids</span>' : ''}</div>` : ''}
@@ -1499,7 +1515,7 @@ function renderMyPlaces() {
 /* ---------- category icons & map filter ---------- */
 // Each category has an icon; colour comes from its family so related things read together on the map.
 const CAT_GROUPS = [
-  { id: 'kids', name: 'Fun for kids', color: '#d81b60', cats: { Zoo: '🦁', Aquarium: '🐠', 'Theme park': '🎢', 'Water park': '💦', 'Science centre': '🔬', 'Park & playground': '🛝', 'Farm & animals': '🐐', 'Adventure park': '🌳', 'Train ride': '🚂' } },
+  { id: 'kids', name: 'Fun for kids', color: '#d81b60', cats: { Zoo: '🦁', Aquarium: '🐠', 'Theme park': '🎢', 'Water park': '💦', 'Science centre': '🔬', 'Park & playground': '🛝', 'Farm & animals': '🐐', 'Adventure park': '🌳', 'Train ride': '🚂', 'Indoor play': '🧸', 'Trampoline park': '🤸', 'Mini golf': '⛳', Playground: '🛝' } },
   { id: 'heritage', name: 'Castles, palaces & churches', color: '#8e24aa', cats: { Castle: '🏰', Palace: '👑', 'Monastery & church': '⛪', 'Old town': '🏘️', Monument: '🗿', Ruins: '🏛️', Historic: '🏚️' } },
   { id: 'culture', name: 'Museums, wine & food', color: '#3949ab', cats: { Museum: '🖼️', Art: '🎨', Village: '🏡', Wine: '🍷', 'Food & market': '🍽️', Experience: '🎶', Attraction: '⭐' } },
   { id: 'sea', name: 'Sea & coast', color: '#0277bd', cats: { Beach: '🏖️', Coast: '🌊', 'Boat trip': '⛵', Surf: '🏄', 'Whale watching': '🐋', Lighthouse: '🗼' } },
@@ -1511,7 +1527,7 @@ const CAT_INFO = {};
 for (const g of CAT_GROUPS) for (const [c, icon] of Object.entries(g.cats)) CAT_INFO[c] = { icon, color: g.color, group: g.id };
 const catInfo = c => CAT_INFO[c] || { icon: '📍', color: '#757575', group: 'culture' };
 // map filter state lives in UI.mf: { hide: [categories], mine: bool, must: bool }
-const mf = () => (UI.mf = UI.mf || { hide: [], mine: true, must: false });
+const mf = () => { UI.mf = UI.mf || { hide: [], mine: true, must: false }; if (!UI.mfPg) { UI.mfPg = 1; if (!UI.mf.hide.includes('Playground')) UI.mf.hide.push('Playground'); } return UI.mf; };
 const catShown = c => !mf().hide.includes(c || 'Landmark');
 const placeShown = p => mf().mine && catShown(p.cat) && (!mf().must || pick(p.id) === 'must');
 function mapFilterHTML() {
