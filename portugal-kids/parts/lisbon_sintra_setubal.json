@@ -1,0 +1,1354 @@
+{
+ "reuse": [
+  {
+   "id": "castelo_sao_jorge",
+   "ages": [
+    3,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love running along the battlements, climbing the towers and spotting the peacocks in the gardens; go at opening to beat the queue and hold small hands on the unrailed wall walks.",
+   "caution": "Some wall-walk sections have low or no railings.",
+   "priority": 3,
+   "facilities": "Toilets, café"
+  },
+  {
+   "id": "praca_do_comercio",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Kids love the huge open square for running, the pigeons and the riverside steps at Cais das Colunas; combine with a pastry stop on Rua Augusta."
+  },
+  {
+   "id": "santa_justa_lift",
+   "ages": [
+    3,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids enjoy the creaky wooden cabin ride and the lookout at the top; queues are long, so walk up through Chiado and pay only for the viewing platform instead.",
+   "visit": 30
+  },
+  {
+   "id": "tram_28",
+   "ages": [
+    3,
+    14
+   ],
+   "stroller": "no",
+   "kids": "Kids love the rattling yellow tram squeezing through narrow streets; board at the Martim Moniz terminus early in the morning to get seats, and keep buggies folded.",
+   "visit": 45,
+   "caution": "Very crowded and a pickpocket hotspot; keep children seated."
+  },
+  {
+   "id": "jeronimos_monastery",
+   "ages": [
+    6,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Kids like the soaring carved cloister and hunting for sea creatures and ropes in the stonework; book a timed ticket and pair it with custard tarts at Pastéis de Belém.",
+   "visit": 60,
+   "priority": 2,
+   "rainy": true
+  },
+  {
+   "id": "belem_tower",
+   "ages": [
+    4,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the little fortress in the river and its rhinoceros carving; the inside is narrow one-way stairs, so with small kids just enjoy it from the lawn and riverside.",
+   "visit": 45
+  },
+  {
+   "id": "padrao_dos_descobrimentos",
+   "ages": [
+    4,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Kids enjoy spotting the explorers on the monument and walking on the giant world map in the pavement; take the lift up for river views.",
+   "visit": 40
+  },
+  {
+   "id": "maat",
+   "ages": [
+    6,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Kids love running up and over the wavy riverside roof of the building; the exhibitions vary, so the outdoor part is often the highlight.",
+   "visit": 60,
+   "rainy": true
+  },
+  {
+   "id": "national_coach_museum",
+   "ages": [
+    4,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Kids are amazed by the giant gilded royal coaches and the tiny children's carriages; a quick, flat, indoor visit that works well on a rainy day.",
+   "visit": 60,
+   "rainy": true,
+   "priority": 2
+  },
+  {
+   "id": "oceanario",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Kids love the huge central tank with sharks, rays and sunfish plus the sea otters and penguins; book online and go at opening or late afternoon to avoid school groups.",
+   "priority": 3,
+   "rainy": true,
+   "facilities": "Baby-changing, café, lifts",
+   "cat": "Aquarium"
+  },
+  {
+   "id": "cristo_rei",
+   "ages": [
+    5,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids enjoy the lift ride up the giant statue and the bird's-eye view of the bridge; combine with the ferry from Cais do Sodré to Cacilhas for an extra boat ride.",
+   "visit": 60,
+   "caution": "Viewing platform is high; keep hold of little ones."
+  },
+  {
+   "id": "lx_factory",
+   "ages": [
+    3,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Kids like the street art, the giant bookshop with its flying bicycles and the colourful courtyards; go on a Sunday morning for the market.",
+   "visit": 90,
+   "priority": 1
+  },
+  {
+   "id": "miradouro_santa_luzia",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids enjoy the tiled terrace and watching trams pass below; a quick stop on the walk up to the castle.",
+   "visit": 20,
+   "priority": 1
+  },
+  {
+   "id": "gulbenkian_museum",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Kids love the garden with ducks, turtles and space to run, while older ones can do a short loop of the museum; perfect picnic stop in town.",
+   "visit": 90,
+   "priority": 2
+  },
+  {
+   "id": "pena_palace",
+   "ages": [
+    4,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the fairy-tale colours, towers and terraces of the palace; book the earliest timed slot, take the shuttle bus up, and save energy for the park below.",
+   "priority": 3,
+   "caution": "Very busy in high season; the walk up from the gate is steep."
+  },
+  {
+   "id": "quinta_da_regaleira",
+   "ages": [
+    5,
+    14
+   ],
+   "stroller": "no",
+   "kids": "Kids love descending the spiral Initiation Well and exploring the hidden tunnels and grottoes; bring a torch and a baby carrier rather than a buggy.",
+   "priority": 3
+  },
+  {
+   "id": "moorish_castle",
+   "ages": [
+    5,
+    14
+   ],
+   "stroller": "no",
+   "kids": "Kids love climbing the walls and towers like real knights; hold hands on the steep steps and go on a clear day for the views.",
+   "priority": 2,
+   "caution": "Many steep, uneven steps with low parapets."
+  },
+  {
+   "id": "monserrate",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids enjoy the giant ferns, ruined chapel and lawns to run on, and it is much calmer than Pena; the main paths are fine for a sturdy buggy.",
+   "priority": 2
+  },
+  {
+   "id": "sintra_national_palace",
+   "ages": [
+    6,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids like the giant conical chimneys and the ceiling full of painted magpies and swans; a compact, indoor visit for a rainy day.",
+   "visit": 60,
+   "rainy": true
+  },
+  {
+   "id": "cabo_da_roca",
+   "ages": [
+    3,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids enjoy standing at the westernmost point of mainland Europe and watching the waves crash far below; stay behind the walls and fences.",
+   "visit": 30,
+   "caution": "Sheer unfenced cliffs beyond the paths and strong winds."
+  },
+  {
+   "id": "azenhas_do_mar",
+   "ages": [
+    3,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the tidal ocean pool below the clifftop village at low tide; check the sea state and use the pool only in calm conditions.",
+   "visit": 45,
+   "priority": 1
+  },
+  {
+   "id": "boca_do_inferno",
+   "ages": [
+    3,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love watching waves boom into the rocky chasm; it is best on a windy day, viewed from the railed platform.",
+   "visit": 30,
+   "caution": "Keep to the railed viewing area; rocks are slippery near the edge."
+  },
+  {
+   "id": "guincho",
+   "ages": [
+    6,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the huge dunes and watching kitesurfers; good for a windy beach walk rather than swimming.",
+   "caution": "Strong waves, currents and wind; not a swimming beach for children.",
+   "priority": 1
+  },
+  {
+   "id": "capuchos_convent",
+   "ages": [
+    6,
+    14
+   ],
+   "stroller": "no",
+   "kids": "Kids are intrigued by the tiny cork-lined cells and low doorways in the forest; a short, adventurous visit.",
+   "visit": 45,
+   "priority": 1
+  },
+  {
+   "id": "cascais",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Kids love the small town beaches, the seafront promenade and the ice-cream shops; easy to reach by train from Lisbon."
+  },
+  {
+   "id": "arrabida_natural_park",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids enjoy the scenic drive and the turquoise coves below the green hills; stop at the viewpoints and plan a beach afternoon."
+  },
+  {
+   "id": "portinho_da_arrabida",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the calm, clear, sheltered water that is perfect for paddling and snorkelling; arrive early in summer as access and parking are limited.",
+   "priority": 3,
+   "caution": "Summer road access may be restricted; check the shuttle bus."
+  },
+  {
+   "id": "galapinhos",
+   "ages": [
+    4,
+    14
+   ],
+   "stroller": "no",
+   "kids": "Kids enjoy the calm turquoise water and fine sand; the path down is steep and sandy, so use a carrier and pack light.",
+   "priority": 1
+  },
+  {
+   "id": "sesimbra",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the town beach with calm water right next to the seafront; combine with grilled fish and a castle visit.",
+   "priority": 2
+  },
+  {
+   "id": "sesimbra_castle",
+   "ages": [
+    3,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids enjoy walking the walls of the hilltop castle and looking down on the beach and harbour; free entry and quick to visit.",
+   "visit": 45
+  },
+  {
+   "id": "cabo_espichel",
+   "ages": [
+    5,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids are excited by the fossil dinosaur footprints in the cliffs below and the lonely church square; stay well back from the edges.",
+   "visit": 45,
+   "caution": "Unfenced, high and crumbly cliffs; hold children's hands."
+  },
+  {
+   "id": "palmela_castle",
+   "ages": [
+    3,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids like climbing the keep and looking out over the plains and the Sado estuary; easy, quick and often free.",
+   "visit": 45
+  },
+  {
+   "id": "sado_dolphins",
+   "ages": [
+    5,
+    14
+   ],
+   "stroller": "no",
+   "kids": "Kids love spotting the resident bottlenose dolphins of the Sado; book a morning trip in calm weather and bring layers and sun protection.",
+   "priority": 3,
+   "caution": "Sightings are not guaranteed; seas can be choppy at the river mouth."
+  },
+  {
+   "id": "troia",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the long, gentle beaches on the river side and the ferry ride from Setúbal; the estuary beaches have calmer water than the ocean side.",
+   "priority": 2
+  },
+  {
+   "id": "costa_da_caparica",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the endless sand and the summer beach train; choose beaches with lifeguards and stay between the flags.",
+   "caution": "Atlantic waves and currents; swim only at lifeguarded beaches."
+  },
+  {
+   "id": "comporta",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the wide, quiet beach and spotting storks on the rice fields; bring shade as there is little on the beach.",
+   "priority": 1
+  },
+  {
+   "id": "setubal",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids enjoy the riverside promenade, the market and fried cuttlefish; it is the departure point for the Tróia ferry and dolphin trips."
+  }
+ ],
+ "places": [
+  {
+   "id": "k_lisbon_zoo",
+   "name": "Lisbon Zoo",
+   "region": "lisbon",
+   "lat": 38.7438,
+   "lon": -9.1689,
+   "visit": 240,
+   "cat": "Zoo",
+   "priority": 3,
+   "wiki": "Lisbon Zoo",
+   "hours": "10:00-18:00",
+   "summary": "A large, long-established zoo in the city with around 2,000 animals, from elephants and giraffes to big cats. It has a dolphin and sea-lion show, a cable car over the park and plenty of shade.",
+   "facts": [
+    "Adults ~€30, children 3–12 ~€21, under 3 free",
+    "Next to Jardim Zoológico metro station (blue line)",
+    "The cable car (teleférico) over the park is included and kids love it",
+    "Check the dolphin and sea-lion presentation times at the entrance"
+   ],
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Kids love the dolphin show, the cable-car ride over the enclosures and the reptile house; arrive at opening and check presentation times first.",
+   "facilities": "Baby-changing, cafés, picnic areas, playground"
+  },
+  {
+   "id": "k_pavilhao_conhecimento",
+   "name": "Pavilhão do Conhecimento (Ciência Viva)",
+   "region": "lisbon",
+   "lat": 38.7624,
+   "lon": -9.0959,
+   "visit": 150,
+   "cat": "Science centre",
+   "priority": 3,
+   "wiki": false,
+   "photoSearch": "Pavilhão do Conhecimento Lisboa",
+   "closed": [
+    1
+   ],
+   "needsDaylight": false,
+   "rainy": true,
+   "summary": "Lisbon's hands-on science centre in Parque das Nações, run by Ciência Viva. Interactive exhibitions let children experiment with physics, light and sound, with a dedicated area for the youngest.",
+   "facts": [
+    "Closed Mondays",
+    "Right next to the Oceanário: easy to combine on the same day",
+    "Weekend afternoons are busy with families; weekday mornings with school groups",
+    "Rooftop high-wire bicycle is a favourite for older kids"
+   ],
+   "ages": [
+    3,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Kids love pushing every button, the giant soap bubbles and the high-wire bicycle; pair it with the Oceanário next door for a full rainy day."
+  },
+  {
+   "id": "k_telecabine_lisboa",
+   "name": "Telecabine Lisboa (Parque das Nações cable car)",
+   "region": "lisbon",
+   "lat": 38.7615,
+   "lon": -9.0935,
+   "visit": 40,
+   "cat": "Experience",
+   "priority": 2,
+   "wiki": false,
+   "photoSearch": "Telecabine Lisboa Parque das Nações",
+   "summary": "A gondola running along the Tagus riverfront in Parque das Nações, between the Oceanário area and the Vasco da Gama tower. It gives a gentle, short ride with views of the river and the long Vasco da Gama Bridge.",
+   "facts": [
+    "Ride is about 10 minutes each way",
+    "One-way or return tickets; buy at either station",
+    "Combine with the Oceanário and the riverside gardens",
+    "Can stop in strong winds"
+   ],
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Kids love floating above the riverside in the little cabins; ride one way and walk back along the flat promenade past fountains and playgrounds."
+  },
+  {
+   "id": "k_monsanto_alvito",
+   "name": "Parque Recreativo do Alvito (Monsanto)",
+   "region": "lisbon",
+   "lat": 38.7235,
+   "lon": -9.1835,
+   "visit": 120,
+   "cat": "Park & playground",
+   "priority": 2,
+   "wiki": "Monsanto Forest Park",
+   "summary": "A shaded recreation park inside Monsanto Forest Park, Lisbon's large green lung. It has big playgrounds, picnic tables under the pines and space to cycle and run.",
+   "facts": [
+    "Free entry",
+    "Best reached by car or taxi",
+    "Popular for weekend family picnics; bring food",
+    "Summer pool in the park opens only in the hot months"
+   ],
+   "ages": [
+    0,
+    12
+   ],
+   "stroller": "yes",
+   "kids": "Kids love the big playgrounds and running under the pines; pack a picnic and come on a hot day for the shade.",
+   "facilities": "Picnic tables, toilets"
+  },
+  {
+   "id": "k_parque_eduardo_vii",
+   "name": "Eduardo VII Park & Estufa Fria",
+   "region": "lisbon",
+   "lat": 38.729,
+   "lon": -9.1545,
+   "visit": 90,
+   "cat": "Garden",
+   "priority": 2,
+   "wiki": "Eduardo VII Park",
+   "summary": "Lisbon's central hillside park with clipped hedges and views down to the river. On its western side, the Estufa Fria is a shaded greenhouse garden with ponds, fish, ferns and little paths.",
+   "facts": [
+    "The park is free; the Estufa Fria has a small fee",
+    "Marquês de Pombal and Parque metro stations are close",
+    "Playground in the park",
+    "Estufa Fria is a good shady or drizzly-day option"
+   ],
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the jungle-like greenhouse with goldfish ponds, tiny bridges and caves; then run down the long park lawns towards the river view."
+  },
+  {
+   "id": "k_jardim_estrela",
+   "name": "Jardim da Estrela",
+   "region": "lisbon",
+   "lat": 38.714,
+   "lon": -9.1595,
+   "visit": 60,
+   "cat": "Park & playground",
+   "priority": 2,
+   "wiki": false,
+   "summary": "A pretty, flat 19th-century garden opposite the Estrela Basilica, loved by local families. It has a good playground, a duck pond, an old bandstand and a kiosk café.",
+   "facts": [
+    "Free entry",
+    "Tram 28 stops at the gate",
+    "Kiosk café for coffee while kids play",
+    "Easy break between sightseeing in central Lisbon"
+   ],
+   "ages": [
+    0,
+    10
+   ],
+   "stroller": "yes",
+   "kids": "Kids love the playground, ducks and carp in the pond; a perfect hour of downtime while parents have a coffee at the kiosk.",
+   "facilities": "Café, toilets, playground",
+   "photoSearch": "Jardim da Estrela"
+  },
+  {
+   "id": "k_planetario_gulbenkian",
+   "name": "Calouste Gulbenkian Planetarium",
+   "region": "lisbon",
+   "lat": 38.6968,
+   "lon": -9.2087,
+   "visit": 60,
+   "cat": "Science centre",
+   "priority": 1,
+   "wiki": false,
+   "photoSearch": "Planetário Calouste Gulbenkian Lisboa",
+   "needsDaylight": false,
+   "rainy": true,
+   "summary": "A domed planetarium in Belém, next to the Jerónimos Monastery and the Navy Museum. It runs star shows for different ages, some aimed at young children.",
+   "facts": [
+    "Check session times and languages in advance",
+    "Sessions last about 30–45 minutes",
+    "Easy to combine with the Navy Museum next door"
+   ],
+   "ages": [
+    5,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Kids love lying back under the dome to explore the night sky; choose a children's session and book ahead."
+  },
+  {
+   "id": "k_museu_marinha",
+   "name": "Navy Museum (Museu de Marinha)",
+   "region": "lisbon",
+   "lat": 38.6974,
+   "lon": -9.207,
+   "visit": 90,
+   "cat": "Museum",
+   "priority": 2,
+   "wiki": false,
+   "photoSearch": "Museu de Marinha Lisboa",
+   "needsDaylight": false,
+   "rainy": true,
+   "summary": "Portugal's maritime museum in a wing of the Jerónimos Monastery in Belém. It is packed with model ships, navigation instruments and a hall of real royal barges and seaplanes.",
+   "facts": [
+    "In the west wing of the Jerónimos Monastery",
+    "Often far quieter than the monastery itself",
+    "The big hall of royal barges and seaplanes is the highlight",
+    "Combine with the Planetarium next door"
+   ],
+   "ages": [
+    4,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Kids love the huge golden royal barges, ship models and early seaplanes; a great rainy-day alternative in Belém."
+  },
+  {
+   "id": "k_quinta_olivais",
+   "name": "Quinta Pedagógica dos Olivais",
+   "region": "lisbon",
+   "lat": 38.7735,
+   "lon": -9.118,
+   "visit": 90,
+   "cat": "Farm & animals",
+   "priority": 1,
+   "wiki": false,
+   "photoSearch": "Quinta Pedagógica dos Olivais",
+   "summary": "A small city farm run by Lisbon's council in the Olivais district. Children can see farm animals, vegetable gardens and traditional rural crafts close to the airport and Parque das Nações.",
+   "facts": [
+    "Free entry",
+    "Small and low-key: ideal for toddlers",
+    "Workshops for children on some weekends",
+    "Close to the airport: a good stop on arrival or departure day"
+   ],
+   "ages": [
+    0,
+    8
+   ],
+   "stroller": "yes",
+   "kids": "Little ones love the donkeys, goats, rabbits and hens; go in the morning and combine with Parque das Nações."
+  },
+  {
+   "id": "k_museu_carris",
+   "name": "Carris Museum (Tram Museum)",
+   "region": "lisbon",
+   "lat": 38.7034,
+   "lon": -9.1835,
+   "visit": 75,
+   "cat": "Museum",
+   "priority": 2,
+   "wiki": false,
+   "photoSearch": "Museu da Carris Lisboa",
+   "needsDaylight": false,
+   "rainy": true,
+   "summary": "Lisbon's public-transport museum in the Santo Amaro depot in Alcântara. It displays historic trams and buses in old sheds, and a vintage tram carries visitors between the halls.",
+   "facts": [
+    "In Alcântara, on the tram 15 line to Belém",
+    "A historic tram shuttles you between the exhibition halls",
+    "Kids can climb aboard several old trams and buses"
+   ],
+   "ages": [
+    3,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love riding the old tram between the halls and climbing into vintage trams and buses; stop on the way to Belém."
+  },
+  {
+   "id": "k_aquario_vasco_da_gama",
+   "name": "Vasco da Gama Aquarium",
+   "region": "lisbon",
+   "lat": 38.695,
+   "lon": -9.24,
+   "visit": 75,
+   "cat": "Aquarium",
+   "priority": 1,
+   "wiki": "Vasco da Gama Aquarium",
+   "needsDaylight": false,
+   "rainy": true,
+   "summary": "A small, historic aquarium in Dafundo (Oeiras), founded in 1898, on the riverside road from Lisbon to Cascais. Besides live tanks it has an old-fashioned collection of preserved sea creatures.",
+   "facts": [
+    "Much smaller and cheaper than the Oceanário",
+    "Easy stop on the way to Cascais (Cruz Quebrada train station nearby)",
+    "Old-fashioned cabinets of preserved specimens fascinate older kids"
+   ],
+   "ages": [
+    2,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids enjoy the fish tanks and the cabinet-of-curiosities feel; a short, cheap visit on the way to Cascais."
+  },
+  {
+   "id": "k_jardim_botanico_tropical",
+   "name": "Tropical Botanical Garden (Belém)",
+   "region": "lisbon",
+   "lat": 38.6985,
+   "lon": -9.203,
+   "visit": 60,
+   "cat": "Garden",
+   "priority": 1,
+   "wiki": false,
+   "photoSearch": "Jardim Botânico Tropical Belém",
+   "summary": "A peaceful botanical garden behind the Jerónimos Monastery with exotic trees, ponds and roaming peacocks and ducks. A quiet green break from the busy Belém monuments.",
+   "facts": [
+    "Small entry fee",
+    "Entrance near the Jerónimos Monastery and Pastéis de Belém",
+    "Flat gravel paths and shade"
+   ],
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Kids love chasing (gently) the peacocks, geese and ducks around the ponds; a calm break between Belém sights."
+  },
+  {
+   "id": "k_parque_marechal_carmona",
+   "name": "Parque Marechal Carmona",
+   "region": "sintra",
+   "lat": 38.6925,
+   "lon": -9.421,
+   "visit": 60,
+   "cat": "Park & playground",
+   "priority": 2,
+   "wiki": false,
+   "photoSearch": "Parque Marechal Carmona Cascais",
+   "summary": "Cascais's central park next to the Citadel and museums, with shady paths, a duck pond and free-roaming peacocks and chickens. It has a good playground and a café.",
+   "facts": [
+    "Free entry",
+    "A few minutes' walk from Cascais station and the beaches",
+    "Combine with the Santa Marta Lighthouse Museum next door"
+   ],
+   "ages": [
+    0,
+    12
+   ],
+   "stroller": "yes",
+   "kids": "Kids love the peacocks, roosters and turtles in the pond and the shady playground; a perfect break after the beach.",
+   "facilities": "Café, toilets, playground"
+  },
+  {
+   "id": "k_farol_santa_marta",
+   "name": "Santa Marta Lighthouse Museum",
+   "region": "sintra",
+   "lat": 38.6915,
+   "lon": -9.4213,
+   "visit": 45,
+   "cat": "Museum",
+   "priority": 1,
+   "wiki": false,
+   "photoSearch": "Farol de Santa Marta Cascais",
+   "rainy": true,
+   "summary": "A small museum in a blue-and-white striped lighthouse at the mouth of a little cove in Cascais. It explains how lighthouses work and lets visitors climb to a viewpoint.",
+   "facts": [
+    "Small fee; short visit",
+    "Next to Parque Marechal Carmona and the marina",
+    "Shows giant lighthouse lenses and lamps"
+   ],
+   "ages": [
+    4,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the giant glittering lighthouse lenses and the striped tower; combine with the park next door."
+  },
+  {
+   "id": "k_quinta_do_pisao",
+   "name": "Quinta do Pisão (Parque de Natureza)",
+   "region": "sintra",
+   "lat": 38.74,
+   "lon": -9.431,
+   "visit": 150,
+   "cat": "Farm & animals",
+   "priority": 2,
+   "wiki": false,
+   "photoSearch": "Quinta do Pisão Cascais",
+   "summary": "A nature park and working farm in the Sintra-Cascais Natural Park near Alcabideche. Families can walk easy trails among fields with donkeys, cows and goats, and see organic vegetable gardens.",
+   "facts": [
+    "Free entry to the park trails",
+    "Guided activities and donkey walks on some weekends: check ahead",
+    "Wear trainers: trails are dirt tracks",
+    "Bring water and sun protection"
+   ],
+   "ages": [
+    2,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love meeting the donkeys and farm animals on the easy dirt tracks; go in the morning and use an all-terrain buggy."
+  },
+  {
+   "id": "k_paredao_cascais_estoril",
+   "name": "Cascais–Estoril seafront promenade (Paredão)",
+   "region": "sintra",
+   "lat": 38.701,
+   "lon": -9.405,
+   "visit": 90,
+   "cat": "Hike",
+   "priority": 2,
+   "wiki": false,
+   "photoSearch": "Paredão Estoril Cascais",
+   "summary": "A flat seafront promenade of about 3 km linking Cascais and São João do Estoril along small sandy beaches. It is the easiest family walk on the coast, with cafés and ice cream along the way.",
+   "facts": [
+    "Flat and paved all the way",
+    "Train stations at both ends for an easy return",
+    "Waves can splash over the wall in storms"
+   ],
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Kids love beach-hopping and watching the trains and waves; walk one way and take the train back."
+  },
+  {
+   "id": "k_praia_tamariz",
+   "name": "Praia do Tamariz & ocean pool",
+   "region": "sintra",
+   "lat": 38.704,
+   "lon": -9.397,
+   "visit": 150,
+   "cat": "Beach",
+   "priority": 2,
+   "wiki": false,
+   "photoSearch": "Praia do Tamariz Estoril",
+   "summary": "A sheltered town beach in Estoril right below the train station, with a seawater swimming pool built into the rocks. Calm water most days makes it a favourite for families.",
+   "facts": [
+    "Next to Estoril train station",
+    "The ocean pool (piscina oceânica) is open in summer",
+    "Lifeguards in the bathing season"
+   ],
+   "season": "Ocean pool and lifeguards in summer only.",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the calm water and the saltwater pool in the rocks; arrive early in summer to get a spot."
+  },
+  {
+   "id": "k_praia_conceicao",
+   "name": "Praia da Conceição & Praia da Duquesa (Cascais)",
+   "region": "sintra",
+   "lat": 38.6975,
+   "lon": -9.418,
+   "visit": 150,
+   "cat": "Beach",
+   "priority": 2,
+   "wiki": false,
+   "photoSearch": "Praia da Conceição Cascais",
+   "summary": "Two joined, sheltered sandy beaches in central Cascais, right by the station. Gentle water, lifeguards in summer and cafés make them easy with small children.",
+   "facts": [
+    "Walk from Cascais train station",
+    "Lifeguards in summer",
+    "Sunbeds and umbrellas for rent in season"
+   ],
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the gentle waves and digging in the sand; come early or late in summer when it is less crowded."
+  },
+  {
+   "id": "k_sintra_tram",
+   "name": "Sintra Tram (Elétrico de Sintra)",
+   "region": "sintra",
+   "lat": 38.8,
+   "lon": -9.381,
+   "visit": 90,
+   "cat": "Train ride",
+   "priority": 2,
+   "wiki": false,
+   "photoSearch": "Elétrico de Sintra",
+   "summary": "A vintage tram line running from near Sintra town through the countryside to the beach at Praia das Maçãs. The open-sided cars rattle through villages and woods.",
+   "facts": [
+    "Runs on a limited timetable, mostly Friday to Sunday: check before going",
+    "About 45 minutes each way",
+    "Combine with a beach afternoon at Praia das Maçãs"
+   ],
+   "season": "Limited timetable, more frequent in summer; may not run on some days.",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the bell-ringing vintage tram ride to the seaside; check the timetable and ride it out to the beach for lunch."
+  },
+  {
+   "id": "k_praia_macas",
+   "name": "Praia das Maçãs",
+   "region": "sintra",
+   "lat": 38.8215,
+   "lon": -9.4685,
+   "visit": 150,
+   "cat": "Beach",
+   "priority": 1,
+   "wiki": false,
+   "photoSearch": "Praia das Maçãs Sintra",
+   "summary": "A lively family beach on the Sintra coast at the end of the vintage tram line. A small river meets the sea here, with a seafront of cafés and a summer ocean pool nearby.",
+   "facts": [
+    "End of the Sintra tram line",
+    "Lifeguards in summer",
+    "Atlantic beach: waves can be big"
+   ],
+   "caution": "Atlantic waves; swim only when lifeguards are on duty.",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the tram ride there and splashing where the stream meets the beach; stay in the shallows and near lifeguards."
+  },
+  {
+   "id": "k_parque_liberdade",
+   "name": "Parque da Liberdade (Sintra)",
+   "region": "sintra",
+   "lat": 38.798,
+   "lon": -9.388,
+   "visit": 60,
+   "cat": "Park & playground",
+   "priority": 1,
+   "wiki": false,
+   "photoSearch": "Parque da Liberdade Sintra",
+   "summary": "A wooded park on the hillside between Sintra's station and the historic centre. Shady trails, a playground and picnic spots offer a free break from the crowded palaces.",
+   "facts": [
+    "Free entry",
+    "On the walk from Sintra station to the centre",
+    "Some sloping paths and steps"
+   ],
+   "ages": [
+    0,
+    12
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the playground and wooded paths; a free, shady place to let off steam between palace visits."
+  },
+  {
+   "id": "k_praia_figueirinha",
+   "name": "Praia da Figueirinha",
+   "region": "setubal",
+   "lat": 38.4845,
+   "lon": -8.9525,
+   "visit": 180,
+   "cat": "Beach",
+   "priority": 3,
+   "wiki": false,
+   "photoSearch": "Praia da Figueirinha Arrábida",
+   "summary": "The closest Arrábida beach to Setúbal, with a long sandbank and very shallow, calm water at low tide. It is one of the easiest beaches in the area for young children.",
+   "facts": [
+    "About 15 minutes' drive from Setúbal",
+    "Summer car access and parking are limited; a shuttle bus may run",
+    "Very shallow at low tide: great for toddlers",
+    "Lifeguards and a beach café in summer"
+   ],
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the warm, shallow lagoon-like water at low tide; check the tide times and go early in summer."
+  },
+  {
+   "id": "k_albarquel",
+   "name": "Parque Urbano de Albarquel",
+   "region": "setubal",
+   "lat": 38.513,
+   "lon": -8.9245,
+   "visit": 120,
+   "cat": "Park & playground",
+   "priority": 2,
+   "wiki": false,
+   "photoSearch": "Parque Urbano de Albarquel Setúbal",
+   "summary": "A riverside park on the western edge of Setúbal with playgrounds, lawns, cycling paths and a small sandy beach on the Sado estuary. Its calm water and shade make it an easy family stop.",
+   "facts": [
+    "Free entry and parking",
+    "Flat paved paths along the river",
+    "Estuary beach with calm water"
+   ],
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Kids love the playgrounds and the calm little river beach; bring a picnic and watch the boats going to Tróia."
+  },
+  {
+   "id": "k_lagoa_albufeira",
+   "name": "Lagoa de Albufeira",
+   "region": "setubal",
+   "lat": 38.51,
+   "lon": -9.173,
+   "visit": 180,
+   "cat": "Beach",
+   "priority": 2,
+   "wiki": false,
+   "summary": "A large coastal lagoon south of Costa da Caparica, separated from the ocean by a sandbar. Its warm, calm water is ideal for small children and for trying paddle boards or kayaks.",
+   "facts": [
+    "Calm, warm water on the lagoon side",
+    "Ocean side has big waves: keep kids on the lagoon",
+    "Water-sports schools rent kayaks and SUPs in summer"
+   ],
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love paddling in the warm, still lagoon; older ones can try a kayak or paddle board.",
+   "photoSearch": "Lagoa de Albufeira"
+  },
+  {
+   "id": "k_ferry_troia",
+   "name": "Setúbal–Tróia ferry",
+   "region": "setubal",
+   "lat": 38.5225,
+   "lon": -8.8925,
+   "visit": 60,
+   "cat": "Boat trip",
+   "priority": 2,
+   "wiki": false,
+   "photoSearch": "Ferry Setúbal Tróia",
+   "summary": "The short ferry across the Sado estuary from Setúbal to the Tróia peninsula. It is a cheap, easy boat trip with a good chance of spotting dolphins.",
+   "facts": [
+    "Crossing takes about 20–25 minutes",
+    "Passenger catamaran and car ferry depart from separate terminals",
+    "Look out for the Sado dolphins on the way"
+   ],
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Kids love the ferry ride and looking out for dolphins from the deck; take the passenger catamaran and walk to the Tróia beaches."
+  },
+  {
+   "id": "k_forte_sao_filipe",
+   "name": "Fort of São Filipe (Setúbal)",
+   "region": "setubal",
+   "lat": 38.5175,
+   "lon": -8.911,
+   "visit": 45,
+   "cat": "Castle",
+   "priority": 1,
+   "wiki": false,
+   "photoSearch": "Forte de São Filipe Setúbal",
+   "summary": "A 16th-century star-shaped fortress on a hill above Setúbal. Its walls give sweeping views over the city, the Sado estuary and Tróia.",
+   "facts": [
+    "Short drive or steep walk up from the centre",
+    "Great sunset views over the estuary",
+    "Tiled chapel inside the walls"
+   ],
+   "caution": "High walls; hold small children's hands near the edges.",
+   "ages": [
+    4,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids enjoy exploring the walls of a real fort and spotting ships and dolphins below; go late afternoon for the views."
+  },
+  {
+   "id": "k_transpraia",
+   "name": "Transpraia beach train (Costa da Caparica)",
+   "region": "setubal",
+   "lat": 38.644,
+   "lon": -9.237,
+   "visit": 90,
+   "cat": "Train ride",
+   "priority": 2,
+   "wiki": false,
+   "photoSearch": "Transpraia Costa da Caparica",
+   "summary": "A narrow-gauge summer beach train that runs along the dunes of Costa da Caparica to Fonte da Telha, stopping at beach after beach. It is a fun way for families to reach quieter beaches.",
+   "facts": [
+    "Runs in the summer season only",
+    "About 9 km of track with many beach stops",
+    "Pay on board; ride as far as you like"
+   ],
+   "season": "Runs only in summer (roughly June–September).",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the open little train through the dunes; ride it to a quieter beach further south."
+  },
+  {
+   "id": "k_parque_da_paz",
+   "name": "Parque da Paz (Almada)",
+   "region": "setubal",
+   "lat": 38.663,
+   "lon": -9.159,
+   "visit": 90,
+   "cat": "Park & playground",
+   "priority": 1,
+   "wiki": false,
+   "photoSearch": "Parque da Paz Almada",
+   "summary": "Almada's big urban park across the river from Lisbon, with a lake, lawns, trails and playgrounds. A local favourite for picnics and cycling.",
+   "facts": [
+    "Free entry",
+    "Lake with ducks and wide paths",
+    "Easy stop on the way to Costa da Caparica"
+   ],
+   "ages": [
+    0,
+    12
+   ],
+   "stroller": "yes",
+   "kids": "Kids love the ducks on the lake and the playgrounds; a good picnic stop on the way to the beaches."
+  },
+  {
+   "id": "k_praia_california",
+   "name": "Praia da Califórnia (Sesimbra)",
+   "region": "setubal",
+   "lat": 38.4425,
+   "lon": -9.106,
+   "visit": 150,
+   "cat": "Beach",
+   "priority": 2,
+   "wiki": false,
+   "photoSearch": "Praia da Califórnia Sesimbra",
+   "summary": "Sesimbra's main town beach, sheltered by the cliffs of Arrábida so the water is usually calm and clear. Cafés, ice cream and the seafront are right next to the sand.",
+   "facts": [
+    "Right in Sesimbra town",
+    "Usually calm water thanks to the sheltered bay",
+    "Parking is tight in summer: arrive early"
+   ],
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the calm, clear water right by town; combine with the castle and grilled fish for lunch."
+  }
+ ],
+ "drives": [
+  [
+   "k_lisbon_zoo",
+   "lisbon",
+   6,
+   15
+  ],
+  [
+   "k_pavilhao_conhecimento",
+   "oceanario",
+   0.3,
+   2
+  ],
+  [
+   "k_pavilhao_conhecimento",
+   "lisbon",
+   9,
+   15
+  ],
+  [
+   "k_telecabine_lisboa",
+   "oceanario",
+   0.3,
+   2
+  ],
+  [
+   "k_monsanto_alvito",
+   "lisbon",
+   7,
+   15
+  ],
+  [
+   "k_parque_eduardo_vii",
+   "lisbon",
+   3,
+   10
+  ],
+  [
+   "k_jardim_estrela",
+   "lisbon",
+   3,
+   10
+  ],
+  [
+   "k_planetario_gulbenkian",
+   "jeronimos_monastery",
+   0.3,
+   2
+  ],
+  [
+   "k_planetario_gulbenkian",
+   "lisbon",
+   8,
+   15
+  ],
+  [
+   "k_museu_marinha",
+   "jeronimos_monastery",
+   0.2,
+   2
+  ],
+  [
+   "k_quinta_olivais",
+   "lis",
+   4,
+   8
+  ],
+  [
+   "k_quinta_olivais",
+   "lisbon",
+   9,
+   15
+  ],
+  [
+   "k_museu_carris",
+   "lisbon",
+   5,
+   12
+  ],
+  [
+   "k_museu_carris",
+   "lx_factory",
+   1,
+   4
+  ],
+  [
+   "k_aquario_vasco_da_gama",
+   "lisbon",
+   13,
+   18
+  ],
+  [
+   "k_aquario_vasco_da_gama",
+   "cascais",
+   19,
+   22
+  ],
+  [
+   "k_jardim_botanico_tropical",
+   "jeronimos_monastery",
+   0.3,
+   2
+  ],
+  [
+   "k_parque_marechal_carmona",
+   "cascais",
+   1,
+   4
+  ],
+  [
+   "k_farol_santa_marta",
+   "cascais",
+   1,
+   4
+  ],
+  [
+   "k_quinta_do_pisao",
+   "cascais",
+   8,
+   13
+  ],
+  [
+   "k_quinta_do_pisao",
+   "sintra",
+   12,
+   18
+  ],
+  [
+   "k_paredao_cascais_estoril",
+   "cascais",
+   2,
+   6
+  ],
+  [
+   "k_praia_tamariz",
+   "estoril",
+   1,
+   3
+  ],
+  [
+   "k_praia_conceicao",
+   "cascais",
+   1,
+   3
+  ],
+  [
+   "k_sintra_tram",
+   "sintra",
+   1,
+   4
+  ],
+  [
+   "k_praia_macas",
+   "sintra",
+   12,
+   20
+  ],
+  [
+   "k_praia_macas",
+   "azenhas_do_mar",
+   2,
+   5
+  ],
+  [
+   "k_parque_liberdade",
+   "sintra",
+   1,
+   3
+  ],
+  [
+   "k_praia_figueirinha",
+   "setubal",
+   9,
+   15
+  ],
+  [
+   "k_albarquel",
+   "setubal",
+   3,
+   7
+  ],
+  [
+   "k_lagoa_albufeira",
+   "sesimbra",
+   20,
+   25
+  ],
+  [
+   "k_lagoa_albufeira",
+   "costa_da_caparica",
+   20,
+   25
+  ],
+  [
+   "k_ferry_troia",
+   "setubal",
+   1,
+   4
+  ],
+  [
+   "k_forte_sao_filipe",
+   "setubal",
+   2,
+   6
+  ],
+  [
+   "k_transpraia",
+   "costa_da_caparica",
+   1,
+   3
+  ],
+  [
+   "k_parque_da_paz",
+   "cristo_rei",
+   4,
+   10
+  ],
+  [
+   "k_parque_da_paz",
+   "costa_da_caparica",
+   10,
+   15
+  ],
+  [
+   "k_praia_california",
+   "sesimbra",
+   0.5,
+   2
+  ]
+ ]
+}

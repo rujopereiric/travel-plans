@@ -2,7 +2,7 @@
   "id": "/travel-plans/trips/",
   "name": "Travel Plans",
   "short_name": "Trips",
-  "description": "All my trip planners in one app: Iceland, Egypt and more.",
+  "description": "All my trip planners in one app: Iceland, Egypt, Portugal and Portugal with kids.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
@@ -67,6 +67,18 @@
       "icons": [
         {
           "src": "shortcut-portugal.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Portugal with kids",
+      "short_name": "PT Kids",
+      "url": "./portugal-kids/",
+      "icons": [
+        {
+          "src": "shortcut-portugal-kids.png",
           "sizes": "192x192",
           "type": "image/png"
         }

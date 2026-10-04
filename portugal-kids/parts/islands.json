@@ -1,0 +1,1005 @@
+{
+ "reuse": [
+  {
+   "id": "funchal_old_town",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love spotting the painted doors of Rua de Santa Maria and watching the boats by the fort; combine it with the cable car up to Monte, which starts right here.",
+   "facilities": "Cafés, public toilets near the cable car station"
+  },
+  {
+   "id": "mercado_dos_lavradores",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the piles of strange tropical fruit and the huge black scabbard fish downstairs; go on a weekday morning and ask stall-holders for a taste before buying, as samples get pricey.",
+   "visit": 45,
+   "rainy": true
+  },
+  {
+   "id": "monte",
+   "ages": [
+    4,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the cable-car ride over the rooftops and the wicker toboggan slide down the steep street; little ones sit on a parent's lap, and go early to beat cruise-ship queues.",
+   "priority": 3
+  },
+  {
+   "id": "monte_palace_garden",
+   "ages": [
+    3,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the giant koi carp, the swans and the little bridges and waterfalls; it is very steep with many steps, so use a carrier for toddlers and save legs for the way back up.",
+   "priority": 2
+  },
+  {
+   "id": "madeira_botanical_garden",
+   "ages": [
+    2,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the parrots and macaws in the bird park (Loiro Parque) and the cactus beds; bring snacks and a hat, as the terraces are sunny and stepped.",
+   "priority": 2
+  },
+  {
+   "id": "funchal_whale_watching",
+   "ages": [
+    4,
+    14
+   ],
+   "stroller": "no",
+   "kids": "Kids love seeing dolphins leap beside the boat, which happens on most trips; choose a bigger catamaran for small children and sit at the back to avoid seasickness.",
+   "priority": 3,
+   "caution": "Small fast RIB boats are bumpy and often have a minimum age of about 6–8; take a catamaran with younger kids."
+  },
+  {
+   "id": "cabo_girao",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Kids love standing on the glass floor 580 m above the sea; it is a short flat walk from the car park, so it works even with a buggy.",
+   "visit": 30,
+   "priority": 2
+  },
+  {
+   "id": "camara_de_lobos",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the brightly painted fishing boats pulled up on the pebbles and the harbour cats; walk the seafront promenade and have an ice cream by the bay.",
+   "visit": 60
+  },
+  {
+   "id": "pico_do_arieiro",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love being above the clouds and spotting the radar dome; stay on the short paved path near the summit café and bring warm layers, as it can be near freezing at dawn.",
+   "visit": 45,
+   "caution": "Do not let kids start down the PR1 ridge trail, which has sheer drops and tunnels."
+  },
+  {
+   "id": "achada_do_teixeira",
+   "ages": [
+    8,
+    14
+   ],
+   "stroller": "no",
+   "kids": "Kids love reaching Madeira's highest peak on the easiest route (about 1h15 each way on a paved path with steps); go in the morning for clear views and take water and layers.",
+   "caution": "Steady climb with steep drops beside parts of the path; hold younger children's hands."
+  },
+  {
+   "id": "santana",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love peeking into the little triangular thatched houses; it is a quick stop, best combined with the Madeira Theme Park on the edge of town.",
+   "visit": 45
+  },
+  {
+   "id": "porto_moniz_pools",
+   "ages": [
+    3,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love swimming in the volcanic rock pools while waves crash over the outer wall; the complex has lifeguards in season and a shallow children's pool, so it is the safest sea swim in Madeira.",
+   "priority": 3,
+   "season": "Best May–October; the pools stay open year-round but can close when the sea is very rough.",
+   "facilities": "Changing rooms, lockers, café, lifeguards in season"
+  },
+  {
+   "id": "seixal_beach",
+   "ages": [
+    2,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the black volcanic sand and the waterfall-streaked green cliffs behind; swim only on calm days and stay near the shore.",
+   "visit": 90,
+   "caution": "Waves can be strong and the beach shelves quickly; keep little ones at the water's edge."
+  },
+  {
+   "id": "fanal_forest",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the twisted ancient laurel trees and the cows wandering through the mist, like a fairy-tale forest; wander the open meadows rather than a set trail and bring jackets.",
+   "visit": 75
+  },
+  {
+   "id": "porto_santo",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the 9 km of soft golden sand and the shallow, warm, calm water, the best family beach in the archipelago; take the ferry from Funchal (about 2.5 h) or a short flight, and bring sun shade.",
+   "priority": 3
+  },
+  {
+   "id": "ponta_delgada_whale_watching",
+   "ages": [
+    5,
+    14
+   ],
+   "stroller": "no",
+   "kids": "Kids love seeing dolphins (almost always) and often whales; choose a catamaran-type boat with younger children and take seasickness tablets beforehand.",
+   "priority": 3,
+   "caution": "Many companies set a minimum age around 5–6 for RIB zodiac trips."
+  },
+  {
+   "id": "sete_cidades",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the twin lakes, one blue and one green, and the legend about them; drive down to the village to walk the flat lakeside and the bridge between the lakes.",
+   "priority": 3
+  },
+  {
+   "id": "ferraria",
+   "ages": [
+    8,
+    14
+   ],
+   "stroller": "no",
+   "kids": "Kids love bathing in warm sea water heated by a volcanic spring; go at low tide when the water is warmest and hold the ropes.",
+   "visit": 60,
+   "caution": "Waves can surge into the pool; only go on calm days and keep younger kids out.",
+   "season": "Best in calm summer weather."
+  },
+  {
+   "id": "caldeira_velha",
+   "ages": [
+    4,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the warm waterfall pool in a jungle of giant ferns; bring old dark swimwear (the iron-rich water stains) and book a time slot in summer.",
+   "priority": 3,
+   "facilities": "Changing rooms, toilets, interpretation centre"
+  },
+  {
+   "id": "gorreana_tea",
+   "ages": [
+    3,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the rows of tea bushes and watching the old machines roll and dry leaves; tasting is free, so try it with a short walk among the bushes.",
+   "visit": 60
+  },
+  {
+   "id": "furnas",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the bubbling, steaming hot springs right in the village streets and the smell of sulphur; keep a hand on toddlers near the boiling pools.",
+   "caution": "Some fumaroles are boiling; stay behind the railings."
+  },
+  {
+   "id": "furnas_lake",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Kids love watching cozido stew pots being pulled out of the hot ground around midday; the flat lakeside path is good for buggies and scooters.",
+   "priority": 3
+  },
+  {
+   "id": "terra_nostra",
+   "ages": [
+    2,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love swimming in the big warm orange thermal pool and exploring paths among giant ferns; bring dark swimwear and a towel, as the iron water stains.",
+   "priority": 3,
+   "facilities": "Changing rooms, showers, café"
+  },
+  {
+   "id": "poca_da_dona_beija",
+   "ages": [
+    2,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the warm small pools lit up in the evening; book a time slot in busy periods and bring dark swimwear.",
+   "visit": 60,
+   "facilities": "Changing rooms, lockers, café"
+  },
+  {
+   "id": "salto_do_prego",
+   "ages": [
+    7,
+    14
+   ],
+   "stroller": "no",
+   "kids": "Kids love the tall waterfall and the abandoned stone village of Sanguinho on the way; it is about 2–3 hours return on a muddy track, so wear proper shoes."
+  },
+  {
+   "id": "angra_do_heroismo",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the colourful streets and running around the terraced Duque da Terceira garden; climb to the Alto da Memória obelisk for the view."
+  },
+  {
+   "id": "monte_brasil",
+   "ages": [
+    5,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the cannons in the fort and the picnic and playground area with deer enclosure near the top; drive up to the picnic park and take the short walk to the viewpoints.",
+   "visit": 120
+  },
+  {
+   "id": "algar_do_carvao",
+   "ages": [
+    5,
+    14
+   ],
+   "stroller": "no",
+   "kids": "Kids love climbing into a real volcano chimney to the green lake at the bottom; it is damp with many steps, so bring a jacket and good shoes.",
+   "priority": 3,
+   "rainy": true
+  },
+  {
+   "id": "biscoitos",
+   "ages": [
+    4,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love swimming in the black lava rock pools with ladders and walkways; go on a calm summer day and keep younger children in the inner pools.",
+   "season": "Best June–September."
+  },
+  {
+   "id": "capelinhos",
+   "ages": [
+    5,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the moon-like landscape of the 1957 eruption and the underground visitor centre with its film; the centre is good on rainy days.",
+   "priority": 3
+  }
+ ],
+ "places": [
+  {
+   "id": "k_madeira_aquarium",
+   "name": "Madeira Aquarium (Porto Moniz)",
+   "region": "madeira",
+   "lat": 32.868,
+   "lon": -17.1693,
+   "visit": 75,
+   "cat": "Aquarium",
+   "priority": 2,
+   "needsDaylight": false,
+   "rainy": true,
+   "wiki": false,
+   "photoSearch": "Aquário da Madeira Porto Moniz",
+   "summary": "A small aquarium inside the old Fort of São João Baptista in Porto Moniz, showing fish, rays and moray eels from Madeira's own coast. It is a good rainy-day partner to the natural pools next door.",
+   "facts": [
+    "Adults ~€8, children ~€5 (approx)",
+    "Allow about an hour; combine with the Porto Moniz natural pools",
+    "Parking along the seafront"
+   ],
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the big tank of local fish, rays and moray eels in an old fort; pair it with a swim in the natural pools next door."
+  },
+  {
+   "id": "k_sao_vicente_caves",
+   "name": "São Vicente Caves & Volcanism Centre",
+   "region": "madeira",
+   "lat": 32.795,
+   "lon": -17.044,
+   "visit": 90,
+   "cat": "Cave",
+   "priority": 3,
+   "needsDaylight": false,
+   "rainy": true,
+   "wiki": false,
+   "photoSearch": "Grutas de São Vicente Madeira",
+   "summary": "Guided walks through lava tubes formed by an eruption about 890,000 years ago, followed by a volcanism centre with films and a simulated eruption. It is one of the best indoor options in Madeira.",
+   "facts": [
+    "Combined caves and volcanism centre ticket: adults ~€10, children ~€7 (approx)",
+    "Guided tours run every 30 minutes or so and take about 30 minutes",
+    "Path is level and lit, but there are a few steps",
+    "Free parking"
+   ],
+   "ages": [
+    3,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love walking through real lava tunnels and the simulated volcano eruption afterwards; bring a light jacket, as it is cool and damp inside."
+  },
+  {
+   "id": "k_santa_catarina_park",
+   "name": "Santa Catarina Park",
+   "region": "madeira",
+   "lat": 32.646,
+   "lon": -16.9145,
+   "visit": 60,
+   "cat": "Park & playground",
+   "priority": 2,
+   "wiki": false,
+   "photoSearch": "Parque de Santa Catarina Funchal",
+   "summary": "A big hillside park in central Funchal with a lake, ducks and swans, lawns and views over the harbour. It has a children's playground and is an easy break between sights.",
+   "facts": [
+    "Free",
+    "Next to the marina and the cruise terminal, 10 minutes' walk from the old town",
+    "Shaded benches and a café kiosk"
+   ],
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Kids love the playground, the lake with swans and ducks, and watching cruise ships in the harbour below; good for letting little ones run around after the old town."
+  },
+  {
+   "id": "k_balcoes_levada",
+   "name": "Levada dos Balcões (Ribeiro Frio)",
+   "region": "madeira",
+   "lat": 32.735,
+   "lon": -16.886,
+   "visit": 90,
+   "cat": "Hike",
+   "priority": 3,
+   "wiki": false,
+   "photoSearch": "Balcões Ribeiro Frio Madeira",
+   "summary": "The easiest levada walk in Madeira: about 1.5 km each way along a nearly flat water channel through laurel forest to a balcony viewpoint over the central peaks. At the start, Ribeiro Frio has a small trout farm.",
+   "facts": [
+    "Free; about 3 km return, 1–1.5 hours with kids",
+    "Paid parking at Ribeiro Frio on the ER103, often full by late morning",
+    "Chaffinches come to eat from your hand at the viewpoint",
+    "See the trout tanks at the start"
+   ],
+   "ages": [
+    3,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the tame chaffinches at the viewpoint and the trout tanks at the start; the path is wide and almost flat, so even small walkers manage it."
+  },
+  {
+   "id": "k_praia_formosa",
+   "name": "Praia Formosa",
+   "region": "madeira",
+   "lat": 32.64,
+   "lon": -16.947,
+   "visit": 120,
+   "cat": "Beach",
+   "priority": 2,
+   "wiki": false,
+   "photoSearch": "Praia Formosa Funchal",
+   "summary": "Funchal's biggest public beach, a long stretch of dark sand and pebbles with lifeguards in summer. A flat seaside promenade leads from here to Câmara de Lobos.",
+   "facts": [
+    "Free; parking and bus from central Funchal",
+    "Lifeguards in season, beach cafés and showers",
+    "Water shoes help on the pebbles"
+   ],
+   "ages": [
+    2,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love throwing pebbles and paddling, and the flat promenade is great for scooters; wear water shoes and swim only on calm days.",
+   "caution": "Open Atlantic beach with a quick drop-off; watch children closely in the waves.",
+   "facilities": "Toilets, showers, cafés, lifeguards in season"
+  },
+  {
+   "id": "k_calheta_beach",
+   "name": "Calheta Beach",
+   "region": "madeira",
+   "lat": 32.719,
+   "lon": -17.177,
+   "visit": 150,
+   "cat": "Beach",
+   "priority": 3,
+   "wiki": false,
+   "photoSearch": "Praia da Calheta Madeira",
+   "summary": "A man-made golden-sand beach protected by breakwaters, so the water is calm and shallow. With the marina and cafés behind it, it is one of the best spots for young children on the main island.",
+   "facts": [
+    "Free; parking by the marina",
+    "Sheltered, calm water inside the breakwaters",
+    "Cafés, toilets and showers"
+   ],
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love building sandcastles with golden sand and paddling in the calm water behind the breakwaters; arrive early in summer for space.",
+   "facilities": "Toilets, showers, cafés"
+  },
+  {
+   "id": "k_machico_beach",
+   "name": "Machico Beach",
+   "region": "madeira",
+   "lat": 32.717,
+   "lon": -16.764,
+   "visit": 120,
+   "cat": "Beach",
+   "priority": 2,
+   "wiki": false,
+   "photoSearch": "Praia de Machico Madeira",
+   "summary": "A sheltered golden-sand beach in the bay of Machico, near the airport. Calm water and a seafront promenade with cafés make it an easy family stop on the east side.",
+   "facts": [
+    "Free; parking in town",
+    "Sheltered bay, usually calm",
+    "Only about 10 minutes from the airport"
+   ],
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the soft golden sand and calm water; a good first or last swim near the airport.",
+   "facilities": "Toilets, showers, cafés"
+  },
+  {
+   "id": "k_cr7_museum",
+   "name": "CR7 Museum",
+   "region": "madeira",
+   "lat": 32.646,
+   "lon": -16.911,
+   "visit": 45,
+   "cat": "Museum",
+   "priority": 1,
+   "needsDaylight": false,
+   "rainy": true,
+   "wiki": false,
+   "photoSearch": "Museu CR7 Funchal",
+   "summary": "A small museum on the Funchal seafront showing Cristiano Ronaldo's trophies, boots and shirts. Football-mad kids will love it; others may be done in 20 minutes.",
+   "facts": [
+    "Adults ~€5, children cheaper (approx)",
+    "Small; 30–45 minutes is enough",
+    "Take a photo with the Ronaldo statue outside"
+   ],
+   "ages": [
+    6,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Football fans love the hundreds of trophies and the photo with the Ronaldo statue outside; quick and good on a rainy hour."
+  },
+  {
+   "id": "k_lido_pools",
+   "name": "Lido pools (Funchal)",
+   "region": "madeira",
+   "lat": 32.637,
+   "lon": -16.933,
+   "visit": 180,
+   "cat": "Water park",
+   "priority": 2,
+   "wiki": false,
+   "photoSearch": "Complexo Balnear do Lido Funchal",
+   "summary": "A seaside swimming complex in Funchal's hotel zone with saltwater pools, a children's pool, sunbeds and sea access by ladders. It is an easy, safe swim day in the city.",
+   "facts": [
+    "Entry a few euros per person (approx), sunbeds extra",
+    "Children's pool and lifeguards",
+    "Café and changing rooms"
+   ],
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Kids love the shallow children's pool and the big seaside pool; go in the morning to get sunbeds in summer.",
+   "season": "Open roughly May to October.",
+   "facilities": "Changing rooms, café, lifeguards"
+  },
+  {
+   "id": "k_expolab",
+   "name": "Expolab Ciência Viva (Lagoa)",
+   "region": "azores",
+   "lat": 37.745,
+   "lon": -25.577,
+   "visit": 120,
+   "cat": "Science centre",
+   "priority": 2,
+   "needsDaylight": false,
+   "rainy": true,
+   "wiki": false,
+   "photoSearch": "Expolab Lagoa Azores",
+   "summary": "The Ciência Viva hands-on science centre on São Miguel, in Lagoa a short drive from Ponta Delgada. Interactive exhibits on physics, volcanoes and the sea make it the island's best rainy-day option.",
+   "facts": [
+    "Adults ~€5, children cheaper (approx)",
+    "Hands-on exhibits, workshops in school holidays",
+    "Free parking"
+   ],
+   "ages": [
+    4,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Kids love pressing every button on the hands-on experiments; perfect when it rains, which it often does in the Azores."
+  },
+  {
+   "id": "k_gruta_do_carvao",
+   "name": "Gruta do Carvão",
+   "region": "azores",
+   "lat": 37.747,
+   "lon": -25.682,
+   "visit": 60,
+   "cat": "Cave",
+   "priority": 2,
+   "needsDaylight": false,
+   "rainy": true,
+   "wiki": false,
+   "photoSearch": "Gruta do Carvão Ponta Delgada",
+   "summary": "The longest lava tube on São Miguel, right in Ponta Delgada, with guided tours through part of it. It shows lava stalactites and layered walls from old eruptions.",
+   "facts": [
+    "Guided tours only; book ahead in summer",
+    "Adults ~€6–8, children cheaper (approx)",
+    "Wear closed shoes; floor is uneven"
+   ],
+   "ages": [
+    5,
+    14
+   ],
+   "stroller": "no",
+   "kids": "Kids love the dark lava tunnel and the lava 'stalactites' lit up by the guide; wear good shoes and bring a jacket."
+  },
+  {
+   "id": "k_vila_franca_islet",
+   "name": "Vila Franca do Campo Islet",
+   "region": "azores",
+   "lat": 37.706,
+   "lon": -25.44,
+   "visit": 180,
+   "cat": "Boat trip",
+   "priority": 3,
+   "wiki": false,
+   "photoSearch": "Ilhéu de Vila Franca do Campo",
+   "summary": "A sunken volcanic crater just off the coast, with a round natural lagoon inside, reached by a short boat from Vila Franca do Campo marina. The calm, clear water inside the ring is great for swimming and snorkelling.",
+   "facts": [
+    "Boat about 15 minutes; return ticket ~€10 adults, less for children (approx)",
+    "Visitor numbers are limited in summer: buy tickets early in the day",
+    "No shade or shops on the islet: bring water, food and sun shade"
+   ],
+   "ages": [
+    3,
+    14
+   ],
+   "stroller": "no",
+   "kids": "Kids love the short boat ride and swimming in the calm lagoon inside a volcano crater; bring snorkels, shade and snacks, as there is nothing on the islet.",
+   "season": "Boats run in summer only, roughly June to September."
+  },
+  {
+   "id": "k_jardim_antonio_borges",
+   "name": "António Borges Garden",
+   "region": "azores",
+   "lat": 37.743,
+   "lon": -25.671,
+   "visit": 60,
+   "cat": "Garden",
+   "priority": 2,
+   "wiki": false,
+   "photoSearch": "Jardim António Borges Ponta Delgada",
+   "summary": "A 19th-century romantic garden in Ponta Delgada with huge trees, ponds, a fake grotto and little tunnels and bridges. Free and central, it is a fun hour of exploring.",
+   "facts": [
+    "Free",
+    "Central Ponta Delgada, walking distance from the old town",
+    "Some steps around the grottoes"
+   ],
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the secret tunnels, grottoes and little bridges among giant trees; a free, easy hour in town."
+  },
+  {
+   "id": "k_pinhal_da_paz",
+   "name": "Pinhal da Paz forest park",
+   "region": "azores",
+   "lat": 37.784,
+   "lon": -25.645,
+   "visit": 120,
+   "cat": "Park & playground",
+   "priority": 2,
+   "wiki": false,
+   "photoSearch": "Pinhal da Paz São Miguel",
+   "summary": "A large forest park in the hills above Ponta Delgada with walking paths, gardens, picnic tables with grills and children's play areas. Locals come here for weekend picnics.",
+   "facts": [
+    "Free",
+    "Picnic tables and barbecue spots",
+    "Toilets and play areas",
+    "Bring a jacket; it is cooler than the coast"
+   ],
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the playgrounds and forest paths among camellias and cedars; bring a picnic and use the grills like the local families."
+  },
+  {
+   "id": "k_ribeira_dos_caldeiroes",
+   "name": "Ribeira dos Caldeirões Natural Park",
+   "region": "azores",
+   "lat": 37.821,
+   "lon": -25.209,
+   "visit": 75,
+   "cat": "Nature reserve",
+   "priority": 2,
+   "wiki": false,
+   "photoSearch": "Ribeira dos Caldeirões Nordeste",
+   "summary": "A small, lush park in the northeast of São Miguel with a big waterfall right by the road, old restored watermills and flower-lined paths. Short and easy, it is a good stop on the coast road.",
+   "facts": [
+    "Free, parking on site",
+    "Main waterfall is a few minutes' walk from the car park",
+    "Small café in season"
+   ],
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the tall waterfall right next to the path and peeking into the old watermills; it's short, so good for little legs."
+  },
+  {
+   "id": "k_arruda_pineapple",
+   "name": "Arruda Pineapple Plantation",
+   "region": "azores",
+   "lat": 37.752,
+   "lon": -25.643,
+   "visit": 45,
+   "cat": "Farm & animals",
+   "priority": 1,
+   "wiki": false,
+   "photoSearch": "Plantação de ananás Arruda Fajã de Baixo",
+   "summary": "A family-run plantation on the edge of Ponta Delgada where Azorean pineapples grow in old whitewashed greenhouses. Visitors can walk through and see the plants at every stage.",
+   "facts": [
+    "Free entry",
+    "Takes 30–45 minutes",
+    "Shop with pineapple liqueur, jam and fresh fruit"
+   ],
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Kids love finding pineapples at every size in the warm greenhouses; a short, free visit, nice on a drizzly day.",
+   "rainy": true
+  },
+  {
+   "id": "k_gruta_das_torres",
+   "name": "Gruta das Torres",
+   "region": "azores",
+   "lat": 38.53,
+   "lon": -28.513,
+   "visit": 90,
+   "cat": "Cave",
+   "priority": 3,
+   "needsDaylight": false,
+   "rainy": true,
+   "wiki": false,
+   "photoSearch": "Gruta das Torres Pico",
+   "summary": "The largest lava tube in Portugal, on Pico island, explored on a guided tour with helmets and torches. The tunnel shows lava stalactites and ropy lava floors.",
+   "facts": [
+    "Guided tours only, small groups: book ahead",
+    "Adults ~€8, children cheaper (approx)",
+    "Helmets and torches provided; wear closed shoes",
+    "Minimum age applies (around 6)"
+   ],
+   "ages": [
+    6,
+    14
+   ],
+   "stroller": "no",
+   "kids": "Kids love wearing a helmet and torch to explore a real lava tube; book ahead and bring a warm layer.",
+   "caution": "Uneven, wet rocky floor; younger children are not allowed on the tour."
+  },
+  {
+   "id": "k_whalers_museum_pico",
+   "name": "Whalers' Museum (Lajes do Pico)",
+   "region": "azores",
+   "lat": 38.396,
+   "lon": -28.253,
+   "visit": 60,
+   "cat": "Museum",
+   "priority": 2,
+   "needsDaylight": false,
+   "rainy": true,
+   "wiki": false,
+   "photoSearch": "Museu dos Baleeiros Lajes do Pico",
+   "summary": "A museum in old boathouses showing the open whaling boats, harpoons and scrimshaw of Pico's whalers. Lajes is also a top place for whale-watching trips.",
+   "facts": [
+    "Adults ~€2–3, children free or reduced (approx)",
+    "Combine with a whale-watching trip from Lajes",
+    "About an hour"
+   ],
+   "ages": [
+    5,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Kids love the real whaling boats and carved whale teeth; combine it with a whale-watching trip from the same harbour."
+  },
+  {
+   "id": "k_gruta_do_natal",
+   "name": "Gruta do Natal",
+   "region": "azores",
+   "lat": 38.735,
+   "lon": -27.265,
+   "visit": 60,
+   "cat": "Cave",
+   "priority": 2,
+   "needsDaylight": false,
+   "rainy": true,
+   "wiki": false,
+   "photoSearch": "Gruta do Natal Terceira",
+   "summary": "A lava tube in the centre of Terceira that visitors walk through with a guide or on a lit path, seeing different lava formations. It sits near the Algar do Carvão and Lagoa do Negro.",
+   "facts": [
+    "Combined ticket with Algar do Carvão available (approx €10–15 adults)",
+    "Low ceilings in places; wear closed shoes",
+    "Seasonal hours, shorter in winter"
+   ],
+   "ages": [
+    5,
+    14
+   ],
+   "stroller": "no",
+   "kids": "Kids love ducking under the low lava ceilings and spotting shapes in the rock; combine it with Algar do Carvão nearby on a combined ticket."
+  },
+  {
+   "id": "k_praia_da_vitoria",
+   "name": "Praia da Vitória beach",
+   "region": "azores",
+   "lat": 38.73,
+   "lon": -27.062,
+   "visit": 150,
+   "cat": "Beach",
+   "priority": 3,
+   "wiki": false,
+   "photoSearch": "Praia da Vitória beach Terceira",
+   "summary": "A long sandy beach in a sheltered bay with a marina and seafront promenade on Terceira. It is one of the calmest and sandiest beaches in the Azores, with lifeguards in summer.",
+   "facts": [
+    "Free; parking along the bay",
+    "Lifeguards in summer; cafés on the promenade",
+    "Close to Lajes airport"
+   ],
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the rare soft sand and calm, shallow water in the sheltered bay; the promenade is good for scooters and ice cream.",
+   "facilities": "Toilets, showers, cafés"
+  },
+  {
+   "id": "k_porto_pim",
+   "name": "Porto Pim beach",
+   "region": "azores",
+   "lat": 38.524,
+   "lon": -28.627,
+   "visit": 120,
+   "cat": "Beach",
+   "priority": 2,
+   "wiki": false,
+   "photoSearch": "Porto Pim Horta Faial",
+   "summary": "A small sandy beach in a sheltered bay just south of Horta's centre, with calm water and the old whale factory museum at one end. A short path leads up Monte da Guia for views.",
+   "facts": [
+    "Free; walkable from Horta",
+    "Sheltered bay, usually calm",
+    "Old whaling factory museum at the end of the bay"
+   ],
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the calm, clear water and the soft sand in a small bay right in town; visit the whale factory museum at the end of the beach on a rainy hour.",
+   "facilities": "Toilets, showers, café in summer"
+  }
+ ],
+ "drives": [
+  [
+   "k_madeira_aquarium",
+   "porto_moniz_pools",
+   0.3,
+   2
+  ],
+  [
+   "k_sao_vicente_caves",
+   "funchal",
+   40,
+   40
+  ],
+  [
+   "k_sao_vicente_caves",
+   "porto_moniz",
+   18,
+   20
+  ],
+  [
+   "k_santa_catarina_park",
+   "funchal",
+   1,
+   5
+  ],
+  [
+   "k_balcoes_levada",
+   "funchal",
+   25,
+   35
+  ],
+  [
+   "k_praia_formosa",
+   "funchal",
+   5,
+   12
+  ],
+  [
+   "k_calheta_beach",
+   "calheta",
+   0.5,
+   2
+  ],
+  [
+   "k_machico_beach",
+   "fnc",
+   7,
+   10
+  ],
+  [
+   "k_machico_beach",
+   "funchal",
+   25,
+   25
+  ],
+  [
+   "k_cr7_museum",
+   "funchal",
+   1,
+   5
+  ],
+  [
+   "k_lido_pools",
+   "funchal",
+   3,
+   10
+  ],
+  [
+   "k_expolab",
+   "ponta_delgada",
+   8,
+   12
+  ],
+  [
+   "k_gruta_do_carvao",
+   "ponta_delgada",
+   2,
+   6
+  ],
+  [
+   "k_vila_franca_islet",
+   "ponta_delgada",
+   25,
+   25
+  ],
+  [
+   "k_jardim_antonio_borges",
+   "ponta_delgada",
+   1,
+   4
+  ],
+  [
+   "k_pinhal_da_paz",
+   "ponta_delgada",
+   8,
+   15
+  ],
+  [
+   "k_ribeira_dos_caldeiroes",
+   "ponta_delgada",
+   60,
+   55
+  ],
+  [
+   "k_ribeira_dos_caldeiroes",
+   "furnas",
+   35,
+   45
+  ],
+  [
+   "k_arruda_pineapple",
+   "ponta_delgada",
+   3,
+   8
+  ],
+  [
+   "k_gruta_das_torres",
+   "madalena",
+   5,
+   10
+  ],
+  [
+   "k_whalers_museum_pico",
+   "madalena",
+   40,
+   40
+  ],
+  [
+   "k_gruta_do_natal",
+   "algar_do_carvao",
+   5,
+   8
+  ],
+  [
+   "k_gruta_do_natal",
+   "angra_do_heroismo",
+   20,
+   25
+  ],
+  [
+   "k_praia_da_vitoria",
+   "angra_do_heroismo",
+   22,
+   25
+  ],
+  [
+   "k_porto_pim",
+   "horta",
+   1,
+   4
+  ]
+ ]
+}

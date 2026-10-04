@@ -102,6 +102,25 @@
         "first": {"label": "Arrival day"},
         "last": {"label": "Departure day"}
       }
+    },
+    {
+      "id": "portugal-kids",
+      "name": "Portugal with kids",
+      "source": "portugal-kids",
+      "flag": "🧒",
+      "color": "#7a1f4f",
+      "blurb": "Things to do in Portugal with children: zoos, aquariums, science centres, theme parks, farms and easy walks. Filter by your kids' ages and buggy access.",
+      "copyKeys": {"ptkids-planner-v1": "tp-ptkids-planner-v1", "ptkids-planner-ui": "tp-ptkids-planner-ui"},
+      "uiKey": "ptkids-planner-ui",
+      "skip": ["tools", "parts"],
+      "jsReplace": {"fetch(`../portugal/osm/${id}.json`": "fetch(`../../portugal/osm/${id}.json`"},
+      "swReplace": {"'ptkids-": "'tp-ptkids-"},
+      "generic": {
+        "name": "Portugal with kids",
+        "autoDays": 8,
+        "first": {"label": "Arrival day"},
+        "last": {"label": "Departure day"}
+      }
     }
   ]
 }

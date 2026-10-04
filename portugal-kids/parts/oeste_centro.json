@@ -1,0 +1,1074 @@
+{
+ "reuse": [
+  {
+   "id": "obidos",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the castle gate, the narrow lanes and walking a stretch of the medieval walls; keep small ones on the inner streets, and hold hands tightly if you go up on the walls.",
+   "caution": "The wall walk has no railing on the inner side and drops of several metres: not for toddlers or runners."
+  },
+  {
+   "id": "berlengas",
+   "ages": [
+    6,
+    14
+   ],
+   "stroller": "no",
+   "kids": "Older kids love the boat ride, the seabirds and the fort on its rock in the sea; take seasickness tablets beforehand and book a morning departure when the sea is calmest.",
+   "caution": "The crossing can be very rough and the island paths have steep drops; trips are cancelled in bad weather."
+  },
+  {
+   "id": "baleal",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the sandy beach on the sheltered side of the causeway and watching the surfers; pick the calmer bay side and try a family surf lesson with older children.",
+   "caution": "The ocean side can have strong waves and currents: swim only at guarded spots."
+  },
+  {
+   "id": "sao_martinho_do_porto",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the shell-shaped bay with its calm, shallow water, ideal for paddling and sandcastles; park early in summer and walk the promenade with a buggy.",
+   "priority": 3
+  },
+  {
+   "id": "praia_do_norte",
+   "ages": [
+    4,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love watching the huge waves crash below the lighthouse fort and seeing the surfboards on display inside; go when a big swell is forecast and keep to the fenced viewpoints.",
+   "caution": "Do not let children near the cliff edges or onto the beach in big swell: the waves are deadly."
+  },
+  {
+   "id": "alcobaca_monastery",
+   "ages": [
+    6,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids are amazed by the gigantic kitchen with its huge chimney and the stream running through it, and by the love story of Pedro and Inês at the tombs; keep the visit short and focus on the kitchen and dormitory.",
+   "visit": 60,
+   "rainy": true
+  },
+  {
+   "id": "batalha_monastery",
+   "ages": [
+    6,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids like the guards' tomb of the Unknown Soldier and the unfinished chapels open to the sky; combine it with the Aljubarrota battle centre nearby to make the story come alive.",
+   "visit": 60,
+   "rainy": true
+  },
+  {
+   "id": "convent_of_christ",
+   "ages": [
+    6,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the Templar castle, the round church and exploring cloisters and corridors like knights; tell them the Templar story first and bring snacks, as it is a big site.",
+   "visit": 90
+  },
+  {
+   "id": "almourol_castle",
+   "ages": [
+    3,
+    14
+   ],
+   "stroller": "no",
+   "kids": "Kids love the short boat ride to a real castle on an island in the river and climbing the keep; check that the boat is running and hold little hands on the steep steps.",
+   "priority": 3
+  },
+  {
+   "id": "mira_de_aire_caves",
+   "ages": [
+    4,
+    14
+   ],
+   "stroller": "no",
+   "kids": "Kids love the colourful underground chambers and the river at the bottom, and the lift ride back up; bring a jumper and carry babies in a sling because of the many steps.",
+   "rainy": true,
+   "priority": 3
+  },
+  {
+   "id": "dinosaur_footprints",
+   "ages": [
+    3,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love walking beside real sauropod footprints on the old quarry floor and spotting the trails; bring hats and water as there is no shade, and avoid the midday sun.",
+   "priority": 3
+  },
+  {
+   "id": "mafra_palace",
+   "ages": [
+    7,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Older kids enjoy the enormous corridors, the hunting room with antlers and the library with its bats; keep it to the highlights and pair it with the Tapada deer park nearby.",
+   "visit": 75,
+   "rainy": true
+  },
+  {
+   "id": "ericeira",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the little Praia dos Pescadores by the harbour and ice creams in the white-and-blue streets; the harbour beach is the calmest for paddling, while the surf beaches suit older kids with lessons."
+  },
+  {
+   "id": "university_of_coimbra",
+   "ages": [
+    7,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Older kids enjoy the Harry-Potter-like library, the academic prison and the view from the courtyard; book a timed library slot and climb the tower only with confident walkers.",
+   "visit": 75,
+   "rainy": true
+  },
+  {
+   "id": "conimbriga",
+   "ages": [
+    5,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love finding animals and hunters in the Roman floor mosaics and walking along the old road and walls; the museum is a good rainy fallback and there is a café for a break."
+  },
+  {
+   "id": "bucaco",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the fairy-tale palace, the giant trees and the cascading Fonte Fria staircase with its lake; stay on the flatter paths near the palace with a buggy and bring a picnic.",
+   "priority": 3
+  },
+  {
+   "id": "costa_nova",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the candy-striped houses and the calm lagoon side for paddling; swim on the lagoon side with small children, as the ocean beach has strong waves."
+  },
+  {
+   "id": "piodao",
+   "ages": [
+    4,
+    14
+   ],
+   "stroller": "no",
+   "kids": "Kids love the slate village stacked on the hillside and the river beach at nearby Foz d'Égua; bring a baby carrier for the steep stepped lanes.",
+   "visit": 90
+  },
+  {
+   "id": "talasnal",
+   "ages": [
+    4,
+    14
+   ],
+   "stroller": "no",
+   "kids": "Kids enjoy exploring the schist houses and the short forest paths between the villages; carry toddlers and bring water, as the lanes are steep and uneven."
+  },
+  {
+   "id": "torre_serra_da_estrela",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the snow in winter (sledges and snow play) and standing at the highest point of mainland Portugal; check road closures after snowfall and dress everyone warmly.",
+   "priority": 3,
+   "caution": "The road can close or need chains in snow; temperatures drop fast."
+  },
+  {
+   "id": "covao_dametade",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the meadow by the young Zêzere stream, the birch trees and playing in the cold water; perfect for a picnic, and arrive early in summer for parking."
+  },
+  {
+   "id": "poco_do_inferno",
+   "ages": [
+    4,
+    14
+   ],
+   "stroller": "no",
+   "kids": "Kids love the waterfall plunging into a dark pool, best after rain; hold hands on the slippery rocks near the water."
+  },
+  {
+   "id": "monsanto",
+   "ages": [
+    5,
+    14
+   ],
+   "stroller": "no",
+   "kids": "Kids love the houses squeezed under giant boulders and scrambling up to the castle ruins; use a baby carrier and keep a firm hand near the castle edges.",
+   "caution": "The castle ruins have unfenced drops."
+  },
+  {
+   "id": "sortelha",
+   "ages": [
+    4,
+    14
+   ],
+   "stroller": "no",
+   "kids": "Kids love the tiny walled village and climbing to the castle keep; watch the unfenced walls closely.",
+   "caution": "The walls and keep have no railings."
+  },
+  {
+   "id": "almeida",
+   "ages": [
+    4,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love walking the star-shaped ramparts and the casemates (underground barracks) of the fortress; visit during the summer historical re-enactment if you can."
+  },
+  {
+   "id": "belmonte",
+   "ages": [
+    6,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids enjoy the castle and the interactive Museu dos Descobrimentos about the voyage of Cabral to Brazil; the museum is great on a rainy day."
+  },
+  {
+   "id": "paiva_walkways",
+   "ages": [
+    8,
+    14
+   ],
+   "stroller": "no",
+   "kids": "Older kids love the wooden boardwalks along the river and crossing the huge 516 Arouca suspension bridge; book bridge tickets ahead and do the walk downhill from Espiunca to Areinho.",
+   "caution": "Hundreds of steps and no shade in parts; young children are not allowed on the 516 bridge."
+  },
+  {
+   "id": "figueira_da_foz",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the immense sandy beach and the boardwalk to Buarcos; the beach is very wide, so the wooden walkways help with buggies, and swim only near the lifeguards.",
+   "caution": "Atlantic waves and currents: swim only at guarded beaches."
+  }
+ ],
+ "places": [
+  {
+   "id": "k_buddha_eden",
+   "name": "Bacalhôa Buddha Eden",
+   "region": "oeste",
+   "lat": 39.2697,
+   "lon": -9.2017,
+   "visit": 120,
+   "cat": "Garden",
+   "priority": 3,
+   "wiki": false,
+   "summary": "A huge oriental garden on a wine estate near Bombarral, with giant golden Buddhas, terracotta warriors, lakes and modern sculptures. Big, open and full of surprises, it is easy and fun to explore with children.",
+   "facts": [
+    "Entry ~€5 per adult, young children free",
+    "A little tourist train tours the park for a small fee",
+    "Lots of walking: wear comfy shoes and bring hats",
+    "~20 min from Óbidos"
+   ],
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Kids love spotting the giant Buddhas, the rows of terracotta warriors and the koi in the lakes; take the little train if small legs get tired, and bring hats as shade is limited.",
+   "facilities": "Café, toilets, picnic area",
+   "photoSearch": "Bacalhôa Buddha Eden"
+  },
+  {
+   "id": "k_dino_parque",
+   "name": "Dino Parque Lourinhã",
+   "region": "oeste",
+   "lat": 39.265,
+   "lon": -9.304,
+   "visit": 180,
+   "cat": "Theme park",
+   "priority": 3,
+   "wiki": false,
+   "photoSearch": "Dino Parque Lourinhã",
+   "summary": "Portugal's largest open-air dinosaur park, with well over a hundred life-size models along forest trails, many based on fossils found in the Lourinhã area. There is a fossil lab, digging zones and play areas, making it a top family day out.",
+   "facts": [
+    "Adults ~€14, children ~€11, under 4 free",
+    "Buy tickets online to skip the queue in summer",
+    "Trails are mostly earth paths in pine forest",
+    "~30 min from Óbidos"
+   ],
+   "ages": [
+    2,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the life-size dinosaurs hidden in the pine woods and digging for fossils in the sandpit; arrive at opening time in summer and bring a picnic.",
+   "facilities": "Café, picnic area, toilets, playground"
+  },
+  {
+   "id": "k_nazare_funicular",
+   "name": "Nazaré Funicular",
+   "region": "oeste",
+   "lat": 39.6025,
+   "lon": -9.0715,
+   "visit": 45,
+   "cat": "Train ride",
+   "priority": 2,
+   "wiki": "Nazaré Funicular",
+   "summary": "The historic funicular that climbs the cliff from Nazaré's beach to the Sítio clifftop quarter. A short, steep ride with a great view of the beach and the town.",
+   "facts": [
+    "Runs every few minutes, a few euros per ride",
+    "Buggies can go on board",
+    "Combine with the Sítio viewpoint and the walk to the lighthouse fort"
+   ],
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Kids love the steep ride up the cliff and the view over the beach from the top; sit at the lower end of the car for the best view.",
+   "rainy": true
+  },
+  {
+   "id": "k_lagoa_obidos",
+   "name": "Óbidos Lagoon (Foz do Arelho)",
+   "region": "oeste",
+   "lat": 39.429,
+   "lon": -9.22,
+   "visit": 180,
+   "cat": "Beach",
+   "priority": 3,
+   "wiki": "Óbidos Lagoon",
+   "summary": "A large coastal lagoon separated from the sea by a sandbar at Foz do Arelho. The lagoon side has calm, shallow, warmer water that is ideal for small children, with the ocean beach just across the sand.",
+   "facts": [
+    "Free; parking by the lagoon and the beach",
+    "Swim on the lagoon side, not where the lagoon opens to the sea",
+    "Popular for kayaking and paddleboarding",
+    "~15 min from Óbidos and Caldas da Rainha"
+   ],
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love paddling in the shallow, calm lagoon water and digging in the sand; stay well away from the channel where the lagoon meets the sea, as the current there is strong.",
+   "caution": "Strong currents at the lagoon mouth and on the ocean side."
+  },
+  {
+   "id": "k_parque_d_carlos",
+   "name": "Parque D. Carlos I (Caldas da Rainha)",
+   "region": "oeste",
+   "lat": 39.403,
+   "lon": -9.137,
+   "visit": 75,
+   "cat": "Park & playground",
+   "priority": 1,
+   "wiki": false,
+   "photoSearch": "Parque D. Carlos I Caldas da Rainha",
+   "summary": "A romantic 19th-century park in the centre of Caldas da Rainha with a big lake, shady trees, ducks and a playground. A relaxed stop near Óbidos, close to the town's daily fruit market.",
+   "facts": [
+    "Free",
+    "Rowing boats on the lake in the warmer months",
+    "Combine with the morning fruit market in Praça da Fruta"
+   ],
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Kids love feeding the ducks, the playground and rowing on the lake; go in the morning together with the colourful fruit market."
+  },
+  {
+   "id": "k_tapada_mafra",
+   "name": "Tapada Nacional de Mafra",
+   "region": "oeste",
+   "lat": 38.961,
+   "lon": -9.3,
+   "visit": 150,
+   "cat": "Nature reserve",
+   "priority": 2,
+   "wiki": "Tapada Nacional de Mafra",
+   "summary": "The walled former royal hunting park of Mafra Palace, with forests where deer, fallow deer and wild boar roam. Families can follow marked walking trails, see birds of prey and take a guided ride through the park.",
+   "facts": [
+    "Entry a few euros per person, cheaper for children",
+    "Several marked trails of different lengths",
+    "Birds-of-prey demonstrations on some days",
+    "~10 min from Mafra Palace"
+   ],
+   "ages": [
+    3,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love spotting deer and wild boar in the woods and watching the birds of prey; walk quietly on the shorter trail early or late in the day for the best animal sightings.",
+   "facilities": "Café, toilets, picnic area"
+  },
+  {
+   "id": "k_aldeia_jose_franco",
+   "name": "Aldeia Típica José Franco (Sobreiro)",
+   "region": "oeste",
+   "lat": 38.948,
+   "lon": -9.338,
+   "visit": 60,
+   "cat": "Experience",
+   "priority": 2,
+   "wiki": false,
+   "photoSearch": "Aldeia Típica José Franco Sobreiro",
+   "summary": "A whimsical miniature village built by potter José Franco, with tiny houses, mills, workshops and moving figures of traditional rural life. Free to wander and a favourite with small children between Mafra and Ericeira.",
+   "facts": [
+    "Free entry",
+    "Traditional bakery selling bread with chouriço",
+    "Combine with Mafra Palace or Ericeira, both ~10 min away"
+   ],
+   "ages": [
+    0,
+    12
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the tiny houses, windmills and moving figures they can peek into; follow it with a warm bread roll from the village bakery.",
+   "facilities": "Café, toilets"
+  },
+  {
+   "id": "k_leiria_castle",
+   "name": "Leiria Castle",
+   "region": "oeste",
+   "lat": 39.7472,
+   "lon": -8.8105,
+   "visit": 75,
+   "cat": "Castle",
+   "priority": 2,
+   "wiki": "Leiria Castle",
+   "summary": "A medieval castle on a hill above Leiria, with a keep, a royal palace loggia and wide views over the city. A good, manageable castle to explore with children, with the city's riverside parks below.",
+   "facts": [
+    "Entry a few euros, children cheaper",
+    "Steep climb from the old town: park near the top if possible",
+    "Riverside park and playgrounds along the Lis below the castle"
+   ],
+   "ages": [
+    3,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love climbing the keep and looking out from the palace loggia over the city; drive up close to the gate with little ones and go down to the riverside playgrounds afterwards."
+  },
+  {
+   "id": "k_ciba_aljubarrota",
+   "name": "Aljubarrota Battle Interpretation Centre (CIBA)",
+   "region": "oeste",
+   "lat": 39.6235,
+   "lon": -8.845,
+   "visit": 90,
+   "cat": "Museum",
+   "priority": 2,
+   "wiki": false,
+   "photoSearch": "Centro de Interpretação da Batalha de Aljubarrota",
+   "summary": "A modern museum on the actual battlefield of Aljubarrota (1385), with a dramatic multimedia show about the battle that secured Portugal's independence. Children can try on helmets and see the battle traps used by the Portuguese army.",
+   "facts": [
+    "Adults ~€7, children cheaper, family tickets",
+    "The multimedia show is the highlight: check the session times",
+    "~5 min from Batalha Monastery"
+   ],
+   "ages": [
+    6,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Kids love the loud multimedia film of the battle and trying on armour; visit right before Batalha Monastery so they know the story behind it.",
+   "rainy": true,
+   "needsDaylight": false
+  },
+  {
+   "id": "k_grutas_moeda",
+   "name": "Grutas da Moeda",
+   "region": "oeste",
+   "lat": 39.63,
+   "lon": -8.665,
+   "visit": 60,
+   "cat": "Cave",
+   "priority": 2,
+   "wiki": false,
+   "photoSearch": "Grutas da Moeda",
+   "summary": "A show cave near Fátima with colourful, well-lit chambers full of stalactites and stalagmites, named after the legend of a lost coin. Smaller and shorter than Mira de Aire, it suits younger children well.",
+   "facts": [
+    "Guided tour about 45 minutes",
+    "Adults ~€8, children cheaper",
+    "Constant cool temperature: bring a layer",
+    "~5 min from Fátima"
+   ],
+   "ages": [
+    4,
+    14
+   ],
+   "stroller": "no",
+   "kids": "Kids love the coloured lights on the stalactites and the shapes the guide points out; carry babies in a sling because of the steps, and bring a jumper.",
+   "rainy": true,
+   "needsDaylight": false
+  },
+  {
+   "id": "k_mouchao_tomar",
+   "name": "Parque do Mouchão (Tomar)",
+   "region": "oeste",
+   "lat": 39.604,
+   "lon": -8.4125,
+   "visit": 60,
+   "cat": "Park & playground",
+   "priority": 1,
+   "wiki": false,
+   "photoSearch": "Parque do Mouchão Tomar",
+   "summary": "A shady island park on the Nabão river in the centre of Tomar, with a large old water wheel, ducks and riverside paths. A calm break after the Convent of Christ.",
+   "facts": [
+    "Free",
+    "Next to the old town and the riverside cafés",
+    "Easy flat paths"
+   ],
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Kids love the big turning water wheel and the ducks on the river; bring bread crumbs and let them run around in the shade."
+  },
+  {
+   "id": "k_railway_museum",
+   "name": "National Railway Museum (Entroncamento)",
+   "region": "oeste",
+   "lat": 39.461,
+   "lon": -8.468,
+   "visit": 120,
+   "cat": "Museum",
+   "priority": 2,
+   "wiki": "National Railway Museum (Portugal)",
+   "summary": "Portugal's national railway museum in the railway town of Entroncamento, with steam locomotives, royal carriages and historic trains in big old sheds. Train-mad children can get close to dozens of engines.",
+   "facts": [
+    "Adults ~€5, children cheaper",
+    "Closed on Mondays",
+    "Next to Entroncamento station: reachable by train from Lisbon",
+    "~20 min from Tomar"
+   ],
+   "ages": [
+    2,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Kids love the huge steam engines and the royal train carriages; combine it with a real train ride to Entroncamento to make a day of it.",
+   "closed": [
+    1
+   ],
+   "rainy": true,
+   "needsDaylight": false
+  },
+  {
+   "id": "k_portugal_dos_pequenitos",
+   "name": "Portugal dos Pequenitos",
+   "region": "centro",
+   "lat": 40.2025,
+   "lon": -8.4335,
+   "visit": 150,
+   "cat": "Theme park",
+   "priority": 3,
+   "wiki": "Portugal dos Pequenitos",
+   "summary": "A miniature park in Coimbra where children can walk into small-scale versions of Portuguese houses, monuments and buildings from the former colonies. A classic Portuguese family day out, just across the river from the old town.",
+   "facts": [
+    "Adults ~€15, children 3–13 ~€10, under 3 free",
+    "Small indoor museums of costumes, furniture and the navy",
+    "Easy walk across the Santa Clara bridge from the old town"
+   ],
+   "ages": [
+    1,
+    10
+   ],
+   "stroller": "yes",
+   "kids": "Young kids love walking into the child-sized houses and palaces; go at opening time on weekends to beat the school groups.",
+   "facilities": "Café, toilets, baby-changing"
+  },
+  {
+   "id": "k_exploratorio_coimbra",
+   "name": "Exploratório – Ciência Viva Coimbra",
+   "region": "centro",
+   "lat": 40.2035,
+   "lon": -8.4285,
+   "visit": 120,
+   "cat": "Science centre",
+   "priority": 2,
+   "wiki": false,
+   "photoSearch": "Exploratório Centro Ciência Viva de Coimbra",
+   "summary": "Coimbra's hands-on Ciência Viva science centre in the Parque Verde do Mondego, with interactive exhibits and a planetarium. A great rainy-day option close to Portugal dos Pequenitos.",
+   "facts": [
+    "Adults ~€7, children cheaper, family tickets",
+    "Planetarium sessions at set times",
+    "Riverside park with paths and playground outside"
+   ],
+   "ages": [
+    4,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Kids love pushing buttons, experimenting and the planetarium shows; check the session times and follow it with a run along the riverside park.",
+   "rainy": true,
+   "needsDaylight": false
+  },
+  {
+   "id": "k_coimbra_botanic_garden",
+   "name": "Botanical Garden of the University of Coimbra",
+   "region": "centro",
+   "lat": 40.2058,
+   "lon": -8.4224,
+   "visit": 75,
+   "cat": "Garden",
+   "priority": 1,
+   "wiki": "Botanical Garden of the University of Coimbra",
+   "summary": "An 18th-century botanical garden on terraces below the university, with greenhouses, a bamboo forest and huge old trees. A green escape from the steep old town.",
+   "facts": [
+    "The outdoor garden is free",
+    "Terraced with stairs between levels",
+    "Bamboo grove and tropical greenhouse are the highlights"
+   ],
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love getting lost in the bamboo forest and spotting the giant trees; enter from the upper gate near the aqueduct to avoid climbing with a buggy."
+  },
+  {
+   "id": "k_moliceiro_aveiro",
+   "name": "Moliceiro boat trip, Aveiro",
+   "region": "centro",
+   "lat": 40.6413,
+   "lon": -8.653,
+   "visit": 60,
+   "cat": "Boat trip",
+   "priority": 3,
+   "wiki": "Moliceiro",
+   "summary": "A short boat ride on Aveiro's canals in a brightly painted moliceiro, the traditional seaweed-collecting boat. It is the classic way for families to see the town.",
+   "facts": [
+    "About 45 minutes, ~€15 adults, children cheaper",
+    "Boats leave from the Canal Central all day",
+    "Fold the buggy on board"
+   ],
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the colourful painted boats and ducking under the low bridges; sit near the front, and finish with a box of ovos moles from the canal-side shops."
+  },
+  {
+   "id": "k_fabrica_aveiro",
+   "name": "Fábrica – Ciência Viva Aveiro",
+   "region": "centro",
+   "lat": 40.6378,
+   "lon": -8.6517,
+   "visit": 90,
+   "cat": "Science centre",
+   "priority": 2,
+   "wiki": false,
+   "photoSearch": "Fábrica Centro Ciência Viva de Aveiro",
+   "summary": "A hands-on science centre run with the University of Aveiro in an old factory building in the town centre. It has interactive exhibits and workshops on science and technology.",
+   "facts": [
+    "Adults ~€4, children cheaper",
+    "Workshops at weekends, often in Portuguese",
+    "Short walk from the Canal Central"
+   ],
+   "ages": [
+    4,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Kids love the experiments they can try themselves; a good indoor hour between canal walks on a rainy day.",
+   "rainy": true,
+   "needsDaylight": false
+  },
+  {
+   "id": "k_ilhavo_maritime_museum",
+   "name": "Ílhavo Maritime Museum",
+   "region": "centro",
+   "lat": 40.6015,
+   "lon": -8.6665,
+   "visit": 90,
+   "cat": "Aquarium",
+   "priority": 2,
+   "wiki": false,
+   "photoSearch": "Museu Marítimo de Ílhavo aquário bacalhau",
+   "summary": "A maritime museum about the cod-fishing fleets, with a full-size fishing ship and a large aquarium of live Atlantic cod. Fun for children and close to Costa Nova.",
+   "facts": [
+    "Adults ~€5, children cheaper",
+    "The cod aquarium is the highlight: check feeding times",
+    "~10 min from Aveiro, ~10 min from Costa Nova"
+   ],
+   "ages": [
+    3,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Kids love the big cod swimming around the aquarium and climbing on the deck of the fishing ship; ask about feeding times when you arrive.",
+   "rainy": true,
+   "needsDaylight": false
+  },
+  {
+   "id": "k_sao_jacinto_dunes",
+   "name": "São Jacinto Dunes Nature Reserve",
+   "region": "centro",
+   "lat": 40.684,
+   "lon": -8.731,
+   "visit": 120,
+   "cat": "Nature reserve",
+   "priority": 2,
+   "wiki": false,
+   "photoSearch": "Reserva Natural das Dunas de São Jacinto",
+   "summary": "A protected dune and pine forest reserve on the sandbar north of Aveiro, with a boardwalk trail, bird hides and wild beaches. Reach it by the short ferry from Forte da Barra for a fun adventure.",
+   "facts": [
+    "Free; the trail is about 7 km, but shorter loops are possible",
+    "Ferry from Forte da Barra (Gafanha da Nazaré) to São Jacinto",
+    "Bring water and snacks: few services"
+   ],
+   "ages": [
+    4,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the ferry crossing and looking for birds from the hides along the boardwalk; do a short loop with younger ones and bring binoculars."
+  },
+  {
+   "id": "k_parque_biologico_lousa",
+   "name": "Parque Biológico da Serra da Lousã",
+   "region": "centro",
+   "lat": 40.0918,
+   "lon": -8.3305,
+   "visit": 150,
+   "cat": "Zoo",
+   "priority": 2,
+   "wiki": false,
+   "photoSearch": "Parque Biológico da Serra da Lousã",
+   "summary": "A wildlife park in Miranda do Corvo with native Portuguese animals such as wolves, deer, wild boar, otters and birds of prey, alongside farm animals and a rural museum. A gentle family stop on the way to the Lousã schist villages.",
+   "facts": [
+    "Adults ~€8, children cheaper",
+    "Mostly outdoor paths on a gentle slope",
+    "~30 min from Coimbra"
+   ],
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love seeing the wolves, otters and farm animals up close; go in the morning when the animals are most active.",
+   "facilities": "Restaurant, toilets, picnic area"
+  },
+  {
+   "id": "k_lousa_river_beach",
+   "name": "Senhora da Piedade River Beach & Lousã Castle",
+   "region": "centro",
+   "lat": 40.0995,
+   "lon": -8.2375,
+   "visit": 120,
+   "cat": "Beach",
+   "priority": 2,
+   "wiki": false,
+   "summary": "A small river beach in a wooded valley below Lousã's medieval castle and hilltop chapels. In summer families swim in the clear pool; all year it is a lovely spot to explore the little castle.",
+   "facts": [
+    "Free",
+    "Swimming best in July–August",
+    "~5 min from Lousã, ~30 min from Talasnal"
+   ],
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love splashing in the cool river pool and climbing the small castle above it; bring water shoes for the stony bottom.",
+   "season": "River swimming is mainly July–September; outside summer it is a walk and castle visit.",
+   "photoSearch": "Senhora da Piedade River Beach & Lousã Castle"
+  },
+  {
+   "id": "k_loriga_river_beach",
+   "name": "Loriga River Beach",
+   "region": "centro",
+   "lat": 40.323,
+   "lon": -7.689,
+   "visit": 150,
+   "cat": "Beach",
+   "priority": 2,
+   "wiki": false,
+   "photoSearch": "Praia Fluvial de Loriga",
+   "summary": "A river beach in a granite glacial valley of Serra da Estrela, with clear mountain water, a lawn and natural pools. One of the prettiest places to cool off in the mountains in summer.",
+   "facts": [
+    "Free",
+    "Lifeguards and a café in summer",
+    "Water is cold even in August",
+    "~30 min from Seia"
+   ],
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love splashing in the clear, rocky pools and playing on the grass; go in July or August, and bring water shoes and warm towels as the water is cold.",
+   "season": "Best July–August, when lifeguards and the café are open."
+  },
+  {
+   "id": "k_cise_seia",
+   "name": "Serra da Estrela Interpretation Centre (CISE)",
+   "region": "centro",
+   "lat": 40.418,
+   "lon": -7.704,
+   "visit": 75,
+   "cat": "Museum",
+   "priority": 1,
+   "wiki": false,
+   "photoSearch": "Centro de Interpretação da Serra da Estrela Seia",
+   "summary": "An interactive centre in Seia explaining the geology, glaciers, wildlife and shepherding life of Serra da Estrela. A good introduction before going up the mountain, and a fallback when weather closes the road.",
+   "facts": [
+    "Entry a few euros, children cheaper",
+    "Interactive displays and models",
+    "Good plan when fog or snow closes the road to Torre"
+   ],
+   "ages": [
+    5,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Kids enjoy the interactive displays about glaciers and mountain animals; visit before driving up to Torre so they know what to look for.",
+   "rainy": true,
+   "needsDaylight": false
+  }
+ ],
+ "drives": [
+  [
+   "k_buddha_eden",
+   "obidos",
+   18,
+   20
+  ],
+  [
+   "k_dino_parque",
+   "obidos",
+   30,
+   30
+  ],
+  [
+   "k_dino_parque",
+   "k_buddha_eden",
+   17,
+   20
+  ],
+  [
+   "k_nazare_funicular",
+   "nazare",
+   1,
+   3
+  ],
+  [
+   "k_lagoa_obidos",
+   "obidos",
+   16,
+   18
+  ],
+  [
+   "k_parque_d_carlos",
+   "obidos",
+   7,
+   10
+  ],
+  [
+   "k_parque_d_carlos",
+   "k_lagoa_obidos",
+   9,
+   12
+  ],
+  [
+   "k_tapada_mafra",
+   "mafra_palace",
+   5,
+   10
+  ],
+  [
+   "k_aldeia_jose_franco",
+   "mafra_palace",
+   5,
+   8
+  ],
+  [
+   "k_aldeia_jose_franco",
+   "ericeira",
+   7,
+   10
+  ],
+  [
+   "k_leiria_castle",
+   "batalha_monastery",
+   12,
+   15
+  ],
+  [
+   "k_leiria_castle",
+   "nazare",
+   32,
+   30
+  ],
+  [
+   "k_ciba_aljubarrota",
+   "batalha_monastery",
+   5,
+   7
+  ],
+  [
+   "k_grutas_moeda",
+   "fatima",
+   4,
+   7
+  ],
+  [
+   "k_grutas_moeda",
+   "mira_de_aire_caves",
+   18,
+   20
+  ],
+  [
+   "k_mouchao_tomar",
+   "tomar",
+   1,
+   3
+  ],
+  [
+   "k_railway_museum",
+   "tomar",
+   22,
+   22
+  ],
+  [
+   "k_railway_museum",
+   "almourol_castle",
+   10,
+   12
+  ],
+  [
+   "k_portugal_dos_pequenitos",
+   "coimbra",
+   2,
+   6
+  ],
+  [
+   "k_exploratorio_coimbra",
+   "coimbra",
+   2,
+   6
+  ],
+  [
+   "k_exploratorio_coimbra",
+   "k_portugal_dos_pequenitos",
+   1,
+   3
+  ],
+  [
+   "k_coimbra_botanic_garden",
+   "coimbra",
+   1,
+   5
+  ],
+  [
+   "k_moliceiro_aveiro",
+   "aveiro",
+   0,
+   2
+  ],
+  [
+   "k_fabrica_aveiro",
+   "aveiro",
+   1,
+   3
+  ],
+  [
+   "k_ilhavo_maritime_museum",
+   "aveiro",
+   8,
+   12
+  ],
+  [
+   "k_ilhavo_maritime_museum",
+   "costa_nova",
+   7,
+   10
+  ],
+  [
+   "k_sao_jacinto_dunes",
+   "aveiro",
+   45,
+   45
+  ],
+  [
+   "k_parque_biologico_lousa",
+   "coimbra",
+   27,
+   30
+  ],
+  [
+   "k_parque_biologico_lousa",
+   "talasnal",
+   18,
+   25
+  ],
+  [
+   "k_lousa_river_beach",
+   "talasnal",
+   8,
+   15
+  ],
+  [
+   "k_lousa_river_beach",
+   "k_parque_biologico_lousa",
+   12,
+   15
+  ],
+  [
+   "k_loriga_river_beach",
+   "k_cise_seia",
+   20,
+   25
+  ],
+  [
+   "k_loriga_river_beach",
+   "torre_serra_da_estrela",
+   30,
+   40
+  ],
+  [
+   "k_cise_seia",
+   "torre_serra_da_estrela",
+   30,
+   40
+  ],
+  [
+   "k_cise_seia",
+   "manteigas",
+   45,
+   55
+  ]
+ ]
+}

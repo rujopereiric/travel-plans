@@ -1,0 +1,1075 @@
+{
+ "reuse": [
+  {
+   "id": "ribeira",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love watching the boats and street musicians along the river; steep cobbled lanes lead down, so use a carrier or come down by the Guindais funicular.",
+   "caution": "The quay edge has no railing in places; hold small hands."
+  },
+  {
+   "id": "dom_luis_bridge",
+   "ages": [
+    4,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Kids love walking the top deck right next to the metro trains, high above the river; cross early and hold hands near the open rails on the lower deck.",
+   "visit": 30
+  },
+  {
+   "id": "six_bridges_cruise",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids enjoy spotting the six bridges from a traditional rabelo boat; the short 50-minute trip suits small attention spans, and buggies must be folded on board.",
+   "priority": 3
+  },
+  {
+   "id": "jardim_do_morro",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Kids can run on the lawns and watch the cable car and metro glide by; come at sunset for the best view over Ribeira."
+  },
+  {
+   "id": "foz_do_douro",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Kids love the waves crashing at the lighthouse and the long flat seafront promenade, perfect for scooters and buggies.",
+   "caution": "Keep children well back from the pier and breakwaters in big swells."
+  },
+  {
+   "id": "matosinhos",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the wide sandy beach and the giant red 'She Changes' net sculpture; the water is cold and surf schools use it, so paddle near the lifeguards.",
+   "caution": "Atlantic waves and currents; swim only at lifeguarded flags."
+  },
+  {
+   "id": "serralves",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the treetop walk, the farm animals and the big lawns; buy the park-only ticket and skip the galleries with small children.",
+   "priority": 3,
+   "visit": 150
+  },
+  {
+   "id": "clerigos_tower",
+   "ages": [
+    8,
+    14
+   ],
+   "stroller": "no",
+   "kids": "Older kids enjoy the 240 narrow steps and the view from the top; book a time slot to avoid the queue.",
+   "caution": "Narrow, crowded spiral stairs; not for toddlers."
+  },
+  {
+   "id": "sao_bento_station",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Kids like spotting knights and battles in the blue-tile walls and watching the trains; a quick 15-minute stop.",
+   "rainy": true,
+   "visit": 15
+  },
+  {
+   "id": "bolhao_market",
+   "ages": [
+    3,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Kids enjoy the colourful fruit and fish stalls and tasting snacks; the renovated market is step-free and covered.",
+   "rainy": true
+  },
+  {
+   "id": "bom_jesus",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love riding the old water-powered funicular up and racing down the zigzag staircase; the park on top has a lake with rowing boats and shady paths.",
+   "priority": 3,
+   "visit": 120
+  },
+  {
+   "id": "braga",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids enjoy the fountains and wide pedestrian streets of the centre; good for an easy stroll with ice cream breaks."
+  },
+  {
+   "id": "guimaraes_castle",
+   "ages": [
+    4,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the battlements and the story of the first king of Portugal; the grassy hill around it is great for running.",
+   "caution": "Wall walks have low parapets; keep small children close."
+  },
+  {
+   "id": "ducal_palace",
+   "ages": [
+    6,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Kids like the huge banquet halls, armour and tapestries; combine it with the castle next door on one ticket.",
+   "rainy": true,
+   "visit": 60
+  },
+  {
+   "id": "guimaraes",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids enjoy the medieval squares and the cable car up Penha hill; the old centre is traffic-free but cobbled."
+  },
+  {
+   "id": "ponte_de_lima",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Kids love the river beach and long medieval bridge, with flat riverside paths ideal for buggies and bikes; Monday's market is fun too."
+  },
+  {
+   "id": "viana_do_castelo",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids enjoy the riverside gardens and the funicular to Santa Luzia; visit the Gil Eannes hospital ship in the harbour."
+  },
+  {
+   "id": "santa_luzia",
+   "ages": [
+    3,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the funicular ride and climbing the dome for the panorama; the lift helps part of the way, then narrow stairs."
+  },
+  {
+   "id": "valenca_fortress",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love running along the star-shaped ramparts and looking across to Spain; bring a carrier for the cobbles and grassy walls.",
+   "caution": "Bastion edges are high and mostly unfenced."
+  },
+  {
+   "id": "geres",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids enjoy the river pools, wild horses and goats on the roads around the park; a good base for short waterfall walks."
+  },
+  {
+   "id": "pedra_bela",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Kids enjoy the big view over the Caniçada reservoir straight from the car park; a quick stop on the way to Arado.",
+   "caution": "Low walls at the edge of a steep drop.",
+   "visit": 20
+  },
+  {
+   "id": "arado_waterfall",
+   "ages": [
+    5,
+    14
+   ],
+   "stroller": "no",
+   "kids": "Kids love the cascade and the natural pools after a short walk from the road; wear sturdy shoes.",
+   "caution": "Wet granite slabs are very slippery and drops are unfenced; stay at the lower pools."
+  },
+  {
+   "id": "portela_do_homem",
+   "ages": [
+    4,
+    14
+   ],
+   "stroller": "no",
+   "kids": "Kids love paddling in the clear pool below the falls in summer; arrive early to find parking.",
+   "caution": "Slippery rocks and cold, deep water."
+  },
+  {
+   "id": "soajo",
+   "ages": [
+    3,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids enjoy the cluster of granite espigueiros (grain stores on stilts) on the rock threshing floor; a short, easy visit.",
+   "visit": 45
+  },
+  {
+   "id": "lindoso",
+   "ages": [
+    3,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids like the little castle and the dozens of stone granaries beside it; combine with Soajo.",
+   "visit": 45
+  },
+  {
+   "id": "douro_cruise",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids enjoy the hour on the river among terraced vineyards; the short Pinhão trip is just right for little ones.",
+   "priority": 3
+  },
+  {
+   "id": "douro_international_cruise",
+   "ages": [
+    3,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love spotting vultures and eagles in the deep gorge, and the boat shows a short demonstration with birds; dress warmly in shoulder season."
+  },
+  {
+   "id": "braganca_citadel",
+   "ages": [
+    3,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the tall keep, the walls and the tiny village inside; climb the keep for a view of the mountains."
+  },
+  {
+   "id": "montesinho",
+   "ages": [
+    4,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids enjoy schist villages, farm animals and easy riverside paths; pick a short trail and bring a picnic."
+  },
+  {
+   "id": "rio_de_onor",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the village split in two by the Spanish border, with a stream, bridges and farm animals.",
+   "visit": 45
+  },
+  {
+   "id": "mateus_palace",
+   "ages": [
+    4,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids like the reflecting pool and the cedar tunnel and maze-like hedges in the gardens; visit the gardens and skip the house tour with toddlers.",
+   "visit": 75
+  },
+  {
+   "id": "foz_coa_museum",
+   "ages": [
+    6,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Kids like the dramatic building, interactive displays and huge view over the rivers; good on a hot or rainy day.",
+   "rainy": true,
+   "visit": 75
+  },
+  {
+   "id": "foz_coa_rock_art",
+   "ages": [
+    8,
+    14
+   ],
+   "stroller": "no",
+   "kids": "Older kids love hunting for engraved horses and aurochs by 4x4; the tour is long and hot in summer, so bring water and hats."
+  },
+  {
+   "id": "amarante",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids enjoy the riverside park and pedal boats on the Tâmega below the old bridge; finish with convent pastries."
+  },
+  {
+   "id": "nossa_senhora_remedios",
+   "ages": [
+    6,
+    14
+   ],
+   "stroller": "no",
+   "kids": "Kids like counting the 686 steps of the tiled staircase; drive to the top and walk down only.",
+   "visit": 40
+  },
+  {
+   "id": "miranda_do_douro",
+   "ages": [
+    3,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids enjoy the gorge views and the castle ruins; combine with the boat trip on the Douro International."
+  }
+ ],
+ "places": [
+  {
+   "id": "k_sea_life_porto",
+   "name": "SEA LIFE Porto",
+   "region": "porto",
+   "lat": 41.168,
+   "lon": -8.6896,
+   "visit": 120,
+   "cat": "Aquarium",
+   "priority": 3,
+   "wiki": false,
+   "photoSearch": "Sea Life Porto aquarium",
+   "summary": "Indoor aquarium by the sea at Castelo do Queijo, with sharks, rays, turtles and a walk-through ocean tunnel. An easy, compact visit that works for every age, rain or shine.",
+   "facts": [
+    "Adults ~€17–20, children ~€13–15, under 3 free; cheaper online",
+    "Next to Parque da Cidade and the seafront",
+    "Free street parking nearby; bus from the centre",
+    "Feeding talks run through the day"
+   ],
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Kids love the underwater tunnel with sharks overhead and the touch pool; book online and combine with the park next door.",
+   "rainy": true,
+   "needsDaylight": false,
+   "facilities": "Baby-changing, café, gift shop"
+  },
+  {
+   "id": "k_world_of_discoveries",
+   "name": "World of Discoveries",
+   "region": "porto",
+   "lat": 41.1433,
+   "lon": -8.6207,
+   "visit": 120,
+   "cat": "Museum",
+   "priority": 2,
+   "wiki": false,
+   "photoSearch": "World of Discoveries Porto",
+   "summary": "Interactive museum and theme park about the Portuguese voyages of discovery, in Miragaia near the river. Kids board replica ships and finish with a boat ride through scenes of the explorers' world.",
+   "facts": [
+    "Adults ~€15–20, children cheaper, family tickets available",
+    "Allow 1.5–2 h",
+    "10 min walk from Ribeira along the river",
+    "Mostly indoors; good rainy-day option"
+   ],
+   "ages": [
+    4,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Kids love the indoor boat ride past Brazil, Africa and India and steering the replica caravel; go after lunch when school groups have left.",
+   "rainy": true,
+   "needsDaylight": false
+  },
+  {
+   "id": "k_parque_da_cidade",
+   "name": "Parque da Cidade do Porto",
+   "region": "porto",
+   "lat": 41.169,
+   "lon": -8.677,
+   "visit": 90,
+   "cat": "Park & playground",
+   "priority": 2,
+   "wiki": false,
+   "photoSearch": "Parque da Cidade do Porto",
+   "summary": "Porto's biggest park, 83 ha of lakes, meadows and woods running down to the ocean. Ducks, geese, wide paths and playgrounds make it the city's favourite family green space.",
+   "facts": [
+    "Free entry",
+    "Parking at the Avenida da Boavista entrance and by the sea",
+    "Next to SEA LIFE and the beach at Castelo do Queijo",
+    "Good spot for a picnic"
+   ],
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Kids love feeding the ducks, chasing geese on the lawns and biking on the long flat paths; pair it with SEA LIFE and the beach."
+  },
+  {
+   "id": "k_crystal_palace_gardens",
+   "name": "Crystal Palace Gardens",
+   "region": "porto",
+   "lat": 41.1477,
+   "lon": -8.6256,
+   "visit": 60,
+   "cat": "Garden",
+   "priority": 2,
+   "wiki": false,
+   "photoSearch": "Jardins do Palácio de Cristal Porto",
+   "summary": "Romantic hilltop gardens in the city centre with peacocks, roosters, fountains and terraces looking over the Douro. A shady break between sights, with a playground and free entry.",
+   "facts": [
+    "Free entry",
+    "Peacocks roam freely",
+    "Great river views from the terraces",
+    "10 min walk from the Clérigos area"
+   ],
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love chasing (gently) the peacocks and roosters and the small playground; the lower terraces have steep paths, so keep the buggy on the main avenue."
+  },
+  {
+   "id": "k_parque_biologico_gaia",
+   "name": "Parque Biológico de Gaia",
+   "region": "porto",
+   "lat": 41.0985,
+   "lon": -8.556,
+   "visit": 180,
+   "cat": "Nature reserve",
+   "priority": 3,
+   "wiki": false,
+   "photoSearch": "Parque Biológico de Gaia",
+   "summary": "A 35 ha nature park on the Febros river in Avintes, with a 3 km trail past enclosures of native animals and birds, an old farm and watermills. A gentle, green half day close to Porto.",
+   "facts": [
+    "Small entry fee; children cheaper",
+    "Trail ~3 km, mostly gravel and boardwalk",
+    "Café and picnic areas",
+    "Free parking at the entrance"
+   ],
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love spotting deer, otters, owls and storks along the trail and the farm animals near the end; allow a slow 2–3 hours and bring a picnic.",
+   "facilities": "Café, picnic area, toilets"
+  },
+  {
+   "id": "k_maia_zoo",
+   "name": "Maia Zoo",
+   "region": "porto",
+   "lat": 41.2358,
+   "lon": -8.6192,
+   "visit": 150,
+   "cat": "Zoo",
+   "priority": 2,
+   "wiki": false,
+   "photoSearch": "Zoo da Maia",
+   "summary": "Small municipal zoo in the centre of Maia, north of Porto, with big cats, primates, reptiles and birds, plus a sea lion show. Compact and affordable, ideal for younger children.",
+   "facts": [
+    "Low entry fee compared with big zoos",
+    "Sea lion and bird shows at set times",
+    "Metro to Maia, then a short walk",
+    "Easy to do in 2–3 h"
+   ],
+   "ages": [
+    0,
+    10
+   ],
+   "stroller": "yes",
+   "kids": "Little ones love the sea lion show and the reptile house; check the show times at the gate and plan around them."
+  },
+  {
+   "id": "k_porto_tram",
+   "name": "Porto historic tram (line 1)",
+   "region": "porto",
+   "lat": 41.1407,
+   "lon": -8.6153,
+   "visit": 60,
+   "cat": "Train ride",
+   "priority": 2,
+   "wiki": "Trams in Porto",
+   "summary": "Vintage wooden trams rattle along the Douro from Infante, near Ribeira, to Passeio Alegre at Foz. A fun ride to the seafront for families who'd rather not drive.",
+   "facts": [
+    "Single ticket ~€6–7 adults; children cheaper",
+    "Board at Infante (Ribeira) or Passeio Alegre (Foz)",
+    "Every 30 min or so; expect queues in summer",
+    "Ride to Foz, then walk the seafront promenade"
+   ],
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the clanging bell and wooden seats of the old tram; board at Infante early to grab the front seats, and fold the buggy."
+  },
+  {
+   "id": "k_gaia_cable_car",
+   "name": "Gaia Cable Car",
+   "region": "porto",
+   "lat": 41.138,
+   "lon": -8.6083,
+   "visit": 30,
+   "cat": "Experience",
+   "priority": 2,
+   "wiki": false,
+   "photoSearch": "Teleférico de Gaia",
+   "summary": "Short gondola ride over the port lodge rooftops in Vila Nova de Gaia, linking the riverside with Jardim do Morro at the top of the Dom Luís bridge. A neat way to skip the steep climb.",
+   "facts": [
+    "One-way ~€7 adults, children cheaper; return tickets available",
+    "Ride takes about 5 min",
+    "Lower station on the Gaia riverfront",
+    "Saves the steep walk up to the bridge top deck"
+   ],
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Kids love floating over the rooftops with the bridge right in front; ride up rather than down and walk back across the top deck."
+  },
+  {
+   "id": "k_planetario_porto",
+   "name": "Porto Planetarium – Ciência Viva",
+   "region": "porto",
+   "lat": 41.1546,
+   "lon": -8.6385,
+   "visit": 90,
+   "cat": "Science centre",
+   "priority": 2,
+   "wiki": false,
+   "photoSearch": "Planetário do Porto",
+   "summary": "Science centre and planetarium at the Campo Alegre university campus, with dome shows about stars and planets and a small hands-on exhibition. A good indoor option for curious kids.",
+   "facts": [
+    "Shows at set times; check the schedule and book ahead",
+    "Some shows in Portuguese only; ask for English sessions",
+    "Small ticket price",
+    "Weekend family sessions"
+   ],
+   "ages": [
+    5,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Kids love lying back under the dome watching the night sky; book a family session in English in advance.",
+   "rainy": true,
+   "needsDaylight": false
+  },
+  {
+   "id": "k_nau_vila_do_conde",
+   "name": "Vila do Conde replica ship (Nau Quinhentista)",
+   "region": "porto",
+   "lat": 41.3507,
+   "lon": -8.7476,
+   "visit": 60,
+   "cat": "Museum",
+   "priority": 2,
+   "wiki": false,
+   "photoSearch": "Nau Quinhentista Vila do Conde",
+   "summary": "Full-size replica of a 16th-century Portuguese carrack moored on the Ave river beside the old customs house in Vila do Conde. Children can climb aboard and see how sailors lived on the voyages to India.",
+   "facts": [
+    "Small fee; combined ticket with the customs house museum",
+    "About 30 min north of Porto by car or metro line B",
+    "Riverside parking",
+    "Combine with the beach at Vila do Conde"
+   ],
+   "ages": [
+    3,
+    14
+   ],
+   "stroller": "no",
+   "kids": "Kids love climbing between the decks of the old ship and peeking into the cramped crew quarters; go before or after an afternoon at the beach."
+  },
+  {
+   "id": "k_penha_cable_car",
+   "name": "Penha Cable Car (Guimarães)",
+   "region": "minho",
+   "lat": 41.4423,
+   "lon": -8.2886,
+   "visit": 150,
+   "cat": "Experience",
+   "priority": 2,
+   "wiki": false,
+   "photoSearch": "Teleférico da Penha Guimarães",
+   "summary": "Cable car from the edge of Guimarães up Monte da Penha, a wooded hill with giant granite boulders, a sanctuary, picnic areas and playgrounds. A green half day out of town with a fun ride each way.",
+   "facts": [
+    "Return ~€5–6 adults, children cheaper",
+    "Ride takes about 10 min",
+    "Runs daily in summer, weekends in winter: check before going",
+    "There's also a road to the top"
+   ],
+   "season": "Runs daily in summer; limited (often weekends only) in winter.",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the swinging cabin ride and scrambling among the huge boulders and caves at the top; take a picnic and spend the afternoon."
+  },
+  {
+   "id": "k_aquamuseu_rio_minho",
+   "name": "Aquamuseu do Rio Minho",
+   "region": "minho",
+   "lat": 41.9393,
+   "lon": -8.7447,
+   "visit": 75,
+   "cat": "Aquarium",
+   "priority": 2,
+   "wiki": false,
+   "photoSearch": "Aquamuseu do Rio Minho Vila Nova de Cerveira",
+   "summary": "Freshwater aquarium and fishing museum in Vila Nova de Cerveira on the Minho river, with river fish, otters and old fishing boats. Small and calm, it's a good stop on the way to Valença.",
+   "facts": [
+    "Low entry fee",
+    "In the riverside park of Vila Nova de Cerveira",
+    "About 15 min from Valença",
+    "Combine with the riverside playground"
+   ],
+   "ages": [
+    0,
+    12
+   ],
+   "stroller": "yes",
+   "kids": "Kids love watching the otters play and the big river fish in the tanks; time your visit with the otter feeding.",
+   "rainy": true,
+   "needsDaylight": false
+  },
+  {
+   "id": "k_gil_eannes",
+   "name": "Gil Eannes hospital ship",
+   "region": "minho",
+   "lat": 41.6918,
+   "lon": -8.8319,
+   "visit": 60,
+   "cat": "Museum",
+   "priority": 2,
+   "wiki": false,
+   "photoSearch": "Navio Gil Eannes Viana do Castelo",
+   "summary": "Former hospital and support ship for the cod-fishing fleet, now a museum moored in Viana do Castelo harbour. Kids explore the bridge, cabins, operating theatre and engine room.",
+   "facts": [
+    "Small entry fee; children cheaper",
+    "Moored near the town centre",
+    "Many steep ship ladders",
+    "Allow 45–60 min"
+   ],
+   "ages": [
+    5,
+    14
+   ],
+   "stroller": "no",
+   "kids": "Kids love taking the captain's wheel on the bridge and exploring the old operating room and galley; use a carrier, the ladders are steep.",
+   "rainy": true,
+   "needsDaylight": false
+  },
+  {
+   "id": "k_ecopista_minho",
+   "name": "Ecopista do Rio Minho",
+   "region": "minho",
+   "lat": 42.0278,
+   "lon": -8.6415,
+   "visit": 90,
+   "cat": "Hike",
+   "priority": 2,
+   "wiki": false,
+   "photoSearch": "Ecopista do Rio Minho Valença Monção",
+   "summary": "Flat, paved cycling and walking path on an old railway line along the Minho river between Valença and Monção. Easy for buggies, balance bikes and family cycling, with river views towards Spain.",
+   "facts": [
+    "Free",
+    "About 18 km in total; do any short section",
+    "Bike rental available in Valença in season",
+    "Picnic spots and river beaches along the way"
+   ],
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Kids love cycling or scooting on the car-free path past fields and river beaches; start at Valença and turn back whenever they tire."
+  },
+  {
+   "id": "k_parque_arnado",
+   "name": "Parque Temático do Arnado",
+   "region": "minho",
+   "lat": 41.769,
+   "lon": -8.5853,
+   "visit": 60,
+   "cat": "Garden",
+   "priority": 1,
+   "wiki": false,
+   "photoSearch": "Parque Temático do Arnado Ponte de Lima",
+   "summary": "Riverside themed garden in Ponte de Lima with little gardens from different eras and continents, a maze-like layout and ponds. Free and flat, right across the medieval bridge from the town.",
+   "facts": [
+    "Free entry",
+    "Across the old bridge from the town centre",
+    "Flat paths",
+    "Near the Lima river beach"
+   ],
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Kids enjoy running through the small themed gardens and spotting ducks and fish in the ponds; walk over the old bridge to get there."
+  },
+  {
+   "id": "k_canicada_boat",
+   "name": "Caniçada reservoir boats & kayaks",
+   "region": "minho",
+   "lat": 41.69,
+   "lon": -8.192,
+   "visit": 120,
+   "cat": "Boat trip",
+   "priority": 2,
+   "wiki": false,
+   "photoSearch": "Albufeira da Caniçada Gerês",
+   "summary": "The long Caniçada reservoir below Gerês is ringed by forested mountains and calm water, with small boat rentals, kayaks and pedal boats around Rio Caldo. A relaxed way to enjoy the national park with kids.",
+   "facts": [
+    "Boat and kayak rentals mainly in summer",
+    "Prices vary by operator; no licence needed for small motorboats",
+    "Life jackets provided",
+    "Swim spots along the shore"
+   ],
+   "season": "Rentals operate mainly June–September.",
+   "ages": [
+    3,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love steering a little motorboat or paddling a kayak on the still green water; go in the morning before the wind picks up.",
+   "caution": "Cold, deep water: keep life jackets on all the time."
+  },
+  {
+   "id": "k_douro_train",
+   "name": "Douro Line train (Régua–Pocinho)",
+   "region": "douro",
+   "lat": 41.1608,
+   "lon": -7.7868,
+   "visit": 150,
+   "cat": "Train ride",
+   "priority": 3,
+   "wiki": "Douro line",
+   "summary": "Regular trains follow the Douro river through the vineyard terraces from Régua to Pinhão, Tua and Pocinho, one of Europe's most scenic rail rides. In summer a historic steam train runs Régua–Tua on Saturdays.",
+   "facts": [
+    "Régua–Pinhão ~25 min, cheap regional tickets; children half price",
+    "Sit on the right (river side) heading east",
+    "Historic train in summer: book ahead, ~€40+ adults",
+    "Trains every 1–2 h; check the CP timetable"
+   ],
+   "season": "Historic steam train runs on summer weekends only; regular trains run all year.",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the river views and tunnels; do the short Régua–Pinhão hop and come back by boat or train."
+  },
+  {
+   "id": "k_ecopista_tamega",
+   "name": "Ecopista do Tâmega",
+   "region": "douro",
+   "lat": 41.274,
+   "lon": -8.077,
+   "visit": 90,
+   "cat": "Hike",
+   "priority": 1,
+   "wiki": false,
+   "photoSearch": "Ecopista do Tâmega Amarante",
+   "summary": "Flat greenway on the old Tâmega railway line from Amarante up the valley, through woods and past old stations. Easy for buggies and family cycling.",
+   "facts": [
+    "Free",
+    "Do a short out-and-back from Amarante",
+    "Mostly shaded",
+    "Bike-friendly surface"
+   ],
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Kids love biking or scooting on the car-free track and spotting the old station buildings; turn around after 2–3 km with little ones."
+  },
+  {
+   "id": "k_ciencia_viva_braganca",
+   "name": "Bragança Ciência Viva Centre",
+   "region": "douro",
+   "lat": 41.8059,
+   "lon": -6.7614,
+   "visit": 90,
+   "cat": "Science centre",
+   "priority": 2,
+   "wiki": false,
+   "photoSearch": "Centro Ciência Viva de Bragança",
+   "summary": "Hands-on science centre beside the Fervença river in Bragança, focused on energy and the environment. Interactive exhibits make it a good indoor stop in this remote region.",
+   "facts": [
+    "Low entry fee, family tickets",
+    "Riverside park next door",
+    "Walking distance from the town centre",
+    "Closed Mondays at many Ciência Viva centres: check"
+   ],
+   "ages": [
+    4,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Kids love pressing, spinning and testing the interactive exhibits; follow with a play in the riverside park.",
+   "rainy": true,
+   "needsDaylight": false
+  },
+  {
+   "id": "k_mask_museum_braganca",
+   "name": "Iberian Mask and Costume Museum",
+   "region": "douro",
+   "lat": 41.8045,
+   "lon": -6.7555,
+   "visit": 45,
+   "cat": "Museum",
+   "priority": 1,
+   "wiki": false,
+   "photoSearch": "Museu Ibérico da Máscara e do Traje Bragança",
+   "summary": "Small museum below the citadel showing the colourful masks and costumes of the winter 'caretos' festivals of Trás-os-Montes and Zamora. Bright, quick and a little spooky in a fun way.",
+   "facts": [
+    "Small entry fee",
+    "At the foot of the citadel",
+    "Allow 30–45 min",
+    "Combine with the citadel visit"
+   ],
+   "ages": [
+    3,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the scary-funny devil masks and fringed costumes; ask which festival each one comes from.",
+   "rainy": true,
+   "needsDaylight": false
+  },
+  {
+   "id": "k_parque_biologico_vinhais",
+   "name": "Parque Biológico de Vinhais",
+   "region": "douro",
+   "lat": 41.848,
+   "lon": -6.995,
+   "visit": 150,
+   "cat": "Farm & animals",
+   "priority": 2,
+   "wiki": false,
+   "photoSearch": "Parque Biológico de Vinhais",
+   "summary": "Wooded park near Vinhais at the edge of Montesinho with enclosures of native and rare-breed animals, from deer and wild boar to local cattle and donkeys. Trails, a picnic area and cabins make it a gentle nature day.",
+   "facts": [
+    "Low entry fee",
+    "About 30 min west of Bragança",
+    "Trails on gravel and dirt",
+    "Bring a picnic; few services nearby"
+   ],
+   "ages": [
+    0,
+    12
+   ],
+   "stroller": "partly",
+   "kids": "Kids love seeing deer, boar and local donkeys and cattle up close; wear trainers for the dirt paths."
+  },
+  {
+   "id": "k_chaves_roman_baths",
+   "name": "Chaves Roman Baths Museum",
+   "region": "douro",
+   "lat": 41.74,
+   "lon": -7.471,
+   "visit": 45,
+   "cat": "Museum",
+   "priority": 1,
+   "wiki": false,
+   "photoSearch": "Museu das Termas Romanas Chaves",
+   "summary": "Well-preserved Roman bath complex discovered under the centre of Chaves, now seen from walkways above the pools. A quick, impressive glimpse of Roman life on a rainy day.",
+   "facts": [
+    "Small entry fee",
+    "In the town centre near the castle keep",
+    "Allow 30–45 min",
+    "Step-free walkways"
+   ],
+   "ages": [
+    6,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Kids enjoy looking down into the ancient pools from the glass walkways and imagining Roman bathers; then cross the Roman bridge.",
+   "rainy": true,
+   "needsDaylight": false
+  }
+ ],
+ "drives": [
+  [
+   "k_sea_life_porto",
+   "porto",
+   7,
+   20
+  ],
+  [
+   "k_parque_da_cidade",
+   "k_sea_life_porto",
+   1,
+   3
+  ],
+  [
+   "k_world_of_discoveries",
+   "porto",
+   2,
+   8
+  ],
+  [
+   "k_crystal_palace_gardens",
+   "porto",
+   2,
+   8
+  ],
+  [
+   "k_parque_biologico_gaia",
+   "porto",
+   12,
+   20
+  ],
+  [
+   "k_maia_zoo",
+   "porto",
+   13,
+   20
+  ],
+  [
+   "k_porto_tram",
+   "porto",
+   1,
+   5
+  ],
+  [
+   "k_gaia_cable_car",
+   "porto",
+   2,
+   8
+  ],
+  [
+   "k_planetario_porto",
+   "porto",
+   4,
+   12
+  ],
+  [
+   "k_nau_vila_do_conde",
+   "porto",
+   30,
+   30
+  ],
+  [
+   "k_penha_cable_car",
+   "guimaraes",
+   2,
+   6
+  ],
+  [
+   "k_aquamuseu_rio_minho",
+   "valenca_fortress",
+   15,
+   15
+  ],
+  [
+   "k_aquamuseu_rio_minho",
+   "viana_do_castelo",
+   36,
+   35
+  ],
+  [
+   "k_gil_eannes",
+   "viana_do_castelo",
+   1,
+   3
+  ],
+  [
+   "k_ecopista_minho",
+   "valenca_fortress",
+   1,
+   4
+  ],
+  [
+   "k_parque_arnado",
+   "ponte_de_lima",
+   1,
+   4
+  ],
+  [
+   "k_canicada_boat",
+   "geres",
+   9,
+   15
+  ],
+  [
+   "k_canicada_boat",
+   "braga",
+   37,
+   40
+  ],
+  [
+   "k_douro_train",
+   "peso_da_regua",
+   1,
+   3
+  ],
+  [
+   "k_ecopista_tamega",
+   "amarante",
+   1,
+   4
+  ],
+  [
+   "k_ciencia_viva_braganca",
+   "braganca",
+   1,
+   4
+  ],
+  [
+   "k_mask_museum_braganca",
+   "braganca",
+   1,
+   3
+  ],
+  [
+   "k_parque_biologico_vinhais",
+   "braganca",
+   32,
+   30
+  ],
+  [
+   "k_chaves_roman_baths",
+   "chaves",
+   1,
+   3
+  ]
+ ]
+}

@@ -1,0 +1,958 @@
+{
+ "reuse": [
+  {
+   "id": "evora",
+   "ages": [
+    4,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids enjoy the Roman temple columns, the walls and the big main square with ice cream; keep sightseeing short and finish at the Jardim Público playground."
+  },
+  {
+   "id": "almendres_cromlech",
+   "ages": [
+    3,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love running between the 95 ancient standing stones and guessing what they were for; the last stretch is a dirt road, so go in the morning and bring water and hats.",
+   "visit": 45
+  },
+  {
+   "id": "monsaraz",
+   "ages": [
+    3,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love climbing the small castle walls and looking down over the huge Alqueva lake; the streets are cobbled, so a carrier beats a buggy, and add a swim at the Monsaraz river beach below in summer.",
+   "caution": "Parts of the castle walls have no railing; hold small hands."
+  },
+  {
+   "id": "alqueva_lake",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids enjoy swimming at the river beaches and a boat trip on Europe's largest artificial lake; in summer go early, as there is little shade."
+  },
+  {
+   "id": "marvao",
+   "ages": [
+    4,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love exploring the clifftop castle, its cistern and battlements with views into Spain; the walk up has steps and cobbles, so use a carrier for little ones.",
+   "caution": "Battlements have long drops with low or no parapets; keep kids close."
+  },
+  {
+   "id": "castelo_de_vide",
+   "ages": [
+    3,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids enjoy the castle tower, the steep flower-filled Jewish quarter lanes and drinking from the Fonte da Vila fountain; the lanes are steep cobbles, so bring a carrier."
+  },
+  {
+   "id": "elvas",
+   "ages": [
+    5,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids enjoy walking on the star-shaped ramparts and seeing the huge Amoreira aqueduct; drive up to Forte da Graça for the views rather than walking."
+  },
+  {
+   "id": "estremoz",
+   "ages": [
+    3,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids like the hilltop castle keep and, on Saturday mornings, the big market with clay figurines and animals; pair it with the Ciência Viva centre in town."
+  },
+  {
+   "id": "mertola",
+   "ages": [
+    4,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids enjoy climbing the castle tower above the Guadiana river and spotting storks; the old town is steep, so park near the top and walk down."
+  },
+  {
+   "id": "porto_covo",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the little sandy coves around the white village square; pick a sheltered cove like Praia Grande at low tide and watch for waves.",
+   "caution": "Atlantic swell and currents can be strong; swim only where it is calm and watched."
+  },
+  {
+   "id": "vila_nova_de_milfontes",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the calm, warm water of the Mira estuary beaches, much gentler than the open ocean; go at high tide and watch the strong tidal current near the river mouth.",
+   "caution": "The tidal current in the river mouth is strong; keep kids in the shallows."
+  },
+  {
+   "id": "zambujeira_do_mar",
+   "ages": [
+    3,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids enjoy the clifftop village and the beach below with rock pools at low tide; the beach is reached by a ramp and steps, and the waves can be big.",
+   "caution": "Unguarded cliff edges and strong surf; stay on paths and swim only when lifeguards are on."
+  },
+  {
+   "id": "odeceixe_beach",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love paddling in the calm river side of the beach where the Seixe meets the sea; set up near the river, not the surf side, and come at low or mid tide.",
+   "caution": "The ocean side has strong waves and currents."
+  },
+  {
+   "id": "ponta_da_piedade",
+   "ages": [
+    4,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the arches, grottoes and the lighthouse; the best way for families is a short boat or kayak tour from Lagos, as the stairs down are long.",
+   "caution": "Clifftop paths have no railings; keep children on the main path and hold hands."
+  },
+  {
+   "id": "sagres_fortress",
+   "ages": [
+    4,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Kids like the huge stone wind rose, the blowhole and running along the flat paved paths on the windy headland; bring jackets even in summer.",
+   "caution": "Cliff edges are open in places; keep kids on the path."
+  },
+  {
+   "id": "cabo_sao_vicente",
+   "ages": [
+    3,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids enjoy the 'end of the world' lighthouse and watching the waves crash far below; go at sunset but hold hands near the edge.",
+   "visit": 40,
+   "caution": "Sheer cliffs with no railings beyond the lighthouse area."
+  },
+  {
+   "id": "benagil_cave",
+   "ages": [
+    4,
+    14
+   ],
+   "stroller": "no",
+   "kids": "Kids love sailing into the huge sea cave with its round hole in the roof; choose a short boat trip (not kayaks) on a calm morning and ask for child life jackets.",
+   "caution": "Swimming into the cave from the beach is dangerous because of boat traffic and currents."
+  },
+  {
+   "id": "praia_da_marinha",
+   "ages": [
+    3,
+    14
+   ],
+   "stroller": "no",
+   "kids": "Kids love the arches, rock pools and snorkelling in clear water; there are many steps down, so bring a carrier and go early in summer for parking."
+  },
+  {
+   "id": "carvoeiro_algar_seco",
+   "ages": [
+    4,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids enjoy the boardwalk along the cliffs and scrambling into the rock 'windows' of Algar Seco; the boardwalk is buggy-friendly but the rock area has steps.",
+   "caution": "Rocky ledges over the sea at Algar Seco; keep little ones close."
+  },
+  {
+   "id": "praia_da_falesia",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the endless sand and the red and orange cliffs; enter at Olhos de Água or by the hotel ramps, as some accesses have long stairs.",
+   "caution": "Don't sit right under the cliffs because of rockfalls."
+  },
+  {
+   "id": "silves_castle",
+   "ages": [
+    3,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love walking the red sandstone battlements of this real Moorish castle; it's compact, so the visit is perfect for little legs.",
+   "visit": 60,
+   "caution": "Wall walks have low parapets in places."
+  },
+  {
+   "id": "monchique_foia",
+   "ages": [
+    3,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids enjoy the drive up to the highest point in the Algarve and the view to the sea; it is cooler up top, so bring a layer."
+  },
+  {
+   "id": "ria_formosa_islands",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the ferry ride and the wide, gentle lagoon-side beaches with no cars; pick the Culatra ferry for a short trip, and take shade, water and snacks.",
+   "priority": 3
+  },
+  {
+   "id": "ilha_de_tavira",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids enjoy the short ferry ride and the long sandy beach with warm, gentle water; a boardwalk leads from the pier to the beach and cafés."
+  },
+  {
+   "id": "cacela_velha",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love paddling across the lagoon to the sandbar beach at low tide; check tide times, since at high tide you need the little boat."
+  },
+  {
+   "id": "alvor_boardwalk",
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Kids enjoy spotting crabs and wading birds from the long, flat wooden boardwalk; it's ideal for buggies and bikes, but has no shade."
+  },
+  {
+   "id": "castro_marim",
+   "ages": [
+    3,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love exploring the castle and fort, especially during the Medieval Days festival; also look for flamingos in the salt pans nearby."
+  },
+  {
+   "id": "faro_old_town",
+   "ages": [
+    4,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids enjoy climbing the cathedral tower and spotting storks' nests on the old town walls; finish at the marina by the Ciência Viva centre.",
+   "visit": 75
+  }
+ ],
+ "places": [
+  {
+   "id": "k_badoca_safari_park",
+   "name": "Badoca Safari Park",
+   "region": "alentejo",
+   "lat": 38.0185,
+   "lon": -8.729,
+   "visit": 300,
+   "cat": "Zoo",
+   "priority": 3,
+   "wiki": false,
+   "photoSearch": "Badoca Safari Park",
+   "summary": "A large safari park near Vila Nova de Santo André with a tractor-pulled safari ride among zebras, giraffes and antelopes. It also has bird shows, lemurs and a primate island, plus a pool and play areas, so it fills a whole family day.",
+   "facts": [
+    "Adults ~€25, children ~€20, under 3 free (approx)",
+    "Safari ride and shows run at set times: plan around them",
+    "Lots of walking in the sun: hats, water and sunscreen",
+    "Free parking at the entrance"
+   ],
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Kids love the tractor safari among giraffes and zebras and the bird show; arrive at opening and do the safari first, before the heat.",
+   "facilities": "Restaurant, picnic areas, toilets",
+   "season": "Seasonal: roughly spring to autumn, with reduced days at the start and end of the season; check dates before going."
+  },
+  {
+   "id": "k_fluviario_mora",
+   "name": "Fluviário de Mora",
+   "region": "alentejo",
+   "lat": 38.9575,
+   "lon": -8.114,
+   "visit": 120,
+   "cat": "Aquarium",
+   "priority": 2,
+   "wiki": false,
+   "photoSearch": "Fluviário de Mora",
+   "summary": "Europe's first big freshwater aquarium, following a river from its mountain spring to the estuary, set in the Gameiro ecological park. Families see otters, fish and reptiles, then picnic or walk by the river.",
+   "facts": [
+    "Adults ~€12, children ~€8, under 3 free (approx)",
+    "Otters are the star: watch their feeding",
+    "Gameiro park outside has a river beach and picnic area",
+    "About 1 hour 15 min from Lisbon or Évora"
+   ],
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Kids love the playful otters and the huge river fish tanks; time the visit for feeding and then picnic in the park by the river.",
+   "rainy": true,
+   "needsDaylight": false
+  },
+  {
+   "id": "k_ccv_estremoz",
+   "name": "Centro Ciência Viva de Estremoz",
+   "region": "alentejo",
+   "lat": 38.843,
+   "lon": -7.5895,
+   "visit": 90,
+   "cat": "Science centre",
+   "priority": 2,
+   "wiki": false,
+   "photoSearch": "Centro Ciência Viva de Estremoz",
+   "summary": "A hands-on Earth-science centre in a former convent in Estremoz, all about rocks, dinosaurs, fossils and the planet. Interactive exhibits make it a good break between castles and marble towns.",
+   "facts": [
+    "Small entrance fee, family tickets available",
+    "Pairs well with Estremoz castle and the Saturday market",
+    "Good rainy-day stop in the Alentejo"
+   ],
+   "ages": [
+    4,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Kids enjoy the dinosaur and fossil displays and the hands-on rock and earthquake exhibits; combine it with the castle keep up the hill.",
+   "rainy": true,
+   "needsDaylight": false
+  },
+  {
+   "id": "k_ccv_lousal",
+   "name": "Centro Ciência Viva do Lousal",
+   "region": "alentejo",
+   "lat": 38.0365,
+   "lon": -8.4265,
+   "visit": 150,
+   "cat": "Science centre",
+   "priority": 2,
+   "wiki": false,
+   "photoSearch": "Lousal mine Ciência Viva",
+   "summary": "A science centre in an old pyrite mining village, with hands-on science rooms and a reconstructed mine gallery. Kids learn how miners worked, then explore the village and the mine lake.",
+   "facts": [
+    "Small entrance fee; mine gallery visit may be guided",
+    "Near Grândola, a short detour on the way to the coast",
+    "Mix of indoor rooms and outdoor mining heritage"
+   ],
+   "ages": [
+    5,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love going down into the mine gallery and the hands-on experiments; ask at the desk for the next guided gallery visit.",
+   "rainy": true
+  },
+  {
+   "id": "k_monte_selvagem",
+   "name": "Monte Selvagem animal reserve",
+   "region": "alentejo",
+   "lat": 38.766,
+   "lon": -8.349,
+   "visit": 180,
+   "cat": "Zoo",
+   "priority": 2,
+   "wiki": false,
+   "photoSearch": "Monte Selvagem Lavre",
+   "summary": "An animal park in the cork-oak countryside near Lavre (Montemor-o-Novo) with zebras, camels, ostriches, lemurs and farm animals along a walking circuit. It is smaller and calmer than a big zoo, good for young children.",
+   "facts": [
+    "Adults ~€14, children ~€10 (approx)",
+    "Outdoors with unpaved paths: sturdy shoes",
+    "Picnic area on site",
+    "Opening days vary by season (often weekends only in low season): check before going"
+   ],
+   "ages": [
+    0,
+    12
+   ],
+   "stroller": "partly",
+   "kids": "Little ones love the zebras, camels and goats on the walking loop; bring a picnic and go in the morning, as there's little shade at midday."
+  },
+  {
+   "id": "k_jardim_publico_evora",
+   "name": "Jardim Público de Évora",
+   "region": "alentejo",
+   "lat": 38.568,
+   "lon": -7.908,
+   "visit": 60,
+   "cat": "Park & playground",
+   "priority": 1,
+   "wiki": false,
+   "photoSearch": "Jardim Público Évora",
+   "summary": "Évora's shady public garden just inside the walls, with peacocks, a playground, a kiosk café and the ruins of the old royal palace. A perfect break between the city's monuments.",
+   "facts": [
+    "Free",
+    "Next to the Palace of D. Manuel and the Church of São Francisco",
+    "Kiosk café for drinks and snacks"
+   ],
+   "ages": [
+    0,
+    10
+   ],
+   "stroller": "yes",
+   "kids": "Kids love chasing the peacocks and the playground; it's the ideal stop after the Chapel of Bones or the Roman temple."
+  },
+  {
+   "id": "k_praia_fluvial_monsaraz",
+   "name": "Praia Fluvial de Monsaraz",
+   "region": "alentejo",
+   "lat": 38.4295,
+   "lon": -7.3695,
+   "visit": 150,
+   "cat": "Beach",
+   "priority": 2,
+   "wiki": false,
+   "photoSearch": "Praia Fluvial de Monsaraz",
+   "summary": "A river beach on Lake Alqueva just below the hilltop village of Monsaraz, with sand, calm water and lifeguards in summer. A great way to cool off after visiting the castle.",
+   "facts": [
+    "Free; lifeguards in the bathing season",
+    "Calm freshwater, no waves",
+    "Little natural shade: bring an umbrella",
+    "Bar and toilets in summer"
+   ],
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the warm, wave-free lake water and sandy shore; go in the late afternoon after Monsaraz castle, when the sun is lower.",
+   "season": "Best June–September, when lifeguards and the bar operate."
+  },
+  {
+   "id": "k_mina_sao_domingos_beach",
+   "name": "Mina de São Domingos river beach",
+   "region": "alentejo",
+   "lat": 37.671,
+   "lon": -7.499,
+   "visit": 150,
+   "cat": "Beach",
+   "priority": 2,
+   "wiki": false,
+   "photoSearch": "Praia fluvial Mina de São Domingos",
+   "summary": "A popular river beach on the Tapada Grande reservoir next to the abandoned São Domingos copper mine near Mértola. Families combine a swim with a look at the colourful old mine ruins.",
+   "facts": [
+    "Free; lifeguards and café in summer",
+    "Calm reservoir water, sandy shore and grass",
+    "About 20 min from Mértola",
+    "Shady trees near the beach"
+   ],
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love swimming in the calm reservoir and the grassy shade for picnics; look at the old mine ruins from the road, not up close.",
+   "season": "Best June–September, when lifeguards are on duty.",
+   "caution": "Don't let kids play in the mine area or its acidic, coloured water."
+  },
+  {
+   "id": "k_praia_das_furnas",
+   "name": "Praia das Furnas (Milfontes)",
+   "region": "alentejo",
+   "lat": 37.7195,
+   "lon": -8.788,
+   "visit": 150,
+   "cat": "Beach",
+   "priority": 2,
+   "wiki": false,
+   "photoSearch": "Praia das Furnas Vila Nova de Milfontes",
+   "summary": "A sandy beach on the south bank of the Mira estuary opposite Vila Nova de Milfontes, with calmer water than the open coast. In summer a small ferry crosses from the town.",
+   "facts": [
+    "Free parking on the south bank; small ferry from Milfontes in summer",
+    "Calmer river side is best for small children",
+    "Lifeguards in the bathing season"
+   ],
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the shallow, sheltered river edge and the little ferry crossing; stay on the estuary side and avoid the river mouth at tide changes.",
+   "caution": "Strong tidal currents near the river mouth."
+  },
+  {
+   "id": "k_zoomarine",
+   "name": "Zoomarine",
+   "region": "algarve",
+   "lat": 37.129,
+   "lon": -8.3155,
+   "visit": 360,
+   "cat": "Theme park",
+   "priority": 3,
+   "wiki": "Zoomarine",
+   "summary": "A marine theme park in Guia near Albufeira with dolphin, sea lion and bird shows, aquariums, rides, pools and a beach area. It is the Algarve's best-known family day out.",
+   "facts": [
+    "Adults ~€35, children 3–10 ~€25, under 3 free (approx); cheaper online",
+    "Check the show timetable on arrival",
+    "Bring swimwear for the pools and beach area",
+    "Large free car park"
+   ],
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Kids love the dolphin and sea lion shows and the splash pools; plan the day around show times and bring swimwear.",
+   "facilities": "Baby-changing, restaurants, lockers",
+   "season": "Usually open about March to early November; closed in winter."
+  },
+  {
+   "id": "k_aqualand",
+   "name": "Aqualand Algarve",
+   "region": "algarve",
+   "lat": 37.125,
+   "lon": -8.3545,
+   "visit": 300,
+   "cat": "Water park",
+   "priority": 2,
+   "wiki": false,
+   "photoSearch": "Aqualand Algarve",
+   "summary": "A big water park at Alcantarilha with high-speed slides, a lazy river and a children's area. A good hot-day treat for older kids.",
+   "facts": [
+    "Adults ~€30, children ~€22 (approx); online discounts",
+    "Height limits apply on big slides",
+    "Free parking"
+   ],
+   "ages": [
+    3,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Older kids love the big slides, while little ones have their own shallow area; arrive at opening to grab a shady spot.",
+   "season": "Summer only, roughly June to mid-September."
+  },
+  {
+   "id": "k_slide_splash",
+   "name": "Slide & Splash",
+   "region": "algarve",
+   "lat": 37.1305,
+   "lon": -8.452,
+   "visit": 300,
+   "cat": "Water park",
+   "priority": 2,
+   "wiki": false,
+   "photoSearch": "Slide & Splash Lagoa",
+   "summary": "One of the Algarve's oldest and largest water parks, near Lagoa, with dozens of slides, wave-free pools and a kids' zone. A full day of splashing.",
+   "facts": [
+    "Adults ~€30, children ~€22 (approx)",
+    "Height limits apply on big slides",
+    "Free parking"
+   ],
+   "ages": [
+    2,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the pirate-themed kids' area and the family slides; bring water shoes, as the paths get hot.",
+   "season": "Summer only, roughly June to mid-September."
+  },
+  {
+   "id": "k_aquashow",
+   "name": "Aquashow Park",
+   "region": "algarve",
+   "lat": 37.09,
+   "lon": -8.088,
+   "visit": 300,
+   "cat": "Water park",
+   "priority": 2,
+   "wiki": false,
+   "photoSearch": "Aquashow Park Quarteira",
+   "summary": "A water park in Quarteira with slides, a wave pool, a roller coaster and a hotel, near Vilamoura. Handy for families staying around Faro or Albufeira.",
+   "facts": [
+    "Adults ~€30, children ~€22 (approx)",
+    "Has an indoor water area too",
+    "Height limits apply on big slides"
+   ],
+   "ages": [
+    2,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the wave pool and the family slides; buy tickets online and go on a weekday for shorter queues.",
+   "season": "Outdoor park opens in summer, roughly June to mid-September."
+  },
+  {
+   "id": "k_lagos_zoo",
+   "name": "Lagos Zoo",
+   "region": "algarve",
+   "lat": 37.141,
+   "lon": -8.734,
+   "visit": 180,
+   "cat": "Zoo",
+   "priority": 2,
+   "wiki": false,
+   "photoSearch": "Lagos Zoo Barão de São João",
+   "summary": "A small, shady zoo near Barão de São João, inland from Lagos, focused on primates, birds and smaller animals, with a children's farm. It's easy to see in a morning with toddlers.",
+   "facts": [
+    "Adults ~€20, children ~€14 (approx)",
+    "Children's farm with goats and donkeys",
+    "Café and picnic area",
+    "About 15 min drive from Lagos"
+   ],
+   "ages": [
+    0,
+    12
+   ],
+   "stroller": "yes",
+   "kids": "Little ones love the monkeys, lemurs and the petting farm; go in the morning and finish with a picnic in the shade.",
+   "facilities": "Café, picnic area, toilets"
+  },
+  {
+   "id": "k_ccv_lagos",
+   "name": "Centro Ciência Viva de Lagos",
+   "region": "algarve",
+   "lat": 37.1005,
+   "lon": -8.6745,
+   "visit": 90,
+   "cat": "Science centre",
+   "priority": 1,
+   "wiki": false,
+   "photoSearch": "Centro Ciência Viva de Lagos",
+   "summary": "A small hands-on science centre in Lagos old town, themed on the Age of Discoveries, navigation and the stars. A good rainy-day hour in town.",
+   "facts": [
+    "Small entrance fee",
+    "In the old town, walkable from the marina",
+    "Best for primary-school-age kids"
+   ],
+   "ages": [
+    5,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Kids enjoy the navigation and astronomy experiments; it's a quick indoor break when the beach is off.",
+   "rainy": true,
+   "needsDaylight": false
+  },
+  {
+   "id": "k_ccv_faro",
+   "name": "Centro Ciência Viva do Algarve",
+   "region": "algarve",
+   "lat": 37.014,
+   "lon": -7.937,
+   "visit": 90,
+   "cat": "Science centre",
+   "priority": 2,
+   "wiki": false,
+   "photoSearch": "Centro Ciência Viva do Algarve Faro",
+   "summary": "A hands-on science centre by Faro's marina, focused on the sun, the sea and the Ria Formosa lagoon, with a small aquarium. Ideal before or after a boat trip from Faro.",
+   "facts": [
+    "Small entrance fee, family tickets",
+    "Next to the marina and boat-trip departures",
+    "Good on hot or rainy days"
+   ],
+   "ages": [
+    3,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Kids love the touch tanks and the light and sound experiments; pair it with a Ria Formosa boat trip from the dock outside.",
+   "rainy": true,
+   "needsDaylight": false
+  },
+  {
+   "id": "k_ccv_tavira",
+   "name": "Centro Ciência Viva de Tavira",
+   "region": "algarve",
+   "lat": 37.1262,
+   "lon": -7.6503,
+   "visit": 75,
+   "cat": "Science centre",
+   "priority": 1,
+   "wiki": false,
+   "photoSearch": "Centro Ciência Viva de Tavira",
+   "summary": "A small science centre in Tavira's old town with hands-on exhibits about light, energy and the sun. Easy to slot into a day in Tavira.",
+   "facts": [
+    "Small entrance fee",
+    "In the town centre, near the river",
+    "Best for ages 5–12"
+   ],
+   "ages": [
+    5,
+    14
+   ],
+   "stroller": "yes",
+   "kids": "Kids enjoy the hands-on light and energy experiments; combine with an ice cream by the Roman bridge.",
+   "rainy": true,
+   "needsDaylight": false
+  },
+  {
+   "id": "k_quinta_de_marim",
+   "name": "Quinta de Marim (Ria Formosa)",
+   "region": "algarve",
+   "lat": 37.033,
+   "lon": -7.8215,
+   "visit": 120,
+   "cat": "Nature reserve",
+   "priority": 2,
+   "wiki": false,
+   "photoSearch": "Quinta de Marim Ria Formosa",
+   "summary": "The Ria Formosa Natural Park centre near Olhão, with an easy nature trail past a tide mill, salt pans and lagoon shores. Families spot birds, crabs and, with luck, chameleons.",
+   "facts": [
+    "Small entrance fee",
+    "Flat trail of about 3 km, mostly unpaved",
+    "Bring binoculars, water and hats",
+    "Close to Olhão market"
+   ],
+   "ages": [
+    3,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love spotting crabs, flamingos and the old tide mill on the flat trail; go early or late in the day for birds and cooler air."
+  },
+  {
+   "id": "k_lagos_dolphin_trip",
+   "name": "Dolphin watching from Lagos",
+   "region": "algarve",
+   "lat": 37.106,
+   "lon": -8.675,
+   "visit": 150,
+   "cat": "Boat trip",
+   "priority": 3,
+   "wiki": false,
+   "photoSearch": "dolphin watching Lagos Algarve",
+   "summary": "Boat trips from Lagos marina head out to sea to find common and bottlenose dolphins, often with marine-biologist guides. Many operators run them year-round, weather permitting.",
+   "facts": [
+    "Adults ~€45, children ~€30 (approx); book a day ahead",
+    "Trips last about 1.5–2.5 hours",
+    "Choose a boat with a cabin or shade for small kids",
+    "Morning seas are usually calmer"
+   ],
+   "ages": [
+    4,
+    14
+   ],
+   "stroller": "no",
+   "kids": "Kids are thrilled when dolphins ride the bow wave; pick a calm morning, bring motion-sickness remedies and leave the buggy in the car.",
+   "caution": "Fast RIB boats can be bumpy and some operators set minimum ages; check before booking."
+  },
+  {
+   "id": "k_praia_do_barril",
+   "name": "Praia do Barril",
+   "region": "algarve",
+   "lat": 37.0885,
+   "lon": -7.6635,
+   "visit": 180,
+   "cat": "Beach",
+   "priority": 3,
+   "wiki": false,
+   "photoSearch": "Praia do Barril anchor cemetery",
+   "summary": "A long, gentle beach on Ilha de Tavira reached by a little train across the lagoon from Pedras d'El Rei. Next to the beach, the 'anchor cemetery' of old tuna-fishing anchors is fun to explore.",
+   "facts": [
+    "Mini train costs a couple of euros each way; or walk the 1 km path",
+    "Lifeguards and cafés in summer",
+    "Free parking at Pedras d'El Rei"
+   ],
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the little train ride and climbing among the rows of rusty anchors; walk back along the path at the end of the day to see crabs in the lagoon."
+  },
+  {
+   "id": "k_praia_da_rocha",
+   "name": "Praia da Rocha",
+   "region": "algarve",
+   "lat": 37.1185,
+   "lon": -8.5365,
+   "visit": 180,
+   "cat": "Beach",
+   "priority": 2,
+   "wiki": "Praia da Rocha",
+   "summary": "Portimão's famous wide beach of golden sand below ochre cliffs, with a long boardwalk, lifeguards and cafés. Lots of space makes it easy with small children.",
+   "facts": [
+    "Free; paid parking along the clifftop",
+    "Boardwalk across the sand, good for buggies",
+    "Lifeguards in the bathing season",
+    "Fortaleza de Santa Catarina at the east end"
+   ],
+   "ages": [
+    0,
+    14
+   ],
+   "stroller": "partly",
+   "kids": "Kids love the huge sandy space and the rock stacks to explore; use the boardwalk with a buggy and set up near a lifeguard post."
+  }
+ ],
+ "drives": [
+  [
+   "k_badoca_safari_park",
+   "vila_nova_de_milfontes",
+   45,
+   40
+  ],
+  [
+   "k_fluviario_mora",
+   "evora",
+   75,
+   60
+  ],
+  [
+   "k_ccv_estremoz",
+   "estremoz",
+   2,
+   5
+  ],
+  [
+   "k_ccv_lousal",
+   "setubal",
+   90,
+   65
+  ],
+  [
+   "k_monte_selvagem",
+   "evora",
+   55,
+   45
+  ],
+  [
+   "k_jardim_publico_evora",
+   "evora",
+   1,
+   5
+  ],
+  [
+   "k_praia_fluvial_monsaraz",
+   "monsaraz",
+   3,
+   7
+  ],
+  [
+   "k_mina_sao_domingos_beach",
+   "mertola",
+   18,
+   20
+  ],
+  [
+   "k_praia_das_furnas",
+   "vila_nova_de_milfontes",
+   8,
+   12
+  ],
+  [
+   "k_zoomarine",
+   "faro",
+   42,
+   35
+  ],
+  [
+   "k_aqualand",
+   "k_zoomarine",
+   5,
+   8
+  ],
+  [
+   "k_slide_splash",
+   "lagos",
+   28,
+   25
+  ],
+  [
+   "k_aquashow",
+   "faro",
+   22,
+   22
+  ],
+  [
+   "k_lagos_zoo",
+   "lagos",
+   10,
+   15
+  ],
+  [
+   "k_ccv_lagos",
+   "lagos",
+   1,
+   5
+  ],
+  [
+   "k_ccv_faro",
+   "faro",
+   1,
+   5
+  ],
+  [
+   "k_ccv_tavira",
+   "tavira",
+   1,
+   5
+  ],
+  [
+   "k_quinta_de_marim",
+   "faro",
+   12,
+   15
+  ],
+  [
+   "k_lagos_dolphin_trip",
+   "lagos",
+   1,
+   5
+  ],
+  [
+   "k_praia_do_barril",
+   "tavira",
+   6,
+   10
+  ],
+  [
+   "k_praia_da_rocha",
+   "lagos",
+   22,
+   25
+  ],
+  [
+   "k_ccv_lousal",
+   "k_badoca_safari_park",
+   40,
+   35
+  ],
+  [
+   "k_lagos_zoo",
+   "k_ccv_lagos",
+   11,
+   15
+  ],
+  [
+   "k_quinta_de_marim",
+   "olhao_market",
+   3,
+   7
+  ]
+ ]
+}
