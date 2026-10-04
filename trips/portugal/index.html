@@ -226,10 +226,18 @@ table.sun td,table.sun th{padding:5px 4px;border-bottom:1px solid var(--line);te
 .poi{padding:0;overflow:hidden}
 .poi.pk-skip{opacity:.6}
 .poi.pk-must{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
-.poiimg{position:relative;aspect-ratio:16/9;background:linear-gradient(135deg,var(--rc),var(--night));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;opacity:.95}
+.poiimg{position:relative;aspect-ratio:5/2;background:linear-gradient(135deg,var(--rc),var(--night));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;opacity:.95}
 .poiimg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .poistar{position:absolute;left:10px;top:10px;background:var(--accent);color:var(--accent-ink);font-size:12px;font-weight:700;padding:3px 9px;border-radius:99px}
-.poibody{padding:12px}
+.poibody{padding:10px 12px 8px}
+.clamp2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:14px}
+.keyline{font-weight:600;margin:2px 0}
+.poidone{position:absolute;right:10px;top:10px;background:var(--ok);color:#fff;font-size:12px;font-weight:700;padding:3px 9px;border-radius:99px}
+details.more{margin-top:6px;border-top:1px solid var(--line);padding-top:4px}
+details.more summary{list-style:none;cursor:pointer;color:var(--accent);font-size:13px;font-weight:600;padding:2px 0}
+details.more summary::-webkit-details-marker{display:none}
+details.more summary::before{content:'▸ '}
+details.more[open] summary::before{content:'▾ '}
 .facts{margin:0;padding-left:18px;font-size:13px;color:var(--muted)}
 details summary{cursor:pointer;color:var(--accent)}
 nav.tabs button{font-size:10.5px}

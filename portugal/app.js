@@ -8,7 +8,7 @@ const LS_STATE = 'portugal-planner-v1';
 const LS_UI = 'portugal-planner-ui';
 // Bump on every change. The app compares it with the app.js on the server, so a phone that kept an old tab open
 // (no reload, so still the old code) is told a newer version exists.
-const APP_BUILD = '2026-10-04.8';
+const APP_BUILD = '2026-10-04.10';
 let NEWER = null; // the newer build found on the server, if any
 const AX0 = 5 * 60, AX1 = 23 * 60;           // timeline axis 05:00–23:00
 const DEFAULT_SETTINGS = {
@@ -1366,6 +1366,8 @@ const isThumb = u => /\/thumb\/.+\/\d+px-[^/]+$/.test(u || '');
 const thumbAt = (u, w) => u.replace(/\/\d+px-([^/]+)$/, `/${w}px-$1`);
 const origOf = u => u.replace('/thumb/', '/').replace(/\/\d+px-[^/]+$/, '');
 const imgSrc = u => (u && isThumb(u) && IMG_W ? thumbAt(u, IMG_W) : u);
+// "📝 Our blog post (local training)" → "📝 Blog", "▶️ Our video (Operation Hook, Feb 2022)" → "▶️ Video 2022"
+const shortLink = n => n.replace(/^(📝|▶️)\s*Our (blog post|video)(?: \((?:[^)]*?)(\d{4})\))?.*$/, (m, ic, kind, y) => `${ic} ${kind === 'video' ? 'Video' : 'Blog'}${y ? ' ' + y : ''}`);
 function imgFail(el, id) {
   const tried = (el.dataset.tried || '').split(',').filter(Boolean), cur = el.src;
   tried.push(isThumb(cur) ? cur.match(/\/(\d+)px-[^/]+$/)[1] : 'orig');
@@ -1424,32 +1426,43 @@ function renderMyPlaces() {
     const rg = region(p.region), w = WIKI[p.id] || {}, pk = pick(p.id), where = plannedIn(p.id);
     const img = p.photo || imgSrc(w.img) || null;
     const wurl = w.url || `https://en.wikipedia.org/wiki/Special:Search?search=${encodeURIComponent(p.wiki || p.name)}`;
+    // compact card: photo, name, a two-line summary, one key line and the buttons; everything else folds under "More"
+    const facts = p.facts || [], done = facts.find(f => /^We've done this/.test(f));
+    const stats = facts.find(f => /^Grade /.test(f));
+    // key line for a via ferrata: the first grade given (sources' notes dropped), length and climb; time is shown above
+    const key = stats ? stats.replace(/^Grade /, '').split(' · ').filter(x => !/in total$/.test(x)).map((x, n) => n ? x : x.replace(/\s*\([^)]*\)/g, '').split(';')[0].trim()).join(' · ') : (p.hours || p.closed?.length) ? `🕘 ${p.hours ? `Open ${p.hours.replace('-', '–')}` : ''}${p.closed?.length ? `${p.hours ? ' · ' : ''}closed ${p.closed.map(x => DOW[x]).join(', ')}` : ''}` : '';
+    const rest = facts.filter(f => f !== done && f !== stats);
+    const ours = (p.links || []).filter(l => /^(📝|▶️)/.test(l.name)), other = (p.links || []).filter(l => !ours.includes(l));
     h += `<article class="card poi ${pk ? 'pk-' + pk : ''}" id="poi-${esc(p.id)}">
       <div class="poiimg" style="--rc:${rg.color}"><span>${esc(p.cat || '')}</span>${img ? `<img src="${esc(img)}" alt="${esc(p.name)}" loading="lazy" referrerpolicy="no-referrer" onerror="imgFail(this,'${esc(p.id)}')" onload="imgOk('${esc(p.id)}', this)">` : ''}
-        ${pk === 'must' ? '<span class="poistar">★ Must-see</span>' : ''}</div>
+        ${pk === 'must' ? '<span class="poistar">★ Must-see</span>' : ''}${done ? '<span class="poidone">✓ Done</span>' : ''}</div>
       <div class="poibody">
         <div class="row"><h3 class="grow" style="margin:0">${esc(p.name)}</h3>${p.confidence === 'low' ? '<span class="chip partial">unverified</span>' : ''}<span class="chip">${catInfo(p.cat).icon} ${esc(p.cat || 'Place')}</span></div>
-        ${p.caution ? `<div class="small" style="color:var(--warn);margin:4px 0">⚠ ${withEur(esc(p.caution))}</div>` : ''}
-        <div class="tiny" style="color:${rg.color};margin:2px 0 6px">${esc(rg.name)} · ~${p.visit ?? 45} min${p.id !== S.trip.home ? ` · ${drive(S.trip.home, p.id).km} km from ${esc(placeName(S.trip.home))}` : ''}</div>
-        ${p.summary ? `<p style="margin:0 0 6px">${esc(p.summary)}</p>` : ''}
-        ${p.facts && p.facts.length ? `<ul class="facts">${p.facts.map(f => `<li>${withEur(esc(f))}</li>`).join('')}</ul>` : ''}
-        ${p.hours || p.closed?.length ? `<div class="small" style="margin:4px 0">🕘 ${p.hours ? `Open ${esc(p.hours.replace('-', '–'))}` : ''}${p.closed?.length ? `${p.hours ? ' · ' : ''}closed ${p.closed.map(x => DOW[x]).join(', ')}` : ''}</div>` : ''}
-        ${p.season ? `<div class="seasonal" style="margin:6px 0">☀ ${withEur(esc(p.season))}</div>` : ''}
-        ${w.extract ? `<details class="small"><summary>From Wikipedia</summary><p class="muted" style="margin:4px 0">${esc(w.extract)}</p></details>` : ''}
-        <div class="row small" style="margin:8px 0">
-          ${p.wiki === false ? '' : `<a href="${esc(wurl)}" target="_blank" rel="noopener">Wikipedia ↗</a>`}
-          <a href="https://www.google.com/maps/dir/?api=1&destination=${p.lat},${p.lon}" target="_blank" rel="noopener">Directions ↗</a>
-          ${(p.links || []).map(l => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.name)} ↗</a>`).join('')}</div>
-        ${p.sources && p.sources.length ? `<details class="tiny" style="margin-bottom:6px"><summary>Sources${p.checked ? ` · checked ${esc(dateLabel(p.checked, { day: 'numeric', month: 'short', year: 'numeric' }))}` : ''}${p.confidence ? ` · ${esc(p.confidence)} confidence` : ''}</summary>
-          <ul class="facts" style="margin-top:4px">${p.sources.map(u => `<li><a href="${esc(u)}" target="_blank" rel="noopener">${esc(u.replace(/^https?:\/\/(www\.)?/, '').slice(0, 60))}</a></li>`).join('')}</ul></details>` : ''}
-        ${where.length ? `<div class="tiny muted" style="margin-bottom:6px">In plans: ${where.map(x => `${x.active ? '<b>' : ''}${esc(x.o.id)} ${dateLabel(x.d, { day: 'numeric', month: 'short' })}${x.active ? '</b>' : ''}`).join(', ')}</div>` : ''}
-        <div class="row" style="gap:6px">
+        <div class="tiny" style="color:${rg.color};margin:2px 0 4px">${esc(rg.name)} · ~${dur(p.visit ?? 45)}${p.id !== S.trip.home ? ` · ${drive(S.trip.home, p.id).km} km from ${esc(placeName(S.trip.home))}` : ''}</div>
+        ${p.caution ? `<div class="small" style="color:var(--warn);margin:2px 0 4px">⚠ ${withEur(esc(p.caution))}</div>` : ''}
+        ${p.summary ? `<p class="clamp2" style="margin:0 0 4px">${esc(p.summary)}</p>` : ''}
+        ${key ? `<div class="small keyline">${esc(key)}</div>` : ''}
+        ${ours.length ? `<div class="small" style="margin:4px 0">${ours.map(l => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(shortLink(l.name))}</a>`).join(' · ')}</div>` : ''}
+        <div class="row" style="gap:6px;margin-top:8px">
           <button class="btn small ${pk === 'must' ? 'primary' : ''}" data-act="pick" data-v="must" data-place="${esc(p.id)}" aria-pressed="${pk === 'must'}">★ Must-see</button>
           <button class="btn small ${pk === 'skip' ? 'danger' : ''}" data-act="pick" data-v="skip" data-place="${esc(p.id)}" aria-pressed="${pk === 'skip'}">${pk === 'skip' ? 'Skipped' : 'Skip'}</button>
           <button class="btn small" data-act="pmap" data-place="${esc(p.id)}">Map</button>
           <select data-act="padd" data-place="${esc(p.id)}" class="grow" style="min-width:110px"><option value="">Add to day…</option>${days.map(d => `<option value="${d.date}">${dateLabel(d.date)}</option>`).join('')}</select>
         </div>
-        ${img ? `<div class="tiny muted" style="margin-top:6px">Photo: <a href="${esc(p.photo ? p.photo : w.commons || wurl)}" target="_blank" rel="noopener">${p.photo ? esc(p.photoCredit || 'custom') : w.commons ? 'Wikimedia Commons' : 'Wikipedia / Wikimedia Commons'}</a></div>` : ''}
+        ${where.length ? `<div class="tiny muted" style="margin-top:6px">In plans: ${where.map(x => `${x.active ? '<b>' : ''}${esc(x.o.id)} ${dateLabel(x.d, { day: 'numeric', month: 'short' })}${x.active ? '</b>' : ''}`).join(', ')}</div>` : ''}
+        <details class="more"><summary>More</summary>
+          ${done ? `<div class="small" style="margin:4px 0">✓ ${esc(done.replace(/^We've done this one: /, "We've done this one: "))}</div>` : ''}
+          ${rest.length ? `<ul class="facts">${rest.map(f => `<li>${withEur(esc(f))}</li>`).join('')}</ul>` : ''}
+          ${stats && (p.hours || p.closed?.length) ? `<div class="small" style="margin:4px 0">🕘 ${p.hours ? `Open ${esc(p.hours.replace('-', '–'))}` : ''}${p.closed?.length ? ' · closed ' + p.closed.map(x => DOW[x]).join(', ') : ''}</div>` : ''}
+          ${p.season ? `<div class="seasonal" style="margin:6px 0">☀ ${withEur(esc(p.season))}</div>` : ''}
+          ${w.extract ? `<p class="small muted" style="margin:6px 0"><b>From Wikipedia:</b> ${esc(w.extract)}</p>` : ''}
+          <div class="row small" style="margin:6px 0;flex-wrap:wrap">
+            ${p.wiki === false ? '' : `<a href="${esc(wurl)}" target="_blank" rel="noopener">Wikipedia ↗</a>`}
+            <a href="https://www.google.com/maps/dir/?api=1&destination=${p.lat},${p.lon}" target="_blank" rel="noopener">Directions ↗</a>
+            ${other.map(l => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.name)} ↗</a>`).join('')}</div>
+          ${p.sources && p.sources.length ? `<div class="tiny muted">Sources${p.checked ? ` (checked ${esc(dateLabel(p.checked, { day: 'numeric', month: 'short', year: 'numeric' }))}${p.confidence ? `, ${esc(p.confidence)} confidence` : ''})` : ''}: ${p.sources.map(u => `<a href="${esc(u)}" target="_blank" rel="noopener">${esc(u.replace(/^https?:\/\/(www\.)?/, '').split('/')[0])}</a>`).join(', ')}</div>` : ''}
+          ${img ? `<div class="tiny muted" style="margin-top:4px">Photo: <a href="${esc(p.photo ? p.photo : w.commons || wurl)}" target="_blank" rel="noopener">${p.photo ? esc(p.photoCredit || 'custom') : w.commons ? 'Wikimedia Commons' : 'Wikipedia / Wikimedia Commons'}</a></div>` : ''}
+        </details>
       </div></article>`;
   }
   if (!navigator.onLine && S.places.some(p => !WIKI[p.id])) h += `<p class="tiny muted">Photos load the first time you open this tab online, and are kept for offline use.</p>`;
