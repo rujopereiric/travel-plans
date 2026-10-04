@@ -4589,7 +4589,7 @@
       "priority": 2,
       "summary": "The longest via ferrata in Portugal, a ridge circuit with two bridges in the Naturtejo Geopark. It reopened in 2026 after repairs from the 2023 wildfires.",
       "facts": [
-        "We've done this one: E29 / CJE via ferrata activity (2021)",
+        "We've done this one: Operation Hook (2021)",
         "Grade K3 (RocJumper) / B/C (ferrataguide, via-ferrata.de) · 2190 m · +150 m · ~2 h 21 min in total",
         "Getting there: From Catraia Cimeira take the M1313 toward Chão do Galego. Start at the watchtower designed by Álvaro Siza Vieira, then walk about 800 m (20 min) to sector 1. The circuit ends back at the tower.",
         "Reopened mid-2026 after fire damage; it was listed as temporarily closed before that",
@@ -4630,7 +4630,7 @@
       "priority": 2,
       "summary": "The only via ferrata in Trás-os-Montes, climbing a granite slope above the wild Rabaçal river, with an optional cable bridge at the top. It pairs well with the Ecovia walking trails and the river beach.",
       "facts": [
-        "We've done this one: E29 / CJE via ferrata activity (2024)",
+        "We've done this one: Operation Hook (2022), Operation Hook II (2024)",
         "Grade K2 (deandar) / B (via-ferrata.de, OSM); officially 'algo difícil' ≈K3 · 120 m · +95 m · ~2 h 15 min in total",
         "Getting there: Park on Rua Principal in Barreiros, by the cemetery and festival square. Walk down past a viewpoint to the river beach, then follow signs to the panel at the start. The loop is about 4.4 km.",
         "Circular walk about 2 h 15 min in total (Wikiloc track)",
@@ -4659,7 +4659,8 @@
       "photoCredit": "E29.eu",
       "links": [
         {"name": "📝 Our blog post", "url": "https://e29.eu/rabacal-ecovia-adventure"},
-        {"name": "▶️ Our video", "url": "https://youtu.be/-sQEWJvzgUw"}
+        {"name": "▶️ Our video (Oct 2024)", "url": "https://youtu.be/-sQEWJvzgUw"},
+        {"name": "▶️ Our video (Operation Hook, Feb 2022)", "url": "https://youtu.be/BsT-U-w_WDs"}
       ],
       "e29": true
     },
@@ -4707,7 +4708,7 @@
       "priority": 2,
       "summary": "A short beginner route built in 2015 up the cliff below the Penha hermitage, with wide views over Castelo de Vide. The sideways traverses are the most technical part.",
       "facts": [
-        "We've done this one: E29 / CJE via ferrata activity (2024)",
+        "We've done this one: Operation Hook II (2024)",
         "Grade K2 (RocJumper) / B (via-ferrata.de) · 200 m · +54 m · ~0 h 45 min in total",
         "Getting there: Park at the Ermida de Nossa Senhora da Penha car park above Castelo de Vide. Follow yellow dots downhill to the base of the cliff, about 10 min. Return by the chapel stairs.",
         "About 45 min: 10 min approach, 30 min climb, 5 min back",
@@ -4750,6 +4751,7 @@
       "priority": 2,
       "summary": "Portugal's hardest via ferrata, a short but strenuous climb up the granite wall beside the Santa Luzia dam. It's for experienced people with good arm strength.",
       "facts": [
+        "We've done this one: Operation Hook (2022)",
         "Grade K4 (RocJumper, deandar) / D (ferrataguide) / C/D (via-ferrata.de) · 200 m · +150 m · ~1 h 32 min in total",
         "Getting there: Park at the foot of the Santa Luzia dam (Casal da Lapa) and walk to the west wall, about 2 min. Return over the dam or via the viewpoint on the N344.",
         "Duration disagrees: about 1.5 h total (RocJumper) vs about 2.5 h (ferrataguide)",
@@ -4774,7 +4776,9 @@
       "municipality": "Pampilhosa da Serra, Coimbra",
       "season": "Shaded in the morning, in sun in the afternoon; no official closures found",
       "photo": "https://bookinxisto.com/upload/media/original/66cc479a541c7.jpg",
-      "photoCredit": "bookinxisto.com"
+      "photoCredit": "bookinxisto.com",
+      "links": [{"name": "▶️ Our video", "url": "https://youtu.be/B3uyDAfHZNg"}],
+      "e29": true
     },
     {
       "id": "vf_pombeira",
@@ -4787,7 +4791,7 @@
       "priority": 2,
       "summary": "Often called the most complete via ferrata in Portugal, it follows a granite gorge with waterfalls and crosses three cable bridges. The park was officially inaugurated in 2026 after years of delays.",
       "facts": [
-        "We've done this one: E29 / CJE via ferrata activity (2024)",
+        "We've done this one: Operation Hook II (2024)",
         "Grade C (ferrataguide, viaferrata.pt); mostly B to B/C with a C finish · 750 m · +200 m · ~2 h 35 min in total",
         "Getting there: Park at the Pombeira Adventure Park near Lamelas / Codeçais, then walk about 30 min to the start. The return to the car is short.",
         "About 2.5 h: 30 min approach, 2 h route, 5 min back",
@@ -4832,7 +4836,7 @@
       "priority": 2,
       "summary": "Portugal's first via ferrata (2012), a short beginner climb up the country's largest granite monolith to Lanhoso castle. It is private, so you must book through DiverLanhoso.",
       "facts": [
-        "We've done this one: E29 / CJE via ferrata activity (2024)",
+        "We've done this one: Operation Hook II (2024)",
         "Grade K2 officially, feels like K1 (ferrataguide) / A/B (via-ferrata.de) · 150 m · +55 m · ~0 h 31 min in total",
         "Getting there: Drive up Rua do Pilar and park at the lower bend near the base of the monolith. The start is about 2 min away; walk down by road from the castle afterwards.",
         "Signs at the start forbid using it without the operator",
@@ -4877,7 +4881,7 @@
       "priority": 2,
       "summary": "A short climb to a rocky summit viewpoint in the Barroso highlands, with a suspension bridge along the way. It's an easy add-on to a visit to the Barroso area.",
       "facts": [
-        "We've done this one: E29 / CJE via ferrata activity (2024)",
+        "We've done this one: Operation Hook (2022), Operation Hook II (2024)",
         "Grade K3 (deandar) / C, mostly B (ferrataguide) · 153 m · +100 m · ~0 h 55 min in total",
         "Getting there: Take the M520 southeast from the Alto Rabagão dam to the first farm, where a sign marks the access. Follow the fence and faint yellow arrows, about 10 min.",
         "Status disagrees: listed as closed by Ferratas Hierro y Roca (2024), but RocJumper found it OK in 2025",
@@ -4904,7 +4908,8 @@
       "photoCredit": "E29.eu",
       "links": [
         {"name": "📝 Our blog post", "url": "https://e29.eu/via-ferrata-teto-do-mundo/"},
-        {"name": "▶️ Our video", "url": "https://youtu.be/8PaaCGDUc7g"}
+        {"name": "▶️ Our video (Oct 2024)", "url": "https://youtu.be/8PaaCGDUc7g"},
+        {"name": "▶️ Our video (Operation Hook, Jan 2022)", "url": "https://youtu.be/EoDYvS08Qd8"}
       ],
       "e29": true
     },

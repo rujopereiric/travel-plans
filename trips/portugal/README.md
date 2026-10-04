@@ -17,7 +17,7 @@ It is one page with no backend and no build step, and works offline once loaded.
 
 ## What's in it
 
-There are 259 places in 12 regions, with 46 good overnight bases:
+There are 258 places in 12 regions, with 46 good overnight bases:
 - **Mainland:** Lisbon; Sintra & Cascais; Setúbal & Arrábida; Óbidos, Nazaré & Tomar; Coimbra, Aveiro & Serra da Estrela; Porto; Minho & Gerês; Douro Valley & Trás-os-Montes; Alentejo; Algarve.
 - **Islands:** Madeira and the Azores.
 
@@ -48,13 +48,15 @@ To fix or add places:
 
 ## Via ferratas
 
-The 11 via ferratas in My places come from two sources:
-- **`parts/via_ferrata_research.json`:** web research done in October 2026. It covers 11 routes, plus Madeira's planned São Vicente route, which is left out until it opens. Each route has a grade, length, duration, approach, operators, kit rental and sources. Where sources disagree, the facts say so.
+The 10 via ferratas in My places come from two sources:
+- **`parts/via_ferrata_research.json`:** web research done in October 2026. It covers 10 routes, plus Madeira's planned São Vicente route, which is left out until it opens. The Fenda da Arrábida circuit was dropped: it's a guided adventure circuit, not a via ferrata. Each route has a grade, length, duration, approach, operators, kit rental and sources. Where sources disagree, the facts say so.
 - **OpenStreetMap:** any route the research doesn't cover. An OSM route within 3 km of a researched one counts as the same route. OSM-only routes are marked *unverified*. Routes known to be wrong or not accessible are listed in `EXCLUDE` in the script and `OSM_EXCLUDE` in `app.js`, so they never come back.
 
 `tools/via_ferrata.py` merges both into `parts/via_ferrata.json`. Via ferratas have `"wiki": false`, so the app doesn't show the general Wikipedia article. Instead it looks for a photo on Wikimedia Commons using `photoSearch`.
 
-Photos: 10 routes have a `photo`, credited on the card through `photoCredit`. Six are from our own E29.eu albums (`m.e29.eu`); the others are from guide sites. The service worker keeps these photos for offline use, like the Wikimedia ones.
+Our own trip reports: the `e29` entries in the research file list our E29.eu blog posts and YouTube videos for each route we've done. They come from the E29 Dataverse "Communications" table, exported 10 Sep 2025. They show first in the card's links, with a "We've done this one" line.
+
+Photos: 9 routes have a `photo`, credited on the card through `photoCredit`. Six are from our own E29.eu albums (`m.e29.eu`); the others are from guide sites. The service worker keeps these photos for offline use, like the Wikimedia ones.
 
 To update after new research or a new OpenStreetMap download, run:
 ```

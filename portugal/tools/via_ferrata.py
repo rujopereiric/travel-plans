@@ -69,8 +69,9 @@ for r in research:
     # our own trip reports (from the E29 Dataverse "Communications" table): blog posts and videos first in the links
     if r.get('e29'):
         nb = sum(1 for x in r['e29'] if x['type'] == 'blog'); nv = sum(1 for x in r['e29'] if x['type'] == 'video')
-        p['links'] = [{'name': x.get('label') or (('📝 Our blog post' if x['type'] == 'blog' else '▶️ Our video') + (f" ({MON[int(x['date'][5:7])]} {x['date'][:4]})" if (nb if x['type'] == 'blog' else nv) > 1 else '')), 'url': x['url']} for x in r['e29']]
-        p['facts'].insert(0, f"We've done this one: E29 / CJE via ferrata activity ({min(x['date'] for x in r['e29'])[:4]})")
+        p['links'] = [{'name': x.get('label') or (('📝 Our blog post' if x['type'] == 'blog' else '▶️ Our video') + (f" ({'Operation Hook, ' if x['project'] == 'Operation Hook' else ''}{MON[int(x['date'][5:7])]} {x['date'][:4]})" if (nb if x['type'] == 'blog' else nv) > 1 else '')), 'url': x['url']} for x in r['e29']]
+        done = sorted({(x['date'][:4], x['project']) for x in r['e29']})
+        p['facts'].insert(0, "We've done this one: " + ', '.join(f"{pr} ({y})" for y, pr in done))
         p['e29'] = True
     places.append(p)
 known = [(p['lat'], p['lon']) for p in places]

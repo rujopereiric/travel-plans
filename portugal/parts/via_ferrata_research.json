@@ -107,7 +107,8 @@
       {
         "type": "video",
         "url": "https://youtu.be/kLJpXayfQCI",
-        "date": "2021-10-01"
+        "date": "2021-10-01",
+        "project": "Operation Hook"
       }
     ]
   },
@@ -149,12 +150,20 @@
       {
         "type": "blog",
         "url": "https://e29.eu/rabacal-ecovia-adventure",
-        "date": "2024-10-31"
+        "date": "2024-10-31",
+        "project": "Operation Hook II"
       },
       {
         "type": "video",
         "url": "https://youtu.be/-sQEWJvzgUw",
-        "date": "2024-10-31"
+        "date": "2024-10-31",
+        "project": "Operation Hook II"
+      },
+      {
+        "type": "video",
+        "url": "https://youtu.be/BsT-U-w_WDs",
+        "date": "2022-02-01",
+        "project": "Operation Hook"
       }
     ]
   },
@@ -229,12 +238,14 @@
       {
         "type": "blog",
         "url": "https://e29.eu/via-ferrata-castelo-de-vide/",
-        "date": "2024-10-28"
+        "date": "2024-10-28",
+        "project": "Operation Hook II"
       },
       {
         "type": "video",
         "url": "https://youtu.be/9644LKEzW_A",
-        "date": "2024-10-23"
+        "date": "2024-10-23",
+        "project": "Operation Hook II"
       }
     ]
   },
@@ -270,7 +281,15 @@
       "https://www.wikiloc.com/via-ferrata-trails/via-ferrata-da-barragem-de-santa-luzia-18770542",
       "https://www.rocjumper.com/portugal/"
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "e29": [
+      {
+        "type": "video",
+        "url": "https://youtu.be/B3uyDAfHZNg",
+        "date": "2022-02-01",
+        "project": "Operation Hook"
+      }
+    ]
   },
   {
     "id": "vf_pombeira",
@@ -310,17 +329,20 @@
       {
         "type": "blog",
         "url": "https://e29.eu/via-ferrata-pombeira/",
-        "date": "2024-10-28"
+        "date": "2024-10-28",
+        "project": "Operation Hook II"
       },
       {
         "type": "video",
         "url": "https://youtu.be/dcvDJi54sPE",
-        "date": "2024-09-13"
+        "date": "2024-09-13",
+        "project": "Operation Hook II"
       },
       {
         "type": "video",
         "url": "https://youtu.be/t1kJlZcCYsI",
-        "date": "2024-03-25"
+        "date": "2024-03-25",
+        "project": "Operation Hook II"
       }
     ]
   },
@@ -361,18 +383,21 @@
         "type": "blog",
         "url": "https://e29.eu/via-ferrata-povoa-de-lanhoso/",
         "date": "2024-10-28",
-        "label": "📝 Our blog post"
+        "label": "📝 Our blog post",
+        "project": "Operation Hook II"
       },
       {
         "type": "blog",
         "url": "https://e29.eu/local-training-in-via-ferrata-povoa-do-lanhoso/",
         "date": "2024-10-24",
-        "label": "📝 Our blog post (local training)"
+        "label": "📝 Our blog post (local training)",
+        "project": "Operation Hook II"
       },
       {
         "type": "video",
         "url": "https://youtu.be/khGuUVYReH4",
-        "date": "2024-09-09"
+        "date": "2024-09-09",
+        "project": "Operation Hook II"
       }
     ]
   },
@@ -413,12 +438,20 @@
       {
         "type": "blog",
         "url": "https://e29.eu/via-ferrata-teto-do-mundo/",
-        "date": "2024-10-28"
+        "date": "2024-10-28",
+        "project": "Operation Hook II"
       },
       {
         "type": "video",
         "url": "https://youtu.be/8PaaCGDUc7g",
-        "date": "2024-10-24"
+        "date": "2024-10-24",
+        "project": "Operation Hook II"
+      },
+      {
+        "type": "video",
+        "url": "https://youtu.be/EoDYvS08Qd8",
+        "date": "2022-01-01",
+        "project": "Operation Hook"
       }
     ]
   },
