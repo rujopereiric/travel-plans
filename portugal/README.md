@@ -17,7 +17,7 @@ It is one page with no backend and no build step, and works offline once loaded.
 
 ## What's in it
 
-There are 248 places in 12 regions, with 46 good overnight bases:
+There are 253 places in 12 regions, with 46 good overnight bases:
 - **Mainland:** Lisbon; Sintra & Cascais; Setúbal & Arrábida; Óbidos, Nazaré & Tomar; Coimbra, Aveiro & Serra da Estrela; Porto; Minho & Gerês; Douro Valley & Trás-os-Montes; Alentejo; Algarve.
 - **Islands:** Madeira and the Azores.
 
@@ -46,8 +46,19 @@ To fix or add places:
 2. Run `python3 portugal/tools/assemble.py`.
 3. Run `python3 trips/tools/build.py` to update the copy inside the Trips app.
 
+## Via ferratas
+
+The via ferratas in My places come from OpenStreetMap. `tools/via_ferrata.py` reads the downloaded `osm/` files and merges the segments of each route. It names unnamed routes after the nearest landmark and writes `parts/via_ferrata.json`.
+
+To refresh them after a new download, run:
+```
+python3 portugal/tools/via_ferrata.py && python3 portugal/tools/assemble.py
+```
+
+Routes that aren't mapped in OpenStreetMap won't appear. Add them to OpenStreetMap, or to a part file by hand.
+
 ## All of Portugal (OpenStreetMap)
 
-**Places → All of Portugal** downloads every named castle, monastery, museum, beach, viewpoint, waterfall and so on, region by region. Any of them can be added to your places.
+**Places → All of Portugal** downloads every named castle, monastery, museum, beach, viewpoint, waterfall and so on, region by region. It also includes via ferratas and climbing crags. Any of them can be added to your places.
 
 The GitHub Action `.github/workflows/osm-portugal.yml` prepares the files in `osm/`. It runs daily for missing or old regions, and can also be started by hand. Until it has run, the app asks the public Overpass servers directly.

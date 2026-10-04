@@ -1,6 +1,27 @@
 {
  "places": [
   {
+   "id": "vf_w1495724926",
+   "name": "Via ferrata North Slope (near Monchique & Fóia)",
+   "region": "algarve",
+   "lat": 37.3289,
+   "lon": -8.4884,
+   "visit": 180,
+   "cat": "Via ferrata",
+   "priority": 2,
+   "summary": "A via ferrata (protected climbing route) 9 km from Monchique & Fóia. The grade is not mapped: check with the operator.",
+   "facts": [
+    "You need a helmet, harness and via ferrata lanyard set; local operators rent kits and guide",
+    "Check it is open and the cables are maintained before you go (ask the town hall or tourist office)",
+    "Avoid it in rain or wind: rock and cables get slippery"
+   ],
+   "osm": [
+    "w1495724926",
+    "w1495724929"
+   ],
+   "wiki": "Via ferrata"
+  },
+  {
    "id": "vf_w1536553295",
    "name": "Via Ferrata da Serra do Muradal",
    "region": "centro",
@@ -29,7 +50,7 @@
    "visit": 180,
    "cat": "Via ferrata",
    "priority": 2,
-   "summary": "A via ferrata (protected climbing route) 8 km from Sesimbra. Grade: difficult (C/K3), very difficult (D/K4).",
+   "summary": "A via ferrata (protected climbing route) 4 km from Portinho da Arrábida. Grade: difficult (C/K3), very difficult (D/K4).",
    "facts": [
     "You need a helmet, harness and via ferrata lanyard set; local operators rent kits and guide",
     "Check it is open and the cables are maintained before you go (ask the town hall or tourist office)",
@@ -42,6 +63,26 @@
    "wiki": "Via ferrata"
   },
   {
+   "id": "vf_w1423046860",
+   "name": "Via ferrata near Chaves",
+   "region": "douro",
+   "lat": 41.6865,
+   "lon": -7.2149,
+   "visit": 180,
+   "cat": "Via ferrata",
+   "priority": 2,
+   "summary": "A via ferrata (protected climbing route) 22 km from Chaves. Grade: moderate (B/K2).",
+   "facts": [
+    "You need a helmet, harness and via ferrata lanyard set; local operators rent kits and guide",
+    "Check it is open and the cables are maintained before you go (ask the town hall or tourist office)",
+    "Avoid it in rain or wind: rock and cables get slippery"
+   ],
+   "osm": [
+    "w1423046860"
+   ],
+   "wiki": "Via ferrata"
+  },
+  {
    "id": "vf_w942931968",
    "name": "Via ferrata near Sesimbra Castle",
    "region": "setubal",
@@ -50,7 +91,7 @@
    "visit": 180,
    "cat": "Via ferrata",
    "priority": 2,
-   "summary": "A via ferrata (protected climbing route) 3 km from Sesimbra. The grade is not mapped: check with the operator.",
+   "summary": "A via ferrata (protected climbing route) 3 km from Sesimbra Castle. The grade is not mapped: check with the operator.",
    "facts": [
     "You need a helmet, harness and via ferrata lanyard set; local operators rent kits and guide",
     "Check it is open and the cables are maintained before you go (ask the town hall or tourist office)",

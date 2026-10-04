@@ -8,7 +8,7 @@ const LS_STATE = 'portugal-planner-v1';
 const LS_UI = 'portugal-planner-ui';
 // Bump on every change. The app compares it with the app.js on the server, so a phone that kept an old tab open
 // (no reload, so still the old code) is told a newer version exists.
-const APP_BUILD = '2026-10-04.2';
+const APP_BUILD = '2026-10-04.3';
 let NEWER = null; // the newer build found on the server, if any
 const AX0 = 5 * 60, AX1 = 23 * 60;           // timeline axis 05:00–23:00
 const DEFAULT_SETTINGS = {
@@ -2007,6 +2007,7 @@ const HELP_TEXT = {
     <li>Sintra's Pena Palace, Livraria Lello in Porto and Belém sights sell <b>timed tickets</b>: book ahead in busy months.</li>
     <li>Madeira and the Azores are reached by <b>flight</b> automatically when you add their places; times include getting to the airport.</li>
     <li>Motorway tolls are electronic on many roads: rent a car with a <b>Via Verde</b> transponder.</li>
+    <li><b>Via ferratas</b> from OpenStreetMap are in My places (🧗 in the filters), with their grade where it's mapped. <b>All of Portugal</b> also lists climbing crags. Check a route is open and maintained before you go.</li>
     <li>Prices are approximate and in euros.</li></ul>`,
   check: 'Check official opening hours, the IPMA weather warnings, and in summer the fire risk for the areas you plan to visit. Emergency number: 112.'
 };
