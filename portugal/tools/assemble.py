@@ -74,6 +74,8 @@ BOOKINGS = [
   ('Flights to Madeira or the Azores', 'flight', 150, 'Only if you add the islands. Rent a car there too.'),
   ('Travel insurance', 'other', 40, ''),
 ]
+# places the app used to ship: removed from people's saved plans too (see mergePlaceInfo in app.js)
+RETIRED = ['vf_fenda_arrabida', 'vf_w1020660385', 'vf_w1423046860', 'vf_w1495724926', 'vf_w1536553295', 'vf_w942931968']
 CATEGORIES = ['Town', 'Base', 'Old town', 'Castle', 'Palace', 'Monastery & church', 'Monument', 'Ruins', 'Museum', 'Village', 'Wine',
   'Food & market', 'Experience', 'Beach', 'Coast', 'Boat trip', 'Surf', 'Whale watching', 'Lighthouse', 'Viewpoint', 'Garden', 'Hike',
   'Mountain', 'Waterfall', 'Lake', 'Hot spring', 'Cave', 'Nature reserve', 'Via ferrata', 'Climbing', 'Airport']
@@ -113,7 +115,7 @@ def main():
         'places': places, 'drives': allD,
         'bookings': [{'id': f'b{i + 1}', 'item': it, 'type': ty, 'option': None, 'status': 'todo', 'est': est, 'actual': None, 'seasonal': '', 'note': note}
                      for i, (it, ty, est, note) in enumerate(BOOKINGS)],
-        'links': LINKS, 'checklist': CHECKLIST, 'checks': {}, 'categories': CATEGORIES, 'picks': {},
+        'retiredPlaces': RETIRED, 'links': LINKS, 'checklist': CHECKLIST, 'checks': {}, 'categories': CATEGORIES, 'picks': {},
     }
     open(os.path.join(root, 'data.json'), 'w').write(b.pretty(data) + '\n')
     from collections import Counter

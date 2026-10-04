@@ -56,7 +56,11 @@ The 10 via ferratas in My places come from two sources:
 
 Our own trip reports: the `e29` entries in the research file list our E29.eu blog posts and YouTube videos for each route we've done. They come from two places: the E29 Dataverse "Communications" table (Operation Hook II, exported 10 Sep 2025), and the Operation Hook I results sheet (`OH_Results.xlsx`, final report, 2021–22). Each entry records its `project`. They show first in the card's links, with a "We've done this one" line.
 
-Photos: 9 routes have a `photo`, credited on the card through `photoCredit`. Six are from our own E29.eu albums (`m.e29.eu`); the others are from guide sites. The service worker keeps these photos for offline use, like the Wikimedia ones.
+Photos: 10 routes have a `photo`, credited on the card through `photoCredit`.
+- **Our six (E29.eu):** copies are stored in `img/` by the "Store our place photos in the app" workflow (`tools/photo-fetch.mjs`), so they load from the app itself and work offline.
+- **The other four:** linked from guide sites. They're kept offline only when the site allows checking the download (CORS).
+
+The "Check place photos" workflow (`tools/photo-check.mjs`) tests every photo link from GitHub.
 
 To update after new research or a new OpenStreetMap download, run:
 ```

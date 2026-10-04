@@ -22,7 +22,7 @@ const LS_UI = 'tp-portugal-planner-ui';
 
 // Bump on every change. The app compares it with the app.js on the server, so a phone that kept an old tab open
 // (no reload, so still the old code) is told a newer version exists.
-const APP_BUILD = '2026-10-04.7';
+const APP_BUILD = '2026-10-04.8';
 let NEWER = null; // the newer build found on the server, if any
 const AX0 = 5 * 60, AX1 = 23 * 60;           // timeline axis 05:00–23:00
 const DEFAULT_SETTINGS = {
@@ -886,14 +886,22 @@ async function boot() {
 }
 // Descriptive place fields aren't edited in the app, so newer data.json content can be merged into a locally edited plan
 // without asking: new places, categories, summaries, photos titles, links, priorities and sleep flags.
-const INFO_FIELDS = ['lat', 'lon', 'visit', 'sources', 'confidence', 'checked', 'cat', 'summary', 'facts', 'season', 'wiki', 'links', 'photo', 'caution', 'note', 'priority', 'sleep', 'suggest', 'needsDaylight', 'hours', 'closed', 'early'];
+const INFO_FIELDS = ['name', 'region', 'lat', 'lon', 'visit', 'sources', 'confidence', 'checked', 'cat', 'summary', 'facts', 'season', 'wiki', 'links', 'photo', 'photoCredit', 'photoSearch', 'caution', 'note', 'priority', 'sleep', 'suggest', 'needsDaylight', 'hours', 'closed', 'early', 'municipality'];
+// fields that an update may remove (e.g. a researched photo replacing a photo search): dropped locally too
+const DROPPABLE = ['photo', 'photoCredit', 'photoSearch', 'caution', 'season', 'links'];
 function mergePlaceInfo(local, file) {
   local.places = local.places || [];
   for (const fp of file.places || []) {
     const lp = local.places.find(p => p.id === fp.id);
     if (!lp) { local.places.push(fp); continue; }
     for (const k of INFO_FIELDS) if (fp[k] !== undefined) lp[k] = fp[k];
+    for (const k of DROPPABLE) if (fp[k] === undefined) delete lp[k];
   }
+  // places the app no longer ships (wrong, closed, or replaced by better entries) leave your copy too,
+  // unless you've put them in a plan
+  const used = new Set((local.options || []).flatMap(o => Object.values(o.days || {}).flatMap(d => [d.sleep, ...(d.stops || []).map(x => x.place)])));
+  const gone = new Set((file.retiredPlaces || []).filter(id => !used.has(id)));
+  if (gone.size) { local.places = local.places.filter(p => !gone.has(p.id)); for (const id of gone) if (local.picks) delete local.picks[id]; }
   if (file.categories) local.categories = file.categories;
   for (const fr of file.regions || []) if (!(local.regions || []).some(r => r.id === fr.id)) (local.regions = local.regions || []).push(fr);
   // travel legs (road times, flights, ferries) are reference data too
