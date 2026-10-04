@@ -11,7 +11,7 @@ const LS_STATE = 'ptkids-planner-v1';
 const LS_UI = 'ptkids-planner-ui';
 // Bump on every change. The app compares it with the app.js on the server, so a phone that kept an old tab open
 // (no reload, so still the old code) is told a newer version exists.
-const APP_BUILD = '2026-10-04.k1';
+const APP_BUILD = '2026-10-04.k2';
 let NEWER = null; // the newer build found on the server, if any
 const AX0 = 5 * 60, AX1 = 23 * 60;           // timeline axis 05:00–23:00
 const DEFAULT_SETTINGS = {
@@ -329,7 +329,7 @@ const legText = leg => leg.segs ? leg.segs.map(x => `${MODE_ICON[x.mode]} ${plac
 // One "table" request gives road time + distance between every pair of places; used for any leg
 // not in the hand-made "drives" list. Day routes are fetched for the map shape. Both are cached offline.
 const OSRM = 'https://router.project-osrm.org';
-// own road matrix (it's for our own list of places); route shapes, photos and OpenStreetMap downloads are shared with the Portugal planner
+// own road matrix (it's for our own list of places); route shapes and photos are shared with the Portugal planner
 const LS_ROAD = 'ptkids-roads', LS_ROUTES = 'portugal-routes';
 let ROAD = null, ROUTES = {}, ROAD_BUSY = false;
 try { ROAD = JSON.parse(localStorage.getItem(LS_ROAD) || 'null'); ROUTES = JSON.parse(localStorage.getItem(LS_ROUTES) || '{}'); } catch (e) { }
@@ -1418,12 +1418,9 @@ function plannedIn(id) {
   for (const o of S.options) for (const [d, p] of Object.entries(o.days)) if (p.stops.some(s => s.place === id)) out.push({ o, d, active: S.blocks.find(b => b.id === o.block)?.active === o.id });
   return out;
 }
-function renderPlaces() {
-  const seg = `<div class="seg" style="margin-bottom:10px;display:flex"><button style="flex:1" data-act="pmode" data-v="mine" aria-pressed="${UI.pmode !== 'osm'}">My places (${S.places.length})</button>
-    <button style="flex:1" data-act="pmode" data-v="osm" aria-pressed="${UI.pmode === 'osm'}">All of Portugal${OSM ? ` (${OSM.items.length.toLocaleString('en-GB')})` : ''}</button></div>`;
-  if (UI.pmode === 'osm') return seg + renderOsm();
-  return seg + renderMyPlaces();
-}
+// The Portugal planner's "All of Portugal" (every named sight from OpenStreetMap) is left out here: those places have
+// no ages, so they'd pass the kids filter whatever they are. Every place in this planner was chosen with kids in mind.
+function renderPlaces() { return renderMyPlaces(); }
 function renderMyPlaces() {
 
   const pf = UI.pf || {}, cat = pf.cat || 'all', reg = pf.region || 'all', only = pf.only || 'all', fit = pf.fit || 'us';
@@ -1499,332 +1496,6 @@ function renderMyPlaces() {
   return h;
 }
 
-/* ---------- "All of Portugal": every named sight from OpenStreetMap ---------- */
-// One Overpass query (free, no key) per region fetches every named castle, monastery, museum, beach, viewpoint,
-// waterfall… Stored compactly for offline use; any item can be promoted into "My places".
-// Portugal has tens of thousands of chapels, crosses and old houses, so minor historic objects, artworks and
-// places of worship are only included when they have a Wikipedia article.
-const LS_OSM = 'portugal-osm';
-// Downloaded region by region (see OSM_AREAS): OSM_STORE.areas[id] = { at, items }. OSM is the merged, de-duplicated
-// view the list, map layer and filter use ({ items }), or null when nothing is downloaded.
-let OSM = null, OSM_STORE = { v: 2, areas: {} }, OSM_BUSY = null, OSM_QUEUE = [], OSM_ERRS = {};
-// live download status: OSM_ST for the current request, OSM_RUN for the queue ("region 2 of 4")
-let OSM_ST = null, OSM_RUN = { done: 0, total: 0 }, OSM_TICK = null;
-try {
-  const st = JSON.parse(localStorage.getItem(LS_OSM) || 'null');
-  if (st && st.v === 2) OSM_STORE = st;
-  else if (st && st.items?.length) OSM_STORE.areas.earlier = { at: st.at, items: st.items }; // whole-country download from before
-} catch (e) { }
-// Public Overpass servers, tried in turn. All send CORS headers on success; their error pages (timeouts, rate
-// limits) don't, which the browser can only report as "Failed to fetch".
-const OVERPASS = ['https://overpass-api.de/api/interpreter', 'https://overpass.private.coffee/api/interpreter',
-  'https://maps.mail.ru/osm/tools/overpass/api/interpreter', 'https://overpass.kumi.systems/api/interpreter'];
-/* osm-shared-start: also run by tools/osm-update.mjs (GitHub Action) to prepare osm/<region>.json */
-// One download per region: small queries that come back in seconds, so you fetch what your trip needs. Plain bounding
-// boxes (an "inside Portugal" area filter makes queries crawl); the mainland boxes stop at the Spanish border where
-// they can, so a little of Galicia, Castile or Andalusia may slip in at the edges.
-const OSM_AREAS = [ // [id, name, south, west, north, east]
-  ['lisbon', 'Lisbon, Sintra & Cascais', 38.6, -9.5, 38.95, -9.05],
-  ['setubal', 'Setúbal, Arrábida & Tróia', 38.0, -9.3, 38.62, -8.4],
-  ['oeste', 'Oeste: Óbidos, Nazaré, Tomar, Fátima', 38.95, -9.45, 39.8, -8.1],
-  ['centro', 'Coimbra, Aveiro & Serra da Estrela', 39.8, -9.0, 41.0, -6.85],
-  ['porto', 'Porto & the Douro coast', 40.95, -8.8, 41.4, -8.2],
-  ['minho', 'Minho & Peneda-Gerês', 41.4, -8.9, 42.16, -7.85],
-  ['douro', 'Douro Valley & Trás-os-Montes', 40.95, -8.2, 42.0, -6.18],
-  ['alentejo', 'Alentejo', 37.3, -8.85, 38.95, -6.95],
-  ['algarve', 'Algarve', 36.95, -9.0, 37.55, -7.38],
-  ['madeira', 'Madeira & Porto Santo', 32.35, -17.3, 33.15, -16.2],
-  ['azores', 'Azores', 36.9, -31.3, 39.75, -24.9],
-];
-const osmArea = id => OSM_AREAS.find(x => x[0] === id);
-function osmMerge() { // rebuild the merged view from the downloaded areas (areas overlap a little)
-  const seen = new Set(), items = [];
-  for (const k of Object.keys(OSM_STORE.areas)) for (const a of OSM_STORE.areas[k].items) if (!seen.has(a[0]) && !OSM_EXCLUDE.has(a[0])) { seen.add(a[0]); items.push(a); }
-  OSM = items.length || Object.keys(OSM_STORE.areas).length ? { items } : null;
-  osmLayerDirty = true;
-}
-// Placing a relation (a multipolygon: a national park, a desert sand sea) at its centre means loading its whole outline,
-// which is what made these queries crawl. So: nodes and ways for everything, relations only for named sites with
-// a Wikipedia article (small, and worth it), and no protected areas, nature reserves or sand/dune areas at all:
-// the GitHub job's log showed every timeout, in every region and even in near-empty desert boxes, at the
-// nature_reserve statement. (The parks that matter, Ras Mohammed, Wadi el-Gemal, Giftun, are in My places anyway.)
-const osmQuery = ([, , s, w, n, e], timeout = 60) => `[out:json][timeout:${timeout}][bbox:${s},${w},${n},${e}];(
-nw["historic"~"^(archaeological_site|castle|fort|ruins|monument|city_gate|monastery|aqueduct|palace)$"]["name"];
-nw["historic"]["name"]["wikipedia"];
-nw["tourism"~"^(attraction|viewpoint|museum|gallery|zoo|theme_park)$"]["name"];
-nw["tourism"="artwork"]["name"]["wikipedia"];
-nw["amenity"="place_of_worship"]["name"]["wikipedia"];
-rel["historic"]["name"]["wikipedia"];
-rel["tourism"~"^(attraction|museum)$"]["name"]["wikipedia"];
-nw["natural"="beach"]["name"];
-node["natural"~"^(cave_entrance|arch|rock|hot_spring|cape)$"]["name"];
-node["waterway"="waterfall"]["name"];
-node["natural"="peak"]["name"]["wikipedia"];
-nw["man_made"="lighthouse"]["name"];
-way["highway"="via_ferrata"];
-rel["route"="via_ferrata"];
-nw["climbing"="via_ferrata"];
-nw["sport"="climbing"]["name"];
-);out center tags qt;`;
-function osmCat(t, name = '') {
-  const n = t.natural, tr = t.tourism, h = t.historic, nm = name.toLowerCase();
-  if (t.highway === 'via_ferrata' || t.route === 'via_ferrata' || t.climbing === 'via_ferrata' || /via[ -]ferrata/.test(nm)) return 'Via ferrata';
-  if (t.sport === 'climbing' || /escalada|climbing/.test(nm)) return 'Climbing';
-  if (n === 'beach' || /^praia\b/.test(nm)) return 'Beach';
-  if (t.waterway === 'waterfall' || n === 'waterfall' || /cascata|queda d|waterfall/.test(nm)) return 'Waterfall';
-  if (n === 'hot_spring' || /termas|caldeira|poça|thermal/.test(nm)) return 'Hot spring';
-  if (h === 'monastery' || t.religion === 'christian' || /mosteiro|convento|igreja|sé\b|capela|santuário|monastery|church|cathedral|convent|chapel/.test(nm)) return 'Monastery & church';
-  if (h === 'castle' || h === 'fort' || /castelo|forte\b|fortaleza|castle|fortress|\bfort\b/.test(nm)) return 'Castle';
-  if (/palácio|paço|palace/.test(nm)) return 'Palace';
-  if (h === 'monument' || h === 'city_gate' || /estátua|padrão|statue|monument/.test(nm)) return 'Monument';
-  if (h === 'archaeological_site' || h === 'ruins' || /romana|roman|cromeleque|anta\b|dolmen/.test(nm)) return 'Ruins';
-  if (tr === 'museum' || tr === 'gallery') return 'Museum';
-  if (tr === 'artwork') return 'Art';
-  if (n === 'cave_entrance' || /gruta|algar|cave/.test(nm)) return 'Cave';
-  if (n === 'peak') return 'Mountain';
-  if (n === 'arch' || n === 'rock' || n === 'cape' || /^cabo\b|^ponta\b/.test(nm)) return 'Coast';
-  if (t.man_made === 'lighthouse') return 'Lighthouse';
-  if (tr === 'viewpoint') return 'Viewpoint';
-  if (t.leisure === 'nature_reserve' || t.boundary) return 'Nature reserve';
-  if (h) return 'Historic';
-  return 'Attraction';
-}
-// OpenStreetMap objects known to be wrong or not accessible, left out of All of Portugal
-const OSM_EXCLUDE = new Set(['w1020660385', 'w975036766']); // via ferrata near Portinho da Arrábida: not accessible
-const VF_GRADE = { 1: 'easy (A/K1)', 2: 'moderate (B/K2)', 3: 'difficult (C/K3)', 4: 'very difficult (D/K4)', 5: 'extreme (E/K5)', 6: 'extreme (F/K6)' };
-const osmRow = el => {
-  const t = el.tags || {}, lat = el.lat ?? el.center?.lat, lon = el.lon ?? el.center?.lon;
-  const vf = t.highway === 'via_ferrata' || t.route === 'via_ferrata' || t.climbing === 'via_ferrata';
-  let name = t['name:en'] || t['int_name'] || t.name || (vf ? 'Via ferrata' : '');
-  if (vf) {  // the grade is what matters for a via ferrata: put it in the description
-    const g = VF_GRADE[parseInt(t.via_ferrata_scale)] || (t.via_ferrata_scale ? 'grade ' + t.via_ferrata_scale : '');
-    if (g && !t.description) t.description = `Via ferrata, ${g}.` + (t.length ? ` ${t.length} m.` : '') + (t.operator ? ` Run by ${t.operator}.` : '');
-    else if (!t.description) t.description = 'Via ferrata (grade not mapped).';
-  }
-  if (!name || lat == null || OSM_EXCLUDE.has(el.type[0] + el.id)) return null;
-  return [el.type[0] + el.id, name, +lat.toFixed(5), +lon.toFixed(5), osmCat(t, name), t.wikipedia || '', t.website || t['contact:website'] || '', (t['description:en'] || t.description || '').slice(0, 200), t.name !== name ? t.name || '' : ''];
-};
-/* osm-shared-end */
-const OSM_TIMEOUT = 120000;
-async function osmTile(tile, errs) { // one area, trying each server in turn; null if all fail
-  for (const [i, url] of OVERPASS.entries()) {
-    const host = url.split('/')[2], ctl = new AbortController(), to = setTimeout(() => ctl.abort(), OSM_TIMEOUT);
-    OSM_ST = { host, n: i + 1, of: OVERPASS.length, t0: Date.now(), bytes: 0, phase: 'asking', failed: errs.length }; osmTick();
-    try {
-      const res = await fetch(url, { method: 'POST', body: 'data=' + encodeURIComponent(osmQuery(tile)), headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, signal: ctl.signal });
-      if (!res.ok) throw new Error('HTTP ' + res.status + (res.status === 429 ? ' (busy)' : res.status === 504 ? ' (timed out)' : ''));
-      // the server sends nothing (and no size) until its query is done; after that we can count what arrives
-      OSM_ST.phase = 'receiving'; osmTick();
-      let text = '';
-      if (res.body && res.body.getReader) {
-        const rd = res.body.getReader(), dec = new TextDecoder();
-        for (;;) { const { done, value } = await rd.read(); if (done) break; OSM_ST.bytes += value.length; text += dec.decode(value, { stream: true }); osmTick(); }
-        text += dec.decode();
-      } else text = await res.text();
-      OSM_ST.phase = 'processing'; osmTick();
-      const j = JSON.parse(text);
-      // a query that runs out of time or memory still answers 200, with a "remark" and partial elements
-      if (j.remark && /runtime error|timed out|out of memory/i.test(j.remark)) throw new Error(j.remark.replace(/^.*?error:\s*/i, '').slice(0, 80));
-      return j.elements || [];
-    } catch (e) { errs.push(`${host}: ${e.name === 'AbortError' ? 'no answer in 2 min' : e.message}`); }
-    finally { clearTimeout(to); }
-  }
-  return null;
-}
-// Queue one or more areas; they download one at a time. A failed area keeps its previous data, if any.
-// Updates just the status line (no full re-render), at most every 250 ms, and once a second while waiting.
-function osmTick() {
-  const now = Date.now(); if (osmTick.last && now - osmTick.last < 250 && OSM_ST?.phase === 'receiving') return; osmTick.last = now;
-  const el = document.getElementById('osmstatus'); if (el) el.innerHTML = osmStatusHTML();
-}
-function osmStatusHTML() {
-  const st = OSM_ST; if (!st) return '';
-  const sec = Math.round((Date.now() - st.t0) / 1000), kb = st.bytes / 1024;
-  const size = kb >= 1024 ? (kb / 1024).toFixed(1) + ' MB' : Math.round(kb) + ' KB';
-  const txt = st.phase === 'starting' ? 'Starting…' : st.phase === 'file' ? 'Downloading the prepared file…' : st.phase === 'asking' ? `Waiting for ${esc(st.host)} to search${st.of > 1 ? ` (server ${st.n} of ${st.of})` : ''} · ${sec} s${sec >= 20 ? `, gives up at ${OSM_TIMEOUT / 60000} min` : ''}`
-    : st.phase === 'receiving' ? `Receiving from ${esc(st.host)} · ${size} · ${sec} s` : `Processing ${size}…`;
-  return `<div class="osmbar"><i class="${st.phase === 'processing' ? '' : 'ind'}" style="width:100%"></i></div><div class="tiny muted">${txt}${st.failed ? ` · ${st.failed} server${st.failed > 1 ? 's' : ''} failed, trying the next` : ''}</div>`;
-}
-function loadOSM(ids) {
-  if (!OSM_BUSY) OSM_RUN = { done: 0, total: 0 };
-  for (const id of ids) if (osmArea(id) && OSM_BUSY !== id && !OSM_QUEUE.includes(id)) { OSM_QUEUE.push(id); OSM_RUN.total++; }
-  if (!OSM_TICK) OSM_TICK = setInterval(() => { if (OSM_BUSY) osmTick(); else { clearInterval(OSM_TICK); OSM_TICK = null; } }, 1000);
-  if (!OSM_BUSY) osmNext(); else render();
-}
-async function osmNext() {
-  const id = OSM_QUEUE.shift();
-  if (!id) { OSM_BUSY = null; OSM_ST = null; render(); return; }
-  if (!navigator.onLine) { OSM_ERRS[id] = 'You are offline.'; OSM_QUEUE = []; OSM_BUSY = null; render(); return; }
-  OSM_BUSY = id; delete OSM_ERRS[id];
-  OSM_ST = { host: '', n: 0, of: OVERPASS.length, t0: Date.now(), bytes: 0, phase: 'starting', failed: 0 }; // never a blank line
-  render();
-  setTimeout(() => document.getElementById('osmstatus')?.scrollIntoView({ block: 'center', behavior: 'smooth' }), 50);
-  // 1. the prepared file on this site (made monthly by a GitHub Action: fast and reliable);
-  // 2. if there's none yet, ask the public Overpass servers live
-  const errs = [];
-  let items = null, at = Date.now();
-  try {
-    OSM_ST.phase = 'file'; osmTick();
-    const res = await fetch(`../portugal/osm/${id}.json`, { cache: 'no-cache' });
-    if (res.ok) { const j = await res.json(); if (Array.isArray(j.items)) { items = j.items; at = j.at || at; } }
-    else if (res.status !== 404) errs.push(`osm/${id}.json: HTTP ${res.status}`);
-  } catch (e) { errs.push(`osm/${id}.json: ${e.message}`); }
-  if (!items) {
-    const els = await osmTile(osmArea(id), errs);
-    if (els) {
-      const seen = new Set(); items = [];
-      for (const el of els) { const row = osmRow(el); if (row && !seen.has(row[0])) { seen.add(row[0]); items.push(row); } }
-    }
-  }
-  if (items) {
-    OSM_STORE.areas[id] = { at, items };
-    try { localStorage.setItem(LS_OSM, JSON.stringify(OSM_STORE)); } catch (e) { OSM_ERRS[id] = 'Loaded, but too big to keep offline on this device.'; }
-    osmMerge(); mf().osm = true; UI.osmLayer = true; mapDirty = true;
-  } else OSM_ERRS[id] = [...new Set(errs)].join('; ');
-  OSM_RUN.done++;
-  osmNext();
-}
-function osmRemove(id) {
-  delete OSM_STORE.areas[id];
-  try { localStorage.setItem(LS_OSM, JSON.stringify(OSM_STORE)); } catch (e) { }
-  osmMerge(); mapDirty = true; render();
-}
-// the areas this trip uses: the regions of every place in the selected plans
-function osmTripAreas() {
-  const regs = new Set();
-  for (const b of S.blocks) { const o = activeOpt(b); if (!o) continue; for (const p of Object.values(o.days)) for (const id of [p.sleep, ...p.stops.map(x => x.place)]) if (place(id)) regs.add(place(id).region); }
-  if (regs.has('sintra')) regs.add('lisbon'); // Sintra & Cascais are inside the Lisbon download
-  return OSM_AREAS.filter(a => regs.has(a[0])).map(a => a[0]);
-}
-const osmObj = a => ({ id: a[0], name: a[1], lat: a[2], lon: a[3], cat: a[4], wiki: a[5], web: a[6], desc: a[7], local: a[8] });
-const osmUrl = id => `https://www.openstreetmap.org/${{ n: 'node', w: 'way', r: 'relation' }[id[0]]}/${id.slice(1)}`;
-const wikiUrl = w => { const m = /^([a-z-]+):(.+)$/.exec(w || ''); return m ? `https://${m[1]}.wikipedia.org/wiki/${encodeURIComponent(m[2].replace(/ /g, '_'))}` : null; };
-const osmPlaceId = o => 'osm_' + o.id;
-function osmMine(o) { // already one of my places? (same OSM id, or same name within ~1 km)
-  if (place(osmPlaceId(o))) return place(osmPlaceId(o));
-  const nm = o.name.toLowerCase();
-  return S.places.find(p => haversine(p, o) < 1 && (p.name.toLowerCase().includes(nm) || nm.includes(p.name.toLowerCase().split(' ')[0]))) || null;
-}
-const OSM_VISIT = { Pyramids: 90, Temple: 75, Tomb: 45, Ruins: 45, Monument: 15, Museum: 75, Mosque: 30, 'Church & monastery': 45, Fortress: 60, Historic: 20, Art: 10,
-  'Snorkel & dive': 180, Beach: 120, Lighthouse: 20, Desert: 120, Mountain: 120, Cave: 45, Landmark: 20, 'Oasis & spring': 60, 'Nature reserve': 90, Viewpoint: 15, Attraction: 30 };
-function promoteOSM(o) {
-  if (osmMine(o)) return osmMine(o);
-  let near = null, nd = Infinity;
-  for (const p of S.places) { const d = haversine(p, o); if (d < nd) { nd = d; near = p; } }
-  const w = /^en:(.+)$/.exec(o.wiki || '');
-  const p = { id: osmPlaceId(o), name: o.name, region: near ? near.region : S.regions[0]?.id, lat: o.lat, lon: o.lon, visit: OSM_VISIT[o.cat] ?? 30, cat: o.cat,
-    summary: o.desc || `${o.cat} listed on OpenStreetMap${o.local ? ` (local name: ${o.local})` : ''}. No details checked yet.`, facts: [], wiki: w ? w[1] : o.name,
-    links: [{ name: 'OpenStreetMap', url: osmUrl(o.id) }, ...(wikiUrl(o.wiki) && !w ? [{ name: 'Wikipedia', url: wikiUrl(o.wiki) }] : []), ...(o.web ? [{ name: 'Website', url: o.web }] : [])],
-    priority: 1, sources: [osmUrl(o.id)], confidence: 'low', checked: todayISO() };
-  if (['Museum', 'Mosque', 'Church & monastery', 'Art'].includes(o.cat)) p.needsDaylight = false;
-  S.places.push(p);
-  if (!(S.categories || []).includes(o.cat)) (S.categories = S.categories || []).push(o.cat);
-  reindex(); mapDirty = true; delete WIKI[p.id];
-  return p;
-}
-function renderOsm() {
-  const trip = osmTripAreas().filter(id => !OSM_STORE.areas[id]);
-  const row = ([id, name]) => {
-    const got = OSM_STORE.areas[id], busy = OSM_BUSY === id, queued = OSM_QUEUE.includes(id), err = OSM_ERRS[id], rg = S.regions.find(r => r.id === id);
-    return `<div class="row" style="padding:7px 0;border-top:1px solid var(--line)"><span class="grow"><b>${rg ? `<span style="color:${rg.color}">●</span> ` : ''}${esc(name)}</b>
-      <div class="tiny ${err ? '' : 'muted'}" style="${err ? 'color:var(--bad)' : ''}">${busy ? `<div id="osmstatus">${osmStatusHTML()}</div>` : queued ? 'Waiting…' : err ? esc(err) : got ? `${got.items.length.toLocaleString('en-GB')} places · ${esc(dateLabel(new Date(got.at).toISOString().slice(0, 10), { day: 'numeric', month: 'short' }))}` : 'Not downloaded'}</div></span>
-      ${busy || queued || !osmArea(id) ? '' : `<button class="btn small ${got ? '' : 'primary'}" data-act="osmload" data-v="${id}">${got ? '↻' : err ? 'Retry' : 'Download'}</button>`}
-      ${got && !busy ? `<button class="btn small danger" data-act="osmrm" data-v="${id}" aria-label="Remove ${esc(name)}">✕</button>` : ''}</div>`;
-  };
-  const areasCard = `<details class="card" ${!OSM || UI.osmAreasOpen || OSM_BUSY ? 'open' : ''} ontoggle="UI.osmAreasOpen=this.open;saveUI()" style="padding:10px 12px">
-    <summary><b>Download sights by region</b> <span class="tiny muted">· ${Object.keys(OSM_STORE.areas).filter(k => osmArea(k)).length} of ${OSM_AREAS.length} downloaded</span></summary>
-    <p class="small muted" style="margin:6px 0">Everything OpenStreetMap knows in each region: archaeological sites, temples, tombs, museums, fortresses, dive reefs, beaches, desert landmarks, viewpoints and reserves, plus famous mosques and churches. Names, types and links only, so set opening hours after adding one to <b>My places</b>. Kept on your phone for offline use.</p>
-    ${OSM_BUSY && OSM_RUN.total > 1 ? `<div class="small" style="margin:6px 0 2px"><b>Region ${Math.min(OSM_RUN.done + 1, OSM_RUN.total)} of ${OSM_RUN.total}</b> · ${esc(osmArea(OSM_BUSY)?.[1] || '')}</div>
-      <div class="osmbar"><i style="width:${Math.round(OSM_RUN.done / OSM_RUN.total * 100)}%"></i></div>` : ''}
-    ${trip.length && !OSM_BUSY ? `<button class="btn small primary" data-act="osmtrip" style="margin-bottom:6px">Download my trip's regions (${trip.length})</button>` : ''}
-    ${OSM_AREAS.map(row).join('')}
-    ${OSM_STORE.areas.earlier ? row(['earlier', 'Earlier whole-country download']) : ''}</details>`;
-  if (!OSM) return areasCard;
-  const cats = [...new Set(OSM.items.map(a => a[4]))].sort();
-  const counts = Object.fromEntries(cats.map(c => [c, OSM.items.filter(a => a[4] === c).length]));
-  const cat = UI.osmCat || 'all', near = place(UI.osmNear) ? UI.osmNear : S.trip.home;
-  const chip = (v, label, on) => `<button class="pchip" data-act="osmcat" data-v="${esc(v)}" aria-pressed="${on}">${label}</button>`;
-  return areasCard + `
-    <div class="row" style="margin-bottom:8px"><input type="search" id="osmq" data-osmq placeholder="Search ${OSM.items.length.toLocaleString('en-GB')} places…" value="${esc(UI.osmQ || '')}" class="grow" autocomplete="off">
-      <label class="f">Nearest to<select data-act="osmnear">${placeOptions(near)}</select></label></div>
-    <div class="pchips">${chip('all', 'All types', cat === 'all')}${cats.map(c => chip(c, `${esc(c)} <span class="muted">${counts[c]}</span>`, cat === c)).join('')}</div>
-    <div id="osmlist">${osmListHTML()}</div>`;
-}
-function osmListHTML() {
-  const q = (UI.osmQ || '').trim().toLowerCase(), cat = UI.osmCat || 'all', near = place(UI.osmNear) || place(S.trip.home);
-  const fold = x => x.normalize('NFD').replace(/[\u0300-\u036f\u064b-\u0652\u0640]/g, '').replace(/[أإآ]/g, 'ا').replace(/ى/g, 'ي').replace(/ة/g, 'ه').replace(/['‘’ʿʾ-]/g, '');
-  const fq = fold(q);
-  const list = OSM.items.filter(a => (cat === 'all' || a[4] === cat) && (!q || fold(a[1].toLowerCase()).includes(fq) || fold((a[8] || '').toLowerCase()).includes(fq)))
-    .map(a => ({ o: osmObj(a), d: haversine(near, { lat: a[2], lon: a[3] }) })).sort((x, y) => x.d - y.d);
-  const n = UI.osmN || 40;
-  if (!list.length) return `<p class="empty">No matches.</p>`;
-  return list.slice(0, n).map(({ o, d }) => {
-    const mine = osmMine(o), wurl = wikiUrl(o.wiki);
-    return `<div class="card osmrow"><div class="row"><b class="grow">${esc(o.name)}</b><span class="chip">${catInfo(o.cat).icon} ${esc(o.cat)}</span></div>
-      <div class="tiny muted">${o.local ? '<bdi dir="auto">' + esc(o.local) + '</bdi>' + ' · ' : ''}${Math.round(d)} km from ${esc(placeName(near.id))} (straight line)</div>
-      ${o.desc ? `<div class="small" style="margin-top:3px">${esc(o.desc)}</div>` : ''}
-      <div class="row small" style="margin-top:6px;gap:10px">
-        ${wurl ? `<a href="${esc(wurl)}" target="_blank" rel="noopener">Wikipedia ↗</a>` : ''}
-        <a href="https://www.google.com/maps/dir/?api=1&destination=${o.lat},${o.lon}" target="_blank" rel="noopener">Directions ↗</a>
-        <a href="${esc(osmUrl(o.id))}" target="_blank" rel="noopener">OSM ↗</a>
-        ${o.web ? `<a href="${esc(o.web)}" target="_blank" rel="noopener">Website ↗</a>` : ''}
-        <span class="grow"></span>
-        <button class="btn small" data-act="osmmap" data-osm="${esc(o.id)}">Map</button>
-        ${mine ? `<button class="btn small" data-act="pinfo" data-place="${esc(mine.id)}">In my places ✓</button>` : `<button class="btn small primary" data-act="osmadd" data-osm="${esc(o.id)}">+ My places</button>`}
-      </div></div>`;
-  }).join('') + (list.length > n ? `<button class="btn" data-act="osmmore" style="width:100%">Show more (${(list.length - n).toLocaleString('en-GB')} left)</button>` : `<p class="tiny muted">${list.length} shown.</p>`)
-    + `<p class="tiny muted">Data © OpenStreetMap contributors (ODbL).</p>`;
-}
-// OSM layer: canvas dots (category colour) when zoomed out; real icons for what's on screen from zoom 10.
-let osmLayer = null, osmIcons = null, osmLayerDirty = true; const OSM_MARKERS = {};
-osmMerge();
-const OSM_ICON_ZOOM = 10, OSM_ICON_MAX = 400;
-const osmShown = a => catShown(a[4]) && !mf().must;
-function refreshOsmView() {
-  if (!MAP) return;
-  const on = OSM && mf().osm;
-  if (!on) { osmLayer && osmLayer.remove(); osmIcons && osmIcons.remove(); return; }
-  if (MAP.getZoom() >= OSM_ICON_ZOOM) {
-    osmLayer && osmLayer.remove();
-    osmIcons = osmIcons || L.layerGroup();
-    osmIcons.clearLayers(); for (const k in OSM_MARKERS) delete OSM_MARKERS[k];
-    const bb = MAP.getBounds().pad(0.2); let n = 0;
-    for (const a of OSM.items) {
-      if (n >= OSM_ICON_MAX) break;
-      if (!osmShown(a) || !bb.contains([a[2], a[3]])) continue;
-      const o = osmObj(a), ci = catInfo(o.cat);
-      const m = L.marker([o.lat, o.lon], { icon: L.divIcon({ className: '', html: `<div class="pinw" style="width:22px;height:22px"><div class="pin osm" style="--c:${ci.color}">${ci.icon}</div></div>`, iconSize: [22, 22], iconAnchor: [11, 11], popupAnchor: [0, -10] }) });
-      m.bindPopup(() => osmPopup(o), { maxWidth: 240 }); m.bindTooltip(esc(o.name), { direction: 'top', offset: [0, -10] });
-      m.addTo(osmIcons); OSM_MARKERS[o.id] = m; n++;
-    }
-    if (!MAP.hasLayer(osmIcons)) osmIcons.addTo(MAP);
-  } else {
-    osmIcons && osmIcons.remove();
-    if (osmLayerDirty || !osmLayer) {
-      osmLayer = osmLayer || L.layerGroup();
-      osmLayer.clearLayers(); for (const k in OSM_MARKERS) delete OSM_MARKERS[k];
-      const renderer = refreshOsmView.r || (refreshOsmView.r = L.canvas({ padding: .5 }));
-      for (const a of OSM.items) {
-        if (!osmShown(a)) continue;
-        const o = osmObj(a);
-        const m = L.circleMarker([o.lat, o.lon], { renderer, radius: 3.5, color: '#fff', weight: .8, fillColor: catInfo(o.cat).color, fillOpacity: .85 });
-        m.bindPopup(() => osmPopup(o), { maxWidth: 240 });
-        m.addTo(osmLayer); OSM_MARKERS[o.id] = m;
-      }
-      osmLayerDirty = false;
-    }
-    if (!MAP.hasLayer(osmLayer)) osmLayer.addTo(MAP);
-  }
-}
-function fillOsmLayer() { osmLayerDirty = true; refreshOsmView(); }
-function osmPopup(o) {
-  const mine = osmMine(o), wurl = wikiUrl(o.wiki);
-  return `<h4>${catInfo(o.cat).icon} ${esc(o.name)}</h4><div class="tiny muted">${esc(o.cat)} · OpenStreetMap${o.local ? ' · ' + '<bdi dir="auto">' + esc(o.local) + '</bdi>' : ''}</div>
-    ${o.desc ? `<div style="margin:4px 0">${esc(o.desc)}</div>` : ''}
-    <div class="small" style="margin:4px 0">${wurl ? `<a href="${esc(wurl)}" target="_blank" rel="noopener">Wikipedia ↗</a> · ` : ''}<a href="${esc(osmUrl(o.id))}" target="_blank" rel="noopener">OSM ↗</a></div>
-    ${mine ? `<button class="btn small" data-act="pinfo" data-place="${esc(mine.id)}">In my places ✓</button>` : `<button class="btn small primary" data-act="osmadd" data-osm="${esc(o.id)}">+ Add to my places</button>`}`;
-}
-
 /* ---------- category icons & map filter ---------- */
 // Each category has an icon; colour comes from its family so related things read together on the map.
 const CAT_GROUPS = [
@@ -1839,24 +1510,22 @@ const CAT_GROUPS = [
 const CAT_INFO = {};
 for (const g of CAT_GROUPS) for (const [c, icon] of Object.entries(g.cats)) CAT_INFO[c] = { icon, color: g.color, group: g.id };
 const catInfo = c => CAT_INFO[c] || { icon: '📍', color: '#757575', group: 'culture' };
-// map filter state lives in UI.mf: { hide: [categories], mine: bool, osm: bool, must: bool }
-const mf = () => (UI.mf = UI.mf || { hide: [], mine: true, osm: !!UI.osmLayer, must: false });
+// map filter state lives in UI.mf: { hide: [categories], mine: bool, must: bool }
+const mf = () => (UI.mf = UI.mf || { hide: [], mine: true, must: false });
 const catShown = c => !mf().hide.includes(c || 'Landmark');
 const placeShown = p => mf().mine && catShown(p.cat) && (!mf().must || pick(p.id) === 'must');
 function mapFilterHTML() {
-  const f = mf(), mineCount = {}, osmCount = {};
+  const f = mf(), mineCount = {};
   for (const p of S.places) mineCount[p.cat] = (mineCount[p.cat] || 0) + 1;
-  if (OSM) for (const a of OSM.items) osmCount[a[4]] = (osmCount[a[4]] || 0) + 1;
-  const known = new Set([...Object.keys(mineCount), ...Object.keys(osmCount)]);
+  const known = new Set(Object.keys(mineCount));
   const extra = [...known].filter(c => !CAT_INFO[c]);
   const groups = [...CAT_GROUPS.map(g => ({ ...g, list: Object.keys(g.cats).filter(c => known.has(c)) })), ...(extra.length ? [{ id: 'other', name: 'Other', color: '#757575', list: extra }] : [])].filter(g => g.list.length);
   const hidden = f.hide.filter(c => known.has(c)).length;
-  const n = c => (f.mine ? mineCount[c] || 0 : 0) + (f.osm && OSM ? osmCount[c] || 0 : 0);
+  const n = c => f.mine ? mineCount[c] || 0 : 0;
   return `<details class="mlwrap mfilter" ${UI.filterOpen ? 'open' : ''} ontoggle="UI.filterOpen=this.open;saveUI()">
-    <summary>Filter map${hidden || f.must || !f.mine || (OSM && !f.osm) ? ` · <b>${[hidden ? `${hidden} type${hidden > 1 ? 's' : ''} hidden` : '', f.must ? 'must-sees only' : '', !f.mine ? 'my places hidden' : '', OSM && !f.osm ? '' : ''].filter(Boolean).join(', ') || 'custom'}</b>` : ''}</summary>
+    <summary>Filter map${hidden || f.must || !f.mine ? ` · <b>${[hidden ? `${hidden} type${hidden > 1 ? 's' : ''} hidden` : '', f.must ? 'must-sees only' : '', !f.mine ? 'my places hidden' : ''].filter(Boolean).join(', ') || 'custom'}</b>` : ''}</summary>
     <div class="row" style="gap:6px;margin:6px 0">
       <button class="pchip" data-act="msrc" data-v="mine" aria-pressed="${f.mine}">My places</button>
-      <button class="pchip" data-act="msrc" data-v="osm" aria-pressed="${!!(f.osm && OSM)}" ${OSM ? '' : 'disabled title="Download regions in Places → All of Portugal"'}>All of Portugal${OSM ? '' : ' (none downloaded)'}</button>
       <button class="pchip" data-act="mmust" aria-pressed="${f.must}">★ Must-sees only</button>
       <span class="grow"></span><button class="btn small" data-act="mcatall">All</button><button class="btn small" data-act="mcatnone">None</button></div>
     <div class="mfbody">${groups.map(g => `<div class="mfgroup"><button class="mfgname" data-act="mgroup" data-v="${g.id}" style="color:${g.color}">${esc(g.name)}</button>
@@ -1993,9 +1662,8 @@ function buildMarkers() {
   }
   mapLayers = { mine };
   const zoomClass = () => { const z = MAP.getZoom(), c = MAP.getContainer().classList; c.toggle('z-low', z < 8); c.toggle('z-mid', z >= 8 && z < 10); };
-  if (!buildMarkers.hooked) { MAP.on('zoomend moveend', () => refreshOsmView()); MAP.on('zoomend', zoomClass); buildMarkers.hooked = true; }
+  if (!buildMarkers.hooked) { MAP.on('zoomend', zoomClass); buildMarkers.hooked = true; }
   zoomClass();
-  osmLayerDirty = true; refreshOsmView();
   mapDirty = false;
 }
 function drawRoute() {
@@ -2091,7 +1759,7 @@ function renderHelp() {
   ${sec('🗂️ The tabs', `<ul>
     <li><b>Plan</b>: your days, one card each: the day's route, the time bar, and whether it fits. Tap a day to edit it.</li>
     <li><b>Map</b>: the selected day's route, or the <b>Whole trip</b>. <b>Filter map</b> shows only the kinds of places you want.</li>
-    <li><b>Places</b>: everything you can visit, with photos, tips and links. <b>All of ${C.country}</b> searches thousands more places from OpenStreetMap.</li>
+    <li><b>Places</b>: everything you can visit, with photos, ages, buggy access, tips and links.</li>
     <li><b>Compare</b>: alternative plans side by side: driving time, what you see, and cost.</li>
     <li><b>Costs</b>: things to book, estimated vs actual cost, running total in both currencies.</li>
     </ul><p>At the top right: ${C.fxTab ? '<b>€</b> (the rate chip) opens the currency converter with the live rate, ' : ''}<b>?</b> is this help, and <b>⚙ Settings</b> has the official road and weather links, a safety checklist, the daylight table, settings, and backup.</p>`)}
@@ -2233,37 +1901,21 @@ document.addEventListener('click', e => {
     case 'theme': UI.theme = el.dataset.v; applyTheme(); render(); break;
     case 'export': exportJSON(); break;
     case 'reload': location.reload(); break;
-    case 'pmode': UI.pmode = el.dataset.v; render(); break;
     case 'mcat': { const f = mf(), c = el.dataset.v; f.hide = f.hide.includes(c) ? f.hide.filter(x => x !== c) : [...f.hide, c]; mapDirty = true; render(); break; }
-    case 'mcatonly': { const f = mf(), c = el.dataset.v; f.hide = [...new Set([...Object.keys(CAT_INFO), ...S.places.map(p => p.cat), ...(OSM ? OSM.items.map(a => a[4]) : [])])].filter(x => x !== c); mapDirty = true; render(); break; }
+    case 'mcatonly': { const f = mf(), c = el.dataset.v; f.hide = [...new Set([...Object.keys(CAT_INFO), ...S.places.map(p => p.cat)])].filter(x => x !== c); mapDirty = true; render(); break; }
     case 'mgroup': { const f = mf(), g = CAT_GROUPS.find(x => x.id === el.dataset.v); const cs = g ? Object.keys(g.cats) : [];
       const allShown = cs.every(c => !f.hide.includes(c)); f.hide = allShown ? [...new Set([...f.hide, ...cs])] : f.hide.filter(c => !cs.includes(c)); mapDirty = true; render(); break; }
     case 'mcatall': mf().hide = []; mapDirty = true; render(); break;
-    case 'mcatnone': mf().hide = [...new Set([...Object.keys(CAT_INFO), ...S.places.map(p => p.cat), ...(OSM ? OSM.items.map(a => a[4]) : [])])]; mapDirty = true; render(); break;
-    case 'msrc': { const f = mf(); f[el.dataset.v] = !f[el.dataset.v]; if (el.dataset.v === 'osm') UI.osmLayer = f.osm; mapDirty = true; render(); break; }
+    case 'mcatnone': mf().hide = [...new Set([...Object.keys(CAT_INFO), ...S.places.map(p => p.cat)])]; mapDirty = true; render(); break;
+    case 'msrc': { const f = mf(); f[el.dataset.v] = !f[el.dataset.v]; mapDirty = true; render(); break; }
     case 'mmust': mf().must = !mf().must; mapDirty = true; render(); break;
-    case 'osmload': loadOSM([el.dataset.v]); break;
-    case 'osmtrip': loadOSM(osmTripAreas().filter(id => !OSM_STORE.areas[id])); break;
-    case 'osmrm': if (confirm('Remove the downloaded sights for this region? Places you added to My places stay.')) osmRemove(el.dataset.v); break;
-    case 'osmcat': UI.osmCat = el.dataset.v; UI.osmN = 40; render(); break;
-    case 'osmmore': UI.osmN = (UI.osmN || 40) + 60; $('#osmlist').innerHTML = osmListHTML(); break;
-    case 'osmadd': {
-      const a = OSM && OSM.items.find(x => x[0] === el.dataset.osm); if (!a) break;
-      const p = promoteOSM(osmObj(a)); MAP && MAP.closePopup(); changed(); fetchWiki(); toast(`Added ${p.name} to My places`); break;
-    }
-    case 'osmmap': {
-      const id = el.dataset.osm, a = OSM && OSM.items.find(x => x[0] === id); if (!a) break;
-      mf().osm = true; UI.osmLayer = true; if (!catShown(a[4])) mf().hide = mf().hide.filter(c => c !== a[4]); mf().must = false; goTab('map');
-      setTimeout(() => { if (!MAP) return; MAP.setView([a[2], a[3]], 11); refreshOsmView(); OSM_MARKERS[id]?.openPopup(); }, 60);
-      break;
-    }
     case 'tripedit': UI.editTrip = !UI.editTrip; render(); break;
     case 'tripsave': if (setTripDates($('#trip-from').value, $('#trip-to').value)) { saveFlights(); UI.editTrip = false; mapDirty = true; changed(); toast('Dates and flights updated'); } break;
     case 'flightedit': UI.editTrip = true; render(); scrollTo(0, 0); break;
     case 'wikiretry': IMG_W = null; try { localStorage.removeItem('portugal-imgw'); } catch (e) { } WIKI = {}; for (const k in IMG_FAIL) delete IMG_FAIL[k]; try { localStorage.removeItem(LS_WIKI); } catch (e) { } fetchWiki(); break;
     case 'pick': { const id = el.dataset.place, v = el.dataset.v; S.picks[id] = S.picks[id] === v ? undefined : v; if (!S.picks[id]) delete S.picks[id]; changed(); break; }
     case 'pfilter': UI.pf = { ...(UI.pf || {}), [el.dataset.k]: el.dataset.v }; render(); break;
-    case 'pinfo': UI.pf = {}; UI.pmode = 'mine'; MAP && MAP.closePopup(); goTab('places'); setTimeout(() => document.getElementById('poi-' + el.dataset.place)?.scrollIntoView({ block: 'start' }), 0); break;
+    case 'pinfo': UI.pf = {}; MAP && MAP.closePopup(); goTab('places'); setTimeout(() => document.getElementById('poi-' + el.dataset.place)?.scrollIntoView({ block: 'start' }), 0); break;
     case 'pmap': { const id = el.dataset.place; mf().mine = true; mf().must = false; mf().hide = mf().hide.filter(c => c !== place(id)?.cat); mapDirty = true; goTab('map'); setTimeout(() => { if (MAP && MARKERS[id]) { MAP.setView([place(id).lat, place(id).lon], 10); MARKERS[id].openPopup(); } }, 50); break; }
     case 'fxrefresh': fetchRate(true); break;
     case 'fxset': UI.fxEgp = +el.dataset.v; render(); break;
@@ -2293,7 +1945,6 @@ document.addEventListener('change', e => {
     case 'sleep': stopOp(date, p => { p.sleep = v || null; }); break;
     case 'depart': stopOp(date, p => { p.depart = v || null; }); break;
     case 'mapdaysel': UI.mapDay = v; render(); break;
-    case 'osmnear': UI.osmNear = v; UI.osmN = 40; $('#osmlist').innerHTML = osmListHTML(); saveUI(); break;
     case 'padd': if (v) { stopOp(v, p => p.stops.push({ place: el.dataset.place })); toast(`Added to ${dateLabel(v)}`); } break;
     case 'oname': optById(el.dataset.id).name = v; changed(); break;
     case 'onote': optById(el.dataset.id).note = v; changed(); break;
@@ -2309,7 +1960,6 @@ document.addEventListener('change', e => {
 });
 document.addEventListener('input', e => {
   if (e.target.dataset && e.target.dataset.fx) fxInput(e.target);
-  if (e.target.id === 'osmq') { UI.osmQ = e.target.value; UI.osmN = 40; clearTimeout(document.osmT); document.osmT = setTimeout(() => { $('#osmlist').innerHTML = osmListHTML(); saveUI(); }, 150); }
 });
 
 $('#importfile').addEventListener('change', e => { const f = e.target.files[0]; if (f) importJSON(f); e.target.value = ''; });

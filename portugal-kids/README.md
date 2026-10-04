@@ -20,8 +20,11 @@ It is one page with no backend and no build step, and works offline once loaded.
 - **Gentler days by default:** up to 2.5 h of driving and 5.5 h of visits a day, starting at 09:00, with 45 min spare.
 - **A family checklist and booking list:** children's ID, consent letters, car seats, sun and sea safety.
 
-Your plan is saved under its own keys (`ptkids-…`), so it never mixes with your Portugal plan. Place photos, route
-shapes and the **All of Portugal** OpenStreetMap downloads are shared with the Portugal planner, so they're not stored twice.
+There is no **All of Portugal** (the Portugal planner's list of every named sight from OpenStreetMap). Those places
+have no age range or buggy information, so every place here is one chosen with kids in mind.
+
+Your plan is saved under its own keys (`ptkids-…`), so it never mixes with your Portugal plan. Place photos and route
+shapes are shared with the Portugal planner, so they're not stored twice.
 Offline caches are prefixed `ptkids-` (not `portugal-kids-`: the Portugal planner clears every cache starting with `portugal-`).
 
 ## Files

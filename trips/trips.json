@@ -113,7 +113,6 @@
       "copyKeys": {"ptkids-planner-v1": "tp-ptkids-planner-v1", "ptkids-planner-ui": "tp-ptkids-planner-ui"},
       "uiKey": "ptkids-planner-ui",
       "skip": ["tools", "parts"],
-      "jsReplace": {"fetch(`../portugal/osm/${id}.json`": "fetch(`../../portugal/osm/${id}.json`"},
       "swReplace": {"'ptkids-": "'tp-ptkids-"},
       "generic": {
         "name": "Portugal with kids",

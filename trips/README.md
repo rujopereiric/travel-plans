@@ -22,7 +22,7 @@ The standalone planners (`../iceland-planner/`, `../egypt/`, `../portugal/`, `..
   So they're shared with the standalone app instead of filling the ~5 MB browser storage twice.
 - **Separate offline caches:** these are prefixed `tp-<id>-`, so neither app's service worker deletes the other's files.
   Map tiles are cached as proper CORS responses; opaque ones were being counted as several MB each.
-- **Egypt and Portugal map data:** they read their OpenStreetMap files from `../../egypt/osm/` and `../../portugal/osm/` (Portugal with kids uses Portugal's), which daily GitHub Actions keep up to date.
+- **Egypt and Portugal map data:** they read their OpenStreetMap files from `../../egypt/osm/` and `../../portugal/osm/`, which daily GitHub Actions keep up to date.
 - **Shareable sample data:** the copies contain no personal dates, plans or bookings (the `generic` settings in `trips.json`).
   A new user gets a sample trip that starts about a month after they first open it, with arrival and departure days marked.
   It has one empty plan and a generic bookings checklist. Places, photos, drive times, settings and safety info are all kept.
