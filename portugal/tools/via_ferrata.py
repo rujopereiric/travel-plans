@@ -13,10 +13,12 @@ def hv(a, b):
     h = math.sin((la2 - la1) / 2) ** 2 + math.cos(la1) * math.cos(la2) * math.sin((lo2 - lo1) / 2) ** 2
     return 2 * 6371 * math.asin(math.sqrt(h))
 
+# OpenStreetMap routes known to be wrong or not accessible (also hidden in the app: OSM_EXCLUDE in app.js)
+EXCLUDE = {'w1020660385', 'w975036766'}   # near Portinho da Arrábida: not accessible (Oct 2026)
 items = {}
 for f in sorted(glob.glob(os.path.join(root, 'osm', '*.json'))):
     for it in json.load(open(f))['items']:
-        if it[4] == 'Via ferrata': items[it[0]] = it
+        if it[4] == 'Via ferrata' and it[0] not in EXCLUDE: items[it[0]] = it
 # my places (not via ferratas) give each route a region and a "near" name
 mine = [p for part in glob.glob(os.path.join(root, 'parts', '*.json')) if not part.endswith(('via_ferrata.json', 'via_ferrata_research.json'))
         for p in json.load(open(part))['places']]

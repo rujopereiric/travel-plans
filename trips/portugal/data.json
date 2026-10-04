@@ -4893,26 +4893,6 @@
       "season": "It closed briefly after a 2021–22 wildfire; no other closure info found"
     },
     {
-      "id": "vf_w1020660385",
-      "name": "Via ferrata near Portinho da Arrábida",
-      "region": "setubal",
-      "lat": 38.4547,
-      "lon": -9.0161,
-      "visit": 180,
-      "cat": "Via ferrata",
-      "priority": 2,
-      "summary": "A via ferrata (protected climbing route) 4 km from Portinho da Arrábida. Grade: difficult (C/K3), very difficult (D/K4).",
-      "facts": [
-        "Only known from OpenStreetMap: not confirmed by any guide or official source",
-        "You need a helmet, harness and via ferrata lanyard set; local operators rent kits and guide",
-        "Check it is open and the cables are maintained before you go (ask the town hall or tourist office)",
-        "Avoid it in rain or wind: rock and cables get slippery"
-      ],
-      "osm": ["w1020660385", "w975036766"],
-      "wiki": false,
-      "confidence": "low"
-    },
-    {
       "id": "lis",
       "name": "Lisbon Airport (LIS)",
       "region": "lisbon",

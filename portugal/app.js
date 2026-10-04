@@ -8,7 +8,7 @@ const LS_STATE = 'portugal-planner-v1';
 const LS_UI = 'portugal-planner-ui';
 // Bump on every change. The app compares it with the app.js on the server, so a phone that kept an old tab open
 // (no reload, so still the old code) is told a newer version exists.
-const APP_BUILD = '2026-10-04.4';
+const APP_BUILD = '2026-10-04.5';
 let NEWER = null; // the newer build found on the server, if any
 const AX0 = 5 * 60, AX1 = 23 * 60;           // timeline axis 05:00–23:00
 const DEFAULT_SETTINGS = {
@@ -1488,7 +1488,7 @@ const OSM_AREAS = [ // [id, name, south, west, north, east]
 const osmArea = id => OSM_AREAS.find(x => x[0] === id);
 function osmMerge() { // rebuild the merged view from the downloaded areas (areas overlap a little)
   const seen = new Set(), items = [];
-  for (const k of Object.keys(OSM_STORE.areas)) for (const a of OSM_STORE.areas[k].items) if (!seen.has(a[0])) { seen.add(a[0]); items.push(a); }
+  for (const k of Object.keys(OSM_STORE.areas)) for (const a of OSM_STORE.areas[k].items) if (!seen.has(a[0]) && !OSM_EXCLUDE.has(a[0])) { seen.add(a[0]); items.push(a); }
   OSM = items.length || Object.keys(OSM_STORE.areas).length ? { items } : null;
   osmLayerDirty = true;
 }
@@ -1538,6 +1538,8 @@ function osmCat(t, name = '') {
   if (h) return 'Historic';
   return 'Attraction';
 }
+// OpenStreetMap objects known to be wrong or not accessible, left out of All of Portugal
+const OSM_EXCLUDE = new Set(['w1020660385', 'w975036766']); // via ferrata near Portinho da Arrábida: not accessible
 const VF_GRADE = { 1: 'easy (A/K1)', 2: 'moderate (B/K2)', 3: 'difficult (C/K3)', 4: 'very difficult (D/K4)', 5: 'extreme (E/K5)', 6: 'extreme (F/K6)' };
 const osmRow = el => {
   const t = el.tags || {}, lat = el.lat ?? el.center?.lat, lon = el.lon ?? el.center?.lon;
@@ -1548,7 +1550,7 @@ const osmRow = el => {
     if (g && !t.description) t.description = `Via ferrata, ${g}.` + (t.length ? ` ${t.length} m.` : '') + (t.operator ? ` Run by ${t.operator}.` : '');
     else if (!t.description) t.description = 'Via ferrata (grade not mapped).';
   }
-  if (!name || lat == null) return null;
+  if (!name || lat == null || OSM_EXCLUDE.has(el.type[0] + el.id)) return null;
   return [el.type[0] + el.id, name, +lat.toFixed(5), +lon.toFixed(5), osmCat(t, name), t.wikipedia || '', t.website || t['contact:website'] || '', (t['description:en'] || t.description || '').slice(0, 200), t.name !== name ? t.name || '' : ''];
 };
 /* osm-shared-end */

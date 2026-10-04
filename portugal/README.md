@@ -17,7 +17,7 @@ It is one page with no backend and no build step, and works offline once loaded.
 
 ## What's in it
 
-There are 260 places in 12 regions, with 46 good overnight bases:
+There are 259 places in 12 regions, with 46 good overnight bases:
 - **Mainland:** Lisbon; Sintra & Cascais; Setúbal & Arrábida; Óbidos, Nazaré & Tomar; Coimbra, Aveiro & Serra da Estrela; Porto; Minho & Gerês; Douro Valley & Trás-os-Montes; Alentejo; Algarve.
 - **Islands:** Madeira and the Azores.
 
@@ -48,9 +48,9 @@ To fix or add places:
 
 ## Via ferratas
 
-The 12 via ferratas in My places come from two sources:
+The 11 via ferratas in My places come from two sources:
 - **`parts/via_ferrata_research.json`:** web research done in October 2026. It covers 11 routes, plus Madeira's planned São Vicente route, which is left out until it opens. Each route has a grade, length, duration, approach, operators, kit rental and sources. Where sources disagree, the facts say so.
-- **OpenStreetMap:** any route the research doesn't cover. An OSM route within 3 km of a researched one counts as the same route. OSM-only routes are marked *unverified*.
+- **OpenStreetMap:** any route the research doesn't cover. An OSM route within 3 km of a researched one counts as the same route. OSM-only routes are marked *unverified*. Routes known to be wrong or not accessible are listed in `EXCLUDE` in the script and `OSM_EXCLUDE` in `app.js`, so they never come back.
 
 `tools/via_ferrata.py` merges both into `parts/via_ferrata.json`. Via ferratas have `"wiki": false`, so the app doesn't show the general Wikipedia article. Instead it looks for a photo on Wikimedia Commons using `photoSearch`.
 
