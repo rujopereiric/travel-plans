@@ -26,7 +26,7 @@ for it in sorted(items.values(), key=lambda x: (x[1] == 'Via ferrata', x[0])):  
         if hv((it[2], it[3]), (g[0][2], g[0][3])) < 1.5: g.append(it); break
     else: groups.append([it])
 
-places = []
+places, used = [], {}
 for g in groups:
     named = [x for x in g if x[1] != 'Via ferrata'] or g
     it = named[0]
@@ -34,11 +34,16 @@ for g in groups:
     near = min(towns, key=lambda p: hv((lat, lon), (p['lat'], p['lon'])))
     region = min(mine, key=lambda p: hv((lat, lon), (p['lat'], p['lon'])))['region']
     km = hv((lat, lon), (near['lat'], near['lon']))
-    name = it[1] if it[1] != 'Via ferrata' else f"Via ferrata near {near['name']}"
+    # unnamed routes: name them after the nearest of my places (a cape, a castle…) if it's close, else the nearest town
+    mark = min((p for p in mine if p['cat'] != 'Airport'), key=lambda p: hv((lat, lon), (p['lat'], p['lon'])))
+    ref = mark if hv((lat, lon), (mark['lat'], mark['lon'])) < 5 else near
+    name = it[1] if it[1] != 'Via ferrata' else f"Via ferrata near {ref['name']}"
     grades = sorted({m.group(1) for x in g for m in [re.search(r'Via ferrata, ([^.]+)\.', x[7])] if m})
     desc = next((x[7] for x in g if x[7] and not x[7].startswith('Via ferrata')), '')
     summary = (desc + ' ' if desc else '') + f"A via ferrata (protected climbing route) {round(km)} km from {near['name']}." \
         + (f" Grade: {', '.join(grades)}." if grades else ' The grade is not mapped: check with the operator.')
+    used[name] = used.get(name, 0) + 1
+    if used[name] > 1: name += f' ({used[name]})'
     p = {'id': 'vf_' + it[0], 'name': name, 'region': region, 'lat': lat, 'lon': lon, 'visit': 180, 'cat': 'Via ferrata', 'priority': 2,
          'summary': summary,
          'facts': ['You need a helmet, harness and via ferrata lanyard set; local operators rent kits and guide',

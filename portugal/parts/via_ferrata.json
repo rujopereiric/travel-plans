@@ -1,0 +1,66 @@
+{
+ "places": [
+  {
+   "id": "vf_w1536553295",
+   "name": "Via Ferrata da Serra do Muradal",
+   "region": "centro",
+   "lat": 39.9454,
+   "lon": -7.7635,
+   "visit": 180,
+   "cat": "Via ferrata",
+   "priority": 2,
+   "summary": "A via ferrata (protected climbing route) 32 km from Piódão. Grade: moderate (B/K2).",
+   "facts": [
+    "You need a helmet, harness and via ferrata lanyard set; local operators rent kits and guide",
+    "Check it is open and the cables are maintained before you go (ask the town hall or tourist office)",
+    "Avoid it in rain or wind: rock and cables get slippery"
+   ],
+   "osm": [
+    "w1536553295"
+   ],
+   "wiki": "Via ferrata"
+  },
+  {
+   "id": "vf_w1020660385",
+   "name": "Via ferrata near Portinho da Arrábida",
+   "region": "setubal",
+   "lat": 38.4547,
+   "lon": -9.0161,
+   "visit": 180,
+   "cat": "Via ferrata",
+   "priority": 2,
+   "summary": "A via ferrata (protected climbing route) 8 km from Sesimbra. Grade: difficult (C/K3), very difficult (D/K4).",
+   "facts": [
+    "You need a helmet, harness and via ferrata lanyard set; local operators rent kits and guide",
+    "Check it is open and the cables are maintained before you go (ask the town hall or tourist office)",
+    "Avoid it in rain or wind: rock and cables get slippery"
+   ],
+   "osm": [
+    "w1020660385",
+    "w975036766"
+   ],
+   "wiki": "Via ferrata"
+  },
+  {
+   "id": "vf_w942931968",
+   "name": "Via ferrata near Sesimbra Castle",
+   "region": "setubal",
+   "lat": 38.4302,
+   "lon": -9.1348,
+   "visit": 180,
+   "cat": "Via ferrata",
+   "priority": 2,
+   "summary": "A via ferrata (protected climbing route) 3 km from Sesimbra. The grade is not mapped: check with the operator.",
+   "facts": [
+    "You need a helmet, harness and via ferrata lanyard set; local operators rent kits and guide",
+    "Check it is open and the cables are maintained before you go (ask the town hall or tourist office)",
+    "Avoid it in rain or wind: rock and cables get slippery"
+   ],
+   "osm": [
+    "w942931968"
+   ],
+   "wiki": "Via ferrata"
+  }
+ ],
+ "drives": []
+}
