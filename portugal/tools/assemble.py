@@ -76,7 +76,7 @@ BOOKINGS = [
 ]
 CATEGORIES = ['Town', 'Base', 'Old town', 'Castle', 'Palace', 'Monastery & church', 'Monument', 'Ruins', 'Museum', 'Village', 'Wine',
   'Food & market', 'Experience', 'Beach', 'Coast', 'Boat trip', 'Surf', 'Whale watching', 'Lighthouse', 'Viewpoint', 'Garden', 'Hike',
-  'Mountain', 'Waterfall', 'Lake', 'Hot spring', 'Cave', 'Nature reserve', 'Airport']
+  'Mountain', 'Waterfall', 'Lake', 'Hot spring', 'Cave', 'Nature reserve', 'Via ferrata', 'Climbing', 'Airport']
 
 def main():
     places, drives, seen = [], [], {a['id'] for a in AIRPORTS}

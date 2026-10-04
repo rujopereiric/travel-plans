@@ -22,7 +22,7 @@ const LS_UI = 'tp-portugal-planner-ui';
 
 // Bump on every change. The app compares it with the app.js on the server, so a phone that kept an old tab open
 // (no reload, so still the old code) is told a newer version exists.
-const APP_BUILD = '2026-10-04.1';
+const APP_BUILD = '2026-10-04.2';
 let NEWER = null; // the newer build found on the server, if any
 const AX0 = 5 * 60, AX1 = 23 * 60;           // timeline axis 05:00–23:00
 const DEFAULT_SETTINGS = {
@@ -1521,9 +1521,15 @@ node["natural"~"^(cave_entrance|arch|rock|hot_spring|cape)$"]["name"];
 node["waterway"="waterfall"]["name"];
 node["natural"="peak"]["name"]["wikipedia"];
 nw["man_made"="lighthouse"]["name"];
+way["highway"="via_ferrata"];
+rel["route"="via_ferrata"];
+nw["climbing"="via_ferrata"];
+nw["sport"="climbing"]["name"];
 );out center tags qt;`;
 function osmCat(t, name = '') {
   const n = t.natural, tr = t.tourism, h = t.historic, nm = name.toLowerCase();
+  if (t.highway === 'via_ferrata' || t.route === 'via_ferrata' || t.climbing === 'via_ferrata' || /via[ -]ferrata/.test(nm)) return 'Via ferrata';
+  if (t.sport === 'climbing' || /escalada|climbing/.test(nm)) return 'Climbing';
   if (n === 'beach' || /^praia\b/.test(nm)) return 'Beach';
   if (t.waterway === 'waterfall' || n === 'waterfall' || /cascata|queda d|waterfall/.test(nm)) return 'Waterfall';
   if (n === 'hot_spring' || /termas|caldeira|poça|thermal/.test(nm)) return 'Hot spring';
@@ -1543,8 +1549,16 @@ function osmCat(t, name = '') {
   if (h) return 'Historic';
   return 'Attraction';
 }
+const VF_GRADE = { 1: 'easy (A/K1)', 2: 'moderate (B/K2)', 3: 'difficult (C/K3)', 4: 'very difficult (D/K4)', 5: 'extreme (E/K5)', 6: 'extreme (F/K6)' };
 const osmRow = el => {
-  const t = el.tags || {}, lat = el.lat ?? el.center?.lat, lon = el.lon ?? el.center?.lon, name = t['name:en'] || t['int_name'] || t.name;
+  const t = el.tags || {}, lat = el.lat ?? el.center?.lat, lon = el.lon ?? el.center?.lon;
+  const vf = t.highway === 'via_ferrata' || t.route === 'via_ferrata' || t.climbing === 'via_ferrata';
+  let name = t['name:en'] || t['int_name'] || t.name || (vf ? 'Via ferrata' : '');
+  if (vf) {  // the grade is what matters for a via ferrata: put it in the description
+    const g = VF_GRADE[parseInt(t.via_ferrata_scale)] || (t.via_ferrata_scale ? 'grade ' + t.via_ferrata_scale : '');
+    if (g && !t.description) t.description = `Via ferrata, ${g}.` + (t.length ? ` ${t.length} m.` : '') + (t.operator ? ` Run by ${t.operator}.` : '');
+    else if (!t.description) t.description = 'Via ferrata (grade not mapped).';
+  }
   if (!name || lat == null) return null;
   return [el.type[0] + el.id, name, +lat.toFixed(5), +lon.toFixed(5), osmCat(t, name), t.wikipedia || '', t.website || t['contact:website'] || '', (t['description:en'] || t.description || '').slice(0, 200), t.name !== name ? t.name || '' : ''];
 };
@@ -1775,6 +1789,7 @@ const CAT_GROUPS = [
   { id: 'heritage', name: 'Castles, palaces & churches', color: '#8e24aa', cats: { Castle: '🏰', Palace: '👑', 'Monastery & church': '⛪', 'Old town': '🏘️', Monument: '🗿', Ruins: '🏛️', Historic: '🏚️' } },
   { id: 'culture', name: 'Museums, wine & food', color: '#3949ab', cats: { Museum: '🖼️', Art: '🎨', Village: '🏡', Wine: '🍷', 'Food & market': '🍽️', Experience: '🎶', Attraction: '⭐' } },
   { id: 'sea', name: 'Sea & coast', color: '#0277bd', cats: { Beach: '🏖️', Coast: '🌊', 'Boat trip': '⛵', Surf: '🏄', 'Whale watching': '🐋', Lighthouse: '🗼' } },
+  { id: 'adventure', name: 'Via ferrata & climbing', color: '#e65100', cats: { 'Via ferrata': '🧗', Climbing: '🪨' } },
   { id: 'nature', name: 'Nature', color: '#2e7d32', cats: { Hike: '🥾', Mountain: '⛰️', Waterfall: '💧', Lake: '🏞️', 'Hot spring': '♨️', Cave: '🕳️', 'Nature reserve': '🌿', Garden: '🌳', Viewpoint: '🔭', Landmark: '📍' } },
   { id: 'practical', name: 'Practical', color: '#546e7a', cats: { Town: '🏙️', Base: '🛏️', Airport: '✈️' } },
 ];
