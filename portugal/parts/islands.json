@@ -1,0 +1,1426 @@
+{
+ "places": [
+  {
+   "id": "fnc",
+   "name": "Madeira Airport (FNC)",
+   "region": "madeira",
+   "lat": 32.6979,
+   "lon": -16.7745,
+   "visit": 0,
+   "cat": "Airport",
+   "priority": 1,
+   "wiki": "Madeira Airport",
+   "summary": "Madeira's main airport (Cristiano Ronaldo Airport) at Santa Cruz, on a runway partly built on pillars over the sea. About 25 minutes from Funchal.",
+   "facts": [
+    "Aerobus / SAM buses and taxis to Funchal (~€30–35 by taxi)",
+    "Strong crosswinds sometimes cause diversions or delays",
+    "Car hire desks in arrivals"
+   ],
+   "needsDaylight": false,
+   "suggest": false
+  },
+  {
+   "id": "funchal",
+   "name": "Funchal",
+   "region": "madeira",
+   "lat": 32.6486,
+   "lon": -16.9083,
+   "visit": 180,
+   "cat": "Town",
+   "priority": 3,
+   "wiki": "Funchal",
+   "summary": "Madeira's capital, spread up a steep amphitheatre above the harbour. Compact centre with the cathedral (Sé), gardens, the market and the painted-door old town; the natural base for the whole island.",
+   "facts": [
+    "Best base: most restaurants, buses and tours start here",
+    "Central parking garages fill up; hotels often charge for parking",
+    "Streets are steep — taxis and the cable car help",
+    "Lively in the evening along the seafront and Zona Velha"
+   ],
+   "sleep": true,
+   "needsDaylight": false,
+   "season": "Mild all year (about 18–23 °C in autumn/winter); the south coast is the sunniest part of the island."
+  },
+  {
+   "id": "funchal_old_town",
+   "name": "Funchal Old Town (Zona Velha)",
+   "region": "madeira",
+   "lat": 32.648,
+   "lon": -16.901,
+   "visit": 90,
+   "cat": "Old town",
+   "priority": 2,
+   "wiki": "Santa Maria Maior (Funchal)",
+   "summary": "The old fishermen's quarter around Rua de Santa Maria, known for its painted-door art project, small restaurants and bars. Ends at the yellow São Tiago Fort by the sea.",
+   "facts": [
+    "Free to wander",
+    "Best in late afternoon and evening for dinner",
+    "Lower station of the Monte cable car is at its edge",
+    "Touts from restaurants can be insistent"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "mercado_dos_lavradores",
+   "name": "Mercado dos Lavradores",
+   "region": "madeira",
+   "lat": 32.6497,
+   "lon": -16.9037,
+   "visit": 45,
+   "cat": "Food & market",
+   "priority": 2,
+   "wiki": "Mercado dos Lavradores",
+   "summary": "Funchal's 1940s Art Deco market hall with azulejo panels, piled with exotic fruit, flowers and a fish hall selling black scabbardfish. Busiest on Friday and Saturday mornings.",
+   "facts": [
+    "Free entry",
+    "Fruit sellers offer tastings then charge tourist prices — ask the price per kg first",
+    "Come in the morning, especially Fri/Sat",
+    "Fish hall is best before noon"
+   ],
+   "hours": "07:00-19:00",
+   "closed": [
+    0
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "monte",
+   "name": "Monte cable car & toboggan",
+   "region": "madeira",
+   "lat": 32.6745,
+   "lon": -16.9019,
+   "visit": 120,
+   "cat": "Experience",
+   "priority": 3,
+   "wiki": "Monte (Funchal)",
+   "summary": "Ride the cable car from the old town up to the hill village of Monte, visit the church of Nossa Senhora do Monte, then slide back down the steep streets in a wicker toboggan steered by two carreiros in straw hats.",
+   "facts": [
+    "Cable car one way ~€13, return ~€19",
+    "Toboggan ~€30–35 per sledge for two, runs to Livramento (not all the way down); taxi or walk from there",
+    "Can combine with Monte Palace Garden next door",
+    "Queues for the toboggan at midday on cruise-ship days"
+   ],
+   "caution": "The toboggan runs on public road; keep hands and feet inside."
+  },
+  {
+   "id": "monte_palace_garden",
+   "name": "Monte Palace Tropical Garden",
+   "region": "madeira",
+   "lat": 32.6763,
+   "lon": -16.9017,
+   "visit": 120,
+   "cat": "Garden",
+   "priority": 3,
+   "wiki": "Monte Palace Tropical Garden",
+   "summary": "A huge hillside garden in Monte with oriental gardens, koi ponds, azulejo panels, cycads and a mineral and African art museum. One of the best gardens in Portugal.",
+   "facts": [
+    "~€15 adult",
+    "Allow 2 hours; lots of steps",
+    "Next to the Monte cable car top station",
+    "Quieter at opening time"
+   ],
+   "hours": "09:30-18:00"
+  },
+  {
+   "id": "madeira_botanical_garden",
+   "name": "Madeira Botanical Garden",
+   "region": "madeira",
+   "lat": 32.6619,
+   "lon": -16.8957,
+   "visit": 90,
+   "cat": "Garden",
+   "priority": 2,
+   "wiki": "Madeira Botanical Garden",
+   "summary": "Terraced botanical garden above Funchal with famous geometric flower beds, succulents and native Madeiran plants, plus wide views over the bay.",
+   "facts": [
+    "~€6 adult",
+    "Linked to Monte by a second cable car (Teleférico do Jardim Botânico)",
+    "Bus or taxi from Funchal centre (~15 min)",
+    "Small natural history museum included"
+   ],
+   "hours": "09:00-18:00"
+  },
+  {
+   "id": "blandys_wine_lodge",
+   "name": "Blandy's Wine Lodge",
+   "region": "madeira",
+   "lat": 32.6467,
+   "lon": -16.9095,
+   "visit": 75,
+   "cat": "Wine",
+   "priority": 2,
+   "wiki": "Madeira wine",
+   "summary": "Historic Madeira wine lodge in a former Franciscan monastery in central Funchal, run by the Blandy family since 1811. Guided tours show the estufagem ageing in warm lofts and end with tastings.",
+   "facts": [
+    "Guided tour with tasting ~€15–25",
+    "Book tours ahead in busy season",
+    "Walk-in tasting room for single glasses",
+    "On Avenida Arriaga, next to the tourist office"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "funchal_whale_watching",
+   "name": "Whale & dolphin watching from Funchal",
+   "region": "madeira",
+   "lat": 32.6447,
+   "lon": -16.9118,
+   "visit": 180,
+   "cat": "Whale watching",
+   "priority": 2,
+   "wiki": "Whale watching",
+   "summary": "Boat trips from Funchal marina to see resident dolphins, pilot whales and, seasonally, sperm and Bryde's whales. Sightings rate is high year-round.",
+   "facts": [
+    "~€50–65 adult for a 2.5–3 h trip",
+    "Book a day or two ahead; morning trips usually calmer",
+    "Choose operators with sighting guarantees",
+    "Take seasickness tablets if prone"
+   ],
+   "season": "Trips can be cancelled in rough seas, more often in winter."
+  },
+  {
+   "id": "cabo_girao",
+   "name": "Cabo Girão skywalk",
+   "region": "madeira",
+   "lat": 32.6559,
+   "lon": -17.004,
+   "visit": 30,
+   "cat": "Viewpoint",
+   "priority": 2,
+   "wiki": "Cabo Girão",
+   "summary": "One of Europe's highest sea cliffs (about 580 m), with a glass-floored skywalk hanging over the drop and views of terraced fields far below and Funchal to the east.",
+   "facts": [
+    "Small entrance fee (~€2)",
+    "Free parking, fills mid-morning on cruise days",
+    "Best early or late for fewer tour buses",
+    "Combine with Câmara de Lobos"
+   ],
+   "caution": "Low cloud can hide the view completely; check the webcam before driving up."
+  },
+  {
+   "id": "camara_de_lobos",
+   "name": "Câmara de Lobos",
+   "region": "madeira",
+   "lat": 32.6488,
+   "lon": -16.9771,
+   "visit": 90,
+   "cat": "Village",
+   "priority": 2,
+   "wiki": "Câmara de Lobos",
+   "summary": "Fishing town just west of Funchal with brightly painted boats pulled up in a tiny harbour, the viewpoint Churchill painted, and bars serving poncha.",
+   "facts": [
+    "Free; easy bus or 15 min drive from Funchal",
+    "Try poncha (rum, honey, lemon) in a local bar",
+    "Pico da Torre viewpoint above town",
+    "Good at sunset"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "pico_do_arieiro",
+   "name": "Pico do Arieiro",
+   "region": "madeira",
+   "lat": 32.7353,
+   "lon": -16.9289,
+   "visit": 45,
+   "cat": "Mountain",
+   "priority": 3,
+   "wiki": "Pico do Arieiro",
+   "summary": "Madeira's third-highest peak (1,818 m), reachable by car, with jagged volcanic ridges and often a sea of clouds below. The start of the classic PR1 ridge trail to Pico Ruivo.",
+   "facts": [
+    "Free; parking at the summit, gets full for sunrise",
+    "Sunrise is spectacular — arrive 30–45 min before",
+    "Bring warm layers: can be near 0 °C at dawn",
+    "About 40 min drive from Funchal"
+   ],
+   "caution": "Weather changes fast and the road is steep with hairpins; fog is common.",
+   "early": true
+  },
+  {
+   "id": "pico_ruivo_hike",
+   "name": "Pico do Arieiro to Pico Ruivo hike (PR1)",
+   "region": "madeira",
+   "lat": 32.7587,
+   "lon": -16.9428,
+   "visit": 330,
+   "cat": "Hike",
+   "priority": 3,
+   "wiki": "Pico Ruivo",
+   "summary": "Madeira's signature hike along a knife-edge ridge with tunnels and stairways cut into the rock, from Pico do Arieiro to Pico Ruivo (1,862 m), the island's highest point. About 7 km one way.",
+   "facts": [
+    "Free, but PR trails now need a small online registration/fee (~€3) via the Simplifica Madeira site",
+    "Allow 5–6 h return, or arrange a pick-up at Achada do Teixeira",
+    "Check IFCN trail status before going — sections are often closed after storms or fires",
+    "Head torch useful for the tunnels"
+   ],
+   "caution": "Sections of PR1 are frequently closed for repairs; exposed drops and loose rock — do not hike in rain or high wind."
+  },
+  {
+   "id": "achada_do_teixeira",
+   "name": "Achada do Teixeira (short route to Pico Ruivo)",
+   "region": "madeira",
+   "lat": 32.76,
+   "lon": -16.93,
+   "visit": 150,
+   "cat": "Hike",
+   "priority": 2,
+   "wiki": "Pico Ruivo",
+   "summary": "Car park and trailhead above Santana from which a paved path (PR1.2) climbs gently to Pico Ruivo summit in about an hour. The easiest way to reach Madeira's highest point.",
+   "facts": [
+    "About 2.8 km each way, 2–2.5 h return",
+    "Free parking at the end of the road from Santana",
+    "Small mountain hut near the summit sells drinks",
+    "Basalt 'Homem em Pé' rock formation by the car park"
+   ],
+   "caution": "Cloud and cold wind at the top even when the coast is sunny."
+  },
+  {
+   "id": "ponta_de_sao_lourenco",
+   "name": "Ponta de São Lourenço hike (PR8)",
+   "region": "madeira",
+   "lat": 32.7432,
+   "lon": -16.7111,
+   "visit": 180,
+   "cat": "Hike",
+   "priority": 3,
+   "wiki": "Ponta de São Lourenço",
+   "summary": "Treeless volcanic peninsula at Madeira's eastern tip, with red, ochre and black cliffs and sea on both sides. The PR8 trail runs about 4 km each way to the Casa do Sardinha and a summit viewpoint.",
+   "facts": [
+    "Free; car park at Baía d'Abra fills by mid-morning",
+    "3–3.5 h return",
+    "No shade — bring water, sun protection and a hat",
+    "PR trail registration fee may apply (~€3)"
+   ],
+   "caution": "Very windy and exposed; stay on the path near cliff edges."
+  },
+  {
+   "id": "santana",
+   "name": "Santana",
+   "region": "madeira",
+   "lat": 32.8044,
+   "lon": -16.8817,
+   "visit": 90,
+   "cat": "Village",
+   "priority": 2,
+   "wiki": "Santana, Madeira",
+   "summary": "North-coast town known for its triangular thatched A-frame houses, a few of which are preserved in the centre. A good quiet base for the north side, the laurel forest levadas and Pico Ruivo.",
+   "facts": [
+    "Free to see the houses in the centre; car park next to them",
+    "Base for Caldeirão Verde, Levada do Rei and Achada do Teixeira",
+    "About 45 min from Funchal via the expressway",
+    "Greener and rainier than the south"
+   ],
+   "sleep": true
+  },
+  {
+   "id": "caldeirao_verde",
+   "name": "Levada do Caldeirão Verde (PR9)",
+   "region": "madeira",
+   "lat": 32.7843,
+   "lon": -16.9073,
+   "visit": 330,
+   "cat": "Hike",
+   "priority": 3,
+   "wiki": "Laurisilva of Madeira",
+   "summary": "Classic levada walk from Queimadas forest park through UNESCO laurel forest and several tunnels to a 100 m waterfall dropping into a green cauldron. About 13 km return on mostly flat path.",
+   "facts": [
+    "5–6 h return; path is narrow with drops in places",
+    "Head torch needed for the tunnels",
+    "PR trail registration fee may apply (~€3)",
+    "Check IFCN trail status before setting out"
+   ],
+   "season": "Waterfall fuller after autumn/winter rain, but the path is muddy and closures more frequent.",
+   "caution": "Unfenced sections with long drops; sometimes closed after landslides."
+  },
+  {
+   "id": "levada_do_rei",
+   "name": "Levada do Rei",
+   "region": "madeira",
+   "lat": 32.819,
+   "lon": -16.917,
+   "visit": 180,
+   "cat": "Hike",
+   "priority": 2,
+   "wiki": "Levada",
+   "summary": "Gentle levada walk near São Jorge through laurel forest to the Ribeiro Bonito stream. Quieter and easier than the big-name levadas.",
+   "facts": [
+    "About 10 km return, 3–3.5 h",
+    "Mostly flat; a few narrow exposed sections",
+    "Start at the water station above Quebradas, São Jorge",
+    "Combine with Santana the same day"
+   ],
+   "caution": "Muddy and slippery after rain."
+  },
+  {
+   "id": "porto_moniz",
+   "name": "Porto Moniz",
+   "region": "madeira",
+   "lat": 32.8679,
+   "lon": -17.17,
+   "visit": 90,
+   "cat": "Town",
+   "priority": 2,
+   "wiki": "Porto Moniz",
+   "summary": "Small town at Madeira's north-west tip, famous for lava-rock sea pools. A quiet overnight base for the west and the north coast.",
+   "facts": [
+    "About 55 min from Funchal via the expressway",
+    "Several hotels and guesthouses by the pools",
+    "Good stop on a north coast loop with Seixal and São Vicente"
+   ],
+   "sleep": true,
+   "needsDaylight": false
+  },
+  {
+   "id": "porto_moniz_pools",
+   "name": "Porto Moniz natural pools",
+   "region": "madeira",
+   "lat": 32.8686,
+   "lon": -17.169,
+   "visit": 120,
+   "cat": "Beach",
+   "priority": 3,
+   "wiki": "Porto Moniz",
+   "summary": "Natural swimming pools formed in black volcanic rock, refilled by Atlantic waves crashing over the edge. The managed complex has lifeguards, changing rooms and sunbeds.",
+   "facts": [
+    "~€3 adult",
+    "Free wild pools nearby too",
+    "Bring water shoes; rock is sharp",
+    "Opening hours shorter in winter"
+   ],
+   "season": "Sea water about 18–20 °C in autumn; pools may close in big swells."
+  },
+  {
+   "id": "seixal_beach",
+   "name": "Seixal black sand beach",
+   "region": "madeira",
+   "lat": 32.8235,
+   "lon": -17.1072,
+   "visit": 90,
+   "cat": "Beach",
+   "priority": 2,
+   "wiki": "Seixal (Porto Moniz)",
+   "summary": "Small beach of black volcanic sand framed by green cliffs and waterfalls, one of the most photogenic spots on the north coast. Seixal also has natural rock pools.",
+   "facts": [
+    "Free; small car park",
+    "Showers and a beach bar in summer",
+    "Combine with Porto Moniz",
+    "Water entry is steep with waves"
+   ],
+   "caution": "Strong waves and currents on the north coast; swim only in calm conditions."
+  },
+  {
+   "id": "fanal_forest",
+   "name": "Fanal forest",
+   "region": "madeira",
+   "lat": 32.8106,
+   "lon": -17.145,
+   "visit": 60,
+   "cat": "Nature reserve",
+   "priority": 2,
+   "wiki": "Laurisilva of Madeira",
+   "summary": "Upland meadow at about 1,100 m dotted with gnarled centuries-old laurel (til) trees, often wrapped in drifting fog. Short, easy walking and very atmospheric.",
+   "facts": [
+    "Free; roadside parking off the ER209",
+    "Fog makes the best photos — go in the morning",
+    "Cows graze freely",
+    "About 25 min uphill from Porto Moniz"
+   ],
+   "season": "Can be cold and wet; fog almost guaranteed outside summer."
+  },
+  {
+   "id": "levada_25_fontes",
+   "name": "25 Fontes & Risco levada walk (PR6)",
+   "region": "madeira",
+   "lat": 32.755,
+   "lon": -17.133,
+   "visit": 180,
+   "cat": "Hike",
+   "priority": 3,
+   "wiki": "Levada",
+   "summary": "From Rabaçal on the Paul da Serra plateau, levadas lead down through laurel forest to the Risco waterfall and the 25 Fontes basin where dozens of springs spill down a mossy wall.",
+   "facts": [
+    "About 11 km return, 3–4 h",
+    "Park on the ER110 and walk or take the shuttle (~€3–5) down to Rabaçal",
+    "Very popular — start early",
+    "PR trail registration fee may apply (~€3)"
+   ],
+   "caution": "Narrow, crowded path with drops; can be closed after storms."
+  },
+  {
+   "id": "calheta",
+   "name": "Calheta",
+   "region": "madeira",
+   "lat": 32.721,
+   "lon": -17.177,
+   "visit": 90,
+   "cat": "Town",
+   "priority": 2,
+   "wiki": "Calheta, Madeira",
+   "summary": "Sunny south-west town with a marina, a sheltered golden sand beach (imported) and the MUDAS contemporary art museum. A good base for the west, Rabaçal levadas and sunset.",
+   "facts": [
+    "Calm sheltered swimming at the man-made beach",
+    "MUDAS museum on the cliff above",
+    "About 35 min from Funchal",
+    "Several resorts and guesthouses"
+   ],
+   "sleep": true,
+   "needsDaylight": false
+  },
+  {
+   "id": "ponta_do_sol",
+   "name": "Ponta do Sol",
+   "region": "madeira",
+   "lat": 32.68,
+   "lon": -17.1,
+   "visit": 60,
+   "cat": "Village",
+   "priority": 1,
+   "wiki": "Ponta do Sol, Madeira",
+   "summary": "Small seaside village with a pebble beach, waterfront cafés and Madeira's sunniest climate; now home to a digital nomad community.",
+   "facts": [
+    "Free; small parking near the seafront",
+    "Good sunset stop",
+    "Combine with Calheta and Cabo Girão"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "eira_do_serrado",
+   "name": "Eira do Serrado viewpoint",
+   "region": "madeira",
+   "lat": 32.7116,
+   "lon": -16.9636,
+   "visit": 30,
+   "cat": "Viewpoint",
+   "priority": 2,
+   "wiki": "Curral das Freiras",
+   "summary": "Viewpoint at about 1,000 m looking straight down into the deep crater-like valley of Curral das Freiras. A trail descends to the village below.",
+   "facts": [
+    "Free parking, café and shop at the top",
+    "About 25 min from Funchal",
+    "Walk down to Curral das Freiras (~1 h) and take the bus back"
+   ],
+   "caution": "Valley is often filled with cloud by midday."
+  },
+  {
+   "id": "curral_das_freiras",
+   "name": "Curral das Freiras (Nun's Valley)",
+   "region": "madeira",
+   "lat": 32.7203,
+   "lon": -16.969,
+   "visit": 60,
+   "cat": "Village",
+   "priority": 2,
+   "wiki": "Curral das Freiras",
+   "summary": "Village deep in a steep mountain bowl where nuns once fled pirates. Known for chestnut liqueur and cakes and for dramatic views up to the encircling peaks.",
+   "facts": [
+    "Free; reached by tunnel road",
+    "Try chestnut liqueur or cake",
+    "Combine with Eira do Serrado above"
+   ]
+  },
+  {
+   "id": "porto_santo",
+   "name": "Porto Santo",
+   "region": "madeira",
+   "lat": 33.058,
+   "lon": -16.341,
+   "visit": 480,
+   "cat": "Beach",
+   "priority": 2,
+   "wiki": "Porto Santo Island",
+   "summary": "Madeira's small, dry sister island with a 9 km golden sand beach, unlike anything on Madeira itself. Vila Baleira has the house where Columbus is said to have lived.",
+   "facts": [
+    "Ferry from Funchal about 2.5 h each way, or a 15-min flight",
+    "Good as a day trip or 1–2 nights",
+    "Rent a bike or car to see the viewpoints",
+    "Very quiet outside summer"
+   ],
+   "sleep": true,
+   "season": "Ferry runs most days; sea can be rough in winter."
+  },
+  {
+   "id": "pdl",
+   "name": "Ponta Delgada Airport (PDL)",
+   "region": "azores",
+   "lat": 37.7412,
+   "lon": -25.6979,
+   "visit": 0,
+   "cat": "Airport",
+   "priority": 1,
+   "wiki": "João Paulo II Airport",
+   "summary": "São Miguel's main airport, a few minutes west of Ponta Delgada. Hub for SATA/Azores Airlines inter-island and mainland flights.",
+   "facts": [
+    "Taxi to the centre ~€10",
+    "Car hire desks in arrivals — book ahead",
+    "Inter-island flights by SATA Air Açores"
+   ],
+   "needsDaylight": false,
+   "suggest": false
+  },
+  {
+   "id": "ter",
+   "name": "Terceira Lajes Airport (TER)",
+   "region": "azores",
+   "lat": 38.7618,
+   "lon": -27.0908,
+   "visit": 0,
+   "cat": "Airport",
+   "priority": 1,
+   "wiki": "Lajes Field",
+   "summary": "Shared civil-military airport on Terceira's north-east coast, about 25 minutes from Angra do Heroísmo.",
+   "facts": [
+    "Taxi to Angra ~€25",
+    "Car hire in arrivals",
+    "Bus to Angra and Praia da Vitória"
+   ],
+   "needsDaylight": false,
+   "suggest": false
+  },
+  {
+   "id": "hor",
+   "name": "Horta Airport (HOR)",
+   "region": "azores",
+   "lat": 38.5199,
+   "lon": -28.7159,
+   "visit": 0,
+   "cat": "Airport",
+   "priority": 1,
+   "wiki": "Horta Airport",
+   "summary": "Faial's small airport at Castelo Branco, about 10 km west of Horta.",
+   "facts": [
+    "Taxi to Horta ~€12–15",
+    "Limited car hire — book ahead",
+    "Ferries to Pico leave from Horta harbour"
+   ],
+   "needsDaylight": false,
+   "suggest": false
+  },
+  {
+   "id": "ponta_delgada",
+   "name": "Ponta Delgada",
+   "region": "azores",
+   "lat": 37.7394,
+   "lon": -25.6687,
+   "visit": 150,
+   "cat": "Town",
+   "priority": 3,
+   "wiki": "Ponta Delgada",
+   "summary": "The Azores' largest town, on São Miguel's south coast, with black-and-white basalt streets, the triple-arched city gates and a long marina promenade. Main base for the island and for whale watching.",
+   "facts": [
+    "Best base for São Miguel; most tours start here",
+    "Visit a pineapple greenhouse (Arruda) on the edge of town",
+    "Street parking is metered; use garages",
+    "Lively seafront in the evening"
+   ],
+   "sleep": true,
+   "needsDaylight": false,
+   "season": "Mild but changeable (16–21 °C in autumn); expect showers and fast-moving cloud."
+  },
+  {
+   "id": "ponta_delgada_whale_watching",
+   "name": "Whale watching from Ponta Delgada",
+   "region": "azores",
+   "lat": 37.7378,
+   "lon": -25.6655,
+   "visit": 180,
+   "cat": "Whale watching",
+   "priority": 3,
+   "wiki": "Whale watching",
+   "summary": "Boat trips (RIB or catamaran) guided by lookouts on shore, with very high chances of dolphins and good chances of sperm whales year-round; blue and fin whales pass in spring.",
+   "facts": [
+    "~€60–70 adult for about 3 h",
+    "Book ahead; trips are cancelled in rough seas",
+    "RIBs are faster but wetter; catamarans better for kids",
+    "Morning trips usually calmer"
+   ],
+   "season": "Spring (Apr–May) is best for baleen whales; winter trips are often cancelled for weather."
+  },
+  {
+   "id": "sete_cidades",
+   "name": "Sete Cidades & Vista do Rei",
+   "region": "azores",
+   "lat": 37.8418,
+   "lon": -25.7867,
+   "visit": 120,
+   "cat": "Viewpoint",
+   "priority": 3,
+   "wiki": "Sete Cidades Massif",
+   "summary": "A huge volcanic caldera holding the twin Blue and Green lakes, seen best from the Vista do Rei viewpoint on the rim. Below, the village of Sete Cidades sits on the lake shore.",
+   "facts": [
+    "Free; parking at Vista do Rei",
+    "Also see Boca do Inferno viewpoint (short walk) and Lagoa do Canário",
+    "Rim walk along the caldera is a fine half-day hike",
+    "Check webcams (SpotAzores) — it is often in cloud"
+   ],
+   "caution": "Cloud often fills the crater; come back later in the day if it is fogged in."
+  },
+  {
+   "id": "mosteiros",
+   "name": "Mosteiros",
+   "region": "azores",
+   "lat": 37.89,
+   "lon": -25.82,
+   "visit": 60,
+   "cat": "Village",
+   "priority": 2,
+   "wiki": "Mosteiros",
+   "summary": "Fishing village at São Miguel's western tip with a black sand beach, lava rock pools and sea stacks just offshore. One of the island's best sunset spots.",
+   "facts": [
+    "Free parking near the beach",
+    "Natural pools for swimming in calm weather",
+    "Combine with Sete Cidades and Ferraria"
+   ],
+   "caution": "Strong currents off the beach; swim in the pools."
+  },
+  {
+   "id": "ferraria",
+   "name": "Ponta da Ferraria thermal pool",
+   "region": "azores",
+   "lat": 37.8594,
+   "lon": -25.8524,
+   "visit": 90,
+   "cat": "Hot spring",
+   "priority": 2,
+   "wiki": "Ponta da Ferraria",
+   "summary": "A natural ocean pool in a lava cove where hot spring water mixes with the Atlantic, with ropes to hold on to. Best around low tide when the water is warmest.",
+   "facts": [
+    "Sea pool is free; a spa building next door is ticketed",
+    "Go at low tide — check a tide table",
+    "Steep road down; parking at the end",
+    "Water shoes help"
+   ],
+   "caution": "Waves surge in with force; hold the ropes and stay out in big swells."
+  },
+  {
+   "id": "lagoa_do_fogo",
+   "name": "Lagoa do Fogo",
+   "region": "azores",
+   "lat": 37.7637,
+   "lon": -25.4847,
+   "visit": 60,
+   "cat": "Lake",
+   "priority": 3,
+   "wiki": "Lagoa do Fogo",
+   "summary": "Crater lake in the middle of São Miguel surrounded by wild, untouched slopes and a white sand shore. Viewpoints on the road, or hike down to the water.",
+   "facts": [
+    "Free; viewpoint parking on the EN5-2A",
+    "Trail down to the lake ~1 h each way",
+    "Access road sometimes limited in summer peak (shuttle)",
+    "Often in cloud — check webcams"
+   ],
+   "caution": "Fog can roll in within minutes on the mountain road."
+  },
+  {
+   "id": "caldeira_velha",
+   "name": "Caldeira Velha",
+   "region": "azores",
+   "lat": 37.7845,
+   "lon": -25.4972,
+   "visit": 75,
+   "cat": "Hot spring",
+   "priority": 2,
+   "wiki": "Caldeira Velha",
+   "summary": "Small nature park in a fern-filled ravine with a warm iron-rich waterfall pool and hotter thermal pools. Feels like a jungle.",
+   "facts": [
+    "~€10 to bathe, less for a visit only",
+    "Time slots; book ahead in summer",
+    "Changing rooms on site",
+    "Iron-rich water stains light swimwear"
+   ],
+   "hours": "09:00-17:00"
+  },
+  {
+   "id": "gorreana_tea",
+   "name": "Gorreana Tea Plantation",
+   "region": "azores",
+   "lat": 37.818,
+   "lon": -25.404,
+   "visit": 60,
+   "cat": "Experience",
+   "priority": 2,
+   "wiki": "São Miguel Island",
+   "summary": "Europe's oldest continuously operating tea plantation, founded in 1883, on the north coast. You can see the old machinery at work, taste free tea and walk among the bushes.",
+   "facts": [
+    "Free entry and tasting",
+    "Short walking trails through the plantation",
+    "Shop sells local black and green tea",
+    "Porto Formoso plantation is nearby too"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "furnas",
+   "name": "Furnas",
+   "region": "azores",
+   "lat": 37.7742,
+   "lon": -25.3083,
+   "visit": 120,
+   "cat": "Village",
+   "priority": 3,
+   "wiki": "Furnas",
+   "summary": "Spa village in a volcanic valley full of steaming fumaroles and mineral springs. Home to the Terra Nostra garden, Poça da Dona Beija and the famous cozido stew cooked in the ground.",
+   "facts": [
+    "Good overnight base — soak in hot springs after dark",
+    "Try cozido das Furnas at lunch; book a table",
+    "Caldeiras with boiling mud in the village centre",
+    "About 45 min from Ponta Delgada"
+   ],
+   "sleep": true,
+   "needsDaylight": false
+  },
+  {
+   "id": "furnas_lake",
+   "name": "Furnas Lake & caldeiras",
+   "region": "azores",
+   "lat": 37.7625,
+   "lon": -25.329,
+   "visit": 75,
+   "cat": "Lake",
+   "priority": 2,
+   "wiki": "Furnas Lake",
+   "summary": "Crater lake whose north shore steams with fumaroles where pots of cozido are buried in the ground to cook for about six hours. Watch them being lifted out around noon.",
+   "facts": [
+    "Small parking/entry fee to the fumarole area",
+    "Cozido pots come out about 12:00–13:00",
+    "Walking path around the lake (~9 km)",
+    "Gruta do Padre José Jacinto chapel on the shore"
+   ]
+  },
+  {
+   "id": "terra_nostra",
+   "name": "Terra Nostra Garden",
+   "region": "azores",
+   "lat": 37.7718,
+   "lon": -25.3156,
+   "visit": 150,
+   "cat": "Garden",
+   "priority": 3,
+   "wiki": "Terra Nostra Garden",
+   "summary": "18th-century botanical garden in Furnas with an enormous yellow-brown iron-rich thermal pool at about 35–40 °C, plus camellias, ferns and cycads.",
+   "facts": [
+    "~€10–15 adult; bathing included",
+    "Wear an old dark swimsuit — water stains",
+    "Showers and changing rooms; pool busy at midday",
+    "Evening hours in summer"
+   ],
+   "hours": "10:00-17:00"
+  },
+  {
+   "id": "poca_da_dona_beija",
+   "name": "Poça da Dona Beija",
+   "region": "azores",
+   "lat": 37.7735,
+   "lon": -25.3125,
+   "visit": 75,
+   "cat": "Hot spring",
+   "priority": 2,
+   "wiki": "Furnas",
+   "summary": "Set of small, lantern-lit thermal pools beside a stream in Furnas, open late into the evening. Great after a day of sightseeing.",
+   "facts": [
+    "~€8 adult",
+    "Lockers and showers",
+    "Open into the late evening",
+    "Queues at peak times"
+   ],
+   "hours": "07:00-23:00",
+   "needsDaylight": false
+  },
+  {
+   "id": "salto_do_prego",
+   "name": "Salto do Prego waterfall hike",
+   "region": "azores",
+   "lat": 37.756,
+   "lon": -25.211,
+   "visit": 120,
+   "cat": "Hike",
+   "priority": 2,
+   "wiki": "Faial da Terra",
+   "summary": "Loop trail from the village of Faial da Terra through a lush valley to a 20 m waterfall, passing the restored hamlet of Sanguinho.",
+   "facts": [
+    "About 4.5 km loop, 2 h",
+    "Free; parking in Faial da Terra",
+    "Moderate with some steep, slippery stretches",
+    "Swimming possible in the pool below the fall"
+   ],
+   "season": "Waterfall strongest after autumn/winter rain."
+  },
+  {
+   "id": "ponta_do_sossego",
+   "name": "Nordeste viewpoints & Ponta do Sossego",
+   "region": "azores",
+   "lat": 37.794,
+   "lon": -25.166,
+   "visit": 60,
+   "cat": "Viewpoint",
+   "priority": 2,
+   "wiki": "Nordeste, Azores",
+   "summary": "Manicured flower-filled viewpoint gardens perched above the cliffs of the remote north-east, with Ponta da Madrugada a few minutes away — a sunrise favourite.",
+   "facts": [
+    "Free; picnic tables and toilets",
+    "Ponta da Madrugada nearby for sunrise",
+    "Combine with Salto do Prego and Furnas",
+    "Roads are winding: allow time"
+   ],
+   "early": true
+  },
+  {
+   "id": "angra_do_heroismo",
+   "name": "Angra do Heroísmo",
+   "region": "azores",
+   "lat": 38.655,
+   "lon": -27.22,
+   "visit": 180,
+   "cat": "Old town",
+   "priority": 3,
+   "wiki": "Angra do Heroísmo",
+   "summary": "UNESCO-listed Renaissance port town on Terceira with a grid of pastel streets, imperial chapels (impérios) and forts guarding the bay. The most elegant town in the Azores.",
+   "facts": [
+    "Climb the Alto da Memória obelisk for the view",
+    "Museu de Angra do Heroísmo in a former convent",
+    "Lively during the summer Sanjoaninas festival",
+    "Good base for all of Terceira"
+   ],
+   "sleep": true,
+   "needsDaylight": false
+  },
+  {
+   "id": "monte_brasil",
+   "name": "Monte Brasil",
+   "region": "azores",
+   "lat": 38.6435,
+   "lon": -27.228,
+   "visit": 120,
+   "cat": "Hike",
+   "priority": 2,
+   "wiki": "Monte Brasil",
+   "summary": "Volcanic peninsula beside Angra wrapped by the walls of the São João Baptista fortress, with forest trails and viewpoints over the town and bay.",
+   "facts": [
+    "Free; trails start from the fortress or park",
+    "Loop around 7 km, about 2 h",
+    "Pico das Cruzinhas viewpoint by car"
+   ]
+  },
+  {
+   "id": "algar_do_carvao",
+   "name": "Algar do Carvão",
+   "region": "azores",
+   "lat": 38.727,
+   "lon": -27.213,
+   "visit": 60,
+   "cat": "Cave",
+   "priority": 3,
+   "wiki": "Algar do Carvão",
+   "summary": "A rare open lava tube: you descend into the empty throat of an extinct volcano, past mossy walls and stalactites of silica, to a clear rain-fed lake at the bottom.",
+   "facts": [
+    "~€10 adult; combined ticket with Gruta do Natal available",
+    "Limited opening outside summer — check before going",
+    "Steep steps, can be wet",
+    "Bring a jacket: cool and damp inside"
+   ],
+   "season": "Opening days and hours are reduced from autumn to spring."
+  },
+  {
+   "id": "serra_do_cume",
+   "name": "Serra do Cume viewpoint",
+   "region": "azores",
+   "lat": 38.7255,
+   "lon": -27.108,
+   "visit": 30,
+   "cat": "Viewpoint",
+   "priority": 2,
+   "wiki": "Terceira Island",
+   "summary": "Ridge viewpoint over Terceira's patchwork quilt of green fields divided by stone walls, stretching to Praia da Vitória and the sea.",
+   "facts": [
+    "Free; parking at the top",
+    "Late afternoon light is best",
+    "Close to Lajes airport — easy first or last stop"
+   ]
+  },
+  {
+   "id": "biscoitos",
+   "name": "Biscoitos natural pools",
+   "region": "azores",
+   "lat": 38.8,
+   "lon": -27.259,
+   "visit": 120,
+   "cat": "Beach",
+   "priority": 2,
+   "wiki": "Biscoitos",
+   "summary": "Swimming pools in black lava rock on Terceira's north coast, with ladders and sunbathing terraces. The village also has a small wine museum and vineyards in lava-stone pens.",
+   "facts": [
+    "Free; changing rooms in summer",
+    "Biscoitos wine museum nearby",
+    "Best on calm, sunny days"
+   ],
+   "season": "Swimming mainly June–October; rough seas in winter."
+  },
+  {
+   "id": "horta",
+   "name": "Horta",
+   "region": "azores",
+   "lat": 38.532,
+   "lon": -28.626,
+   "visit": 120,
+   "cat": "Town",
+   "priority": 2,
+   "wiki": "Horta, Azores",
+   "summary": "Faial's harbour town, a historic stop for transatlantic sailors, whose marina walls are covered with crews' painted logos. Views across the channel to Mount Pico.",
+   "facts": [
+    "Have a gin at Peter Café Sport",
+    "Ferry to Madalena (Pico) from the harbour",
+    "Monte da Guia viewpoint just south",
+    "Good base for Faial and Pico"
+   ],
+   "sleep": true,
+   "needsDaylight": false
+  },
+  {
+   "id": "capelinhos",
+   "name": "Capelinhos Volcano",
+   "region": "azores",
+   "lat": 38.596,
+   "lon": -28.829,
+   "visit": 120,
+   "cat": "Coast",
+   "priority": 3,
+   "wiki": "Capelinhos Volcano",
+   "summary": "Moonscape of ash and cinder left by the 1957–58 eruption that added land to Faial's western tip, with a half-buried lighthouse and an excellent underground interpretation centre.",
+   "facts": [
+    "Interpretation centre ~€10; lighthouse climb included",
+    "Walk up the ash cone for views",
+    "About 30 min from Horta",
+    "Windy and exposed"
+   ],
+   "caution": "Stay on paths; ash slopes are loose and cliffs unstable."
+  },
+  {
+   "id": "caldeira_faial",
+   "name": "Caldeira do Faial",
+   "region": "azores",
+   "lat": 38.58,
+   "lon": -28.713,
+   "visit": 90,
+   "cat": "Viewpoint",
+   "priority": 2,
+   "wiki": "Faial Island",
+   "summary": "A 2 km-wide, 400 m-deep volcanic crater at the centre of Faial, with a rim trail and views over the island and Pico.",
+   "facts": [
+    "Free; parking at the end of the road",
+    "Short tunnel walk to the rim viewpoint",
+    "Rim loop ~7 km, 2.5 h",
+    "Often in cloud"
+   ],
+   "caution": "Rim trail is exposed and windy; turn back in fog."
+  },
+  {
+   "id": "madalena",
+   "name": "Madalena (Pico)",
+   "region": "azores",
+   "lat": 38.536,
+   "lon": -28.528,
+   "visit": 60,
+   "cat": "Town",
+   "priority": 2,
+   "wiki": "Madalena, Azores",
+   "summary": "Pico's main ferry port and small town, facing Faial across the channel. A convenient base for climbing Mount Pico and visiting the vineyards.",
+   "facts": [
+    "Ferry to Horta about 30 min",
+    "Car hire near the port — book ahead",
+    "Wine co-operative shop in town"
+   ],
+   "sleep": true,
+   "needsDaylight": false
+  },
+  {
+   "id": "pico_vineyards",
+   "name": "Pico vineyards (UNESCO)",
+   "region": "azores",
+   "lat": 38.518,
+   "lon": -28.537,
+   "visit": 90,
+   "cat": "Wine",
+   "priority": 2,
+   "wiki": "Landscape of the Pico Island Vineyard Culture",
+   "summary": "A grid of thousands of small stone-walled pens (currais) built of black lava to protect vines from wind and salt, best seen at Criação Velha and Lajido. Verdelho wine was once exported to the tsars.",
+   "facts": [
+    "Free to walk; Pico Wine Museum in Madalena",
+    "Tastings at local wineries",
+    "Combine with the Madalena coast walk"
+   ]
+  },
+  {
+   "id": "mount_pico",
+   "name": "Mount Pico climb",
+   "region": "azores",
+   "lat": 38.47,
+   "lon": -28.43,
+   "visit": 480,
+   "cat": "Hike",
+   "priority": 3,
+   "wiki": "Mount Pico",
+   "summary": "Portugal's highest mountain (2,351 m), a steep volcanic cone climbed from the Casa da Montanha at 1,200 m. The summit crater and the tiny Piquinho peak give views over the whole central group.",
+   "facts": [
+    "Registration at Casa da Montanha required, fee ~€20–25; GPS tracker issued",
+    "7–8 h return; very steep, loose scree",
+    "Guide recommended; start early",
+    "Check weather — climbs are restricted in bad conditions"
+   ],
+   "caution": "Serious mountain: sudden fog, cold and wind; many rescues every year.",
+   "season": "Winter climbs can have snow and ice and may be closed."
+  }
+ ],
+ "drives": [
+  [
+   "fnc",
+   "funchal",
+   20,
+   25
+  ],
+  [
+   "funchal",
+   "monte",
+   6,
+   15
+  ],
+  [
+   "funchal",
+   "madeira_botanical_garden",
+   4,
+   12
+  ],
+  [
+   "funchal",
+   "camara_de_lobos",
+   8,
+   15
+  ],
+  [
+   "camara_de_lobos",
+   "cabo_girao",
+   6,
+   12
+  ],
+  [
+   "funchal",
+   "cabo_girao",
+   13,
+   20
+  ],
+  [
+   "funchal",
+   "pico_do_arieiro",
+   25,
+   40
+  ],
+  [
+   "funchal",
+   "eira_do_serrado",
+   14,
+   25
+  ],
+  [
+   "eira_do_serrado",
+   "curral_das_freiras",
+   6,
+   12
+  ],
+  [
+   "funchal",
+   "ponta_de_sao_lourenco",
+   32,
+   35
+  ],
+  [
+   "fnc",
+   "ponta_de_sao_lourenco",
+   14,
+   17
+  ],
+  [
+   "funchal",
+   "santana",
+   40,
+   45
+  ],
+  [
+   "pico_do_arieiro",
+   "santana",
+   30,
+   45
+  ],
+  [
+   "santana",
+   "achada_do_teixeira",
+   10,
+   20
+  ],
+  [
+   "santana",
+   "caldeirao_verde",
+   7,
+   15
+  ],
+  [
+   "santana",
+   "levada_do_rei",
+   10,
+   15
+  ],
+  [
+   "funchal",
+   "porto_moniz",
+   50,
+   55
+  ],
+  [
+   "porto_moniz",
+   "seixal_beach",
+   10,
+   13
+  ],
+  [
+   "porto_moniz",
+   "fanal_forest",
+   15,
+   25
+  ],
+  [
+   "seixal_beach",
+   "santana",
+   40,
+   45
+  ],
+  [
+   "funchal",
+   "ponta_do_sol",
+   25,
+   25
+  ],
+  [
+   "ponta_do_sol",
+   "calheta",
+   13,
+   15
+  ],
+  [
+   "funchal",
+   "calheta",
+   38,
+   35
+  ],
+  [
+   "calheta",
+   "levada_25_fontes",
+   15,
+   25
+  ],
+  [
+   "calheta",
+   "porto_moniz",
+   30,
+   35
+  ],
+  [
+   "funchal",
+   "porto_santo",
+   75,
+   180,
+   "ferry",
+   40
+  ],
+  [
+   "pdl",
+   "ponta_delgada",
+   3,
+   7
+  ],
+  [
+   "ponta_delgada",
+   "sete_cidades",
+   25,
+   30
+  ],
+  [
+   "sete_cidades",
+   "mosteiros",
+   13,
+   20
+  ],
+  [
+   "sete_cidades",
+   "ferraria",
+   13,
+   20
+  ],
+  [
+   "ponta_delgada",
+   "ferraria",
+   25,
+   30
+  ],
+  [
+   "ponta_delgada",
+   "lagoa_do_fogo",
+   22,
+   30
+  ],
+  [
+   "lagoa_do_fogo",
+   "caldeira_velha",
+   7,
+   12
+  ],
+  [
+   "ponta_delgada",
+   "caldeira_velha",
+   22,
+   25
+  ],
+  [
+   "caldeira_velha",
+   "gorreana_tea",
+   18,
+   20
+  ],
+  [
+   "ponta_delgada",
+   "furnas",
+   45,
+   45
+  ],
+  [
+   "furnas",
+   "furnas_lake",
+   4,
+   8
+  ],
+  [
+   "furnas",
+   "gorreana_tea",
+   18,
+   25
+  ],
+  [
+   "furnas",
+   "salto_do_prego",
+   20,
+   25
+  ],
+  [
+   "salto_do_prego",
+   "ponta_do_sossego",
+   22,
+   30
+  ],
+  [
+   "furnas",
+   "ponta_do_sossego",
+   35,
+   45
+  ],
+  [
+   "ter",
+   "angra_do_heroismo",
+   22,
+   25
+  ],
+  [
+   "angra_do_heroismo",
+   "monte_brasil",
+   3,
+   10
+  ],
+  [
+   "angra_do_heroismo",
+   "algar_do_carvao",
+   17,
+   25
+  ],
+  [
+   "algar_do_carvao",
+   "biscoitos",
+   14,
+   20
+  ],
+  [
+   "angra_do_heroismo",
+   "biscoitos",
+   25,
+   30
+  ],
+  [
+   "angra_do_heroismo",
+   "serra_do_cume",
+   22,
+   25
+  ],
+  [
+   "ter",
+   "serra_do_cume",
+   8,
+   12
+  ],
+  [
+   "hor",
+   "horta",
+   10,
+   12
+  ],
+  [
+   "horta",
+   "capelinhos",
+   21,
+   30
+  ],
+  [
+   "horta",
+   "caldeira_faial",
+   15,
+   25
+  ],
+  [
+   "madalena",
+   "pico_vineyards",
+   3,
+   6
+  ],
+  [
+   "madalena",
+   "mount_pico",
+   20,
+   30
+  ],
+  [
+   "pdl",
+   "ter",
+   160,
+   150,
+   "flight",
+   90
+  ],
+  [
+   "pdl",
+   "hor",
+   270,
+   165,
+   "flight",
+   110
+  ],
+  [
+   "ter",
+   "hor",
+   130,
+   150,
+   "flight",
+   90
+  ],
+  [
+   "horta",
+   "madalena",
+   8,
+   60,
+   "ferry",
+   4
+  ]
+ ]
+}

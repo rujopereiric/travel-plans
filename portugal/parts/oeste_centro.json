@@ -1,0 +1,302 @@
+{
+  "places": [
+    {
+      "id": "obidos", "name": "Óbidos", "region": "oeste", "lat": 39.3606, "lon": -9.1571, "visit": 150,
+      "cat": "Town", "priority": 3, "sleep": true, "needsDaylight": false, "wiki": "Óbidos, Portugal",
+      "summary": "A small walled medieval town of whitewashed houses trimmed in blue and yellow, with a castle (now a pousada) at its top. You can walk part of the ramparts for views over the town and countryside.",
+      "facts": ["Free to walk the town; park in the paid lots outside the Porta da Vila gate", "Try ginjinha (sour-cherry liqueur) served in a chocolate cup", "The ramparts have no railings: watch children", "Very busy midday in summer; quieter early morning and evening"],
+      "caution": "The rampart walkways are narrow, uneven and unfenced, with long drops."
+    },
+    {
+      "id": "peniche", "name": "Peniche", "region": "oeste", "lat": 39.3558, "lon": -9.3811, "visit": 120,
+      "cat": "Town", "priority": 2, "sleep": true, "wiki": "Peniche, Portugal",
+      "summary": "A fishing and surf town on a near-island peninsula, with a 16th-century fortress that served as a political prison under the dictatorship. The rugged Cabo Carvoeiro headland at its tip has sea stacks and a lighthouse.",
+      "facts": ["Fortress houses the National Museum of Resistance and Freedom", "Drive the coast loop to Cabo Carvoeiro and the Nau dos Corvos rock", "Departure port for boats to the Berlengas", "Good fresh grilled fish in the harbour area"]
+    },
+    {
+      "id": "berlengas", "name": "Berlengas Islands boat trip", "region": "oeste", "lat": 39.4128, "lon": -9.5075, "visit": 300,
+      "cat": "Boat trip", "priority": 2, "wiki": "Berlengas",
+      "summary": "A protected granite archipelago about 10 km off Peniche, with seabird colonies, clear water and the Fort of São João Baptista on a rock linked by a bridge. Day trips land on Berlenga Grande for walking and swimming.",
+      "facts": ["Boats from Peniche harbour, roughly May to September only", "Crossing about 40-50 min; visitor numbers are capped, so book ahead", "Take seasickness tablets: the crossing is often rough", "Bring water and food; facilities on the island are minimal"],
+      "season": "Boats run only in the warm season (about May-September) and are cancelled in rough seas.",
+      "caution": "The crossing can be very choppy and is cancelled at short notice in swell."
+    },
+    {
+      "id": "baleal", "name": "Baleal", "region": "oeste", "lat": 39.3747, "lon": -9.3389, "visit": 120,
+      "cat": "Surf", "priority": 2, "wiki": "Baleal",
+      "summary": "A tiny islet village joined to the mainland by a sandy isthmus just north of Peniche, with beaches on both sides. One of Portugal's main surf-school spots because one side is usually sheltered.",
+      "facts": ["Many surf schools and board rentals; lessons ~2 hours", "Pick the side of the isthmus that suits the swell and wind", "Parking fills up in summer", "Sunset from the islet is good"],
+      "season": "Water is cold all year (wetsuit needed); summer has smaller beginner waves, winter bigger swells."
+    },
+    {
+      "id": "nazare", "name": "Nazaré", "region": "oeste", "lat": 39.6021, "lon": -9.0710, "visit": 150,
+      "cat": "Town", "priority": 3, "sleep": true, "needsDaylight": false, "wiki": "Nazaré, Portugal",
+      "summary": "A beach town of fishermen's lanes below the cliff-top Sítio quarter, which has a sanctuary and a superb viewpoint over the long beach. Famous for record-breaking giant waves at Praia do Norte in winter.",
+      "facts": ["Funicular links the beach (Praia) to Sítio every few minutes, ~€2", "Sítio viewpoint (Miradouro do Suberco) is the classic photo of the town", "Look for fish drying on racks on the beach", "Big-wave season is roughly October to March"]
+    },
+    {
+      "id": "praia_do_norte", "name": "Praia do Norte & Fort lighthouse (Nazaré big waves)", "region": "oeste", "lat": 39.6047, "lon": -9.0855, "visit": 60,
+      "cat": "Viewpoint", "priority": 3, "wiki": "Nazaré Canyon",
+      "summary": "The headland fort and red lighthouse above Praia do Norte, where an undersea canyon focuses Atlantic swells into some of the biggest surfed waves on Earth. The fort has a small exhibition of big-wave surfboards.",
+      "facts": ["Short walk down from Sítio; parking at Sítio fills on big-wave days", "Check surf forecasts: giant days usually come with big NW swells in winter", "Fort entry with surfboard display is a small fee", "On calm days it is still a dramatic viewpoint"],
+      "season": "Giant waves happen mainly October-March; summer seas are usually much calmer.",
+      "caution": "Rogue waves sweep the lower rocks and beach on big days; stay on the upper terraces."
+    },
+    {
+      "id": "sao_martinho_do_porto", "name": "São Martinho do Porto", "region": "oeste", "lat": 39.5120, "lon": -9.1380, "visit": 120,
+      "cat": "Beach", "priority": 2, "wiki": "São Martinho do Porto",
+      "summary": "A shell-shaped bay almost closed off from the ocean, giving calm, shallow water unusual on this coast. A relaxed family beach resort with a waterfront promenade.",
+      "facts": ["Calm water good for children and swimming", "Walk up to the lighthouse/tunnel on the western headland for views", "Busy in July-August", "Only ~15 min from Nazaré"],
+      "season": "Best for swimming June-September; water is cold Nov-Apr."
+    },
+    {
+      "id": "alcobaca_monastery", "name": "Alcobaça Monastery", "region": "oeste", "lat": 39.5483, "lon": -8.9800, "visit": 90,
+      "cat": "Monastery & church", "priority": 3, "hours": "09:00-18:00", "needsDaylight": false, "wiki": "Alcobaça Monastery",
+      "summary": "A vast 12th-century Cistercian abbey, a UNESCO site, with a stark, soaring Gothic church. Inside are the carved tombs of King Pedro I and Inês de Castro, the subject of Portugal's great tragic love story.",
+      "facts": ["Church is free; cloisters, kitchen and dormitory need a ticket (~€10)", "Do not miss the huge tiled kitchen with a stream running through it", "Combine with Batalha (20 min) and Nazaré (15 min)", "Try the convent pastries in the square outside"]
+    },
+    {
+      "id": "batalha_monastery", "name": "Batalha Monastery", "region": "oeste", "lat": 39.6590, "lon": -8.8250, "visit": 90,
+      "cat": "Monastery & church", "priority": 3, "hours": "09:00-18:00", "needsDaylight": false, "wiki": "Batalha Monastery",
+      "summary": "A UNESCO-listed Gothic and Manueline masterpiece built to celebrate the 1385 victory at Aljubarrota. Highlights are the Royal Cloister, the Founder's Chapel and the roofless Unfinished Chapels.",
+      "facts": ["Church free; cloisters and Unfinished Chapels ticketed (~€10)", "Free parking next to the monastery", "Easy stop on the A1/A19 between Lisbon and Coimbra", "Combined ticket options exist with Alcobaça and Tomar"]
+    },
+    {
+      "id": "fatima", "name": "Sanctuary of Fátima", "region": "oeste", "lat": 39.6315, "lon": -8.6727, "visit": 90,
+      "cat": "Monastery & church", "priority": 2, "needsDaylight": false, "wiki": "Sanctuary of Fátima",
+      "summary": "One of the world's major Catholic pilgrimage sites, where three shepherd children reported Marian apparitions in 1917. A huge esplanade links the Basilica, the Chapel of the Apparitions and the modern Holy Trinity church.",
+      "facts": ["Free entry; large free car parks", "Candlelight procession every evening, the main event to see", "Very crowded around 12-13 May and 12-13 October pilgrimages", "Dress modestly in the churches"]
+    },
+    {
+      "id": "tomar", "name": "Tomar", "region": "oeste", "lat": 39.6036, "lon": -8.4150, "visit": 120,
+      "cat": "Town", "priority": 2, "sleep": true, "needsDaylight": false, "wiki": "Tomar",
+      "summary": "A pleasant riverside town on the Nabão, built by the Knights Templar, with a well-kept grid of old streets and the Praça da República. It sits below the hilltop Convent of Christ.",
+      "facts": ["Old centre is flat and walkable", "The Festa dos Tabuleiros (trays festival) is held every four years in early July", "Synagogue of Tomar is one of the oldest in Portugal (small, free)", "Good base for Almourol and Fátima"]
+    },
+    {
+      "id": "convent_of_christ", "name": "Convent of Christ", "region": "oeste", "lat": 39.6040, "lon": -8.4187, "visit": 120,
+      "cat": "Monastery & church", "priority": 3, "hours": "09:00-17:30", "needsDaylight": false, "wiki": "Convent of Christ (Tomar)",
+      "summary": "The Templar castle and later headquarters of the Order of Christ, a UNESCO site layered from the 12th to 17th centuries. Its round Templar church (Charola) and the carved Manueline window are among Portugal's finest.",
+      "facts": ["Ticket ~€10; allow at least 2 hours, it is large", "Car park at the top or a steep 15-min walk up from town", "The Manueline window is seen from the Santa Bárbara cloister", "Combined tickets with Batalha and Alcobaça are available"]
+    },
+    {
+      "id": "almourol_castle", "name": "Almourol Castle", "region": "oeste", "lat": 39.4620, "lon": -8.3838, "visit": 60,
+      "cat": "Castle", "priority": 2, "wiki": "Almourol Castle",
+      "summary": "A small Templar castle standing alone on a rocky islet in the middle of the Tagus. One of the most picturesque castles in Portugal, reached by a short boat ride.",
+      "facts": ["Boats leave from the riverbank at Tancos; small fee including entry", "The castle is small; the setting is the main attraction", "Free view from the riverbank if boats are not running", "~30 min from Tomar"],
+      "season": "Boat crossings can be suspended when the Tagus is high after heavy rain."
+    },
+    {
+      "id": "mafra_palace", "name": "Mafra Palace", "region": "oeste", "lat": 38.9369, "lon": -9.3262, "visit": 120,
+      "cat": "Palace", "priority": 2, "hours": "09:30-17:30", "closed": [2], "needsDaylight": false, "wiki": "Palace of Mafra",
+      "summary": "An enormous 18th-century Baroque palace-convent-basilica built by King João V with Brazilian gold, a UNESCO site. Its rococo library of some 36,000 books is the highlight.",
+      "facts": ["Closed Tuesdays", "Basilica is free; palace and library ticketed", "Bats in the library help protect the books from insects", "Pairs well with Ericeira, 15 min away"]
+    },
+    {
+      "id": "ericeira", "name": "Ericeira", "region": "oeste", "lat": 38.9625, "lon": -9.4180, "visit": 120,
+      "cat": "Surf", "priority": 2, "sleep": true, "wiki": "Ericeira",
+      "summary": "A whitewashed fishing village on cliffs, at the centre of Europe's first World Surfing Reserve. Ribeira d'Ilhas and Coxos are well-known breaks; the town has a lively seafood scene.",
+      "facts": ["Many surf schools; beginners use Foz do Lizandro or Praia do Sul", "Ribeira d'Ilhas is a good spot to watch surfers", "Known for sea-urchin and shellfish restaurants", "~45 min from Lisbon"],
+      "caution": "Many breaks are over rock reefs and suited only to experienced surfers."
+    },
+    {
+      "id": "mira_de_aire_caves", "name": "Mira de Aire Caves", "region": "oeste", "lat": 39.5420, "lon": -8.7080, "visit": 75,
+      "cat": "Cave", "priority": 2, "needsDaylight": false, "wiki": "Mira de Aire",
+      "summary": "Portugal's largest show cave, a guided descent through chambers, formations and an underground river in the limestone Serras de Aire. Grutas da Moeda near Fátima is a smaller alternative.",
+      "facts": ["Guided tours about 45-60 minutes", "Many steps down; a lift brings you back up", "Constant cool temperature: bring a layer", "~15 min from Fátima"]
+    },
+    {
+      "id": "dinosaur_footprints", "name": "Serra de Aire Dinosaur Footprints", "region": "oeste", "lat": 39.5950, "lon": -8.6050, "visit": 60,
+      "cat": "Nature reserve", "priority": 1, "wiki": "Serras de Aire e Candeeiros Natural Park",
+      "summary": "A former quarry slab (Pedreira do Galinha) with some of the longest sauropod trackways known, about 175 million years old. A short trail walks along the giant footprints.",
+      "facts": ["Small entry fee; outdoor site", "Best in low-angle morning or late light when tracks show relief", "Near Bairro, ~15 min from Fátima", "Check opening times before going; it closes over lunch"]
+    },
+    {
+      "id": "coimbra", "name": "Coimbra", "region": "centro", "lat": 40.2089, "lon": -8.4290, "visit": 180,
+      "cat": "Town", "priority": 3, "sleep": true, "needsDaylight": false, "wiki": "Coimbra",
+      "summary": "Portugal's old university city, climbing a hill above the Mondego river with steep lanes, the Romanesque Old Cathedral and student traditions. Coimbra fado, sung by men in academic capes, is a local speciality.",
+      "facts": ["Old town is steep: wear good shoes; the Elevador do Mercado lift helps", "Santa Cruz Monastery holds the tombs of Portugal's first kings", "Catch a Coimbra fado show in the evening", "Park by the river and walk up"]
+    },
+    {
+      "id": "university_of_coimbra", "name": "University of Coimbra & Joanina Library", "region": "centro", "lat": 40.2075, "lon": -8.4260, "visit": 120,
+      "cat": "Monument", "priority": 3, "hours": "09:00-17:00", "needsDaylight": false, "wiki": "Biblioteca Joanina",
+      "summary": "One of Europe's oldest universities, a UNESCO site on the hilltop Paço das Escolas. The gilded Baroque Joanina Library, the Great Hall of Acts and the chapel are the highlights.",
+      "facts": ["Ticket ~€15 includes a timed Joanina Library slot", "Buy online or early: library slots sell out in summer", "No photos inside the Joanina Library", "Climb the clock tower for views if open"]
+    },
+    {
+      "id": "conimbriga", "name": "Conímbriga Roman ruins", "region": "centro", "lat": 40.0995, "lon": -8.4910, "visit": 120,
+      "cat": "Ruins", "priority": 2, "hours": "10:00-18:00", "wiki": "Conímbriga",
+      "summary": "The best-preserved Roman town in Portugal, with walls, baths and villas floored with well-kept mosaics. The House of the Fountains has its mosaics under a protective roof.",
+      "facts": ["Includes a small museum of finds", "Little shade: bring water and a hat in summer", "~20 min south of Coimbra", "Free parking on site"]
+    },
+    {
+      "id": "bucaco", "name": "Buçaco Palace & Forest", "region": "centro", "lat": 40.3770, "lon": -8.3660, "visit": 150,
+      "cat": "Garden", "priority": 2, "wiki": "Buçaco Palace",
+      "summary": "A walled former monastic forest of giant trees, chapels and fountains surrounding a fairytale neo-Manueline royal hunting palace, now a hotel. Paths lead to the Fonte Fria cascade and Cruz Alta viewpoint.",
+      "facts": ["Small car fee to enter the walled forest", "You can visit the palace lobby/terrace and have a drink or meal", "Allow 2-3 hours to walk the forest trails", "Nearby Luso is known for its spring water"]
+    },
+    {
+      "id": "aveiro", "name": "Aveiro", "region": "centro", "lat": 40.6405, "lon": -8.6538, "visit": 150,
+      "cat": "Town", "priority": 2, "sleep": true, "needsDaylight": false, "wiki": "Aveiro, Portugal",
+      "summary": "A lagoon town crossed by canals with colourful moliceiro boats and Art Nouveau facades. Compact and easy, with salt pans and beaches nearby.",
+      "facts": ["Moliceiro canal ride ~45 min, ~€15", "Try ovos moles, the local egg-yolk sweet", "The old railway station has notable azulejo panels", "Good base for Costa Nova and Ílhavo"]
+    },
+    {
+      "id": "costa_nova", "name": "Costa Nova (striped houses)", "region": "centro", "lat": 40.6130, "lon": -8.7510, "visit": 90,
+      "cat": "Beach", "priority": 2, "wiki": "Costa Nova",
+      "summary": "A beach village on the sandbar between the Aveiro lagoon and the ocean, known for its rows of candy-striped wooden houses (palheiros). A long Atlantic beach lies behind the dunes.",
+      "facts": ["15 min drive from Aveiro", "Best photos along the lagoon-side street in late afternoon light", "Nearby Barra has Portugal's tallest lighthouse", "Fish market on the lagoon front"],
+      "caution": "The open Atlantic beach has strong currents; swim only where lifeguarded."
+    },
+    {
+      "id": "vista_alegre", "name": "Vista Alegre porcelain museum (Ílhavo)", "region": "centro", "lat": 40.5870, "lon": -8.6820, "visit": 90,
+      "cat": "Museum", "priority": 1, "needsDaylight": false, "wiki": "Ílhavo",
+      "summary": "The historic Vista Alegre porcelain factory village, founded in 1824, with a museum of two centuries of Portuguese porcelain and a factory outlet shop. Ílhavo also has a good Maritime Museum on cod fishing.",
+      "facts": ["10 min from Aveiro", "Factory shop sells seconds at a discount", "Combine with the Ílhavo Maritime Museum", "The chapel on site is Baroque"]
+    },
+    {
+      "id": "piodao", "name": "Piódão", "region": "centro", "lat": 40.2290, "lon": -7.8250, "visit": 120,
+      "cat": "Village", "priority": 3, "wiki": "Piódão",
+      "summary": "A remote schist village stacked in terraces on a steep valley in the Serra do Açor, with dark stone houses and blue doors. One of Portugal's most photogenic historic villages.",
+      "facts": ["Best view from the road above the village on arrival", "Walk the trail to Foz d'Égua (river beach and footbridges), ~1 h each way", "Few facilities; plan fuel and food", "The approach road is long and winding"],
+      "caution": "Access roads are narrow, twisty mountain roads; allow extra time and avoid driving in fog or after dark."
+    },
+    {
+      "id": "talasnal", "name": "Talasnal & Lousã schist villages", "region": "centro", "lat": 40.0890, "lon": -8.2260, "visit": 150,
+      "cat": "Village", "priority": 2, "wiki": "Lousã",
+      "summary": "Restored schist hamlets in the forested Serra da Lousã, linked by walking trails. Talasnal is the liveliest, while the Lousã castle and river beach sit in the valley below.",
+      "facts": ["About 45 min from Coimbra", "Trail from Lousã Castle up to Talasnal and Casal Novo", "Park outside the village and walk in", "Small cafés open mainly at weekends"],
+      "caution": "The final access road is narrow and steep."
+    },
+    {
+      "id": "torre_serra_da_estrela", "name": "Torre (Serra da Estrela)", "region": "centro", "lat": 40.3217, "lon": -7.6131, "visit": 60,
+      "cat": "Mountain", "priority": 3, "wiki": "Torre (Serra da Estrela)",
+      "summary": "The highest point of mainland Portugal at 1,993 m, reached by road across a granite plateau with glacial lakes. Views are wide on clear days and there is a small ski area in winter.",
+      "facts": ["Drive up via the N339 from Seia or Covilhã", "Car park at the top; souvenir shops sell local Serra cheese", "Much colder and windier than the lowlands: bring layers", "Stop at the Lagoa Comprida and Penhas Douradas viewpoints"],
+      "season": "Snow often closes the summit roads between December and March; check before driving.",
+      "caution": "Fog and ice come in fast; roads may be closed by the authorities in snow."
+    },
+    {
+      "id": "covao_dametade", "name": "Covão d'Ametade & Zêzere glacial valley", "region": "centro", "lat": 40.3300, "lon": -7.5880, "visit": 90,
+      "cat": "Nature reserve", "priority": 2, "wiki": "Serra da Estrela Natural Park",
+      "summary": "A birch-lined meadow at the head of the U-shaped Zêzere valley, the finest glacial valley in Portugal. Easy short walks start here, and the drive down to Manteigas is spectacular.",
+      "facts": ["On the N338 between Torre and Manteigas", "Picnic tables; no services", "Lovely autumn colours in October-November", "The Cântaro Magro cliffs tower above"],
+      "season": "The N338 can be closed by snow in winter."
+    },
+    {
+      "id": "manteigas", "name": "Manteigas", "region": "centro", "lat": 40.4020, "lon": -7.5390, "visit": 90,
+      "cat": "Base", "priority": 2, "sleep": true, "wiki": "Manteigas",
+      "summary": "A small mountain town at the bottom of the Zêzere glacial valley, the most scenic base inside Serra da Estrela. Trails, thermal baths and the Poço do Inferno waterfall are nearby.",
+      "facts": ["Good guesthouses and mountain hotels around town", "Thermal spa at Caldas de Manteigas", "Burel wool factory and shop in town", "Covilhã (40 min) is a larger alternative base"]
+    },
+    {
+      "id": "poco_do_inferno", "name": "Poço do Inferno waterfall", "region": "centro", "lat": 40.3770, "lon": -7.5160, "visit": 45,
+      "cat": "Waterfall", "priority": 2, "wiki": "Serra da Estrela",
+      "summary": "A waterfall dropping into a rocky pool in a wooded gorge above Manteigas. A short walk from the road with a small footbridge.",
+      "facts": ["About 15 min drive from Manteigas on a narrow forest road", "5-min walk from the parking area", "Can freeze into icicles in cold winters", "Combine with Covão d'Ametade"],
+      "season": "Fullest in winter and spring; can be a trickle in late summer."
+    },
+    {
+      "id": "monsanto", "name": "Monsanto", "region": "centro", "lat": 40.0390, "lon": -7.1140, "visit": 120,
+      "cat": "Village", "priority": 3, "wiki": "Monsanto, Idanha-a-Nova",
+      "summary": "A hilltop village built among and under giant granite boulders, crowned by a ruined Templar castle with huge views over the plains toward Spain. One of the most striking villages in the country.",
+      "facts": ["Park at the lower car park and walk up; streets are steep cobbles", "The climb to the castle takes ~20 min", "Sunset from the castle is excellent", "Combine with Idanha-a-Velha (15 min)"]
+    },
+    {
+      "id": "idanha_a_velha", "name": "Idanha-a-Velha", "region": "centro", "lat": 39.9960, "lon": -7.1440, "visit": 60,
+      "cat": "Village", "priority": 2, "wiki": "Idanha-a-Velha",
+      "summary": "A tiny, nearly empty village on the site of the Roman town of Egitania, with Roman walls, a Visigothic-era cathedral and a medieval tower. Atmospheric and very quiet.",
+      "facts": ["Small, walkable in an hour", "Cathedral and Lagar de Varas (olive press) open to visitors", "Roman bridge over the Ponsul river", "15 min from Monsanto"]
+    },
+    {
+      "id": "belmonte", "name": "Belmonte", "region": "centro", "lat": 40.3580, "lon": -7.3500, "visit": 90,
+      "cat": "Town", "priority": 1, "wiki": "Belmonte, Portugal",
+      "summary": "A hill town with a small castle, birthplace of Pedro Álvares Cabral, who reached Brazil in 1500. It is also known for its crypto-Jewish community, which has a Jewish museum and synagogue.",
+      "facts": ["Jewish Museum and Discoveries Museum in town", "Castle walls give views to Serra da Estrela", "~40 min from Manteigas", "Combine with Sortelha"]
+    },
+    {
+      "id": "sortelha", "name": "Sortelha", "region": "centro", "lat": 40.3290, "lon": -7.2160, "visit": 60,
+      "cat": "Village", "priority": 2, "wiki": "Sortelha",
+      "summary": "A medieval walled village on a granite outcrop, with an intact ring of walls and a small castle. Granite houses and quiet lanes make it one of the best-preserved historic villages.",
+      "facts": ["Free; park outside the walls", "Walk the walls for wide views (no railings)", "A couple of small restaurants inside the walls", "~30 min from Belmonte"],
+      "caution": "Wall-top paths are unfenced with sheer drops."
+    },
+    {
+      "id": "almeida", "name": "Almeida", "region": "centro", "lat": 40.7260, "lon": -6.9060, "visit": 90,
+      "cat": "Town", "priority": 2, "wiki": "Almeida, Portugal",
+      "summary": "A border fortress town enclosed in a 12-pointed star-shaped bastioned wall, best seen from the air or the ramparts. It saw a major siege in the Peninsular War in 1810.",
+      "facts": ["Walk the ramparts and through the double gates", "Casamatas (bomb-proof barracks) hold a small military museum", "Very quiet; few visitors", "Close to the Spanish border near Vilar Formoso"]
+    },
+    {
+      "id": "viseu", "name": "Viseu", "region": "centro", "lat": 40.6566, "lon": -7.9125, "visit": 120,
+      "cat": "Town", "priority": 2, "sleep": true, "needsDaylight": false, "wiki": "Viseu",
+      "summary": "A pleasant, well-kept regional city with a granite cathedral square and the Grão Vasco Museum of Renaissance Portuguese painting. Capital of the Dão wine region.",
+      "facts": ["Grão Vasco Museum sits on the cathedral square", "Dão wine estates within 30 min", "Old town is compact and walkable", "Convenient base between Coimbra, the Douro and Serra da Estrela"]
+    },
+    {
+      "id": "paiva_walkways", "name": "Paiva Walkways & Arouca 516 bridge", "region": "centro", "lat": 40.9690, "lon": -8.2080, "visit": 240,
+      "cat": "Hike", "priority": 3, "wiki": "Paiva Walkways",
+      "summary": "An 8.7 km wooden boardwalk along the wild Paiva river gorge between Areinho and Espiunca, with river beaches along the way. Near the middle, the 516 m Arouca suspension bridge crosses the gorge high above the river.",
+      "facts": ["Book both online in advance: walkway entry is capped, and the bridge is a separate timed guided crossing", "Start at Areinho to walk mostly downhill and avoid the big stair climb", "Allow 2.5-3 h one way; arrange a taxi back or walk both ways", "Bring water and sun protection; little shade"],
+      "season": "Walkways close in heavy rain or high fire risk; very hot in July-August afternoons.",
+      "caution": "The steep stairs at the Areinho end are tough; the bridge is not for those with a strong fear of heights."
+    },
+    {
+      "id": "figueira_da_foz", "name": "Figueira da Foz", "region": "centro", "lat": 40.1500, "lon": -8.8610, "visit": 120,
+      "cat": "Beach", "priority": 1, "wiki": "Figueira da Foz",
+      "summary": "A seaside resort at the mouth of the Mondego with one of the widest sand beaches in Europe and a casino. Nearby Buarcos and Cabo Mondego are quieter, with good views.",
+      "facts": ["The beach is very wide: a long walk from promenade to water", "Buarcos has a seafront fortress wall and fish restaurants", "~35 min from Coimbra", "Serra da Boa Viagem has viewpoints above the coast"],
+      "season": "Atlantic water is cold Nov-Apr; summer weekends are crowded."
+    }
+  ],
+  "drives": [
+    ["lisbon", "obidos", 85, 60],
+    ["lisbon", "mafra_palace", 40, 40],
+    ["mafra_palace", "ericeira", 11, 15],
+    ["ericeira", "obidos", 65, 50],
+    ["obidos", "peniche", 24, 25],
+    ["peniche", "baleal", 5, 10],
+    ["peniche", "berlengas", 18, 50],
+    ["obidos", "nazare", 45, 40],
+    ["nazare", "praia_do_norte", 3, 8],
+    ["nazare", "sao_martinho_do_porto", 13, 15],
+    ["nazare", "alcobaca_monastery", 13, 15],
+    ["alcobaca_monastery", "batalha_monastery", 22, 22],
+    ["nazare", "batalha_monastery", 30, 25],
+    ["batalha_monastery", "fatima", 20, 20],
+    ["fatima", "mira_de_aire_caves", 15, 18],
+    ["fatima", "dinosaur_footprints", 12, 15],
+    ["fatima", "tomar", 35, 30],
+    ["nazare", "tomar", 80, 65],
+    ["tomar", "almourol_castle", 30, 30],
+    ["tomar", "lisbon", 140, 95],
+    ["tomar", "coimbra", 85, 65],
+    ["batalha_monastery", "coimbra", 80, 55],
+    ["coimbra", "conimbriga", 17, 20],
+    ["coimbra", "bucaco", 30, 35],
+    ["coimbra", "figueira_da_foz", 45, 35],
+    ["coimbra", "talasnal", 35, 45],
+    ["coimbra", "aveiro", 60, 45],
+    ["coimbra", "porto", 120, 75],
+    ["coimbra", "piodao", 85, 100],
+    ["coimbra", "viseu", 90, 65],
+    ["coimbra", "manteigas", 165, 130],
+    ["aveiro", "costa_nova", 10, 15],
+    ["aveiro", "vista_alegre", 8, 12],
+    ["aveiro", "porto", 75, 55],
+    ["aveiro", "viseu", 85, 60],
+    ["aveiro", "paiva_walkways", 85, 90],
+    ["porto", "paiva_walkways", 70, 75],
+    ["viseu", "paiva_walkways", 75, 80],
+    ["viseu", "manteigas", 125, 105],
+    ["piodao", "torre_serra_da_estrela", 75, 100],
+    ["manteigas", "torre_serra_da_estrela", 24, 35],
+    ["manteigas", "covao_dametade", 12, 20],
+    ["manteigas", "poco_do_inferno", 7, 15],
+    ["manteigas", "belmonte", 35, 40],
+    ["belmonte", "sortelha", 25, 30],
+    ["sortelha", "almeida", 60, 55],
+    ["belmonte", "monsanto", 80, 70],
+    ["monsanto", "idanha_a_velha", 12, 15]
+  ]
+}

@@ -1,0 +1,1332 @@
+{
+ "places": [
+  {
+   "id": "porto",
+   "name": "Porto",
+   "region": "porto",
+   "lat": 41.1456,
+   "lon": -8.611,
+   "visit": 180,
+   "cat": "Town",
+   "priority": 3,
+   "wiki": "Porto",
+   "summary": "Portugal's second city, stacked on granite hills above the Douro. Compact historic centre, tiled churches, port lodges across the river and a strong food scene; the obvious base for the north.",
+   "facts": [
+    "Centre is walkable but very hilly; wear good shoes",
+    "Driving and parking in the old centre is hard; use garages or metro",
+    "Metro line E links the airport to the centre in ~30 min",
+    "Many sights are within 15 min walk of Avenida dos Aliados"
+   ],
+   "sleep": true,
+   "needsDaylight": false,
+   "season": "Mild but rainy October–April; pack a rain jacket."
+  },
+  {
+   "id": "ribeira",
+   "name": "Ribeira riverfront",
+   "region": "porto",
+   "lat": 41.1406,
+   "lon": -8.6131,
+   "visit": 90,
+   "cat": "Old town",
+   "priority": 3,
+   "wiki": "Historic Centre of Oporto, Luiz I Bridge and Monastery of Serra do Pilar",
+   "summary": "The UNESCO-listed riverside quarter of narrow lanes and colourful tall houses facing the Douro and Gaia's port lodges. The classic Porto scene, lively day and night.",
+   "facts": [
+    "Free to wander",
+    "Touristy restaurants on the quay; better value a street or two back",
+    "Lovely at sunset and after dark",
+    "Steep stairways connect it to the Sé and upper town"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "dom_luis_bridge",
+   "name": "Dom Luís I Bridge",
+   "region": "porto",
+   "lat": 41.1399,
+   "lon": -8.6094,
+   "visit": 30,
+   "cat": "Monument",
+   "priority": 3,
+   "wiki": "Dom Luís I Bridge",
+   "summary": "Two-deck iron arch bridge (1886) linking Porto and Vila Nova de Gaia. Walk the upper deck, shared with the metro, for the best views of Ribeira and the river.",
+   "facts": [
+    "Free",
+    "Upper deck reached from the Sé side or Jardim do Morro in Gaia",
+    "Lower deck links Ribeira quay with the Gaia cellars",
+    "Watch for trams on the upper deck: walk on the side paths"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "livraria_lello",
+   "name": "Livraria Lello",
+   "region": "porto",
+   "lat": 41.1469,
+   "lon": -8.6149,
+   "visit": 30,
+   "cat": "Museum",
+   "priority": 2,
+   "wiki": "Livraria Lello",
+   "summary": "Neo-Gothic bookshop (1906) with a carved wooden interior and famous red forked staircase. Gorgeous but very crowded; worth it if you book a timed slot.",
+   "facts": [
+    "Timed tickets online; ~€10, deductible from a book purchase",
+    "First slot of the day is the least crowded",
+    "Visit takes 20–30 min",
+    "Queues outside can be long without a booking"
+   ],
+   "needsDaylight": false,
+   "early": true
+  },
+  {
+   "id": "clerigos_tower",
+   "name": "Clérigos Tower",
+   "region": "porto",
+   "lat": 41.1457,
+   "lon": -8.614,
+   "visit": 60,
+   "cat": "Monument",
+   "priority": 2,
+   "wiki": "Clérigos Church",
+   "summary": "Baroque church and 75 m bell tower by Nicolau Nasoni, Porto's skyline symbol. About 240 steps lead to a 360° view over the old town and river.",
+   "facts": [
+    "~€8 for church, museum and tower",
+    "Narrow stairs, busy at midday",
+    "Buy tickets online to skip the line",
+    "Evening slots give sunset views"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "porto_cathedral",
+   "name": "Porto Cathedral (Sé)",
+   "region": "porto",
+   "lat": 41.1428,
+   "lon": -8.6112,
+   "visit": 45,
+   "cat": "Monastery & church",
+   "priority": 2,
+   "wiki": "Porto Cathedral",
+   "summary": "Fortress-like Romanesque cathedral on the highest point of the old town, with a Gothic cloister lined in azulejos. The terrace in front looks over the Ribeira roofs.",
+   "facts": [
+    "Church free; cloister ~€3",
+    "Terrace and viewpoint free at any hour",
+    "Next to the upper deck of Dom Luís I Bridge",
+    "Combine with Ribeira on the walk down"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "sao_bento_station",
+   "name": "São Bento Station",
+   "region": "porto",
+   "lat": 41.1456,
+   "lon": -8.6105,
+   "visit": 20,
+   "cat": "Monument",
+   "priority": 3,
+   "wiki": "São Bento railway station",
+   "summary": "Working railway station whose entrance hall is covered with some 20,000 blue-and-white azulejo tiles showing Portuguese history. Quick and free.",
+   "facts": [
+    "Free",
+    "Trains to Guimarães, Braga and up the Douro to Pinhão leave here",
+    "Busy at rush hour; early morning is calmer",
+    "10–20 min is enough"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "palacio_da_bolsa",
+   "name": "Palácio da Bolsa",
+   "region": "porto",
+   "lat": 41.1413,
+   "lon": -8.6156,
+   "visit": 60,
+   "cat": "Palace",
+   "priority": 2,
+   "wiki": "Palácio da Bolsa",
+   "summary": "19th-century stock exchange palace, visited by guided tour only. The highlight is the gilded Moorish-revival Arab Room.",
+   "facts": [
+    "Guided tours only, ~€14",
+    "Tours run in several languages; buy at the door or online",
+    "Tour lasts ~45 min",
+    "Next to Ribeira and São Francisco Church"
+   ],
+   "needsDaylight": false,
+   "hours": "09:00-18:30"
+  },
+  {
+   "id": "serralves",
+   "name": "Serralves Museum & Park",
+   "region": "porto",
+   "lat": 41.1597,
+   "lon": -8.6596,
+   "visit": 180,
+   "cat": "Museum",
+   "priority": 2,
+   "wiki": "Serralves",
+   "summary": "Contemporary art museum by Álvaro Siza set in 18 ha of gardens with an Art Deco villa, woodland and a treetop walk. A calm half day away from the centre.",
+   "facts": [
+    "Combined museum + park ~€25; park-only ticket cheaper",
+    "Allow 2–3 h; park is best in dry weather",
+    "Bus from the centre or ~15 min taxi",
+    "Free parking nearby"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "casa_da_musica",
+   "name": "Casa da Música",
+   "region": "porto",
+   "lat": 41.1588,
+   "lon": -8.6307,
+   "visit": 60,
+   "cat": "Monument",
+   "priority": 1,
+   "wiki": "Casa da Música",
+   "summary": "Rem Koolhaas's angular concert hall at Rotunda da Boavista. Take a guided tour or, better, catch a concert.",
+   "facts": [
+    "Guided tours most days; book ahead",
+    "Concert listings on its website",
+    "Metro Casa da Música station alongside",
+    "Good to combine with Serralves"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "foz_do_douro",
+   "name": "Foz do Douro",
+   "region": "porto",
+   "lat": 41.15,
+   "lon": -8.676,
+   "visit": 90,
+   "cat": "Coast",
+   "priority": 2,
+   "wiki": "Foz do Douro",
+   "summary": "Upmarket district where the Douro meets the Atlantic, with a seafront promenade, lighthouses on the breakwater and small rocky beaches. Good for a sunset walk.",
+   "facts": [
+    "Historic tram line 1 runs from Ribeira along the river",
+    "Promenade continues north to Matosinhos",
+    "Seafood restaurants and cafés along the front",
+    "Waves often crash over the Felgueiras pier"
+   ],
+   "caution": "Stay off the breakwater in big swells; waves sweep over it."
+  },
+  {
+   "id": "matosinhos",
+   "name": "Matosinhos",
+   "region": "porto",
+   "lat": 41.1844,
+   "lon": -8.6963,
+   "visit": 120,
+   "cat": "Beach",
+   "priority": 2,
+   "wiki": "Matosinhos",
+   "summary": "Port town just north of Porto with a long sandy beach and a street of charcoal grills famous for fresh fish. Go for a grilled-fish lunch and a walk on the beach.",
+   "facts": [
+    "Metro line A from the centre (~25 min)",
+    "Rua Heróis de França is the grilled-fish street",
+    "Popular surf school beach",
+    "Water is cold year-round"
+   ],
+   "season": "Beach is for walks Oct–May; Atlantic water ~15–17 °C even in summer."
+  },
+  {
+   "id": "gaia_port_cellars",
+   "name": "Port wine cellars (Vila Nova de Gaia)",
+   "region": "porto",
+   "lat": 41.1375,
+   "lon": -8.6125,
+   "visit": 90,
+   "cat": "Wine",
+   "priority": 3,
+   "wiki": "Port wine",
+   "summary": "Across the river from Ribeira, dozens of port houses (Taylor's, Graham's, Sandeman, Cálem, Ferreira…) age their wine in lodges and offer tours with tastings.",
+   "facts": [
+    "Tours with tasting ~€15–30",
+    "Book a timed tour in high season",
+    "Graham's and Taylor's are uphill but have river views",
+    "Cable car (Teleférico de Gaia) links the quay with Jardim do Morro"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "bolhao_market",
+   "name": "Bolhão Market",
+   "region": "porto",
+   "lat": 41.1497,
+   "lon": -8.6058,
+   "visit": 45,
+   "cat": "Food & market",
+   "priority": 2,
+   "wiki": "Bolhão Market",
+   "summary": "Porto's historic two-level food market, reopened in 2022 after restoration. Fish, produce, cheese and small food stalls in a 19th-century iron-and-stone hall.",
+   "facts": [
+    "Free entry",
+    "Mornings are liveliest",
+    "Closed Sunday",
+    "Good for picnic supplies and a quick lunch"
+   ],
+   "needsDaylight": false,
+   "closed": [
+    0
+   ]
+  },
+  {
+   "id": "six_bridges_cruise",
+   "name": "Six Bridges river cruise",
+   "region": "porto",
+   "lat": 41.1405,
+   "lon": -8.612,
+   "visit": 50,
+   "cat": "Boat trip",
+   "priority": 2,
+   "wiki": "Douro",
+   "summary": "Short cruise in a traditional rabelo-style boat from Ribeira or Gaia, passing under Porto's six Douro bridges. Easy way to see the city from the water.",
+   "facts": [
+    "~€15–18 per adult",
+    "About 50 min",
+    "Several operators; boats leave frequently",
+    "Sit on the open deck for photos"
+   ],
+   "season": "Can be cancelled when the river is high after heavy winter rain."
+  },
+  {
+   "id": "jardim_do_morro",
+   "name": "Jardim do Morro & Serra do Pilar",
+   "region": "porto",
+   "lat": 41.1378,
+   "lon": -8.6087,
+   "visit": 30,
+   "cat": "Viewpoint",
+   "priority": 3,
+   "wiki": "Monastery of Serra do Pilar",
+   "summary": "Park and terrace on the Gaia end of Dom Luís I Bridge, below the Serra do Pilar monastery. The best panorama of Porto, especially at sunset.",
+   "facts": [
+    "Free",
+    "Metro Jardim do Morro stop on line D",
+    "Very busy at sunset; arrive early",
+    "Cable car runs down to the Gaia cellars"
+   ]
+  },
+  {
+   "id": "braga",
+   "name": "Braga",
+   "region": "minho",
+   "lat": 41.5503,
+   "lon": -8.42,
+   "visit": 150,
+   "cat": "Town",
+   "priority": 3,
+   "wiki": "Braga",
+   "summary": "Lively university city and Portugal's religious capital, full of baroque churches. Pleasant old centre and gateway to Bom Jesus and Peneda-Gerês.",
+   "facts": [
+    "~1 h by train from Porto",
+    "Centre is flat and walkable",
+    "Underground car parks around the centre",
+    "Good base for day trips to Guimarães and Gerês"
+   ],
+   "sleep": true,
+   "needsDaylight": false
+  },
+  {
+   "id": "braga_cathedral",
+   "name": "Braga Cathedral (Sé)",
+   "region": "minho",
+   "lat": 41.55,
+   "lon": -8.4271,
+   "visit": 60,
+   "cat": "Monastery & church",
+   "priority": 2,
+   "wiki": "Braga Cathedral",
+   "summary": "Portugal's oldest cathedral, begun in the 11th century, mixing Romanesque, Gothic and baroque. The treasury and chapels hold rich sacred art.",
+   "facts": [
+    "Church entry modest; treasury/chapels extra (~€5)",
+    "Allow about an hour",
+    "In the heart of the old town",
+    "Dress respectfully"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "bom_jesus",
+   "name": "Bom Jesus do Monte",
+   "region": "minho",
+   "lat": 41.5546,
+   "lon": -8.3772,
+   "visit": 90,
+   "cat": "Monastery & church",
+   "priority": 3,
+   "wiki": "Bom Jesus do Monte",
+   "summary": "UNESCO-listed hilltop sanctuary above Braga reached by a monumental zigzag baroque stairway. Ride the 1882 water-powered funicular up and walk the stairs down.",
+   "facts": [
+    "Sanctuary and stairs free",
+    "Funicular ~€2 one way",
+    "Free parking at the top",
+    "Wooded park with lake behind the church"
+   ]
+  },
+  {
+   "id": "guimaraes",
+   "name": "Guimarães",
+   "region": "minho",
+   "lat": 41.4425,
+   "lon": -8.2918,
+   "visit": 150,
+   "cat": "Town",
+   "priority": 3,
+   "wiki": "Guimarães",
+   "summary": "'Birthplace of Portugal', with a beautifully preserved UNESCO medieval centre around Largo da Oliveira. Great atmosphere in the evenings.",
+   "facts": [
+    "~1 h 15 min by train from Porto",
+    "Old town is pedestrian; park outside",
+    "Cable car up to Penha hill",
+    "Easy to combine with Braga in a day"
+   ],
+   "sleep": true,
+   "needsDaylight": false
+  },
+  {
+   "id": "guimaraes_castle",
+   "name": "Guimarães Castle",
+   "region": "minho",
+   "lat": 41.4479,
+   "lon": -8.2903,
+   "visit": 45,
+   "cat": "Castle",
+   "priority": 2,
+   "wiki": "Guimarães Castle",
+   "summary": "10th-century keep and walls on the hill associated with Afonso Henriques, first king of Portugal. Small but symbolic, with views over the town.",
+   "facts": [
+    "~€2; combined ticket with the Ducal Palace available",
+    "Next to the Ducal Palace",
+    "30–45 min",
+    "Grounds around the castle free"
+   ],
+   "hours": "10:00-18:00"
+  },
+  {
+   "id": "ducal_palace",
+   "name": "Palace of the Dukes of Braganza",
+   "region": "minho",
+   "lat": 41.4466,
+   "lon": -8.2906,
+   "visit": 75,
+   "cat": "Palace",
+   "priority": 2,
+   "wiki": "Palace of the Dukes of Braganza",
+   "summary": "15th-century palace with striking brick chimneys, heavily restored in the 20th century. Rooms show tapestries, furniture and fine wooden ceilings.",
+   "facts": [
+    "~€5; combined ticket with castle",
+    "About 1 h",
+    "Right below the castle",
+    "Busy with groups late morning"
+   ],
+   "hours": "10:00-18:00",
+   "needsDaylight": false
+  },
+  {
+   "id": "ponte_de_lima",
+   "name": "Ponte de Lima",
+   "region": "minho",
+   "lat": 41.7672,
+   "lon": -8.5836,
+   "visit": 120,
+   "cat": "Town",
+   "priority": 2,
+   "wiki": "Ponte de Lima",
+   "summary": "One of Portugal's oldest towns, on the Lima river with a long medieval and Roman bridge. Calm, green and known for vinho verde and rural manor guesthouses.",
+   "facts": [
+    "Free parking along the river",
+    "Fortnightly Monday market on the riverbank",
+    "Good base for the Lima valley and Soajo",
+    "Try arroz de sarrabulho"
+   ],
+   "sleep": true
+  },
+  {
+   "id": "viana_do_castelo",
+   "name": "Viana do Castelo",
+   "region": "minho",
+   "lat": 41.6932,
+   "lon": -8.8329,
+   "visit": 150,
+   "cat": "Town",
+   "priority": 2,
+   "wiki": "Viana do Castelo",
+   "summary": "Elegant coastal town at the mouth of the Lima, with a Renaissance main square, filigree gold and traditional costume heritage. Ocean beaches across the river.",
+   "facts": [
+    "Gil Eannes hospital ship museum in the harbour",
+    "Big Senhora da Agonia festival in August",
+    "Parking along the riverfront",
+    "Good base for the northern coast and Valença"
+   ],
+   "sleep": true,
+   "needsDaylight": false
+  },
+  {
+   "id": "santa_luzia",
+   "name": "Santa Luzia Sanctuary",
+   "region": "minho",
+   "lat": 41.7022,
+   "lon": -8.8346,
+   "visit": 60,
+   "cat": "Viewpoint",
+   "priority": 2,
+   "wiki": "Viana do Castelo",
+   "summary": "Neo-Byzantine basilica on Monte de Santa Luzia above Viana. Climbing the dome gives one of Portugal's great views over the Lima estuary and coast.",
+   "facts": [
+    "Basilica free; small fee for the dome",
+    "Funicular from town (~€3 return) or drive up",
+    "Narrow final stairs in the dome",
+    "Clear days best for the view"
+   ]
+  },
+  {
+   "id": "valenca_fortress",
+   "name": "Valença Fortress",
+   "region": "minho",
+   "lat": 42.0303,
+   "lon": -8.6434,
+   "visit": 90,
+   "cat": "Castle",
+   "priority": 2,
+   "wiki": "Valença, Portugal",
+   "summary": "Star-shaped 17th-century fortress town on the Minho river facing Tui in Spain. Ramparts with views, and lanes full of linen and towel shops.",
+   "facts": [
+    "Free to walk the walls",
+    "Parking outside the gates",
+    "Walk across the old iron bridge to Tui",
+    "Busy with Spanish shoppers at weekends"
+   ]
+  },
+  {
+   "id": "barcelos",
+   "name": "Barcelos",
+   "region": "minho",
+   "lat": 41.5317,
+   "lon": -8.6194,
+   "visit": 90,
+   "cat": "Town",
+   "priority": 1,
+   "wiki": "Barcelos, Portugal",
+   "summary": "Market town that gave Portugal its rooster symbol. Best on Thursday for one of the country's largest weekly markets, plus a medieval bridge and pottery museum.",
+   "facts": [
+    "Thursday market on Campo da República",
+    "Free street parking off-centre",
+    "Pottery museum near the bridge",
+    "Easy stop between Braga and the coast"
+   ]
+  },
+  {
+   "id": "geres",
+   "name": "Gerês (Caldas do Gerês)",
+   "region": "minho",
+   "lat": 41.7297,
+   "lon": -8.1567,
+   "visit": 90,
+   "cat": "Base",
+   "priority": 2,
+   "wiki": "Peneda-Gerês National Park",
+   "summary": "Old spa village in a deep valley inside Peneda-Gerês National Park, with hotels and guesthouses. The practical base for the park's waterfalls, viewpoints and trails.",
+   "facts": [
+    "Limited services Nov–Mar; book accommodation ahead",
+    "Petrol and groceries are scarce in the park; fill up in Braga",
+    "Spa (termas) operates mainly in season",
+    "Narrow, twisting mountain roads"
+   ],
+   "sleep": true,
+   "season": "Cool and wet in winter; waterfalls fullest late autumn to spring."
+  },
+  {
+   "id": "pedra_bela",
+   "name": "Pedra Bela viewpoint",
+   "region": "minho",
+   "lat": 41.7208,
+   "lon": -8.1406,
+   "visit": 25,
+   "cat": "Viewpoint",
+   "priority": 2,
+   "wiki": "Peneda-Gerês National Park",
+   "summary": "Rocky viewpoint above Gerês village looking over the Caniçada reservoir and the Gerês valley. Short drive up a forest road.",
+   "facts": [
+    "Free",
+    "Small parking area",
+    "Continue on to Cascata do Arado",
+    "Morning or late afternoon light best"
+   ]
+  },
+  {
+   "id": "arado_waterfall",
+   "name": "Arado Waterfall",
+   "region": "minho",
+   "lat": 41.744,
+   "lon": -8.125,
+   "visit": 45,
+   "cat": "Waterfall",
+   "priority": 2,
+   "wiki": "Peneda-Gerês National Park",
+   "summary": "Waterfall dropping down granite slabs in the heart of the park, with a viewing platform a short walk from the road near Ermida.",
+   "facts": [
+    "Free",
+    "Short walk from the road",
+    "Combine with Pedra Bela on the same road",
+    "Mountain road is narrow and partly rough"
+   ],
+   "season": "Most water from late autumn to spring; thin in late summer."
+  },
+  {
+   "id": "tahiti_waterfall",
+   "name": "Tahiti Waterfall (Fecha de Barjas)",
+   "region": "minho",
+   "lat": 41.7116,
+   "lon": -8.1214,
+   "visit": 60,
+   "cat": "Waterfall",
+   "priority": 2,
+   "wiki": "Peneda-Gerês National Park",
+   "summary": "Series of cascades and turquoise pools on the Arado river near Ermida. One of the park's most photographed spots.",
+   "facts": [
+    "Free",
+    "Steep, slippery path down from the road",
+    "Parking is limited roadside",
+    "Go early to avoid crowds"
+   ],
+   "caution": "Rocks are very slippery and people have died here; do not climb or jump into the pools."
+  },
+  {
+   "id": "portela_do_homem",
+   "name": "Portela do Homem Waterfall",
+   "region": "minho",
+   "lat": 41.8097,
+   "lon": -8.1283,
+   "visit": 40,
+   "cat": "Waterfall",
+   "priority": 2,
+   "wiki": "Peneda-Gerês National Park",
+   "summary": "Waterfall and clear pools right by the road near the Spanish border, reached through the Mata da Albergaria oak forest. A Roman road (Geira) with milestones runs nearby.",
+   "facts": [
+    "Free",
+    "Short walk from the border road",
+    "Albergaria forest road has stopping restrictions in summer",
+    "Combine with the Geira Roman milestones"
+   ]
+  },
+  {
+   "id": "soajo",
+   "name": "Soajo",
+   "region": "minho",
+   "lat": 41.8717,
+   "lon": -8.2633,
+   "visit": 60,
+   "cat": "Village",
+   "priority": 2,
+   "wiki": "Soajo",
+   "summary": "Granite mountain village in the Peneda part of the park, famous for its cluster of stone espigueiros (raised granaries) on a rock outcrop.",
+   "facts": [
+    "Free",
+    "Park at the village entrance",
+    "Combine with Lindoso (20 min)",
+    "Quiet rural tourism houses for overnight"
+   ]
+  },
+  {
+   "id": "lindoso",
+   "name": "Lindoso",
+   "region": "minho",
+   "lat": 41.8678,
+   "lon": -8.1997,
+   "visit": 60,
+   "cat": "Village",
+   "priority": 2,
+   "wiki": "Lindoso",
+   "summary": "Village near the Spanish border with a small restored castle beside a field of some 50 granite espigueiros. A striking, photogenic combination.",
+   "facts": [
+    "Espigueiros free to see",
+    "Castle has a small fee and limited hours",
+    "Combine with Soajo",
+    "Reached via Ponte da Barca"
+   ]
+  },
+  {
+   "id": "sistelo",
+   "name": "Sistelo",
+   "region": "minho",
+   "lat": 41.9733,
+   "lon": -8.3742,
+   "visit": 90,
+   "cat": "Village",
+   "priority": 1,
+   "wiki": "Sistelo",
+   "summary": "Remote village in the Vez valley surrounded by terraced fields, nicknamed 'the little Portuguese Tibet'. A short riverside walk links its terraces and bridges.",
+   "facts": [
+    "Free",
+    "Narrow access roads; drive carefully",
+    "Riverside walking trail along the Vez",
+    "Little to eat out of season"
+   ]
+  },
+  {
+   "id": "peso_da_regua",
+   "name": "Peso da Régua",
+   "region": "douro",
+   "lat": 41.163,
+   "lon": -7.788,
+   "visit": 90,
+   "cat": "Town",
+   "priority": 2,
+   "wiki": "Peso da Régua",
+   "summary": "Riverside town at the western gateway of the Douro wine region, terminus of many river cruises. Home to the Douro Museum and plenty of hotels.",
+   "facts": [
+    "Train from Porto São Bento ~2 h",
+    "Douro Museum on the riverfront",
+    "Practical base with more services than Pinhão",
+    "Scenic N222 runs east to Pinhão"
+   ],
+   "sleep": true
+  },
+  {
+   "id": "pinhao",
+   "name": "Pinhão",
+   "region": "douro",
+   "lat": 41.1906,
+   "lon": -7.5458,
+   "visit": 90,
+   "cat": "Base",
+   "priority": 3,
+   "wiki": "Pinhão",
+   "summary": "Small village in the heart of the port vineyards, surrounded by terraced quintas. The railway station has fine azulejo panels of harvest scenes.",
+   "facts": [
+    "Train from Porto ~2 h 30 min along the river",
+    "Limited parking in the village",
+    "Many quintas within 15 min drive",
+    "Book accommodation early in harvest season (Sept)"
+   ],
+   "sleep": true,
+   "season": "Harvest in September; vines turn red and gold in late October."
+  },
+  {
+   "id": "pinhao_quintas",
+   "name": "Quinta wine tastings around Pinhão",
+   "region": "douro",
+   "lat": 41.19,
+   "lon": -7.54,
+   "visit": 120,
+   "cat": "Wine",
+   "priority": 3,
+   "wiki": "Douro DOC",
+   "summary": "Wine estates around Pinhão (e.g. Quinta do Bomfim, Quinta da Roêda, Quinta do Seixo, Quinta do Crasto further west) offer cellar tours and port and Douro wine tastings with valley views.",
+   "facts": [
+    "Tastings ~€15–40",
+    "Book ahead, especially weekends and harvest",
+    "Choose a driver or book a tour: roads are steep and winding",
+    "Some quintas close or reduce hours in winter"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "galafura",
+   "name": "São Leonardo de Galafura viewpoint",
+   "region": "douro",
+   "lat": 41.2025,
+   "lon": -7.7553,
+   "visit": 30,
+   "cat": "Viewpoint",
+   "priority": 2,
+   "wiki": "Alto Douro Wine Region",
+   "summary": "High chapel viewpoint above Régua with a sweeping view over the river's curves and the vineyard terraces. Celebrated by writer Miguel Torga.",
+   "facts": [
+    "Free",
+    "About 25 min drive from Régua",
+    "Picnic tables at the top",
+    "Best in late afternoon light"
+   ]
+  },
+  {
+   "id": "casal_de_loivos",
+   "name": "Casal de Loivos viewpoint",
+   "region": "douro",
+   "lat": 41.2097,
+   "lon": -7.5333,
+   "visit": 25,
+   "cat": "Viewpoint",
+   "priority": 3,
+   "wiki": "Alto Douro Wine Region",
+   "summary": "Viewpoint high above Pinhão looking straight down on a bend of the Douro and its terraced slopes. Often called the finest view in the valley.",
+   "facts": [
+    "Free",
+    "Steep narrow road up from Pinhão",
+    "Small parking area at the miradouro",
+    "Sunset is spectacular"
+   ],
+   "caution": "Very steep, narrow road with tight bends; take it slowly."
+  },
+  {
+   "id": "lamego",
+   "name": "Lamego",
+   "region": "douro",
+   "lat": 41.097,
+   "lon": -7.81,
+   "visit": 120,
+   "cat": "Town",
+   "priority": 2,
+   "wiki": "Lamego",
+   "summary": "Historic bishops' town south of Régua, known for sparkling wine and its baroque Nossa Senhora dos Remédios sanctuary. Cathedral and museum in the centre.",
+   "facts": [
+    "15 min drive from Régua",
+    "Raposeira sparkling wine cellars nearby",
+    "Car parks near the cathedral",
+    "Good base on the quieter south bank"
+   ],
+   "sleep": true,
+   "needsDaylight": false
+  },
+  {
+   "id": "nossa_senhora_remedios",
+   "name": "Nossa Senhora dos Remédios Sanctuary",
+   "region": "douro",
+   "lat": 41.0927,
+   "lon": -7.8137,
+   "visit": 60,
+   "cat": "Monastery & church",
+   "priority": 2,
+   "wiki": "Lamego",
+   "summary": "Baroque pilgrimage church at the top of a grand zigzag stairway of nearly 700 steps decorated with azulejos and statues. Views over Lamego.",
+   "facts": [
+    "Free",
+    "You can drive to the top and walk down",
+    "Big pilgrimage festival in late August/September",
+    "Allow 45–60 min"
+   ]
+  },
+  {
+   "id": "mateus_palace",
+   "name": "Mateus Palace",
+   "region": "douro",
+   "lat": 41.2967,
+   "lon": -7.7172,
+   "visit": 90,
+   "cat": "Palace",
+   "priority": 2,
+   "wiki": "Mateus Palace",
+   "summary": "Baroque manor near Vila Real, famous from the Mateus Rosé label. Visit the furnished rooms and formal gardens with a cedar tunnel and reflecting pool.",
+   "facts": [
+    "House + gardens ~€15; gardens-only cheaper",
+    "House by guided tour",
+    "Free parking",
+    "Allow 1–1.5 h"
+   ],
+   "hours": "09:00-18:00"
+  },
+  {
+   "id": "amarante",
+   "name": "Amarante",
+   "region": "douro",
+   "lat": 41.27,
+   "lon": -8.0817,
+   "visit": 120,
+   "cat": "Town",
+   "priority": 2,
+   "wiki": "Amarante",
+   "summary": "Pretty riverside town on the Tâmega with an arched granite bridge and the São Gonçalo church and convent. Known for its convent pastries.",
+   "facts": [
+    "About 45 min from Porto on the A4",
+    "Try doces conventuais at Confeitaria da Ponte",
+    "Riverside parking",
+    "Good stop between Porto and the Douro"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "douro_cruise",
+   "name": "Douro river cruise (Pinhão)",
+   "region": "douro",
+   "lat": 41.1903,
+   "lon": -7.5469,
+   "visit": 60,
+   "cat": "Boat trip",
+   "priority": 2,
+   "wiki": "Douro",
+   "summary": "Boat trips from Pinhão (1–2 h) through the terraced vineyard landscape; longer day cruises run from Porto or Régua with return by train or coach.",
+   "facts": [
+    "1-hour Pinhão trips ~€15–20",
+    "Full-day Porto cruises ~€70–100 with meals",
+    "Book day cruises ahead",
+    "Sit outside on the upper deck"
+   ],
+   "season": "Fewer departures November–March; full-day cruises mostly run April–October."
+  },
+  {
+   "id": "foz_coa_museum",
+   "name": "Côa Museum",
+   "region": "douro",
+   "lat": 41.08,
+   "lon": -7.1128,
+   "visit": 90,
+   "cat": "Museum",
+   "priority": 2,
+   "wiki": "Prehistoric Rock Art Sites in the Côa Valley and Siega Verde",
+   "summary": "Striking concrete museum above the confluence of the Côa and Douro, explaining the valley's Palaeolithic rock engravings. Good introduction before visiting the open-air sites.",
+   "facts": [
+    "Book rock-art site tours in advance (museum website)",
+    "Café terrace with river views",
+    "Near Vila Nova de Foz Côa",
+    "Allow 1–1.5 h"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "foz_coa_rock_art",
+   "name": "Côa Valley rock art (Penascosa)",
+   "region": "douro",
+   "lat": 41.0083,
+   "lon": -7.0828,
+   "visit": 150,
+   "cat": "Monument",
+   "priority": 2,
+   "wiki": "Prehistoric Rock Art Sites in the Côa Valley and Siega Verde",
+   "summary": "UNESCO-listed open-air Palaeolithic engravings of horses, aurochs and ibex, seen on guided 4x4 tours. Penascosa leaves from Castelo Melhor; night visits also possible.",
+   "facts": [
+    "Guided tours only; book ahead",
+    "4x4 transfer from the reception centre",
+    "Hot in summer, cold on winter evenings",
+    "Allow 2–3 h including transfers"
+   ]
+  },
+  {
+   "id": "miranda_do_douro",
+   "name": "Miranda do Douro",
+   "region": "douro",
+   "lat": 41.4936,
+   "lon": -6.2742,
+   "visit": 120,
+   "cat": "Town",
+   "priority": 2,
+   "wiki": "Miranda do Douro",
+   "summary": "Border town on the cliffs above the Douro gorge, with a cathedral and its own language, Mirandese. Known for posta mirandesa beef steak.",
+   "facts": [
+    "Far from Porto: ~3 h 30 min",
+    "Parking outside the old walls",
+    "Spanish border dam crossing next to town",
+    "Combine with the Douro International boat"
+   ],
+   "sleep": true
+  },
+  {
+   "id": "douro_international_cruise",
+   "name": "Douro International gorge boat trip",
+   "region": "douro",
+   "lat": 41.496,
+   "lon": -6.273,
+   "visit": 60,
+   "cat": "Boat trip",
+   "priority": 2,
+   "wiki": "International Douro Natural Park",
+   "summary": "Boat trip into the deep granite canyon of the Douro on the Portuguese–Spanish border, with high cliffs and nesting griffon vultures.",
+   "facts": [
+    "About 1 h",
+    "Departs below Miranda do Douro",
+    "Booking advised",
+    "Binoculars useful for birds"
+   ],
+   "season": "Reduced schedule in winter; check before travelling."
+  },
+  {
+   "id": "braganca",
+   "name": "Bragança",
+   "region": "douro",
+   "lat": 41.8061,
+   "lon": -6.7567,
+   "visit": 120,
+   "cat": "Town",
+   "priority": 2,
+   "wiki": "Bragança, Portugal",
+   "summary": "Remote capital of Trás-os-Montes, crowned by a walled medieval citadel. Base for the Montesinho Natural Park and its schist villages.",
+   "facts": [
+    "~2 h 30 min from Porto by motorway",
+    "Hearty regional food: alheira, roast kid",
+    "Cold winters, occasional snow",
+    "Parking near the citadel"
+   ],
+   "sleep": true
+  },
+  {
+   "id": "braganca_citadel",
+   "name": "Bragança Citadel",
+   "region": "douro",
+   "lat": 41.803,
+   "lon": -6.7505,
+   "visit": 90,
+   "cat": "Castle",
+   "priority": 2,
+   "wiki": "Bragança, Portugal",
+   "summary": "Walled village with a 15th-century castle keep, the unusual civic Domus Municipalis and a stone pillory. Small military museum inside the keep.",
+   "facts": [
+    "Walls and village free",
+    "Keep/military museum small fee",
+    "Good views from the walls",
+    "Allow 1–1.5 h"
+   ]
+  },
+  {
+   "id": "montesinho",
+   "name": "Montesinho Natural Park",
+   "region": "douro",
+   "lat": 41.9417,
+   "lon": -6.7583,
+   "visit": 120,
+   "cat": "Nature reserve",
+   "priority": 1,
+   "wiki": "Montesinho Natural Park",
+   "summary": "Remote upland park of oak and chestnut woods and traditional schist-and-granite villages, home to wolves and deer. Montesinho village is a good walking start.",
+   "facts": [
+    "Free",
+    "Marked trails from Montesinho village",
+    "Few services; bring food",
+    "Roads narrow and quiet"
+   ],
+   "season": "Chestnut colours in late October/November; snow possible in winter."
+  },
+  {
+   "id": "rio_de_onor",
+   "name": "Rio de Onor",
+   "region": "douro",
+   "lat": 41.9406,
+   "lon": -6.6156,
+   "visit": 60,
+   "cat": "Village",
+   "priority": 1,
+   "wiki": "Rio de Onor",
+   "summary": "Communal village straddling the Spanish border, half Portuguese and half Spanish, with stone houses along a stream. A glimpse of old Trás-os-Montes life.",
+   "facts": [
+    "Free",
+    "~35 min from Bragança",
+    "Parking at the village entrance",
+    "Very quiet; few facilities"
+   ]
+  },
+  {
+   "id": "chaves",
+   "name": "Chaves",
+   "region": "douro",
+   "lat": 41.74,
+   "lon": -7.47,
+   "visit": 120,
+   "cat": "Town",
+   "priority": 1,
+   "wiki": "Chaves, Portugal",
+   "summary": "Spa town on the Tâmega with a Roman bridge, a medieval keep and a museum built over Roman baths. Known for its smoked ham and pastéis de Chaves.",
+   "facts": [
+    "Roman baths museum (Museu das Termas Romanas) small fee",
+    "Thermal spa in town",
+    "Near the Spanish border",
+    "Easy motorway link (A24) to Vila Real and Régua"
+   ],
+   "sleep": true,
+   "needsDaylight": false
+  }
+ ],
+ "drives": [
+  [
+   "porto",
+   "aveiro",
+   75,
+   55
+  ],
+  [
+   "porto",
+   "matosinhos",
+   9,
+   15
+  ],
+  [
+   "porto",
+   "serralves",
+   6,
+   15
+  ],
+  [
+   "porto",
+   "foz_do_douro",
+   7,
+   15
+  ],
+  [
+   "porto",
+   "casa_da_musica",
+   3,
+   10
+  ],
+  [
+   "porto",
+   "braga",
+   55,
+   45
+  ],
+  [
+   "porto",
+   "guimaraes",
+   55,
+   45
+  ],
+  [
+   "braga",
+   "guimaraes",
+   25,
+   25
+  ],
+  [
+   "porto",
+   "viana_do_castelo",
+   75,
+   55
+  ],
+  [
+   "braga",
+   "viana_do_castelo",
+   55,
+   45
+  ],
+  [
+   "porto",
+   "barcelos",
+   60,
+   45
+  ],
+  [
+   "braga",
+   "barcelos",
+   22,
+   25
+  ],
+  [
+   "braga",
+   "bom_jesus",
+   6,
+   12
+  ],
+  [
+   "braga",
+   "ponte_de_lima",
+   35,
+   35
+  ],
+  [
+   "ponte_de_lima",
+   "viana_do_castelo",
+   25,
+   25
+  ],
+  [
+   "ponte_de_lima",
+   "valenca_fortress",
+   40,
+   35
+  ],
+  [
+   "viana_do_castelo",
+   "valenca_fortress",
+   55,
+   45
+  ],
+  [
+   "viana_do_castelo",
+   "santa_luzia",
+   4,
+   10
+  ],
+  [
+   "braga",
+   "geres",
+   45,
+   50
+  ],
+  [
+   "geres",
+   "pedra_bela",
+   8,
+   15
+  ],
+  [
+   "geres",
+   "arado_waterfall",
+   15,
+   30
+  ],
+  [
+   "geres",
+   "tahiti_waterfall",
+   12,
+   25
+  ],
+  [
+   "geres",
+   "portela_do_homem",
+   13,
+   20
+  ],
+  [
+   "ponte_de_lima",
+   "soajo",
+   40,
+   45
+  ],
+  [
+   "soajo",
+   "lindoso",
+   12,
+   20
+  ],
+  [
+   "soajo",
+   "sistelo",
+   30,
+   45
+  ],
+  [
+   "geres",
+   "soajo",
+   60,
+   70
+  ],
+  [
+   "porto",
+   "amarante",
+   65,
+   45
+  ],
+  [
+   "guimaraes",
+   "amarante",
+   40,
+   35
+  ],
+  [
+   "porto",
+   "peso_da_regua",
+   110,
+   75
+  ],
+  [
+   "amarante",
+   "peso_da_regua",
+   60,
+   45
+  ],
+  [
+   "peso_da_regua",
+   "pinhao",
+   25,
+   30
+  ],
+  [
+   "peso_da_regua",
+   "lamego",
+   13,
+   15
+  ],
+  [
+   "lamego",
+   "nossa_senhora_remedios",
+   2,
+   5
+  ],
+  [
+   "peso_da_regua",
+   "mateus_palace",
+   25,
+   25
+  ],
+  [
+   "peso_da_regua",
+   "galafura",
+   15,
+   25
+  ],
+  [
+   "pinhao",
+   "casal_de_loivos",
+   6,
+   12
+  ],
+  [
+   "pinhao",
+   "pinhao_quintas",
+   3,
+   8
+  ],
+  [
+   "pinhao",
+   "douro_cruise",
+   1,
+   3
+  ],
+  [
+   "pinhao",
+   "foz_coa_museum",
+   65,
+   65
+  ],
+  [
+   "foz_coa_museum",
+   "foz_coa_rock_art",
+   12,
+   15
+  ],
+  [
+   "peso_da_regua",
+   "braganca",
+   150,
+   100
+  ],
+  [
+   "foz_coa_museum",
+   "braganca",
+   120,
+   85
+  ],
+  [
+   "braganca",
+   "braganca_citadel",
+   1,
+   5
+  ],
+  [
+   "braganca",
+   "rio_de_onor",
+   25,
+   35
+  ],
+  [
+   "braganca",
+   "montesinho",
+   22,
+   30
+  ],
+  [
+   "braganca",
+   "miranda_do_douro",
+   82,
+   70
+  ],
+  [
+   "miranda_do_douro",
+   "douro_international_cruise",
+   1,
+   5
+  ],
+  [
+   "braganca",
+   "chaves",
+   100,
+   80
+  ],
+  [
+   "chaves",
+   "peso_da_regua",
+   85,
+   60
+  ]
+ ]
+}

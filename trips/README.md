@@ -7,13 +7,13 @@ Chrome on Android only allows **one installed app per site address**, and everyt
 
 - **Home screen** (`index.html`): a card per trip with your dates and how many free days are planned. Tap one to open it.
   The list comes from `trips.json`.
-- **Each trip** (`iceland/`, `egypt/`) is the full planner, with a **← Trips** link back to the home screen.
+- **Each trip** (`iceland/`, `egypt/`, `portugal/`) is the full planner, with a **← Trips** link back to the home screen.
 - **Help:** the home screen has a short *How it works*, and every trip has a **? Help** button with the full guide.
-- **Install once:** Chrome menu ⋮ → Add to home screen. Long-press the icon for **Iceland** and **Egypt** shortcuts.
+- **Install once:** Chrome menu ⋮ → Add to home screen. Long-press the icon for **Iceland**, **Egypt** and **Portugal** shortcuts.
 
 ## How the copies are made
 
-The standalone planners (`../iceland-planner/`, `../egypt/`) stay the source of truth and are never modified.
+The standalone planners (`../iceland-planner/`, `../egypt/`, `../portugal/`) stay the source of truth and are never modified.
 `tools/build.py` copies each one into `trips/<id>/` and patches the copy:
 
 - **Your plan is saved separately:** keys start with `tp-`, so the new app can't change your existing plans.
@@ -22,7 +22,7 @@ The standalone planners (`../iceland-planner/`, `../egypt/`) stay the source of 
   So they're shared with the standalone app instead of filling the ~5 MB browser storage twice.
 - **Separate offline caches:** these are prefixed `tp-<id>-`, so neither app's service worker deletes the other's files.
   Map tiles are cached as proper CORS responses; opaque ones were being counted as several MB each.
-- **Egypt map data:** Egypt reads its OpenStreetMap files from `../../egypt/osm/`, which the daily GitHub Action keeps up to date.
+- **Egypt and Portugal map data:** they read their OpenStreetMap files from `../../egypt/osm/` and `../../portugal/osm/`, which daily GitHub Actions keep up to date.
 - **Shareable sample data:** the copies contain no personal dates, plans or bookings (the `generic` settings in `trips.json`).
   A new user gets a sample trip that starts about a month after they first open it, with arrival and departure days marked.
   It has one empty plan and a generic bookings checklist. Places, photos, drive times, settings and safety info are all kept.

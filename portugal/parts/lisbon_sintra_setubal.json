@@ -1,0 +1,1248 @@
+{
+ "places": [
+  {
+   "id": "lisbon",
+   "name": "Lisbon",
+   "region": "lisbon",
+   "lat": 38.7107,
+   "lon": -9.1366,
+   "visit": 180,
+   "cat": "Town",
+   "priority": 3,
+   "wiki": "Lisbon",
+   "summary": "Portugal's hilly capital on the Tagus estuary, with historic quarters, viewpoints, trams and a lively food scene. The natural base for Sintra, Cascais and Setúbal day trips.",
+   "facts": [
+    "Driving and parking in the centre are hard; use metro, trams, trains and walking",
+    "Lisboa Card covers public transport and many museum entries",
+    "Wear grippy shoes: the polished limestone pavements are slippery when wet",
+    "Many museums and monuments close on Mondays"
+   ],
+   "sleep": true,
+   "needsDaylight": false
+  },
+  {
+   "id": "alfama",
+   "name": "Alfama",
+   "region": "lisbon",
+   "lat": 38.7114,
+   "lon": -9.13,
+   "visit": 120,
+   "cat": "Old town",
+   "priority": 3,
+   "wiki": "Alfama",
+   "summary": "Lisbon's oldest district, a maze of steep lanes, stairways and small squares below the castle. Best explored on foot, ideally combined with the castle, the cathedral and the miradouros.",
+   "facts": [
+    "Free to wander; allow 1.5–2 h",
+    "Steep cobbled streets: comfortable shoes",
+    "Lively at night with fado houses and small restaurants",
+    "Tram 28 passes through but is usually crowded"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "castelo_sao_jorge",
+   "name": "São Jorge Castle (Castelo de São Jorge)",
+   "region": "lisbon",
+   "lat": 38.7139,
+   "lon": -9.1335,
+   "visit": 90,
+   "cat": "Castle",
+   "priority": 3,
+   "wiki": "São Jorge Castle",
+   "summary": "Moorish-era hilltop castle crowning Alfama, with restored walls, towers and the best panoramic views over the city and river.",
+   "facts": [
+    "Ticket ~€15",
+    "Queues build mid-morning; go at opening or late afternoon",
+    "Walk up through Alfama or take bus 737 from Praça da Figueira",
+    "Allow 1–1.5 h"
+   ],
+   "hours": "09:00-18:00"
+  },
+  {
+   "id": "lisbon_cathedral",
+   "name": "Lisbon Cathedral (Sé)",
+   "region": "lisbon",
+   "lat": 38.7097,
+   "lon": -9.1334,
+   "visit": 30,
+   "cat": "Monastery & church",
+   "priority": 1,
+   "wiki": "Lisbon Cathedral",
+   "summary": "Fortress-like Romanesque cathedral from the 12th century, the city's oldest church, on the way between Baixa and Alfama.",
+   "facts": [
+    "Small fee for nave/cloister/treasury",
+    "Tram 28 stops outside",
+    "Quick stop of 20–40 min"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "praca_do_comercio",
+   "name": "Praça do Comércio & Baixa",
+   "region": "lisbon",
+   "lat": 38.7075,
+   "lon": -9.1364,
+   "visit": 60,
+   "cat": "Monument",
+   "priority": 3,
+   "wiki": "Praça do Comércio",
+   "summary": "Grand riverside square rebuilt after the 1755 earthquake, opening onto the Pombaline grid of the Baixa with Rua Augusta and its triumphal arch.",
+   "facts": [
+    "Free; Rua Augusta Arch viewing platform is ticketed",
+    "Nice at sunset by the river (Cais das Colunas)",
+    "Easy walk to Chiado, Alfama and the Santa Justa Lift"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "santa_justa_lift",
+   "name": "Santa Justa Lift",
+   "region": "lisbon",
+   "lat": 38.7121,
+   "lon": -9.1394,
+   "visit": 30,
+   "cat": "Monument",
+   "priority": 1,
+   "wiki": "Santa Justa Lift",
+   "summary": "Neo-Gothic iron elevator from 1902 linking the Baixa with Carmo square, with a small viewing deck on top.",
+   "facts": [
+    "Ride included in the Carris/Metro 24h ticket",
+    "Queues are often long; you can walk up to the top deck from Largo do Carmo instead",
+    "Allow 20–40 min"
+   ]
+  },
+  {
+   "id": "carmo_convent",
+   "name": "Carmo Convent ruins",
+   "region": "lisbon",
+   "lat": 38.712,
+   "lon": -9.1405,
+   "visit": 45,
+   "cat": "Ruins",
+   "priority": 2,
+   "wiki": "Carmo Convent (Lisbon)",
+   "summary": "Roofless Gothic church left as a ruin after the 1755 earthquake, with a small archaeological museum inside. A striking reminder of the disaster in the heart of Chiado.",
+   "facts": [
+    "Ticket ~€5",
+    "Combine with Chiado and the Santa Justa Lift top deck",
+    "Allow 30–45 min"
+   ]
+  },
+  {
+   "id": "chiado",
+   "name": "Chiado & Bairro Alto",
+   "region": "lisbon",
+   "lat": 38.7106,
+   "lon": -9.142,
+   "visit": 90,
+   "cat": "Old town",
+   "priority": 2,
+   "wiki": "Chiado",
+   "summary": "Elegant shopping and café quarter with historic theatres and bookshops, next to Bairro Alto's grid of narrow streets that fills with bars at night.",
+   "facts": [
+    "Bertrand, said to be the oldest operating bookshop, is on Rua Garrett",
+    "Bairro Alto is quiet by day and very busy late at night",
+    "Walk up from Baixa or take the Glória funicular"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "sao_pedro_de_alcantara",
+   "name": "Miradouro de São Pedro de Alcântara",
+   "region": "lisbon",
+   "lat": 38.7155,
+   "lon": -9.1443,
+   "visit": 20,
+   "cat": "Viewpoint",
+   "priority": 2,
+   "wiki": "Miradouro de São Pedro de Alcântara",
+   "summary": "Garden terrace at the top of the Glória funicular with a broad view east over Baixa to the castle.",
+   "facts": [
+    "Free",
+    "Great at sunset and after dark",
+    "Glória funicular from Restauradores goes right up"
+   ]
+  },
+  {
+   "id": "miradouro_santa_luzia",
+   "name": "Miradouro de Santa Luzia",
+   "region": "lisbon",
+   "lat": 38.7118,
+   "lon": -9.1302,
+   "visit": 20,
+   "cat": "Viewpoint",
+   "priority": 2,
+   "wiki": "Miradouro de Santa Luzia",
+   "summary": "Tiled, bougainvillea-draped terrace over Alfama's rooftops and the Tagus; Portas do Sol viewpoint is just next door.",
+   "facts": [
+    "Free",
+    "Tram 28 stops here",
+    "Morning light is best for photos",
+    "Senhora do Monte and Graça viewpoints are higher up nearby"
+   ]
+  },
+  {
+   "id": "tram_28",
+   "name": "Tram 28",
+   "region": "lisbon",
+   "lat": 38.7155,
+   "lon": -9.136,
+   "visit": 60,
+   "cat": "Experience",
+   "priority": 2,
+   "wiki": "Trams in Lisbon",
+   "summary": "Vintage yellow tram rattling from Martim Moniz through Graça, Alfama, Baixa and Estrela. Iconic, but often packed with tourists.",
+   "facts": [
+    "Single fare bought on board ~€3; included in 24h transport ticket",
+    "Board at Martim Moniz early morning to get a seat",
+    "Watch for pickpockets",
+    "Tram 12 or 24 are calmer alternatives"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "fado_alfama",
+   "name": "Fado evening in Alfama",
+   "region": "lisbon",
+   "lat": 38.711,
+   "lon": -9.1295,
+   "visit": 120,
+   "cat": "Experience",
+   "priority": 2,
+   "wiki": "Fado",
+   "summary": "Live performance of fado, Lisbon's melancholic UNESCO-listed song genre, in a small Alfama or Mouraria tavern over dinner.",
+   "facts": [
+    "Book a table for the evening; many houses have a minimum spend",
+    "Silence is expected during songs",
+    "Shows usually start around 20:00–21:00",
+    "The Fado Museum in Alfama gives background"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "jeronimos_monastery",
+   "name": "Jerónimos Monastery",
+   "region": "lisbon",
+   "lat": 38.6979,
+   "lon": -9.2068,
+   "visit": 90,
+   "cat": "Monastery & church",
+   "priority": 3,
+   "wiki": "Jerónimos Monastery",
+   "summary": "UNESCO-listed Manueline monastery funded by the spice trade, with an extraordinary two-storey cloister and the tomb of Vasco da Gama in the church.",
+   "facts": [
+    "Ticket ~€18 for the cloister; church entry free",
+    "Book online and arrive at opening — queues are long",
+    "Pastéis de Belém bakery is a few steps away",
+    "Combine with Belém Tower and Padrão in a half-day"
+   ],
+   "hours": "09:30-17:30",
+   "closed": [
+    1
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "belem_tower",
+   "name": "Belém Tower",
+   "region": "lisbon",
+   "lat": 38.6916,
+   "lon": -9.216,
+   "visit": 45,
+   "cat": "Monument",
+   "priority": 3,
+   "wiki": "Belém Tower",
+   "summary": "Early-16th-century Manueline fortress on the Tagus shore, the symbol of Portugal's Age of Discovery and a UNESCO site with Jerónimos.",
+   "facts": [
+    "Ticket ~€10; book a timed slot online",
+    "Interior is small with a narrow one-way stair; the outside is the main attraction",
+    "Allow 45 min including queue"
+   ],
+   "hours": "09:30-17:30",
+   "closed": [
+    1
+   ]
+  },
+  {
+   "id": "padrao_dos_descobrimentos",
+   "name": "Padrão dos Descobrimentos",
+   "region": "lisbon",
+   "lat": 38.6936,
+   "lon": -9.2057,
+   "visit": 30,
+   "cat": "Monument",
+   "priority": 2,
+   "wiki": "Padrão dos Descobrimentos",
+   "summary": "Huge riverside monument to the navigators, with Henry the Navigator at the prow and a giant compass-rose map inlaid in the square.",
+   "facts": [
+    "Free to see from outside; lift to the top is ticketed",
+    "Between Jerónimos and Belém Tower",
+    "Allow 20–30 min"
+   ]
+  },
+  {
+   "id": "maat",
+   "name": "MAAT (Museum of Art, Architecture and Technology)",
+   "region": "lisbon",
+   "lat": 38.6957,
+   "lon": -9.1949,
+   "visit": 90,
+   "cat": "Museum",
+   "priority": 2,
+   "wiki": "Museum of Art, Architecture and Technology",
+   "summary": "Wave-shaped contemporary museum on the Belém riverfront with changing exhibitions, plus the old Tejo power station building; its walkable roof is a fine viewpoint.",
+   "facts": [
+    "Ticket ~€11 for both buildings",
+    "Closed Tuesdays",
+    "Rooftop walkway is free to climb"
+   ],
+   "hours": "10:00-19:00",
+   "closed": [
+    2
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "national_coach_museum",
+   "name": "National Coach Museum",
+   "region": "lisbon",
+   "lat": 38.6976,
+   "lon": -9.1983,
+   "visit": 60,
+   "cat": "Museum",
+   "priority": 1,
+   "wiki": "National Coach Museum",
+   "summary": "One of the world's finest collections of royal carriages, from gilded baroque coaches to 19th-century berlins, in Belém.",
+   "facts": [
+    "Ticket ~€8",
+    "Good rainy-day stop in Belém",
+    "Allow about 1 h"
+   ],
+   "closed": [
+    1
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "lx_factory",
+   "name": "LX Factory",
+   "region": "lisbon",
+   "lat": 38.7034,
+   "lon": -9.1784,
+   "visit": 90,
+   "cat": "Food & market",
+   "priority": 2,
+   "wiki": "LX Factory",
+   "summary": "Converted 19th-century industrial complex under the 25 de Abril Bridge, now full of shops, studios, cafés and the Ler Devagar bookstore.",
+   "facts": [
+    "Free entry",
+    "Busiest on Sunday with a market",
+    "Between Baixa and Belém (tram 15 to Alcântara)"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "time_out_market",
+   "name": "Time Out Market (Mercado da Ribeira)",
+   "region": "lisbon",
+   "lat": 38.7069,
+   "lon": -9.1459,
+   "visit": 60,
+   "cat": "Food & market",
+   "priority": 2,
+   "wiki": "Mercado da Ribeira",
+   "summary": "Food hall in the old Ribeira market at Cais do Sodré, with stalls from well-known Lisbon chefs and producers.",
+   "facts": [
+    "Very busy at lunch and dinner; go off-peak",
+    "The traditional fresh market section runs in the mornings",
+    "Next to Cais do Sodré station (trains to Cascais)"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "gulbenkian_museum",
+   "name": "Calouste Gulbenkian Museum",
+   "region": "lisbon",
+   "lat": 38.7372,
+   "lon": -9.1545,
+   "visit": 120,
+   "cat": "Museum",
+   "priority": 2,
+   "wiki": "Calouste Gulbenkian Museum",
+   "summary": "Superb private collection from Egyptian antiquities and Islamic art to Lalique jewellery and European paintings, set in modernist gardens.",
+   "facts": [
+    "Ticket ~€10–15; free on Sunday afternoons",
+    "Closed Tuesdays",
+    "The gardens are free and peaceful",
+    "Metro São Sebastião"
+   ],
+   "hours": "10:00-18:00",
+   "closed": [
+    2
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "tile_museum",
+   "name": "National Tile Museum (Museu Nacional do Azulejo)",
+   "region": "lisbon",
+   "lat": 38.7247,
+   "lon": -9.1137,
+   "visit": 90,
+   "cat": "Museum",
+   "priority": 2,
+   "wiki": "Museu Nacional do Azulejo",
+   "summary": "History of Portuguese azulejo tiles in a former convent, with a lavish gilded chapel and a long tiled panorama of pre-earthquake Lisbon.",
+   "facts": [
+    "Ticket ~€8",
+    "Closed Mondays",
+    "Out of the centre to the east: bus or taxi",
+    "Allow 1–1.5 h"
+   ],
+   "hours": "10:00-18:00",
+   "closed": [
+    1
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "oceanario",
+   "name": "Lisbon Oceanarium",
+   "region": "lisbon",
+   "lat": 38.7635,
+   "lon": -9.0937,
+   "visit": 120,
+   "cat": "Museum",
+   "priority": 2,
+   "wiki": "Lisbon Oceanarium",
+   "summary": "Large aquarium in Parque das Nações built for Expo 98, centred on a huge open-ocean tank with sharks, rays and a sunfish.",
+   "facts": [
+    "Ticket ~€25; buy online",
+    "Metro Oriente; combine with a riverside walk and cable car in Parque das Nações",
+    "Good for kids and rainy days",
+    "Allow 2 h"
+   ],
+   "hours": "10:00-19:00",
+   "needsDaylight": false
+  },
+  {
+   "id": "cristo_rei",
+   "name": "Cristo Rei (Almada)",
+   "region": "lisbon",
+   "lat": 38.6783,
+   "lon": -9.1713,
+   "visit": 45,
+   "cat": "Viewpoint",
+   "priority": 2,
+   "wiki": "Sanctuary of Christ the King",
+   "summary": "Giant Christ statue across the Tagus in Almada; a lift takes you to a platform with a sweeping view of Lisbon and the 25 de Abril Bridge.",
+   "facts": [
+    "Small fee for the lift to the platform",
+    "Reach by car or ferry from Cais do Sodré to Cacilhas then bus",
+    "Late afternoon light on Lisbon is best"
+   ]
+  },
+  {
+   "id": "sintra",
+   "name": "Sintra",
+   "region": "sintra",
+   "lat": 38.7979,
+   "lon": -9.3906,
+   "visit": 120,
+   "cat": "Town",
+   "priority": 3,
+   "wiki": "Sintra",
+   "summary": "UNESCO-listed romantic town in the forested Sintra hills, packed with palaces and fantasy estates. Stay overnight to see it before and after the day-trip crowds.",
+   "facts": [
+    "Parking is very scarce; train from Lisbon Rossio (~40 min) or park at the edge",
+    "Bus 434 loops the centre, Moorish Castle and Pena",
+    "Try travesseiros and queijadas pastries",
+    "Book Pena tickets in advance"
+   ],
+   "sleep": true,
+   "needsDaylight": false,
+   "season": "The hills are often misty and cooler than Lisbon; bring a layer."
+  },
+  {
+   "id": "cascais",
+   "name": "Cascais",
+   "region": "sintra",
+   "lat": 38.6968,
+   "lon": -9.4215,
+   "visit": 150,
+   "cat": "Town",
+   "priority": 2,
+   "wiki": "Cascais",
+   "summary": "Former fishing village turned upmarket seaside town with small beaches, a marina, a citadel and a pleasant old centre. A relaxed base with direct trains to Lisbon.",
+   "facts": [
+    "Train from Cais do Sodré ~40 min",
+    "Free BiCas bikes / coastal bike path to Guincho",
+    "Paid parking garages in town"
+   ],
+   "sleep": true,
+   "needsDaylight": false
+  },
+  {
+   "id": "estoril",
+   "name": "Estoril",
+   "region": "sintra",
+   "lat": 38.7057,
+   "lon": -9.3977,
+   "visit": 60,
+   "cat": "Town",
+   "priority": 1,
+   "wiki": "Estoril",
+   "summary": "Belle-époque resort next to Cascais known for its casino, gardens and seafront promenade linking the two towns.",
+   "facts": [
+    "Walk the 3 km Paredão seafront promenade to Cascais",
+    "Tamariz beach is right by the station",
+    "Casino open evenings"
+   ],
+   "sleep": true,
+   "needsDaylight": false
+  },
+  {
+   "id": "pena_palace",
+   "name": "Pena Palace",
+   "region": "sintra",
+   "lat": 38.7876,
+   "lon": -9.3906,
+   "visit": 150,
+   "cat": "Palace",
+   "priority": 3,
+   "wiki": "Pena Palace",
+   "summary": "Brightly coloured 19th-century romantic palace on a peak above Sintra, with lavish royal interiors and a vast wooded park with viewpoints like Cruz Alta.",
+   "facts": [
+    "Palace + park ~€20; timed entry slot for the palace — book online",
+    "Arrive for the first slot to beat crowds",
+    "Steep walk or shuttle from the park gate to the palace",
+    "Allow 2–3 h with the park"
+   ],
+   "hours": "09:30-18:30",
+   "early": true,
+   "caution": "Road up is narrow and congested; use bus 434 or a tuk-tuk rather than driving."
+  },
+  {
+   "id": "quinta_da_regaleira",
+   "name": "Quinta da Regaleira",
+   "region": "sintra",
+   "lat": 38.7963,
+   "lon": -9.396,
+   "visit": 120,
+   "cat": "Garden",
+   "priority": 3,
+   "wiki": "Quinta da Regaleira",
+   "summary": "Mystical early-20th-century estate with a gothic mansion, grottoes, tunnels and the famous Initiation Well spiralling down into the earth.",
+   "facts": [
+    "Ticket ~€15; book online, queues can be long",
+    "5–10 min walk from Sintra centre",
+    "Bring a light for the tunnels",
+    "Allow 1.5–2 h"
+   ],
+   "hours": "09:30-18:00"
+  },
+  {
+   "id": "moorish_castle",
+   "name": "Moorish Castle",
+   "region": "sintra",
+   "lat": 38.7924,
+   "lon": -9.3893,
+   "visit": 75,
+   "cat": "Castle",
+   "priority": 2,
+   "wiki": "Castle of the Moors",
+   "summary": "Ruined medieval castle walls snaking along a granite ridge, with huge views to Pena, the Atlantic and Lisbon on clear days.",
+   "facts": [
+    "Ticket ~€12; combo tickets with Pena available",
+    "Lots of steps, little shade",
+    "Easy to combine with Pena (10 min walk)"
+   ],
+   "hours": "09:30-18:00"
+  },
+  {
+   "id": "sintra_national_palace",
+   "name": "Sintra National Palace",
+   "region": "sintra",
+   "lat": 38.7975,
+   "lon": -9.3906,
+   "visit": 75,
+   "cat": "Palace",
+   "priority": 2,
+   "wiki": "Sintra National Palace",
+   "summary": "Medieval royal palace in the town centre, recognisable by its two huge conical kitchen chimneys, with superb Mudéjar tiles and painted ceilings.",
+   "facts": [
+    "Ticket ~€13",
+    "Right in the centre; good rainy-day option",
+    "Allow about 1 h"
+   ],
+   "hours": "09:30-18:00",
+   "needsDaylight": false
+  },
+  {
+   "id": "monserrate",
+   "name": "Monserrate Palace & Gardens",
+   "region": "sintra",
+   "lat": 38.794,
+   "lon": -9.421,
+   "visit": 120,
+   "cat": "Garden",
+   "priority": 2,
+   "wiki": "Monserrate Palace",
+   "summary": "Exotic Moorish-Gothic palace set in a landscaped botanical park with plants from around the world; much calmer than Pena.",
+   "facts": [
+    "Ticket ~€12",
+    "4 km west of the centre; bus 435 or car with parking",
+    "Allow 1.5–2 h"
+   ],
+   "hours": "09:30-18:00"
+  },
+  {
+   "id": "capuchos_convent",
+   "name": "Capuchos Convent",
+   "region": "sintra",
+   "lat": 38.7835,
+   "lon": -9.4278,
+   "visit": 60,
+   "cat": "Monastery & church",
+   "priority": 1,
+   "wiki": "Convent of the Capuchos",
+   "summary": "Tiny 16th-century Franciscan friary built among boulders and lined with cork, a striking contrast to Sintra's palaces.",
+   "facts": [
+    "Remote in the forest; car or taxi needed",
+    "Low doorways and tight cells",
+    "Allow about 1 h"
+   ],
+   "hours": "09:30-18:00"
+  },
+  {
+   "id": "cabo_da_roca",
+   "name": "Cabo da Roca",
+   "region": "sintra",
+   "lat": 38.7804,
+   "lon": -9.4989,
+   "visit": 30,
+   "cat": "Lighthouse",
+   "priority": 3,
+   "wiki": "Cabo da Roca",
+   "summary": "Windswept cape with a lighthouse that is mainland Europe's westernmost point, with high cliffs over the Atlantic.",
+   "facts": [
+    "Free; small paid car park",
+    "Very windy — bring a jacket",
+    "Sunset is popular; bus 403 from Sintra or Cascais"
+   ],
+   "caution": "Stay behind the barriers; the cliff edges are unstable and very high."
+  },
+  {
+   "id": "praia_da_ursa",
+   "name": "Praia da Ursa",
+   "region": "sintra",
+   "lat": 38.7895,
+   "lon": -9.4935,
+   "visit": 120,
+   "cat": "Beach",
+   "priority": 2,
+   "wiki": "Praia da Ursa",
+   "summary": "Wild, sea-stack-studded beach just north of Cabo da Roca, often called one of Portugal's most beautiful, reached only by a steep footpath.",
+   "facts": [
+    "Park on the dirt area off the Cabo da Roca road",
+    "Steep, loose 20–30 min descent and harder climb back",
+    "No facilities or lifeguards"
+   ],
+   "caution": "Dangerous currents and a slippery trail; don't attempt in wet weather or wearing sandals."
+  },
+  {
+   "id": "praia_da_adraga",
+   "name": "Praia da Adraga",
+   "region": "sintra",
+   "lat": 38.8045,
+   "lon": -9.484,
+   "visit": 90,
+   "cat": "Beach",
+   "priority": 2,
+   "wiki": "Praia da Adraga",
+   "summary": "Cove beach framed by cliffs and rock arches, with sea caves to explore at low tide and a beach restaurant.",
+   "facts": [
+    "Car park at the end of the road from Almoçageme",
+    "Explore the arches and caves at low tide",
+    "Cold water year-round"
+   ],
+   "caution": "Strong waves and currents; check tide times before entering caves."
+  },
+  {
+   "id": "azenhas_do_mar",
+   "name": "Azenhas do Mar",
+   "region": "sintra",
+   "lat": 38.8395,
+   "lon": -9.4605,
+   "visit": 30,
+   "cat": "Village",
+   "priority": 2,
+   "wiki": "Azenhas do Mar",
+   "summary": "Whitewashed cliffside village cascading down to a natural ocean pool — one of the most photographed spots on the Sintra coast.",
+   "facts": [
+    "Best photo from the roadside viewpoint south of the village",
+    "Ocean pool fills at high tide in summer",
+    "Limited parking"
+   ]
+  },
+  {
+   "id": "boca_do_inferno",
+   "name": "Boca do Inferno",
+   "region": "sintra",
+   "lat": 38.6913,
+   "lon": -9.431,
+   "visit": 30,
+   "cat": "Coast",
+   "priority": 2,
+   "wiki": "Boca do Inferno",
+   "summary": "Collapsed sea cave west of Cascais where Atlantic swells boom into the rocky chasm.",
+   "facts": [
+    "Free; 20 min walk from Cascais centre",
+    "Most dramatic with big swell or stormy seas",
+    "Small craft market by the car park"
+   ]
+  },
+  {
+   "id": "guincho",
+   "name": "Guincho Beach",
+   "region": "sintra",
+   "lat": 38.7298,
+   "lon": -9.4728,
+   "visit": 120,
+   "cat": "Surf",
+   "priority": 2,
+   "wiki": "Guincho Beach",
+   "summary": "Big, wild Atlantic beach backed by dunes and the Sintra hills, a top kitesurf and windsurf spot.",
+   "facts": [
+    "Free parking along the road",
+    "Very windy — great for kites, less so for sunbathing",
+    "Reachable by the Cascais coastal bike path (~9 km)"
+   ],
+   "caution": "Strong currents and rips; swim only near lifeguards in summer."
+  },
+  {
+   "id": "setubal",
+   "name": "Setúbal",
+   "region": "setubal",
+   "lat": 38.5244,
+   "lon": -8.8882,
+   "visit": 120,
+   "cat": "Town",
+   "priority": 2,
+   "wiki": "Setúbal",
+   "summary": "Working port town on the Sado estuary with a lively fish market and a good old centre, gateway to Arrábida and the ferry to Tróia.",
+   "facts": [
+    "Try choco frito (fried cuttlefish) and local seafood",
+    "Mercado do Livramento is best in the morning (closed Mondays)",
+    "Ferries to Tróia leave from the waterfront"
+   ],
+   "sleep": true,
+   "needsDaylight": false
+  },
+  {
+   "id": "arrabida_natural_park",
+   "name": "Arrábida Natural Park",
+   "region": "setubal",
+   "lat": 38.488,
+   "lon": -8.98,
+   "visit": 120,
+   "cat": "Nature reserve",
+   "priority": 3,
+   "wiki": "Arrábida Natural Park",
+   "summary": "Limestone range dropping steeply into turquoise sea, covered in Mediterranean scrub; the coastal and ridge roads (N379-1) offer spectacular viewpoints.",
+   "facts": [
+    "Drive the scenic ridge road from Setúbal towards Portinho and Sesimbra",
+    "Several viewpoints with roadside pull-offs",
+    "Good hiking trails on the ridge"
+   ],
+   "caution": "Narrow, winding roads; in summer the coastal road is restricted and parking is limited."
+  },
+  {
+   "id": "portinho_da_arrabida",
+   "name": "Portinho da Arrábida",
+   "region": "setubal",
+   "lat": 38.4813,
+   "lon": -8.9787,
+   "visit": 120,
+   "cat": "Beach",
+   "priority": 2,
+   "wiki": "Portinho da Arrábida",
+   "summary": "Sheltered bay with calm, clear water and white sand beneath the green Arrábida cliffs, one of the region's best swimming spots.",
+   "facts": [
+    "Calm, warmer water than the open Atlantic",
+    "Car access restricted on summer weekends — shuttle from Setúbal",
+    "Seafood restaurants by the bay"
+   ],
+   "season": "Sea pleasant June–September; quiet and lovely for a walk off-season."
+  },
+  {
+   "id": "galapinhos",
+   "name": "Galapinhos Beach",
+   "region": "setubal",
+   "lat": 38.4875,
+   "lon": -8.9537,
+   "visit": 120,
+   "cat": "Beach",
+   "priority": 2,
+   "wiki": "Arrábida Natural Park",
+   "summary": "Small, unspoilt beach in Arrábida with clear turquoise water, reached by a steep path from the road.",
+   "facts": [
+    "Park along the road and walk down 10–15 min",
+    "No facilities — bring water",
+    "Neighbouring Galápos beach has a café"
+   ],
+   "caution": "Steep path; parking is very limited and strictly controlled in summer."
+  },
+  {
+   "id": "convento_da_arrabida",
+   "name": "Arrábida Convent",
+   "region": "setubal",
+   "lat": 38.4874,
+   "lon": -8.9786,
+   "visit": 60,
+   "cat": "Monastery & church",
+   "priority": 1,
+   "wiki": "Serra da Arrábida",
+   "summary": "16th-century Franciscan convent clinging to the green slope of the Serra da Arrábida, with cells and chapels above the sea.",
+   "facts": [
+    "Visits only by guided tour with prior booking (Fundação Oriente)",
+    "Great views of the coast"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "sesimbra",
+   "name": "Sesimbra",
+   "region": "setubal",
+   "lat": 38.444,
+   "lon": -9.1015,
+   "visit": 120,
+   "cat": "Town",
+   "priority": 2,
+   "wiki": "Sesimbra",
+   "summary": "Fishing town in a sunny south-facing bay with a beach right in front of the old centre and excellent grilled fish restaurants.",
+   "facts": [
+    "Town beach with calm water",
+    "Castle on the hill above town",
+    "Busy with Lisbon day-trippers on summer weekends"
+   ],
+   "sleep": true,
+   "needsDaylight": false
+  },
+  {
+   "id": "sesimbra_castle",
+   "name": "Sesimbra Castle",
+   "region": "setubal",
+   "lat": 38.4458,
+   "lon": -9.105,
+   "visit": 45,
+   "cat": "Castle",
+   "priority": 1,
+   "wiki": "Castle of Sesimbra",
+   "summary": "Moorish-origin castle on a hill above Sesimbra with walls to walk and wide views over the bay and Arrábida.",
+   "facts": [
+    "Free entry",
+    "Drive up or a steep walk from town",
+    "Allow 30–45 min"
+   ]
+  },
+  {
+   "id": "cabo_espichel",
+   "name": "Cabo Espichel",
+   "region": "setubal",
+   "lat": 38.4155,
+   "lon": -9.2165,
+   "visit": 60,
+   "cat": "Lighthouse",
+   "priority": 2,
+   "wiki": "Cape Espichel",
+   "summary": "Remote, windswept cape with a lighthouse, a baroque pilgrimage sanctuary with pilgrim lodgings, and dinosaur footprints in the cliffs.",
+   "facts": [
+    "Free; parking at the sanctuary",
+    "Beautiful at sunset",
+    "Dinosaur tracks are visible at Pedra da Mua cliff"
+   ],
+   "caution": "Sheer unfenced cliffs; keep well back, especially in wind."
+  },
+  {
+   "id": "palmela_castle",
+   "name": "Palmela Castle",
+   "region": "setubal",
+   "lat": 38.5685,
+   "lon": -8.902,
+   "visit": 60,
+   "cat": "Castle",
+   "priority": 2,
+   "wiki": "Castle of Palmela",
+   "summary": "Hilltop castle above Palmela town with a pousada inside and panoramic views over Arrábida, the Sado and on clear days Lisbon.",
+   "facts": [
+    "Free to walk the walls",
+    "Good stop on the way between Lisbon and Setúbal",
+    "Palmela is a wine region — try Moscatel"
+   ]
+  },
+  {
+   "id": "jose_maria_da_fonseca",
+   "name": "José Maria da Fonseca winery (Azeitão)",
+   "region": "setubal",
+   "lat": 38.528,
+   "lon": -9.013,
+   "visit": 75,
+   "cat": "Wine",
+   "priority": 2,
+   "wiki": "José Maria da Fonseca",
+   "summary": "Historic family winery in Vila Nogueira de Azeitão, famous for Moscatel de Setúbal and Periquita, with old cellars and a museum.",
+   "facts": [
+    "Guided tours with tasting; book ahead",
+    "Buy Azeitão cheese and tortas nearby",
+    "Allow about 1–1.5 h"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "sado_dolphins",
+   "name": "Sado dolphin-watching boat trip",
+   "region": "setubal",
+   "lat": 38.522,
+   "lon": -8.892,
+   "visit": 180,
+   "cat": "Boat trip",
+   "priority": 2,
+   "wiki": "Sado River",
+   "summary": "Boat trips from Setúbal into the Sado estuary to see its small resident population of bottlenose dolphins, with views of Arrábida and Tróia.",
+   "facts": [
+    "Trips ~3 h from Setúbal harbour; book with licensed operators",
+    "Sightings likely but not guaranteed",
+    "Bring a windproof layer"
+   ],
+   "season": "Trips may be cancelled in rough weather."
+  },
+  {
+   "id": "troia",
+   "name": "Tróia Peninsula",
+   "region": "setubal",
+   "lat": 38.488,
+   "lon": -8.908,
+   "visit": 180,
+   "cat": "Beach",
+   "priority": 2,
+   "wiki": "Tróia Peninsula",
+   "summary": "Long sandy peninsula across the Sado from Setúbal with calm estuary beaches, ocean beaches and the Roman fish-salting ruins of Cetóbriga.",
+   "facts": [
+    "Ferry or catamaran from Setúbal (catamaran ~15 min; car ferry longer)",
+    "Resort area at the tip; wild beaches further south",
+    "Roman ruins have limited opening times"
+   ],
+   "season": "Ferry may be disrupted in rough seas."
+  },
+  {
+   "id": "comporta",
+   "name": "Comporta",
+   "region": "setubal",
+   "lat": 38.38,
+   "lon": -8.786,
+   "visit": 150,
+   "cat": "Village",
+   "priority": 2,
+   "wiki": "Comporta",
+   "summary": "Low-key village among rice fields and pine forests with vast, empty Atlantic beaches; a stylish but laid-back retreat.",
+   "facts": [
+    "Combine with the stilt-pier fishing harbour of Carrasqueira",
+    "Storks nest in the rice fields",
+    "Beach restaurants are busy in summer — book"
+   ],
+   "sleep": true,
+   "caution": "Atlantic beaches here have strong currents; swim where lifeguards are present."
+  },
+  {
+   "id": "costa_da_caparica",
+   "name": "Costa da Caparica",
+   "region": "setubal",
+   "lat": 38.641,
+   "lon": -9.237,
+   "visit": 150,
+   "cat": "Beach",
+   "priority": 2,
+   "wiki": "Costa da Caparica",
+   "summary": "Near-continuous strip of sandy Atlantic beaches south of Lisbon across the Tagus, from busy town beaches to quieter dune stretches further south.",
+   "facts": [
+    "~25 min by car from Lisbon via the 25 de Abril Bridge (heavy summer weekend traffic)",
+    "Southern beaches (Fonte da Telha) are quieter",
+    "Good surf lessons"
+   ],
+   "caution": "Atlantic currents; swim only at lifeguarded beaches."
+  }
+ ],
+ "drives": [
+  [
+   "lisbon",
+   "jeronimos_monastery",
+   7,
+   15
+  ],
+  [
+   "jeronimos_monastery",
+   "belem_tower",
+   1.5,
+   5
+  ],
+  [
+   "jeronimos_monastery",
+   "maat",
+   1.5,
+   5
+  ],
+  [
+   "lisbon",
+   "lx_factory",
+   5,
+   12
+  ],
+  [
+   "lisbon",
+   "gulbenkian_museum",
+   4,
+   12
+  ],
+  [
+   "lisbon",
+   "tile_museum",
+   3,
+   10
+  ],
+  [
+   "lisbon",
+   "oceanario",
+   9,
+   15
+  ],
+  [
+   "lisbon",
+   "cristo_rei",
+   12,
+   20
+  ],
+  [
+   "lisbon",
+   "castelo_sao_jorge",
+   2,
+   10
+  ],
+  [
+   "lisbon",
+   "sintra",
+   28,
+   35
+  ],
+  [
+   "lisbon",
+   "cascais",
+   32,
+   35
+  ],
+  [
+   "lisbon",
+   "estoril",
+   27,
+   30
+  ],
+  [
+   "lisbon",
+   "setubal",
+   50,
+   45
+  ],
+  [
+   "lisbon",
+   "costa_da_caparica",
+   20,
+   25
+  ],
+  [
+   "lisbon",
+   "sesimbra",
+   40,
+   40
+  ],
+  [
+   "lisbon",
+   "palmela_castle",
+   40,
+   35
+  ],
+  [
+   "sintra",
+   "pena_palace",
+   4,
+   15
+  ],
+  [
+   "sintra",
+   "quinta_da_regaleira",
+   1,
+   5
+  ],
+  [
+   "sintra",
+   "moorish_castle",
+   3,
+   12
+  ],
+  [
+   "sintra",
+   "monserrate",
+   4,
+   10
+  ],
+  [
+   "sintra",
+   "capuchos_convent",
+   9,
+   20
+  ],
+  [
+   "sintra",
+   "cabo_da_roca",
+   16,
+   25
+  ],
+  [
+   "cabo_da_roca",
+   "praia_da_ursa",
+   2,
+   6
+  ],
+  [
+   "sintra",
+   "praia_da_adraga",
+   11,
+   20
+  ],
+  [
+   "sintra",
+   "azenhas_do_mar",
+   12,
+   20
+  ],
+  [
+   "cabo_da_roca",
+   "guincho",
+   9,
+   12
+  ],
+  [
+   "guincho",
+   "cascais",
+   9,
+   12
+  ],
+  [
+   "cascais",
+   "boca_do_inferno",
+   2.5,
+   6
+  ],
+  [
+   "cascais",
+   "estoril",
+   4,
+   8
+  ],
+  [
+   "cascais",
+   "sintra",
+   17,
+   25
+  ],
+  [
+   "cabo_da_roca",
+   "cascais",
+   18,
+   25
+  ],
+  [
+   "setubal",
+   "arrabida_natural_park",
+   12,
+   20
+  ],
+  [
+   "setubal",
+   "portinho_da_arrabida",
+   13,
+   25
+  ],
+  [
+   "portinho_da_arrabida",
+   "galapinhos",
+   3,
+   8
+  ],
+  [
+   "arrabida_natural_park",
+   "convento_da_arrabida",
+   2,
+   5
+  ],
+  [
+   "setubal",
+   "sesimbra",
+   32,
+   40
+  ],
+  [
+   "sesimbra",
+   "sesimbra_castle",
+   2,
+   7
+  ],
+  [
+   "sesimbra",
+   "cabo_espichel",
+   13,
+   18
+  ],
+  [
+   "setubal",
+   "palmela_castle",
+   9,
+   15
+  ],
+  [
+   "setubal",
+   "jose_maria_da_fonseca",
+   13,
+   15
+  ],
+  [
+   "jose_maria_da_fonseca",
+   "sesimbra",
+   18,
+   20
+  ],
+  [
+   "setubal",
+   "sado_dolphins",
+   1,
+   4
+  ],
+  [
+   "setubal",
+   "comporta",
+   75,
+   60
+  ],
+  [
+   "comporta",
+   "troia",
+   22,
+   20
+  ],
+  [
+   "costa_da_caparica",
+   "sesimbra",
+   30,
+   35
+  ]
+ ]
+}

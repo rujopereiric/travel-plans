@@ -59,6 +59,18 @@
           "type": "image/png"
         }
       ]
+    },
+    {
+      "name": "Portugal",
+      "short_name": "Portugal",
+      "url": "./portugal/",
+      "icons": [
+        {
+          "src": "shortcut-portugal.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
     }
   ]
 }

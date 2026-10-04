@@ -1,0 +1,1167 @@
+{
+ "places": [
+  {
+   "id": "evora",
+   "name": "Évora",
+   "region": "alentejo",
+   "lat": 38.5714,
+   "lon": -7.9092,
+   "visit": 180,
+   "cat": "Town",
+   "priority": 3,
+   "wiki": "Évora",
+   "summary": "Walled UNESCO World Heritage city and capital of the Alentejo, with a Roman temple, Gothic cathedral and whitewashed lanes around Praça do Giraldo. Compact, lively with students, and the best base for the inland Alentejo.",
+   "facts": [
+    "Park outside the walls (free/cheap lots by the gates); the centre is walkable",
+    "Allow at least a full day for the main sights",
+    "Good food town: Alentejo pork, açorda, local wines"
+   ],
+   "sleep": true,
+   "needsDaylight": false,
+   "season": "Very hot in July–August (often 35 °C+); spring and autumn are ideal."
+  },
+  {
+   "id": "evora_roman_temple",
+   "name": "Roman Temple of Évora",
+   "region": "alentejo",
+   "lat": 38.5727,
+   "lon": -7.9077,
+   "visit": 20,
+   "cat": "Ruins",
+   "priority": 2,
+   "wiki": "Roman Temple of Évora",
+   "summary": "Granite-and-marble columns of a 1st-century Roman temple standing on the hilltop square in the heart of Évora. One of the best-preserved Roman structures in Portugal, with gardens and views next to it.",
+   "facts": [
+    "Free, open-air, viewable any time",
+    "Pretty at dusk when floodlit",
+    "Next to the Cathedral and Pousada dos Lóios"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "evora_cathedral",
+   "name": "Évora Cathedral (Sé)",
+   "region": "alentejo",
+   "lat": 38.5703,
+   "lon": -7.9071,
+   "visit": 60,
+   "cat": "Monastery & church",
+   "priority": 2,
+   "wiki": "Évora Cathedral",
+   "summary": "Fortress-like Romanesque-Gothic cathedral, the largest medieval cathedral in Portugal. Climb to the roof terrace for views over the city's rooftops and visit the Gothic cloister.",
+   "facts": [
+    "Combined ticket for church, cloister and roof ~€5–6",
+    "Roof terrace is the highlight",
+    "Allow about 1 hour"
+   ],
+   "hours": "09:00-17:00",
+   "needsDaylight": false
+  },
+  {
+   "id": "chapel_of_bones_evora",
+   "name": "Chapel of Bones (Capela dos Ossos)",
+   "region": "alentejo",
+   "lat": 38.5687,
+   "lon": -7.9093,
+   "visit": 40,
+   "cat": "Monastery & church",
+   "priority": 3,
+   "wiki": "Capela dos Ossos",
+   "summary": "17th-century chapel in the Church of St Francis whose walls and pillars are lined with the bones and skulls of about 5,000 people. A memento mori, famous for its inscription 'We bones that are here, for yours we wait'.",
+   "facts": [
+    "Ticket ~€6, includes the church and a small museum",
+    "Queues at midday in summer; go early or late",
+    "Allow 30–45 minutes"
+   ],
+   "hours": "09:00-17:00",
+   "needsDaylight": false
+  },
+  {
+   "id": "almendres_cromlech",
+   "name": "Almendres Cromlech",
+   "region": "alentejo",
+   "lat": 38.5574,
+   "lon": -8.0613,
+   "visit": 45,
+   "cat": "Monument",
+   "priority": 2,
+   "wiki": "Almendres Cromlech",
+   "summary": "Iberia's largest group of standing stones, around 95 granite monoliths on a cork-oak hillside, older than Stonehenge. Atmospheric and usually quiet, especially at sunset.",
+   "facts": [
+    "Free, unfenced",
+    "Last few km are a dirt track, fine for normal cars when dry",
+    "Combine with the Menhir of Almendres a short walk away"
+   ],
+   "season": "Track can be muddy after heavy rain."
+  },
+  {
+   "id": "monsaraz",
+   "name": "Monsaraz",
+   "region": "alentejo",
+   "lat": 38.443,
+   "lon": -7.3801,
+   "visit": 120,
+   "cat": "Village",
+   "priority": 3,
+   "wiki": "Monsaraz",
+   "summary": "Tiny walled hilltop village with a castle overlooking the vast Alqueva lake and the Spanish border. Whitewashed slate-paved streets, superb sunsets and some of Europe's darkest night skies.",
+   "facts": [
+    "Park outside the gate; village is car-free",
+    "Castle and walls free to walk",
+    "Stay overnight for stargazing and empty streets"
+   ],
+   "sleep": true,
+   "caution": "Castle walls have unprotected drops."
+  },
+  {
+   "id": "alqueva_lake",
+   "name": "Alqueva Lake (Dark Sky reserve)",
+   "region": "alentejo",
+   "lat": 38.1972,
+   "lon": -7.4961,
+   "visit": 120,
+   "cat": "Lake",
+   "priority": 2,
+   "wiki": "Alqueva Dam",
+   "summary": "Western Europe's largest artificial lake, formed by the Alqueva Dam, with river beaches, boat trips and houseboats. The surrounding area is a certified Dark Sky Reserve with observatory stargazing sessions.",
+   "facts": [
+    "Stargazing sessions run by the Dark Sky Alqueva network (book ahead)",
+    "River beaches at Monsaraz and Amieira marina",
+    "Best skies on moonless nights"
+   ],
+   "season": "Swimming pleasant June–September."
+  },
+  {
+   "id": "marvao",
+   "name": "Marvão",
+   "region": "alentejo",
+   "lat": 39.3936,
+   "lon": -7.3764,
+   "visit": 120,
+   "cat": "Village",
+   "priority": 3,
+   "wiki": "Marvão",
+   "summary": "Walled eagle's-nest village on a granite crag at about 860 m, topped by a medieval castle with views deep into Spain. One of Portugal's most striking villages, especially at dawn and dusk.",
+   "facts": [
+    "Castle ticket ~€2",
+    "Park at the entrance; streets are narrow",
+    "Combine with Castelo de Vide (15 min)"
+   ],
+   "sleep": true,
+   "season": "Can be windy and cold in winter; sometimes in cloud."
+  },
+  {
+   "id": "castelo_de_vide",
+   "name": "Castelo de Vide",
+   "region": "alentejo",
+   "lat": 39.4158,
+   "lon": -7.4567,
+   "visit": 90,
+   "cat": "Village",
+   "priority": 2,
+   "wiki": "Castelo de Vide",
+   "summary": "Hillside spa village with a castle, a well-preserved medieval Jewish quarter and flower-filled lanes. Quieter neighbour of Marvão.",
+   "facts": [
+    "Free to wander; small castle with views",
+    "Look for the Fonte da Vila fountain and the old synagogue",
+    "Allow 1.5 hours"
+   ]
+  },
+  {
+   "id": "elvas",
+   "name": "Elvas",
+   "region": "alentejo",
+   "lat": 38.8808,
+   "lon": -7.1631,
+   "visit": 120,
+   "cat": "Town",
+   "priority": 2,
+   "wiki": "Elvas",
+   "summary": "Border garrison town with the world's largest bastioned dry-ditch fortifications, a UNESCO World Heritage site. See the star-shaped Fort of Graça, the Amoreira Aqueduct and the old centre.",
+   "facts": [
+    "Fort of Graça ticket ~€5; check opening before driving up",
+    "Aqueduct visible from the road on arrival",
+    "Badajoz (Spain) is 15 min away"
+   ]
+  },
+  {
+   "id": "estremoz",
+   "name": "Estremoz",
+   "region": "alentejo",
+   "lat": 38.8442,
+   "lon": -7.5862,
+   "visit": 90,
+   "cat": "Town",
+   "priority": 2,
+   "wiki": "Estremoz",
+   "summary": "Marble town crowned by a castle keep (now a pousada) with a big Saturday market on the main square. Known for its clay figurines, listed by UNESCO as intangible heritage.",
+   "facts": [
+    "Saturday morning market is the best time to come",
+    "Climb the Torre de Menagem for views",
+    "Marble is so common even pavements use it"
+   ]
+  },
+  {
+   "id": "vila_vicosa_ducal_palace",
+   "name": "Ducal Palace of Vila Viçosa",
+   "region": "alentejo",
+   "lat": 38.7766,
+   "lon": -7.4172,
+   "visit": 90,
+   "cat": "Palace",
+   "priority": 2,
+   "wiki": "Ducal Palace of Vila Viçosa",
+   "summary": "Long marble-fronted palace of the Dukes of Braganza, Portugal's last royal dynasty, with richly furnished apartments. The town around it is a handsome marble town.",
+   "facts": [
+    "Visits are by guided tour",
+    "Closes for lunch; check times before going",
+    "Combine with Estremoz (20 min)"
+   ],
+   "hours": "10:00-17:00",
+   "closed": [
+    1
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "herdade_do_esporao",
+   "name": "Herdade do Esporão (winery)",
+   "region": "alentejo",
+   "lat": 38.3825,
+   "lon": -7.545,
+   "visit": 120,
+   "cat": "Wine",
+   "priority": 2,
+   "wiki": "Alentejo wine",
+   "summary": "One of the Alentejo's best-known wine and olive-oil estates, near Reguengos de Monsaraz, with tours, tastings and a well-regarded restaurant. A good introduction to Alentejo wine.",
+   "facts": [
+    "Book tours and tastings in advance",
+    "Restaurant lunch needs a reservation",
+    "Designate a driver; roads are rural"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "mertola",
+   "name": "Mértola",
+   "region": "alentejo",
+   "lat": 37.639,
+   "lon": -7.662,
+   "visit": 120,
+   "cat": "Village",
+   "priority": 2,
+   "wiki": "Mértola",
+   "summary": "Riverside 'museum town' above the Guadiana, with a castle and a church that was once a mosque, plus Roman and Islamic finds. Feels like a frontier outpost.",
+   "facts": [
+    "Several small museum nuclei on one ticket",
+    "Castle views over the Guadiana",
+    "Nearby Pulo do Lobo waterfall is a rough-road detour"
+   ],
+   "season": "Extremely hot in summer."
+  },
+  {
+   "id": "beja",
+   "name": "Beja",
+   "region": "alentejo",
+   "lat": 38.0151,
+   "lon": -7.8632,
+   "visit": 90,
+   "cat": "Town",
+   "priority": 1,
+   "wiki": "Beja, Portugal",
+   "summary": "Provincial capital of the Lower Alentejo with a tall marble castle keep and a regional museum in the Convent of Our Lady of the Conception. A practical stop between Évora and the Algarve.",
+   "facts": [
+    "Castle keep climb, small fee",
+    "Easy parking around the centre",
+    "Good overnight stop on the way south"
+   ],
+   "sleep": true
+  },
+  {
+   "id": "serpa",
+   "name": "Serpa",
+   "region": "alentejo",
+   "lat": 37.9439,
+   "lon": -7.5975,
+   "visit": 90,
+   "cat": "Town",
+   "priority": 1,
+   "wiki": "Serpa",
+   "summary": "Walled white town known for its sheep's cheese, with an aqueduct running along its walls. Pleasant, unhurried and off the tourist trail.",
+   "facts": [
+    "Try Queijo Serpa (protected cheese)",
+    "Walk along the aqueduct and walls",
+    "Allow 1–1.5 hours"
+   ]
+  },
+  {
+   "id": "porto_covo",
+   "name": "Porto Covo",
+   "region": "alentejo",
+   "lat": 37.8522,
+   "lon": -8.7925,
+   "visit": 90,
+   "cat": "Village",
+   "priority": 2,
+   "wiki": "Porto Covo",
+   "summary": "Neat whitewashed fishing village above small coves on the Alentejo coast. A start point for the Fishermen's Trail and gateway to Ilha do Pessegueiro.",
+   "facts": [
+    "Small coves right below the village",
+    "Busy in August, peaceful off-season",
+    "Good seafood restaurants"
+   ],
+   "caution": "Atlantic currents are strong; swim only at guarded beaches."
+  },
+  {
+   "id": "ilha_do_pessegueiro",
+   "name": "Ilha do Pessegueiro",
+   "region": "alentejo",
+   "lat": 37.832,
+   "lon": -8.793,
+   "visit": 60,
+   "cat": "Coast",
+   "priority": 1,
+   "wiki": "Pessegueiro Island",
+   "summary": "Small island just offshore with ruins of a 16th–17th-century fort, facing a mainland fort and a wide beach. Lovely coastal walk from Porto Covo.",
+   "facts": [
+    "Reach by the coastal path from Porto Covo (~4 km)",
+    "Island itself only by boat; view from the beach",
+    "Beach parking by the mainland fort"
+   ]
+  },
+  {
+   "id": "vila_nova_de_milfontes",
+   "name": "Vila Nova de Milfontes",
+   "region": "alentejo",
+   "lat": 37.7247,
+   "lon": -8.7836,
+   "visit": 120,
+   "cat": "Town",
+   "priority": 2,
+   "wiki": "Vila Nova de Milfontes",
+   "summary": "Relaxed resort town at the mouth of the Mira river, with calm river beaches and wild ocean beaches. The best base for the Alentejo coast and the Rota Vicentina.",
+   "facts": [
+    "River beaches are sheltered, good for families",
+    "Kayak up the Mira river",
+    "Busy in July–August, quiet off-season"
+   ],
+   "sleep": true,
+   "caution": "Strong tidal currents at the river mouth."
+  },
+  {
+   "id": "fishermens_trail_almograve",
+   "name": "Fishermen's Trail: Milfontes–Almograve",
+   "region": "alentejo",
+   "lat": 37.651,
+   "lon": -8.798,
+   "visit": 240,
+   "cat": "Hike",
+   "priority": 3,
+   "wiki": "Rota Vicentina",
+   "summary": "Cliff-top section of the Rota Vicentina's Fishermen's Trail, about 15 km on sandy paths past coves, sea stacks and stork nests on sea rocks. One of the wildest coastal walks in Europe.",
+   "facts": [
+    "About 4–5 hours one way; arrange a taxi back",
+    "Deep sand is tiring; start early",
+    "Bring water and sun protection; few facilities"
+   ],
+   "caution": "Stay back from crumbling cliff edges, especially in wind.",
+   "season": "Best March–June and September–November; hot and exposed in summer."
+  },
+  {
+   "id": "zambujeira_do_mar",
+   "name": "Zambujeira do Mar",
+   "region": "alentejo",
+   "lat": 37.5253,
+   "lon": -8.7853,
+   "visit": 90,
+   "cat": "Village",
+   "priority": 2,
+   "wiki": "Zambujeira do Mar",
+   "summary": "Clifftop village above a dramatic beach on the southern Alentejo coast. Nearby Cabo Sardão has storks nesting on sea cliffs.",
+   "facts": [
+    "Beach reached by steps from the village",
+    "Hosts the big MEO Sudoeste festival in August",
+    "Detour to Cabo Sardão lighthouse"
+   ],
+   "caution": "Rough surf and rip currents."
+  },
+  {
+   "id": "odeceixe_beach",
+   "name": "Odeceixe Beach",
+   "region": "alentejo",
+   "lat": 37.4406,
+   "lon": -8.7976,
+   "visit": 120,
+   "cat": "Beach",
+   "priority": 2,
+   "wiki": "Odeceixe",
+   "summary": "Beach where the Seixe river meets the ocean, giving a calm river lagoon on one side and surf on the other. On the Alentejo–Algarve border below Odeceixe village.",
+   "facts": [
+    "Calm river side is good for children",
+    "Small car park fills in summer; walk from the village",
+    "Surf schools on the beach"
+   ],
+   "season": "Water is cold (16–19 °C) even in summer.",
+   "caution": "Strong currents at the river mouth on outgoing tides."
+  },
+  {
+   "id": "lagos",
+   "name": "Lagos",
+   "region": "algarve",
+   "lat": 37.102,
+   "lon": -8.673,
+   "visit": 150,
+   "cat": "Town",
+   "priority": 3,
+   "wiki": "Lagos, Portugal",
+   "summary": "Historic walled town with a lively old centre, a marina and some of the Algarve's best cliff-backed beaches nearby. The best base for the western Algarve.",
+   "facts": [
+    "Old town is walkable; park by the marina or outside the walls",
+    "Boat and kayak trips to the grottoes leave from the marina",
+    "Lively nightlife in summer"
+   ],
+   "sleep": true,
+   "needsDaylight": false
+  },
+  {
+   "id": "ponta_da_piedade",
+   "name": "Ponta da Piedade",
+   "region": "algarve",
+   "lat": 37.081,
+   "lon": -8.669,
+   "visit": 45,
+   "cat": "Viewpoint",
+   "priority": 3,
+   "wiki": "Ponta da Piedade",
+   "summary": "Headland of golden sea stacks, arches and grottoes just south of Lagos, with a lighthouse and steps down to the water. Best seen also from a small boat or kayak.",
+   "facts": [
+    "Free; small car park by the lighthouse",
+    "Boat tours from Lagos marina ~€20–30",
+    "Superb at sunset"
+   ],
+   "caution": "Unfenced cliff edges."
+  },
+  {
+   "id": "sagres_fortress",
+   "name": "Sagres Fortress",
+   "region": "algarve",
+   "lat": 37.0012,
+   "lon": -8.948,
+   "visit": 75,
+   "cat": "Castle",
+   "priority": 2,
+   "wiki": "Fortress of Sagres",
+   "summary": "Windswept clifftop promontory linked to Henry the Navigator, with a giant stone wind-rose and a cliff walk around the headland. Huge views of the Atlantic.",
+   "facts": [
+    "Ticket ~€3",
+    "Walk the full loop around the promontory (~1 hour)",
+    "Very windy; bring a layer"
+   ],
+   "hours": "09:30-17:30",
+   "caution": "Sheer cliffs with fishermen perched on edges; keep to paths."
+  },
+  {
+   "id": "cabo_sao_vicente",
+   "name": "Cape St. Vincent (Cabo de São Vicente)",
+   "region": "algarve",
+   "lat": 37.023,
+   "lon": -8.996,
+   "visit": 45,
+   "cat": "Lighthouse",
+   "priority": 3,
+   "wiki": "Cape St. Vincent",
+   "summary": "South-western tip of mainland Europe, with a powerful lighthouse on 75 m cliffs. Classic sunset spot.",
+   "facts": [
+    "Free; car park fills before sunset",
+    "Small lighthouse museum (small fee)",
+    "Try the 'last bratwurst before America' stand"
+   ],
+   "caution": "Strong winds near the cliff edge."
+  },
+  {
+   "id": "benagil_cave",
+   "name": "Benagil Cave (by boat)",
+   "region": "algarve",
+   "lat": 37.0874,
+   "lon": -8.426,
+   "visit": 90,
+   "cat": "Boat trip",
+   "priority": 3,
+   "wiki": "Benagil",
+   "summary": "Sea cave with a round hole in its dome lighting a hidden beach, the Algarve's most famous sight. Access only by boat, kayak or SUP from Benagil or nearby beaches.",
+   "facts": [
+    "Boat tours from Benagil, Carvoeiro, Portimão ~€20–35",
+    "Since 2024 landing on the cave beach is banned; tours view from the water",
+    "Go early morning to avoid crowds; book ahead in summer"
+   ],
+   "season": "Trips cancelled in rough seas; calmest May–October.",
+   "early": true,
+   "caution": "Do not swim to the cave from Benagil beach: currents and boat traffic."
+  },
+  {
+   "id": "seven_hanging_valleys",
+   "name": "Seven Hanging Valleys Trail",
+   "region": "algarve",
+   "lat": 37.089,
+   "lon": -8.413,
+   "visit": 180,
+   "cat": "Hike",
+   "priority": 3,
+   "wiki": "Lagoa, Algarve",
+   "summary": "Cliff-top trail of about 6 km one way between Praia da Marinha and Vale Centeanes, passing sinkholes, arches and the Benagil cave from above. The Algarve's best coastal walk.",
+   "facts": [
+    "About 2.5–3 hours return; start at Praia da Marinha or Vale Centeanes",
+    "Free; little shade, carry water",
+    "Start early in summer"
+   ],
+   "caution": "Crumbling, unfenced cliff edges and sinkholes."
+  },
+  {
+   "id": "praia_da_marinha",
+   "name": "Praia da Marinha",
+   "region": "algarve",
+   "lat": 37.0899,
+   "lon": -8.4119,
+   "visit": 120,
+   "cat": "Beach",
+   "priority": 3,
+   "wiki": "Praia da Marinha",
+   "summary": "Postcard beach of golden cliffs, arches and clear water, regularly named among Europe's finest. Clifftop viewpoints above are as good as the beach.",
+   "facts": [
+    "Free car park on the cliff; arrive early in summer",
+    "Steep path and steps to the sand",
+    "Great snorkelling on calm days"
+   ],
+   "caution": "Rockfalls: don't sit directly under the cliffs."
+  },
+  {
+   "id": "carvoeiro_algar_seco",
+   "name": "Carvoeiro & Algar Seco",
+   "region": "algarve",
+   "lat": 37.096,
+   "lon": -8.472,
+   "visit": 90,
+   "cat": "Coast",
+   "priority": 2,
+   "wiki": "Carvoeiro",
+   "summary": "Former fishing village of white houses around a small beach, with a cliff boardwalk to the Algar Seco rock formations. Pretty, compact and good for a sunset stroll.",
+   "facts": [
+    "Boardwalk to Algar Seco ~10 min from the village",
+    "Parking is tight in summer",
+    "Boats to Benagil also leave from here"
+   ]
+  },
+  {
+   "id": "praia_da_falesia",
+   "name": "Praia da Falésia",
+   "region": "algarve",
+   "lat": 37.0875,
+   "lon": -8.172,
+   "visit": 120,
+   "cat": "Beach",
+   "priority": 2,
+   "wiki": "Praia da Falésia",
+   "summary": "Long beach backed by red and ochre cliffs and pine woods east of Albufeira. Great for long walks.",
+   "facts": [
+    "Several access points; Olhos de Água end is quieter",
+    "Paid parking near the resorts",
+    "Sunset light on the cliffs is best"
+   ],
+   "caution": "Cliff instability; keep away from the base."
+  },
+  {
+   "id": "albufeira_old_town",
+   "name": "Albufeira Old Town",
+   "region": "algarve",
+   "lat": 37.087,
+   "lon": -8.251,
+   "visit": 90,
+   "cat": "Old town",
+   "priority": 1,
+   "wiki": "Albufeira",
+   "summary": "Whitewashed old centre and fishermen's beach of the Algarve's busiest resort. Lively, especially in the evening; skip the Strip if you want calm.",
+   "facts": [
+    "Elevator and escalators link the cliff-top to the beach",
+    "Paid parking above the old town",
+    "Very busy July–August"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "silves_castle",
+   "name": "Silves Castle",
+   "region": "algarve",
+   "lat": 37.191,
+   "lon": -8.438,
+   "visit": 75,
+   "cat": "Castle",
+   "priority": 2,
+   "wiki": "Castle of Silves",
+   "summary": "Red sandstone castle that was the Moorish capital of the Algarve, above a hillside town and a Gothic cathedral. The best-preserved castle in the region.",
+   "facts": [
+    "Ticket ~€3",
+    "Combine with Silves Cathedral next door",
+    "Medieval fair in August"
+   ],
+   "hours": "09:00-17:30"
+  },
+  {
+   "id": "monchique_foia",
+   "name": "Monchique & Fóia",
+   "region": "algarve",
+   "lat": 37.315,
+   "lon": -8.594,
+   "visit": 90,
+   "cat": "Mountain",
+   "priority": 2,
+   "wiki": "Fóia",
+   "summary": "Fóia is the Algarve's highest point (902 m), with views to the coast on clear days; Monchique below is a hill town of cork and chestnut woods. Cooler and greener than the coast.",
+   "facts": [
+    "Drive to the summit; free",
+    "Try medronho liqueur in Monchique",
+    "Hike options around Picota"
+   ],
+   "season": "Often in cloud in winter; clearest in the morning.",
+   "caution": "Wildfire risk in summer; check warnings."
+  },
+  {
+   "id": "faro",
+   "name": "Faro",
+   "region": "algarve",
+   "lat": 37.016,
+   "lon": -7.935,
+   "visit": 120,
+   "cat": "Town",
+   "priority": 2,
+   "wiki": "Faro, Portugal",
+   "summary": "Algarve capital with a walled old town, a marina and boats into the Ria Formosa lagoon. Practical base, 10 minutes from the airport.",
+   "facts": [
+    "Airport is ~7 km away",
+    "Free parking at Largo de São Francisco",
+    "Good base for the eastern Algarve"
+   ],
+   "sleep": true,
+   "needsDaylight": false
+  },
+  {
+   "id": "faro_old_town",
+   "name": "Faro Old Town & Cathedral",
+   "region": "algarve",
+   "lat": 37.013,
+   "lon": -7.935,
+   "visit": 90,
+   "cat": "Old town",
+   "priority": 2,
+   "wiki": "Faro Cathedral",
+   "summary": "Walled Cidade Velha entered through the Arco da Vila, with storks nesting on rooftops and a cathedral whose tower looks over the lagoon. Nearby Igreja do Carmo has a bone chapel.",
+   "facts": [
+    "Cathedral with tower climb ~€5",
+    "Bone chapel at Igreja do Carmo ~€2",
+    "Allow 1.5 hours"
+   ]
+  },
+  {
+   "id": "ria_formosa_islands",
+   "name": "Ria Formosa islands (Culatra / Deserta)",
+   "region": "algarve",
+   "lat": 36.991,
+   "lon": -7.838,
+   "visit": 240,
+   "cat": "Boat trip",
+   "priority": 2,
+   "wiki": "Ria Formosa",
+   "summary": "Lagoon nature park of channels, salt marshes and barrier islands with car-free fishing village Culatra and the empty beaches of Ilha Deserta. Good for birdwatching (flamingos, spoonbills).",
+   "facts": [
+    "Public ferries from Olhão to Culatra/Armona; boats from Faro to Deserta",
+    "Check last-boat-back times",
+    "Bring water and shade"
+   ],
+   "season": "Reduced ferry timetables in winter."
+  },
+  {
+   "id": "tavira",
+   "name": "Tavira",
+   "region": "algarve",
+   "lat": 37.127,
+   "lon": -7.65,
+   "visit": 150,
+   "cat": "Town",
+   "priority": 3,
+   "wiki": "Tavira",
+   "summary": "Graceful riverside town with a Roman-style bridge, a castle garden and some 30 churches, unspoilt by high-rise development. The best base for the eastern Algarve.",
+   "facts": [
+    "Castle gardens free with views over hip roofs",
+    "Ferry to Ilha de Tavira from town or Quatro Águas",
+    "Pleasant in the evening"
+   ],
+   "sleep": true,
+   "needsDaylight": false
+  },
+  {
+   "id": "ilha_de_tavira",
+   "name": "Ilha de Tavira",
+   "region": "algarve",
+   "lat": 37.115,
+   "lon": -7.619,
+   "visit": 180,
+   "cat": "Beach",
+   "priority": 2,
+   "wiki": "Ilha de Tavira",
+   "summary": "Long sandy barrier island with calm, warmer water than the western Algarve. Reached by short ferry or water taxi.",
+   "facts": [
+    "Ferry from Quatro Águas runs year-round, small fare",
+    "Some cafés near the landing; quiet further along",
+    "Walk to Praia do Barril (anchor cemetery)"
+   ],
+   "season": "Ferry less frequent in winter."
+  },
+  {
+   "id": "cacela_velha",
+   "name": "Cacela Velha",
+   "region": "algarve",
+   "lat": 37.157,
+   "lon": -7.546,
+   "visit": 60,
+   "cat": "Village",
+   "priority": 2,
+   "wiki": "Cacela Velha",
+   "summary": "Tiny whitewashed village with a fort and church on a bluff above the Ria Formosa lagoon. At low tide you can wade across to the beach.",
+   "facts": [
+    "Small car park fills in summer",
+    "Check tide times to cross to the beach",
+    "Great at sunset"
+   ]
+  },
+  {
+   "id": "olhao_market",
+   "name": "Olhão Market",
+   "region": "algarve",
+   "lat": 37.026,
+   "lon": -7.841,
+   "visit": 60,
+   "cat": "Food & market",
+   "priority": 1,
+   "wiki": "Olhão",
+   "summary": "Two red-brick market halls on the waterfront, one for fish and one for fruit and veg, in a cubist-looking fishing town. Saturday morning adds an outdoor farmers' market.",
+   "facts": [
+    "Go in the morning",
+    "Saturday is liveliest",
+    "Ferries to Culatra and Armona leave nearby"
+   ],
+   "hours": "07:00-14:00",
+   "closed": [
+    0
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "alvor_boardwalk",
+   "name": "Alvor Boardwalk",
+   "region": "algarve",
+   "lat": 37.129,
+   "lon": -8.594,
+   "visit": 90,
+   "cat": "Nature reserve",
+   "priority": 1,
+   "wiki": "Alvor (Portimão)",
+   "summary": "Wooden boardwalk loop through the dunes and estuary between Alvor village and the beach. Easy, flat walk with birdlife.",
+   "facts": [
+    "Free; about 1–1.5 hours for the loop",
+    "Park in Alvor village",
+    "Good with children"
+   ]
+  },
+  {
+   "id": "arrifana",
+   "name": "Arrifana Beach (surf)",
+   "region": "algarve",
+   "lat": 37.293,
+   "lon": -8.866,
+   "visit": 120,
+   "cat": "Surf",
+   "priority": 2,
+   "wiki": "Aljezur",
+   "summary": "Sheltered cove beneath high cliffs on the west coast near Aljezur, with consistent waves and surf schools. Clifftop fortress ruins give a great view.",
+   "facts": [
+    "Surf lessons ~€35–50",
+    "Steep road down; parking above is limited",
+    "Combine with Aljezur's hilltop castle"
+   ],
+   "caution": "Steep, narrow access road; rip currents."
+  },
+  {
+   "id": "bordeira_carrapateira",
+   "name": "Bordeira & Carrapateira",
+   "region": "algarve",
+   "lat": 37.195,
+   "lon": -8.9,
+   "visit": 120,
+   "cat": "Beach",
+   "priority": 2,
+   "wiki": "Carrapateira",
+   "summary": "Vast wild beach and dunes with a scenic clifftop drive between Bordeira and Amado beaches. Raw Atlantic scenery in the Costa Vicentina natural park.",
+   "facts": [
+    "Clifftop dirt-road loop has several viewpoints",
+    "Praia do Amado is a top surf spot",
+    "Few facilities"
+   ],
+   "caution": "Powerful waves and currents."
+  },
+  {
+   "id": "castro_marim",
+   "name": "Castro Marim",
+   "region": "algarve",
+   "lat": 37.219,
+   "lon": -7.443,
+   "visit": 75,
+   "cat": "Castle",
+   "priority": 1,
+   "wiki": "Castro Marim",
+   "summary": "Border town with a castle and fort overlooking the Guadiana and salt marshes of a nature reserve with flamingos. Next to Spain.",
+   "facts": [
+    "Castle ticket ~€2",
+    "Flamingos in the salt pans of the nature reserve",
+    "Medieval festival in late summer"
+   ]
+  },
+  {
+   "id": "fao",
+   "name": "Faro Airport (FAO)",
+   "region": "algarve",
+   "lat": 37.0144,
+   "lon": -7.9659,
+   "visit": 0,
+   "cat": "Airport",
+   "priority": 1,
+   "wiki": "Faro Airport",
+   "summary": "The Algarve's international airport, just west of Faro.",
+   "facts": [
+    "Car hire desks and shuttle lots",
+    "Bus and taxi to Faro ~15 min",
+    "Allow extra time in summer"
+   ],
+   "needsDaylight": false,
+   "suggest": false
+  }
+ ],
+ "drives": [
+  [
+   "lisbon",
+   "evora",
+   135,
+   90
+  ],
+  [
+   "evora",
+   "beja",
+   80,
+   60
+  ],
+  [
+   "beja",
+   "faro",
+   150,
+   105
+  ],
+  [
+   "evora",
+   "almendres_cromlech",
+   17,
+   25
+  ],
+  [
+   "evora",
+   "monsaraz",
+   52,
+   45
+  ],
+  [
+   "evora",
+   "herdade_do_esporao",
+   45,
+   40
+  ],
+  [
+   "monsaraz",
+   "herdade_do_esporao",
+   18,
+   20
+  ],
+  [
+   "monsaraz",
+   "alqueva_lake",
+   40,
+   40
+  ],
+  [
+   "evora",
+   "estremoz",
+   46,
+   35
+  ],
+  [
+   "estremoz",
+   "vila_vicosa_ducal_palace",
+   17,
+   20
+  ],
+  [
+   "estremoz",
+   "elvas",
+   40,
+   30
+  ],
+  [
+   "estremoz",
+   "marvao",
+   80,
+   70
+  ],
+  [
+   "elvas",
+   "marvao",
+   75,
+   65
+  ],
+  [
+   "marvao",
+   "castelo_de_vide",
+   13,
+   18
+  ],
+  [
+   "beja",
+   "serpa",
+   30,
+   25
+  ],
+  [
+   "serpa",
+   "mertola",
+   57,
+   50
+  ],
+  [
+   "beja",
+   "mertola",
+   55,
+   45
+  ],
+  [
+   "mertola",
+   "castro_marim",
+   70,
+   60
+  ],
+  [
+   "lisbon",
+   "vila_nova_de_milfontes",
+   190,
+   125
+  ],
+  [
+   "beja",
+   "vila_nova_de_milfontes",
+   115,
+   95
+  ],
+  [
+   "vila_nova_de_milfontes",
+   "porto_covo",
+   21,
+   20
+  ],
+  [
+   "porto_covo",
+   "ilha_do_pessegueiro",
+   4,
+   8
+  ],
+  [
+   "vila_nova_de_milfontes",
+   "fishermens_trail_almograve",
+   12,
+   15
+  ],
+  [
+   "vila_nova_de_milfontes",
+   "zambujeira_do_mar",
+   40,
+   40
+  ],
+  [
+   "zambujeira_do_mar",
+   "odeceixe_beach",
+   20,
+   22
+  ],
+  [
+   "odeceixe_beach",
+   "arrifana",
+   27,
+   25
+  ],
+  [
+   "lisbon",
+   "lagos",
+   300,
+   180
+  ],
+  [
+   "faro",
+   "lagos",
+   85,
+   60
+  ],
+  [
+   "faro",
+   "tavira",
+   35,
+   30
+  ],
+  [
+   "fao",
+   "faro",
+   7,
+   12
+  ],
+  [
+   "lagos",
+   "ponta_da_piedade",
+   3,
+   8
+  ],
+  [
+   "lagos",
+   "sagres_fortress",
+   34,
+   30
+  ],
+  [
+   "sagres_fortress",
+   "cabo_sao_vicente",
+   6,
+   8
+  ],
+  [
+   "lagos",
+   "bordeira_carrapateira",
+   38,
+   35
+  ],
+  [
+   "lagos",
+   "arrifana",
+   40,
+   40
+  ],
+  [
+   "lagos",
+   "alvor_boardwalk",
+   12,
+   15
+  ],
+  [
+   "lagos",
+   "benagil_cave",
+   35,
+   35
+  ],
+  [
+   "benagil_cave",
+   "praia_da_marinha",
+   3,
+   6
+  ],
+  [
+   "praia_da_marinha",
+   "seven_hanging_valleys",
+   1,
+   3
+  ],
+  [
+   "lagos",
+   "carvoeiro_algar_seco",
+   30,
+   30
+  ],
+  [
+   "carvoeiro_algar_seco",
+   "benagil_cave",
+   7,
+   12
+  ],
+  [
+   "lagos",
+   "silves_castle",
+   35,
+   35
+  ],
+  [
+   "silves_castle",
+   "monchique_foia",
+   32,
+   40
+  ],
+  [
+   "lagos",
+   "monchique_foia",
+   48,
+   55
+  ],
+  [
+   "faro",
+   "silves_castle",
+   60,
+   45
+  ],
+  [
+   "faro",
+   "albufeira_old_town",
+   40,
+   35
+  ],
+  [
+   "albufeira_old_town",
+   "praia_da_falesia",
+   12,
+   15
+  ],
+  [
+   "albufeira_old_town",
+   "carvoeiro_algar_seco",
+   30,
+   30
+  ],
+  [
+   "faro",
+   "faro_old_town",
+   1,
+   5
+  ],
+  [
+   "faro",
+   "olhao_market",
+   10,
+   15
+  ],
+  [
+   "tavira",
+   "ilha_de_tavira",
+   3,
+   8
+  ],
+  [
+   "tavira",
+   "cacela_velha",
+   12,
+   15
+  ],
+  [
+   "tavira",
+   "castro_marim",
+   25,
+   25
+  ]
+ ]
+}

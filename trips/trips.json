@@ -83,6 +83,25 @@
         "bookingsDrop": ["b5", "b9"],
         "bookingsRename": {"b4": "Site tickets (estimate)"}
       }
+    },
+    {
+      "id": "portugal",
+      "name": "Portugal",
+      "source": "portugal",
+      "flag": "🇵🇹",
+      "color": "#1d5fa8",
+      "blurb": "Lisbon, Sintra, Porto and the Douro, the Algarve, Alentejo, Madeira and the Azores. Opening hours, trains and island flights.",
+      "copyKeys": {"portugal-planner-v1": "tp-portugal-planner-v1", "portugal-planner-ui": "tp-portugal-planner-ui"},
+      "uiKey": "portugal-planner-ui",
+      "skip": ["osm", "tools", "parts"],
+      "jsReplace": {"fetch(`osm/${id}.json`": "fetch(`../../portugal/osm/${id}.json`"},
+      "swReplace": {"'portugal-": "'tp-portugal-"},
+      "generic": {
+        "name": "Portugal",
+        "autoDays": 8,
+        "first": {"label": "Arrival day"},
+        "last": {"label": "Departure day"}
+      }
     }
   ]
 }
