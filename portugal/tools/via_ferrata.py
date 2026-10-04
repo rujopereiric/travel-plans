@@ -64,6 +64,7 @@ for r in research:
     if r['status'] != 'open': p['caution'] = 'Status: ' + r['status'] + '. Check before you go.'
     if r.get('photo'):  # our own photos (E29.eu albums) or a guide site's, credited on the card
         p['photo'] = r['photo']; host = re.sub(r'^https?://(www\.|m\.)?', '', r['photo']).split('/')[0]
+        if os.path.exists(os.path.join(root, 'img', r['id'] + '.jpg')): p['photo'] = 'img/' + r['id'] + '.jpg'  # our copy (tools/photo-fetch.mjs)
         p['photoCredit'] = 'E29.eu' if host.endswith('e29.eu') else host
         del p['photoSearch']
     # our own trip reports (from the E29 Dataverse "Communications" table): blog posts and videos first in the links
