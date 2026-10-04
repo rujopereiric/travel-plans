@@ -25,7 +25,7 @@ const LS_UI = 'tp-ptkids-planner-ui';
 
 // Bump on every change. The app compares it with the app.js on the server, so a phone that kept an old tab open
 // (no reload, so still the old code) is told a newer version exists.
-const APP_BUILD = '2026-10-04.k4';
+const APP_BUILD = '2026-10-04.k5';
 let NEWER = null; // the newer build found on the server, if any
 const AX0 = 5 * 60, AX1 = 23 * 60;           // timeline axis 05:00–23:00
 const DEFAULT_SETTINGS = {
@@ -1475,15 +1475,19 @@ function renderMyPlaces() {
     <div class="pchips">${chip('region', 'all', 'All regions', reg === 'all')}${S.regions.map(r => chip('region', r.id, `<span style="color:${r.color}">●</span> ${esc(r.name)}`, reg === r.id)).join('')}</div>`;
   const days = S.days.filter(d => blockOf(d.date) && d.state !== 'booked');
   const inReg = p => reg === 'all' || p.region === reg;
-  const nMinor = S.places.filter(p => minor(p) && inReg(p)).length, nTown = S.places.filter(p => TOWNISH.has(p.cat) && inReg(p)).length;
-  if (cat === 'all' && (nMinor || nTown)) h += `<p class="tiny muted" style="margin:0 0 8px">Not listed under All types: ${[nTown ? `${nTown} towns, villages and overnight bases` : '', nMinor ? `${nMinor.toLocaleString('en-GB')} playgrounds` : ''].filter(Boolean).join(' and ')}. Tap their type above to see them.</p>`;
+  const nTown = S.places.filter(p => TOWNISH.has(p.cat) && inReg(p)).length, nMinor = {};
+  for (const p of S.places) if (minor(p) && inReg(p)) nMinor[p.cat] = (nMinor[p.cat] || 0) + 1;
+  const hidden = [nTown ? `${nTown} towns, villages and overnight bases` : '', ...Object.entries(nMinor).map(([c, n]) => `${n} × ${catInfo(c).icon} ${esc(c)}`)].filter(Boolean);
+  if (cat === 'all' && hidden.length) h += `<p class="tiny muted" style="margin:0 0 8px">Not listed under All types: ${hidden.join(', ')}. Tap their type above to see them.</p>`;
   const kidRank = p => (KID_FIRST.has(p.cat) ? 0 : 1) * 10 - (p.priority ?? 2);
   const list = S.places.filter(p => (cat === 'all' ? listedByDefault(p) : p.cat === cat) && (reg === 'all' || p.region === reg) && p.cat !== 'Airport'
     && (fit === 'all' || (suitsUs(p) && (fit !== 'rainy' || isRainy(p))))
     && (only === 'all' ? pick(p.id) !== 'skip' : only === 'unplanned' ? !plannedIn(p.id).some(x => x.active) && pick(p.id) !== 'skip' : pick(p.id) === only));
   list.sort((a, b) => kidRank(a) - kidRank(b));
   if (!list.length) h += `<p class="empty">No places match these filters.</p>`;
-  for (const p of list) {
+  // a long list is slow to draw on a phone: show the first cards, then more on request
+  const shown = list.slice(0, UI.pn || 60);
+  for (const p of shown) {
     const rg = region(p.region), w = WIKI[p.id] || {}, pk = pick(p.id), where = plannedIn(p.id);
     const img = p.photo || imgSrc(w.img) || null;
     const wurl = w.url || `https://en.wikipedia.org/wiki/Special:Search?search=${encodeURIComponent(p.wiki || p.name)}`;
@@ -1529,6 +1533,7 @@ function renderMyPlaces() {
         </details>
       </div></article>`;
   }
+  if (shown.length < list.length) h += `<button class="btn" style="width:100%;margin:4px 0 10px" data-act="pmore">Show ${Math.min(60, list.length - shown.length)} more (${list.length - shown.length} left)</button>`;
   if (!navigator.onLine && S.places.some(p => !WIKI[p.id])) h += `<p class="tiny muted">Photos load the first time you open this tab online, and are kept for offline use.</p>`;
   return h;
 }
@@ -1769,6 +1774,7 @@ const HELP_TEXT = {
     <li><b>🚼 We have a buggy</b> leaves out places with stairs or rough paths. Each card says <b>Buggy: yes</b>, <b>partly</b> (some steps, cobbles or sand) or <b>Baby carrier</b>.</li>
     <li><b>🌧 Rainy day</b> on the Places tab lists indoor places: aquariums, science centres, museums.</li>
     <li>The days are gentler by default: up to <b>2.5 h</b> of driving and <b>5.5 h</b> of visits, starting at <b>09:00</b>, with 45 min spare. Change it in ⚙ Settings, or per day.</li>
+    <li><b>Playgrounds and more from OpenStreetMap:</b> about 420 public playgrounds (up to 3 near each place in the planner), plus indoor play centres, trampoline parks, water parks, small zoos, farms and mini golf, marked <b>unverified</b>. Auto-plan never adds them on its own: tap <b>🛝 Playground</b> (or another type) on the Places tab and add one to a day. A playground's travel time is a short hop from the place it's next to.</li>
     <li>Need a lunch or nap stop? Open a day → <b>+ Add a stop</b> → <b>Break</b>.</li>
     <li>Children's prices vary a lot: most places are free for under-3s, and many have family tickets. Prices are approximate.</li>
   </ul></details><details class="card help"><summary>🇵🇹 Opening hours and getting around (Portugal)</summary><div class="helpbody"><ul>
@@ -1951,7 +1957,8 @@ document.addEventListener('click', e => {
     case 'flightedit': UI.editTrip = true; render(); scrollTo(0, 0); break;
     case 'wikiretry': IMG_W = null; try { localStorage.removeItem('portugal-imgw'); } catch (e) { } WIKI = {}; for (const k in IMG_FAIL) delete IMG_FAIL[k]; try { localStorage.removeItem(LS_WIKI); } catch (e) { } fetchWiki(); break;
     case 'pick': { const id = el.dataset.place, v = el.dataset.v; S.picks[id] = S.picks[id] === v ? undefined : v; if (!S.picks[id]) delete S.picks[id]; changed(); break; }
-    case 'pfilter': UI.pf = { ...(UI.pf || {}), [el.dataset.k]: el.dataset.v }; render(); break;
+    case 'pfilter': UI.pf = { ...(UI.pf || {}), [el.dataset.k]: el.dataset.v }; UI.pn = 60; render(); break;
+    case 'pmore': UI.pn = (UI.pn || 60) + 60; render(); break;
     case 'pinfo': UI.pf = {}; MAP && MAP.closePopup(); goTab('places'); setTimeout(() => document.getElementById('poi-' + el.dataset.place)?.scrollIntoView({ block: 'start' }), 0); break;
     case 'pmap': { const id = el.dataset.place; mf().mine = true; mf().must = false; mf().hide = mf().hide.filter(c => c !== place(id)?.cat); mapDirty = true; goTab('map'); setTimeout(() => { if (MAP && MARKERS[id]) { MAP.setView([place(id).lat, place(id).lon], 10); MARKERS[id].openPopup(); } }, 50); break; }
     case 'fxrefresh': fetchRate(true); break;

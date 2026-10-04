@@ -27,6 +27,20 @@ Your plan is saved under its own keys (`ptkids-…`), so it never mixes with you
 shapes are shared with the Portugal planner, so they're not stored twice.
 Offline caches are prefixed `ptkids-` (not `portugal-kids-`: the Portugal planner clears every cache starting with `portugal-`).
 
+## Playgrounds and venues from OpenStreetMap
+
+`parts/osm_kids.json` holds about 580 places from OpenStreetMap (© OpenStreetMap contributors, ODbL), downloaded once on
+4 Oct 2026 with Overpass and filtered by hand-written rules:
+- **Playgrounds:** public ones (not private or customers-only) within 1.5 km of a place in the planner, at most 3 per
+  place, named and mapped-as-an-area first. About 420 of the ~4,700 in Portugal.
+- **Venues:** named indoor play centres, trampoline parks, water parks, zoos and animal parks, farms, theme and adventure
+  parks, aquariums and mini golf. Party halls, fairgrounds and the like are left out, and so is anything already in the planner.
+
+They're marked *unverified* and auto-plan never adds them on its own (`suggest: false`). Playgrounds, mini golf and play
+areas are *minor* places (`minor: true`, `near: <place id>`): they're not listed under All types or shown on the map
+until you turn them on, and their travel time is the drive to the place they're next to plus a short hop, so they don't
+add to the road-time download. To refresh them, download again and rebuild `parts/osm_kids.json` with the same fields.
+
 ## Files
 
 - `index.html`, `app.js`, `sw.js`: copies of the Portugal planner's, with the kids changes. A fix to the Portugal engine
