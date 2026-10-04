@@ -37,7 +37,7 @@ Required fields: id, name, region, lat, lon, visit, cat, priority, wiki, summary
 - `region`: one of your region ids.
 - `lat`, `lon`: WGS84, 4 decimals, the entrance. Portugal longitudes are NEGATIVE.
 - `visit`: realistic family minutes (zoo 180–240, aquarium 120–150, playground 60, theme park 300–360, farm 120).
-- `cat`: exactly one of: Zoo, Aquarium, Theme park, Water park, Science centre, Park & playground, Farm & animals,
+- `cat`: exactly one of: Zoo, Aquarium, Theme park, Water park, Science centre, Park (a big park, usually with a playground), Farm & animals,
   Adventure park, Train ride, Museum, Castle, Beach, Boat trip, Garden, Hike, Cave, Nature reserve, Experience.
 - `priority`: 3 = a family highlight, 2 = very good, 1 = nice if nearby.
 - `hours`: optional "HH:MM-HH:MM" typical autumn/winter hours, only for gated sites, only if confident.

@@ -21,8 +21,9 @@ b = importlib.util.module_from_spec(spec); spec.loader.exec_module(b)
 PARTS = ['lisbon_sintra_setubal', 'oeste_centro', 'north', 'south', 'islands', 'osm_kids']
 KID_FIELDS = ['ages', 'stroller', 'kids', 'rainy', 'facilities']
 REUSE_FIELDS = KID_FIELDS + ['cat', 'visit', 'priority', 'caution', 'season']
-KID_CATS = ['Zoo', 'Aquarium', 'Theme park', 'Water park', 'Science centre', 'Park & playground', 'Farm & animals',
-            'Adventure park', 'Train ride', 'Indoor play', 'Trampoline park', 'Mini golf', 'Playground']
+# the order of the type pills on the Places tab: playgrounds first
+KID_CATS = ['Playground', 'Park', 'Zoo', 'Aquarium', 'Theme park', 'Water park', 'Indoor play', 'Science centre', 'Farm & animals',
+            'Adventure park', 'Trampoline park', 'Train ride', 'Mini golf']
 STROLLER = {'yes', 'partly', 'no'}
 ADULTISH = {'Monastery & church', 'Monument', 'Palace', 'Museum', 'Ruins', 'Viewpoint', 'Old town', 'Town', 'Village', 'Wine',
             'Food & market', 'Lighthouse'}

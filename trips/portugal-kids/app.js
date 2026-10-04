@@ -25,7 +25,7 @@ const LS_UI = 'tp-ptkids-planner-ui';
 
 // Bump on every change. The app compares it with the app.js on the server, so a phone that kept an old tab open
 // (no reload, so still the old code) is told a newer version exists.
-const APP_BUILD = '2026-10-04.k5';
+const APP_BUILD = '2026-10-04.k6';
 let NEWER = null; // the newer build found on the server, if any
 const AX0 = 5 * 60, AX1 = 23 * 60;           // timeline axis 05:00–23:00
 const DEFAULT_SETTINGS = {
@@ -54,7 +54,7 @@ const HOP_KMH = 25; // short town hop, parking included
 // Towns, villages and overnight bases are there for sleeping and as stops; the Places list leads with things kids do.
 const TOWNISH = new Set(['Town', 'Base', 'Village', 'Old town']);
 const listedByDefault = p => !minor(p) && !TOWNISH.has(p.cat);
-const KID_FIRST = new Set(['Zoo', 'Aquarium', 'Theme park', 'Water park', 'Science centre', 'Park & playground', 'Farm & animals', 'Adventure park', 'Train ride', 'Indoor play', 'Trampoline park']);
+const KID_FIRST = new Set(['Zoo', 'Aquarium', 'Theme park', 'Water park', 'Science centre', 'Park', 'Farm & animals', 'Adventure park', 'Train ride', 'Indoor play', 'Trampoline park']);
 const STROLLER = { yes: '🚼 Buggy: yes', partly: '🚼 Buggy: partly', no: '🎒 Baby carrier' };
 
 let S = null;            // the plan (same shape as data.json)
@@ -1541,7 +1541,7 @@ function renderMyPlaces() {
 /* ---------- category icons & map filter ---------- */
 // Each category has an icon; colour comes from its family so related things read together on the map.
 const CAT_GROUPS = [
-  { id: 'kids', name: 'Fun for kids', color: '#d81b60', cats: { Zoo: '🦁', Aquarium: '🐠', 'Theme park': '🎢', 'Water park': '💦', 'Science centre': '🔬', 'Park & playground': '🛝', 'Farm & animals': '🐐', 'Adventure park': '🌳', 'Train ride': '🚂', 'Indoor play': '🧸', 'Trampoline park': '🤸', 'Mini golf': '⛳', Playground: '🛝' } },
+  { id: 'kids', name: 'Fun for kids', color: '#d81b60', cats: { Playground: '🛝', Park: '🪁', Zoo: '🦁', Aquarium: '🐠', 'Theme park': '🎢', 'Water park': '💦', 'Indoor play': '🧸', 'Science centre': '🔬', 'Farm & animals': '🐐', 'Adventure park': '🪢', 'Trampoline park': '🤸', 'Train ride': '🚂', 'Mini golf': '⛳' } },
   { id: 'heritage', name: 'Castles, palaces & churches', color: '#8e24aa', cats: { Castle: '🏰', Palace: '👑', 'Monastery & church': '⛪', 'Old town': '🏘️', Monument: '🗿', Ruins: '🏛️', Historic: '🏚️' } },
   { id: 'culture', name: 'Museums, wine & food', color: '#3949ab', cats: { Museum: '🖼️', Art: '🎨', Village: '🏡', Wine: '🍷', 'Food & market': '🍽️', Experience: '🎶', Attraction: '⭐' } },
   { id: 'sea', name: 'Sea & coast', color: '#0277bd', cats: { Beach: '🏖️', Coast: '🌊', 'Boat trip': '⛵', Surf: '🏄', 'Whale watching': '🐋', Lighthouse: '🗼' } },
