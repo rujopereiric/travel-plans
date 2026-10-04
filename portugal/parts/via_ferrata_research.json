@@ -105,6 +105,12 @@
     "confidence": "high",
     "e29": [
       {
+        "type": "blog",
+        "url": "https://e29.eu/local-training-at-via-ferrata-serra-das-talhadas/",
+        "date": "2023-10-28",
+        "project": "Operation Hook II"
+      },
+      {
         "type": "video",
         "url": "https://youtu.be/kLJpXayfQCI",
         "date": "2021-10-01",
@@ -237,7 +243,7 @@
     "e29": [
       {
         "type": "blog",
-        "url": "https://e29.eu/via-ferrata-castelo-de-vide/",
+        "url": "https://e29.eu/via-ferrata-castelo-de-vide",
         "date": "2024-10-28",
         "project": "Operation Hook II"
       },
@@ -381,16 +387,8 @@
     "e29": [
       {
         "type": "blog",
-        "url": "https://e29.eu/via-ferrata-povoa-de-lanhoso/",
+        "url": "https://e29.eu/via-ferrata-povoa-de-lanhoso",
         "date": "2024-10-28",
-        "label": "📝 Our blog post",
-        "project": "Operation Hook II"
-      },
-      {
-        "type": "blog",
-        "url": "https://e29.eu/local-training-in-via-ferrata-povoa-do-lanhoso/",
-        "date": "2024-10-24",
-        "label": "📝 Our blog post (local training)",
         "project": "Operation Hook II"
       },
       {
@@ -437,7 +435,7 @@
     "e29": [
       {
         "type": "blog",
-        "url": "https://e29.eu/via-ferrata-teto-do-mundo/",
+        "url": "https://e29.eu/via-ferrata-teto-do-mundo",
         "date": "2024-10-28",
         "project": "Operation Hook II"
       },

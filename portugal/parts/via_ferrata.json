@@ -87,7 +87,7 @@
    "priority": 2,
    "summary": "The longest via ferrata in Portugal, a ridge circuit with two bridges in the Naturtejo Geopark. It reopened in 2026 after repairs from the 2023 wildfires.",
    "facts": [
-    "We've done this one: Operation Hook (2021)",
+    "We've done this one: Operation Hook (2021), Operation Hook II (2023)",
     "Grade K3 (RocJumper) / B/C (ferrataguide, via-ferrata.de) · 2190 m · +150 m · ~2 h 21 min in total",
     "Getting there: From Catraia Cimeira take the M1313 toward Chão do Galego. Start at the watchtower designed by Álvaro Siza Vieira, then walk about 800 m (20 min) to sector 1. The circuit ends back at the tower.",
     "Reopened mid-2026 after fire damage; it was listed as temporarily closed before that",
@@ -115,6 +115,10 @@
    "photo": "https://m.e29.eu/22OH2/22OH2-E07-PT-VF07-Serra-Das-Talhadas-20231028-0360-web.jpg",
    "photoCredit": "E29.eu",
    "links": [
+    {
+     "name": "📝 Our blog post",
+     "url": "https://e29.eu/local-training-at-via-ferrata-serra-das-talhadas/"
+    },
     {
      "name": "▶️ Our video",
      "url": "https://youtu.be/kLJpXayfQCI"
@@ -249,7 +253,7 @@
    "links": [
     {
      "name": "📝 Our blog post",
-     "url": "https://e29.eu/via-ferrata-castelo-de-vide/"
+     "url": "https://e29.eu/via-ferrata-castelo-de-vide"
     },
     {
      "name": "▶️ Our video",
@@ -395,11 +399,7 @@
    "links": [
     {
      "name": "📝 Our blog post",
-     "url": "https://e29.eu/via-ferrata-povoa-de-lanhoso/"
-    },
-    {
-     "name": "📝 Our blog post (local training)",
-     "url": "https://e29.eu/local-training-in-via-ferrata-povoa-do-lanhoso/"
+     "url": "https://e29.eu/via-ferrata-povoa-de-lanhoso"
     },
     {
      "name": "▶️ Our video",
@@ -447,7 +447,7 @@
    "links": [
     {
      "name": "📝 Our blog post",
-     "url": "https://e29.eu/via-ferrata-teto-do-mundo/"
+     "url": "https://e29.eu/via-ferrata-teto-do-mundo"
     },
     {
      "name": "▶️ Our video (Oct 2024)",
