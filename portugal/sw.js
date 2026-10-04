@@ -1,7 +1,7 @@
 // Offline support: app files network-first (so edits to data.json show up when online),
 // Leaflet and map tiles cache-first (tiles you've viewed stay available offline).
 // Only portugal-* caches are touched: other apps on this origin (iceland-planner/, egypt/) keep theirs.
-const APP = 'portugal-app-v3', TILES = 'portugal-tiles-v2', IMGS = 'portugal-imgs-v1', MAX_TILES = 3000;
+const APP = 'portugal-app-v3', TILES = 'portugal-tiles-v2', IMGS = 'portugal-imgs-v2', MAX_TILES = 3000;
 const SHELL = ['./', 'index.html', 'app.js', 'data.json', 'manifest.webmanifest', 'icon.svg', 'icon-192.png',
   'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css', 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js'];
 
@@ -51,16 +51,18 @@ self.addEventListener('fetch', e => {
     return;
   }
   if (req.destination === 'image' && url.origin !== location.origin) { // other place photos (E29.eu albums, guide sites)
-    // CORS if the site allows it (then only real images are cached); otherwise a plain image request, cached as an
-    // opaque response: browsers count each as a few MB of quota, which is fine for a few dozen photos
+    // Only keep a photo when we can see it really loaded (a CORS response with an OK status and an image type).
+    // Sites without CORS still show their photos online (plain request, no referrer, so hotlink checks pass), but an
+    // opaque response could be an error page, so it's never cached: a failed load must not stick.
     e.respondWith(caches.open(IMGS).then(async c => {
       const hit = await c.match(req.url);
       if (hit) return hit;
-      let res;
-      try { res = await fetch(req.url, { mode: 'cors', credentials: 'omit' }); }
-      catch (err) { try { res = await fetch(req); } catch (e2) { return new Response('', { status: 504 }); } }
-      if (res.ok || res.type === 'opaque') c.put(req.url, res.clone()).then(() => trimCache(IMGS, 200)).catch(() => {});
-      return res;
+      try {
+        const res = await fetch(req.url, { mode: 'cors', credentials: 'omit', referrerPolicy: 'no-referrer' });
+        if (res.ok && (res.headers.get('content-type') || '').startsWith('image/')) { c.put(req.url, res.clone()).then(() => trimCache(IMGS, 200)).catch(() => {}); return res; }
+      } catch (err) { }
+      try { return await fetch(req.url, { mode: 'no-cors', credentials: 'omit', referrerPolicy: 'no-referrer' }); }
+      catch (e2) { return new Response('', { status: 504 }); }
     }));
     return;
   }

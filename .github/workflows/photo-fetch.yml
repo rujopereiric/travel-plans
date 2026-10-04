@@ -1,0 +1,27 @@
+name: Store our place photos in the app
+
+# Copies our own place photos (E29.eu) into portugal/img/ so the planner serves them itself.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: node portugal/tools/photo-fetch.mjs
+      - name: Commit the photos
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add portugal/img
+          git diff --cached --quiet && echo "no changes" && exit 0
+          git commit -q -m "Portugal planner: store our place photos in the app"
+          for i in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && break; sleep 5; done
