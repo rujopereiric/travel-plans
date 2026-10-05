@@ -2,7 +2,7 @@
 /* Jordan trip planner — vanilla JS, no build step. Built from the Portugal planner (itself built from the Egypt one).
    All times are minutes after midnight, local time (the time zone in data.json's trip.tz).
    Everything that differs between countries is in the COUNTRY block below and in OSM_AREAS; the rest of this file
-   is the same in every planner built this way (jordan/, uzbekistan/, ireland/, netherlands/). */
+   is the same in every planner built this way (jordan/, uzbekistan/, ireland/, netherlands/, denmark/). */
 
 const LS_STATE = 'jordan-planner-v1';
 const LS_UI = 'jordan-planner-ui';

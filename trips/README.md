@@ -7,13 +7,13 @@ Chrome on Android only allows **one installed app per site address**, and everyt
 
 - **Home screen** (`index.html`): a card per trip with your dates and how many free days are planned. Tap one to open it.
   The list comes from `trips.json`.
-- **Each trip** (`iceland/`, `egypt/`, `portugal/`, `portugal-kids/`, `jordan/`, `uzbekistan/`, `ireland/`, `netherlands/`) is the full planner, with a **← Trips** link back to the home screen.
+- **Each trip** (`iceland/`, `egypt/`, `portugal/`, `portugal-kids/`, `jordan/`, `uzbekistan/`, `ireland/`, `netherlands/`, `denmark/`) is the full planner, with a **← Trips** link back to the home screen.
 - **Help:** the home screen has a short *How it works*, and every trip has a **? Help** button with the full guide.
 - **Install once:** Chrome menu ⋮ → Add to home screen. Long-press the icon for shortcuts to each trip.
 
 ## How the copies are made
 
-The standalone planners (`../iceland-planner/`, `../egypt/`, `../portugal/`, `../portugal-kids/`, `../jordan/`, `../uzbekistan/`, `../ireland/`, `../netherlands/`) stay the source of truth and are never modified.
+The standalone planners (`../iceland-planner/`, `../egypt/`, `../portugal/`, `../portugal-kids/`, `../jordan/`, `../uzbekistan/`, `../ireland/`, `../netherlands/`, `../denmark/`) stay the source of truth and are never modified.
 `tools/build.py` copies each one into `trips/<id>/` and patches the copy:
 
 - **Your plan is saved separately:** keys start with `tp-`, so the new app can't change your existing plans.
@@ -22,7 +22,7 @@ The standalone planners (`../iceland-planner/`, `../egypt/`, `../portugal/`, `..
   So they're shared with the standalone app instead of filling the ~5 MB browser storage twice.
 - **Separate offline caches:** these are prefixed `tp-<id>-`, so neither app's service worker deletes the other's files.
   Map tiles are cached as proper CORS responses; opaque ones were being counted as several MB each.
-- **Map data:** Egypt, Portugal, Jordan, Uzbekistan, Ireland and the Netherlands read their OpenStreetMap files from `../../<country>/osm/`, which daily GitHub Actions keep up to date.
+- **Map data:** Egypt, Portugal, Jordan, Uzbekistan, Ireland, the Netherlands and Denmark read their OpenStreetMap files from `../../<country>/osm/`, which daily GitHub Actions keep up to date.
 - **Shareable sample data:** the copies contain no personal dates, plans or bookings (the `generic` settings in `trips.json`).
   A new user gets a sample trip that starts about a month after they first open it, with arrival and departure days marked.
   It has one empty plan and a generic bookings checklist. Places, photos, drive times, settings and safety info are all kept.
@@ -44,5 +44,5 @@ The script checks every patch. If a source file has changed so a patch no longer
 3. Add a shortcut for it to `manifest.webmanifest` (with a `shortcut-<id>.png` icon).
 4. Run `python3 trips/tools/build.py`.
 
-Jordan, Uzbekistan, Ireland and the Netherlands already share one engine: their `app.js` files are identical except for the `COUNTRY` settings block near the top and the `OSM_AREAS` list.
-A fix to one of them should be copied to the other three. Iceland, Egypt and Portugal are still separate copies.
+Jordan, Uzbekistan, Ireland, the Netherlands and Denmark already share one engine: their `app.js` files are identical except for the `COUNTRY` settings block near the top and the `OSM_AREAS` list.
+A fix to one of them should be copied to the others. Iceland, Egypt and Portugal are still separate copies.

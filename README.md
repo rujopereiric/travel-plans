@@ -12,6 +12,7 @@ Trip plans that aren't bike trips — hikes, weekends, itineraries. Served via G
 | [Uzbekistan Trip Planner](https://rujopereiric.github.io/travel-plans/uzbekistan/) | any dates |
 | [Ireland Trip Planner](https://rujopereiric.github.io/travel-plans/ireland/) | any dates |
 | [Netherlands Trip Planner](https://rujopereiric.github.io/travel-plans/netherlands/) | any dates |
+| [Denmark Trip Planner](https://rujopereiric.github.io/travel-plans/denmark/) | any dates |
 | [Iceland Free Days](https://rujopereiric.github.io/travel-plans/iceland-planner/) | any dates |
 | [Vesuvius Day Hike](https://rujopereiric.github.io/travel-plans/vesuvius-plan.html) | September 2026 |
 

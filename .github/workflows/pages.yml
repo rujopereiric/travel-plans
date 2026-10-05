@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
   # the OSM jobs push with GITHUB_TOKEN, which doesn't trigger "push"; deploy after them instead
   workflow_run:
-    workflows: ["Update Egypt OSM data", "Update Jordan OSM data", "Update Uzbekistan OSM data", "Update Ireland OSM data", "Update Netherlands OSM data"]
+    workflows: ["Update Egypt OSM data", "Update Jordan OSM data", "Update Uzbekistan OSM data", "Update Ireland OSM data", "Update Netherlands OSM data", "Update Denmark OSM data"]
     types: [completed]
 
 permissions:

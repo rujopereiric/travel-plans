@@ -196,6 +196,25 @@
         "first": {"label": "Arrival day"},
         "last": {"label": "Departure day"}
       }
+    },
+    {
+      "id": "denmark",
+      "name": "Denmark",
+      "source": "denmark",
+      "flag": "🇩🇰",
+      "color": "#c8102e",
+      "blurb": "Copenhagen, the castles of North Zealand, Funen, Aarhus, Legoland, Skagen, the West Jutland coast and Bornholm. Opening hours, trains and ferries.",
+      "copyKeys": {"denmark-planner-v1": "tp-denmark-planner-v1", "denmark-planner-ui": "tp-denmark-planner-ui"},
+      "uiKey": "denmark-planner-ui",
+      "skip": ["osm", "tools", "parts"],
+      "jsReplace": {"fetch(`osm/${id}.json`": "fetch(`../../denmark/osm/${id}.json`"},
+      "swReplace": {"'denmark-": "'tp-denmark-"},
+      "generic": {
+        "name": "Denmark",
+        "autoDays": 8,
+        "first": {"label": "Arrival day"},
+        "last": {"label": "Departure day"}
+      }
     }
   ]
 }

@@ -1,49 +1,40 @@
 'use strict';
-/* Ireland trip planner — vanilla JS, no build step. Built from the Portugal planner (itself built from the Egypt one).
+/* Denmark trip planner — vanilla JS, no build step. Built from the Portugal planner (itself built from the Egypt one).
    All times are minutes after midnight, local time (the time zone in data.json's trip.tz).
    Everything that differs between countries is in the COUNTRY block below and in OSM_AREAS; the rest of this file
    is the same in every planner built this way (jordan/, uzbekistan/, ireland/, netherlands/, denmark/). */
 
-const LS_STATE = 'tp-ireland-planner-v1';
-const LS_UI = 'tp-ireland-planner-ui';
-// ---- added by trips/tools/build.py: first run in the Travel Plans app ----
-// This copy saves under its own keys. If you already have a plan in the standalone Ireland app, offer to copy it once.
-(function () {
-  try {
-    const pairs = {"ireland-planner-v1": "tp-ireland-planner-v1", "ireland-planner-ui": "tp-ireland-planner-ui"};
-    const asked = LS_STATE + '-asked';
-    if (localStorage.getItem(LS_STATE) || localStorage.getItem(asked)) return;
-    const has = Object.keys(pairs).some(k => localStorage.getItem(k) != null);
-    if (has && confirm('Copy your Ireland plan from the standalone Ireland app into Travel Plans?\n\nYour original stays as it is. Choose Cancel to start from the sample plan.'))
-      for (const [from, to] of Object.entries(pairs)) { const v = localStorage.getItem(from); if (v != null) localStorage.setItem(to, v); }
-    localStorage.setItem(asked, '1');
-  } catch (e) { }
-})();
-
+const LS_STATE = 'denmark-planner-v1';
+const LS_UI = 'denmark-planner-ui';
 const COUNTRY = {
-  name: 'Ireland', tz: 'Europe/Dublin', clock: 'Irish time', heat: false, map: [53.4, -7.9, 7],
-  cur: null,
-  defaults: { speedKmh: 70, trafficBufferPct: 10, roadEgpPerKm: 0.15, eurEgp: 1, maxSeeH: 6.5, darkDriveMin: 45, earliestDepart: '08:30', maxDriveH: 4, nightEgp: 130 },
-  roadLabel: 'Car cost € per km (fuel, tolls)', roadStep: 0.01, nightStep: 5, roadWho: 'your car',
-  roadNote: l => `Car: ${l}/km for fuel and tolls`,
-  flight: '', ferry: 'Ferries (Aran Islands)', train: 'Trains (Dublin ↔ Cork, Galway, Limerick, Killarney, Belfast; Belfast ↔ Derry)',
-  emergency: [['Emergency (all, also in Northern Ireland)', '112 or 999']],
-  emergencyNote: 'Both numbers work from any phone, also for mountain and coastal rescue. Northern Ireland is in the UK: pounds (£), and road signs in miles.',
-  sunNote: 'About 40 minutes after sunset it\'s dark. Days are short in December (about 7½ hours) and very long in June (about 17 hours); the sun rises and sets ~15 min later on the west coast than in Dublin.',
-  localSunNote: 'the sun rises and sets ~15 min later on the west coast than in Dublin',
+  name: 'Denmark', tz: 'Europe/Copenhagen', clock: 'Danish time', heat: false, map: [56.0, 10.8, 7],
+  cur: { code: 'DKK', alt: ['kr'], name: 'Danish krone (DKK, kr.)', perEur: 7.46, range: [6.5, 8.5], dp: 2,
+    quick: [10, 50, 100, 200, 500, 1000], table: [10, 20, 50, 100, 150, 200, 300, 500, 750, 1000, 2000, 5000],
+    cash: ['Notes are 50, 100, 200, 500 and 1,000 kroner; coins from 50 øre to 20 kroner. Prices are written "kr." or DKK.',
+      'Cards work almost everywhere, and many cafés, museums and car parks are card-only. Cash is hardly needed.',
+      'Some shops add a small surcharge for foreign cards. Danes pay with Dankort and MobilePay.',
+      'The krone is pegged to the euro (about 7.46 kroner to €1), so the rate barely moves. Tipping is not expected.'] },
+  defaults: { speedKmh: 80, trafficBufferPct: 10, roadEgpPerKm: 1.5, eurEgp: 7.46, maxSeeH: 7, darkDriveMin: 60, earliestDepart: '08:30', maxDriveH: 4, nightEgp: 1100, fxWeekendPct: 1 },
+  roadLabel: 'Car cost DKK per km (fuel)', roadStep: 0.1, nightStep: 50, roadWho: 'your car',
+  roadNote: (l, e) => `Car: ${l}/km (${e}) for fuel; the Great Belt and Øresund bridge tolls are extra`,
+  flight: 'Flights (Copenhagen ↔ Bornholm, Aalborg)', ferry: 'Ferries (Bornholm, Ærø, Fanø)', train: 'Trains (DSB intercity Copenhagen ↔ Odense ↔ Aarhus ↔ Aalborg)',
+  emergency: [['Emergency (all)', '112'], ['Police, non-urgent', '114'], ['Medical helpline (Copenhagen region)', '1813']],
+  emergencyNote: '112 works from any phone, also without a SIM. Outside Copenhagen, call your region\'s doctor-on-call (lægevagt) for urgent but not life-threatening problems.',
+  sunNote: 'About 45 minutes after sunset it\'s dark. Days are short in December (about 7 hours) and very long in June (17½ hours in Copenhagen, more in Skagen); the sun rises ~15 min later on Jutland\'s west coast than in Copenhagen, and ~10 min earlier on Bornholm.',
+  localSunNote: 'the sun rises ~15 min later on Jutland\'s west coast than in Copenhagen, ~10 min earlier on Bornholm',
   help: {
-    intro: 'A trip planner for Ireland, north and south, that knows about opening hours, daylight and driving times on slow country roads, and uses trains and the Aran Islands ferries where they help. It checks that every stop happens while it is open and that you get back in time.',
-    busy: 'A wedding, a round of golf, a tour you already booked: any time you are not free.',
-    bar: '<b>Yellow</b> = daylight, <b>blue-grey</b> = twilight, dark = night. All times are <b>Irish time</b> (the same in Northern Ireland).',
+    intro: 'A trip planner for Denmark that knows about opening hours, daylight and driving times, and uses trains, ferries and flights where they beat the car (Copenhagen ↔ Aarhus, Bornholm, Ærø). It checks that every stop happens while it is open and that you get back in time.',
+    busy: 'A concert, a work day, a Tivoli evening you already booked: any time you are not free.',
+    bar: '<b>Yellow</b> = daylight, <b>blue-grey</b> = twilight, dark = night. All times are <b>Danish time</b>.',
     badExtra: ', a stop is outside its opening hours or on its closed day',
-    specialTitle: '🇮🇪 Opening hours and getting around (Ireland)',
+    specialTitle: '🇩🇰 Opening hours and getting around (Denmark)',
     special: `<ul>
-    <li>Castles, houses and visitor centres have <b>opening hours</b>, and many are shorter or closed from November to March. A stop outside them makes the day ✗.</li>
-    <li>You drive on the <b>left</b>. Country roads are narrow and slow: the Ring of Kerry, Dingle and Connemara take longer than the map suggests.</li>
-    <li><b>Timed tickets</b>: the Book of Kells, the Guinness Storehouse, Newgrange (via the Brú na Bóinne visitor centre). Skellig Michael landing trips (mid-May to September) sell out months ahead and are often cancelled by the sea.</li>
-    <li>The Aran Islands are reached by <b>ferry</b> automatically when you add them; the times include getting to the pier.</li>
-    <li>Prices are approximate and in euros; in Northern Ireland they're in pounds (£).</li></ul>`,
-    check: 'Check official opening hours (many are seasonal), Met Éireann and Met Office weather warnings, and ferry sailings on windy days. Emergency number: 112 or 999.'
+    <li>Museums and castles have <b>opening hours</b>; many close on <b>Mondays</b>, and several (Egeskov, Legoland, Tivoli) open only part of the year. A stop outside them makes the day ✗.</li>
+    <li>The <b>Copenhagen Card</b> covers transport and most museums in and around Copenhagen, including Kronborg, Frederiksborg and Roskilde.</li>
+    <li>Between cities the <b>train</b> is used automatically when it beats the car; Bornholm, Ærø and Fanø are reached by <b>ferry</b> (or the Bornholm flight). Times are door to door.</li>
+    <li>The <b>Great Belt bridge</b> (Zealand ↔ Funen) and the <b>Øresund bridge</b> (to Sweden, on the road to Bornholm) charge tolls.</li>
+    <li>Prices are approximate and in kroner, with € alongside at the live rate.</li></ul>`,
+    check: 'Check official opening hours (many are seasonal), the DMI weather warnings, and ferry sailings on stormy days. Emergency number: 112.'
   }
 };
 // Bump on every change. The app compares it with the app.js on the server, so a phone that kept an old tab open
@@ -353,7 +344,7 @@ const legText = leg => leg.segs ? leg.segs.map(x => `${MODE_ICON[x.mode]} ${plac
 // One "table" request gives road time + distance between every pair of places; used for any leg
 // not in the hand-made "drives" list. Day routes are fetched for the map shape. Both are cached offline.
 const OSRM = 'https://router.project-osrm.org';
-const LS_ROAD = 'ireland-roads', LS_ROUTES = 'ireland-routes';
+const LS_ROAD = 'denmark-roads', LS_ROUTES = 'denmark-routes';
 let ROAD = null, ROUTES = {}, ROAD_BUSY = false;
 try { ROAD = JSON.parse(localStorage.getItem(LS_ROAD) || 'null'); ROUTES = JSON.parse(localStorage.getItem(LS_ROUTES) || '{}'); } catch (e) { }
 const coordStr = ids => ids.map(id => `${place(id).lon.toFixed(5)},${place(id).lat.toFixed(5)}`).join(';');
@@ -723,7 +714,7 @@ function autoPlan(bid) {
 /* ---------- exchange rate ---------- */
 // Card networks and Revolut convert at (close to) the mid-market rate on weekdays, so we fetch the mid-market rate
 // from free no-key sources and apply your own markup on top. (The ECB doesn't publish these currencies, so no Frankfurter.)
-const LS_FX = 'ireland-fx';
+const LS_FX = 'denmark-fx';
 let FX = null; // { mid: local currency per EUR, src, date, at }
 try { FX = JSON.parse(localStorage.getItem(LS_FX) || 'null'); } catch (e) { }
 let FX_BUSY = false, FX_ERR = null;
@@ -1030,7 +1021,7 @@ function pretty(v, ind = 0) { // same layout as the hand-edited data.json: short
 function exportJSON() {
   const blob = new Blob([pretty(S) + '\n'], { type: 'application/json' });
   const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob); a.download = `ireland-plan-${todayISO()}.json`;
+  a.href = URL.createObjectURL(blob); a.download = `denmark-plan-${todayISO()}.json`;
   document.body.appendChild(a); a.click(); a.remove();
   setTimeout(() => URL.revokeObjectURL(a.href), 1000);
   toast('Exported');
@@ -1415,7 +1406,7 @@ function renderCond() {
 
 /* ---------- places tab (POIs) ---------- */
 // Photos + an encyclopedic intro come from Wikipedia at runtime (CORS-enabled, no key), cached for offline.
-const LS_WIKI = 'ireland-wiki';
+const LS_WIKI = 'denmark-wiki';
 let WIKI = {}, WIKI_BUSY = false, WIKI_ERR = null;
 try { WIKI = JSON.parse(localStorage.getItem(LS_WIKI) || '{}'); } catch (e) { }
 const WAPI = 'https://en.wikipedia.org/w/api.php?format=json&origin=*&action=query';
@@ -1479,7 +1470,7 @@ const IMG_FAIL = {};
 // Wikimedia rejects thumbnail widths outside its standard list (HTTP 400, "Use thumbnail sizes listed on w.wiki/GHai").
 // We don't hard-code that list: try likely widths, remember the first that works, and fall back to the original file.
 const IMG_CHAIN = [960, 1280, 500, 330, 250];
-let IMG_W = +(localStorage.getItem('ireland-imgw') || 0) || null;
+let IMG_W = +(localStorage.getItem('denmark-imgw') || 0) || null;
 const isThumb = u => /\/thumb\/.+\/\d+px-[^/]+$/.test(u || '');
 const thumbAt = (u, w) => u.replace(/\/\d+px-([^/]+)$/, `/${w}px-$1`);
 const origOf = u => u.replace('/thumb/', '/').replace(/\/\d+px-[^/]+$/, '');
@@ -1501,7 +1492,7 @@ function imgFail(el, id) {
 let imgSaveT = null;
 function imgOk(id, el) {
   const m = el && el.src.match(/\/thumb\/.+\/(\d+)px-[^/]+$/);
-  if (m && +m[1] !== IMG_W) { IMG_W = +m[1]; try { localStorage.setItem('ireland-imgw', IMG_W); } catch (e) { } }
+  if (m && +m[1] !== IMG_W) { IMG_W = +m[1]; try { localStorage.setItem('denmark-imgw', IMG_W); } catch (e) { } }
   clearTimeout(imgSaveT); imgSaveT = setTimeout(() => { try { localStorage.setItem(LS_WIKI, JSON.stringify(WIKI)); } catch (e) { } }, 500); }
 function photoStatus() {
   const n = S.places.length, got = S.places.filter(p => (p.photo || WIKI[p.id]?.img) && !IMG_FAIL[p.id]).length, failed = Object.keys(IMG_FAIL).length;
@@ -1592,7 +1583,7 @@ function renderMyPlaces() {
 // waterfall… Stored compactly for offline use; any item can be promoted into "My places".
 // A country has tens of thousands of chapels, shrines and old houses, so minor historic objects, artworks and
 // places of worship are only included when they have a Wikipedia article.
-const LS_OSM = 'ireland-osm';
+const LS_OSM = 'denmark-osm';
 // Downloaded region by region (see OSM_AREAS): OSM_STORE.areas[id] = { at, items }. OSM is the merged, de-duplicated
 // view the list, map layer and filter use ({ items }), or null when nothing is downloaded.
 let OSM = null, OSM_STORE = { v: 2, areas: {} }, OSM_BUSY = null, OSM_QUEUE = [], OSM_ERRS = {};
@@ -1611,16 +1602,15 @@ const OVERPASS = ['https://overpass-api.de/api/interpreter', 'https://overpass.p
 // One download per region: small queries that come back in seconds, so you fetch what your trip needs. Plain bounding
 // boxes (an "inside the country" area filter makes queries crawl), so a little of the neighbours may slip in at the edges.
 const OSM_AREAS = [ // [id, name, south, west, north, east]
-  ["dublin", "Dublin", 53.2, -6.45, 53.45, -6.0],
-  ["east", "Wicklow, the Boyne Valley & Cooley", 52.75, -7.3, 54.1, -6.0],
-  ["southeast", "Kilkenny, Waterford, Wexford & Tipperary", 52.0, -8.1, 52.75, -6.2],
-  ["cork", "Cork & West Cork", 51.4, -10.25, 52.15, -8.0],
-  ["kerry", "Kerry", 51.7, -10.6, 52.5, -9.2],
-  ["clare", "Clare & Limerick", 52.4, -9.95, 53.2, -8.4],
-  ["galway", "Galway, Connemara & the Aran Islands", 53.0, -10.3, 53.7, -8.6],
-  ["northwest", "Mayo, Sligo & Donegal", 53.6, -10.3, 55.4, -7.3],
-  ["midlands", "Midlands & the Shannon", 52.9, -8.6, 54.0, -7.0],
-  ["north", "Northern Ireland", 54.0, -8.2, 55.3, -5.4],
+  ["copenhagen", "Copenhagen", 55.55, 12.35, 55.8, 12.75],
+  ["northzealand", "North Zealand: Helsingør, Hillerød & the Louisiana coast", 55.8, 12.0, 56.15, 12.65],
+  ["southzealand", "Roskilde, Møn & South Zealand", 54.55, 10.95, 55.8, 12.6],
+  ["funen", "Funen & the southern islands", 54.7, 9.65, 55.65, 11.0],
+  ["bornholm", "Bornholm", 54.95, 14.65, 55.32, 15.2],
+  ["southjutland", "South Jutland & the Wadden Sea", 54.8, 8.05, 55.6, 9.9],
+  ["eastjutland", "Aarhus, the Lake District & Legoland", 55.6, 9.0, 56.5, 10.95],
+  ["westjutland", "West Jutland coast", 55.6, 8.05, 57.1, 9.0],
+  ["northjutland", "North Jutland: Aalborg & Skagen", 56.5, 8.2, 57.75, 10.7],
 ];
 // what this country calls a few OpenStreetMap kinds of place (osmCat)
 const COUNTRY_OSM = {"mosque":  "Mosque", "tomb":  "Ancient site", "castle":  "Castle", "ruins":  "Ruins"};
@@ -1758,7 +1748,7 @@ async function osmNext() {
   let items = null, at = Date.now();
   try {
     OSM_ST.phase = 'file'; osmTick();
-    const res = await fetch(`../../ireland/osm/${id}.json`, { cache: 'no-cache' });
+    const res = await fetch(`osm/${id}.json`, { cache: 'no-cache' });
     if (res.ok) { const j = await res.json(); if (Array.isArray(j.items)) { items = j.items; at = j.at || at; } }
     else if (res.status !== 404) errs.push(`osm/${id}.json: HTTP ${res.status}`);
   } catch (e) { errs.push(`osm/${id}.json: ${e.message}`); }
@@ -2333,7 +2323,7 @@ document.addEventListener('click', e => {
     case 'tripedit': UI.editTrip = !UI.editTrip; render(); break;
     case 'tripsave': if (setTripDates($('#trip-from').value, $('#trip-to').value)) { saveFlights(); UI.editTrip = false; mapDirty = true; changed(); toast('Dates and flights updated'); } break;
     case 'flightedit': UI.editTrip = true; render(); scrollTo(0, 0); break;
-    case 'wikiretry': IMG_W = null; try { localStorage.removeItem('ireland-imgw'); } catch (e) { } WIKI = {}; for (const k in IMG_FAIL) delete IMG_FAIL[k]; try { localStorage.removeItem(LS_WIKI); } catch (e) { } fetchWiki(); break;
+    case 'wikiretry': IMG_W = null; try { localStorage.removeItem('denmark-imgw'); } catch (e) { } WIKI = {}; for (const k in IMG_FAIL) delete IMG_FAIL[k]; try { localStorage.removeItem(LS_WIKI); } catch (e) { } fetchWiki(); break;
     case 'pick': { const id = el.dataset.place, v = el.dataset.v; S.picks[id] = S.picks[id] === v ? undefined : v; if (!S.picks[id]) delete S.picks[id]; changed(); break; }
     case 'pfilter': UI.pf = { ...(UI.pf || {}), [el.dataset.k]: el.dataset.v }; render(); break;
     case 'pinfo': UI.pf = {}; UI.pmode = 'mine'; MAP && MAP.closePopup(); goTab('places'); setTimeout(() => document.getElementById('poi-' + el.dataset.place)?.scrollIntoView({ block: 'start' }), 0); break;

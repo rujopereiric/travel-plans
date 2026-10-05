@@ -1,0 +1,2965 @@
+{
+  "version": 1,
+  "trip": {
+    "name": "Denmark",
+    "sunLat": 55.6761,
+    "sunLon": 12.5683,
+    "home": "copenhagen",
+    "end": "cph",
+    "tz": "Europe/Copenhagen",
+    "country": "Denmark",
+    "autoDays": 8,
+    "arrive": {"time": "12:00", "at": "cph"},
+    "leave": {"time": "18:00", "at": "cph"},
+    "from": "auto",
+    "to": "auto",
+    "autoEnds": {"first": {"label": "Arrival day"}, "last": {"label": "Departure day"}}
+  },
+  "settings": {},
+  "days": [],
+  "blocks": [],
+  "options": [{"id": "A1", "block": "A", "name": "My plan", "note": "", "days": {}}],
+  "regions": [
+    {"id": "copenhagen", "name": "Copenhagen", "color": "#c8102e"},
+    {
+      "id": "northzealand",
+      "name": "North Zealand: Helsingør, Hillerød & the Louisiana coast",
+      "color": "#7b61c9"
+    },
+    {"id": "southzealand", "name": "Roskilde, Møn & South Zealand", "color": "#00897b"},
+    {"id": "funen", "name": "Funen & the southern islands", "color": "#d4661b"},
+    {"id": "bornholm", "name": "Bornholm", "color": "#2f7fd1"},
+    {"id": "southjutland", "name": "South Jutland & the Wadden Sea", "color": "#8d6e63"},
+    {"id": "eastjutland", "name": "Aarhus, the Lake District & Legoland", "color": "#2e7d32"},
+    {"id": "westjutland", "name": "West Jutland coast", "color": "#00838f"},
+    {"id": "northjutland", "name": "North Jutland: Aalborg & Skagen", "color": "#8e244d"}
+  ],
+  "places": [
+    {
+      "id": "copenhagen",
+      "name": "Copenhagen",
+      "region": "copenhagen",
+      "lat": 55.6761,
+      "lon": 12.5683,
+      "visit": 240,
+      "cat": "Base",
+      "priority": 3,
+      "wiki": "Copenhagen",
+      "summary": "Denmark's capital, a compact, flat and very bikeable city of canals, royal palaces, design shops and excellent museums. Easily the best base for the east of the country, with fast trains to Helsingør, Roskilde and the airport.",
+      "facts": [
+        "The Copenhagen Card (24–120 h) covers public transport in the capital region and free entry to ~80 sights; it pays off with 3+ paid sights a day",
+        "Don't drive in the centre: street parking is expensive and limited; park at a suburban station and take the S-train or metro",
+        "Rent a city bike or regular bike: cycling is the local way to get around",
+        "Metro from the airport to the centre takes about 15 minutes"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "tivoli",
+      "name": "Tivoli Gardens",
+      "region": "copenhagen",
+      "lat": 55.6737,
+      "lon": 12.5681,
+      "visit": 180,
+      "cat": "Theme park",
+      "priority": 3,
+      "wiki": "Tivoli Gardens",
+      "summary": "One of the world's oldest amusement parks (1843), right in the city centre: gardens, historic rides, a pantomime theatre and thousands of lights after dark. Atmospheric rather than thrilling, and at its best in the evening.",
+      "facts": [
+        "Entry roughly 160–190 DKK, rides extra (or an unlimited ride pass); entry is included in the Copenhagen Card",
+        "Book ahead on summer weekends and for Friday Rock concerts",
+        "Seasonal: summer season plus Halloween and Christmas markets; closed for some weeks in winter and spring",
+        "Go late afternoon and stay for the lights"
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "nyhavn",
+      "name": "Nyhavn",
+      "region": "copenhagen",
+      "lat": 55.6798,
+      "lon": 12.5904,
+      "visit": 45,
+      "cat": "Old town",
+      "priority": 3,
+      "wiki": "Nyhavn",
+      "summary": "The postcard 17th-century canal lined with brightly painted townhouses and old wooden ships. Touristy and pricey to eat at, but a must for a stroll and the starting point of most canal tours.",
+      "facts": [
+        "Free to walk; restaurants on the sunny north side are expensive, buy a drink and sit on the quay instead",
+        "Hans Christian Andersen lived at numbers 18, 20 and 67",
+        "Best light in the morning and early evening"
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "canal_tour",
+      "name": "Copenhagen canal tour",
+      "region": "copenhagen",
+      "lat": 55.6795,
+      "lon": 12.588,
+      "visit": 60,
+      "cat": "Boat trip",
+      "priority": 2,
+      "wiki": "Port of Copenhagen",
+      "summary": "A one-hour open-boat tour from Nyhavn or Gammel Strand through the harbour and Christianshavn's canals, passing the Opera House, the Little Mermaid and Christiansborg. A quick, relaxing way to get your bearings.",
+      "facts": [
+        "Around 100–130 DKK; the classic Nyhavn tour is included in the Copenhagen Card",
+        "Departures every 30–60 minutes in season, fewer in winter",
+        "Sit on the outside edge for photos and bring a layer: it is windy on the water"
+      ],
+      "season": "Boats run all year but the open boats are most pleasant May–September."
+    },
+    {
+      "id": "christiansborg",
+      "name": "Christiansborg Palace",
+      "region": "copenhagen",
+      "lat": 55.6761,
+      "lon": 12.5806,
+      "visit": 120,
+      "cat": "Palace",
+      "priority": 2,
+      "wiki": "Christiansborg Palace",
+      "summary": "Seat of the Danish parliament, Supreme Court and the royal reception rooms, on the island of Slotsholmen. Visit the lavish reception rooms with the modern tapestries of Danish history, the medieval ruins beneath and the royal stables.",
+      "facts": [
+        "Combined ticket around 175 DKK; free with the Copenhagen Card",
+        "The tower (Tårnet) has free entry and one of the best views over the city — expect a short queue",
+        "Reception rooms can close at short notice for royal events",
+        "Parliament (Folketinget) offers free guided tours on some days"
+      ],
+      "hours": "10:00-17:00",
+      "closed": [1],
+      "needsDaylight": false
+    },
+    {
+      "id": "rosenborg",
+      "name": "Rosenborg Castle",
+      "region": "copenhagen",
+      "lat": 55.6858,
+      "lon": 12.5773,
+      "visit": 90,
+      "cat": "Castle",
+      "priority": 3,
+      "wiki": "Rosenborg Castle",
+      "summary": "Christian IV's Renaissance castle from the early 1600s, with original royal interiors and, in the basement treasury, the Danish crown jewels. Set in the King's Garden, the city's oldest park.",
+      "facts": [
+        "~140 DKK; free with the Copenhagen Card",
+        "Book a time slot online in summer, when the narrow rooms get crowded",
+        "Allow 1–1.5 hours; the King's Garden around it is free"
+      ],
+      "hours": "10:00-16:00",
+      "closed": [1],
+      "needsDaylight": false
+    },
+    {
+      "id": "amalienborg",
+      "name": "Amalienborg & the Marble Church",
+      "region": "copenhagen",
+      "lat": 55.684,
+      "lon": 12.593,
+      "visit": 60,
+      "cat": "Palace",
+      "priority": 2,
+      "wiki": "Amalienborg",
+      "summary": "The royal family's winter residence: four identical rococo palaces around an octagonal square, facing the domed Marble Church (Frederik's Church). The Changing of the Guard marches into the square at noon.",
+      "facts": [
+        "The square and guard change (daily, 12:00) are free; the Amalienborg Museum is ticketed and included in the Copenhagen Card",
+        "The Marble Church is free to enter; the dome can be climbed on guided tours",
+        "Combine with a walk along the harbour to the Opera House view and the Little Mermaid"
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "national_museum",
+      "name": "National Museum of Denmark",
+      "region": "copenhagen",
+      "lat": 55.6748,
+      "lon": 12.5748,
+      "visit": 150,
+      "cat": "Museum",
+      "priority": 2,
+      "wiki": "National Museum of Denmark",
+      "summary": "Denmark's main museum of history, from Bronze Age lurs and the Sun Chariot to Viking finds and everyday life through the centuries. The prehistory galleries are the highlight.",
+      "facts": [
+        "~130 DKK; free with the Copenhagen Card, under-18s free",
+        "Big: pick the prehistory and Viking sections if short of time",
+        "Good rainy-day option a few minutes from Tivoli"
+      ],
+      "hours": "10:00-17:00",
+      "closed": [1],
+      "needsDaylight": false
+    },
+    {
+      "id": "smk",
+      "name": "National Gallery of Denmark (SMK)",
+      "region": "copenhagen",
+      "lat": 55.6888,
+      "lon": 12.5784,
+      "visit": 120,
+      "cat": "Museum",
+      "priority": 2,
+      "wiki": "National Gallery of Denmark",
+      "summary": "The national art museum, with the Danish Golden Age painters, the Skagen painters, Old Masters and a strong modern collection, in a historic building joined to a bright modern extension.",
+      "facts": [
+        "~140 DKK; free with the Copenhagen Card, under-27s discounted, under-18s free",
+        "Open late on Wednesday evenings",
+        "Next to the Botanical Garden and Rosenborg, so easy to combine"
+      ],
+      "hours": "10:00-18:00",
+      "closed": [1],
+      "needsDaylight": false
+    },
+    {
+      "id": "glyptotek",
+      "name": "Ny Carlsberg Glyptotek",
+      "region": "copenhagen",
+      "lat": 55.6726,
+      "lon": 12.5722,
+      "visit": 90,
+      "cat": "Museum",
+      "priority": 2,
+      "wiki": "Ny Carlsberg Glyptotek",
+      "summary": "The Carlsberg brewer's art collection: Egyptian, Greek and Roman sculpture, French Impressionists and Rodin, around a palm-filled winter garden café. Beautiful building, never too crowded.",
+      "facts": [
+        "~125 DKK; free with the Copenhagen Card",
+        "The winter garden café is a pleasant stop even on a short visit",
+        "Opposite Tivoli and the main station"
+      ],
+      "hours": "11:00-18:00",
+      "closed": [1],
+      "needsDaylight": false
+    },
+    {
+      "id": "rundetaarn",
+      "name": "Round Tower (Rundetaarn)",
+      "region": "copenhagen",
+      "lat": 55.6813,
+      "lon": 12.5757,
+      "visit": 30,
+      "cat": "Viewpoint",
+      "priority": 2,
+      "wiki": "Rundetaarn",
+      "summary": "A 17th-century observatory tower with a wide spiral ramp instead of stairs, leading to a platform with views over the old city's roofs and spires.",
+      "facts": [
+        "~40 DKK; free with the Copenhagen Card",
+        "Allow 30 minutes; the ramp is easy for all ages",
+        "In the Latin Quarter, near the Strøget shopping street"
+      ],
+      "hours": "10:00-18:00",
+      "needsDaylight": false
+    },
+    {
+      "id": "church_of_our_saviour",
+      "name": "Church of Our Saviour",
+      "region": "copenhagen",
+      "lat": 55.6729,
+      "lon": 12.594,
+      "visit": 45,
+      "cat": "Monastery & church",
+      "priority": 2,
+      "wiki": "Church of Our Saviour, Copenhagen",
+      "summary": "A baroque church in Christianshavn whose black-and-gold corkscrew spire has an external staircase winding to the top, with a dizzying view over the city. Inside is a huge carved organ held up by elephants.",
+      "facts": [
+        "The church is free; climbing the spire is ticketed and timed — book online in summer",
+        "Over 400 steps, the last ones narrow and outside; not for those with vertigo",
+        "The spire closes in strong wind, rain or ice"
+      ],
+      "caution": "The final section of the spire is steep, narrow and exposed to the wind."
+    },
+    {
+      "id": "christiania",
+      "name": "Freetown Christiania",
+      "region": "copenhagen",
+      "lat": 55.6731,
+      "lon": 12.5992,
+      "visit": 60,
+      "cat": "Experience",
+      "priority": 2,
+      "wiki": "Freetown Christiania",
+      "summary": "A self-governing hippie commune founded in 1971 in former barracks in Christianshavn, with self-built houses, murals, workshops, cafés and lakeside paths. Its quieter residential corners are the most interesting part.",
+      "facts": [
+        "Free to walk around; residents offer guided tours",
+        "Don't take photos around the former Pusher Street area",
+        "Walk out to the lakeside paths on the ramparts behind the main area"
+      ],
+      "caution": "Cannabis dealing (illegal in Denmark) has led to police raids and violence around Pusher Street; respect the no-photo rule and stay alert there."
+    },
+    {
+      "id": "little_mermaid",
+      "name": "The Little Mermaid & Kastellet",
+      "region": "copenhagen",
+      "lat": 55.6929,
+      "lon": 12.5993,
+      "visit": 40,
+      "cat": "Monument",
+      "priority": 1,
+      "wiki": "The Little Mermaid (statue)",
+      "summary": "The small bronze statue (1913) based on Andersen's fairy tale sits on a rock off the Langelinie promenade. Famously underwhelming on its own, but worth it combined with the star-shaped Kastellet fortress next door and the Gefion Fountain.",
+      "facts": [
+        "Free; crowded with tour groups from mid-morning, go early or in the evening",
+        "Kastellet's ramparts make a free, pleasant loop walk",
+        "About a 20-minute walk north of Nyhavn along the harbour"
+      ]
+    },
+    {
+      "id": "torvehallerne",
+      "name": "Torvehallerne food market",
+      "region": "copenhagen",
+      "lat": 55.6838,
+      "lon": 12.5696,
+      "visit": 45,
+      "cat": "Food & market",
+      "priority": 1,
+      "wiki": "Israels Plads",
+      "summary": "Two glass market halls by Nørreport station with around 60 stalls: smørrebrød, fish, coffee, pastries and Danish produce. A good lunch stop.",
+      "facts": [
+        "Free entry; lunch roughly 100–150 DKK",
+        "Busy at weekday lunchtime and Saturday morning",
+        "Shorter hours on Sunday"
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "blue_planet",
+      "name": "The Blue Planet (National Aquarium)",
+      "region": "copenhagen",
+      "lat": 55.6383,
+      "lon": 12.6561,
+      "visit": 120,
+      "cat": "Museum",
+      "priority": 1,
+      "wiki": "National Aquarium Denmark",
+      "summary": "Northern Europe's largest aquarium, in a striking swirl-shaped building on the Amager coast near the airport, with a large ocean tank with hammerhead sharks and a tropical rainforest hall.",
+      "facts": [
+        "Included in the Copenhagen Card; book a time slot online on weekends and school holidays",
+        "Metro to Kastrup station, then a short walk",
+        "Good with children and on rainy days"
+      ],
+      "hours": "10:00-17:00",
+      "needsDaylight": false
+    },
+    {
+      "id": "amager_strandpark",
+      "name": "Amager Strandpark",
+      "region": "copenhagen",
+      "lat": 55.656,
+      "lon": 12.646,
+      "visit": 90,
+      "cat": "Beach",
+      "priority": 1,
+      "wiki": "Amager Strandpark",
+      "summary": "A long artificial sandy beach and lagoon a few metro stops from the centre, with the Kastrup Sea Bath's round wooden pier nearby. Where Copenhageners swim in summer.",
+      "facts": [
+        "Free; metro M2 to Amager Strand or Femøren",
+        "Water quality is monitored and usually good",
+        "Busy on warm summer weekends"
+      ],
+      "season": "Swimming is realistic from late June to August; the water rarely exceeds 20 °C."
+    },
+    {
+      "id": "dragor",
+      "name": "Dragør",
+      "region": "copenhagen",
+      "lat": 55.593,
+      "lon": 12.672,
+      "visit": 90,
+      "cat": "Village",
+      "priority": 2,
+      "wiki": "Dragør",
+      "summary": "A well-preserved 18th-century skipper's village at the southern tip of Amager, with yellow houses, cobbled lanes, hollyhocks and a small harbour. A quiet contrast to the city, 15 minutes from the airport.",
+      "facts": [
+        "Bus 350S from the centre or a short drive from the airport",
+        "Free parking by the harbour outside peak summer",
+        "Good fish restaurants and an ice-cream stop at the harbour"
+      ]
+    },
+    {
+      "id": "dyrehaven",
+      "name": "Dyrehaven deer park & Eremitage",
+      "region": "copenhagen",
+      "lat": 55.79,
+      "lon": 12.565,
+      "visit": 120,
+      "cat": "Nature reserve",
+      "priority": 2,
+      "wiki": "Jægersborg Dyrehave",
+      "summary": "A UNESCO-listed royal hunting forest north of the city, with ancient oaks, open grassland and around 2,000 free-roaming red and fallow deer around the Eremitage hunting lodge.",
+      "facts": [
+        "Free; S-train to Klampenborg, then walk in",
+        "Rent a bike or take a horse carriage ride from the entrance",
+        "Deer are easiest to see early morning and towards dusk",
+        "Combine with Bakken amusement park and Bellevue beach next to the station"
+      ]
+    },
+    {
+      "id": "bakken",
+      "name": "Bakken (Dyrehavsbakken)",
+      "region": "copenhagen",
+      "lat": 55.7746,
+      "lon": 12.5786,
+      "visit": 150,
+      "cat": "Theme park",
+      "priority": 1,
+      "wiki": "Dyrehavsbakken",
+      "summary": "The world's oldest operating amusement park, in the edge of Dyrehaven forest: old-fashioned, folksy and cheaper than Tivoli, with a wooden roller coaster from 1932.",
+      "facts": [
+        "Free entry; pay per ride or buy a wristband",
+        "Seasonal, roughly late March to the end of August, plus Halloween and Christmas events",
+        "10 minutes' walk from Klampenborg S-train station"
+      ]
+    },
+    {
+      "id": "helsingor",
+      "name": "Helsingør",
+      "region": "northzealand",
+      "lat": 56.036,
+      "lon": 12.6136,
+      "visit": 150,
+      "cat": "Base",
+      "priority": 2,
+      "wiki": "Helsingør",
+      "summary": "A historic port town facing Sweden across the narrow Øresund, home to Kronborg Castle, a medieval old town with a Carmelite monastery and the excellent underground Maritime Museum.",
+      "facts": [
+        "45 minutes by train from Copenhagen; trains run every 20 minutes",
+        "Ferries to Helsingborg in Sweden every 20 minutes (20-minute crossing)",
+        "The Culture Yard (Kulturværftet) by the harbour has a café with castle views"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "kronborg",
+      "name": "Kronborg Castle",
+      "region": "northzealand",
+      "lat": 56.039,
+      "lon": 12.6213,
+      "visit": 150,
+      "cat": "Castle",
+      "priority": 3,
+      "wiki": "Kronborg",
+      "summary": "The Renaissance castle guarding the Øresund, which once collected the Sound Dues and is the setting of Shakespeare's Hamlet. See the great ballroom, royal chambers and the dark casemates with the statue of Holger the Dane.",
+      "facts": [
+        "~150 DKK; free with the Copenhagen Card",
+        "Hamlet scenes are acted in the castle in summer",
+        "Bring a torch (or phone light) for the casemates",
+        "Allow 2–3 hours with the Maritime Museum next door"
+      ],
+      "hours": "11:00-16:00",
+      "needsDaylight": false
+    },
+    {
+      "id": "ms_maritime_museum",
+      "name": "M/S Maritime Museum of Denmark",
+      "region": "northzealand",
+      "lat": 56.0375,
+      "lon": 12.6156,
+      "visit": 90,
+      "cat": "Museum",
+      "priority": 2,
+      "wiki": "M/S Maritime Museum of Denmark",
+      "summary": "A museum of Danish seafaring built underground in an old dry dock beside Kronborg, designed by BIG. The architecture is as much a draw as the ship models, tattoos and container-shipping story.",
+      "facts": [
+        "~150 DKK; free with the Copenhagen Card; combination tickets with Kronborg are cheaper",
+        "Allow 1–1.5 hours",
+        "The dry-dock bridges are free to walk over for a look"
+      ],
+      "hours": "11:00-17:00",
+      "needsDaylight": false
+    },
+    {
+      "id": "louisiana",
+      "name": "Louisiana Museum of Modern Art",
+      "region": "northzealand",
+      "lat": 55.969,
+      "lon": 12.543,
+      "visit": 180,
+      "cat": "Museum",
+      "priority": 3,
+      "wiki": "Louisiana Museum of Modern Art",
+      "summary": "One of Europe's finest modern art museums, in low glass pavilions linked by corridors through a sculpture park running down to the Øresund. Strong temporary exhibitions plus Giacometti, Henry Moore and Yayoi Kusama.",
+      "facts": [
+        "~150–175 DKK; free with the Copenhagen Card",
+        "Train to Humlebæk, then a 10-minute walk",
+        "The café terrace and lawn above the sea are part of the experience",
+        "Open until 22:00 Tuesday–Friday"
+      ],
+      "hours": "11:00-18:00",
+      "closed": [1],
+      "needsDaylight": false
+    },
+    {
+      "id": "karen_blixen_museum",
+      "name": "Karen Blixen Museum (Rungstedlund)",
+      "region": "northzealand",
+      "lat": 55.859,
+      "lon": 12.571,
+      "visit": 75,
+      "cat": "Museum",
+      "priority": 1,
+      "wiki": "Karen Blixen Museum",
+      "summary": "The home of the author of Out of Africa, kept as she left it, with her flower arrangements, Kenyan mementos and a bird sanctuary garden where she is buried.",
+      "facts": [
+        "~100 DKK; free with the Copenhagen Card",
+        "Short walk from Rungsted Kyst station on the coast line",
+        "Usually closed on Mondays; shorter hours in winter"
+      ],
+      "closed": [1],
+      "needsDaylight": false
+    },
+    {
+      "id": "hillerod",
+      "name": "Hillerød",
+      "region": "northzealand",
+      "lat": 55.927,
+      "lon": 12.31,
+      "visit": 120,
+      "cat": "Town",
+      "priority": 2,
+      "wiki": "Hillerød",
+      "summary": "A small town built around Frederiksborg Castle and its lake, at the centre of North Zealand's forests and lakes. A convenient base by car for the castles and beaches.",
+      "facts": [
+        "40 minutes from Copenhagen by S-train (line A, covered by the Copenhagen Card)",
+        "Local trains continue to Gilleleje, Tisvildeleje and Helsingør",
+        "Parking near the castle lake is easy outside summer weekends"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "frederiksborg",
+      "name": "Frederiksborg Castle",
+      "region": "northzealand",
+      "lat": 55.9343,
+      "lon": 12.3007,
+      "visit": 150,
+      "cat": "Castle",
+      "priority": 3,
+      "wiki": "Frederiksborg Castle",
+      "summary": "Scandinavia's largest Renaissance castle, built by Christian IV on three islands in a lake. Inside is the Museum of National History with portraits and lavish rooms, including the magnificent chapel; outside are formal baroque gardens.",
+      "facts": [
+        "~120 DKK; free with the Copenhagen Card",
+        "The baroque gardens are free and open all day",
+        "Allow 2–3 hours; the chapel and the Great Hall are the highlights",
+        "Summer boat across the lake from the town"
+      ],
+      "hours": "11:00-15:00",
+      "needsDaylight": false,
+      "season": "Longer opening hours (around 10:00–17:00) from April to October."
+    },
+    {
+      "id": "fredensborg",
+      "name": "Fredensborg Palace Gardens",
+      "region": "northzealand",
+      "lat": 55.978,
+      "lon": 12.402,
+      "visit": 60,
+      "cat": "Garden",
+      "priority": 1,
+      "wiki": "Fredensborg Palace",
+      "summary": "The royal family's spring and autumn residence, an 18th-century baroque palace by Esrum Lake. The large park with avenues and the Norwegian sculpture garden is open to the public all year.",
+      "facts": [
+        "The park is free; the palace interior opens only for guided tours in July",
+        "Changing of the Guard at noon when the King is in residence",
+        "Combine with a walk along Esrum Lake"
+      ]
+    },
+    {
+      "id": "esrum_lake",
+      "name": "Esrum Lake",
+      "region": "northzealand",
+      "lat": 55.99,
+      "lon": 12.37,
+      "visit": 90,
+      "cat": "Lake",
+      "priority": 1,
+      "wiki": "Lake Esrum",
+      "summary": "Denmark's second-largest lake, ringed by beech forest (Gribskov), with paths along the shore and summer boat trips. Quiet, green countryside between Hillerød and the coast.",
+      "facts": [
+        "Free; parking at the Fredensborg and Sørup ends",
+        "Summer boat service crosses the lake",
+        "Gribskov forest to the west has marked walking and cycling trails"
+      ]
+    },
+    {
+      "id": "hornbaek",
+      "name": "Hornbæk",
+      "region": "northzealand",
+      "lat": 56.091,
+      "lon": 12.46,
+      "visit": 120,
+      "cat": "Beach",
+      "priority": 2,
+      "wiki": "Hornbæk",
+      "summary": "An old fishing village turned upmarket summer resort, with one of Zealand's best wide sandy beaches backed by dunes and pine plantation, and a small harbour.",
+      "facts": [
+        "Free beach; paid parking in summer",
+        "Train from Helsingør on the coastal line",
+        "Hornbæk Plantage forest behind the beach has walking paths"
+      ],
+      "sleep": true,
+      "season": "Lively in July and August, very quiet out of season."
+    },
+    {
+      "id": "gilleleje",
+      "name": "Gilleleje",
+      "region": "northzealand",
+      "lat": 56.123,
+      "lon": 12.311,
+      "visit": 90,
+      "cat": "Village",
+      "priority": 1,
+      "wiki": "Gilleleje",
+      "summary": "Zealand's northernmost fishing port, with a working harbour, fish smokehouses, thatched cottages and a cliff-top path past a Kierkegaard memorial stone.",
+      "facts": [
+        "Buy fresh or smoked fish straight from the harbour",
+        "Coastal path east to Nakkehoved Lighthouse (about 2 km)",
+        "End of the local train line from Hillerød"
+      ]
+    },
+    {
+      "id": "tisvildeleje",
+      "name": "Tisvildeleje & Tisvilde Hegn",
+      "region": "northzealand",
+      "lat": 56.048,
+      "lon": 12.073,
+      "visit": 150,
+      "cat": "Beach",
+      "priority": 1,
+      "wiki": "Tisvildeleje",
+      "summary": "A small resort with a long sandy beach and a large pine and heath forest (Tisvilde Hegn) with wind-shaped trees and inland dunes. Popular with Copenhageners for summer weekends.",
+      "facts": [
+        "Free beach; train from Hillerød to the end of the line",
+        "Walk to Troldeskoven (the Troll Forest) of twisted trees in Tisvilde Hegn",
+        "Sunsets over the Kattegat are a highlight"
+      ]
+    },
+    {
+      "id": "arken",
+      "name": "Arken Museum of Contemporary Art",
+      "region": "northzealand",
+      "lat": 55.616,
+      "lon": 12.358,
+      "visit": 120,
+      "cat": "Museum",
+      "priority": 1,
+      "wiki": "Arken Museum of Modern Art",
+      "summary": "A ship-like museum on the beach at Ishøj, south-west of Copenhagen, with contemporary art exhibitions and works by Damien Hirst, Olafur Eliasson and others. Combine with the Ishøj beach park.",
+      "facts": [
+        "Free with the Copenhagen Card",
+        "S-train to Ishøj, then bus or a 20-minute walk",
+        "Usually closed on Mondays"
+      ],
+      "closed": [1],
+      "needsDaylight": false
+    },
+    {
+      "id": "roskilde",
+      "name": "Roskilde",
+      "region": "southzealand",
+      "lat": 55.6415,
+      "lon": 12.0803,
+      "visit": 150,
+      "cat": "Base",
+      "priority": 2,
+      "wiki": "Roskilde",
+      "summary": "Denmark's medieval royal and church capital at the head of the Roskilde Fjord, with its UNESCO cathedral and the Viking Ship Museum. A short train ride from Copenhagen and a good alternative base.",
+      "facts": [
+        "About 25 minutes by train from Copenhagen",
+        "The Roskilde Festival (late June/early July) fills every bed in the area",
+        "Saturday market on the Stændertorvet square"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "roskilde_cathedral",
+      "name": "Roskilde Cathedral",
+      "region": "southzealand",
+      "lat": 55.6426,
+      "lon": 12.0805,
+      "visit": 75,
+      "cat": "Monastery & church",
+      "priority": 3,
+      "wiki": "Roskilde Cathedral",
+      "summary": "The first Gothic brick cathedral in Scandinavia and the burial place of nearly 40 Danish kings and queens, whose tombs and chapels span 800 years of styles. A UNESCO World Heritage Site.",
+      "facts": [
+        "Small entry fee; closed to visitors during services, weddings and funerals",
+        "Allow about 1 hour; the Christian IV chapel is the highlight",
+        "Shorter hours on Sundays"
+      ],
+      "hours": "10:00-16:00",
+      "needsDaylight": false
+    },
+    {
+      "id": "viking_ship_museum",
+      "name": "Viking Ship Museum",
+      "region": "southzealand",
+      "lat": 55.651,
+      "lon": 12.08,
+      "visit": 120,
+      "cat": "Museum",
+      "priority": 3,
+      "wiki": "Viking Ship Museum (Roskilde)",
+      "summary": "Five original Viking ships, deliberately sunk around 1070 to block the fjord, displayed in a hall facing the water, with a boatyard building reconstructions. In summer you can row a replica Viking boat on the fjord.",
+      "facts": [
+        "Adult ticket around 160–180 DKK; check whether it is included in your Copenhagen Card version",
+        "Summer sailing trips in replica ships are booked on the day at the museum",
+        "Check the museum website before going: a major rebuild of the ship hall is planned for the mid-2020s",
+        "15 minutes' walk downhill from the cathedral"
+      ],
+      "hours": "10:00-16:00",
+      "needsDaylight": false
+    },
+    {
+      "id": "sagnlandet_lejre",
+      "name": "Land of Legends (Sagnlandet Lejre)",
+      "region": "southzealand",
+      "lat": 55.617,
+      "lon": 11.965,
+      "visit": 180,
+      "cat": "Experience",
+      "priority": 2,
+      "wiki": "Sagnlandet Lejre",
+      "summary": "An open-air experimental archaeology park with reconstructed Stone Age, Iron Age and Viking settlements where volunteers live as in the past in summer. Nearby the Lejre Museum covers the legendary royal seat of Beowulf's Skjöldungs.",
+      "facts": [
+        "Open roughly May–October; best in summer school holidays when the villages are inhabited",
+        "Lots of hands-on activities for children",
+        "Wear sturdy shoes: the site is large and partly in woods and fields"
+      ]
+    },
+    {
+      "id": "koge",
+      "name": "Køge",
+      "region": "southzealand",
+      "lat": 55.458,
+      "lon": 12.182,
+      "visit": 90,
+      "cat": "Town",
+      "priority": 1,
+      "wiki": "Køge",
+      "summary": "A medieval market town with one of Denmark's best-preserved old centres of half-timbered houses around a large square. Also the port for the overnight ferry to Bornholm.",
+      "facts": [
+        "S-train from Copenhagen (about 40 minutes)",
+        "Bornholmslinjen ferries to Rønne leave from Køge harbour",
+        "The KØS museum of art in public spaces is small and free"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "stevns_klint",
+      "name": "Stevns Klint",
+      "region": "southzealand",
+      "lat": 55.286,
+      "lon": 12.446,
+      "visit": 90,
+      "cat": "Coast",
+      "priority": 2,
+      "wiki": "Stevns Klint",
+      "summary": "A 15 km chalk and limestone cliff whose layers record the meteorite impact that ended the dinosaurs, now a UNESCO World Heritage Site. At Højerup the old church hangs over the edge after its choir fell into the sea in 1928.",
+      "facts": [
+        "Free; parking at Højerup Old Church, which has a small visitor centre",
+        "Steps lead down to the beach where you can see the dark 'fish clay' boundary layer",
+        "Stevnsfort, a Cold War fortress inside the cliff, offers guided tours"
+      ],
+      "caution": "Keep away from the cliff edge and the base after rain: the chalk falls without warning."
+    },
+    {
+      "id": "stege",
+      "name": "Stege",
+      "region": "southzealand",
+      "lat": 54.987,
+      "lon": 12.285,
+      "visit": 90,
+      "cat": "Town",
+      "priority": 1,
+      "wiki": "Stege",
+      "summary": "The main town of the island of Møn, with a medieval gate (Mølleporten) and remnants of its town ramparts. A small, practical base for Møns Klint and the island's frescoed churches.",
+      "facts": [
+        "Supermarkets and fuel here before heading east to the cliffs",
+        "Møn is linked by bridge to Zealand; no ferry needed",
+        "Accommodation is limited: book ahead in summer"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "mons_klint",
+      "name": "Møns Klint",
+      "region": "southzealand",
+      "lat": 54.965,
+      "lon": 12.547,
+      "visit": 180,
+      "cat": "Coast",
+      "priority": 3,
+      "wiki": "Møns Klint",
+      "summary": "Spectacular white chalk cliffs rising 120 metres above a turquoise Baltic, topped by beech forest. Walk the clifftop paths and descend one of the long wooden staircases to the pebble beach, where fossils are common.",
+      "facts": [
+        "The GeoCenter Møns Klint museum explains the geology (ticketed, open most of the year)",
+        "Parking is paid; the main staircase has around 500 steps",
+        "Allow at least 3 hours for a beach-and-clifftop loop",
+        "A designated dark-sky area: excellent stargazing on clear nights"
+      ],
+      "caution": "Cliff falls happen regularly; follow closures and do not walk directly under the cliff face."
+    },
+    {
+      "id": "liselund",
+      "name": "Liselund",
+      "region": "southzealand",
+      "lat": 54.9978,
+      "lon": 12.5293,
+      "visit": 45,
+      "cat": "Garden",
+      "priority": 1,
+      "wiki": "Liselund",
+      "summary": "A romantic late-18th-century landscape park near the cliffs of Møn, with a thatched little 'palace', a Swiss cottage and a Chinese tea house amid streams and lakes.",
+      "facts": [
+        "The park is free; the small palace opens for short guided tours in summer",
+        "A few minutes' drive north of Møns Klint",
+        "Lovely in spring with the wild garlic and anemones"
+      ]
+    },
+    {
+      "id": "fanefjord_church",
+      "name": "Fanefjord Church",
+      "region": "southzealand",
+      "lat": 54.907,
+      "lon": 12.162,
+      "visit": 30,
+      "cat": "Monastery & church",
+      "priority": 1,
+      "wiki": "Fanefjord Church",
+      "summary": "A white country church on western Møn whose vaults are covered with some of Denmark's finest late-medieval frescoes by the anonymous 'Elmelunde Master'.",
+      "facts": [
+        "Free; usually open in daytime",
+        "Elmelunde and Keldby churches have frescoes by the same master",
+        "Short stop on the way between Stege and Bogø"
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "goose_tower",
+      "name": "Goose Tower, Vordingborg",
+      "region": "southzealand",
+      "lat": 55.008,
+      "lon": 11.91,
+      "visit": 60,
+      "cat": "Ruins",
+      "priority": 1,
+      "wiki": "Vordingborg Castle",
+      "summary": "The best-preserved medieval tower in Denmark, crowned with a golden goose, standing among the ruins of Valdemar Atterdag's royal castle. The Danish Castle Centre (Danmarks Borgcenter) beside it tells the story.",
+      "facts": [
+        "The ruins are free to walk; the museum and tower climb are ticketed",
+        "On the way from Zealand to Møn or Falster",
+        "Allow about an hour for the ruins, tower and museum"
+      ]
+    },
+    {
+      "id": "nykobing_falster",
+      "name": "Nykøbing Falster",
+      "region": "southzealand",
+      "lat": 54.769,
+      "lon": 11.874,
+      "visit": 90,
+      "cat": "Town",
+      "priority": 1,
+      "wiki": "Nykøbing Falster",
+      "summary": "The main town of Falster and Lolland, on the strait between them, with a medieval monastery church and the Middelaldercentret medieval experience centre nearby. A practical base for Knuthenborg and the Marielyst beaches.",
+      "facts": [
+        "Main-line trains to Copenhagen (about 1 h 20 min)",
+        "Middelaldercentret, with a working trebuchet, is just outside town (summer season)",
+        "The Great Storstrøm Bridge (2022) links Falster to Zealand via Masnedø"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "knuthenborg",
+      "name": "Knuthenborg Safari Park",
+      "region": "southzealand",
+      "lat": 54.793,
+      "lon": 11.463,
+      "visit": 240,
+      "cat": "Theme park",
+      "priority": 2,
+      "wiki": "Knuthenborg Safaripark",
+      "summary": "Northern Europe's largest safari park, in the grounds of a manor on Lolland: drive among giraffes, rhinos, zebras and antelopes, then walk to the tigers and the big children's play areas.",
+      "facts": [
+        "Open roughly late April to October; buy tickets online",
+        "You drive your own car through the safari section",
+        "Allow most of a day with children"
+      ]
+    },
+    {
+      "id": "marielyst",
+      "name": "Marielyst",
+      "region": "southzealand",
+      "lat": 54.672,
+      "lon": 11.963,
+      "visit": 120,
+      "cat": "Beach",
+      "priority": 1,
+      "wiki": "Marielyst",
+      "summary": "A long, fine sandy beach on the east coast of Falster, one of Denmark's sunniest spots and a classic family summer-house resort.",
+      "facts": [
+        "Free beach with lifeguards in high summer",
+        "Shallow water, good for children",
+        "Busy with German and Danish holidaymakers in July"
+      ]
+    },
+    {
+      "id": "soro_abbey",
+      "name": "Sorø Abbey Church",
+      "region": "southzealand",
+      "lat": 55.431,
+      "lon": 11.56,
+      "visit": 45,
+      "cat": "Monastery & church",
+      "priority": 1,
+      "wiki": "Sorø Abbey",
+      "summary": "A 12th-century Cistercian church, one of the largest and oldest brick buildings in Denmark, with the tomb of Bishop Absalon, founder of Copenhagen. The pretty town sits on a lake.",
+      "facts": [
+        "Free entry to the church",
+        "Walk around Sorø Lake or rent a boat in summer",
+        "Just off the E20 between Copenhagen and Funen"
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "trelleborg",
+      "name": "Trelleborg Viking Fortress",
+      "region": "southzealand",
+      "lat": 55.394,
+      "lon": 11.265,
+      "visit": 90,
+      "cat": "Ancient site",
+      "priority": 2,
+      "wiki": "Trelleborg (Slagelse)",
+      "summary": "The best-preserved of Harald Bluetooth's circular Viking fortresses (c. 980), part of a UNESCO World Heritage listing. The perfectly geometric earth rampart is free to walk; a museum and reconstructed longhouse explain it.",
+      "facts": [
+        "Ramparts free; museum ticketed, with Viking activities in summer",
+        "Near Slagelse, a short detour from the motorway to Funen",
+        "Best seen from the top of the rampart"
+      ]
+    },
+    {
+      "id": "odense",
+      "name": "Odense",
+      "region": "funen",
+      "lat": 55.3959,
+      "lon": 10.3883,
+      "visit": 180,
+      "cat": "Base",
+      "priority": 2,
+      "wiki": "Odense",
+      "summary": "Denmark's third city and the birthplace of Hans Christian Andersen, with a cobbled old quarter, a lively centre and good museums. The natural base for Funen.",
+      "facts": [
+        "Driving from Zealand crosses the Great Belt Bridge (Storebælt): toll around 300 DKK per car each way, paid at the toll plaza",
+        "Intercity trains to Copenhagen take about 1 h 15 min",
+        "Light rail and buses connect the centre with the suburbs"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "hc_andersen_house",
+      "name": "H.C. Andersen's House",
+      "region": "funen",
+      "lat": 55.399,
+      "lon": 10.39,
+      "visit": 120,
+      "cat": "Museum",
+      "priority": 3,
+      "wiki": "Hans Christian Andersen Museum",
+      "summary": "A new (2021) museum by Kengo Kuma, partly underground, that brings Andersen's life and fairy tales to life through immersive rooms rather than display cases, linked to his birthplace and a fairy-tale garden.",
+      "facts": [
+        "~165 DKK; book a timed ticket online in summer",
+        "Allow about 2 hours; the children's section (Ludwig's Land) is separate",
+        "Andersen's childhood home on Munkemøllestræde is a short walk away"
+      ],
+      "hours": "10:00-16:00",
+      "needsDaylight": false
+    },
+    {
+      "id": "odense_cathedral",
+      "name": "St Canute's Cathedral",
+      "region": "funen",
+      "lat": 55.3955,
+      "lon": 10.3899,
+      "visit": 30,
+      "cat": "Monastery & church",
+      "priority": 1,
+      "wiki": "St. Canute's Cathedral",
+      "summary": "Denmark's finest Gothic brick church, with a gilded altarpiece and, in the crypt, the bones of King Canute IV, murdered here in 1086.",
+      "facts": [
+        "Free entry",
+        "Next to the city park and the Andersen quarter",
+        "Allow 20–30 minutes; open daily outside services"
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "funen_village",
+      "name": "The Funen Village (Den Fynske Landsby)",
+      "region": "funen",
+      "lat": 55.372,
+      "lon": 10.392,
+      "visit": 120,
+      "cat": "Museum",
+      "priority": 1,
+      "wiki": "The Funen Village",
+      "summary": "An open-air museum of 18th- and 19th-century farmhouses, a mill and a smithy moved from around Funen, with animals and costumed demonstrations in summer.",
+      "facts": [
+        "Main season roughly April–October",
+        "Summer boats along the Odense river from the city centre",
+        "Good with children"
+      ]
+    },
+    {
+      "id": "egeskov",
+      "name": "Egeskov Castle",
+      "region": "funen",
+      "lat": 55.176,
+      "lon": 10.49,
+      "visit": 240,
+      "cat": "Castle",
+      "priority": 3,
+      "wiki": "Egeskov Castle",
+      "summary": "Europe's best-preserved Renaissance water castle (1554), standing in a lake on oak piles, with large gardens, mazes, a treetop walk and museums of vintage cars, motorcycles and aircraft.",
+      "facts": [
+        "Pricey all-in ticket, but it fills most of a day",
+        "Open roughly May to October; the castle interior has shorter hours than the park",
+        "Between Odense and Svendborg; plenty of free parking"
+      ]
+    },
+    {
+      "id": "svendborg",
+      "name": "Svendborg",
+      "region": "funen",
+      "lat": 55.0598,
+      "lon": 10.6068,
+      "visit": 120,
+      "cat": "Town",
+      "priority": 2,
+      "wiki": "Svendborg",
+      "summary": "A busy harbour town on the strait facing Tåsinge, the gateway to the South Funen Archipelago with ferries to Ærø and the small islands. Old wooden ships and harbour cafés.",
+      "facts": [
+        "Ferries to Ærøskøbing (about 75 minutes) and to Skarø, Hjortø and Drejø",
+        "Summer veteran steamer Helge runs to Troense and Valdemars Slot",
+        "Regional trains from Odense take about 1 hour"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "valdemars_slot",
+      "name": "Valdemars Castle",
+      "region": "funen",
+      "lat": 55.039,
+      "lon": 10.642,
+      "visit": 75,
+      "cat": "Palace",
+      "priority": 1,
+      "wiki": "Valdemars Slot",
+      "summary": "A 17th-century manor built by Christian IV for his son, on Tåsinge across the strait from Svendborg, with furnished rooms, a hunting museum and a small beach.",
+      "facts": [
+        "Open in the summer season only",
+        "Reach it by car over the bridge or by the summer steamer from Svendborg",
+        "The village of Troense nearby is one of Denmark's prettiest"
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "faaborg",
+      "name": "Faaborg",
+      "region": "funen",
+      "lat": 55.095,
+      "lon": 10.242,
+      "visit": 120,
+      "cat": "Town",
+      "priority": 2,
+      "wiki": "Faaborg",
+      "summary": "A charming small port with cobbled streets, a bell tower and the Faaborg Museum of Funen painters in a 1915 neoclassical building. Base for the hilly Svanninge Bakker and ferries to Avernakø and Lyø.",
+      "facts": [
+        "Faaborg Museum is small and very fine (ticketed, closed Mondays in winter)",
+        "Ferries to the small islands of Lyø, Avernakø and Bjørnø",
+        "Svanninge Bakker hills are 10 minutes north for a short hike"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "aeroskobing",
+      "name": "Ærøskøbing (Ærø)",
+      "region": "funen",
+      "lat": 54.888,
+      "lon": 10.411,
+      "visit": 180,
+      "cat": "Old town",
+      "priority": 3,
+      "wiki": "Ærøskøbing",
+      "summary": "A perfectly preserved 18th-century merchant town on the island of Ærø, with crooked cobbled lanes, painted half-timbered houses and hollyhocks. Ærø itself is gentle cycling country with beach huts and quiet beaches.",
+      "facts": [
+        "Ferry from Svendborg takes about 75 minutes; book a car slot ahead in summer",
+        "Go as a foot passenger and rent a bike: the island is small",
+        "The Bottle Ship Museum (Flaskeskibssamlingen) is a quirky stop"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "nyborg_castle",
+      "name": "Nyborg Castle",
+      "region": "funen",
+      "lat": 55.311,
+      "lon": 10.79,
+      "visit": 75,
+      "cat": "Castle",
+      "priority": 2,
+      "wiki": "Nyborg Castle",
+      "summary": "Scandinavia's oldest royal castle (c. 1170), where Denmark's first constitution was signed in 1282. Reopened in 2023 after a major restoration and extension.",
+      "facts": [
+        "Ticketed; closed Mondays outside summer",
+        "First town on Funen after the Great Belt Bridge (toll ~300 DKK by car)",
+        "The old town with its ramparts is pleasant for a short walk"
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "kerteminde",
+      "name": "Kerteminde",
+      "region": "funen",
+      "lat": 55.45,
+      "lon": 10.66,
+      "visit": 90,
+      "cat": "Village",
+      "priority": 1,
+      "wiki": "Kerteminde",
+      "summary": "A pretty fishing town on the Great Belt with a marina, old streets and Fjord & Bælt, where you can watch harbour porpoises being studied up close.",
+      "facts": [
+        "Fjord & Bælt marine centre is good with children",
+        "Johannes Larsen Museum shows the Funen painter's home and garden",
+        "The Ladby Viking ship is 5 minutes' drive away"
+      ]
+    },
+    {
+      "id": "ladby_ship",
+      "name": "Ladby Viking Ship",
+      "region": "funen",
+      "lat": 55.441,
+      "lon": 10.623,
+      "visit": 45,
+      "cat": "Ancient site",
+      "priority": 1,
+      "wiki": "Ladby ship",
+      "summary": "Denmark's only Viking ship burial, the imprint of a 10th-century chieftain's 21-metre ship preserved under a mound, with a small museum and a reconstruction.",
+      "facts": [
+        "Ticketed; small site, 30–45 minutes is enough",
+        "Short drive or bike ride from Kerteminde",
+        "About 5 km south-west of Kerteminde"
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "middelfart",
+      "name": "Middelfart & the Little Belt",
+      "region": "funen",
+      "lat": 55.506,
+      "lon": 9.73,
+      "visit": 90,
+      "cat": "Town",
+      "priority": 1,
+      "wiki": "Middelfart",
+      "summary": "A small town on the Little Belt at the western edge of Funen, by the 1935 Old Little Belt Bridge, which you can climb on guided bridge walks. Porpoise-spotting boat trips leave from the harbour.",
+      "facts": [
+        "Bridge walks across the girders are guided and booked in advance",
+        "Easy stop when driving between Funen and Jutland",
+        "Coastal path through Hindsgavl peninsula west of town"
+      ]
+    },
+    {
+      "id": "langeland",
+      "name": "Langeland",
+      "region": "funen",
+      "lat": 54.937,
+      "lon": 10.723,
+      "visit": 180,
+      "cat": "Island",
+      "priority": 1,
+      "wiki": "Langeland",
+      "summary": "A long, thin rural island east of Tåsinge with the pretty town of Rudkøbing, Tranekær Castle, wild horses at Gulstav and a Cold War fortress at its southern tip.",
+      "facts": [
+        "Linked by bridges to Tåsinge and Funen; no ferry needed",
+        "Langelandsfort is a Cold War museum with a submarine",
+        "Southern tip (Dovns Klint, Gulstav) is good for birdwatching in autumn migration"
+      ]
+    },
+    {
+      "id": "ronne",
+      "name": "Rønne",
+      "region": "bornholm",
+      "lat": 55.1,
+      "lon": 14.7,
+      "visit": 120,
+      "cat": "Base",
+      "priority": 2,
+      "wiki": "Rønne",
+      "summary": "Bornholm's main town and ferry port, with cobbled lanes of low colourful houses around the old church. Practical base with the most accommodation and car hire.",
+      "facts": [
+        "Ferries from Ystad (Sweden, ~80 min) and overnight from Køge arrive here",
+        "Car hire and the island bus network start here; a bike is a fine alternative",
+        "Bornholm's Museum covers island history"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "hammershus",
+      "name": "Hammershus",
+      "region": "bornholm",
+      "lat": 55.271,
+      "lon": 14.759,
+      "visit": 120,
+      "cat": "Ruins",
+      "priority": 3,
+      "wiki": "Hammershus",
+      "summary": "The largest medieval castle ruin in Northern Europe, spread along a cliff above the sea at the north-western tip of Bornholm. A striking visitor centre and coastal paths make it a must.",
+      "facts": [
+        "Free entry, open all hours; paid parking",
+        "The visitor centre has toilets, a café and exhibits",
+        "Walk on along the coast to Hammeren and Hammer Lighthouse"
+      ]
+    },
+    {
+      "id": "hammeren",
+      "name": "Hammeren coastal walk",
+      "region": "bornholm",
+      "lat": 55.287,
+      "lon": 14.76,
+      "visit": 150,
+      "cat": "Hike",
+      "priority": 2,
+      "wiki": "Hammeren",
+      "summary": "A granite headland at Bornholm's northern tip, ringed by a cliff path with sea views, the Hammer Odde lighthouse and the quarry lake Opalsøen. Combines naturally with Hammershus.",
+      "facts": [
+        "Free; loop from Sandvig or Hammershus about 8–10 km",
+        "Opalsøen quarry lake is a popular swim spot",
+        "Rocky paths: wear proper shoes"
+      ]
+    },
+    {
+      "id": "gudhjem",
+      "name": "Gudhjem",
+      "region": "bornholm",
+      "lat": 55.212,
+      "lon": 14.972,
+      "visit": 120,
+      "cat": "Village",
+      "priority": 3,
+      "wiki": "Gudhjem",
+      "summary": "A steep fishing village of half-timbered houses tumbling down to a tiny harbour, famous for its smokehouses and 'Sol over Gudhjem' smoked herring. Boats leave here for Christiansø.",
+      "facts": [
+        "Eat smoked herring at one of the harbour smokehouses",
+        "Steep streets and little parking in summer: park at the top",
+        "Coast path south to Helligdommen and the art museum (about 5 km)"
+      ],
+      "sleep": true
+    },
+    {
+      "id": "osterlars_church",
+      "name": "Østerlars Church",
+      "region": "bornholm",
+      "lat": 55.162,
+      "lon": 14.958,
+      "visit": 30,
+      "cat": "Monastery & church",
+      "priority": 2,
+      "wiki": "Østerlars Church",
+      "summary": "The largest and most famous of Bornholm's four round churches, a fortified 12th-century church with buttresses, a central pillar decorated with frescoes and a lookout floor once used against raiders.",
+      "facts": [
+        "Small entry fee",
+        "Nylars, Olsker and Nyker are the other round churches",
+        "Bornholm's Medieval Centre is a couple of kilometres away"
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "bornholm_art_museum",
+      "name": "Bornholm Art Museum",
+      "region": "bornholm",
+      "lat": 55.242,
+      "lon": 14.914,
+      "visit": 75,
+      "cat": "Museum",
+      "priority": 1,
+      "wiki": "Bornholm Art Museum",
+      "summary": "A light-filled museum on the cliffs at Helligdommen showing the Bornholm painters and modern Danish art, with a path down to sea-carved granite rock formations.",
+      "facts": [
+        "Ticketed; closed Mondays outside summer",
+        "Combine with the coastal path to Gudhjem",
+        "Free parking at the museum"
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "svaneke",
+      "name": "Svaneke",
+      "region": "bornholm",
+      "lat": 55.136,
+      "lon": 15.142,
+      "visit": 90,
+      "cat": "Village",
+      "priority": 2,
+      "wiki": "Svaneke",
+      "summary": "Denmark's easternmost town, a carefully preserved red-roofed harbour village known for its brewery, caramel and chocolate makers, glassblowers and smokehouse.",
+      "facts": [
+        "Summer weekend market; small craft shops all year",
+        "Swim off the rocks at the harbour",
+        "Good stop between Gudhjem and Dueodde"
+      ]
+    },
+    {
+      "id": "christianso",
+      "name": "Christiansø",
+      "region": "bornholm",
+      "lat": 55.32,
+      "lon": 15.187,
+      "visit": 240,
+      "cat": "Island",
+      "priority": 2,
+      "wiki": "Christiansø",
+      "summary": "A tiny fortified island in the Ertholmene archipelago, an hour's boat ride from Gudhjem, with 17th-century naval fortifications, a handful of residents and huge colonies of eider ducks and guillemots.",
+      "facts": [
+        "Day trips by boat from Gudhjem (and Allinge) most of the year; book in summer",
+        "No cars or pets; the whole island is a protected heritage site",
+        "Pack a picnic; there are only a couple of places to eat"
+      ],
+      "caution": "Crossings are cancelled in rough weather; check the day before."
+    },
+    {
+      "id": "almindingen",
+      "name": "Almindingen forest",
+      "region": "bornholm",
+      "lat": 55.12,
+      "lon": 14.92,
+      "visit": 120,
+      "cat": "Nature reserve",
+      "priority": 1,
+      "wiki": "Almindingen",
+      "summary": "One of Denmark's largest forests in the middle of Bornholm, with rocky rift valleys like Ekkodalen, a lookout tower on Rytterknægten and a herd of European bison.",
+      "facts": [
+        "Free; marked trails and bike paths from several car parks",
+        "The bison enclosure has a viewing platform and short walk",
+        "Ekkodalen is the most popular trail"
+      ]
+    },
+    {
+      "id": "nexo",
+      "name": "Nexø",
+      "region": "bornholm",
+      "lat": 55.06,
+      "lon": 15.13,
+      "visit": 60,
+      "cat": "Town",
+      "priority": 1,
+      "wiki": "Nexø",
+      "summary": "Bornholm's second town and fishing port on the east coast, rebuilt after Soviet bombing in 1945. Useful for supplies and the nearby Paradisbakkerne hills.",
+      "facts": [
+        "Paradisbakkerne, a rocky heath with marked trails, is just inland",
+        "Nexø Museum covers the 1945 liberation story",
+        "Bus routes link Nexø with Rønne, Svaneke and Dueodde"
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "dueodde",
+      "name": "Dueodde Beach",
+      "region": "bornholm",
+      "lat": 54.994,
+      "lon": 15.075,
+      "visit": 150,
+      "cat": "Beach",
+      "priority": 2,
+      "wiki": "Dueodde",
+      "summary": "Bornholm's southern tip, a vast beach of extremely fine white sand backed by dunes and pine forest, with Denmark's tallest lighthouse.",
+      "facts": [
+        "Free; paid parking near the lighthouse",
+        "Shallow, sandy water ideal for children",
+        "Climb the lighthouse in summer for the view"
+      ]
+    },
+    {
+      "id": "ribe",
+      "name": "Ribe",
+      "region": "southjutland",
+      "lat": 55.328,
+      "lon": 8.76,
+      "visit": 180,
+      "cat": "Old town",
+      "priority": 3,
+      "wiki": "Ribe",
+      "summary": "Denmark's oldest town, founded by the Vikings around 700, with a cathedral, crooked cobbled lanes of half-timbered houses and water meadows. On the edge of the Wadden Sea and a lovely overnight stop.",
+      "facts": [
+        "Join the free night watchman's walk in the evening (in English and Danish, seasonal)",
+        "Park outside the old town; the centre is small and walkable",
+        "Ribe Viking Museum and the Ribe VikingeCenter cover the Viking town"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "ribe_cathedral",
+      "name": "Ribe Cathedral",
+      "region": "southjutland",
+      "lat": 55.327,
+      "lon": 8.761,
+      "visit": 45,
+      "cat": "Monastery & church",
+      "priority": 2,
+      "wiki": "Ribe Cathedral",
+      "summary": "A Romanesque cathedral of volcanic tufa and brick begun around 1150, with modern mosaics and frescoes by Carl-Henning Pedersen and a tower you can climb for views over the marshes.",
+      "facts": [
+        "Free to enter; small fee for the tower",
+        "Over 200 steps to the top of the Citizens' Tower",
+        "Closed to sightseeing during services"
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "ribe_vikingecenter",
+      "name": "Ribe Viking Centre",
+      "region": "southjutland",
+      "lat": 55.311,
+      "lon": 8.766,
+      "visit": 150,
+      "cat": "Experience",
+      "priority": 2,
+      "wiki": "Ribe",
+      "summary": "A reconstructed Viking-age town and farm south of Ribe, with craftspeople, falconry shows and food from the period in summer.",
+      "facts": [
+        "Open roughly May to mid-October",
+        "Best in summer when the town is staffed with costumed volunteers",
+        "Good with children"
+      ]
+    },
+    {
+      "id": "wadden_sea",
+      "name": "Wadden Sea Centre",
+      "region": "southjutland",
+      "lat": 55.296,
+      "lon": 8.664,
+      "visit": 120,
+      "cat": "Nature reserve",
+      "priority": 2,
+      "wiki": "Wadden Sea National Park",
+      "summary": "Visitor centre for the UNESCO-listed Wadden Sea National Park, in a thatched building by the dike at Vester Vedsted. Guided tours go out on the mudflats for oysters, seals and the 'black sun' starling murmurations.",
+      "facts": [
+        "Book guided oyster safaris and Black Sun tours in advance",
+        "Tractor bus across the tidal road to the island of Mandø (tide dependent)",
+        "Bring rubber boots or old trainers for mudflat walks"
+      ],
+      "season": "The Black Sun (Sort Sol) starling murmurations peak in March–April and September–October.",
+      "caution": "Never walk on the mudflats without a guide: the tide comes in fast."
+    },
+    {
+      "id": "romo",
+      "name": "Rømø",
+      "region": "southjutland",
+      "lat": 55.15,
+      "lon": 8.49,
+      "visit": 180,
+      "cat": "Island",
+      "priority": 2,
+      "wiki": "Rømø",
+      "summary": "Denmark's southernmost Wadden Sea island, reached by a 10 km causeway, with one of Europe's widest beaches where you can drive and park on the sand. Kite-buggying and seal spotting.",
+      "facts": [
+        "Free causeway; drive onto the beach at Lakolk or Sønderstrand",
+        "Ferry from Havneby to Sylt in Germany (about 40 minutes)",
+        "Stick to marked driving areas and avoid soft sand"
+      ],
+      "sleep": true
+    },
+    {
+      "id": "esbjerg",
+      "name": "Esbjerg",
+      "region": "southjutland",
+      "lat": 55.467,
+      "lon": 8.452,
+      "visit": 90,
+      "cat": "Town",
+      "priority": 1,
+      "wiki": "Esbjerg",
+      "summary": "Denmark's young port and offshore-energy city, not pretty but practical, with the Fisheries and Maritime Museum, the Men at Sea sculpture and the short ferry to Fanø.",
+      "facts": [
+        "Ferry to Fanø every 20–40 minutes (12-minute crossing)",
+        "The Fisheries and Maritime Museum has a seal aquarium",
+        "Good-value hotels compared with Ribe in high season"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "men_at_sea",
+      "name": "Men at Sea (Mennesket ved Havet)",
+      "region": "southjutland",
+      "lat": 55.49,
+      "lon": 8.417,
+      "visit": 20,
+      "cat": "Monument",
+      "priority": 1,
+      "wiki": "Man Meets the Sea",
+      "summary": "Four 9-metre white figures by Svend Wiig Hansen staring out to sea on the beach at Sædding, north of Esbjerg harbour.",
+      "facts": [
+        "Free; parking next to the Fisheries and Maritime Museum",
+        "Best at sunset",
+        "About 4 km north-west of Esbjerg centre; bus or bike"
+      ]
+    },
+    {
+      "id": "fano",
+      "name": "Fanø",
+      "region": "southjutland",
+      "lat": 55.444,
+      "lon": 8.41,
+      "visit": 180,
+      "cat": "Island",
+      "priority": 2,
+      "wiki": "Fanø",
+      "summary": "A Wadden Sea island 12 minutes by ferry from Esbjerg, with the captain's village of Nordby, endless sandy beaches you can drive on and the thatched old seafarers' village of Sønderho.",
+      "facts": [
+        "Return ferry for foot passengers is cheap; taking a car costs considerably more",
+        "Bikes are a good way to get around the flat island",
+        "Fanø Kite Fly festival in June draws kites from all over the world"
+      ],
+      "sleep": true
+    },
+    {
+      "id": "sonderho",
+      "name": "Sønderho",
+      "region": "southjutland",
+      "lat": 55.354,
+      "lon": 8.473,
+      "visit": 60,
+      "cat": "Village",
+      "priority": 1,
+      "wiki": "Sønderho",
+      "summary": "One of Denmark's most beautiful villages, at the southern tip of Fanø: low thatched captains' houses facing the marsh and a ship-model-filled sailors' church.",
+      "facts": [
+        "About 15 km from the ferry at Nordby by road or bike",
+        "Sønderho Day (third Sunday in July) has folk costume and dancing",
+        "Fanø's southern beaches are reached from the village by road"
+      ]
+    },
+    {
+      "id": "tonder",
+      "name": "Tønder",
+      "region": "southjutland",
+      "lat": 54.933,
+      "lon": 8.864,
+      "visit": 90,
+      "cat": "Town",
+      "priority": 1,
+      "wiki": "Tønder",
+      "summary": "A former lace-making town near the German border with gabled merchant houses, a fine church and a good museum with Wegner chairs. Base for the marsh and Black Sun murmurations.",
+      "facts": [
+        "Tønder Festival (folk music) in late August",
+        "Møgeltønder is 4 km west",
+        "Close to the German border; many shops accept euros"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "mogeltonder",
+      "name": "Møgeltønder",
+      "region": "southjutland",
+      "lat": 54.939,
+      "lon": 8.804,
+      "visit": 60,
+      "cat": "Village",
+      "priority": 2,
+      "wiki": "Møgeltønder",
+      "summary": "A picture-perfect village whose cobbled, lime-tree-lined main street Slotsgade runs up to Schackenborg Castle, home of a royal prince until recently, with an ornate church.",
+      "facts": [
+        "Free; castle gardens open to visitors",
+        "The church has a richly painted interior",
+        "Combine with Tønder and the marsh dikes"
+      ]
+    },
+    {
+      "id": "sonderborg",
+      "name": "Sønderborg",
+      "region": "southjutland",
+      "lat": 54.909,
+      "lon": 9.792,
+      "visit": 120,
+      "cat": "Town",
+      "priority": 2,
+      "wiki": "Sønderborg",
+      "summary": "A waterfront town on the island of Als with a medieval castle museum telling the story of the border region, a lively harbour promenade and nearby Dybbøl.",
+      "facts": [
+        "Sønderborg Castle museum covers the 1864 war and reunification in 1920",
+        "Ferry from Fynshav on Als to Bøjden on Funen (about 50 minutes)",
+        "Nordborg and the Danfoss Universe science park are north on Als"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "dybbol",
+      "name": "Dybbøl Mill & battlefield",
+      "region": "southjutland",
+      "lat": 54.91,
+      "lon": 9.748,
+      "visit": 90,
+      "cat": "Windmill",
+      "priority": 2,
+      "wiki": "Battle of Dybbøl",
+      "summary": "The windmill on the hill where Denmark was decisively defeated by Prussia in 1864, a national symbol, with the ramparts and the Dybbøl Banke history centre nearby.",
+      "facts": [
+        "The battlefield is free; the history centre is ticketed and seasonal",
+        "Re-enactments and cannon firing in summer",
+        "View over Sønderborg and the Alssund"
+      ]
+    },
+    {
+      "id": "grasten_palace",
+      "name": "Gråsten Palace Gardens",
+      "region": "southjutland",
+      "lat": 54.919,
+      "lon": 9.596,
+      "visit": 45,
+      "cat": "Garden",
+      "priority": 1,
+      "wiki": "Gråsten Palace",
+      "summary": "The royal family's summer residence, a yellow baroque palace by a lake. The gardens are open when the royal family is not in residence.",
+      "facts": [
+        "Free; the gardens close in July–August while the royal family stays",
+        "Changing of the guard when the royals are in residence",
+        "Gråsten is on the road between Sønderborg and the German border"
+      ]
+    },
+    {
+      "id": "christiansfeld",
+      "name": "Christiansfeld",
+      "region": "southjutland",
+      "lat": 55.357,
+      "lon": 9.484,
+      "visit": 60,
+      "cat": "Village",
+      "priority": 1,
+      "wiki": "Christiansfeld",
+      "summary": "A UNESCO-listed planned town founded in 1773 by the Moravian Brethren, with austere yellow-brick houses, a great church hall and a peaceful cemetery. Famous for its honey cakes.",
+      "facts": [
+        "Free to walk; visitor centre in the old Brethren's House",
+        "Buy honey cakes (honningkager) from the old bakery",
+        "Just off the E45 motorway between Kolding and Haderslev"
+      ]
+    },
+    {
+      "id": "koldinghus",
+      "name": "Koldinghus",
+      "region": "southjutland",
+      "lat": 55.491,
+      "lon": 9.472,
+      "visit": 90,
+      "cat": "Castle",
+      "priority": 2,
+      "wiki": "Koldinghus",
+      "summary": "A royal castle burnt in 1808 and rebuilt in a bold mix of ruined brick walls and modern wood and steel, now a museum of history, art and silver, with tower views over Kolding.",
+      "facts": [
+        "Ticketed; allow 1.5 hours",
+        "Trapholt modern art and design museum is also in Kolding",
+        "Kolding lies by the E45/E20 junction, between Funen and Jutland"
+      ],
+      "hours": "10:00-17:00",
+      "needsDaylight": false
+    },
+    {
+      "id": "aarhus",
+      "name": "Aarhus",
+      "region": "eastjutland",
+      "lat": 56.1567,
+      "lon": 10.2108,
+      "visit": 240,
+      "cat": "Base",
+      "priority": 3,
+      "wiki": "Aarhus",
+      "summary": "Denmark's second city, a young university town with a compact centre, a canal-side café strip, the Latin Quarter and new harbourfront architecture. The obvious base for Jutland.",
+      "facts": [
+        "Intercity trains to Copenhagen take about 3 hours",
+        "The AarhusCard covers buses, the light rail and museum entries",
+        "Park in a multi-storey car park; street parking is limited"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "aros",
+      "name": "ARoS Aarhus Art Museum",
+      "region": "eastjutland",
+      "lat": 56.1539,
+      "lon": 10.1996,
+      "visit": 150,
+      "cat": "Museum",
+      "priority": 3,
+      "wiki": "ARoS Aarhus Art Museum",
+      "summary": "A big contemporary art museum crowned by Olafur Eliasson's circular rainbow walkway, Your Rainbow Panorama, with views over the city through coloured glass. Ron Mueck's giant 'Boy' sits in the foyer.",
+      "facts": [
+        "Adult ticket roughly 170–190 DKK, rainbow included",
+        "Open late on Wednesdays",
+        "Go up to the rainbow first on sunny days"
+      ],
+      "hours": "10:00-17:00",
+      "closed": [1],
+      "needsDaylight": false
+    },
+    {
+      "id": "den_gamle_by",
+      "name": "Den Gamle By",
+      "region": "eastjutland",
+      "lat": 56.1588,
+      "lon": 10.192,
+      "visit": 180,
+      "cat": "Museum",
+      "priority": 3,
+      "wiki": "Den Gamle By",
+      "summary": "An open-air museum of over 75 historic townhouses from all over Denmark, rebuilt as a working old town with shops, bakery and costumed staff, plus streets from 1927 and 1974.",
+      "facts": [
+        "Price varies by season; cheaper in winter",
+        "Christmas market season (November–December) is especially popular",
+        "Allow 2–3 hours"
+      ],
+      "hours": "10:00-16:00",
+      "needsDaylight": false
+    },
+    {
+      "id": "moesgaard",
+      "name": "Moesgaard Museum",
+      "region": "eastjutland",
+      "lat": 56.088,
+      "lon": 10.226,
+      "visit": 150,
+      "cat": "Museum",
+      "priority": 3,
+      "wiki": "Moesgaard Museum",
+      "summary": "A prehistory museum in a sloping-roofed building south of Aarhus, home of the Grauballe Man bog body and dramatic Viking and Iron Age displays. The grass roof is a popular spot to sit.",
+      "facts": [
+        "Ticketed; allow 2–3 hours",
+        "Bus 18 from Aarhus centre",
+        "Walk down to the beach through the woods behind the museum"
+      ],
+      "hours": "10:00-17:00",
+      "needsDaylight": false
+    },
+    {
+      "id": "kalo",
+      "name": "Kalø Castle Ruin",
+      "region": "eastjutland",
+      "lat": 56.278,
+      "lon": 10.484,
+      "visit": 60,
+      "cat": "Ruins",
+      "priority": 1,
+      "wiki": "Kalø Castle",
+      "summary": "The ruins of a medieval castle on a small island linked by a narrow causeway to the Mols coast, with lovely views over Kalø Vig bay.",
+      "facts": [
+        "Free; parking by the causeway",
+        "Combine with Mols Bjerge on the way to Ebeltoft",
+        "The causeway is narrow and uneven; allow 15 minutes each way on foot"
+      ]
+    },
+    {
+      "id": "mols_bjerge",
+      "name": "Mols Bjerge National Park",
+      "region": "eastjutland",
+      "lat": 56.22,
+      "lon": 10.58,
+      "visit": 150,
+      "cat": "Hike",
+      "priority": 2,
+      "wiki": "Mols Bjerge National Park",
+      "summary": "A rolling ice-age landscape of heath hills, burial mounds and coast on the Djursland peninsula, with some of Denmark's best hiking and viewpoints like Trehøje.",
+      "facts": [
+        "Free; marked trails from Agri and Femmøller",
+        "The Trehøje loop takes 2–3 hours",
+        "Combine with Ebeltoft"
+      ]
+    },
+    {
+      "id": "ebeltoft",
+      "name": "Ebeltoft",
+      "region": "eastjutland",
+      "lat": 56.195,
+      "lon": 10.68,
+      "visit": 120,
+      "cat": "Old town",
+      "priority": 2,
+      "wiki": "Ebeltoft",
+      "summary": "A small market town with cobbled streets, a tiny 18th-century town hall and the frigate Jylland, the world's longest wooden warship, in dry dock.",
+      "facts": [
+        "The Frigate Jylland is ticketed; allow 1 hour",
+        "Ferry from Ebeltoft to Zealand (Odden) is a shortcut to Copenhagen",
+        "Glass Museum Ebeltoft by the harbour"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "randers_regnskov",
+      "name": "Randers Rainforest",
+      "region": "eastjutland",
+      "lat": 56.46,
+      "lon": 10.037,
+      "visit": 120,
+      "cat": "Experience",
+      "priority": 1,
+      "wiki": "Randers",
+      "summary": "Three tropical domes recreating rainforest from South America, Africa and Asia, with free-roaming monkeys, sloths, birds and a manatee pool.",
+      "facts": [
+        "Ticketed; book online in school holidays",
+        "Warm and humid inside: wear layers",
+        "About 40 minutes north of Aarhus"
+      ],
+      "hours": "10:00-16:00",
+      "needsDaylight": false
+    },
+    {
+      "id": "silkeborg",
+      "name": "Silkeborg",
+      "region": "eastjutland",
+      "lat": 56.169,
+      "lon": 9.545,
+      "visit": 120,
+      "cat": "Town",
+      "priority": 2,
+      "wiki": "Silkeborg",
+      "summary": "A lakeside town at the heart of the Lake District, base for canoeing, walking and boat trips. Museum Silkeborg displays the Tollund Man, the best-preserved bog body ever found.",
+      "facts": [
+        "Museum Silkeborg (Tollund Man) is ticketed and closed Mondays in winter",
+        "Canoe hire for the lakes and Gudenå river",
+        "Museum Jorn is a fine modern art museum"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "hjejlen",
+      "name": "Hjejlen paddle steamer",
+      "region": "eastjutland",
+      "lat": 56.17,
+      "lon": 9.55,
+      "visit": 180,
+      "cat": "Boat trip",
+      "priority": 1,
+      "wiki": "Hjejlen",
+      "summary": "The world's oldest operating coal-fired paddle steamer (1861) sails from Silkeborg through the lakes to the foot of Himmelbjerget.",
+      "facts": [
+        "Summer season only; book ahead at busy times",
+        "About 1 h 15 min each way; return by boat or walk the forest trails",
+        "Other modern boats run the same route"
+      ],
+      "season": "Runs from roughly late June to mid-August."
+    },
+    {
+      "id": "himmelbjerget",
+      "name": "Himmelbjerget",
+      "region": "eastjutland",
+      "lat": 56.104,
+      "lon": 9.685,
+      "visit": 60,
+      "cat": "Viewpoint",
+      "priority": 2,
+      "wiki": "Himmelbjerget",
+      "summary": "One of Denmark's highest points at 147 m, a wooded hill with a tower and wide views over the lakes. More a cultural icon than a mountain, but a lovely spot.",
+      "facts": [
+        "Paid parking at the top; or arrive by boat from Silkeborg",
+        "Climb the 25 m tower for the best view",
+        "Footpaths down to the lakeside landing stage"
+      ]
+    },
+    {
+      "id": "jelling",
+      "name": "Jelling Mounds and Runic Stones",
+      "region": "eastjutland",
+      "lat": 55.756,
+      "lon": 9.42,
+      "visit": 90,
+      "cat": "Ancient site",
+      "priority": 2,
+      "wiki": "Jelling stones",
+      "summary": "UNESCO-listed royal monuments from the 10th century: two huge burial mounds, a church and Harald Bluetooth's runestone, called Denmark's birth certificate for its first mention of 'Danmark'.",
+      "facts": [
+        "Free; the Kongernes Jelling exhibition centre opposite is also free",
+        "Stones are under protective glass cases",
+        "Short drive from Vejle or Billund"
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "vejle",
+      "name": "Vejle",
+      "region": "eastjutland",
+      "lat": 55.709,
+      "lon": 9.536,
+      "visit": 90,
+      "cat": "Town",
+      "priority": 1,
+      "wiki": "Vejle",
+      "summary": "A town at the head of the Vejle Fjord with striking modern harbour architecture (the 'Wave' apartments) and a rail and road junction for Jelling and Legoland.",
+      "facts": [
+        "Vejle Fjord Bridge on the E45 is one of Denmark's longest",
+        "Hotels are often cheaper than in Billund",
+        "Trains to Aarhus, Odense and Copenhagen"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "billund",
+      "name": "Billund",
+      "region": "eastjutland",
+      "lat": 55.731,
+      "lon": 9.112,
+      "visit": 60,
+      "cat": "Town",
+      "priority": 1,
+      "wiki": "Billund",
+      "summary": "The small company town of LEGO, home of Legoland, LEGO House and Denmark's second airport. Little else to see, but convenient for families.",
+      "facts": [
+        "Lalandia waterpark and Givskud Zoo are nearby",
+        "Hotels near Legoland fill early in summer",
+        "Billund Airport is a 5-minute drive"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "legoland",
+      "name": "Legoland Billund Resort",
+      "region": "eastjutland",
+      "lat": 55.735,
+      "lon": 9.126,
+      "visit": 420,
+      "cat": "Theme park",
+      "priority": 3,
+      "wiki": "Legoland Billund",
+      "summary": "The original Legoland (1968), with Miniland's LEGO-brick models of famous places and themed rides for children up to about 12. A full day out.",
+      "facts": [
+        "Book tickets online for discounts and to guarantee entry on busy days",
+        "Open roughly April to early November; check the calendar",
+        "Arrive at opening and do the popular rides first"
+      ]
+    },
+    {
+      "id": "lego_house",
+      "name": "LEGO House",
+      "region": "eastjutland",
+      "lat": 55.741,
+      "lon": 9.129,
+      "visit": 180,
+      "cat": "Experience",
+      "priority": 2,
+      "wiki": "Lego House (Billund)",
+      "summary": "A building of giant LEGO bricks in the centre of Billund, with play zones for building and coding, a history gallery and a huge dinosaur. Fun for adults too.",
+      "facts": [
+        "Book a time slot online; it often sells out",
+        "Free public squares and roof terraces",
+        "Allow at least 3 hours"
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "horsens_prison",
+      "name": "Horsens Prison Museum",
+      "region": "eastjutland",
+      "lat": 55.874,
+      "lon": 9.832,
+      "visit": 120,
+      "cat": "Museum",
+      "priority": 1,
+      "wiki": "Horsens State Prison",
+      "summary": "Denmark's former state prison, closed in 2006 and turned into a vivid museum of 150 years of prison life, with cells, graffiti and escape stories.",
+      "facts": [
+        "Ticketed; allow about 2 hours",
+        "Atmospheric guided night tours in some seasons",
+        "A short drive from the E45 motorway"
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "ringkobing",
+      "name": "Ringkøbing",
+      "region": "westjutland",
+      "lat": 56.09,
+      "lon": 8.244,
+      "visit": 90,
+      "cat": "Town",
+      "priority": 2,
+      "wiki": "Ringkøbing",
+      "summary": "A small, well-preserved market town on the Ringkøbing Fjord lagoon, with cobbled streets and old merchant houses. Base for the dune coast of Holmsland Klit.",
+      "facts": [
+        "Holiday homes along the coast are the usual accommodation",
+        "Bike path along the fjord and Holmsland Klit",
+        "Market day in the square on Saturdays"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "hvide_sande",
+      "name": "Hvide Sande",
+      "region": "westjutland",
+      "lat": 55.999,
+      "lon": 8.129,
+      "visit": 90,
+      "cat": "Village",
+      "priority": 2,
+      "wiki": "Hvide Sande",
+      "summary": "A fishing port on the narrow dune strip between the North Sea and Ringkøbing Fjord, centre for windsurfing and kitesurfing, with a fish auction and smokehouses.",
+      "facts": [
+        "Buy fish from the harbour smokehouses",
+        "Surf schools on the calm fjord side",
+        "Sand dunes and beach just across the road"
+      ],
+      "sleep": true
+    },
+    {
+      "id": "lyngvig_lighthouse",
+      "name": "Lyngvig Lighthouse",
+      "region": "westjutland",
+      "lat": 56.049,
+      "lon": 8.104,
+      "visit": 45,
+      "cat": "Lighthouse",
+      "priority": 2,
+      "wiki": "Hvide Sande",
+      "summary": "A white lighthouse on a high dune between sea and fjord, with a 360° view over the North Sea coast and Ringkøbing Fjord.",
+      "facts": [
+        "Small fee to climb; 228 steps",
+        "Free parking; beach paths through the dunes",
+        "Café and small exhibition at the foot of the lighthouse"
+      ]
+    },
+    {
+      "id": "tipperne",
+      "name": "Tipperne bird reserve",
+      "region": "westjutland",
+      "lat": 55.889,
+      "lon": 8.231,
+      "visit": 90,
+      "cat": "Nature reserve",
+      "priority": 1,
+      "wiki": "Ringkøbing Fjord",
+      "summary": "A marshy peninsula at the south of Ringkøbing Fjord, one of Denmark's most important bird reserves, with a viewing tower over thousands of geese, waders and ducks.",
+      "facts": [
+        "Access is restricted to limited hours to protect the birds; check before going",
+        "Bring binoculars",
+        "Best in spring and autumn migration"
+      ]
+    },
+    {
+      "id": "holstebro",
+      "name": "Holstebro",
+      "region": "westjutland",
+      "lat": 56.36,
+      "lon": 8.617,
+      "visit": 90,
+      "cat": "Town",
+      "priority": 1,
+      "wiki": "Holstebro",
+      "summary": "A small inland town known for its public sculptures, including a Giacometti woman on a cart in the town centre, and a good art museum. A practical base between the coast and the Lake District.",
+      "facts": [
+        "Holstebro Art Museum is small and good",
+        "Hjerl Hede open-air museum is about 25 minutes away",
+        "Free street parking is easy to find outside the pedestrian centre"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "struer",
+      "name": "Struer",
+      "region": "westjutland",
+      "lat": 56.491,
+      "lon": 8.589,
+      "visit": 60,
+      "cat": "Town",
+      "priority": 1,
+      "wiki": "Struer",
+      "summary": "A small town on the Limfjord, home of Bang & Olufsen, with the Struer Museum covering the company's audio design history.",
+      "facts": [
+        "Struer Museum includes the B&O exhibition",
+        "Oddesund bridge north leads to Thy",
+        "Train connections to Holstebro and Thisted"
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "hjerl_hede",
+      "name": "Hjerl Hede",
+      "region": "westjutland",
+      "lat": 56.456,
+      "lon": 8.98,
+      "visit": 180,
+      "cat": "Museum",
+      "priority": 1,
+      "wiki": "Skive, Denmark",
+      "summary": "An open-air museum of old Jutland farms, village buildings, a dairy and a moorland railway, where costumed interpreters bring the 1800s to life in summer.",
+      "facts": [
+        "Open roughly April to October; most lively in July",
+        "Allow half a day",
+        "Café and picnic areas on site"
+      ]
+    },
+    {
+      "id": "lemvig",
+      "name": "Lemvig",
+      "region": "westjutland",
+      "lat": 56.548,
+      "lon": 8.31,
+      "visit": 90,
+      "cat": "Town",
+      "priority": 1,
+      "wiki": "Lemvig",
+      "summary": "A hilly little town on an inlet of the Limfjord, with the Museum for Religious Art and the Planet Lemvig climate centre. Base for the dramatic Bovbjerg cliffs.",
+      "facts": [
+        "Bovbjerg Lighthouse is 10 km to the west",
+        "Thyborøn harbour and the Sea War Museum Jutland are north",
+        "Good cycling along the Limfjord shore"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "bovbjerg_lighthouse",
+      "name": "Bovbjerg Lighthouse & Klint",
+      "region": "westjutland",
+      "lat": 56.512,
+      "lon": 8.123,
+      "visit": 75,
+      "cat": "Lighthouse",
+      "priority": 2,
+      "wiki": "Bovbjerg",
+      "summary": "A red lighthouse on a 40 m clay cliff above the North Sea, with a gallery, café and coast path along the cliff top.",
+      "facts": [
+        "Free to walk; small fee for the lighthouse",
+        "Cliff-top path toward Ferring",
+        "Spectacular in stormy weather"
+      ]
+    },
+    {
+      "id": "agger_tange",
+      "name": "Agger Tange",
+      "region": "westjutland",
+      "lat": 56.74,
+      "lon": 8.24,
+      "visit": 120,
+      "cat": "Nature reserve",
+      "priority": 1,
+      "wiki": "Agger Tange",
+      "summary": "A long sandy spit at the south of Thy, part of Thy National Park, with lagoons and marshes full of breeding and migrating birds.",
+      "facts": [
+        "Free; bird-watching hides along the road",
+        "The Thyborøn–Agger car ferry is a short hop",
+        "Best in spring and autumn"
+      ]
+    },
+    {
+      "id": "thy_national_park",
+      "name": "Thy National Park",
+      "region": "westjutland",
+      "lat": 56.93,
+      "lon": 8.33,
+      "visit": 180,
+      "cat": "Nature reserve",
+      "priority": 2,
+      "wiki": "Thy National Park",
+      "summary": "Denmark's first national park, a wild 55 km strip of dunes, heath, dune lakes and plantations along the North Sea coast, largely unchanged since the 1800s.",
+      "facts": [
+        "Free; marked trails from Stenbjerg, Vangså and Hanstholm",
+        "The Hanstholm Reserve is closed during the breeding season",
+        "Look for red deer at dawn"
+      ]
+    },
+    {
+      "id": "vorupor",
+      "name": "Nørre Vorupør",
+      "region": "westjutland",
+      "lat": 56.956,
+      "lon": 8.36,
+      "visit": 90,
+      "cat": "Village",
+      "priority": 1,
+      "wiki": "Nørre Vorupør",
+      "summary": "A fishing village where boats are still winched up onto the beach, with a small aquarium and wide sands backed by Thy National Park.",
+      "facts": [
+        "Free beach parking",
+        "Fish boats are winched up the beach in the afternoon",
+        "Small shops and fish restaurants by the beach"
+      ]
+    },
+    {
+      "id": "klitmoller",
+      "name": "Klitmøller",
+      "region": "westjutland",
+      "lat": 57.04,
+      "lon": 8.49,
+      "visit": 90,
+      "cat": "Village",
+      "priority": 2,
+      "wiki": "Klitmøller",
+      "summary": "A former fishing village nicknamed 'Cold Hawaii', one of Europe's best wave spots for surfing and windsurfing, with a relaxed surfer vibe.",
+      "facts": [
+        "Surf schools and board hire",
+        "Watch surfers from the dunes",
+        "Water cold: thick wetsuits even in summer"
+      ]
+    },
+    {
+      "id": "hanstholm",
+      "name": "Hanstholm Bunker Museum",
+      "region": "westjutland",
+      "lat": 57.113,
+      "lon": 8.606,
+      "visit": 90,
+      "cat": "Museum",
+      "priority": 1,
+      "wiki": "Hanstholm",
+      "summary": "A German WWII coastal fortress with huge gun emplacements and bunker tunnels, part of the Atlantic Wall, now a museum of the war in Thy.",
+      "facts": ["Ticketed; allow 1.5 hours", "Explore the bunkers with a light", "Hanstholm Lighthouse is nearby"],
+      "needsDaylight": false
+    },
+    {
+      "id": "thisted",
+      "name": "Thisted",
+      "region": "westjutland",
+      "lat": 56.957,
+      "lon": 8.694,
+      "visit": 90,
+      "cat": "Town",
+      "priority": 1,
+      "wiki": "Thisted",
+      "summary": "The main town of Thy, on the Limfjord, with shops and accommodation. A practical base for Klitmøller and the national park.",
+      "facts": [
+        "Trains to Struer",
+        "Good supermarkets before heading to the coast",
+        "About 20 minutes by car from Klitmøller and Nørre Vorupør"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "aalborg",
+      "name": "Aalborg",
+      "region": "northjutland",
+      "lat": 57.0488,
+      "lon": 9.9217,
+      "visit": 180,
+      "cat": "Base",
+      "priority": 2,
+      "wiki": "Aalborg",
+      "summary": "Northern Jutland's main city on the Limfjord, with a renovated waterfront, the Utzon Center, the Kunsten art museum and the lively Jomfru Ane Gade bar street. Base for Lindholm Høje.",
+      "facts": [
+        "Trains to Aarhus take about 1 h 20 min",
+        "Aalborg Airport is 10 minutes from the centre",
+        "Taste local akvavit, once distilled here"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "lindholm_hoje",
+      "name": "Lindholm Høje",
+      "region": "northjutland",
+      "lat": 57.077,
+      "lon": 9.91,
+      "visit": 75,
+      "cat": "Ancient site",
+      "priority": 2,
+      "wiki": "Lindholm Høje",
+      "summary": "A Viking burial ground on a hill overlooking Aalborg, with nearly 700 graves marked by stones arranged in ship shapes and circles.",
+      "facts": [
+        "Burial ground free; museum ticketed",
+        "Bus from Aalborg centre",
+        "Atmospheric early morning or at sunset"
+      ]
+    },
+    {
+      "id": "kunsten",
+      "name": "Kunsten Museum of Modern Art",
+      "region": "northjutland",
+      "lat": 57.043,
+      "lon": 9.91,
+      "visit": 90,
+      "cat": "Museum",
+      "priority": 1,
+      "wiki": "Kunsten Museum of Modern Art Aalborg",
+      "summary": "Aalborg's art museum, in a 1972 building by Alvar Aalto, with Danish 20th-century art and a sculpture park.",
+      "facts": ["Ticketed; closed Mondays", "10 minutes' walk from the station", "Allow 1–1.5 hours; café on site"],
+      "closed": [1],
+      "needsDaylight": false
+    },
+    {
+      "id": "skagen",
+      "name": "Skagen",
+      "region": "northjutland",
+      "lat": 57.721,
+      "lon": 10.583,
+      "visit": 180,
+      "cat": "Base",
+      "priority": 3,
+      "wiki": "Skagen",
+      "summary": "Denmark's northernmost town, with yellow houses with red-tile roofs, a busy fishing harbour and a famous artists' colony from the 1880s. The light here is extraordinary.",
+      "facts": [
+        "Book accommodation well ahead in July",
+        "Fish restaurants at the harbour",
+        "Bike rental is the best way to get around"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "grenen",
+      "name": "Grenen",
+      "region": "northjutland",
+      "lat": 57.744,
+      "lon": 10.637,
+      "visit": 90,
+      "cat": "Coast",
+      "priority": 3,
+      "wiki": "Grenen",
+      "summary": "The sandy tip of Denmark where the Skagerrak and Kattegat meet, and you can stand with a foot in each sea as the waves clash.",
+      "facts": [
+        "Paid parking; walk the last 1.5 km or ride the Sandormen tractor bus",
+        "Seals often bask on the sandbank",
+        "Swimming is forbidden at the tip"
+      ],
+      "caution": "Swimming is strictly forbidden at the point because of the strong currents."
+    },
+    {
+      "id": "skagens_museum",
+      "name": "Skagens Museum",
+      "region": "northjutland",
+      "lat": 57.723,
+      "lon": 10.594,
+      "visit": 90,
+      "cat": "Museum",
+      "priority": 2,
+      "wiki": "Skagens Museum",
+      "summary": "The museum of the Skagen Painters (Krøyer, Anna and Michael Ancher), whose luminous beach and evening scenes are the best-loved Danish paintings.",
+      "facts": [
+        "Ticketed; closed Mondays in winter",
+        "Combine with Anchers Hus, the artists' home",
+        "Allow 1.5 hours; small and easy to see"
+      ],
+      "hours": "11:00-16:00",
+      "needsDaylight": false
+    },
+    {
+      "id": "sand_covered_church",
+      "name": "Sand-Covered Church",
+      "region": "northjutland",
+      "lat": 57.702,
+      "lon": 10.552,
+      "visit": 30,
+      "cat": "Monastery & church",
+      "priority": 2,
+      "wiki": "Sand-Covered Church",
+      "summary": "The white tower of a medieval church abandoned in 1795 when shifting sand dunes buried it, still sticking up out of the dunes.",
+      "facts": [
+        "Free; parking nearby",
+        "Tower interior can be visited in summer",
+        "About 2 km south of Skagen by bike path through the plantation"
+      ]
+    },
+    {
+      "id": "raabjerg_mile",
+      "name": "Råbjerg Mile",
+      "region": "northjutland",
+      "lat": 57.653,
+      "lon": 10.417,
+      "visit": 75,
+      "cat": "Nature reserve",
+      "priority": 2,
+      "wiki": "Råbjerg Mile",
+      "summary": "Northern Europe's largest moving dune, a mini desert that drifts about 15 m a year towards the north-east.",
+      "facts": ["Free; parking by the dune", "Walk barefoot on the dune", "Best at sunset"]
+    },
+    {
+      "id": "hirtshals",
+      "name": "Hirtshals",
+      "region": "northjutland",
+      "lat": 57.588,
+      "lon": 9.962,
+      "visit": 60,
+      "cat": "Town",
+      "priority": 1,
+      "wiki": "Hirtshals",
+      "summary": "A ferry port for Norway and the Faroe Islands with a big fishing harbour and the North Sea Oceanarium.",
+      "facts": [
+        "Ferries to Norway (Kristiansand, Larvik) and the Faroes",
+        "Hirtshals Lighthouse on the cliff",
+        "About 50 minutes from Aalborg on the E39 motorway"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "nordsoen_oceanarium",
+      "name": "North Sea Oceanarium",
+      "region": "northjutland",
+      "lat": 57.59,
+      "lon": 9.945,
+      "visit": 120,
+      "cat": "Museum",
+      "priority": 1,
+      "wiki": "Nordsøen Oceanarium",
+      "summary": "Northern Europe's largest aquarium, with a huge ocean tank of schooling fish and a seal enclosure with daily feeding.",
+      "facts": ["Ticketed; feeding times are the highlight", "Good rainy-day option", "Allow about 2 hours"],
+      "needsDaylight": false
+    },
+    {
+      "id": "lonstrup",
+      "name": "Lønstrup",
+      "region": "northjutland",
+      "lat": 57.476,
+      "lon": 9.796,
+      "visit": 75,
+      "cat": "Village",
+      "priority": 1,
+      "wiki": "Lønstrup",
+      "summary": "A small artists' village on the North Sea cliffs with galleries, cafés and paths along the coast.",
+      "facts": [
+        "Galleries and ceramic studios along the main street",
+        "Walk to Rubjerg Knude Lighthouse",
+        "Narrow streets with limited parking in summer; use the car parks at the edge of the village"
+      ]
+    },
+    {
+      "id": "rubjerg_knude",
+      "name": "Rubjerg Knude Lighthouse",
+      "region": "northjutland",
+      "lat": 57.449,
+      "lon": 9.774,
+      "visit": 90,
+      "cat": "Lighthouse",
+      "priority": 2,
+      "wiki": "Rubjerg Knude Lighthouse",
+      "summary": "A lighthouse half-buried by sand on a 60 m dune at the cliff edge, moved 70 m inland on rails in 2019 to save it from the sea.",
+      "facts": [
+        "Free; walk from the car park (about 15 minutes)",
+        "Very windy; protect cameras from blown sand",
+        "Sand drifts can make the path hard going; wear sturdy shoes"
+      ]
+    },
+    {
+      "id": "lokken",
+      "name": "Løkken",
+      "region": "northjutland",
+      "lat": 57.37,
+      "lon": 9.713,
+      "visit": 120,
+      "cat": "Beach",
+      "priority": 1,
+      "wiki": "Løkken",
+      "summary": "A seaside resort with a wide beach where you can drive cars on the sand, white bathing huts and a lively summer atmosphere.",
+      "facts": ["Free beach; car access on parts of the beach", "Busy in July", "Bunkers from WWII line the beach"]
+    },
+    {
+      "id": "farup_sommerland",
+      "name": "Fårup Sommerland",
+      "region": "northjutland",
+      "lat": 57.269,
+      "lon": 9.651,
+      "visit": 360,
+      "cat": "Theme park",
+      "priority": 1,
+      "wiki": "Fårup Sommerland",
+      "summary": "A big family amusement and waterpark set in pine forest near Blokhus, with roller coasters and a water park.",
+      "facts": [
+        "Open roughly May to September; buy tickets online",
+        "Waterpark included in the entry price",
+        "Allow a full day; arrive at opening"
+      ]
+    },
+    {
+      "id": "rold_skov",
+      "name": "Rold Forest & Rebild Hills",
+      "region": "northjutland",
+      "lat": 56.81,
+      "lon": 9.84,
+      "visit": 150,
+      "cat": "Nature reserve",
+      "priority": 1,
+      "wiki": "Rold Forest",
+      "summary": "Denmark's largest forest, with springs, beech and conifer woods and the open heather hills of Rebild Bakker, scene of the Danish-American 4th of July festival.",
+      "facts": [
+        "Free; marked trails from Rebild",
+        "Lille Vildmose and Mariager are nearby",
+        "Rebild visitor centre has maps of the trails"
+      ]
+    },
+    {
+      "id": "mariager",
+      "name": "Mariager",
+      "region": "northjutland",
+      "lat": 56.65,
+      "lon": 9.979,
+      "visit": 90,
+      "cat": "Village",
+      "priority": 1,
+      "wiki": "Mariager",
+      "summary": "The 'City of Roses', a tiny town with cobbled streets, rose-covered half-timbered houses and an abbey church on Mariager Fjord.",
+      "facts": [
+        "Summer steam train runs from Mariager to Handest",
+        "Fjord cruises in summer",
+        "Mariager Fjord cruise boats run in summer"
+      ]
+    },
+    {
+      "id": "lille_vildmose",
+      "name": "Lille Vildmose",
+      "region": "northjutland",
+      "lat": 56.88,
+      "lon": 10.2,
+      "visit": 120,
+      "cat": "Nature reserve",
+      "priority": 1,
+      "wiki": "Lille Vildmose",
+      "summary": "A vast raised bog with elk (moose) and wild boar, reintroduced in recent years, with towers and a visitor centre.",
+      "facts": [
+        "Free; visitor centre exhibits",
+        "Best at dawn or dusk for wildlife",
+        "Bring binoculars; stay on paths to avoid disturbing wildlife"
+      ]
+    },
+    {
+      "id": "bulbjerg",
+      "name": "Bulbjerg",
+      "region": "northjutland",
+      "lat": 57.15,
+      "lon": 9.03,
+      "visit": 60,
+      "cat": "Coast",
+      "priority": 1,
+      "wiki": "Bulbjerg",
+      "summary": "Denmark's only bird cliff, a 47 m limestone cliff with kittiwakes in summer and WWII bunkers on top.",
+      "facts": [
+        "Free; parking at the top",
+        "Kittiwakes nest from spring to summer",
+        "Combine with Slettestrand and Svinkløv beaches in Jammerbugt"
+      ]
+    },
+    {
+      "id": "cph",
+      "name": "Copenhagen Airport (CPH)",
+      "region": "copenhagen",
+      "lat": 55.618,
+      "lon": 12.656,
+      "wiki": "Copenhagen Airport",
+      "summary": "Kastrup, the main airport, on Amager: 15 min to the centre by metro (M2) or train, and on the line to Malmö in Sweden.",
+      "facts": [
+        "Metro M2 to Kongens Nytorv in ~15 min; trains to Copenhagen Central and onward across Denmark",
+        "Car rental in the P4 car park area",
+        "Allow 2 h before flights in summer"
+      ],
+      "visit": 0,
+      "cat": "Airport",
+      "needsDaylight": false,
+      "suggest": false,
+      "priority": 1
+    },
+    {
+      "id": "bll",
+      "name": "Billund Airport (BLL)",
+      "region": "eastjutland",
+      "lat": 55.7403,
+      "lon": 9.1518,
+      "wiki": "Billund Airport",
+      "summary": "Jutland's main airport, next to Legoland and LEGO House: handy for a Jutland-only trip.",
+      "facts": ["Buses to Vejle and Aarhus", "Legoland is a 5-minute drive"],
+      "visit": 0,
+      "cat": "Airport",
+      "needsDaylight": false,
+      "suggest": false,
+      "priority": 1
+    },
+    {
+      "id": "aal",
+      "name": "Aalborg Airport (AAL)",
+      "region": "northjutland",
+      "lat": 57.0928,
+      "lon": 9.8492,
+      "wiki": "Aalborg Airport",
+      "summary": "North Jutland's airport, 15 min from Aalborg, with flights to Copenhagen and some European cities.",
+      "facts": ["Train or bus to Aalborg centre in ~15 min"],
+      "visit": 0,
+      "cat": "Airport",
+      "needsDaylight": false,
+      "suggest": false,
+      "priority": 1
+    },
+    {
+      "id": "rnn",
+      "name": "Bornholm Airport (RNN)",
+      "region": "bornholm",
+      "lat": 55.0633,
+      "lon": 14.7596,
+      "wiki": "Bornholm Airport",
+      "summary": "Bornholm's small airport, 5 min from Rønne: about 35 min from Copenhagen by plane.",
+      "facts": ["Several flights a day to Copenhagen"],
+      "visit": 0,
+      "cat": "Airport",
+      "needsDaylight": false,
+      "suggest": false,
+      "priority": 1
+    }
+  ],
+  "drives": [
+    ["cph", "copenhagen", 10, 20],
+    ["bll", "billund", 3, 5],
+    ["bll", "vejle", 28, 25],
+    ["aal", "aalborg", 7, 15],
+    ["rnn", "ronne", 5, 8],
+    ["cph", "dragor", 7, 10],
+    ["copenhagen", "dragor", 13, 25],
+    ["copenhagen", "blue_planet", 10, 20],
+    ["copenhagen", "dyrehaven", 13, 25],
+    ["copenhagen", "bakken", 12, 25],
+    ["copenhagen", "amager_strandpark", 6, 15],
+    ["copenhagen", "christiania", 3, 10],
+    ["copenhagen", "helsingor", 46, 45],
+    ["copenhagen", "hillerod", 37, 40],
+    ["copenhagen", "louisiana", 37, 35],
+    ["copenhagen", "karen_blixen_museum", 25, 30],
+    ["karen_blixen_museum", "louisiana", 13, 15],
+    ["louisiana", "helsingor", 12, 15],
+    ["helsingor", "hillerod", 25, 30],
+    ["hillerod", "fredensborg", 10, 15],
+    ["fredensborg", "helsingor", 15, 20],
+    ["hillerod", "esrum_lake", 12, 15],
+    ["helsingor", "hornbaek", 13, 15],
+    ["hornbaek", "gilleleje", 13, 15],
+    ["hillerod", "gilleleje", 25, 28],
+    ["hillerod", "tisvildeleje", 25, 30],
+    ["gilleleje", "tisvildeleje", 20, 25],
+    ["copenhagen", "arken", 20, 25],
+    ["arken", "koge", 22, 20],
+    ["hillerod", "roskilde", 32, 35],
+    ["copenhagen", "roskilde", 35, 35],
+    ["roskilde", "sagnlandet_lejre", 12, 15],
+    ["copenhagen", "koge", 40, 35],
+    ["roskilde", "koge", 25, 25],
+    ["koge", "stevns_klint", 30, 30],
+    ["koge", "goose_tower", 75, 55],
+    ["goose_tower", "stege", 15, 20],
+    ["stege", "fanefjord_church", 20, 22],
+    ["stege", "mons_klint", 20, 25],
+    ["mons_klint", "liselund", 5, 8],
+    ["koge", "stege", 80, 60],
+    ["goose_tower", "nykobing_falster", 30, 25],
+    ["koge", "nykobing_falster", 100, 70],
+    ["nykobing_falster", "marielyst", 13, 15],
+    ["nykobing_falster", "knuthenborg", 35, 35],
+    ["roskilde", "soro_abbey", 50, 40],
+    ["soro_abbey", "trelleborg", 20, 22],
+    ["koge", "soro_abbey", 50, 40],
+    ["trelleborg", "nyborg_castle", 40, 35],
+    ["copenhagen", "odense", 165, 100],
+    ["roskilde", "odense", 135, 90],
+    ["koge", "odense", 140, 95],
+    ["odense", "hc_andersen_house", 1, 3],
+    ["odense", "funen_village", 4, 10],
+    ["odense", "nyborg_castle", 32, 25],
+    ["odense", "kerteminde", 20, 22],
+    ["kerteminde", "ladby_ship", 5, 8],
+    ["kerteminde", "nyborg_castle", 22, 22],
+    ["odense", "egeskov", 30, 30],
+    ["egeskov", "svendborg", 20, 22],
+    ["egeskov", "faaborg", 20, 22],
+    ["odense", "svendborg", 44, 40],
+    ["odense", "faaborg", 40, 40],
+    ["svendborg", "faaborg", 26, 30],
+    ["svendborg", "valdemars_slot", 6, 10],
+    ["svendborg", "langeland", 25, 25],
+    ["nyborg_castle", "svendborg", 35, 35],
+    ["odense", "middelfart", 45, 35],
+    ["ronne", "hammershus", 20, 25],
+    ["hammershus", "hammeren", 4, 8],
+    ["ronne", "gudhjem", 22, 25],
+    ["hammershus", "gudhjem", 20, 25],
+    ["gudhjem", "osterlars_church", 5, 8],
+    ["gudhjem", "bornholm_art_museum", 6, 8],
+    ["gudhjem", "svaneke", 15, 18],
+    ["svaneke", "nexo", 10, 12],
+    ["nexo", "dueodde", 12, 15],
+    ["ronne", "dueodde", 28, 30],
+    ["ronne", "almindingen", 15, 18],
+    ["almindingen", "osterlars_church", 10, 12],
+    ["ronne", "nexo", 30, 35],
+    ["cph", "copenhagen", 12, 30, "train", 36],
+    ["copenhagen", "roskilde", 31, 40, "train", 85],
+    ["copenhagen", "helsingor", 45, 60, "train", 95],
+    ["copenhagen", "odense", 165, 110, "train", 290],
+    ["koge", "ronne", 190, 390, "ferry", 290],
+    ["copenhagen", "ronne", 200, 220, "ferry", 400],
+    ["cph", "rnn", 155, 100, "flight", 600],
+    ["svendborg", "aeroskobing", 30, 105, "ferry", 140],
+    ["esbjerg", "ribe", 32, 30],
+    ["esbjerg", "men_at_sea", 5, 10],
+    ["ribe", "ribe_vikingecenter", 3, 5],
+    ["ribe", "wadden_sea", 10, 12],
+    ["ribe", "romo", 45, 45],
+    ["romo", "tonder", 40, 40],
+    ["ribe", "tonder", 50, 45],
+    ["tonder", "mogeltonder", 5, 7],
+    ["tonder", "sonderborg", 75, 70],
+    ["sonderborg", "dybbol", 4, 7],
+    ["sonderborg", "grasten_palace", 15, 17],
+    ["sonderborg", "koldinghus", 80, 60],
+    ["ribe", "koldinghus", 60, 50],
+    ["koldinghus", "christiansfeld", 13, 15],
+    ["koldinghus", "middelfart", 18, 17],
+    ["koldinghus", "vejle", 30, 25],
+    ["esbjerg", "billund", 65, 50],
+    ["esbjerg", "ringkobing", 85, 70],
+    ["aarhus", "aros", 1, 3],
+    ["aarhus", "den_gamle_by", 1, 5],
+    ["aarhus", "moesgaard", 9, 15],
+    ["aarhus", "kalo", 25, 30],
+    ["kalo", "mols_bjerge", 12, 15],
+    ["aarhus", "ebeltoft", 50, 50],
+    ["mols_bjerge", "ebeltoft", 15, 15],
+    ["aarhus", "randers_regnskov", 40, 35],
+    ["aarhus", "silkeborg", 44, 40],
+    ["silkeborg", "hjejlen", 1, 3],
+    ["silkeborg", "himmelbjerget", 20, 25],
+    ["aarhus", "himmelbjerget", 45, 45],
+    ["aarhus", "horsens_prison", 50, 40],
+    ["horsens_prison", "vejle", 30, 25],
+    ["vejle", "jelling", 11, 15],
+    ["jelling", "billund", 25, 25],
+    ["vejle", "billund", 28, 30],
+    ["billund", "legoland", 2, 5],
+    ["billund", "lego_house", 1, 3],
+    ["aarhus", "vejle", 75, 55],
+    ["silkeborg", "billund", 60, 55],
+    ["aarhus", "aalborg", 120, 85],
+    ["aarhus", "odense", 145, 100],
+    ["vejle", "odense", 90, 65],
+    ["copenhagen", "aarhus", 300, 190],
+    ["ringkobing", "hvide_sande", 12, 15],
+    ["hvide_sande", "lyngvig_lighthouse", 7, 8],
+    ["hvide_sande", "tipperne", 25, 25],
+    ["ringkobing", "holstebro", 45, 40],
+    ["holstebro", "struer", 15, 17],
+    ["struer", "lemvig", 22, 22],
+    ["lemvig", "bovbjerg_lighthouse", 12, 15],
+    ["holstebro", "hjerl_hede", 25, 25],
+    ["struer", "thisted", 55, 50],
+    ["thisted", "agger_tange", 30, 30],
+    ["thisted", "klitmoller", 20, 20],
+    ["thisted", "vorupor", 20, 20],
+    ["vorupor", "thy_national_park", 5, 7],
+    ["klitmoller", "hanstholm", 12, 13],
+    ["thisted", "hanstholm", 22, 22],
+    ["thisted", "aalborg", 95, 80],
+    ["ringkobing", "silkeborg", 85, 70],
+    ["ringkobing", "billund", 75, 60],
+    ["holstebro", "silkeborg", 85, 70],
+    ["aalborg", "lindholm_hoje", 5, 10],
+    ["aalborg", "kunsten", 2, 5],
+    ["aalborg", "skagen", 105, 80],
+    ["skagen", "grenen", 4, 8],
+    ["skagen", "skagens_museum", 1, 3],
+    ["skagen", "sand_covered_church", 4, 8],
+    ["skagen", "raabjerg_mile", 15, 18],
+    ["aalborg", "hirtshals", 65, 50],
+    ["hirtshals", "nordsoen_oceanarium", 2, 5],
+    ["hirtshals", "lonstrup", 25, 25],
+    ["lonstrup", "rubjerg_knude", 5, 8],
+    ["aalborg", "lokken", 50, 40],
+    ["lokken", "farup_sommerland", 8, 10],
+    ["lokken", "lonstrup", 20, 20],
+    ["aalborg", "rold_skov", 35, 30],
+    ["rold_skov", "mariager", 25, 25],
+    ["aalborg", "mariager", 50, 45],
+    ["aalborg", "lille_vildmose", 35, 35],
+    ["aalborg", "bulbjerg", 75, 65],
+    ["skagen", "hirtshals", 50, 45],
+    ["odense", "aarhus", 155, 120, "train", 270],
+    ["copenhagen", "aarhus", 300, 205, "train", 430],
+    ["aarhus", "aalborg", 120, 105, "train", 220],
+    ["aalborg", "skagen", 105, 140, "train", 180],
+    ["esbjerg", "fano", 5, 35, "ferry", 50],
+    ["cph", "aal", 240, 110, "flight", 600]
+  ],
+  "bookings": [
+    {
+      "id": "b1",
+      "item": "Flights to Denmark",
+      "type": "flight",
+      "option": null,
+      "status": "todo",
+      "est": 1500,
+      "actual": null,
+      "seasonal": "",
+      "note": "Copenhagen; or Billund for a Jutland-only trip."
+    },
+    {
+      "id": "b2",
+      "item": "Rental car",
+      "type": "transfer",
+      "option": null,
+      "status": "todo",
+      "est": 2500,
+      "actual": null,
+      "seasonal": "",
+      "note": "Per week, small car. Ask whether it has a BroBizz bridge-toll tag."
+    },
+    {
+      "id": "b3",
+      "item": "Fuel and bridge tolls",
+      "type": "transfer",
+      "option": null,
+      "status": "todo",
+      "est": 900,
+      "actual": null,
+      "seasonal": "",
+      "note": "Great Belt bridge ~300 DKK each way by car; the Compare tab estimates fuel per plan."
+    },
+    {
+      "id": "b4",
+      "item": "Copenhagen Card",
+      "type": "tickets",
+      "option": null,
+      "status": "todo",
+      "est": 600,
+      "actual": null,
+      "seasonal": "",
+      "note": "48 h; covers transport and most museums around Copenhagen."
+    },
+    {
+      "id": "b5",
+      "item": "Legoland or Tivoli",
+      "type": "tickets",
+      "option": null,
+      "status": "todo",
+      "est": 500,
+      "actual": null,
+      "seasonal": "",
+      "note": "Seasonal; cheaper booked online."
+    },
+    {
+      "id": "b6",
+      "item": "Bornholm ferry",
+      "type": "transfer",
+      "option": null,
+      "status": "todo",
+      "est": 800,
+      "actual": null,
+      "seasonal": "",
+      "note": "Return per person via Ystad or Køge; more with a car."
+    },
+    {
+      "id": "b7",
+      "item": "Travel insurance",
+      "type": "other",
+      "option": null,
+      "status": "todo",
+      "est": 300,
+      "actual": null,
+      "seasonal": "",
+      "note": ""
+    }
+  ],
+  "retiredPlaces": [],
+  "links": [
+    {
+      "name": "DSB trains",
+      "url": "https://www.dsb.dk/en/",
+      "host": "dsb.dk",
+      "note": "Train times and tickets across Denmark. Orange tickets (cheaper, fixed train) are sold ahead."
+    },
+    {
+      "name": "Rejseplanen journey planner",
+      "url": "https://www.rejseplanen.dk/",
+      "host": "rejseplanen.dk",
+      "note": "Door-to-door public transport, including buses and island ferries."
+    },
+    {
+      "name": "DMI weather warnings",
+      "url": "https://www.dmi.dk/",
+      "host": "dmi.dk",
+      "note": "Official forecasts and warnings: storms close the bridges to high vehicles and stop ferries."
+    },
+    {
+      "name": "Copenhagen Card",
+      "url": "https://copenhagencard.com/",
+      "host": "copenhagencard.com",
+      "note": "Public transport in the capital region plus entry to 80+ museums and sights, including Kronborg and Frederiksborg."
+    },
+    {
+      "name": "Bornholmslinjen ferries",
+      "url": "https://www.bornholmslinjen.com/",
+      "host": "bornholmslinjen.com",
+      "note": "Ystad ↔ Rønne fast ferry and Køge ↔ Rønne; book car places ahead in summer."
+    },
+    {
+      "name": "Storebælt bridge",
+      "url": "https://www.storebaelt.dk/en/",
+      "host": "storebaelt.dk",
+      "note": "Great Belt bridge tolls (Zealand ↔ Funen); BroBizz or pay at the booths."
+    },
+    {
+      "name": "VisitDenmark",
+      "url": "https://www.visitdenmark.com/",
+      "host": "visitdenmark.com",
+      "note": "Official tourism site, with events and seasonal opening."
+    }
+  ],
+  "checklist": [
+    "ID card (EU) or passport. Non-EU visitors: check the EES/ETIAS entry rules for the Schengen area. Bornholm by road crosses Sweden: carry your ID.",
+    "A card that works abroad: many places are card-only and cash is rarely needed.",
+    "Book ahead in summer: Bornholm and Ærø ferry car places, Legoland, LEGO House, Tivoli at weekends.",
+    "Many museums close on Mondays; Egeskov, Legoland and Tivoli open only part of the year.",
+    "Bridge tolls: the Great Belt (Zealand ↔ Funen) and the Øresund (to Sweden). Some rental cars include a BroBizz tag.",
+    "Copenhagen: don't drive in the centre; parking is expensive. Use the metro, trains and city bikes.",
+    "Cycle lanes are busy and fast: don't walk on them, and look before crossing.",
+    "The North Sea coast has strong currents: swim only where it's safe and lifeguarded, never near Grenen's tip at Skagen.",
+    "Rain jacket and wind layers all year.",
+    "European Health Insurance Card (EU) or travel insurance."
+  ],
+  "checks": {},
+  "categories": [
+    "Town",
+    "Base",
+    "Old town",
+    "Castle",
+    "Palace",
+    "Monastery & church",
+    "Ancient site",
+    "Monument",
+    "Ruins",
+    "Museum",
+    "Windmill",
+    "Village",
+    "Food & market",
+    "Experience",
+    "Theme park",
+    "Garden",
+    "Beach",
+    "Coast",
+    "Island",
+    "Boat trip",
+    "Lighthouse",
+    "Viewpoint",
+    "Bike ride",
+    "Hike",
+    "Lake",
+    "Nature reserve",
+    "Airport"
+  ],
+  "picks": {}
+}
