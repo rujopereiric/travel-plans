@@ -1,0 +1,2743 @@
+{
+  "places": [
+    {
+      "id": "limerick",
+      "name": "Limerick",
+      "region": "clare",
+      "lat": 52.6638,
+      "lon": -8.6267,
+      "visit": 120,
+      "cat": "Town",
+      "priority": 1,
+      "wiki": "Limerick",
+      "summary": "River Shannon city with a Norman castle, Georgian quarter and the Hunt Museum, plus a strong rugby and food culture. A practical base near Shannon Airport.",
+      "facts": [
+        "Pay parking in multi-storeys; centre is walkable",
+        "Milk Market runs Friday to Sunday",
+        "Shannon Airport is 25 minutes away"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "king_johns_castle",
+      "name": "King John's Castle",
+      "region": "clare",
+      "lat": 52.6697,
+      "lon": -8.6253,
+      "visit": 90,
+      "cat": "Castle",
+      "priority": 2,
+      "wiki": "King John's Castle (Limerick)",
+      "summary": "13th-century castle on King's Island by the Shannon, with an interactive exhibition, excavated siege tunnels and views from the battlements.",
+      "facts": [
+        "Tickets ~€15; cheaper online",
+        "Allow 1.5 hours",
+        "St Mary's Cathedral is a 5-minute walk"
+      ],
+      "hours": "09:30-17:00"
+    },
+    {
+      "id": "hunt_museum",
+      "name": "Hunt Museum",
+      "region": "clare",
+      "lat": 52.6625,
+      "lon": -8.6235,
+      "visit": 75,
+      "cat": "Museum",
+      "priority": 1,
+      "wiki": "Hunt Museum",
+      "summary": "Eclectic private collection of art and antiquities from the Bronze Age to Picasso, in the Georgian Custom House on the river.",
+      "facts": [
+        "Entry ~€10",
+        "Riverside café",
+        "Good wet-weather option"
+      ],
+      "hours": "10:00-17:00",
+      "needsDaylight": false
+    },
+    {
+      "id": "adare",
+      "name": "Adare",
+      "region": "clare",
+      "lat": 52.5643,
+      "lon": -8.7905,
+      "visit": 75,
+      "cat": "Village",
+      "priority": 2,
+      "wiki": "Adare",
+      "summary": "Often called Ireland's prettiest village, with thatched cottages, medieval abbeys and a Desmond castle by the River Maigue.",
+      "facts": [
+        "Free car park by the heritage centre",
+        "Desmond Castle visited by tour from the heritage centre in summer",
+        "Busy with coach tours at midday"
+      ],
+      "sleep": true
+    },
+    {
+      "id": "bunratty_castle",
+      "name": "Bunratty Castle & Folk Park",
+      "region": "clare",
+      "lat": 52.699,
+      "lon": -8.813,
+      "visit": 150,
+      "cat": "Castle",
+      "priority": 2,
+      "wiki": "Bunratty Castle",
+      "summary": "Restored 15th-century tower house furnished in period style, with a folk park of recreated rural cottages, shops and a village street. Medieval banquets are held in the evenings.",
+      "facts": [
+        "Tickets ~€15–20; cheaper online",
+        "Allow 2–3 hours",
+        "10 minutes from Shannon Airport, handy on arrival or departure day"
+      ],
+      "hours": "09:30-17:00"
+    },
+    {
+      "id": "ennis",
+      "name": "Ennis",
+      "region": "clare",
+      "lat": 52.8436,
+      "lon": -8.9864,
+      "visit": 120,
+      "cat": "Town",
+      "priority": 1,
+      "wiki": "Ennis",
+      "summary": "Clare's lively county town with narrow streets, a ruined Franciscan friary and a strong trad music scene. Central base for the Burren and the coast.",
+      "facts": [
+        "Pay parking in town car parks",
+        "Ennis Friary (OPW) has fine medieval carvings",
+        "Trad sessions in pubs most nights"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "quin_abbey",
+      "name": "Quin Abbey",
+      "region": "clare",
+      "lat": 52.819,
+      "lon": -8.863,
+      "visit": 30,
+      "cat": "Ruins",
+      "priority": 1,
+      "wiki": "Quin Abbey",
+      "summary": "Well-preserved Franciscan friary with an intact cloister and tower you can climb, free and often empty.",
+      "facts": [
+        "Free, open access",
+        "Allow 30 minutes",
+        "Between Ennis and Bunratty"
+      ]
+    },
+    {
+      "id": "doolin",
+      "name": "Doolin",
+      "region": "clare",
+      "lat": 53.0161,
+      "lon": -9.404,
+      "visit": 90,
+      "cat": "Village",
+      "priority": 2,
+      "wiki": "Doolin",
+      "summary": "Scattered village famous for traditional music, close to the Cliffs of Moher and with ferries to the Aran Islands. Good base for the cliffs and the Burren.",
+      "facts": [
+        "Pubs with music nightly in summer",
+        "Ferries to Inis Oírr and Inis Mór from Doolin pier (seasonal)",
+        "Book accommodation early in summer"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "cliffs_of_moher",
+      "name": "Cliffs of Moher",
+      "region": "clare",
+      "lat": 52.9715,
+      "lon": -9.4309,
+      "visit": 120,
+      "cat": "Coast",
+      "priority": 3,
+      "wiki": "Cliffs of Moher",
+      "summary": "Sheer sea cliffs rising to 214 m over the Atlantic, stretching 8 km along the Clare coast, with puffins in early summer. Ireland's most visited natural sight.",
+      "facts": [
+        "Admission ~€10–12 includes parking and the visitor centre; cheaper online",
+        "Arrive early morning or late afternoon to avoid crowds",
+        "Walk south toward Hag's Head for quieter views"
+      ],
+      "caution": "Stay behind the barriers and on paths; edges are unstable and winds can be extreme.",
+      "season": "Puffins nest from about April to July; winter storms bring huge waves."
+    },
+    {
+      "id": "doolin_cliff_walk",
+      "name": "Doolin to Cliffs of Moher Coastal Walk",
+      "region": "clare",
+      "lat": 53.005,
+      "lon": -9.41,
+      "visit": 150,
+      "cat": "Hike",
+      "priority": 2,
+      "wiki": "Cliffs of Moher",
+      "summary": "Clifftop path from Doolin to the Cliffs of Moher visitor centre, the most dramatic way to see the cliffs. The Doolin end now runs as guided walks.",
+      "facts": [
+        "About 8 km one way, 2.5–3 hours",
+        "Access from the Doolin end is by local guided walk; check locally",
+        "Arrange a taxi or bus back"
+      ],
+      "caution": "Unfenced cliff edges; not in high wind or poor visibility."
+    },
+    {
+      "id": "doolin_cave",
+      "name": "Doolin Cave",
+      "region": "clare",
+      "lat": 53.049,
+      "lon": -9.373,
+      "visit": 60,
+      "cat": "Cave",
+      "priority": 1,
+      "wiki": "Doolin Cave",
+      "summary": "Cave holding the Great Stalactite, one of the longest free-hanging stalactites in the world at over 7 m, seen on a guided tour.",
+      "facts": [
+        "Guided tour ~€17; book ahead in summer",
+        "Farm nature trail included",
+        "Tour lasts about an hour"
+      ],
+      "hours": "10:00-17:00",
+      "needsDaylight": false
+    },
+    {
+      "id": "aillwee_cave",
+      "name": "Aillwee Cave",
+      "region": "clare",
+      "lat": 53.089,
+      "lon": -9.14,
+      "visit": 75,
+      "cat": "Cave",
+      "priority": 1,
+      "wiki": "Aillwee Cave",
+      "summary": "Show cave in the Burren with an underground river, waterfall and bear bones, plus a birds of prey centre.",
+      "facts": [
+        "Tickets ~€15; birds of prey extra or combined",
+        "Guided tours about 35 minutes",
+        "Near Ballyvaughan"
+      ],
+      "hours": "10:00-17:00",
+      "needsDaylight": false
+    },
+    {
+      "id": "poulnabrone",
+      "name": "Poulnabrone Dolmen",
+      "region": "clare",
+      "lat": 53.0487,
+      "lon": -9.14,
+      "visit": 20,
+      "cat": "Ancient site",
+      "priority": 2,
+      "wiki": "Poulnabrone dolmen",
+      "summary": "Neolithic portal tomb over 5,000 years old, standing on the bare limestone pavement of the Burren. Iconic photo spot.",
+      "facts": [
+        "Free; car park by the road",
+        "Stay on the path; the pavement is fragile",
+        "Best in low light early or late"
+      ]
+    },
+    {
+      "id": "burren_national_park",
+      "name": "Burren National Park (Mullaghmore)",
+      "region": "clare",
+      "lat": 53.015,
+      "lon": -9.03,
+      "visit": 180,
+      "cat": "Nature reserve",
+      "priority": 2,
+      "wiki": "Burren National Park",
+      "summary": "Strange limestone landscape of terraced hills, pavements and rare alpine and Mediterranean flowers. Waymarked loops climb Mullaghmore.",
+      "facts": [
+        "Free; small car parks at the trailheads",
+        "Information point in Corofin in summer",
+        "Mullaghmore loop takes about 3 hours"
+      ],
+      "season": "Wildflowers peak in May and June."
+    },
+    {
+      "id": "fanore",
+      "name": "Fanore & the Coast Road",
+      "region": "clare",
+      "lat": 53.12,
+      "lon": -9.29,
+      "visit": 60,
+      "cat": "Beach",
+      "priority": 1,
+      "wiki": "Fanore",
+      "summary": "Dune-backed beach on the Burren coast road from Ballyvaughan to Doolin, with limestone terraces dropping to the sea at Black Head.",
+      "facts": [
+        "Free parking",
+        "Surf school in summer",
+        "Coast road R477 is very scenic"
+      ]
+    },
+    {
+      "id": "lahinch",
+      "name": "Lahinch",
+      "region": "clare",
+      "lat": 52.933,
+      "lon": -9.345,
+      "visit": 90,
+      "cat": "Village",
+      "priority": 1,
+      "wiki": "Lahinch",
+      "summary": "Surf town with a long sandy beach and a famous links golf course, 15 minutes south of the Cliffs of Moher.",
+      "facts": [
+        "Several surf schools; wetsuit hire available",
+        "Pay parking on the promenade",
+        "Lively in summer"
+      ],
+      "sleep": true
+    },
+    {
+      "id": "kilkee",
+      "name": "Kilkee",
+      "region": "clare",
+      "lat": 52.682,
+      "lon": -9.648,
+      "visit": 90,
+      "cat": "Village",
+      "priority": 1,
+      "wiki": "Kilkee",
+      "summary": "Victorian seaside resort on a horseshoe bay, with a spectacular cliff walk west of the town.",
+      "facts": [
+        "Kilkee Cliff Walk loop is about 8 km",
+        "Pollock Holes rock pools for swimming at low tide",
+        "Gateway to Loop Head"
+      ],
+      "sleep": true
+    },
+    {
+      "id": "loop_head",
+      "name": "Loop Head Lighthouse",
+      "region": "clare",
+      "lat": 52.561,
+      "lon": -9.93,
+      "visit": 75,
+      "cat": "Lighthouse",
+      "priority": 2,
+      "wiki": "Loop Head",
+      "summary": "Lighthouse at the tip of the Loop Head peninsula, where the Shannon meets the Atlantic, with sea stacks, dolphins and wild cliffs.",
+      "facts": [
+        "Lighthouse tour ~€6 in season; headland free",
+        "Look for the Bridges of Ross natural arch on the way",
+        "Dolphin trips from Carrigaholt in summer"
+      ]
+    },
+    {
+      "id": "killaloe",
+      "name": "Killaloe & Ballina",
+      "region": "clare",
+      "lat": 52.806,
+      "lon": -8.44,
+      "visit": 75,
+      "cat": "Village",
+      "priority": 1,
+      "wiki": "Killaloe",
+      "summary": "Twin villages linked by a 13-arch bridge at the south end of Lough Derg, with a cathedral, lakeside walks and boat trips.",
+      "facts": [
+        "Lough Derg cruises run in summer",
+        "Free parking on both sides of the bridge",
+        "Lough Derg Way and lakeside drives nearby"
+      ]
+    },
+    {
+      "id": "galway",
+      "name": "Galway",
+      "region": "galway",
+      "lat": 53.2719,
+      "lon": -9.0489,
+      "visit": 180,
+      "cat": "Town",
+      "priority": 3,
+      "wiki": "Galway",
+      "summary": "Lively bohemian city with street musicians, colourful shopfronts in the Latin Quarter, oysters and many trad pubs. The base for Connemara, the Burren and the Aran Islands.",
+      "facts": [
+        "Driving in the centre is slow; use the park-and-ride or multi-storeys",
+        "Shop Street, Quay Street and the Spanish Arch are all within 10 minutes' walk",
+        "Galway International Arts Festival (July) and Races (August) fill hotels"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "galway_cathedral",
+      "name": "Galway Cathedral",
+      "region": "galway",
+      "lat": 53.275,
+      "lon": -9.057,
+      "visit": 30,
+      "cat": "Monastery & church",
+      "priority": 1,
+      "wiki": "Galway Cathedral",
+      "summary": "One of the last great stone cathedrals built in Europe, completed in 1965, with a green copper dome and striking mosaics.",
+      "facts": [
+        "Free; donations welcome",
+        "Across the Salmon Weir Bridge from the old town",
+        "Open daily except during services"
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "salthill",
+      "name": "Salthill Promenade",
+      "region": "galway",
+      "lat": 53.259,
+      "lon": -9.075,
+      "visit": 60,
+      "cat": "Coast",
+      "priority": 1,
+      "wiki": "Salthill",
+      "summary": "Two-km seafront walk overlooking Galway Bay toward the Burren hills, where locals 'kick the wall' at the end. Blackrock diving tower is popular year-round.",
+      "facts": [
+        "Free; pay parking along the prom",
+        "Lovely at sunset",
+        "20-minute walk from the city centre"
+      ]
+    },
+    {
+      "id": "dunguaire_castle",
+      "name": "Dunguaire Castle",
+      "region": "galway",
+      "lat": 53.142,
+      "lon": -8.924,
+      "visit": 45,
+      "cat": "Castle",
+      "priority": 1,
+      "wiki": "Dunguaire Castle",
+      "summary": "Picturesque 16th-century tower house on a rocky outcrop by Kinvara harbour, one of the most photographed castles in Ireland.",
+      "facts": [
+        "Interior visits seasonal (~€8); exterior free",
+        "Medieval banquets in summer evenings",
+        "Kinvara village is a pleasant stop"
+      ]
+    },
+    {
+      "id": "aughnanure_castle",
+      "name": "Aughnanure Castle",
+      "region": "galway",
+      "lat": 53.417,
+      "lon": -9.312,
+      "visit": 45,
+      "cat": "Castle",
+      "priority": 1,
+      "wiki": "Aughnanure Castle",
+      "summary": "Six-storey tower house of the O'Flaherty clan by a river near Oughterard, on the road into Connemara.",
+      "facts": [
+        "Entry ~€5 (OPW); seasonal opening",
+        "Allow 45 minutes",
+        "Oughterard village has cafés"
+      ],
+      "hours": "09:30-17:00"
+    },
+    {
+      "id": "clifden",
+      "name": "Clifden",
+      "region": "galway",
+      "lat": 53.4891,
+      "lon": -10.0193,
+      "visit": 120,
+      "cat": "Town",
+      "priority": 2,
+      "wiki": "Clifden",
+      "summary": "Capital of Connemara, a small Victorian town under the Twelve Bens with good pubs and seafood. Base for the Sky Road and Connemara National Park.",
+      "facts": [
+        "Free parking in town car parks",
+        "Book dinner ahead in summer",
+        "Alcock and Brown landing site and Derrigimlagh bog nearby"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "sky_road",
+      "name": "Sky Road",
+      "region": "galway",
+      "lat": 53.495,
+      "lon": -10.07,
+      "visit": 60,
+      "cat": "Scenic drive",
+      "priority": 2,
+      "wiki": "Clifden",
+      "summary": "Sixteen-km loop west of Clifden climbing high above Clifden Bay, with views of islands and the Atlantic from the upper road.",
+      "facts": [
+        "Free; viewpoint car park on the upper road",
+        "Narrow road; take care with oncoming traffic",
+        "Also good by bike"
+      ]
+    },
+    {
+      "id": "roundstone",
+      "name": "Roundstone",
+      "region": "galway",
+      "lat": 53.395,
+      "lon": -9.918,
+      "visit": 60,
+      "cat": "Village",
+      "priority": 1,
+      "wiki": "Roundstone",
+      "summary": "Fishing village on a harbour below Errisbeg hill, with craft shops and seafood. Close to the white beaches at Dog's Bay and Gurteen.",
+      "facts": [
+        "Climb Errisbeg (about 2 hours return) for wide views",
+        "Coast road to Ballyconneely and Clifden is lovely",
+        "Small, quiet place to stay"
+      ]
+    },
+    {
+      "id": "dogs_bay",
+      "name": "Dog's Bay & Gurteen Beaches",
+      "region": "galway",
+      "lat": 53.383,
+      "lon": -9.964,
+      "visit": 90,
+      "cat": "Beach",
+      "priority": 2,
+      "wiki": "Roundstone",
+      "summary": "Twin white shell-sand beaches back to back on a tombolo, with turquoise water that looks Caribbean on sunny days.",
+      "facts": [
+        "Small car park, often full in summer",
+        "Water is cold year-round",
+        "Short walk across the dunes between the two beaches"
+      ]
+    },
+    {
+      "id": "connemara_np",
+      "name": "Connemara National Park & Diamond Hill",
+      "region": "galway",
+      "lat": 53.547,
+      "lon": -9.948,
+      "visit": 180,
+      "cat": "Hike",
+      "priority": 3,
+      "wiki": "Connemara National Park",
+      "summary": "Bog, heath and mountains in the heart of Connemara, with a well-built path up Diamond Hill giving views over Kylemore and the coast. Connemara ponies graze near the visitor centre.",
+      "facts": [
+        "Free entry and parking at Letterfrack",
+        "Upper Diamond Hill loop is about 7 km, 2.5–3 hours",
+        "Shorter lower loops for an easy walk"
+      ],
+      "caution": "Summit is exposed and can be very windy; turn back in bad weather."
+    },
+    {
+      "id": "kylemore_abbey",
+      "name": "Kylemore Abbey & Victorian Walled Garden",
+      "region": "galway",
+      "lat": 53.5615,
+      "lon": -9.889,
+      "visit": 150,
+      "cat": "Stately home",
+      "priority": 3,
+      "wiki": "Kylemore Abbey",
+      "summary": "Neo-Gothic castle reflected in a lake below the mountains, home to Benedictine nuns since 1920. A shuttle runs to a restored six-acre Victorian walled garden.",
+      "facts": [
+        "Tickets roughly €15–20; online booking advised in summer",
+        "Allow 2–3 hours including the garden",
+        "Gothic church on the lakeside walk"
+      ],
+      "hours": "10:00-16:30"
+    },
+    {
+      "id": "lough_inagh",
+      "name": "Inagh Valley",
+      "region": "galway",
+      "lat": 53.5,
+      "lon": -9.73,
+      "visit": 30,
+      "cat": "Scenic drive",
+      "priority": 2,
+      "wiki": "Lough Inagh",
+      "summary": "Quiet valley road between the Twelve Bens and the Maumturk Mountains, along Lough Inagh and Derryclare Lough. One of Connemara's finest drives.",
+      "facts": [
+        "Free; few stopping places, use the lay-bys",
+        "Connects Recess to Kylemore",
+        "Watch for sheep on the road"
+      ]
+    },
+    {
+      "id": "killary_harbour",
+      "name": "Killary Harbour & Leenaun",
+      "region": "galway",
+      "lat": 53.596,
+      "lon": -9.693,
+      "visit": 60,
+      "cat": "Viewpoint",
+      "priority": 2,
+      "wiki": "Killary Harbour",
+      "summary": "Long, deep fjord-like inlet marking the Galway–Mayo border, with mussel rafts and mountains on both sides. Leenaun village sits at its head.",
+      "facts": [
+        "Boat cruises on the fjord run in summer",
+        "Aasleagh Falls is 5 minutes east of Leenaun",
+        "Famine Walk on the north shore is quiet"
+      ]
+    },
+    {
+      "id": "inis_mor",
+      "name": "Inis Mór (Kilronan)",
+      "region": "galway",
+      "lat": 53.1214,
+      "lon": -9.667,
+      "visit": 300,
+      "cat": "Island",
+      "priority": 3,
+      "wiki": "Inishmore",
+      "summary": "Largest of the Aran Islands, a world of stone walls, cliffs and Irish-speaking villages. Ferries land at Kilronan, where you can hire bikes or take a minibus tour.",
+      "facts": [
+        "Bike hire ~€15 a day at the pier",
+        "Stay overnight to see the island after the day-trippers leave",
+        "Cars are not taken by visitors"
+      ],
+      "sleep": true,
+      "caution": "Ferries can be cancelled in rough weather; leave slack in your plans."
+    },
+    {
+      "id": "dun_aonghasa",
+      "name": "Dún Aonghasa",
+      "region": "galway",
+      "lat": 53.1253,
+      "lon": -9.7676,
+      "visit": 120,
+      "cat": "Ancient site",
+      "priority": 3,
+      "wiki": "Dún Aonghasa",
+      "summary": "Prehistoric stone fort on the edge of 100 m sea cliffs on Inis Mór, surrounded by a field of stone spikes. One of Europe's most dramatic archaeological sites.",
+      "facts": [
+        "Entry ~€5 (OPW); 20-minute uphill walk from the visitor centre",
+        "No railings at the cliff edge",
+        "About 7 km from Kilronan by bike or minibus"
+      ],
+      "caution": "The cliff edge is sheer and unprotected; keep well back, especially in wind."
+    },
+    {
+      "id": "inis_oirr",
+      "name": "Inis Oírr",
+      "region": "galway",
+      "lat": 53.067,
+      "lon": -9.52,
+      "visit": 240,
+      "cat": "Island",
+      "priority": 2,
+      "wiki": "Inisheer",
+      "summary": "Smallest Aran Island, close to Doolin, with a ruined O'Brien castle, a sand-buried church and the rusting Plassy shipwreck. Easy to walk in a few hours.",
+      "facts": [
+        "Ferry from Doolin (~30 min) in season",
+        "Walk or hire a bike at the pier",
+        "Pony and trap tours available"
+      ]
+    },
+    {
+      "id": "westport",
+      "name": "Westport",
+      "region": "northwest",
+      "lat": 53.8001,
+      "lon": -9.5212,
+      "visit": 150,
+      "cat": "Town",
+      "priority": 3,
+      "wiki": "Westport, County Mayo",
+      "summary": "Georgian planned town on the Carrowbeg River with tree-lined streets, lively pubs and Westport House. The base for Croagh Patrick, Achill and the Greenway.",
+      "facts": [
+        "Free and pay car parks in the centre",
+        "Matt Molloy's pub has trad music most nights",
+        "Book ahead in summer"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "croagh_patrick",
+      "name": "Croagh Patrick",
+      "region": "northwest",
+      "lat": 53.7595,
+      "lon": -9.6585,
+      "visit": 240,
+      "cat": "Mountain",
+      "priority": 2,
+      "wiki": "Croagh Patrick",
+      "summary": "Ireland's holy mountain (764 m), climbed by pilgrims since St Patrick fasted on its summit. Stunning views over the islands of Clew Bay from the top.",
+      "facts": [
+        "About 3.5–4 hours return from the Murrisk car park (paid)",
+        "Upper section is loose scree; good boots and poles help",
+        "Reek Sunday pilgrimage (late July) is extremely busy"
+      ],
+      "caution": "Loose scree causes many injuries on the descent; don't climb in fog or high wind."
+    },
+    {
+      "id": "great_western_greenway",
+      "name": "Great Western Greenway",
+      "region": "northwest",
+      "lat": 53.88,
+      "lon": -9.547,
+      "visit": 240,
+      "cat": "Experience",
+      "priority": 2,
+      "wiki": "Great Western Greenway",
+      "summary": "42 km off-road cycle trail on an old railway from Westport via Newport to Achill, with views over Clew Bay. Bike hire firms offer shuttles back.",
+      "facts": [
+        "Bike hire ~€25–35 a day, e-bikes available",
+        "Newport to Mulranny is the most scenic section",
+        "Allow 3–4 hours for the full route"
+      ]
+    },
+    {
+      "id": "achill_island",
+      "name": "Achill Island",
+      "region": "northwest",
+      "lat": 53.964,
+      "lon": -10.004,
+      "visit": 240,
+      "cat": "Island",
+      "priority": 3,
+      "wiki": "Achill Island",
+      "summary": "Ireland's largest island, joined to the mainland by bridge, with Atlantic Drive, high cliffs, a deserted village and some of the best beaches in the country.",
+      "facts": [
+        "Atlantic Drive loop from Achill Sound takes 1–2 hours",
+        "Deserted Village at Slievemore is free",
+        "Keel and Dugort make good bases"
+      ],
+      "sleep": true
+    },
+    {
+      "id": "keem_bay",
+      "name": "Keem Bay",
+      "region": "northwest",
+      "lat": 53.969,
+      "lon": -10.194,
+      "visit": 60,
+      "cat": "Beach",
+      "priority": 3,
+      "wiki": "Keem Bay",
+      "summary": "Sheltered horseshoe beach of white sand and turquoise water at the western tip of Achill, reached by a cliff road. Often listed among Ireland's most beautiful beaches.",
+      "facts": [
+        "Free parking at the beach, fills on sunny days",
+        "Walk up to the cliffs above for the classic view",
+        "Lifeguard in July and August"
+      ],
+      "caution": "Cliff road down is narrow; the hills above have sheer drops to the sea."
+    },
+    {
+      "id": "ceide_fields",
+      "name": "Céide Fields",
+      "region": "northwest",
+      "lat": 54.307,
+      "lon": -9.457,
+      "visit": 90,
+      "cat": "Ancient site",
+      "priority": 2,
+      "wiki": "Céide Fields",
+      "summary": "World's most extensive Neolithic field system, preserved for 5,000 years beneath blanket bog, with a pyramid-shaped visitor centre above 110 m sea cliffs.",
+      "facts": [
+        "Entry ~€5 (OPW); guided tours of the bog",
+        "Open seasonally; check before going",
+        "Remote: combine with Downpatrick Head"
+      ],
+      "hours": "10:00-17:00"
+    },
+    {
+      "id": "downpatrick_head",
+      "name": "Downpatrick Head",
+      "region": "northwest",
+      "lat": 54.323,
+      "lon": -9.346,
+      "visit": 60,
+      "cat": "Coast",
+      "priority": 2,
+      "wiki": "Dún Briste",
+      "summary": "Headland with the spectacular sea stack Dún Briste, separated from the cliffs by a chasm, and blowholes in the grass.",
+      "facts": [
+        "Free; car park and 10-minute walk",
+        "Fenced viewing area at the edge",
+        "Puffins and seabirds in summer"
+      ],
+      "caution": "The blowhole and cliff edges are dangerous; stay on the path."
+    },
+    {
+      "id": "country_life_museum",
+      "name": "National Museum of Ireland – Country Life",
+      "region": "northwest",
+      "lat": 53.873,
+      "lon": -9.238,
+      "visit": 120,
+      "cat": "Museum",
+      "priority": 2,
+      "wiki": "National Museum of Ireland – Country Life",
+      "summary": "Free national museum at Turlough Park near Castlebar on Irish rural life from 1850 to 1950: crafts, farming, fishing and folk customs, with a Victorian house and gardens.",
+      "facts": [
+        "Free entry",
+        "Allow 1.5–2 hours",
+        "Opens later on Sundays and Mondays"
+      ],
+      "hours": "10:00-17:00",
+      "needsDaylight": false
+    },
+    {
+      "id": "cong",
+      "name": "Cong & Ashford Castle",
+      "region": "northwest",
+      "lat": 53.54,
+      "lon": -9.286,
+      "visit": 90,
+      "cat": "Village",
+      "priority": 2,
+      "wiki": "Cong, County Mayo",
+      "summary": "Village between Lough Corrib and Lough Mask, with a ruined Augustinian abbey and the grounds of Ashford Castle hotel. Film location of 'The Quiet Man'.",
+      "facts": [
+        "Cong Abbey and woods are free",
+        "Ashford Castle grounds charge an entry fee for non-guests",
+        "Lough Corrib boat trips in summer"
+      ]
+    },
+    {
+      "id": "sligo",
+      "name": "Sligo",
+      "region": "northwest",
+      "lat": 54.2697,
+      "lon": -8.4694,
+      "visit": 120,
+      "cat": "Town",
+      "priority": 2,
+      "wiki": "Sligo",
+      "summary": "Lively riverside town in 'Yeats Country', with an abbey, the Model arts centre and good food, surrounded by mountains, megaliths and surf beaches.",
+      "facts": [
+        "Pay parking around the centre",
+        "Sligo Abbey (OPW) has fine carvings",
+        "Trad music in pubs most nights"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "carrowmore",
+      "name": "Carrowmore Megalithic Cemetery",
+      "region": "northwest",
+      "lat": 54.25,
+      "lon": -8.519,
+      "visit": 60,
+      "cat": "Ancient site",
+      "priority": 2,
+      "wiki": "Carrowmore",
+      "summary": "One of Ireland's largest collections of Stone Age tombs, around 30 dolmens and stone circles in fields beneath Knocknarea.",
+      "facts": [
+        "Entry ~€5 (OPW); seasonal visitor centre",
+        "Allow 1 hour",
+        "Combine with the Knocknarea climb"
+      ],
+      "hours": "10:00-17:00"
+    },
+    {
+      "id": "knocknarea",
+      "name": "Knocknarea",
+      "region": "northwest",
+      "lat": 54.258,
+      "lon": -8.574,
+      "visit": 90,
+      "cat": "Hike",
+      "priority": 2,
+      "wiki": "Knocknarea",
+      "summary": "Flat-topped hill crowned by the huge cairn said to be Queen Maeve's grave, with wide views over Sligo Bay. A short, steep path from the car park.",
+      "facts": [
+        "About 1.5 hours return from the Queen Maeve trail car park",
+        "Don't climb on the cairn",
+        "Windy on top"
+      ]
+    },
+    {
+      "id": "strandhill",
+      "name": "Strandhill",
+      "region": "northwest",
+      "lat": 54.271,
+      "lon": -8.602,
+      "visit": 75,
+      "cat": "Village",
+      "priority": 1,
+      "wiki": "Strandhill",
+      "summary": "Surf village with an Atlantic beach under Knocknarea, known for seaweed baths and lively cafés.",
+      "facts": [
+        "Seaweed baths at the seafront",
+        "Surf schools on the beach",
+        "Swimming is dangerous here; strong currents"
+      ],
+      "caution": "Swimming off the main beach is unsafe due to rip currents."
+    },
+    {
+      "id": "drumcliffe",
+      "name": "Drumcliffe & Yeats Grave",
+      "region": "northwest",
+      "lat": 54.326,
+      "lon": -8.495,
+      "visit": 40,
+      "cat": "Monastery & church",
+      "priority": 1,
+      "wiki": "Drumcliff",
+      "summary": "Churchyard where W.B. Yeats is buried 'under bare Ben Bulben's head', with a high cross and round tower stump from an early monastery.",
+      "facts": [
+        "Free; small café by the church",
+        "Allow 30–40 minutes",
+        "Benbulben views from the car park"
+      ]
+    },
+    {
+      "id": "benbulben",
+      "name": "Benbulben (Gortarowey Walk)",
+      "region": "northwest",
+      "lat": 54.366,
+      "lon": -8.474,
+      "visit": 75,
+      "cat": "Mountain",
+      "priority": 2,
+      "wiki": "Benbulbin",
+      "summary": "Dramatic flat-topped table mountain, a landmark of Sligo. The easy Gortarowey forest loop gives close-up views of its fluted cliffs.",
+      "facts": [
+        "Free; Gortarowey loop about 1 hour",
+        "Summit routes cross private land; follow local guidance",
+        "Best seen in late afternoon light"
+      ]
+    },
+    {
+      "id": "glencar_waterfall",
+      "name": "Glencar Waterfall",
+      "region": "northwest",
+      "lat": 54.34,
+      "lon": -8.374,
+      "visit": 30,
+      "cat": "Waterfall",
+      "priority": 1,
+      "wiki": "Glencar Lough",
+      "summary": "Woodland waterfall above Glencar Lough that inspired Yeats' poem 'The Stolen Child'. The valley road is lined with streams pouring off the cliffs.",
+      "facts": [
+        "Small car park (fee)",
+        "Short easy path",
+        "Best after rain"
+      ]
+    },
+    {
+      "id": "mullaghmore",
+      "name": "Mullaghmore",
+      "region": "northwest",
+      "lat": 54.466,
+      "lon": -8.449,
+      "visit": 75,
+      "cat": "Village",
+      "priority": 1,
+      "wiki": "Mullaghmore, County Sligo",
+      "summary": "Fishing village on a headland with a sandy beach and Classiebawn Castle, known for giant winter surf waves.",
+      "facts": [
+        "Headland loop drive or walk with Atlantic views",
+        "Beach is good for families",
+        "Big-wave surfing in winter storms"
+      ]
+    },
+    {
+      "id": "donegal",
+      "name": "Donegal Town",
+      "region": "northwest",
+      "lat": 54.6538,
+      "lon": -8.1096,
+      "visit": 90,
+      "cat": "Town",
+      "priority": 2,
+      "wiki": "Donegal (town)",
+      "summary": "Small market town around a triangular 'Diamond' at the mouth of the River Eske, with a restored O'Donnell castle. Gateway to south-west Donegal.",
+      "facts": [
+        "Free parking at the pier",
+        "Water bus tours of Donegal Bay in summer",
+        "Good base for Slieve League"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "donegal_castle",
+      "name": "Donegal Castle",
+      "region": "northwest",
+      "lat": 54.6545,
+      "lon": -8.11,
+      "visit": 45,
+      "cat": "Castle",
+      "priority": 1,
+      "wiki": "Donegal Castle",
+      "summary": "15th-century O'Donnell tower house with a Jacobean manor added in the 1600s, beautifully restored with period furnishings.",
+      "facts": [
+        "Entry ~€5 (OPW)",
+        "Allow 45 minutes",
+        "In the town centre"
+      ],
+      "hours": "10:00-16:00",
+      "needsDaylight": false
+    },
+    {
+      "id": "slieve_league",
+      "name": "Slieve League Cliffs",
+      "region": "northwest",
+      "lat": 54.629,
+      "lon": -8.683,
+      "visit": 120,
+      "cat": "Coast",
+      "priority": 3,
+      "wiki": "Slieve League",
+      "summary": "Among the highest sea cliffs in Europe at around 600 m, falling in coloured bands to the Atlantic. The Bunglass viewpoint is the classic view; walkers continue along One Man's Pass.",
+      "facts": [
+        "Free; park at the lower car park and walk or shuttle up, or drive to the upper lot when allowed",
+        "Visitor centre at Teelin",
+        "Allow 2 hours with a walk"
+      ],
+      "caution": "One Man's Pass is narrow and exposed; only in good weather with experience."
+    },
+    {
+      "id": "glencolmcille",
+      "name": "Glencolmcille",
+      "region": "northwest",
+      "lat": 54.709,
+      "lon": -8.729,
+      "visit": 90,
+      "cat": "Village",
+      "priority": 1,
+      "wiki": "Glencolmcille",
+      "summary": "Remote Irish-speaking valley at the western end of Donegal, with a folk village museum, standing stones and wild coastal walks.",
+      "facts": [
+        "Folk Village museum ~€6, seasonal",
+        "Glen Head loop walk is spectacular",
+        "Very limited services; fill up on fuel"
+      ]
+    },
+    {
+      "id": "glenveagh",
+      "name": "Glenveagh National Park & Castle",
+      "region": "northwest",
+      "lat": 55.038,
+      "lon": -7.944,
+      "visit": 180,
+      "cat": "Nature reserve",
+      "priority": 3,
+      "wiki": "Glenveagh National Park",
+      "summary": "Ireland's second-largest national park, a wild valley of mountains, lakes and red deer, with a Victorian castle and gardens on the shore of Lough Veagh.",
+      "facts": [
+        "Park free; shuttle bus to the castle ~€3, castle tour ~€7",
+        "Cars are not allowed beyond the visitor centre",
+        "Walk or cycle the 4 km lakeside road"
+      ],
+      "hours": "09:00-17:00"
+    },
+    {
+      "id": "errigal",
+      "name": "Errigal",
+      "region": "northwest",
+      "lat": 55.034,
+      "lon": -8.113,
+      "visit": 180,
+      "cat": "Mountain",
+      "priority": 2,
+      "wiki": "Errigal",
+      "summary": "Donegal's highest peak (751 m), a pink quartzite cone visible from far away. The standard route from the R251 car park takes about 3 hours return.",
+      "facts": [
+        "Free; small car park on the R251",
+        "Steep scree near the top; boots needed",
+        "Poisoned Glen views from Dunlewey nearby"
+      ],
+      "caution": "Frequent cloud on the summit; navigation needed in poor visibility."
+    },
+    {
+      "id": "dunfanaghy",
+      "name": "Dunfanaghy",
+      "region": "northwest",
+      "lat": 55.182,
+      "lon": -7.969,
+      "visit": 90,
+      "cat": "Village",
+      "priority": 2,
+      "wiki": "Dunfanaghy",
+      "summary": "Small resort village on Sheephaven Bay near Horn Head and the beaches of Killahoey and Marble Hill. A good base for north Donegal.",
+      "facts": [
+        "Workhouse heritage centre in the village",
+        "Killahoey beach is walkable from the village",
+        "Book ahead in summer"
+      ],
+      "sleep": true
+    },
+    {
+      "id": "horn_head",
+      "name": "Horn Head",
+      "region": "northwest",
+      "lat": 55.211,
+      "lon": -7.98,
+      "visit": 60,
+      "cat": "Viewpoint",
+      "priority": 2,
+      "wiki": "Horn Head",
+      "summary": "Peninsula of quartzite cliffs rising to 180 m, with a loop road and views across to Tory Island and Errigal.",
+      "facts": [
+        "Free; parking at the old signal tower",
+        "Narrow loop road from Dunfanaghy",
+        "Seabird colonies in summer"
+      ],
+      "caution": "High unfenced cliffs; keep away from the edge in wind."
+    },
+    {
+      "id": "fanad_head",
+      "name": "Fanad Head Lighthouse",
+      "region": "northwest",
+      "lat": 55.276,
+      "lon": -7.632,
+      "visit": 60,
+      "cat": "Lighthouse",
+      "priority": 2,
+      "wiki": "Fanad",
+      "summary": "Lighthouse on a dramatic headland between Lough Swilly and Mulroy Bay, often rated one of the most beautiful in the world. Tours climb the tower.",
+      "facts": [
+        "Tower tour ~€10",
+        "You can stay in the keepers' cottages",
+        "About an hour from Letterkenny"
+      ]
+    },
+    {
+      "id": "malin_head",
+      "name": "Malin Head",
+      "region": "northwest",
+      "lat": 55.381,
+      "lon": -7.374,
+      "visit": 60,
+      "cat": "Viewpoint",
+      "priority": 2,
+      "wiki": "Malin Head",
+      "summary": "Ireland's most northerly point at the tip of the Inishowen Peninsula, with a signal tower, 'EIRE' WWII sign in stones and wild seas. A Star Wars filming location.",
+      "facts": [
+        "Free parking at Banba's Crown",
+        "Chance of the Northern Lights on clear winter nights",
+        "Allow time for the Inishowen 100 drive"
+      ]
+    },
+    {
+      "id": "grianan_of_aileach",
+      "name": "Grianán of Aileach",
+      "region": "northwest",
+      "lat": 55.024,
+      "lon": -7.428,
+      "visit": 45,
+      "cat": "Ancient site",
+      "priority": 2,
+      "wiki": "Grianan of Aileach",
+      "summary": "Restored stone ringfort on a hilltop near Derry, seat of the Northern Uí Néill kings, with 360-degree views over Lough Swilly and Lough Foyle.",
+      "facts": [
+        "Free, open access",
+        "Short uphill walk from the car park",
+        "Very windy on top"
+      ]
+    },
+    {
+      "id": "athlone",
+      "name": "Athlone",
+      "region": "midlands",
+      "lat": 53.4239,
+      "lon": -7.9407,
+      "visit": 120,
+      "cat": "Town",
+      "priority": 1,
+      "wiki": "Athlone",
+      "summary": "Bustling river town on the Shannon at the centre of Ireland, with a castle, riverside bars and boat trips to Clonmacnoise. Sean's Bar claims to be Ireland's oldest pub.",
+      "facts": [
+        "Pay parking around the centre",
+        "Boat cruises to Clonmacnoise and Lough Ree in summer",
+        "On the Dublin–Galway rail line"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "athlone_castle",
+      "name": "Athlone Castle",
+      "region": "midlands",
+      "lat": 53.423,
+      "lon": -7.943,
+      "visit": 60,
+      "cat": "Castle",
+      "priority": 1,
+      "wiki": "Athlone Castle",
+      "summary": "Norman castle by the Shannon with an interactive exhibition on the 1691 Siege of Athlone.",
+      "facts": [
+        "Entry ~€10",
+        "Allow 1 hour",
+        "Riverside, by the bridge"
+      ],
+      "hours": "10:00-17:00",
+      "needsDaylight": false
+    },
+    {
+      "id": "clonmacnoise",
+      "name": "Clonmacnoise",
+      "region": "midlands",
+      "lat": 53.326,
+      "lon": -7.987,
+      "visit": 120,
+      "cat": "Monastery & church",
+      "priority": 3,
+      "wiki": "Clonmacnoise",
+      "summary": "Early Christian monastery founded in 544 on the banks of the Shannon, with ruined churches, round towers and original high crosses in the visitor centre. One of Ireland's most important monastic sites.",
+      "facts": [
+        "Entry ~€8 (OPW)",
+        "Original crosses are indoors; replicas stand outside",
+        "Arrive early to beat coach tours"
+      ]
+    },
+    {
+      "id": "birr",
+      "name": "Birr",
+      "region": "midlands",
+      "lat": 53.0911,
+      "lon": -7.91,
+      "visit": 90,
+      "cat": "Town",
+      "priority": 1,
+      "wiki": "Birr",
+      "summary": "Elegant Georgian town with broad malls and terraces, at the gates of Birr Castle Demesne.",
+      "facts": [
+        "Free parking in town",
+        "Good base for Slieve Bloom",
+        "Birr Vintage Week in August"
+      ],
+      "sleep": true
+    },
+    {
+      "id": "birr_castle",
+      "name": "Birr Castle Demesne",
+      "region": "midlands",
+      "lat": 53.096,
+      "lon": -7.913,
+      "visit": 150,
+      "cat": "Garden",
+      "priority": 2,
+      "wiki": "Birr Castle",
+      "summary": "Gardens and parkland of the Parsons family, home to the 'Leviathan', the world's largest telescope for 70 years, plus Ireland's Historic Science Centre and the tallest box hedges in the world.",
+      "facts": [
+        "Entry ~€12; castle interior by summer tour only",
+        "Allow 2–3 hours",
+        "Treehouse adventure area for children"
+      ],
+      "hours": "09:00-17:00"
+    },
+    {
+      "id": "slieve_bloom",
+      "name": "Slieve Bloom Mountains",
+      "region": "midlands",
+      "lat": 53.095,
+      "lon": -7.58,
+      "visit": 180,
+      "cat": "Nature reserve",
+      "priority": 1,
+      "wiki": "Slieve Bloom Mountains",
+      "summary": "Gentle, quiet range of bog and forest with waymarked loops, waterfalls and the Glenbarrow trail.",
+      "facts": [
+        "Free trails and car parks",
+        "Glenbarrow waterfall loop is about 2 hours",
+        "Very few visitors outside weekends"
+      ]
+    },
+    {
+      "id": "kilbeggan_distillery",
+      "name": "Kilbeggan Distillery",
+      "region": "midlands",
+      "lat": 53.369,
+      "lon": -7.502,
+      "visit": 75,
+      "cat": "Distillery & brewery",
+      "priority": 1,
+      "wiki": "Kilbeggan Distillery",
+      "summary": "One of the oldest licensed distilleries in the world (1757), with a working waterwheel and old machinery on the River Brosna.",
+      "facts": [
+        "Tours ~€15–20 with tasting",
+        "Allow about an hour",
+        "Just off the M6"
+      ],
+      "hours": "10:00-17:00",
+      "needsDaylight": false
+    },
+    {
+      "id": "tullamore_dew",
+      "name": "Tullamore D.E.W. Visitor Centre",
+      "region": "midlands",
+      "lat": 53.275,
+      "lon": -7.493,
+      "visit": 75,
+      "cat": "Distillery & brewery",
+      "priority": 1,
+      "wiki": "Tullamore D.E.W.",
+      "summary": "Whiskey heritage centre in an 1897 canal-side bonded warehouse, with tastings and blending experiences.",
+      "facts": [
+        "Tours ~€20 with tasting",
+        "Grand Canal towpath next door",
+        "Allow about an hour"
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "belvedere_house",
+      "name": "Belvedere House & Gardens",
+      "region": "midlands",
+      "lat": 53.493,
+      "lon": -7.37,
+      "visit": 120,
+      "cat": "Stately home",
+      "priority": 1,
+      "wiki": "Belvedere House and Gardens",
+      "summary": "18th-century hunting lodge on Lough Ennell, with the 'Jealous Wall', Ireland's largest folly, walled gardens and lakeside woods.",
+      "facts": [
+        "Entry ~€10",
+        "Allow 2 hours",
+        "Near Mullingar"
+      ],
+      "hours": "10:00-16:00"
+    },
+    {
+      "id": "fore_abbey",
+      "name": "Fore Abbey",
+      "region": "midlands",
+      "lat": 53.683,
+      "lon": -7.227,
+      "visit": 45,
+      "cat": "Ruins",
+      "priority": 1,
+      "wiki": "Fore Abbey",
+      "summary": "Benedictine priory ruins in a quiet valley, linked to the legendary 'Seven Wonders of Fore' such as water that flows uphill.",
+      "facts": [
+        "Free, open access",
+        "Allow 45 minutes",
+        "Coffee shop and info in the village"
+      ]
+    },
+    {
+      "id": "strokestown_park",
+      "name": "Strokestown Park & National Famine Museum",
+      "region": "midlands",
+      "lat": 53.775,
+      "lon": -8.103,
+      "visit": 120,
+      "cat": "Museum",
+      "priority": 2,
+      "wiki": "Strokestown Park",
+      "summary": "Palladian mansion with the National Famine Museum, built around the estate's own records of evictions and emigration. A sobering and essential visit.",
+      "facts": [
+        "Combined ticket ~€15",
+        "Allow 2 hours",
+        "Walled gardens included"
+      ],
+      "hours": "10:30-17:00",
+      "needsDaylight": false
+    },
+    {
+      "id": "rathcroghan",
+      "name": "Rathcroghan (Cruachan Aí)",
+      "region": "midlands",
+      "lat": 53.8,
+      "lon": -8.309,
+      "visit": 90,
+      "cat": "Ancient site",
+      "priority": 1,
+      "wiki": "Rathcroghan",
+      "summary": "Ancient royal capital of Connacht and seat of Queen Maeve, a landscape of mounds, ringforts and Oweynagat cave, interpreted at the Tulsk visitor centre.",
+      "facts": [
+        "Visitor centre ~€8; guided cave tours by booking",
+        "Sites are on farmland; wellies needed for the cave",
+        "Allow 1.5 hours"
+      ],
+      "hours": "09:00-17:00"
+    },
+    {
+      "id": "carrick_on_shannon",
+      "name": "Carrick-on-Shannon",
+      "region": "midlands",
+      "lat": 53.946,
+      "lon": -8.09,
+      "visit": 90,
+      "cat": "Town",
+      "priority": 1,
+      "wiki": "Carrick-on-Shannon",
+      "summary": "Lively riverside town and boating centre on the upper Shannon, with the tiny Costello Chapel and a busy marina.",
+      "facts": [
+        "Cruiser hire base for Shannon boating holidays",
+        "Riverside boardwalk",
+        "Lively at weekends"
+      ],
+      "sleep": true
+    },
+    {
+      "id": "portumna_castle",
+      "name": "Portumna Castle",
+      "region": "midlands",
+      "lat": 53.088,
+      "lon": -8.219,
+      "visit": 75,
+      "cat": "Castle",
+      "priority": 1,
+      "wiki": "Portumna Castle",
+      "summary": "Early 17th-century semi-fortified house on the northern shore of Lough Derg, with formal gardens and a forest park.",
+      "facts": [
+        "Entry ~€5 (OPW); seasonal",
+        "Portumna Forest Park has lakeside trails",
+        "Allow an hour"
+      ]
+    },
+    {
+      "id": "rock_of_dunamase",
+      "name": "Rock of Dunamase",
+      "region": "midlands",
+      "lat": 53.032,
+      "lon": -7.212,
+      "visit": 45,
+      "cat": "Ruins",
+      "priority": 1,
+      "wiki": "Rock of Dunamase",
+      "summary": "Ruins of a Norman castle on a rocky outcrop with sweeping views over the plains of Laois.",
+      "facts": [
+        "Free, open access",
+        "Short steep walk from the car park",
+        "Just off the M7 near Portlaoise"
+      ]
+    },
+    {
+      "id": "belfast",
+      "name": "Belfast",
+      "region": "north",
+      "lat": 54.5973,
+      "lon": -5.9301,
+      "visit": 180,
+      "cat": "Town",
+      "priority": 3,
+      "wiki": "Belfast",
+      "summary": "Northern Ireland's capital, transformed in recent decades, with Victorian landmarks, the Titanic Quarter, a thriving pub and food scene and moving political murals.",
+      "facts": [
+        "Prices in pounds sterling; euros rarely accepted",
+        "Black taxi mural tours ~£15–20 per person",
+        "City Hall free tours run daily"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "titanic_belfast",
+      "name": "Titanic Belfast",
+      "region": "north",
+      "lat": 54.6081,
+      "lon": -5.9099,
+      "visit": 150,
+      "cat": "Museum",
+      "priority": 3,
+      "wiki": "Titanic Belfast",
+      "summary": "Striking museum on the slipways where the Titanic was built, telling the story of the ship and of industrial Belfast. Includes the SS Nomadic tender.",
+      "facts": [
+        "Tickets ~£25; timed entry, book online",
+        "Allow 2–3 hours",
+        "20-minute walk or short bus from the centre"
+      ],
+      "hours": "10:00-17:00",
+      "needsDaylight": false
+    },
+    {
+      "id": "ulster_museum",
+      "name": "Ulster Museum",
+      "region": "north",
+      "lat": 54.5823,
+      "lon": -5.9351,
+      "visit": 90,
+      "cat": "Museum",
+      "priority": 2,
+      "wiki": "Ulster Museum",
+      "summary": "Free national museum of art, natural history and history, with a clear gallery on the Troubles. Next to the Botanic Gardens and Palm House.",
+      "facts": [
+        "Free entry",
+        "Usually closed on Mondays outside holidays",
+        "Botanic Gardens and Palm House are free"
+      ],
+      "hours": "10:00-17:00",
+      "closed": [
+        1
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "belfast_murals",
+      "name": "Falls & Shankill Murals",
+      "region": "north",
+      "lat": 54.599,
+      "lon": -5.95,
+      "visit": 90,
+      "cat": "Experience",
+      "priority": 2,
+      "wiki": "Northern Irish murals",
+      "summary": "Political murals and the peace walls of West Belfast's republican Falls and loyalist Shankill roads, best seen on a black taxi tour with a local guide.",
+      "facts": [
+        "Black taxi tours ~£15–20 per person, pick-up from the centre",
+        "Sign the peace wall like generations of visitors",
+        "Walking tours also available"
+      ]
+    },
+    {
+      "id": "st_georges_market",
+      "name": "St George's Market",
+      "region": "north",
+      "lat": 54.5965,
+      "lon": -5.923,
+      "visit": 60,
+      "cat": "Food & market",
+      "priority": 2,
+      "wiki": "St George's Market",
+      "summary": "Victorian covered market with food, craft and live music, the last surviving of its kind in Belfast.",
+      "facts": [
+        "Free entry; open Friday to Sunday only",
+        "Saturday is the busiest for food stalls",
+        "Bring cash for some stalls"
+      ],
+      "hours": "08:00-14:00",
+      "closed": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "cavehill",
+      "name": "Cave Hill",
+      "region": "north",
+      "lat": 54.64,
+      "lon": -5.95,
+      "visit": 150,
+      "cat": "Hike",
+      "priority": 1,
+      "wiki": "Cavehill",
+      "summary": "Hill above north Belfast whose profile, 'Napoleon's Nose', inspired Gulliver's Travels. A loop walk passes caves and gives views over the city and Belfast Lough.",
+      "facts": [
+        "Free; start from Belfast Castle car park",
+        "Loop about 2–3 hours",
+        "Muddy after rain"
+      ]
+    },
+    {
+      "id": "carrickfergus_castle",
+      "name": "Carrickfergus Castle",
+      "region": "north",
+      "lat": 54.713,
+      "lon": -5.806,
+      "visit": 60,
+      "cat": "Castle",
+      "priority": 2,
+      "wiki": "Carrickfergus Castle",
+      "summary": "One of the best-preserved Norman castles in Ireland, built in 1177 on the shore of Belfast Lough.",
+      "facts": [
+        "Entry ~£7",
+        "Allow an hour",
+        "Train from Belfast takes about 25 minutes"
+      ],
+      "hours": "09:30-16:00"
+    },
+    {
+      "id": "the_gobbins",
+      "name": "The Gobbins Cliff Path",
+      "region": "north",
+      "lat": 54.832,
+      "lon": -5.7,
+      "visit": 180,
+      "cat": "Hike",
+      "priority": 2,
+      "wiki": "The Gobbins",
+      "summary": "Guided walk along a dramatic Edwardian cliff path of bridges and tunnels hugging the basalt cliffs of Islandmagee, just above the waves.",
+      "facts": [
+        "Guided tours only (~£25); book well in advance",
+        "About 2.5–3 hours; steep steps, good fitness needed",
+        "Tours often cancelled in rough seas"
+      ],
+      "caution": "Not suitable for those with mobility issues; tours cancelled in bad weather."
+    },
+    {
+      "id": "mount_stewart",
+      "name": "Mount Stewart",
+      "region": "north",
+      "lat": 54.552,
+      "lon": -5.605,
+      "visit": 150,
+      "cat": "Garden",
+      "priority": 2,
+      "wiki": "Mount Stewart",
+      "summary": "National Trust house on Strangford Lough with one of Europe's great gardens, full of subtropical plants and quirky topiary.",
+      "facts": [
+        "Entry ~£15 (free for National Trust members)",
+        "Allow 2–3 hours",
+        "Café on site"
+      ],
+      "hours": "10:00-17:00"
+    },
+    {
+      "id": "newcastle",
+      "name": "Newcastle",
+      "region": "north",
+      "lat": 54.217,
+      "lon": -5.889,
+      "visit": 90,
+      "cat": "Town",
+      "priority": 1,
+      "wiki": "Newcastle, County Down",
+      "summary": "Seaside town 'where the Mountains of Mourne sweep down to the sea', with a long beach and promenade. The base for climbing Slieve Donard.",
+      "facts": [
+        "Pay parking on the promenade",
+        "Royal County Down golf course is here",
+        "Tollymore and Castlewellan forest parks nearby"
+      ],
+      "sleep": true
+    },
+    {
+      "id": "slieve_donard",
+      "name": "Slieve Donard",
+      "region": "north",
+      "lat": 54.18,
+      "lon": -5.92,
+      "visit": 300,
+      "cat": "Hike",
+      "priority": 2,
+      "wiki": "Slieve Donard",
+      "summary": "Northern Ireland's highest mountain (850 m), climbed from Newcastle via the Glen River path past the Mourne Wall, with views to Scotland and the Isle of Man on clear days.",
+      "facts": [
+        "About 5 hours return from Donard Park car park",
+        "Steep, eroded path in the upper section",
+        "Start early in summer"
+      ],
+      "caution": "Weather changes fast; take waterproofs and a map."
+    },
+    {
+      "id": "tollymore",
+      "name": "Tollymore Forest Park",
+      "region": "north",
+      "lat": 54.224,
+      "lon": -5.945,
+      "visit": 120,
+      "cat": "Nature reserve",
+      "priority": 1,
+      "wiki": "Tollymore Forest Park",
+      "summary": "Forest park on the Shimna River with stepping stones, stone bridges and follies, and the first location filmed for Game of Thrones.",
+      "facts": [
+        "Parking ~£5 per car",
+        "Rivers trail loop about 1.5 hours",
+        "5 minutes from Newcastle"
+      ]
+    },
+    {
+      "id": "glenariff",
+      "name": "Glenariff Forest Park",
+      "region": "north",
+      "lat": 55.02,
+      "lon": -6.118,
+      "visit": 120,
+      "cat": "Waterfall",
+      "priority": 2,
+      "wiki": "Glenariff",
+      "summary": "'Queen of the Glens of Antrim', a deep glen with a boardwalk waterfall trail through a gorge.",
+      "facts": [
+        "Parking ~£5 per car",
+        "Waterfall walkway loop about 1 hour",
+        "Paths slippery when wet"
+      ]
+    },
+    {
+      "id": "causeway_coastal_route",
+      "name": "Causeway Coastal Route & Torr Head",
+      "region": "north",
+      "lat": 55.123,
+      "lon": -6.04,
+      "visit": 180,
+      "cat": "Scenic drive",
+      "priority": 2,
+      "wiki": "Giant's Causeway",
+      "summary": "Coastal road from Belfast to Derry past the Glens of Antrim, Cushendun and the Torr Head scenic road, with views across to Scotland's Mull of Kintyre.",
+      "facts": [
+        "Torr Head road is single-track, steep and narrow",
+        "Cushendun caves were a Game of Thrones location",
+        "Allow a full day from Belfast to Portrush with stops"
+      ],
+      "caution": "The Torr Head scenic road has very tight bends and steep gradients; not for large vans."
+    },
+    {
+      "id": "rathlin_island",
+      "name": "Rathlin Island",
+      "region": "north",
+      "lat": 55.293,
+      "lon": -6.195,
+      "visit": 300,
+      "cat": "Island",
+      "priority": 2,
+      "wiki": "Rathlin Island",
+      "summary": "L-shaped island off Ballycastle with the RSPB West Light Seabird Centre, home to thousands of puffins, guillemots and razorbills in summer.",
+      "facts": [
+        "Ferry from Ballycastle (~25–40 min), book ahead in summer",
+        "Shuttle bus or bike hire on the island",
+        "Seabird centre open in spring and summer"
+      ],
+      "season": "Puffins are there from about late April to July."
+    },
+    {
+      "id": "carrick_a_rede",
+      "name": "Carrick-a-Rede Rope Bridge",
+      "region": "north",
+      "lat": 55.24,
+      "lon": -6.333,
+      "visit": 75,
+      "cat": "Experience",
+      "priority": 2,
+      "wiki": "Carrick-a-Rede Rope Bridge",
+      "summary": "Rope bridge strung 30 m above the sea to a tiny island once used by salmon fishermen, at the end of a clifftop path.",
+      "facts": [
+        "Timed tickets ~£15 (National Trust); book online",
+        "1 km cliff path each way",
+        "Closes in high winds"
+      ],
+      "hours": "09:30-16:30"
+    },
+    {
+      "id": "ballintoy",
+      "name": "Ballintoy Harbour",
+      "region": "north",
+      "lat": 55.244,
+      "lon": -6.369,
+      "visit": 30,
+      "cat": "Village",
+      "priority": 1,
+      "wiki": "Ballintoy",
+      "summary": "Tiny harbour reached by a steep lane, with limestone rocks and sea stacks, used as the Iron Islands in Game of Thrones.",
+      "facts": [
+        "Free small car park at the harbour",
+        "Steep narrow access road",
+        "Café in summer"
+      ]
+    },
+    {
+      "id": "dark_hedges",
+      "name": "The Dark Hedges",
+      "region": "north",
+      "lat": 55.134,
+      "lon": -6.38,
+      "visit": 20,
+      "cat": "Viewpoint",
+      "priority": 1,
+      "wiki": "Dark Hedges",
+      "summary": "Avenue of intertwined 18th-century beech trees, made famous by Game of Thrones.",
+      "facts": [
+        "Free; road closed to traffic, park at the hotel car park nearby",
+        "Visit early morning for photos without crowds",
+        "Several trees have fallen in storms"
+      ]
+    },
+    {
+      "id": "giants_causeway",
+      "name": "Giant's Causeway",
+      "region": "north",
+      "lat": 55.2408,
+      "lon": -6.5116,
+      "visit": 150,
+      "cat": "Coast",
+      "priority": 3,
+      "wiki": "Giant's Causeway",
+      "summary": "Around 40,000 interlocking basalt columns stepping into the sea, formed by volcanic activity 60 million years ago. Northern Ireland's only UNESCO World Heritage Site.",
+      "facts": [
+        "The stones are free to walk to; visitor centre with parking ~£15",
+        "1 km walk down to the stones, or a shuttle bus",
+        "Arrive before 10:00 or after 16:00 to avoid crowds"
+      ],
+      "caution": "Rocks are slippery near the water; big waves can sweep the lower columns."
+    },
+    {
+      "id": "bushmills",
+      "name": "Old Bushmills Distillery",
+      "region": "north",
+      "lat": 55.204,
+      "lon": -6.518,
+      "visit": 75,
+      "cat": "Distillery & brewery",
+      "priority": 1,
+      "wiki": "Old Bushmills Distillery",
+      "summary": "Distillery licensed since 1608, with tours through the working stills and warehouses ending in a tasting.",
+      "facts": [
+        "Tours ~£25; book ahead",
+        "No photography in production areas",
+        "3 km from the Giant's Causeway"
+      ],
+      "hours": "10:00-16:00",
+      "needsDaylight": false
+    },
+    {
+      "id": "dunluce_castle",
+      "name": "Dunluce Castle",
+      "region": "north",
+      "lat": 55.2108,
+      "lon": -6.579,
+      "visit": 60,
+      "cat": "Ruins",
+      "priority": 2,
+      "wiki": "Dunluce Castle",
+      "summary": "Romantic medieval castle ruin perched on a basalt cliff edge, where part of the kitchen is said to have fallen into the sea.",
+      "facts": [
+        "Entry ~£7",
+        "Best viewed from the roadside lay-by to the east",
+        "Allow 45 minutes"
+      ],
+      "hours": "10:00-16:00"
+    },
+    {
+      "id": "portrush",
+      "name": "Portrush",
+      "region": "north",
+      "lat": 55.2048,
+      "lon": -6.6528,
+      "visit": 90,
+      "cat": "Town",
+      "priority": 2,
+      "wiki": "Portrush",
+      "summary": "Seaside resort on a peninsula with two sandy beaches and Royal Portrush golf links. The main base for the Causeway Coast.",
+      "facts": [
+        "Pay parking near the harbour",
+        "Train connection via Coleraine to Belfast and Derry",
+        "Busy in summer and on Open golf years"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "whiterocks_beach",
+      "name": "Whiterocks Beach",
+      "region": "north",
+      "lat": 55.207,
+      "lon": -6.61,
+      "visit": 60,
+      "cat": "Beach",
+      "priority": 1,
+      "wiki": "Portrush",
+      "summary": "Long sandy beach backed by white limestone cliffs with caves and arches, popular for surfing.",
+      "facts": [
+        "Free parking at the beach",
+        "Surf schools in summer",
+        "Walk along the beach to Dunluce Castle views"
+      ]
+    },
+    {
+      "id": "mussenden_temple",
+      "name": "Mussenden Temple & Downhill Demesne",
+      "region": "north",
+      "lat": 55.168,
+      "lon": -6.811,
+      "visit": 75,
+      "cat": "Monument",
+      "priority": 2,
+      "wiki": "Mussenden Temple",
+      "summary": "Small domed 18th-century temple on a cliff edge above Downhill Strand, with the ruined Downhill House behind. One of Northern Ireland's most photographed sights.",
+      "facts": [
+        "Entry ~£7 (National Trust)",
+        "Downhill Strand below is a vast beach",
+        "Allow 1 hour"
+      ],
+      "hours": "10:00-17:00"
+    },
+    {
+      "id": "derry",
+      "name": "Derry / Londonderry",
+      "region": "north",
+      "lat": 54.9968,
+      "lon": -7.3197,
+      "visit": 150,
+      "cat": "Town",
+      "priority": 3,
+      "wiki": "Derry",
+      "summary": "Only city in Ireland with complete 17th-century walls, with the Bogside murals, the Peace Bridge and a vibrant cultural scene.",
+      "facts": [
+        "Walk the 1.5 km circuit of the walls (free)",
+        "Museum of Free Derry tells the story of Bloody Sunday",
+        "Prices in pounds; Donegal across the border uses euros"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "derry_walls",
+      "name": "Derry City Walls",
+      "region": "north",
+      "lat": 54.9958,
+      "lon": -7.323,
+      "visit": 75,
+      "cat": "Old town",
+      "priority": 2,
+      "wiki": "Derry",
+      "summary": "Intact 17th-century walls encircling the old city, with cannons, gates and views down over the Bogside murals.",
+      "facts": [
+        "Free, open access",
+        "About 1 hour for the full circuit",
+        "Guided walking tours available"
+      ],
+      "needsDaylight": false
+    }
+  ],
+  "drives": [
+    [
+      "limerick",
+      "snn",
+      25,
+      25
+    ],
+    [
+      "limerick",
+      "king_johns_castle",
+      1,
+      5
+    ],
+    [
+      "limerick",
+      "hunt_museum",
+      1,
+      3
+    ],
+    [
+      "limerick",
+      "bunratty_castle",
+      15,
+      20
+    ],
+    [
+      "bunratty_castle",
+      "snn",
+      8,
+      10
+    ],
+    [
+      "limerick",
+      "adare",
+      20,
+      25
+    ],
+    [
+      "limerick",
+      "ennis",
+      38,
+      35
+    ],
+    [
+      "ennis",
+      "snn",
+      22,
+      20
+    ],
+    [
+      "ennis",
+      "quin_abbey",
+      10,
+      15
+    ],
+    [
+      "ennis",
+      "doolin",
+      40,
+      45
+    ],
+    [
+      "ennis",
+      "lahinch",
+      30,
+      35
+    ],
+    [
+      "lahinch",
+      "cliffs_of_moher",
+      10,
+      15
+    ],
+    [
+      "cliffs_of_moher",
+      "doolin",
+      7,
+      12
+    ],
+    [
+      "doolin",
+      "doolin_cliff_walk",
+      2,
+      5
+    ],
+    [
+      "doolin",
+      "doolin_cave",
+      4,
+      8
+    ],
+    [
+      "doolin",
+      "poulnabrone",
+      22,
+      30
+    ],
+    [
+      "doolin",
+      "fanore",
+      17,
+      25
+    ],
+    [
+      "fanore",
+      "aillwee_cave",
+      17,
+      25
+    ],
+    [
+      "aillwee_cave",
+      "poulnabrone",
+      6,
+      10
+    ],
+    [
+      "poulnabrone",
+      "burren_national_park",
+      15,
+      20
+    ],
+    [
+      "ennis",
+      "burren_national_park",
+      30,
+      35
+    ],
+    [
+      "ennis",
+      "kilkee",
+      55,
+      55
+    ],
+    [
+      "kilkee",
+      "loop_head",
+      27,
+      30
+    ],
+    [
+      "limerick",
+      "killaloe",
+      25,
+      30
+    ],
+    [
+      "limerick",
+      "galway",
+      95,
+      70
+    ],
+    [
+      "ennis",
+      "galway",
+      70,
+      60
+    ],
+    [
+      "doolin",
+      "galway",
+      75,
+      85
+    ],
+    [
+      "limerick",
+      "athlone",
+      120,
+      100
+    ],
+    [
+      "adare",
+      "killarney",
+      90,
+      85
+    ],
+    [
+      "doolin",
+      "inis_mor",
+      30,
+      150,
+      "ferry",
+      25
+    ],
+    [
+      "doolin",
+      "inis_oirr",
+      8,
+      75,
+      "ferry",
+      20
+    ],
+    [
+      "galway",
+      "galway_cathedral",
+      1,
+      5
+    ],
+    [
+      "galway",
+      "salthill",
+      3,
+      8
+    ],
+    [
+      "galway",
+      "dunguaire_castle",
+      30,
+      30
+    ],
+    [
+      "dunguaire_castle",
+      "aillwee_cave",
+      25,
+      25
+    ],
+    [
+      "galway",
+      "aughnanure_castle",
+      27,
+      30
+    ],
+    [
+      "aughnanure_castle",
+      "clifden",
+      55,
+      55
+    ],
+    [
+      "galway",
+      "clifden",
+      80,
+      85
+    ],
+    [
+      "clifden",
+      "sky_road",
+      6,
+      10
+    ],
+    [
+      "clifden",
+      "roundstone",
+      22,
+      30
+    ],
+    [
+      "roundstone",
+      "dogs_bay",
+      3,
+      5
+    ],
+    [
+      "clifden",
+      "connemara_np",
+      13,
+      15
+    ],
+    [
+      "connemara_np",
+      "kylemore_abbey",
+      5,
+      8
+    ],
+    [
+      "kylemore_abbey",
+      "lough_inagh",
+      12,
+      15
+    ],
+    [
+      "lough_inagh",
+      "aughnanure_castle",
+      35,
+      35
+    ],
+    [
+      "kylemore_abbey",
+      "killary_harbour",
+      17,
+      20
+    ],
+    [
+      "killary_harbour",
+      "westport",
+      33,
+      40
+    ],
+    [
+      "killary_harbour",
+      "cong",
+      35,
+      40
+    ],
+    [
+      "galway",
+      "cong",
+      45,
+      50
+    ],
+    [
+      "galway",
+      "athlone",
+      90,
+      70
+    ],
+    [
+      "galway",
+      "knock",
+      85,
+      70
+    ],
+    [
+      "galway",
+      "westport",
+      85,
+      85
+    ],
+    [
+      "galway",
+      "snn",
+      85,
+      65
+    ],
+    [
+      "inis_mor",
+      "dun_aonghasa",
+      7,
+      15
+    ],
+    [
+      "galway",
+      "inis_mor",
+      45,
+      120,
+      "ferry",
+      30
+    ],
+    [
+      "westport",
+      "croagh_patrick",
+      8,
+      12
+    ],
+    [
+      "westport",
+      "great_western_greenway",
+      13,
+      15
+    ],
+    [
+      "westport",
+      "achill_island",
+      50,
+      55
+    ],
+    [
+      "great_western_greenway",
+      "achill_island",
+      40,
+      45
+    ],
+    [
+      "achill_island",
+      "keem_bay",
+      9,
+      15
+    ],
+    [
+      "westport",
+      "country_life_museum",
+      25,
+      25
+    ],
+    [
+      "westport",
+      "ceide_fields",
+      70,
+      75
+    ],
+    [
+      "ceide_fields",
+      "downpatrick_head",
+      7,
+      10
+    ],
+    [
+      "westport",
+      "cong",
+      50,
+      55
+    ],
+    [
+      "westport",
+      "knock",
+      50,
+      45
+    ],
+    [
+      "knock",
+      "sligo",
+      55,
+      50
+    ],
+    [
+      "westport",
+      "sligo",
+      105,
+      95
+    ],
+    [
+      "downpatrick_head",
+      "sligo",
+      90,
+      85
+    ],
+    [
+      "sligo",
+      "carrowmore",
+      5,
+      10
+    ],
+    [
+      "carrowmore",
+      "knocknarea",
+      4,
+      8
+    ],
+    [
+      "sligo",
+      "strandhill",
+      8,
+      12
+    ],
+    [
+      "sligo",
+      "drumcliffe",
+      8,
+      10
+    ],
+    [
+      "drumcliffe",
+      "benbulben",
+      4,
+      8
+    ],
+    [
+      "sligo",
+      "glencar_waterfall",
+      13,
+      15
+    ],
+    [
+      "drumcliffe",
+      "mullaghmore",
+      18,
+      20
+    ],
+    [
+      "mullaghmore",
+      "donegal",
+      40,
+      35
+    ],
+    [
+      "sligo",
+      "donegal",
+      65,
+      55
+    ],
+    [
+      "donegal",
+      "donegal_castle",
+      1,
+      3
+    ],
+    [
+      "donegal",
+      "slieve_league",
+      55,
+      70
+    ],
+    [
+      "slieve_league",
+      "glencolmcille",
+      15,
+      25
+    ],
+    [
+      "donegal",
+      "glenveagh",
+      75,
+      70
+    ],
+    [
+      "glenveagh",
+      "errigal",
+      15,
+      20
+    ],
+    [
+      "errigal",
+      "dunfanaghy",
+      25,
+      30
+    ],
+    [
+      "dunfanaghy",
+      "horn_head",
+      7,
+      15
+    ],
+    [
+      "dunfanaghy",
+      "glenveagh",
+      20,
+      25
+    ],
+    [
+      "glenveagh",
+      "fanad_head",
+      50,
+      60
+    ],
+    [
+      "glenveagh",
+      "grianan_of_aileach",
+      45,
+      50
+    ],
+    [
+      "grianan_of_aileach",
+      "derry",
+      12,
+      15
+    ],
+    [
+      "derry",
+      "malin_head",
+      55,
+      70
+    ],
+    [
+      "donegal",
+      "derry",
+      70,
+      65
+    ],
+    [
+      "sligo",
+      "carrick_on_shannon",
+      55,
+      50
+    ],
+    [
+      "glencolmcille",
+      "glenveagh",
+      70,
+      85
+    ],
+    [
+      "athlone",
+      "athlone_castle",
+      1,
+      3
+    ],
+    [
+      "athlone",
+      "clonmacnoise",
+      22,
+      30
+    ],
+    [
+      "athlone",
+      "kilbeggan_distillery",
+      35,
+      30
+    ],
+    [
+      "kilbeggan_distillery",
+      "tullamore_dew",
+      12,
+      15
+    ],
+    [
+      "tullamore_dew",
+      "birr",
+      40,
+      40
+    ],
+    [
+      "clonmacnoise",
+      "birr",
+      40,
+      45
+    ],
+    [
+      "birr",
+      "birr_castle",
+      1,
+      3
+    ],
+    [
+      "birr",
+      "slieve_bloom",
+      25,
+      30
+    ],
+    [
+      "birr",
+      "portumna_castle",
+      25,
+      25
+    ],
+    [
+      "portumna_castle",
+      "killaloe",
+      40,
+      40
+    ],
+    [
+      "athlone",
+      "belvedere_house",
+      45,
+      35
+    ],
+    [
+      "belvedere_house",
+      "fore_abbey",
+      25,
+      25
+    ],
+    [
+      "athlone",
+      "strokestown_park",
+      55,
+      50
+    ],
+    [
+      "strokestown_park",
+      "rathcroghan",
+      20,
+      20
+    ],
+    [
+      "strokestown_park",
+      "carrick_on_shannon",
+      25,
+      25
+    ],
+    [
+      "slieve_bloom",
+      "rock_of_dunamase",
+      30,
+      35
+    ],
+    [
+      "rock_of_dunamase",
+      "kilkenny",
+      50,
+      45
+    ],
+    [
+      "birr",
+      "limerick",
+      85,
+      75
+    ],
+    [
+      "athlone",
+      "carrick_on_shannon",
+      75,
+      65
+    ],
+    [
+      "fore_abbey",
+      "loughcrew",
+      15,
+      20
+    ],
+    [
+      "belfast",
+      "bfs",
+      25,
+      30
+    ],
+    [
+      "belfast",
+      "titanic_belfast",
+      2,
+      7
+    ],
+    [
+      "belfast",
+      "ulster_museum",
+      2,
+      8
+    ],
+    [
+      "belfast",
+      "belfast_murals",
+      2,
+      8
+    ],
+    [
+      "belfast",
+      "st_georges_market",
+      1,
+      3
+    ],
+    [
+      "belfast",
+      "cavehill",
+      7,
+      15
+    ],
+    [
+      "belfast",
+      "carrickfergus_castle",
+      18,
+      25
+    ],
+    [
+      "carrickfergus_castle",
+      "the_gobbins",
+      15,
+      20
+    ],
+    [
+      "belfast",
+      "mount_stewart",
+      25,
+      30
+    ],
+    [
+      "belfast",
+      "newcastle",
+      50,
+      50
+    ],
+    [
+      "newcastle",
+      "tollymore",
+      4,
+      8
+    ],
+    [
+      "newcastle",
+      "slieve_donard",
+      2,
+      5
+    ],
+    [
+      "belfast",
+      "glenariff",
+      70,
+      70
+    ],
+    [
+      "glenariff",
+      "causeway_coastal_route",
+      15,
+      20
+    ],
+    [
+      "causeway_coastal_route",
+      "ballintoy",
+      30,
+      45
+    ],
+    [
+      "belfast",
+      "portrush",
+      95,
+      75
+    ],
+    [
+      "belfast",
+      "derry",
+      115,
+      90
+    ],
+    [
+      "portrush",
+      "dunluce_castle",
+      5,
+      8
+    ],
+    [
+      "dunluce_castle",
+      "giants_causeway",
+      5,
+      8
+    ],
+    [
+      "giants_causeway",
+      "bushmills",
+      4,
+      6
+    ],
+    [
+      "giants_causeway",
+      "carrick_a_rede",
+      12,
+      15
+    ],
+    [
+      "carrick_a_rede",
+      "ballintoy",
+      2,
+      5
+    ],
+    [
+      "ballintoy",
+      "dark_hedges",
+      10,
+      15
+    ],
+    [
+      "dark_hedges",
+      "belfast",
+      80,
+      60
+    ],
+    [
+      "portrush",
+      "whiterocks_beach",
+      3,
+      5
+    ],
+    [
+      "portrush",
+      "mussenden_temple",
+      18,
+      20
+    ],
+    [
+      "mussenden_temple",
+      "derry",
+      40,
+      40
+    ],
+    [
+      "portrush",
+      "derry",
+      55,
+      55
+    ],
+    [
+      "bfs",
+      "portrush",
+      75,
+      60
+    ],
+    [
+      "carlingford",
+      "newcastle",
+      55,
+      55
+    ],
+    [
+      "belfast",
+      "derry",
+      150,
+      160,
+      "train",
+      14
+    ]
+  ]
+}

@@ -120,6 +120,82 @@
         "first": {"label": "Arrival day"},
         "last": {"label": "Departure day"}
       }
+    },
+    {
+      "id": "jordan",
+      "name": "Jordan",
+      "source": "jordan",
+      "flag": "🇯🇴",
+      "color": "#a3412c",
+      "blurb": "Petra, Wadi Rum, the Dead Sea, Jerash and the King's Highway. Opening hours, the Jordan Pass and the Aqaba flight.",
+      "copyKeys": {"jordan-planner-v1": "tp-jordan-planner-v1", "jordan-planner-ui": "tp-jordan-planner-ui"},
+      "uiKey": "jordan-planner-ui",
+      "skip": ["osm", "tools", "parts"],
+      "jsReplace": {"fetch(`osm/${id}.json`": "fetch(`../../jordan/osm/${id}.json`"},
+      "swReplace": {"'jordan-": "'tp-jordan-"},
+      "generic": {
+        "name": "Jordan",
+        "autoDays": 8,
+        "first": {"label": "Arrival day"},
+        "last": {"label": "Departure day"}
+      }
+    },
+    {
+      "id": "uzbekistan",
+      "name": "Uzbekistan",
+      "source": "uzbekistan",
+      "flag": "🇺🇿",
+      "color": "#1b6f8a",
+      "blurb": "Samarkand, Bukhara and Khiva on the Silk Road, Tashkent, the Fergana Valley and the desert. Opening hours, fast trains and domestic flights.",
+      "copyKeys": {"uzbekistan-planner-v1": "tp-uzbekistan-planner-v1", "uzbekistan-planner-ui": "tp-uzbekistan-planner-ui"},
+      "uiKey": "uzbekistan-planner-ui",
+      "skip": ["osm", "tools", "parts"],
+      "jsReplace": {"fetch(`osm/${id}.json`": "fetch(`../../uzbekistan/osm/${id}.json`"},
+      "swReplace": {"'uzbekistan-": "'tp-uzbekistan-"},
+      "generic": {
+        "name": "Uzbekistan",
+        "autoDays": 10,
+        "first": {"label": "Arrival day"},
+        "last": {"label": "Departure day"}
+      }
+    },
+    {
+      "id": "ireland",
+      "name": "Ireland",
+      "source": "ireland",
+      "flag": "🇮🇪",
+      "color": "#1f7a4a",
+      "blurb": "Dublin, the Wild Atlantic Way, Kerry, Connemara, the Cliffs of Moher and the Giant's Causeway. Opening hours, trains and the Aran Islands ferries.",
+      "copyKeys": {"ireland-planner-v1": "tp-ireland-planner-v1", "ireland-planner-ui": "tp-ireland-planner-ui"},
+      "uiKey": "ireland-planner-ui",
+      "skip": ["osm", "tools", "parts"],
+      "jsReplace": {"fetch(`osm/${id}.json`": "fetch(`../../ireland/osm/${id}.json`"},
+      "swReplace": {"'ireland-": "'tp-ireland-"},
+      "generic": {
+        "name": "Ireland",
+        "autoDays": 8,
+        "first": {"label": "Arrival day"},
+        "last": {"label": "Departure day"}
+      }
+    },
+    {
+      "id": "netherlands",
+      "name": "Netherlands",
+      "source": "netherlands",
+      "flag": "🇳🇱",
+      "color": "#d4661b",
+      "blurb": "Amsterdam, Haarlem, Leiden, Delft, Rotterdam, Utrecht, windmills, Keukenhof, the Veluwe, Giethoorn and Maastricht. Opening hours and trains.",
+      "copyKeys": {"netherlands-planner-v1": "tp-netherlands-planner-v1", "netherlands-planner-ui": "tp-netherlands-planner-ui"},
+      "uiKey": "netherlands-planner-ui",
+      "skip": ["osm", "tools", "parts"],
+      "jsReplace": {"fetch(`osm/${id}.json`": "fetch(`../../netherlands/osm/${id}.json`"},
+      "swReplace": {"'netherlands-": "'tp-netherlands-"},
+      "generic": {
+        "name": "Netherlands",
+        "autoDays": 7,
+        "first": {"label": "Arrival day"},
+        "last": {"label": "Departure day"}
+      }
     }
   ]
 }

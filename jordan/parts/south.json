@@ -1,0 +1,1271 @@
+{
+  "places": [
+    {
+      "id": "kerak",
+      "name": "Kerak (Al-Karak)",
+      "region": "kings",
+      "lat": 31.185,
+      "lon": 35.704,
+      "visit": 90,
+      "cat": "Town",
+      "priority": 2,
+      "wiki": "Al-Karak",
+      "summary": "Hilltop town on the King's Highway, wrapped around one of the great Crusader castles. A useful overnight stop on the slow road between Madaba and Petra.",
+      "facts": [
+        "Simple hotels near the castle",
+        "Kerak is the halfway point Madaba–Dana",
+        "About 1h45 from Amman via the Desert Highway"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "kerak_castle",
+      "name": "Kerak Castle",
+      "region": "kings",
+      "lat": 31.1806,
+      "lon": 35.7012,
+      "visit": 90,
+      "cat": "Castle",
+      "priority": 3,
+      "wiki": "Kerak Castle",
+      "summary": "Huge 12th-century Crusader castle later rebuilt by the Mamluks, with long vaulted halls, passages and towers to explore. Bring a torch for the dark galleries.",
+      "facts": [
+        "~2 JOD; Covered by the Jordan Pass (~70–80 JOD)",
+        "Small archaeological museum inside",
+        "Allow 1.5 hours; uneven floors and dark passages"
+      ],
+      "hours": "08:00-17:00"
+    },
+    {
+      "id": "wadi_mujib_viewpoint",
+      "name": "Wadi Mujib Canyon (King's Highway)",
+      "region": "kings",
+      "lat": 31.456,
+      "lon": 35.809,
+      "visit": 30,
+      "cat": "Viewpoint",
+      "priority": 2,
+      "wiki": "Wadi Mujib",
+      "summary": "Where the King's Highway drops about 1 km into the great Mujib gorge and climbs out again in hairpins, passing the dam. Stop at the rim viewpoints for the 'Grand Canyon of Jordan'.",
+      "facts": [
+        "Viewpoints at the north and south rims",
+        "Slow road with sharp bends",
+        "Allow 30 minutes for photos",
+        "Fuel up in Madaba or Kerak"
+      ]
+    },
+    {
+      "id": "wadi_bin_hammad",
+      "name": "Wadi Bin Hammad",
+      "region": "kings",
+      "lat": 31.262,
+      "lon": 35.605,
+      "visit": 180,
+      "cat": "Canyon",
+      "priority": 1,
+      "wiki": "Al-Karak",
+      "summary": "Palm-lined canyon with warm springs and hanging gardens of ferns, walked in the stream bed below Kerak's hills. Less known and less wet than Mujib.",
+      "facts": [
+        "Walk in the stream; wear shoes that can get wet",
+        "Rough final road; a local guide helps",
+        "Allow 3–4 hours"
+      ],
+      "caution": "Do not enter if rain is forecast: flash-flood risk."
+    },
+    {
+      "id": "tafilah",
+      "name": "Tafilah",
+      "region": "kings",
+      "lat": 30.837,
+      "lon": 35.605,
+      "visit": 60,
+      "cat": "Town",
+      "priority": 1,
+      "wiki": "Tafilah",
+      "summary": "Provincial town on the King's Highway with a small Crusader-era castle, between Kerak and Dana. Mostly a fuel and food stop.",
+      "facts": [
+        "Supplies before Dana",
+        "Small castle in the town centre",
+        "Afra hot springs nearby"
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "wadi_hasa",
+      "name": "Wadi Hasa",
+      "region": "kings",
+      "lat": 30.99,
+      "lon": 35.57,
+      "visit": 300,
+      "cat": "Canyon",
+      "priority": 1,
+      "wiki": "Wadi al-Hasa",
+      "summary": "Long canyon from the plateau down towards the Dead Sea, with hot springs and pools; the King's Highway crosses its upper part with big views. The full descent is an all-day wade.",
+      "facts": [
+        "Full canyon trek needs a guide and a vehicle pick-up",
+        "Best April–October",
+        "Viewpoints where the King's Highway crosses"
+      ],
+      "caution": "Serious flash-flood risk after rain; never descend when storms are possible."
+    },
+    {
+      "id": "hammamat_afra",
+      "name": "Afra Hot Springs",
+      "region": "kings",
+      "lat": 30.967,
+      "lon": 35.644,
+      "visit": 120,
+      "cat": "Hot spring",
+      "priority": 1,
+      "wiki": "Tafilah",
+      "summary": "Hot springs in a narrow, steep-walled valley north of Tafilah, with simple pools fed by water at around 45 °C. Popular with locals on weekends.",
+      "facts": [
+        "Small entry fee",
+        "Busy on Fridays; quieter on weekdays",
+        "Steep, narrow access road",
+        "Separate bathing times may apply for families"
+      ]
+    },
+    {
+      "id": "dana",
+      "name": "Dana",
+      "region": "kings",
+      "lat": 30.6745,
+      "lon": 35.6113,
+      "visit": 90,
+      "cat": "Village",
+      "priority": 3,
+      "wiki": "Dana Biosphere Reserve",
+      "summary": "Restored 15th-century stone village perched on the rim of the Dana valley, the gateway to the Dana Biosphere Reserve. Views down to Wadi Araba and great sunsets.",
+      "facts": [
+        "Simple guesthouses and the RSCN Dana Guesthouse",
+        "Start of the Dana–Feynan trail",
+        "Cold at night in winter"
+      ],
+      "sleep": true
+    },
+    {
+      "id": "dana_biosphere_reserve",
+      "name": "Dana Biosphere Reserve",
+      "region": "kings",
+      "lat": 30.695,
+      "lon": 35.617,
+      "visit": 180,
+      "cat": "Nature reserve",
+      "priority": 3,
+      "wiki": "Dana Biosphere Reserve",
+      "summary": "Jordan's largest nature reserve, dropping from 1,500 m to below sea level through four climate zones, with ibex, rare plants and Nabataean copper mines. Rummana campsite and short trails sit near the top.",
+      "facts": [
+        "Small RSCN entry fee; guided trails booked with the RSCN",
+        "Short trails from Rummana campsite",
+        "Spring and autumn are best for hiking"
+      ],
+      "season": "Spring and autumn are ideal; the lowlands are very hot in summer."
+    },
+    {
+      "id": "wadi_dana_trail",
+      "name": "Wadi Dana Trail (Dana to Feynan)",
+      "region": "kings",
+      "lat": 30.674,
+      "lon": 35.611,
+      "visit": 360,
+      "cat": "Hike",
+      "priority": 2,
+      "wiki": "Dana Biosphere Reserve",
+      "summary": "Classic one-way walk of about 14 km down the Dana valley from Dana village to Feynan Ecolodge, through changing landscapes. Mostly downhill and unguided-friendly, ending in candlelit Feynan.",
+      "facts": [
+        "About 5–6 hours, 1,200 m of descent",
+        "Arrange luggage transfer and a ride back",
+        "Start early; carry plenty of water"
+      ],
+      "caution": "Very hot in the lower valley from May to September; walk only in the cool season."
+    },
+    {
+      "id": "feynan",
+      "name": "Feynan",
+      "region": "kings",
+      "lat": 30.629,
+      "lon": 35.495,
+      "visit": 240,
+      "cat": "Base",
+      "priority": 2,
+      "wiki": "Feynan Ecolodge",
+      "summary": "Remote area of Wadi Feynan at the bottom of the Dana reserve, best known for its solar-powered, candlelit ecolodge run with local Bedouin. Stay for stargazing, hikes and Bedouin activities.",
+      "facts": [
+        "Last part of the access is a 4x4 track; transfers from Qurayqira",
+        "Book the ecolodge well in advance",
+        "Mid-day heat is extreme in summer"
+      ],
+      "sleep": true
+    },
+    {
+      "id": "wadi_ghuweir",
+      "name": "Wadi Ghuweir",
+      "region": "kings",
+      "lat": 30.623,
+      "lon": 35.51,
+      "visit": 360,
+      "cat": "Canyon",
+      "priority": 2,
+      "wiki": "Dana Biosphere Reserve",
+      "summary": "Spectacular water-filled canyon walked from the plateau down to Feynan, through narrow siqs, palms and pools. One of Jordan's finest day hikes.",
+      "facts": [
+        "Guide strongly recommended; bookable at Feynan",
+        "About 6 hours; you will wade",
+        "Season roughly March–October"
+      ],
+      "caution": "Flash floods are a real danger: never enter if rain is forecast anywhere upstream."
+    },
+    {
+      "id": "shobak_castle",
+      "name": "Shobak Castle (Montreal)",
+      "region": "kings",
+      "lat": 30.531,
+      "lon": 35.56,
+      "visit": 60,
+      "cat": "Castle",
+      "priority": 2,
+      "wiki": "Montreal (Crusader castle)",
+      "summary": "Crusader castle of 1115 on a lonely conical hill, the first built by King Baldwin I in the region. Atmospheric ruins with a long secret staircase down to a well.",
+      "facts": [
+        "Covered by the Jordan Pass (~70–80 JOD)",
+        "Allow 1 hour; bring a torch for the tunnel",
+        "30 minutes north of Wadi Musa"
+      ],
+      "hours": "08:00-17:00"
+    },
+    {
+      "id": "wadi_musa",
+      "name": "Wadi Musa",
+      "region": "petra",
+      "lat": 30.32,
+      "lon": 35.48,
+      "visit": 90,
+      "cat": "Town",
+      "priority": 3,
+      "wiki": "Wadi Musa",
+      "summary": "Town next to the entrance of Petra with most of the hotels, restaurants and Turkish baths. You will need at least one or two nights here to see Petra properly.",
+      "facts": [
+        "Stay at least two nights to see Petra unhurried",
+        "Hotels near the visitor centre save walking",
+        "Cold at night in winter (it can snow)"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "petra",
+      "name": "Petra",
+      "region": "petra",
+      "lat": 30.3217,
+      "lon": 35.4688,
+      "visit": 480,
+      "cat": "Ruins",
+      "priority": 3,
+      "wiki": "Petra",
+      "summary": "The Nabataean rock-cut city, with tombs, temples and theatres carved into rose-red sandstone and reached through the narrow Siq. A UNESCO site and one of the New Seven Wonders, it deserves at least one full day.",
+      "facts": [
+        "1 day ~50 JOD, 2 days ~55, 3 days ~60; ~90 JOD if you don't stay overnight in Jordan — Covered by the Jordan Pass (~70–80 JOD)",
+        "Expect 15–20 km of walking on a full day",
+        "Enter at opening for the Siq and Treasury without crowds",
+        "Bring water, sun protection and good shoes"
+      ],
+      "hours": "06:00-16:00",
+      "early": true,
+      "season": "Best March–May and October–November; summer afternoons are very hot, winter can be cold with rare flash floods.",
+      "caution": "Long walks with steep stairs and strong sun: carry water and turn back early rather than late."
+    },
+    {
+      "id": "siq_petra",
+      "name": "The Siq",
+      "region": "petra",
+      "lat": 30.322,
+      "lon": 35.459,
+      "visit": 40,
+      "cat": "Canyon",
+      "priority": 3,
+      "wiki": "Siq",
+      "summary": "The 1.2 km winding gorge, in places only a few metres wide, that forms Petra's main entrance. It opens dramatically onto the Treasury.",
+      "facts": [
+        "Included in the Petra ticket",
+        "About 2 km walk from the gate to the Treasury",
+        "Horse-carts run for those who can't walk"
+      ]
+    },
+    {
+      "id": "al_khazneh",
+      "name": "The Treasury (Al-Khazneh)",
+      "region": "petra",
+      "lat": 30.3224,
+      "lon": 35.4515,
+      "visit": 30,
+      "cat": "Monument",
+      "priority": 3,
+      "wiki": "Al-Khazneh",
+      "summary": "Petra's famous 40 m facade, carved as a royal tomb in the 1st century AD, seen first at the end of the Siq. Morning sun lights it best.",
+      "facts": [
+        "Included in the Petra ticket",
+        "Before 08:00 it is almost empty",
+        "Best light from mid-morning"
+      ]
+    },
+    {
+      "id": "royal_tombs",
+      "name": "Royal Tombs",
+      "region": "petra",
+      "lat": 30.327,
+      "lon": 35.449,
+      "visit": 60,
+      "cat": "Monument",
+      "priority": 2,
+      "wiki": "Petra",
+      "summary": "Row of grand tomb facades on the al-Khubtha cliff, including the Urn, Silk and Corinthian tombs, with swirling coloured sandstone inside. Climb the stairs for views over the city centre.",
+      "facts": [
+        "Included in the Petra ticket",
+        "Late afternoon light is best on these west-facing facades",
+        "Allow about 1 hour"
+      ]
+    },
+    {
+      "id": "qasr_al_bint",
+      "name": "Qasr al-Bint & the Colonnaded Street",
+      "region": "petra",
+      "lat": 30.3291,
+      "lon": 35.4401,
+      "visit": 60,
+      "cat": "Ruins",
+      "priority": 2,
+      "wiki": "Qasr al-Bint",
+      "summary": "The heart of Nabataean Petra: a paved Roman colonnaded street leading past the Great Temple to Qasr al-Bint, the city's main temple. Restaurants and rest stops are nearby.",
+      "facts": [
+        "Included in the Petra ticket",
+        "Start of the climb to the Monastery",
+        "Allow about 1 hour"
+      ]
+    },
+    {
+      "id": "monastery_petra",
+      "name": "The Monastery (Ad Deir)",
+      "region": "petra",
+      "lat": 30.3384,
+      "lon": 35.432,
+      "visit": 180,
+      "cat": "Monument",
+      "priority": 3,
+      "wiki": "Ad Deir",
+      "summary": "Petra's largest facade, reached by about 800 rock-cut steps from the city centre. The climb takes around 45 minutes; viewpoints beyond look over Wadi Araba.",
+      "facts": [
+        "Included in the Petra ticket",
+        "Climb in the afternoon when the stairs are in shade",
+        "Donkeys are offered; please avoid overloaded or mistreated animals"
+      ],
+      "caution": "Steep steps and heat: carry water and allow 3 hours for the round trip from the city centre."
+    },
+    {
+      "id": "high_place_of_sacrifice",
+      "name": "High Place of Sacrifice",
+      "region": "petra",
+      "lat": 30.32,
+      "lon": 35.446,
+      "visit": 150,
+      "cat": "Hike",
+      "priority": 2,
+      "wiki": "Petra",
+      "summary": "Steep stairway climb to a Nabataean altar platform with views over Petra, returning via Wadi Farasa past the Lion Fountain and Garden Tomb. A quieter loop than the main valley.",
+      "facts": [
+        "About 2–3 hours for the loop",
+        "Start near the Theatre",
+        "Included in the Petra ticket"
+      ]
+    },
+    {
+      "id": "al_khubtha_trail",
+      "name": "Al-Khubtha Trail (Treasury viewpoint)",
+      "region": "petra",
+      "lat": 30.323,
+      "lon": 35.454,
+      "visit": 120,
+      "cat": "Hike",
+      "priority": 2,
+      "wiki": "Al-Khazneh",
+      "summary": "Stairway trail up the al-Khubtha ridge from the Royal Tombs to a viewpoint looking straight down onto the Treasury. The classic aerial photo of Petra.",
+      "facts": [
+        "About 2 hours return",
+        "A Bedouin tea stall sits at the viewpoint (small fee is often asked)",
+        "Best in morning light for the Treasury view"
+      ]
+    },
+    {
+      "id": "petra_back_trail",
+      "name": "Little Petra to the Monastery (back trail)",
+      "region": "petra",
+      "lat": 30.36,
+      "lon": 35.44,
+      "visit": 240,
+      "cat": "Hike",
+      "priority": 2,
+      "wiki": "Ad Deir",
+      "summary": "Walk into Petra from the north via Little Petra and the Umm Sayhoun area, arriving at the Monastery from behind before descending to the centre. Quieter than the Siq approach.",
+      "facts": [
+        "About 3–4 hours; a guide is strongly recommended",
+        "Valid Petra ticket required",
+        "Arrange transport to the trailhead"
+      ]
+    },
+    {
+      "id": "petra_by_night",
+      "name": "Petra by Night",
+      "region": "petra",
+      "lat": 30.3224,
+      "lon": 35.4515,
+      "visit": 120,
+      "cat": "Experience",
+      "priority": 2,
+      "wiki": "Al-Khazneh",
+      "summary": "Walk through the Siq lit by about 1,500 candles to the Treasury for Bedouin music and tea. Atmospheric if a little crowded.",
+      "facts": [
+        "~17 JOD, separate from the day ticket",
+        "Usually Monday, Wednesday and Thursday at 20:30",
+        "Lasts about 2 hours"
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "petra_museum",
+      "name": "Petra Museum",
+      "region": "petra",
+      "lat": 30.322,
+      "lon": 35.469,
+      "visit": 45,
+      "cat": "Museum",
+      "priority": 1,
+      "wiki": "Petra",
+      "summary": "Modern museum at the visitor centre with finds from Petra and an introduction to the Nabataeans. Good for an hour before or after the site.",
+      "facts": [
+        "Free",
+        "At the Petra Visitor Centre",
+        "Air-conditioned; good in the heat of the day"
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "little_petra",
+      "name": "Little Petra (Siq al-Barid)",
+      "region": "petra",
+      "lat": 30.377,
+      "lon": 35.453,
+      "visit": 60,
+      "cat": "Ruins",
+      "priority": 2,
+      "wiki": "Little Petra",
+      "summary": "Small Nabataean suburb in a narrow canyon, with carved houses, cisterns and a rare painted ceiling. Free, uncrowded and a good taste of Petra on arrival day.",
+      "facts": [
+        "Free",
+        "15 minutes' drive north of Wadi Musa",
+        "Combine with Beidha"
+      ]
+    },
+    {
+      "id": "beidha",
+      "name": "Beidha Neolithic Village",
+      "region": "petra",
+      "lat": 30.3714,
+      "lon": 35.4486,
+      "visit": 30,
+      "cat": "Ruins",
+      "priority": 1,
+      "wiki": "Beidha (archaeological site)",
+      "summary": "Excavated Neolithic village around 9,000 years old, with reconstructed round houses, a short walk from Little Petra. Among the oldest villages in the Middle East.",
+      "facts": [
+        "Free",
+        "Short walk from the Little Petra car park",
+        "Allow 30 minutes"
+      ]
+    },
+    {
+      "id": "jabal_haroun",
+      "name": "Jabal Haroun (Aaron's Tomb)",
+      "region": "petra",
+      "lat": 30.317,
+      "lon": 35.407,
+      "visit": 360,
+      "cat": "Hike",
+      "priority": 1,
+      "wiki": "Jabal Harun",
+      "summary": "Long hike to the highest peak around Petra, topped by a white shrine traditionally the tomb of Aaron, brother of Moses. Wild views over Petra and Wadi Araba.",
+      "facts": [
+        "About 6 hours return from the city centre",
+        "Guide recommended",
+        "Valid Petra ticket required"
+      ],
+      "caution": "Exposed and very hot in summer; start early with plenty of water."
+    },
+    {
+      "id": "wadi_rum",
+      "name": "Wadi Rum village",
+      "region": "rum",
+      "lat": 29.5767,
+      "lon": 35.42,
+      "visit": 90,
+      "cat": "Village",
+      "priority": 3,
+      "wiki": "Wadi Rum",
+      "summary": "Small Bedouin village at the foot of Jebel Rum, the starting point for jeep tours, camel treks and nights in desert camps. Most visitors sleep in camps further into the protected area.",
+      "facts": [
+        "Book a camp and tour in advance; most include pick-up from the village",
+        "Nights are cold from November to March",
+        "ATM and shops are basic; bring cash"
+      ],
+      "sleep": true,
+      "season": "Spring and autumn are ideal; summer days are scorching, winter nights near freezing."
+    },
+    {
+      "id": "wadi_rum_jeep_tour",
+      "name": "Wadi Rum Protected Area (jeep tour)",
+      "region": "rum",
+      "lat": 29.639,
+      "lon": 35.435,
+      "visit": 360,
+      "cat": "Desert",
+      "priority": 3,
+      "wiki": "Wadi Rum",
+      "summary": "UNESCO desert of red sand and towering sandstone mountains, explored by 4x4 with Bedouin guides from the visitor centre. A half-day or full-day jeep tour links the main canyons, dunes and rock bridges.",
+      "facts": [
+        "Entry ~5 JOD; Covered by the Jordan Pass (~70–80 JOD)",
+        "Tours start at the visitor centre or in Rum village",
+        "Full day with sunset is best; stay overnight for the stars"
+      ]
+    },
+    {
+      "id": "seven_pillars",
+      "name": "Seven Pillars of Wisdom",
+      "region": "rum",
+      "lat": 29.6352,
+      "lon": 35.437,
+      "visit": 20,
+      "cat": "Viewpoint",
+      "priority": 1,
+      "wiki": "Wadi Rum",
+      "summary": "Fluted rock face near the visitor centre named after T. E. Lawrence's book. A quick photo stop on the way in.",
+      "facts": [
+        "Visible from the visitor centre",
+        "Free with Wadi Rum entry",
+        "A few minutes' stop"
+      ]
+    },
+    {
+      "id": "lawrences_spring",
+      "name": "Lawrence's Spring",
+      "region": "rum",
+      "lat": 29.553,
+      "lon": 35.431,
+      "visit": 45,
+      "cat": "Viewpoint",
+      "priority": 1,
+      "wiki": "Wadi Rum",
+      "summary": "Small spring up a rocky slope where Lawrence is said to have washed during the Arab Revolt, with Nabataean inscriptions and a fine view over the valley. A standard first jeep-tour stop.",
+      "facts": [
+        "Short scramble up from the jeep track",
+        "Standard stop on jeep tours",
+        "Allow 30–45 minutes"
+      ]
+    },
+    {
+      "id": "khazali_canyon",
+      "name": "Khazali Canyon",
+      "region": "rum",
+      "lat": 29.509,
+      "lon": 35.423,
+      "visit": 30,
+      "cat": "Canyon",
+      "priority": 2,
+      "wiki": "Wadi Rum",
+      "summary": "Narrow cleft in Jebel Khazali with Thamudic and Nabataean petroglyphs of people, camels and footprints. Cool and shady even at midday.",
+      "facts": [
+        "Standard stop on jeep tours",
+        "Only the first part is walkable without climbing",
+        "Allow 20–30 minutes"
+      ]
+    },
+    {
+      "id": "red_sand_dune",
+      "name": "Red Sand Dunes",
+      "region": "rum",
+      "lat": 29.529,
+      "lon": 35.441,
+      "visit": 40,
+      "cat": "Desert",
+      "priority": 2,
+      "wiki": "Wadi Rum",
+      "summary": "Tall dune of deep red sand banked against a mountain, perfect for climbing and running down. Best in late afternoon light.",
+      "facts": [
+        "Go barefoot in the cool season; sand burns in summer",
+        "Standard stop on jeep tours",
+        "Late afternoon light is best"
+      ]
+    },
+    {
+      "id": "umm_fruth_bridge",
+      "name": "Umm Fruth Rock Bridge",
+      "region": "rum",
+      "lat": 29.492,
+      "lon": 35.452,
+      "visit": 30,
+      "cat": "Viewpoint",
+      "priority": 2,
+      "wiki": "Wadi Rum",
+      "summary": "Small natural arch about 15 m high that you can scramble onto for photos. One of the most visited spots on jeep tours.",
+      "facts": [
+        "Easy scramble, care on the way down",
+        "Standard stop on jeep tours",
+        "Queues for photos at midday"
+      ]
+    },
+    {
+      "id": "burdah_rock_bridge",
+      "name": "Burdah Rock Bridge",
+      "region": "rum",
+      "lat": 29.445,
+      "lon": 35.483,
+      "visit": 180,
+      "cat": "Hike",
+      "priority": 2,
+      "wiki": "Wadi Rum",
+      "summary": "High natural arch on Jebel Burdah reached by a scrambling ascent of about 1.5 hours. The view from the bridge over the desert is spectacular.",
+      "facts": [
+        "Guide required; some exposed scrambling",
+        "About 3 hours return",
+        "Start early to avoid the heat"
+      ],
+      "caution": "Exposed scrambling with drops: not for those uneasy with heights."
+    },
+    {
+      "id": "jebel_umm_ad_dami",
+      "name": "Jebel Umm ad-Dami",
+      "region": "rum",
+      "lat": 29.31,
+      "lon": 35.41,
+      "visit": 180,
+      "cat": "Hike",
+      "priority": 1,
+      "wiki": "Jabal Umm al Dami",
+      "summary": "Jordan's highest mountain at about 1,850 m, in the far south of Wadi Rum near the Saudi border. A steep ascent leads to views towards the Red Sea on clear days.",
+      "facts": [
+        "Needs a long jeep transfer and a guide",
+        "About 3 hours return from the base",
+        "Start early; the summit is exposed"
+      ]
+    },
+    {
+      "id": "hot_air_balloon_rum",
+      "name": "Hot-air balloon over Wadi Rum",
+      "region": "rum",
+      "lat": 29.63,
+      "lon": 35.43,
+      "visit": 180,
+      "cat": "Experience",
+      "priority": 1,
+      "wiki": "Wadi Rum",
+      "summary": "Sunrise balloon flights over the mountains and sands of Wadi Rum, run from near the visitor centre. Expensive but unforgettable.",
+      "facts": [
+        "Book in advance; weather dependent",
+        "Very early pick-up",
+        "Flights last about 1 hour"
+      ],
+      "early": true
+    },
+    {
+      "id": "disi",
+      "name": "Disi",
+      "region": "rum",
+      "lat": 29.617,
+      "lon": 35.562,
+      "visit": 60,
+      "cat": "Village",
+      "priority": 1,
+      "wiki": "Wadi Rum",
+      "summary": "Bedouin village on the north-eastern edge of the Wadi Rum desert, surrounded by camps and a quieter alternative to Rum village. Several camps here offer jeep and camel trips.",
+      "facts": [
+        "Many camps; arrange pick-up in advance",
+        "Quieter than Rum village",
+        "About 25 minutes from Rum village"
+      ],
+      "sleep": true
+    },
+    {
+      "id": "humayma",
+      "name": "Humayma",
+      "region": "rum",
+      "lat": 29.95,
+      "lon": 35.35,
+      "visit": 60,
+      "cat": "Ruins",
+      "priority": 1,
+      "wiki": "Humayma",
+      "summary": "Remote ruins of a Nabataean, Roman and early Abbasid settlement off the Desert Highway, where the Abbasid family plotted their rise to power. Extensive water channels and cisterns.",
+      "facts": [
+        "Unpaved access track",
+        "No facilities",
+        "Allow about 1 hour"
+      ]
+    },
+    {
+      "id": "aqaba",
+      "name": "Aqaba",
+      "region": "aqaba",
+      "lat": 29.527,
+      "lon": 35.006,
+      "visit": 150,
+      "cat": "Town",
+      "priority": 3,
+      "wiki": "Aqaba",
+      "summary": "Jordan's only seaport and a duty-free beach town on the Red Sea, with a laid-back downtown, fish restaurants and coral reefs a few kilometres south. A good rest stop after Petra and Wadi Rum.",
+      "facts": [
+        "Hotels from simple downtown to resorts south at Tala Bay",
+        "Aqaba is a special economic zone with low-tax shopping",
+        "Ferries to Egypt (Nuweiba/Taba) leave from the port south of town"
+      ],
+      "sleep": true,
+      "needsDaylight": false,
+      "season": "Warm all year; swimming is pleasant even in winter, summer is very hot."
+    },
+    {
+      "id": "aqaba_fort",
+      "name": "Aqaba Fort",
+      "region": "aqaba",
+      "lat": 29.5212,
+      "lon": 35.0027,
+      "visit": 45,
+      "cat": "Castle",
+      "priority": 1,
+      "wiki": "Aqaba Fortress",
+      "summary": "Mamluk fort of the 16th century famous for the 1917 capture by the Arab Revolt and Lawrence. Next to the giant Aqaba flagpole and the waterfront.",
+      "facts": [
+        "Covered by the Jordan Pass (~70–80 JOD)",
+        "Combine with a walk along the corniche",
+        "Allow 30–45 minutes"
+      ],
+      "hours": "08:00-16:00"
+    },
+    {
+      "id": "ayla",
+      "name": "Ayla (early Islamic Aqaba)",
+      "region": "aqaba",
+      "lat": 29.534,
+      "lon": 35.001,
+      "visit": 30,
+      "cat": "Ruins",
+      "priority": 1,
+      "wiki": "Ayla",
+      "summary": "Excavated walls, gates and streets of the 7th-century Islamic town of Ayla right on the seafront. Free and easy to see while walking the corniche.",
+      "facts": [
+        "Free; open site",
+        "Interpretive signs on site",
+        "Allow 30 minutes"
+      ]
+    },
+    {
+      "id": "aqaba_church",
+      "name": "Aqaba Church",
+      "region": "aqaba",
+      "lat": 29.533,
+      "lon": 35.004,
+      "visit": 20,
+      "cat": "Ruins",
+      "priority": 1,
+      "wiki": "Aqaba Church",
+      "summary": "Foundations of a late-3rd-century building considered one of the oldest purpose-built churches in the world. Brief stop near Ayla.",
+      "facts": [
+        "Free; viewed through the fence",
+        "Next to Ayla on the seafront",
+        "Quick 15–20 minute stop"
+      ]
+    },
+    {
+      "id": "aqaba_souk",
+      "name": "Aqaba downtown souk",
+      "region": "aqaba",
+      "lat": 29.528,
+      "lon": 35.005,
+      "visit": 60,
+      "cat": "Food & market",
+      "priority": 1,
+      "wiki": "Aqaba",
+      "summary": "Compact downtown market of spice, sweet and souvenir shops, with simple fish and falafel restaurants. Best after dark when it cools down.",
+      "facts": [
+        "Lively in the evening",
+        "Try sayadieh (spiced fish and rice)",
+        "Cheap sweets and spices"
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "glass_bottom_boat",
+      "name": "Glass-bottom boat trip",
+      "region": "aqaba",
+      "lat": 29.525,
+      "lon": 35.003,
+      "visit": 90,
+      "cat": "Boat trip",
+      "priority": 1,
+      "wiki": "Gulf of Aqaba",
+      "summary": "Short boat trips from the town beach over the reefs south of Aqaba, with views of the coral and fish without getting wet. Some include snorkelling stops.",
+      "facts": [
+        "Agree price and duration before boarding",
+        "Morning seas are calmest",
+        "Boats leave from the downtown beach"
+      ]
+    },
+    {
+      "id": "aqaba_marine_park",
+      "name": "Aqaba Marine Park",
+      "region": "aqaba",
+      "lat": 29.44,
+      "lon": 34.972,
+      "visit": 180,
+      "cat": "Snorkel & dive",
+      "priority": 2,
+      "wiki": "Gulf of Aqaba",
+      "summary": "Protected stretch of coast south of the port with fringing coral reefs right off the beach, including the Japanese Garden. Easy snorkelling and diving with dive centres along the shore.",
+      "facts": [
+        "Dive centres rent snorkel gear and run trips",
+        "Water shoes protect against urchins",
+        "Don't stand on or touch the coral"
+      ]
+    },
+    {
+      "id": "cedar_pride_wreck",
+      "name": "Cedar Pride wreck",
+      "region": "aqaba",
+      "lat": 29.427,
+      "lon": 34.973,
+      "visit": 120,
+      "cat": "Snorkel & dive",
+      "priority": 2,
+      "wiki": "Gulf of Aqaba",
+      "summary": "Lebanese cargo ship scuttled in 1985 as an artificial reef, now covered in soft corals at 7–27 m depth. Aqaba's most famous dive, also visible in part to snorkellers.",
+      "facts": [
+        "Book with a dive centre",
+        "Shore dive from the beach",
+        "Snorkellers can see the upper parts"
+      ]
+    },
+    {
+      "id": "south_beach",
+      "name": "South Beach",
+      "region": "aqaba",
+      "lat": 29.42,
+      "lon": 34.974,
+      "visit": 180,
+      "cat": "Beach",
+      "priority": 2,
+      "wiki": "Gulf of Aqaba",
+      "summary": "The beaches south of the port with clearer water and reefs, a mix of public stretches and paid beach clubs. Better for swimming than the town beach.",
+      "facts": [
+        "Beach clubs charge a day fee",
+        "Modest swimwear is respected on public beaches",
+        "Bring water shoes for the reefs"
+      ]
+    },
+    {
+      "id": "tala_bay",
+      "name": "Tala Bay",
+      "region": "aqaba",
+      "lat": 29.4,
+      "lon": 34.974,
+      "visit": 120,
+      "cat": "Base",
+      "priority": 1,
+      "wiki": "Aqaba",
+      "summary": "Resort and marina development near the Saudi border with hotels, a sandy beach and dive centres. Convenient for diving trips.",
+      "facts": [
+        "Resort hotels; taxis to downtown Aqaba ~20 minutes",
+        "Sandy beach and dive centres",
+        "Close to the Saudi border; the coast road ends here"
+      ],
+      "sleep": true
+    },
+    {
+      "id": "japanese_garden_reef",
+      "name": "Japanese Garden reef",
+      "region": "aqaba",
+      "lat": 29.443,
+      "lon": 34.9725,
+      "visit": 90,
+      "cat": "Snorkel & dive",
+      "priority": 2,
+      "wiki": "Gulf of Aqaba",
+      "summary": "Shallow coral garden in the Aqaba Marine Park, named for its neat clusters of hard and soft corals. One of the easiest and prettiest snorkel and dive sites off the shore.",
+      "facts": [
+        "Reached by boat or a swim from the shore",
+        "Dive centres nearby run trips",
+        "Calmest in the morning"
+      ]
+    },
+    {
+      "id": "aqaba_flagpole",
+      "name": "Aqaba Flagpole & Arab Revolt Plaza",
+      "region": "aqaba",
+      "lat": 29.5195,
+      "lon": 35.003,
+      "visit": 20,
+      "cat": "Monument",
+      "priority": 1,
+      "wiki": "Aqaba Flagpole",
+      "summary": "Giant flagpole flying the flag of the Great Arab Revolt beside Aqaba Fort, visible from Egypt, Israel and Saudi Arabia. The plaza is a popular evening promenade.",
+      "facts": [
+        "Free",
+        "Next to Aqaba Fort",
+        "Pleasant at sunset"
+      ],
+      "needsDaylight": false
+    }
+  ],
+  "drives": [
+    [
+      "madaba",
+      "wadi_mujib_viewpoint",
+      40,
+      45
+    ],
+    [
+      "umm_ar_rasas",
+      "wadi_mujib_viewpoint",
+      25,
+      30
+    ],
+    [
+      "wadi_mujib_viewpoint",
+      "kerak",
+      50,
+      60
+    ],
+    [
+      "madaba",
+      "kerak",
+      90,
+      110
+    ],
+    [
+      "kerak",
+      "kerak_castle",
+      1,
+      5
+    ],
+    [
+      "kerak",
+      "wadi_bin_hammad",
+      30,
+      45
+    ],
+    [
+      "kerak",
+      "lots_cave",
+      45,
+      50
+    ],
+    [
+      "kerak",
+      "dead_sea",
+      110,
+      95
+    ],
+    [
+      "kerak",
+      "amman",
+      125,
+      105
+    ],
+    [
+      "kerak",
+      "tafilah",
+      70,
+      80
+    ],
+    [
+      "tafilah",
+      "wadi_hasa",
+      25,
+      35
+    ],
+    [
+      "tafilah",
+      "hammamat_afra",
+      26,
+      35
+    ],
+    [
+      "tafilah",
+      "dana",
+      40,
+      40
+    ],
+    [
+      "dana",
+      "dana_biosphere_reserve",
+      3,
+      5
+    ],
+    [
+      "dana",
+      "wadi_dana_trail",
+      1,
+      2
+    ],
+    [
+      "dana",
+      "shobak_castle",
+      35,
+      40
+    ],
+    [
+      "dana",
+      "feynan",
+      100,
+      120
+    ],
+    [
+      "feynan",
+      "wadi_ghuweir",
+      8,
+      20
+    ],
+    [
+      "feynan",
+      "lots_cave",
+      75,
+      75
+    ],
+    [
+      "shobak_castle",
+      "wadi_musa",
+      30,
+      35
+    ],
+    [
+      "dana",
+      "wadi_musa",
+      65,
+      70
+    ],
+    [
+      "kerak",
+      "wadi_musa",
+      145,
+      170
+    ],
+    [
+      "wadi_musa",
+      "petra",
+      1,
+      5
+    ],
+    [
+      "wadi_musa",
+      "petra_museum",
+      1,
+      5
+    ],
+    [
+      "wadi_musa",
+      "little_petra",
+      9,
+      15
+    ],
+    [
+      "little_petra",
+      "beidha",
+      1,
+      3
+    ],
+    [
+      "wadi_musa",
+      "petra_back_trail",
+      10,
+      15
+    ],
+    [
+      "wadi_musa",
+      "amman",
+      235,
+      180
+    ],
+    [
+      "wadi_musa",
+      "amm",
+      205,
+      160
+    ],
+    [
+      "wadi_musa",
+      "humayma",
+      70,
+      60
+    ],
+    [
+      "wadi_musa",
+      "wadi_rum",
+      110,
+      100
+    ],
+    [
+      "wadi_musa",
+      "aqaba",
+      125,
+      115
+    ],
+    [
+      "wadi_rum",
+      "wadi_rum_jeep_tour",
+      7,
+      8
+    ],
+    [
+      "wadi_rum",
+      "seven_pillars",
+      7,
+      8
+    ],
+    [
+      "wadi_rum",
+      "disi",
+      25,
+      25
+    ],
+    [
+      "wadi_rum",
+      "humayma",
+      55,
+      45
+    ],
+    [
+      "wadi_rum",
+      "lawrences_spring",
+      5,
+      20
+    ],
+    [
+      "wadi_rum",
+      "khazali_canyon",
+      13,
+      35
+    ],
+    [
+      "wadi_rum",
+      "red_sand_dune",
+      8,
+      25
+    ],
+    [
+      "wadi_rum",
+      "umm_fruth_bridge",
+      18,
+      45
+    ],
+    [
+      "wadi_rum",
+      "burdah_rock_bridge",
+      25,
+      60
+    ],
+    [
+      "wadi_rum",
+      "jebel_umm_ad_dami",
+      40,
+      90
+    ],
+    [
+      "wadi_rum",
+      "aqaba",
+      70,
+      60
+    ],
+    [
+      "wadi_rum",
+      "aqj",
+      65,
+      55
+    ],
+    [
+      "wadi_rum",
+      "amman",
+      320,
+      240
+    ],
+    [
+      "aqaba",
+      "aqj",
+      10,
+      15
+    ],
+    [
+      "aqaba",
+      "aqaba_fort",
+      1,
+      5
+    ],
+    [
+      "aqaba",
+      "ayla",
+      2,
+      5
+    ],
+    [
+      "aqaba",
+      "aqaba_marine_park",
+      13,
+      15
+    ],
+    [
+      "aqaba",
+      "cedar_pride_wreck",
+      14,
+      15
+    ],
+    [
+      "aqaba",
+      "south_beach",
+      15,
+      15
+    ],
+    [
+      "aqaba",
+      "tala_bay",
+      17,
+      20
+    ],
+    [
+      "aqaba",
+      "feynan",
+      150,
+      120
+    ],
+    [
+      "aqaba",
+      "dead_sea",
+      275,
+      195
+    ],
+    [
+      "aqaba",
+      "amman",
+      330,
+      240
+    ],
+    [
+      "aqaba",
+      "lots_cave",
+      210,
+      150
+    ],
+    [
+      "amm",
+      "aqj",
+      330,
+      190,
+      "flight",
+      60
+    ]
+  ]
+}

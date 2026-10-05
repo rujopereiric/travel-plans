@@ -8,6 +8,10 @@ Trip plans that aren't bike trips — hikes, weekends, itineraries. Served via G
 | [Portugal Trip Planner](https://rujopereiric.github.io/travel-plans/portugal/) | any dates |
 | [Portugal with Kids](https://rujopereiric.github.io/travel-plans/portugal-kids/) (things to do with children) | any dates |
 | [Egypt Trip Planner](https://rujopereiric.github.io/travel-plans/egypt/) | any dates |
+| [Jordan Trip Planner](https://rujopereiric.github.io/travel-plans/jordan/) | any dates |
+| [Uzbekistan Trip Planner](https://rujopereiric.github.io/travel-plans/uzbekistan/) | any dates |
+| [Ireland Trip Planner](https://rujopereiric.github.io/travel-plans/ireland/) | any dates |
+| [Netherlands Trip Planner](https://rujopereiric.github.io/travel-plans/netherlands/) | any dates |
 | [Iceland Free Days](https://rujopereiric.github.io/travel-plans/iceland-planner/) | any dates |
 | [Vesuvius Day Hike](https://rujopereiric.github.io/travel-plans/vesuvius-plan.html) | September 2026 |
 

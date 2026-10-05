@@ -1,0 +1,48 @@
+name: Update Netherlands OSM data
+
+# Prepares netherlands/osm/<region>.json (every named sight per region, from OpenStreetMap) so the Netherlands planner
+# downloads ready files instead of querying the public Overpass servers from a phone.
+on:
+  workflow_dispatch:
+    inputs:
+      regions:
+        description: 'Region ids separated by spaces (empty = all)'
+        required: false
+        default: ''
+      diagnose:
+        description: 'Only time each query statement for these regions (no files written)'
+        type: boolean
+        default: false
+  schedule:
+    - cron: '37 4 * * *'   # daily at 04:37 UTC (quiet hours); only missing or >20-day-old regions are fetched
+
+permissions:
+  contents: write
+
+concurrency:
+  group: osm-netherlands
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Diagnose (time each query statement)
+        if: ${{ github.event.inputs.diagnose == 'true' }}
+        run: node netherlands/tools/osm-diagnose.mjs ${{ github.event.inputs.regions }}
+
+      - name: Fetch regions from Overpass (each region is committed and pushed when done)
+        if: ${{ github.event.inputs.diagnose != 'true' }}
+        env:
+          OSM_COMMIT: '1'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          node netherlands/tools/osm-update.mjs ${{ github.event.inputs.regions }}

@@ -1,0 +1,1624 @@
+{
+ "places": [
+  {
+   "id": "tashkent",
+   "name": "Tashkent",
+   "region": "tashkent",
+   "lat": 41.3111,
+   "lon": 69.2797,
+   "visit": 180,
+   "cat": "Town",
+   "priority": 3,
+   "wiki": "Tashkent",
+   "summary": "Uzbekistan's capital and main international gateway, a big, green Soviet-planned city of wide avenues, fountains and metro palaces, with an older Muslim quarter around Chorsu. Worth a day or two for its bazaar, museums and the Hazrati Imam complex before heading west.",
+   "facts": [
+    "Main arrival hub; Afrosiyob trains to Samarkand and Bukhara leave from Tashkent Central (Tashkent Vokzal) station",
+    "Use Yandex Go for cheap taxis (most rides ~20,000–40,000 UZS)",
+    "Many museums close one day a week (often Monday) – check before going"
+   ],
+   "sleep": true,
+   "needsDaylight": false,
+   "season": "Hot summers (35 °C+ in July–August); April–May and September–October are ideal."
+  },
+  {
+   "id": "hazrati_imam",
+   "name": "Hazrati Imam (Khast Imam) Complex",
+   "region": "tashkent",
+   "lat": 41.3373,
+   "lon": 69.2401,
+   "visit": 75,
+   "cat": "Mosque & madrasa",
+   "priority": 3,
+   "wiki": "Hazrati Imam Complex",
+   "summary": "Tashkent's religious centre in the old town: the Barak Khan Madrasa, Tilla Sheikh and Hazrati Imam mosques and the Muyi Mubarak library. The library holds the Uthman Qur'an, one of the oldest surviving Qur'an manuscripts.",
+   "facts": [
+    "Courtyard free; small fee (~30,000–50,000 UZS) for the Qur'an library",
+    "Modest dress: cover shoulders and knees, women bring a headscarf for the mosques",
+    "Combine with Chorsu Bazaar and Kukeldash Madrasa (2 km)"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "chorsu_bazaar",
+   "name": "Chorsu Bazaar",
+   "region": "tashkent",
+   "lat": 41.3267,
+   "lon": 69.235,
+   "visit": 75,
+   "cat": "Food & market",
+   "priority": 3,
+   "wiki": "Chorsu Bazaar",
+   "summary": "Tashkent's great old-town market under a turquoise dome, with spices, dried fruit, nuts, bread, and a huge meat and dairy hall. The surrounding stalls sell textiles, skullcaps and ceramics.",
+   "facts": [
+    "Free; open daily from early morning, busiest and liveliest in the morning",
+    "Chorsu metro station is right next to it",
+    "Watch your pockets in the crowds; bargain for souvenirs"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "kukeldash_madrasa",
+   "name": "Kukeldash Madrasa",
+   "region": "tashkent",
+   "lat": 41.3231,
+   "lon": 69.2358,
+   "visit": 30,
+   "cat": "Mosque & madrasa",
+   "priority": 2,
+   "wiki": "Kukeldash Madrasah (Tashkent)",
+   "summary": "Large 16th-century madrasa on a rise beside Chorsu Bazaar, one of the few pre-Russian buildings to survive in Tashkent. Still a working religious school, with a modest courtyard and craft stalls.",
+   "facts": [
+    "Small entry fee (~10,000–20,000 UZS)",
+    "Two minutes' walk from Chorsu Bazaar",
+    "Modest dress"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "tashkent_metro",
+   "name": "Tashkent Metro stations",
+   "region": "tashkent",
+   "lat": 41.3052,
+   "lon": 69.2647,
+   "visit": 60,
+   "cat": "Experience",
+   "priority": 2,
+   "wiki": "Tashkent Metro",
+   "summary": "Soviet-era metro with lavishly decorated stations – chandeliers, marble and themed mosaics, best at Kosmonavtlar, Alisher Navoi and Tashkent stations. Photography is now allowed, making a short metro hop a sight in itself.",
+   "facts": [
+    "Fare ~2,000–3,000 UZS per ride (pay by card or ATTO transport card/QR)",
+    "Ride a few stops on the blue (Uzbekistan) and red (Chilonzor) lines",
+    "Avoid the 08:00–09:00 and 17:00–19:00 rush"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "amir_timur_museum",
+   "name": "Amir Timur Museum",
+   "region": "tashkent",
+   "lat": 41.3136,
+   "lon": 69.2789,
+   "visit": 60,
+   "cat": "Museum",
+   "priority": 2,
+   "wiki": "Amir Timur Museum",
+   "summary": "Blue-domed museum beside Amir Timur Square dedicated to Timur (Tamerlane) and the Timurid dynasty, with a gilded interior, manuscripts, weapons and models of Timurid monuments. A good primer before Samarkand and Shahrisabz.",
+   "facts": [
+    "Ticket ~30,000–40,000 UZS; photo permit extra",
+    "About 1 hour",
+    "Right next to Amir Timur Square and the Hotel Uzbekistan"
+   ],
+   "hours": "10:00-17:00",
+   "needsDaylight": false
+  },
+  {
+   "id": "history_museum_tashkent",
+   "name": "State Museum of History of Uzbekistan",
+   "region": "tashkent",
+   "lat": 41.3114,
+   "lon": 69.2694,
+   "visit": 75,
+   "cat": "Museum",
+   "priority": 2,
+   "wiki": "State Museum of History of Uzbekistan",
+   "summary": "The country's main history museum, from Stone Age finds and Buddhist art from Termez (including the Fayaz Tepe Buddha triad) to the Silk Road and the Soviet era. Gives useful context for the whole trip.",
+   "facts": [
+    "Ticket ~30,000–40,000 UZS",
+    "Allow 1–1.5 hours",
+    "Short walk from Independence Square"
+   ],
+   "hours": "10:00-17:00",
+   "needsDaylight": false
+  },
+  {
+   "id": "applied_arts_museum",
+   "name": "State Museum of Applied Arts",
+   "region": "tashkent",
+   "lat": 41.301,
+   "lon": 69.2596,
+   "visit": 60,
+   "cat": "Museum",
+   "priority": 2,
+   "wiki": "State Museum of Applied Arts of Uzbekistan",
+   "summary": "Housed in a 19th-century Russian diplomat's mansion decorated by craftsmen with carved ganch, painted wood and tilework. The collection of suzani embroidery, ceramics, jewellery and textiles is the best overview of Uzbek crafts.",
+   "facts": [
+    "Ticket ~30,000–40,000 UZS",
+    "The building's interiors are as much the attraction as the exhibits",
+    "Small shop with good-quality crafts"
+   ],
+   "hours": "09:00-18:00",
+   "needsDaylight": false
+  },
+  {
+   "id": "independence_square",
+   "name": "Independence Square (Mustaqillik Maydoni)",
+   "region": "tashkent",
+   "lat": 41.3164,
+   "lon": 69.2668,
+   "visit": 30,
+   "cat": "Monument",
+   "priority": 1,
+   "wiki": "Mustaqillik Maydoni",
+   "summary": "Tashkent's vast ceremonial square with government buildings, fountains, the stork-topped arch and the Monument of Independence. Pleasant for an evening stroll.",
+   "facts": [
+    "Free",
+    "Combine with the State History Museum next door",
+    "Some areas around government buildings are fenced off"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "navoi_theatre",
+   "name": "Navoi Opera and Ballet Theatre",
+   "region": "tashkent",
+   "lat": 41.3092,
+   "lon": 69.2715,
+   "visit": 150,
+   "cat": "Experience",
+   "priority": 2,
+   "wiki": "Navoi Theater",
+   "summary": "Grand 1947 theatre whose six side foyers are each decorated in the style of a different Uzbek region. Opera and ballet tickets are inexpensive, making an evening performance an easy treat.",
+   "facts": [
+    "Tickets usually ~50,000–200,000 UZS; buy at the box office or online",
+    "Performances most evenings except in the summer break",
+    "Smart-casual dress"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "tashkent_tower",
+   "name": "Tashkent TV Tower",
+   "region": "tashkent",
+   "lat": 41.3456,
+   "lon": 69.2846,
+   "visit": 60,
+   "cat": "Viewpoint",
+   "priority": 1,
+   "wiki": "Tashkent Tower",
+   "summary": "375 m television tower, the tallest structure in Central Asia, with an observation deck at about 100 m and a revolving restaurant. Good views over the flat city to the mountains on clear days.",
+   "facts": [
+    "Ticket for the observation deck ~50,000–100,000 UZS for foreigners; bring your passport",
+    "Security check at the entrance",
+    "Clearest views after rain or in autumn/winter"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "zangiota",
+   "name": "Zangi Ata Mausoleum",
+   "region": "tashkent",
+   "lat": 41.2017,
+   "lon": 69.162,
+   "visit": 45,
+   "cat": "Mausoleum",
+   "priority": 1,
+   "wiki": "Tashkent Region",
+   "summary": "Timurid-era shrine complex of the Sufi saint Zangi Ata in the town of Zangiota just south-west of Tashkent, with a tiled portal, mosque and peaceful courtyard. A pilgrimage site still busy with local visitors.",
+   "facts": [
+    "Free (donations welcome)",
+    "About 30 minutes by taxi from central Tashkent",
+    "Modest dress; women should cover their hair"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "chimgan",
+   "name": "Chimgan",
+   "region": "chimgan",
+   "lat": 41.554,
+   "lon": 70.018,
+   "visit": 150,
+   "cat": "Base",
+   "priority": 2,
+   "wiki": "Chimgan",
+   "summary": "Small mountain resort area in the western Tian Shan about 1.5 hours from Tashkent, with chairlifts, guesthouses and trails at the foot of Greater Chimgan. Locals come in summer to escape the heat and in winter to ski.",
+   "facts": [
+    "Day trip or overnight from Tashkent by taxi (~85 km)",
+    "Chairlift rides ~50,000–100,000 UZS",
+    "Weekends are busy with Tashkent families"
+   ],
+   "sleep": true,
+   "season": "Ski season December–March; hiking best May–October."
+  },
+  {
+   "id": "greater_chimgan",
+   "name": "Greater Chimgan summit hike",
+   "region": "chimgan",
+   "lat": 41.4944,
+   "lon": 70.0578,
+   "visit": 480,
+   "cat": "Hike",
+   "priority": 2,
+   "wiki": "Greater Chimgan",
+   "summary": "Full-day climb to the 3,309 m summit of Greater Chimgan, the highest peak near Tashkent, with views over the Charvak Reservoir and the Ugam and Pskem ranges. Steep and rocky in its upper part.",
+   "facts": [
+    "8–10 hours return from Chimgan, ~1,700 m of ascent",
+    "Start very early and carry plenty of water; no water on the upper slopes",
+    "A local guide is recommended"
+   ],
+   "caution": "Upper slopes are steep scree; avoid in snow or bad weather without a guide.",
+   "season": "Best June–September once the snow has gone."
+  },
+  {
+   "id": "beldersay",
+   "name": "Beldersay chairlift",
+   "region": "chimgan",
+   "lat": 41.5023,
+   "lon": 69.9772,
+   "visit": 90,
+   "cat": "Viewpoint",
+   "priority": 1,
+   "wiki": "Chimgan",
+   "summary": "Long chairlift rising to around 2,000 m on the Kumbel ridge above Beldersay, with wide views over the Chimgan massif and towards Charvak. In winter it serves freeride skiers.",
+   "facts": [
+    "Lift ticket ~100,000 UZS return (approx.)",
+    "Bring a warm layer – it is much colder at the top",
+    "Lifts may stop in high wind"
+   ]
+  },
+  {
+   "id": "amirsoy",
+   "name": "Amirsoy Mountain Resort",
+   "region": "chimgan",
+   "lat": 41.4875,
+   "lon": 69.9421,
+   "visit": 180,
+   "cat": "Mountain",
+   "priority": 1,
+   "wiki": "Chimgan",
+   "summary": "Modern ski and all-season resort opened in 2019 with gondolas, chairlifts and restaurants, the most polished mountain facility in Uzbekistan. In summer the gondola gives easy access to alpine meadows and views.",
+   "facts": [
+    "Gondola tickets sold online and at the base; prices vary by season",
+    "About 1.5 hours from Tashkent",
+    "Book accommodation well ahead in ski season"
+   ],
+   "sleep": true
+  },
+  {
+   "id": "gulkam",
+   "name": "Gulkam Gorge",
+   "region": "chimgan",
+   "lat": 41.5582,
+   "lon": 70.0725,
+   "visit": 300,
+   "cat": "Hike",
+   "priority": 2,
+   "wiki": "Chimgan",
+   "summary": "Narrow canyon east of Chimgan with a series of small waterfalls, cascades and pools; the classic adventurous day hike in the area. The lower section is a scramble along the stream with some fixed ropes.",
+   "facts": [
+    "4–6 hours return; wear shoes with good grip that can get wet",
+    "Go with a guide if you're not used to scrambling",
+    "Avoid after heavy rain"
+   ],
+   "caution": "Slippery rocks and a few exposed scrambles; not for small children.",
+   "season": "Best May–October."
+  },
+  {
+   "id": "charvak",
+   "name": "Charvak Reservoir",
+   "region": "chimgan",
+   "lat": 41.63,
+   "lon": 69.955,
+   "visit": 120,
+   "cat": "Lake",
+   "priority": 2,
+   "wiki": "Lake Charvak",
+   "summary": "Large turquoise reservoir framed by mountains, Tashkent's summer playground with beaches, boat trips and resorts on its shores. Worth a stop for the views from the dam and the coast road towards Brichmulla.",
+   "facts": [
+    "Beaches and lake resorts charge entry; some free spots along the shore",
+    "Swimming season June–September",
+    "Weekend traffic from Tashkent can be heavy"
+   ],
+   "sleep": true
+  },
+  {
+   "id": "brichmulla",
+   "name": "Brichmulla (Burchmullo)",
+   "region": "chimgan",
+   "lat": 41.5973,
+   "lon": 70.1037,
+   "visit": 90,
+   "cat": "Village",
+   "priority": 1,
+   "wiki": "Burchmullo",
+   "summary": "Mountain village at the eastern tip of Charvak, where the Chatkal and Koksu valleys meet, famous in Uzbekistan from a popular song. A base for walks and the drive along the Chatkal river.",
+   "facts": [
+    "Simple guesthouses and resorts",
+    "Good starting point for Ugam-Chatkal National Park walks",
+    "Fresh trout restaurants along the river"
+   ],
+   "sleep": true
+  },
+  {
+   "id": "khumsan",
+   "name": "Khumsan",
+   "region": "chimgan",
+   "lat": 41.6745,
+   "lon": 69.9538,
+   "visit": 90,
+   "cat": "Village",
+   "priority": 1,
+   "wiki": "Ugam-Chatkal National Park",
+   "summary": "Village in the Ugam valley north of Charvak with orchards, small resorts and trails into the Ugam range. Quieter than Chimgan.",
+   "facts": [
+    "Guesthouses and summer camps",
+    "Trails up side valleys; a guide helps with route-finding",
+    "Cooler than Tashkent in summer"
+   ],
+   "sleep": true
+  },
+  {
+   "id": "ugam_chatkal",
+   "name": "Ugam-Chatkal National Park",
+   "region": "chimgan",
+   "lat": 41.6603,
+   "lon": 70.0846,
+   "visit": 240,
+   "cat": "Nature reserve",
+   "priority": 2,
+   "wiki": "Ugam-Chatkal National Park",
+   "summary": "Large protected area of the western Tian Shan covering the Ugam, Pskem and Chatkal ranges, with juniper forests, walnut groves, rivers and wildlife such as ibex. Day hikes from Brichmulla and Khumsan.",
+   "facts": [
+    "Some valleys near the Kyrgyz/Kazakh border need a permit – go with a local agency",
+    "Best visited with a guide",
+    "Bring water and sun protection"
+   ],
+   "season": "Late spring flowers in May–June; autumn colours in October."
+  },
+  {
+   "id": "pskem_valley",
+   "name": "Pskem River gorge",
+   "region": "chimgan",
+   "lat": 41.7009,
+   "lon": 70.0888,
+   "visit": 60,
+   "cat": "Mountain",
+   "priority": 1,
+   "wiki": "Pskem",
+   "summary": "Wild river gorge entering Charvak from the north-east, with steep walls and views up the Pskem valley. The lower part is a scenic drive from the reservoir.",
+   "facts": [
+    "Upper Pskem valley is a border zone requiring a permit",
+    "Rafting trips run in early summer",
+    "Combine with Charvak and Brichmulla"
+   ]
+  },
+  {
+   "id": "kokand",
+   "name": "Kokand",
+   "region": "fergana",
+   "lat": 40.5286,
+   "lon": 70.9425,
+   "visit": 150,
+   "cat": "Town",
+   "priority": 2,
+   "wiki": "Kokand",
+   "summary": "Former capital of the Kokand Khanate and first stop in the Fergana Valley on the road or train from Tashkent. Known for Khudayar Khan's palace, wooden-columned mosques and old madrasas.",
+   "facts": [
+    "Train from Tashkent (~4–5 h) or shared taxi over the Kamchik Pass",
+    "Half a day covers the main sights",
+    "Good hotel options for a first valley night"
+   ],
+   "sleep": true,
+   "needsDaylight": false
+  },
+  {
+   "id": "khudayar_khan_palace",
+   "name": "Palace of Khudayar Khan",
+   "region": "fergana",
+   "lat": 40.5387,
+   "lon": 70.938,
+   "visit": 75,
+   "cat": "Palace",
+   "priority": 3,
+   "wiki": "Palace of Khudáyár Khán",
+   "summary": "Brightly tiled 1870s palace of the last Kokand khan, with a long arcaded facade, courtyards and painted ceilings, now a museum. The finest building in the Fergana Valley.",
+   "facts": [
+    "Ticket ~30,000–40,000 UZS",
+    "About 1 hour",
+    "Best light on the facade in the afternoon"
+   ],
+   "hours": "09:00-17:00",
+   "needsDaylight": false
+  },
+  {
+   "id": "fergana",
+   "name": "Fergana",
+   "region": "fergana",
+   "lat": 40.3864,
+   "lon": 71.7864,
+   "visit": 120,
+   "cat": "Town",
+   "priority": 2,
+   "wiki": "Fergana",
+   "summary": "Leafy Russian-built regional capital with tree-lined avenues, parks and the valley's best range of hotels. A convenient base for Margilan, Rishtan and Kuva.",
+   "facts": [
+    "Airport and train station with links to Tashkent",
+    "Margilan's silk workshops are 20 minutes away",
+    "Pleasant evening walks in the central park"
+   ],
+   "sleep": true,
+   "needsDaylight": false
+  },
+  {
+   "id": "margilan",
+   "name": "Margilan",
+   "region": "fergana",
+   "lat": 40.4711,
+   "lon": 71.7247,
+   "visit": 120,
+   "cat": "Town",
+   "priority": 2,
+   "wiki": "Margilan",
+   "summary": "Ancient Silk Road town and centre of Uzbek silk weaving, famous for its ikat (atlas and adras) fabrics. Workshops, a lively bazaar and old mosques make it the valley's most rewarding stop.",
+   "facts": [
+    "Combine the Yodgorlik silk factory with Kumtepa bazaar",
+    "Craft workshops welcome visitors; buy ikat directly from weavers",
+    "Guesthouses available, or stay in Fergana"
+   ],
+   "sleep": true,
+   "needsDaylight": false
+  },
+  {
+   "id": "yodgorlik",
+   "name": "Yodgorlik Silk Factory",
+   "region": "fergana",
+   "lat": 40.4764,
+   "lon": 71.7178,
+   "visit": 75,
+   "cat": "Experience",
+   "priority": 3,
+   "wiki": "Margilan",
+   "summary": "Working silk factory where you see the whole process by hand: boiling cocoons, reeling silk, dyeing threads in ikat patterns and weaving on traditional looms. One of the best craft visits in Central Asia.",
+   "facts": [
+    "Free or small fee for a guided tour; English-speaking guides often available",
+    "Open weekdays and Saturday mornings; weaving stops on Sundays",
+    "Shop sells silk at fair, fixed prices"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "kumtepa_bazaar",
+   "name": "Kumtepa Bazaar",
+   "region": "fergana",
+   "lat": 40.4552,
+   "lon": 71.6662,
+   "visit": 75,
+   "cat": "Food & market",
+   "priority": 2,
+   "wiki": "Margilan",
+   "summary": "Traditional village market outside Margilan where locals in skullcaps and atlas dresses trade fabric, livestock and household goods. Busy and atmospheric on market days.",
+   "facts": [
+    "Main market days Thursday and Sunday, mornings are best",
+    "Good place to buy ikat at local prices",
+    "Ask before photographing people"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "rishtan",
+   "name": "Rishtan",
+   "region": "fergana",
+   "lat": 40.3567,
+   "lon": 71.2847,
+   "visit": 90,
+   "cat": "Village",
+   "priority": 2,
+   "wiki": "Rishton, Uzbekistan",
+   "summary": "Town famous for centuries for its blue-and-green ishkor-glazed ceramics, made from local red clay. Master potters such as Rustam Usmanov open their workshops to visitors.",
+   "facts": [
+    "Workshop visits free; pieces from ~50,000 UZS",
+    "On the road between Kokand and Fergana",
+    "Ceramics can be wrapped for travel"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "quva",
+   "name": "Kuva Buddhist temple ruins",
+   "region": "fergana",
+   "lat": 40.5247,
+   "lon": 72.07,
+   "visit": 45,
+   "cat": "Ruins",
+   "priority": 1,
+   "wiki": "Quva",
+   "summary": "Remains of an early medieval town with a Buddhist sanctuary in Kuva, east of Fergana, where large clay Buddha statues were excavated. A small park-like archaeological site.",
+   "facts": [
+    "Small fee or free",
+    "30–40 minutes from Fergana",
+    "Only foundations remain; for archaeology fans"
+   ]
+  },
+  {
+   "id": "andijan",
+   "name": "Andijan",
+   "region": "fergana",
+   "lat": 40.7833,
+   "lon": 72.3339,
+   "visit": 90,
+   "cat": "Town",
+   "priority": 1,
+   "wiki": "Andijan",
+   "summary": "Eastern valley city and birthplace of Babur, founder of the Mughal empire, with the Babur literary museum and a big Jami Mosque complex. Gateway to the Kyrgyz border at Dostyk/Osh.",
+   "facts": [
+    "Babur museum in his reconstructed house",
+    "Large bazaar near the Jami Mosque",
+    "Train link to Tashkent"
+   ],
+   "sleep": true,
+   "needsDaylight": false
+  },
+  {
+   "id": "namangan",
+   "name": "Namangan",
+   "region": "fergana",
+   "lat": 41.0011,
+   "lon": 71.6683,
+   "visit": 90,
+   "cat": "Town",
+   "priority": 1,
+   "wiki": "Namangan",
+   "summary": "Large, conservative city in the north of the valley, known for its flower festival, the Mullah Kyrgyz madrasa and fine parks. Few foreign visitors.",
+   "facts": [
+    "Base for Akhsikath and Chust",
+    "Flower festival in May",
+    "Dress conservatively"
+   ],
+   "sleep": true,
+   "needsDaylight": false
+  },
+  {
+   "id": "akhsikath",
+   "name": "Akhsikath",
+   "region": "fergana",
+   "lat": 40.8866,
+   "lon": 71.4505,
+   "visit": 60,
+   "cat": "Ruins",
+   "priority": 1,
+   "wiki": "Akhsikath",
+   "summary": "Earthen ruins of the medieval capital of Fergana on a bluff above the Syr Darya, mentioned by Babur. Wide river views and excavated walls.",
+   "facts": [
+    "Free or small fee",
+    "About 30 minutes from Namangan",
+    "Shadeless; go early or late in summer"
+   ]
+  },
+  {
+   "id": "chust",
+   "name": "Chust",
+   "region": "fergana",
+   "lat": 40.9978,
+   "lon": 71.2403,
+   "visit": 60,
+   "cat": "Village",
+   "priority": 1,
+   "wiki": "Chust, Uzbekistan",
+   "summary": "Small town known across Uzbekistan for its handmade knives (pichoq) and black-and-white embroidered skullcaps. Visit a knife workshop and the bazaar.",
+   "facts": [
+    "Knife workshops sell direct; check airline rules before buying",
+    "About 45 minutes from Namangan",
+    "Market liveliest in the morning"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "samarkand",
+   "name": "Samarkand",
+   "region": "samarkand",
+   "lat": 39.6547,
+   "lon": 66.9758,
+   "visit": 180,
+   "cat": "Town",
+   "priority": 3,
+   "wiki": "Samarkand",
+   "summary": "Timur's capital and the most famous Silk Road city, with turquoise domes and tiled madrasas on a monumental scale around the Registan. Needs at least two full days.",
+   "facts": [
+    "Afrosiyob train from Tashkent ~2 h 10 min; book on the Uzbekistan Railways site/app",
+    "Most sights have separate tickets; carry cash",
+    "Modest dress in mosques and shrines; photo fees at some sites"
+   ],
+   "sleep": true,
+   "needsDaylight": false,
+   "season": "Very hot in July–August; April–May and September–October are best."
+  },
+  {
+   "id": "registan",
+   "name": "Registan",
+   "region": "samarkand",
+   "lat": 39.6548,
+   "lon": 66.9756,
+   "visit": 120,
+   "cat": "Mosque & madrasa",
+   "priority": 3,
+   "wiki": "Registan",
+   "summary": "Samarkand's great square framed by three tiled madrasas – Ulugh Beg, Sher-Dor and Tilya-Kori with its gilded mosque. One of the great architectural ensembles of the Islamic world.",
+   "facts": [
+    "Ticket ~75,000 UZS for foreigners (approx.)",
+    "Return after dark when the square is lit; evening sound-and-light shows on some nights",
+    "Early morning has the softest light and fewest people"
+   ],
+   "hours": "08:00-19:00",
+   "needsDaylight": false
+  },
+  {
+   "id": "gur_e_amir",
+   "name": "Gur-e-Amir Mausoleum",
+   "region": "samarkand",
+   "lat": 39.6483,
+   "lon": 66.9689,
+   "visit": 45,
+   "cat": "Mausoleum",
+   "priority": 3,
+   "wiki": "Gur-e-Amir",
+   "summary": "Ribbed blue-domed tomb of Timur and his descendants, including Ulugh Beg, with a dazzling gold-and-blue interior. The model for later Mughal tombs like the Taj Mahal.",
+   "facts": [
+    "Ticket ~50,000 UZS (approx.)",
+    "Also beautiful lit up in the evening",
+    "10 minutes' walk from the Registan"
+   ],
+   "hours": "08:00-19:00",
+   "needsDaylight": false
+  },
+  {
+   "id": "bibi_khanym",
+   "name": "Bibi-Khanym Mosque",
+   "region": "samarkand",
+   "lat": 39.6606,
+   "lon": 66.9792,
+   "visit": 45,
+   "cat": "Mosque & madrasa",
+   "priority": 3,
+   "wiki": "Bibi-Khanym Mosque",
+   "summary": "Timur's colossal congregational mosque, built after his Indian campaign, once among the largest in the world. Partly rebuilt, its huge portal and domes still overwhelm.",
+   "facts": [
+    "Ticket ~40,000 UZS (approx.)",
+    "Right next to Siab Bazaar",
+    "Pedestrian street from the Registan leads here"
+   ],
+   "hours": "08:00-19:00",
+   "needsDaylight": false
+  },
+  {
+   "id": "siab_bazaar",
+   "name": "Siab Bazaar",
+   "region": "samarkand",
+   "lat": 39.666,
+   "lon": 66.9795,
+   "visit": 45,
+   "cat": "Food & market",
+   "priority": 2,
+   "wiki": "Siyob Bazaar",
+   "summary": "Samarkand's main market beside Bibi-Khanym, piled with dried fruit, nuts, halva and the city's famous round, stamped bread. Great for picnic supplies and tasting.",
+   "facts": [
+    "Free; best in the morning",
+    "Closed one day a week (often Monday) – check locally",
+    "Samarkand bread keeps for days – good for train journeys"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "shah_i_zinda",
+   "name": "Shah-i-Zinda",
+   "region": "samarkand",
+   "lat": 39.6631,
+   "lon": 66.9878,
+   "visit": 75,
+   "cat": "Mausoleum",
+   "priority": 3,
+   "wiki": "Shah-i-Zinda",
+   "summary": "Narrow avenue of richly tiled 11th–15th-century mausoleums climbing a hill, around the shrine of Kusam ibn Abbas, cousin of the Prophet. The finest tilework in Samarkand.",
+   "facts": [
+    "Ticket ~40,000–50,000 UZS (approx.)",
+    "Go early morning or late afternoon for light and fewer groups",
+    "Active pilgrimage site – modest dress and quiet behaviour"
+   ],
+   "hours": "08:00-19:00"
+  },
+  {
+   "id": "hazrat_khizr",
+   "name": "Hazrat Khizr Mosque",
+   "region": "samarkand",
+   "lat": 39.6634,
+   "lon": 66.9832,
+   "visit": 30,
+   "cat": "Mosque & madrasa",
+   "priority": 1,
+   "wiki": "Hazrat Khizr Mosque",
+   "summary": "19th-century mosque with a carved wooden porch on a hill between Siab Bazaar and Shah-i-Zinda, with a view of Bibi-Khanym. Also holds the mausoleum of Uzbekistan's first president, Islam Karimov, nearby.",
+   "facts": [
+    "Small fee",
+    "On the way from the bazaar to Shah-i-Zinda",
+    "Good viewpoint over Bibi-Khanym at sunset"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "afrasiyab",
+   "name": "Afrasiyab Museum and ancient city",
+   "region": "samarkand",
+   "lat": 39.6714,
+   "lon": 66.9878,
+   "visit": 75,
+   "cat": "Museum",
+   "priority": 2,
+   "wiki": "Afrasiyab (Samarkand)",
+   "summary": "Museum on the grassy mound of ancient Samarkand, destroyed by Genghis Khan in 1220. Its highlight is the 7th-century Sogdian 'Ambassadors' painting showing foreign envoys at the king's court.",
+   "facts": [
+    "Ticket ~40,000 UZS (approx.)",
+    "Combine with the Ulugh Beg Observatory 2 km away",
+    "The mound itself is mostly unexcavated earthworks"
+   ],
+   "hours": "09:00-18:00",
+   "needsDaylight": false
+  },
+  {
+   "id": "ulugh_beg_observatory",
+   "name": "Ulugh Beg Observatory",
+   "region": "samarkand",
+   "lat": 39.6752,
+   "lon": 67.0055,
+   "visit": 40,
+   "cat": "Ruins",
+   "priority": 2,
+   "wiki": "Ulugh Beg Observatory",
+   "summary": "Remains of the 15th-century observatory of astronomer-ruler Ulugh Beg: the underground arc of a giant meridian sextant and a small museum. A reminder of Samarkand's scientific golden age.",
+   "facts": [
+    "Ticket ~40,000 UZS (approx.)",
+    "Small site – 30–45 minutes",
+    "On the hill north-east of the old city"
+   ],
+   "hours": "09:00-18:00"
+  },
+  {
+   "id": "khoja_daniyar",
+   "name": "Mausoleum of Khoja Daniyar",
+   "region": "samarkand",
+   "lat": 39.6723,
+   "lon": 66.997,
+   "visit": 30,
+   "cat": "Mausoleum",
+   "priority": 1,
+   "wiki": "Afrasiyab (Samarkand)",
+   "summary": "Long, low shrine on the edge of Afrasiyab above the Siab stream, said to hold the remains of the Prophet Daniel, with an 18 m sarcophagus. Revered by Muslims, Christians and Jews; a peaceful spot with a holy spring.",
+   "facts": [
+    "Free or small fee",
+    "Modest dress; women cover hair",
+    "Near the Afrasiyab Museum"
+   ]
+  },
+  {
+   "id": "rukhobod",
+   "name": "Rukhobod Mausoleum",
+   "region": "samarkand",
+   "lat": 39.6509,
+   "lon": 66.9682,
+   "visit": 20,
+   "cat": "Mausoleum",
+   "priority": 1,
+   "wiki": "Samarkand",
+   "summary": "Plain 14th-century brick mausoleum near Gur-e-Amir, one of the oldest buildings in the city, built over the tomb of a Sufi mystic. Now houses craft stalls.",
+   "facts": [
+    "Free",
+    "2 minutes from Gur-e-Amir",
+    "Quick stop"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "konigil",
+   "name": "Konigil Meros paper mill",
+   "region": "samarkand",
+   "lat": 39.6665,
+   "lon": 67.0339,
+   "visit": 75,
+   "cat": "Experience",
+   "priority": 2,
+   "wiki": "Samarkand paper",
+   "summary": "Village workshop on the Siab stream that revived Samarkand's medieval mulberry-bark paper using water-driven mills. You see the whole papermaking process in a shady garden setting.",
+   "facts": [
+    "Ticket ~30,000–50,000 UZS incl. demonstration (approx.)",
+    "15 minutes by taxi from the centre",
+    "Shop sells paper, notebooks and ceramics"
+   ]
+  },
+  {
+   "id": "imam_bukhari",
+   "name": "Imam al-Bukhari Memorial Complex",
+   "region": "samarkand",
+   "lat": 39.8146,
+   "lon": 66.945,
+   "visit": 60,
+   "cat": "Mausoleum",
+   "priority": 2,
+   "wiki": "Muhammad al-Bukhari",
+   "summary": "Large, richly decorated memorial complex over the grave of Imam al-Bukhari, the 9th-century compiler of the most respected hadith collection. A major pilgrimage site, rebuilt on a grand scale in recent years.",
+   "facts": [
+    "Free",
+    "About 30–40 minutes north of Samarkand",
+    "Strict modest dress; women need a headscarf"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "urgut",
+   "name": "Urgut Bazaar",
+   "region": "samarkand",
+   "lat": 39.4,
+   "lon": 67.25,
+   "visit": 120,
+   "cat": "Food & market",
+   "priority": 2,
+   "wiki": "Urgut",
+   "summary": "Huge market town in the foothills south-east of Samarkand, best known for its weekend bazaar where old and new suzani embroideries are sold. Nearby is the Chor-Chinor garden with ancient plane trees.",
+   "facts": [
+    "Biggest market on Saturday and Sunday mornings",
+    "Bargain hard for suzanis; check stitching and fabric",
+    "About 50 minutes from Samarkand"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "shahrisabz",
+   "name": "Shahrisabz",
+   "region": "south",
+   "lat": 39.056,
+   "lon": 66.83,
+   "visit": 150,
+   "cat": "Town",
+   "priority": 2,
+   "wiki": "Shahrisabz",
+   "summary": "Timur's birthplace, a green town south of Samarkand over the Takhtakaracha Pass, with the ruins of his giant Ak-Saray palace and the family mausoleums. Its historic centre is a UNESCO site, though heavily cleared and rebuilt.",
+   "facts": [
+    "Day trip from Samarkand (~2 h each way by car)",
+    "Main sights are within a 1.5 km walk",
+    "Few hotels; most visitors return to Samarkand"
+   ],
+   "sleep": true
+  },
+  {
+   "id": "ak_saray",
+   "name": "Ak-Saray Palace",
+   "region": "south",
+   "lat": 39.0608,
+   "lon": 66.8292,
+   "visit": 45,
+   "cat": "Palace",
+   "priority": 3,
+   "wiki": "Ak-Saray Palace",
+   "summary": "Ruined portal of Timur's summer palace, once about 65 m high and still towering at nearly 40 m, with fragments of blue, white and gold tilework. Beside it stands a large statue of Timur.",
+   "facts": [
+    "Free to view; small fee may apply for access",
+    "Afternoon light is best for photos",
+    "Shade is scarce in summer"
+   ]
+  },
+  {
+   "id": "dorut_tilavat",
+   "name": "Dorut Tilavat and Kok Gumbaz Mosque",
+   "region": "south",
+   "lat": 39.0497,
+   "lon": 66.8272,
+   "visit": 45,
+   "cat": "Mosque & madrasa",
+   "priority": 2,
+   "wiki": "Dorut Tilavat",
+   "summary": "Ensemble with Ulugh Beg's blue-domed Kok Gumbaz Friday mosque and the mausoleums of Sheikh Shamsiddin Kulyal and Gumbazi Seyidan. Still an active place of worship.",
+   "facts": [
+    "Small entry fee",
+    "Modest dress",
+    "Walk 300 m to Dorus-Saodat"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "dorus_saodat",
+   "name": "Dorus-Saodat and Tomb of Timur",
+   "region": "south",
+   "lat": 39.0498,
+   "lon": 66.83,
+   "visit": 30,
+   "cat": "Mausoleum",
+   "priority": 2,
+   "wiki": "Shahrisabz",
+   "summary": "Remains of the dynastic complex Timur built for his family, with the mausoleum of his son Jahangir and, nearby, the underground crypt Timur prepared for himself but was never buried in.",
+   "facts": [
+    "Small entry fee",
+    "The crypt is a small underground chamber – ask the caretaker if locked",
+    "Combine with Dorut Tilavat"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "takhtakaracha_pass",
+   "name": "Takhtakaracha Pass",
+   "region": "south",
+   "lat": 39.286,
+   "lon": 66.941,
+   "visit": 30,
+   "cat": "Viewpoint",
+   "priority": 2,
+   "wiki": "Zarafshan Range",
+   "summary": "Scenic 1,675 m pass on the mountain road between Samarkand and Shahrisabz, with roadside stalls selling honey, fruit and dried apricots and wide views over the Zarafshan range.",
+   "facts": [
+    "Stop on the way to Shahrisabz",
+    "Winding road; slow lorries and occasional winter closures",
+    "Cool even in summer"
+   ],
+   "caution": "The road can close after snow in winter; drivers then use the longer route via Guzar."
+  },
+  {
+   "id": "kitab_reserve",
+   "name": "Kitab Geological Reserve",
+   "region": "south",
+   "lat": 39.175,
+   "lon": 67.3119,
+   "visit": 240,
+   "cat": "Nature reserve",
+   "priority": 1,
+   "wiki": "Kitab State Geological Reserve",
+   "summary": "Mountain reserve east of Shahrisabz with exposed Palaeozoic rock layers rich in fossils, juniper slopes and gorges. A niche excursion for geology fans and hikers.",
+   "facts": [
+    "Arrange a visit with the reserve or a local agency in advance",
+    "Rough road; 4x4 recommended",
+    "Bring food and water"
+   ]
+  },
+  {
+   "id": "karshi",
+   "name": "Karshi (Qarshi)",
+   "region": "south",
+   "lat": 38.8611,
+   "lon": 65.7847,
+   "visit": 90,
+   "cat": "Town",
+   "priority": 1,
+   "wiki": "Qarshi",
+   "summary": "Capital of Kashkadarya province, a transit town between Samarkand, Bukhara and the south, with the Odina mosque and an old brick bridge. Useful as a stopover rather than a destination.",
+   "facts": [
+    "Afrosiyob/Sharq trains from Tashkent via Samarkand",
+    "Shared taxis to Shahrisabz and Bukhara",
+    "Very hot in summer"
+   ],
+   "sleep": true,
+   "needsDaylight": false
+  },
+  {
+   "id": "boysun",
+   "name": "Boysun",
+   "region": "south",
+   "lat": 38.2041,
+   "lon": 67.2034,
+   "visit": 120,
+   "cat": "Village",
+   "priority": 2,
+   "wiki": "Boysun",
+   "summary": "Mountain district on the road to Termez whose traditional culture – songs, rituals, crafts – is on UNESCO's intangible heritage list. Village homestays give a rare look at rural life.",
+   "facts": [
+    "Homestays and guesthouses; arrange through a local agency",
+    "Boysun Bahori folk festival in spring",
+    "Good break on the long drive Shahrisabz–Termez"
+   ],
+   "sleep": true
+  },
+  {
+   "id": "termez",
+   "name": "Termez",
+   "region": "south",
+   "lat": 37.24,
+   "lon": 67.281,
+   "visit": 150,
+   "cat": "Town",
+   "priority": 2,
+   "wiki": "Termez",
+   "summary": "Uzbekistan's southernmost city on the Amu Darya facing Afghanistan, a former Kushan-era Buddhist centre. Its museum and nearby Buddhist and Islamic sites make it rewarding for history lovers.",
+   "facts": [
+    "Flights and overnight trains from Tashkent",
+    "Hot; the hottest city in the country in summer",
+    "Hire a car or taxi for the scattered sites"
+   ],
+   "sleep": true,
+   "needsDaylight": false,
+   "season": "Extremely hot June–August (40 °C+); March–May and October–November are best."
+  },
+  {
+   "id": "termez_museum",
+   "name": "Termez Archaeological Museum",
+   "region": "south",
+   "lat": 37.2443,
+   "lon": 67.2826,
+   "visit": 75,
+   "cat": "Museum",
+   "priority": 3,
+   "wiki": "Archaeological Museum of Termez",
+   "summary": "Excellent museum of finds from Surkhandarya: Bactrian and Kushan art, Buddhist sculptures and wall paintings from Fayaz Tepe, Kara Tepe and Dalverzin Tepe. Visit before the sites.",
+   "facts": [
+    "Ticket ~30,000–40,000 UZS (approx.)",
+    "Allow 1–1.5 hours",
+    "Air-conditioned – good for the midday heat"
+   ],
+   "hours": "09:00-17:00",
+   "needsDaylight": false
+  },
+  {
+   "id": "fayaz_tepe",
+   "name": "Fayaz Tepe",
+   "region": "south",
+   "lat": 37.2866,
+   "lon": 67.1919,
+   "visit": 45,
+   "cat": "Ruins",
+   "priority": 2,
+   "wiki": "Fayaz Tepe",
+   "summary": "1st–3rd-century Buddhist monastery with a restored stupa under a protective dome, a courtyard and cells. The famous Buddha triad found here is in the Tashkent history museum.",
+   "facts": [
+    "Ticket ~30,000 UZS (approx.)",
+    "About 20 minutes from central Termez",
+    "Little shade"
+   ]
+  },
+  {
+   "id": "kara_tepe",
+   "name": "Kara Tepe",
+   "region": "south",
+   "lat": 37.2782,
+   "lon": 67.1829,
+   "visit": 45,
+   "cat": "Ruins",
+   "priority": 1,
+   "wiki": "Kara Tepe",
+   "summary": "Kushan-era Buddhist cave-and-surface monastery complex on hills near the Afghan border, close to Fayaz Tepe. Excavations are ongoing.",
+   "facts": [
+    "Lies in the border zone – access may require arranging in advance via a local agency",
+    "Combine with Fayaz Tepe",
+    "Very exposed to sun"
+   ]
+  },
+  {
+   "id": "hakim_termizi",
+   "name": "Al-Hakim at-Termizi Mausoleum",
+   "region": "south",
+   "lat": 37.2659,
+   "lon": 67.1892,
+   "visit": 40,
+   "cat": "Mausoleum",
+   "priority": 2,
+   "wiki": "Al-Hakim al-Tirmidhi",
+   "summary": "Shrine of the 9th-century Sufi scholar al-Hakim at-Termizi beside the ruins of Old Termez, with carved terracotta decoration. A major pilgrimage site overlooking the Amu Darya.",
+   "facts": [
+    "Free (donations)",
+    "Modest dress; women cover hair",
+    "Near Fayaz Tepe"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "sultan_saodat",
+   "name": "Sultan Saodat Ensemble",
+   "region": "south",
+   "lat": 37.2678,
+   "lon": 67.3108,
+   "visit": 30,
+   "cat": "Mausoleum",
+   "priority": 1,
+   "wiki": "Sultan Saodat",
+   "summary": "Group of 10th–17th-century brick mausoleums of the Termez sayyids lining a courtyard on the eastern edge of the city. Quiet and atmospheric.",
+   "facts": [
+    "Small fee or free",
+    "15 minutes from the centre",
+    "Modest dress"
+   ]
+  },
+  {
+   "id": "zurmala_stupa",
+   "name": "Zurmala Stupa",
+   "region": "south",
+   "lat": 37.2319,
+   "lon": 67.0999,
+   "visit": 20,
+   "cat": "Ruins",
+   "priority": 1,
+   "wiki": "Zurmala Stupa",
+   "summary": "Eroded 1st–2nd-century mud-brick tower, the oldest surviving Buddhist stupa in Uzbekistan, standing alone in fields near Termez.",
+   "facts": [
+    "Free",
+    "Only viewable from outside",
+    "Quick stop if passing"
+   ]
+  },
+  {
+   "id": "kampir_tepe",
+   "name": "Kampir Tepe",
+   "region": "south",
+   "lat": 37.4105,
+   "lon": 67.0282,
+   "visit": 45,
+   "cat": "Ruins",
+   "priority": 1,
+   "wiki": "Kampir Tepe",
+   "summary": "Ruins of a Hellenistic-Kushan river port on the Amu Darya, possibly linked to Alexander the Great's crossing, with excavated streets and walls.",
+   "facts": [
+    "Small fee or free",
+    "About 30–40 minutes from Termez",
+    "Border-area road – carry your passport"
+   ]
+  },
+  {
+   "id": "dalverzin_tepe",
+   "name": "Dalverzin Tepe",
+   "region": "south",
+   "lat": 38.1011,
+   "lon": 67.8606,
+   "visit": 45,
+   "cat": "Ruins",
+   "priority": 1,
+   "wiki": "Dalverzin Tepe",
+   "summary": "Kushan city ruins near Denau where a famous hoard of gold and Buddhist sculptures was found. Mostly earth walls and mounds today.",
+   "facts": [
+    "Free",
+    "Near Denau, ~2 h from Termez",
+    "For enthusiasts; finds are in the Termez and Tashkent museums"
+   ]
+  }
+ ],
+ "drives": [
+  [
+   "tas",
+   "tashkent",
+   8,
+   20
+  ],
+  [
+   "tashkent",
+   "zangiota",
+   20,
+   30
+  ],
+  [
+   "tashkent",
+   "tashkent_tower",
+   6,
+   15
+  ],
+  [
+   "tashkent",
+   "hazrati_imam",
+   7,
+   20
+  ],
+  [
+   "tashkent",
+   "chimgan",
+   85,
+   90
+  ],
+  [
+   "tashkent",
+   "charvak",
+   75,
+   80
+  ],
+  [
+   "tashkent",
+   "amirsoy",
+   75,
+   80
+  ],
+  [
+   "tashkent",
+   "kokand",
+   230,
+   240
+  ],
+  [
+   "tashkent",
+   "samarkand",
+   305,
+   270
+  ],
+  [
+   "tashkent",
+   "kokand",
+   240,
+   300,
+   "train",
+   100000
+  ],
+  [
+   "tashkent",
+   "fergana",
+   320,
+   390,
+   "train",
+   120000
+  ],
+  [
+   "tashkent",
+   "samarkand",
+   345,
+   210,
+   "train",
+   250000
+  ],
+  [
+   "tashkent",
+   "bukhara",
+   600,
+   300,
+   "train",
+   380000
+  ],
+  [
+   "tashkent",
+   "karshi",
+   500,
+   270,
+   "train",
+   280000
+  ],
+  [
+   "tas",
+   "skd",
+   260,
+   200,
+   "flight",
+   600000
+  ],
+  [
+   "tas",
+   "bhk",
+   440,
+   220,
+   "flight",
+   700000
+  ],
+  [
+   "tas",
+   "ugc",
+   720,
+   270,
+   "flight",
+   900000
+  ],
+  [
+   "tas",
+   "ncu",
+   810,
+   280,
+   "flight",
+   950000
+  ],
+  [
+   "tas",
+   "tmj",
+   475,
+   240,
+   "flight",
+   800000
+  ],
+  [
+   "chimgan",
+   "greater_chimgan",
+   8,
+   20
+  ],
+  [
+   "chimgan",
+   "gulkam",
+   6,
+   12
+  ],
+  [
+   "chimgan",
+   "beldersay",
+   8,
+   15
+  ],
+  [
+   "chimgan",
+   "amirsoy",
+   12,
+   20
+  ],
+  [
+   "amirsoy",
+   "beldersay",
+   4,
+   8
+  ],
+  [
+   "chimgan",
+   "charvak",
+   20,
+   25
+  ],
+  [
+   "charvak",
+   "brichmulla",
+   20,
+   30
+  ],
+  [
+   "brichmulla",
+   "ugam_chatkal",
+   10,
+   15
+  ],
+  [
+   "charvak",
+   "khumsan",
+   10,
+   15
+  ],
+  [
+   "charvak",
+   "pskem_valley",
+   15,
+   20
+  ],
+  [
+   "kokand",
+   "khudayar_khan_palace",
+   2,
+   5
+  ],
+  [
+   "kokand",
+   "rishtan",
+   50,
+   45
+  ],
+  [
+   "rishtan",
+   "fergana",
+   55,
+   50
+  ],
+  [
+   "kokand",
+   "fergana",
+   90,
+   80
+  ],
+  [
+   "fergana",
+   "margilan",
+   15,
+   20
+  ],
+  [
+   "margilan",
+   "yodgorlik",
+   2,
+   5
+  ],
+  [
+   "margilan",
+   "kumtepa_bazaar",
+   6,
+   12
+  ],
+  [
+   "fergana",
+   "quva",
+   30,
+   35
+  ],
+  [
+   "quva",
+   "andijan",
+   45,
+   45
+  ],
+  [
+   "fergana",
+   "andijan",
+   75,
+   70
+  ],
+  [
+   "kokand",
+   "namangan",
+   100,
+   100
+  ],
+  [
+   "namangan",
+   "akhsikath",
+   25,
+   35
+  ],
+  [
+   "namangan",
+   "chust",
+   40,
+   45
+  ],
+  [
+   "namangan",
+   "andijan",
+   70,
+   75
+  ],
+  [
+   "skd",
+   "samarkand",
+   6,
+   20
+  ],
+  [
+   "samarkand",
+   "ulugh_beg_observatory",
+   5,
+   10
+  ],
+  [
+   "samarkand",
+   "konigil",
+   8,
+   15
+  ],
+  [
+   "samarkand",
+   "imam_bukhari",
+   25,
+   35
+  ],
+  [
+   "samarkand",
+   "urgut",
+   40,
+   50
+  ],
+  [
+   "samarkand",
+   "takhtakaracha_pass",
+   60,
+   75
+  ],
+  [
+   "samarkand",
+   "bukhara",
+   270,
+   240
+  ],
+  [
+   "samarkand",
+   "karshi",
+   150,
+   150
+  ],
+  [
+   "samarkand",
+   "bukhara",
+   270,
+   150,
+   "train",
+   180000
+  ],
+  [
+   "samarkand",
+   "karshi",
+   150,
+   160,
+   "train",
+   100000
+  ],
+  [
+   "takhtakaracha_pass",
+   "shahrisabz",
+   30,
+   45
+  ],
+  [
+   "samarkand",
+   "shahrisabz",
+   90,
+   120
+  ],
+  [
+   "shahrisabz",
+   "kitab_reserve",
+   50,
+   70
+  ],
+  [
+   "shahrisabz",
+   "karshi",
+   100,
+   90
+  ],
+  [
+   "karshi",
+   "bukhara",
+   160,
+   150
+  ],
+  [
+   "shahrisabz",
+   "boysun",
+   200,
+   210
+  ],
+  [
+   "boysun",
+   "termez",
+   140,
+   150
+  ],
+  [
+   "boysun",
+   "dalverzin_tepe",
+   80,
+   90
+  ],
+  [
+   "dalverzin_tepe",
+   "termez",
+   120,
+   120
+  ],
+  [
+   "tmj",
+   "termez",
+   10,
+   20
+  ],
+  [
+   "termez",
+   "fayaz_tepe",
+   12,
+   20
+  ],
+  [
+   "fayaz_tepe",
+   "kara_tepe",
+   2,
+   10
+  ],
+  [
+   "termez",
+   "hakim_termizi",
+   10,
+   20
+  ],
+  [
+   "termez",
+   "sultan_saodat",
+   6,
+   15
+  ],
+  [
+   "termez",
+   "zurmala_stupa",
+   17,
+   25
+  ],
+  [
+   "termez",
+   "kampir_tepe",
+   30,
+   35
+  ]
+ ]
+}

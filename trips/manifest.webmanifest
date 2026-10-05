@@ -2,7 +2,7 @@
   "id": "/travel-plans/trips/",
   "name": "Travel Plans",
   "short_name": "Trips",
-  "description": "All my trip planners in one app: Iceland, Egypt, Portugal and Portugal with kids.",
+  "description": "All my trip planners in one app: Iceland, Egypt, Portugal, Portugal with kids, Jordan, Uzbekistan, Ireland and the Netherlands.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
@@ -79,6 +79,54 @@
       "icons": [
         {
           "src": "shortcut-portugal-kids.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Jordan",
+      "short_name": "Jordan",
+      "url": "./jordan/",
+      "icons": [
+        {
+          "src": "shortcut-jordan.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Uzbekistan",
+      "short_name": "Uzbekistan",
+      "url": "./uzbekistan/",
+      "icons": [
+        {
+          "src": "shortcut-uzbekistan.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Ireland",
+      "short_name": "Ireland",
+      "url": "./ireland/",
+      "icons": [
+        {
+          "src": "shortcut-ireland.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "The Netherlands",
+      "short_name": "Holland",
+      "url": "./netherlands/",
+      "icons": [
+        {
+          "src": "shortcut-netherlands.png",
           "sizes": "192x192",
           "type": "image/png"
         }
