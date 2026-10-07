@@ -1,8 +1,8 @@
 // Offline support: app files network-first (so edits to data.json show up when online),
 // Leaflet and map tiles cache-first (tiles you've viewed stay available offline).
 // Only portugal-* caches are touched: other apps on this origin (iceland-planner/, egypt/) keep theirs.
-const APP = 'tp-portugal-app-v3', TILES = 'tp-portugal-tiles-v2', IMGS = 'tp-portugal-imgs-v2', MAX_TILES = 3000;
-const SHELL = ['./', 'index.html', 'app.js', 'data.json', '../manifest.webmanifest', 'icon.svg', 'icon-192.png',
+const APP = 'tp-portugal-app-v4', TILES = 'tp-portugal-tiles-v2', IMGS = 'tp-portugal-imgs-v2', MAX_TILES = 3000;
+const SHELL = ['./', 'index.html', 'app.js', 'data.json', 'tascologo.json', 'img/tascologo.png', '../manifest.webmanifest', 'icon.svg', 'icon-192.png',
   'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css', 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js'];
 
 self.addEventListener('install', e => {

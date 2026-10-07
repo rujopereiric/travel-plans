@@ -1399,9 +1399,11 @@ function plannedIn(id) {
   return out;
 }
 function renderPlaces() {
-  const seg = `<div class="seg" style="margin-bottom:10px;display:flex"><button style="flex:1" data-act="pmode" data-v="mine" aria-pressed="${UI.pmode !== 'osm'}">My places (${S.places.length})</button>
-    <button style="flex:1" data-act="pmode" data-v="osm" aria-pressed="${UI.pmode === 'osm'}">All of Portugal${OSM ? ` (${OSM.items.length.toLocaleString('en-GB')})` : ''}</button></div>`;
+  const seg = `<div class="seg" style="margin-bottom:10px;display:flex"><button style="flex:1" data-act="pmode" data-v="mine" aria-pressed="${UI.pmode !== 'osm' && UI.pmode !== 'tg'}">My places (${S.places.length})</button>
+    <button style="flex:1" data-act="pmode" data-v="osm" aria-pressed="${UI.pmode === 'osm'}">All of Portugal${OSM ? ` (${OSM.items.length.toLocaleString('en-GB')})` : ''}</button>
+    <button style="flex:1" data-act="pmode" data-v="tg" aria-pressed="${UI.pmode === 'tg'}">${TG_ICON} Tascólogo${TG ? ` (${TG.items.length.toLocaleString('en-GB')})` : ''}</button></div>`;
   if (UI.pmode === 'osm') return seg + renderOsm();
+  if (UI.pmode === 'tg') return seg + renderTascologo();
   return seg + renderMyPlaces();
 }
 function renderMyPlaces() {
@@ -1441,6 +1443,7 @@ function renderMyPlaces() {
         <div class="tiny" style="color:${rg.color};margin:2px 0 4px">${esc(rg.name)} · ~${dur(p.visit ?? 45)}${p.id !== S.trip.home ? ` · ${drive(S.trip.home, p.id).km} km from ${esc(placeName(S.trip.home))}` : ''}</div>
         ${p.caution ? `<div class="small" style="color:var(--warn);margin:2px 0 4px">⚠ ${withEur(esc(p.caution))}</div>` : ''}
         ${p.summary ? `<p class="clamp2" style="margin:0 0 4px">${esc(p.summary)}</p>` : ''}
+        ${p.cat === 'Tasca' ? `<div class="tiny tgcredit" style="margin:0 0 4px">${tgCredit()}</div>` : ''}
         ${key ? `<div class="small keyline">${esc(key)}</div>` : ''}
         ${ours.length ? `<div class="small" style="margin:4px 0">${ours.map(l => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(shortLink(l.name))}</a>`).join(' · ')}</div>` : ''}
         <div class="row" style="gap:6px;margin-top:8px">
@@ -1795,11 +1798,146 @@ function osmPopup(o) {
     ${mine ? `<button class="btn small" data-act="pinfo" data-place="${esc(mine.id)}">In my places ✓</button>` : `<button class="btn small primary" data-act="osmadd" data-osm="${esc(o.id)}">+ Add to my places</button>`}`;
 }
 
+/* ---------- O Tascólogo: tascas and traditional restaurants ---------- */
+// Luís Lavoura, "O Tascólogo" (https://tascologo.pt), hand-picked 1,200+ tascas. tascologo.json is built from his map export
+// by tools/tascologo.py (places abroad left out). They get their own map layer and list, always credited to him, and any
+// of them can be added to My places (as a "Tasca"), which gives the planner its opening hours and closing days.
+const TG_LOGO = 'img/tascologo.png', TG_SITE = 'https://tascologo.pt', TG_IG = 'https://www.instagram.com/tascologo/', TG_COLOR = '#f04c05';
+const TG_ICON = `<img class="tgi" src="${TG_LOGO}" alt="">`;
+let TG = null, TG_ERR = null;
+fetch('tascologo.json', { cache: 'no-cache' }).then(r => r.ok ? r.json() : Promise.reject(new Error('HTTP ' + r.status)))
+  .then(j => { TG = j; tgLayerDirty = true; mapDirty = true; if (S && (UI.tab === 'map' || UI.tab === 'places')) render(); })
+  .catch(e => { TG_ERR = e.message; });
+const tgObj = a => ({ id: a[0], name: a[1], lat: a[2], lon: a[3], district: a[4], town: a[5], type: a[6], note: a[7], rating: a[8], reviews: a[9],
+  phone: a[10], web: a[11], maps: a[12], week: a[13], closedNow: (a[14] || '').includes('t'), nolisting: (a[14] || '').includes('n'), cat: 'Tasca' });
+const tgPlaceId = o => o.id; // already prefixed tg_
+const tgMine = o => place(tgPlaceId(o));
+const tgWhere = o => [o.town, o.district].filter(Boolean).filter((x, i, a) => a.indexOf(x) === i).join(', ');
+const tgDays = (o, f) => o.week ? o.week.map((h, i) => f(h) ? i : -1).filter(i => i >= 0) : [];
+// one "HH:MM-HH:MM" span for the planner: the most usual day's first opening to its last closing
+function tgHours(o) {
+  if (!o.week) return null;
+  const open = o.week.filter(h => h && h !== '24h'); if (!open.length) return null;
+  const n = {}; for (const h of open) n[h] = (n[h] || 0) + 1;
+  const spans = Object.keys(n).sort((a, b) => n[b] - n[a])[0].split(',');
+  return spans[0].split('-')[0] + '-' + spans[spans.length - 1].split('-')[1];
+}
+const tgToday = o => { if (!o.week) return ''; const h = o.week[new Date().getDay()]; return h === '' ? 'Closed today' : h === '24h' ? 'Open 24 h today' : 'Today ' + h.replace(/-/g, '–').replace(/,/g, ', '); };
+const tgRating = o => o.rating ? `★ ${o.rating}${o.reviews ? ` (${o.reviews.toLocaleString('en-GB')})` : ''}` : '';
+const tgCredit = (short) => `<a href="${TG_SITE}" target="_blank" rel="noopener">${TG_ICON} ${short ? 'O Tascólogo' : 'Suggested by O Tascólogo'}</a>`;
+function promoteTG(o) {
+  if (tgMine(o)) return tgMine(o);
+  let near = null, nd = Infinity;
+  for (const p of S.places) { if (p.cat === 'Airport') continue; const d = haversine(p, o); if (d < nd) { nd = d; near = p; } }
+  const closed = tgDays(o, h => h === ''), hrs = tgHours(o);
+  const p = { id: tgPlaceId(o), name: o.name, region: near ? near.region : S.regions[0]?.id, lat: o.lat, lon: o.lon, visit: 75, cat: 'Tasca',
+    summary: `${o.type || 'Tasca'} in ${tgWhere(o) || 'Portugal'}, suggested by O Tascólogo.${o.note ? ` Go for: ${o.note}.` : ''}`,
+    facts: [o.note && `Tascólogo's tip: ${o.note}`, tgRating(o) && `Google rating ${tgRating(o)}`, o.phone && `Phone ${o.phone}`,
+      o.week && `Hours: ${o.week.map((h, i) => `${DOW[i].slice(0, 3)} ${h === '' ? 'closed' : h.replace(/,/g, ', ')}`).join(' · ')}`,
+      'Book or call ahead for lunch on weekends; small tascas fill up and can close for holidays'].filter(Boolean),
+    wiki: false, needsDaylight: false, suggest: false, priority: 1,
+    links: [{ name: 'O Tascólogo', url: TG_SITE }, ...(o.maps ? [{ name: 'Google Maps', url: o.maps }] : []), ...(o.web ? [{ name: 'Website', url: o.web }] : [])],
+    sources: [TG_SITE], checked: todayISO() };
+  if (hrs) p.hours = hrs;
+  if (closed.length && closed.length < 7) p.closed = closed;
+  if (o.closedNow) p.caution = 'Listed on Google as temporarily closed: check before you go.';
+  S.places.push(p);
+  if (!(S.categories || []).includes('Tasca')) (S.categories = S.categories || []).push('Tasca');
+  reindex(); mapDirty = true; tgLayerDirty = true;
+  return p;
+}
+function tgPopup(o) {
+  const mine = tgMine(o);
+  return `<h4>${TG_ICON} ${esc(o.name)}</h4><div class="tiny muted">${esc(o.type || 'Tasca')}${tgWhere(o) ? ' · ' + esc(tgWhere(o)) : ''}${o.rating ? ' · ' + esc(tgRating(o)) : ''}</div>
+    ${o.note ? `<div style="margin:4px 0">🍲 ${esc(o.note)}</div>` : ''}
+    ${o.closedNow ? '<div class="small" style="color:var(--warn)">⚠ Temporarily closed (Google)</div>' : o.week ? `<div class="tiny muted">🕘 ${esc(tgToday(o))}</div>` : ''}
+    <div class="small" style="margin:4px 0">${o.maps ? `<a href="${esc(o.maps)}" target="_blank" rel="noopener">Google Maps ↗</a> · ` : ''}<a href="https://www.google.com/maps/dir/?api=1&destination=${o.lat},${o.lon}" target="_blank" rel="noopener">Directions ↗</a></div>
+    <div class="tiny tgcredit">${tgCredit()}</div>
+    ${mine ? `<button class="btn small" data-act="pinfo" data-place="${esc(mine.id)}">In my places ✓</button>` : `<button class="btn small primary" data-act="tgadd" data-tg="${esc(o.id)}">+ Add to my places</button>`}`;
+}
+function renderTascologo() {
+  const credit = `<div class="card tgcard"><img src="${TG_LOGO}" alt="O Tascólogo" width="48" height="48">
+    <div class="grow small"><b>Tascas picked by O Tascólogo</b><br>Luís Lavoura, <i>O Tascólogo</i>, studies tascas, recipes and traditions, and hand-picked these
+      traditional places to eat. All credit to him: see the full map at <a href="${TG_SITE}" target="_blank" rel="noopener">tascologo.pt</a> and follow him on
+      <a href="${TG_IG}" target="_blank" rel="noopener">Instagram</a>.<div class="tiny muted" style="margin-top:4px">Add one to <b>My places</b> to put it in a day: its opening hours and closing days come along.</div></div></div>`;
+  if (!TG) return credit + `<p class="empty">${TG_ERR ? 'Could not load the list (' + esc(TG_ERR) + ').' : 'Loading…'}</p>`;
+  const dists = [...new Set(TG.items.map(a => a[4]))].sort((a, b) => a.localeCompare(b, 'pt'));
+  const d = UI.tgDist || 'all', near = place(UI.tgNear) ? UI.tgNear : S.trip.home;
+  const chip = (v, label, on) => `<button class="pchip" data-act="tgdist" data-v="${esc(v)}" aria-pressed="${on}">${label}</button>`;
+  return credit + `
+    <div class="row" style="margin-bottom:8px"><input type="search" id="tgq" placeholder="Search ${TG.items.length.toLocaleString('en-GB')} tascas, towns, dishes…" value="${esc(UI.tgQ || '')}" class="grow" autocomplete="off">
+      <label class="f">Nearest to<select data-act="tgnear">${placeOptions(near)}</select></label></div>
+    <div class="pchips">${chip('all', 'All districts', d === 'all')}${dists.map(x => chip(x, `${esc(x)} <span class="muted">${TG.items.filter(a => a[4] === x).length}</span>`, d === x)).join('')}</div>
+    <div id="tglist">${tgListHTML()}</div>`;
+}
+function tgListHTML() {
+  const fold = x => (x || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+  const q = fold((UI.tgQ || '').trim()), d = UI.tgDist || 'all', near = place(UI.tgNear) || place(S.trip.home);
+  const list = TG.items.filter(a => (d === 'all' || a[4] === d) && (!q || [a[1], a[4], a[5], a[6], a[7]].some(x => fold(x).includes(q))))
+    .map(a => ({ o: tgObj(a), km: haversine(near, { lat: a[2], lon: a[3] }) })).sort((x, y) => x.km - y.km);
+  const n = UI.tgN || 40;
+  if (!list.length) return `<p class="empty">No matches.</p>`;
+  return list.slice(0, n).map(({ o, km }) => {
+    const mine = tgMine(o);
+    return `<div class="card osmrow"><div class="row"><b class="grow">${esc(o.name)}</b><span class="chip">${TG_ICON} ${esc(o.type || 'Tasca')}</span></div>
+      <div class="tiny muted">${esc(tgWhere(o))}${tgWhere(o) ? ' · ' : ''}${Math.round(km)} km from ${esc(placeName(near.id))} (straight line)${o.rating ? ' · ' + esc(tgRating(o)) : ''}</div>
+      ${o.note ? `<div class="small" style="margin-top:3px">🍲 ${esc(o.note)}</div>` : ''}
+      ${o.closedNow ? '<div class="small" style="color:var(--warn);margin-top:3px">⚠ Temporarily closed (Google)</div>' : o.week ? `<div class="tiny muted" style="margin-top:3px">🕘 ${esc(tgToday(o))}${tgDays(o, h => h === '').length ? ' · closed ' + tgDays(o, h => h === '').map(i => DOW[i]).join(', ') : ''}</div>` : ''}
+      <div class="row small" style="margin-top:6px;gap:10px">
+        ${o.maps ? `<a href="${esc(o.maps)}" target="_blank" rel="noopener">Google Maps ↗</a>` : ''}
+        <a href="https://www.google.com/maps/dir/?api=1&destination=${o.lat},${o.lon}" target="_blank" rel="noopener">Directions ↗</a>
+        ${o.web ? `<a href="${esc(o.web)}" target="_blank" rel="noopener">Website ↗</a>` : ''}
+        <span class="grow"></span>
+        <button class="btn small" data-act="tgmap" data-tg="${esc(o.id)}">Map</button>
+        ${mine ? `<button class="btn small" data-act="pinfo" data-place="${esc(mine.id)}">In my places ✓</button>` : `<button class="btn small primary" data-act="tgadd" data-tg="${esc(o.id)}">+ My places</button>`}
+      </div></div>`;
+  }).join('') + (list.length > n ? `<button class="btn" data-act="tgmore" style="width:100%">Show more (${(list.length - n).toLocaleString('en-GB')} left)</button>` : `<p class="tiny muted">${list.length} shown.</p>`)
+    + `<p class="tiny muted">List © O Tascólogo (<a href="${TG_SITE}" target="_blank" rel="noopener">tascologo.pt</a>). Hours and ratings from Google Maps, ${esc(dateLabel(TG.at, { month: 'short', year: 'numeric' }))}.</p>`;
+}
+// map layer: orange dots when zoomed out; his logo for what's on screen from zoom 10. Ones already in My places show there.
+let tgLayer = null, tgIcons = null, tgLayerDirty = true; const TG_MARKERS = {};
+const tgShown = a => mf().tg !== false && catShown('Tasca') && !mf().must && !place(a[0]);
+function refreshTgView() {
+  if (!MAP) return;
+  if (!TG || mf().tg === false || !catShown('Tasca') || mf().must) { tgLayer && tgLayer.remove(); tgIcons && tgIcons.remove(); return; }
+  if (MAP.getZoom() >= OSM_ICON_ZOOM) {
+    tgLayer && tgLayer.remove();
+    tgIcons = tgIcons || L.layerGroup();
+    tgIcons.clearLayers(); for (const k in TG_MARKERS) delete TG_MARKERS[k];
+    const bb = MAP.getBounds().pad(0.2); let n = 0;
+    for (const a of TG.items) {
+      if (n >= OSM_ICON_MAX) break;
+      if (!tgShown(a) || !bb.contains([a[2], a[3]])) continue;
+      const o = tgObj(a);
+      const m = L.marker([o.lat, o.lon], { icon: L.divIcon({ className: '', html: `<div class="pinw" style="width:24px;height:24px"><div class="pin osm tg" style="--c:${TG_COLOR}">${TG_ICON}</div></div>`, iconSize: [24, 24], iconAnchor: [12, 12], popupAnchor: [0, -10] }) });
+      m.bindPopup(() => tgPopup(o), { maxWidth: 250 }); m.bindTooltip(esc(o.name), { direction: 'top', offset: [0, -10] });
+      m.addTo(tgIcons); TG_MARKERS[o.id] = m; n++;
+    }
+    if (!MAP.hasLayer(tgIcons)) tgIcons.addTo(MAP);
+  } else {
+    tgIcons && tgIcons.remove();
+    if (tgLayerDirty || !tgLayer) {
+      tgLayer = tgLayer || L.layerGroup();
+      tgLayer.clearLayers(); for (const k in TG_MARKERS) delete TG_MARKERS[k];
+      const renderer = refreshTgView.r || (refreshTgView.r = L.canvas({ padding: .5 }));
+      for (const a of TG.items) {
+        if (!tgShown(a)) continue;
+        const o = tgObj(a);
+        const m = L.circleMarker([o.lat, o.lon], { renderer, radius: 3.5, color: '#fff', weight: .8, fillColor: TG_COLOR, fillOpacity: .9 });
+        m.bindPopup(() => tgPopup(o), { maxWidth: 250 }); m.bindTooltip(esc(o.name), { direction: 'top', offset: [0, -4] });
+        m.addTo(tgLayer); TG_MARKERS[o.id] = m;
+      }
+      tgLayerDirty = false;
+    }
+    if (!MAP.hasLayer(tgLayer)) tgLayer.addTo(MAP);
+  }
+}
+
 /* ---------- category icons & map filter ---------- */
 // Each category has an icon; colour comes from its family so related things read together on the map.
 const CAT_GROUPS = [
   { id: 'heritage', name: 'Castles, palaces & churches', color: '#8e24aa', cats: { Castle: '🏰', Palace: '👑', 'Monastery & church': '⛪', 'Old town': '🏘️', Monument: '🗿', Ruins: '🏛️', Historic: '🏚️' } },
-  { id: 'culture', name: 'Museums, wine & food', color: '#3949ab', cats: { Museum: '🖼️', Art: '🎨', Village: '🏡', Wine: '🍷', 'Food & market': '🍽️', Experience: '🎶', Attraction: '⭐' } },
+  { id: 'culture', name: 'Museums, wine & food', color: '#3949ab', cats: { Museum: '🖼️', Art: '🎨', Village: '🏡', Wine: '🍷', 'Food & market': '🍽️', Tasca: TG_ICON, Experience: '🎶', Attraction: '⭐' } },
   { id: 'sea', name: 'Sea & coast', color: '#0277bd', cats: { Beach: '🏖️', Coast: '🌊', 'Boat trip': '⛵', Surf: '🏄', 'Whale watching': '🐋', Lighthouse: '🗼' } },
   { id: 'adventure', name: 'Via ferrata & climbing', color: '#e65100', cats: { 'Via ferrata': '🧗', Climbing: '🪨' } },
   { id: 'nature', name: 'Nature', color: '#2e7d32', cats: { Hike: '🥾', Mountain: '⛰️', Waterfall: '💧', Lake: '🏞️', 'Hot spring': '♨️', Cave: '🕳️', 'Nature reserve': '🌿', Garden: '🌳', Viewpoint: '🔭', Landmark: '📍' } },
@@ -1816,16 +1954,18 @@ function mapFilterHTML() {
   const f = mf(), mineCount = {}, osmCount = {};
   for (const p of S.places) mineCount[p.cat] = (mineCount[p.cat] || 0) + 1;
   if (OSM) for (const a of OSM.items) osmCount[a[4]] = (osmCount[a[4]] || 0) + 1;
-  const known = new Set([...Object.keys(mineCount), ...Object.keys(osmCount)]);
+  const tgCount = TG ? TG.items.filter(a => !place(a[0])).length : 0;
+  const known = new Set([...Object.keys(mineCount), ...Object.keys(osmCount), ...(TG ? ['Tasca'] : [])]);
   const extra = [...known].filter(c => !CAT_INFO[c]);
   const groups = [...CAT_GROUPS.map(g => ({ ...g, list: Object.keys(g.cats).filter(c => known.has(c)) })), ...(extra.length ? [{ id: 'other', name: 'Other', color: '#757575', list: extra }] : [])].filter(g => g.list.length);
   const hidden = f.hide.filter(c => known.has(c)).length;
-  const n = c => (f.mine ? mineCount[c] || 0 : 0) + (f.osm && OSM ? osmCount[c] || 0 : 0);
+  const n = c => (f.mine ? mineCount[c] || 0 : 0) + (f.osm && OSM ? osmCount[c] || 0 : 0) + (c === 'Tasca' && f.tg !== false ? tgCount : 0);
   return `<details class="mlwrap mfilter" ${UI.filterOpen ? 'open' : ''} ontoggle="UI.filterOpen=this.open;saveUI()">
     <summary>Filter map${hidden || f.must || !f.mine || (OSM && !f.osm) ? ` · <b>${[hidden ? `${hidden} type${hidden > 1 ? 's' : ''} hidden` : '', f.must ? 'must-sees only' : '', !f.mine ? 'my places hidden' : '', OSM && !f.osm ? '' : ''].filter(Boolean).join(', ') || 'custom'}</b>` : ''}</summary>
     <div class="row" style="gap:6px;margin:6px 0">
       <button class="pchip" data-act="msrc" data-v="mine" aria-pressed="${f.mine}">My places</button>
-      <button class="pchip" data-act="msrc" data-v="osm" aria-pressed="${!!(f.osm && OSM)}" ${OSM ? '' : 'disabled title="Download regions in Places → All of Portugal"'}>All of Egypt${OSM ? '' : ' (none downloaded)'}</button>
+      <button class="pchip" data-act="msrc" data-v="osm" aria-pressed="${!!(f.osm && OSM)}" ${OSM ? '' : 'disabled title="Download regions in Places → All of Portugal"'}>All of Portugal${OSM ? '' : ' (none downloaded)'}</button>
+      ${TG ? `<button class="pchip" data-act="msrc" data-v="tg" aria-pressed="${f.tg !== false}">${TG_ICON} Tascólogo</button>` : ''}
       <button class="pchip" data-act="mmust" aria-pressed="${f.must}">★ Must-sees only</button>
       <span class="grow"></span><button class="btn small" data-act="mcatall">All</button><button class="btn small" data-act="mcatnone">None</button></div>
     <div class="mfbody">${groups.map(g => `<div class="mfgroup"><button class="mfgname" data-act="mgroup" data-v="${g.id}" style="color:${g.color}">${esc(g.name)}</button>
@@ -1962,9 +2102,10 @@ function buildMarkers() {
   }
   mapLayers = { mine };
   const zoomClass = () => { const z = MAP.getZoom(), c = MAP.getContainer().classList; c.toggle('z-low', z < 8); c.toggle('z-mid', z >= 8 && z < 10); };
-  if (!buildMarkers.hooked) { MAP.on('zoomend moveend', () => refreshOsmView()); MAP.on('zoomend', zoomClass); buildMarkers.hooked = true; }
+  if (!buildMarkers.hooked) { MAP.on('zoomend moveend', () => { refreshOsmView(); refreshTgView(); }); MAP.on('zoomend', zoomClass); buildMarkers.hooked = true; }
   zoomClass();
   osmLayerDirty = true; refreshOsmView();
+  tgLayerDirty = true; refreshTgView();
   mapDirty = false;
 }
 function drawRoute() {
@@ -2013,6 +2154,7 @@ function popupHTML(pid) {
   }
   const first = (p.summary || '').split(/(?<=\.)\s/)[0];
   return `<h4>${catInfo(p.cat).icon} ${pick(pid) === 'must' ? '★ ' : ''}${esc(p.name)}</h4><div class="tiny" style="color:${rg.color}">${esc(p.cat || rg.name)} · ${esc(rg.name)} · ~${p.visit ?? 45} min visit</div>
+    ${p.cat === 'Tasca' ? `<div class="tiny tgcredit">${tgCredit()}</div>` : ''}
     ${first ? `<div style="margin:4px 0">${esc(first)}</div>` : ''}
     ${p.hours ? `<div class="tiny muted">🕘 ${esc(p.hours.replace('-', '–'))}${p.closed?.length ? ' · closed ' + p.closed.map(x => DOW[x]).join(', ') : ''}</div>` : ''}
     ${p.note && p.note !== p.caution ? `<div class="small muted" style="margin:4px 0">${withEur(esc(p.note))}</div>` : ''}${p.caution ? `<div class="small" style="color:var(--warn)">${withEur(esc(p.caution))}</div>` : ''}
@@ -2033,6 +2175,7 @@ const HELP_TEXT = {
     <li>Sintra's Pena Palace, Livraria Lello in Porto and Belém sights sell <b>timed tickets</b>: book ahead in busy months.</li>
     <li>Madeira and the Azores are reached by <b>flight</b> automatically when you add their places; times include getting to the airport.</li>
     <li>Motorway tolls are electronic on many roads: rent a car with a <b>Via Verde</b> transponder.</li>
+    <li><b>Tascas</b> come from <a href="https://tascologo.pt" target="_blank" rel="noopener">O Tascólogo</a> (Luís Lavoura), who hand-picked them: see Places → Tascólogo, or the orange dots and his logo on the map. Add one to My places to plan a meal there with its opening hours.</li>
     <li><b>Via ferratas</b> from OpenStreetMap are in My places (🧗 in the filters), with their grade where it's mapped. <b>All of Portugal</b> also lists climbing crags. Check a route is open and maintained before you go.</li>
     <li>Prices are approximate and in euros.</li></ul>`,
   check: 'Check official opening hours, the IPMA weather warnings, and in summer the fire risk for the areas you plan to visit. Emergency number: 112.'
@@ -2202,11 +2345,23 @@ document.addEventListener('click', e => {
       const allShown = cs.every(c => !f.hide.includes(c)); f.hide = allShown ? [...new Set([...f.hide, ...cs])] : f.hide.filter(c => !cs.includes(c)); mapDirty = true; render(); break; }
     case 'mcatall': mf().hide = []; mapDirty = true; render(); break;
     case 'mcatnone': mf().hide = [...new Set([...Object.keys(CAT_INFO), ...S.places.map(p => p.cat), ...(OSM ? OSM.items.map(a => a[4]) : [])])]; mapDirty = true; render(); break;
-    case 'msrc': { const f = mf(); f[el.dataset.v] = !f[el.dataset.v]; if (el.dataset.v === 'osm') UI.osmLayer = f.osm; mapDirty = true; render(); break; }
+    case 'msrc': { const f = mf(), k = el.dataset.v; f[k] = k === 'tg' ? f.tg === false : !f[k]; if (el.dataset.v === 'osm') UI.osmLayer = f.osm; mapDirty = true; render(); break; }
     case 'mmust': mf().must = !mf().must; mapDirty = true; render(); break;
     case 'osmload': loadOSM([el.dataset.v]); break;
     case 'osmtrip': loadOSM(osmTripAreas().filter(id => !OSM_STORE.areas[id])); break;
     case 'osmrm': if (confirm('Remove the downloaded sights for this region? Places you added to My places stay.')) osmRemove(el.dataset.v); break;
+    case 'tgdist': UI.tgDist = el.dataset.v; UI.tgN = 40; render(); break;
+    case 'tgmore': UI.tgN = (UI.tgN || 40) + 60; $('#tglist').innerHTML = tgListHTML(); break;
+    case 'tgadd': {
+      const a = TG && TG.items.find(x => x[0] === el.dataset.tg); if (!a) break;
+      const p = promoteTG(tgObj(a)); MAP && MAP.closePopup(); changed(); toast(`Added ${p.name} to My places`); break;
+    }
+    case 'tgmap': {
+      const id = el.dataset.tg, a = TG && TG.items.find(x => x[0] === id); if (!a) break;
+      mf().tg = true; mf().hide = mf().hide.filter(c => c !== 'Tasca'); mf().must = false; goTab('map');
+      setTimeout(() => { if (!MAP) return; MAP.setView([a[2], a[3]], 14); refreshTgView(); TG_MARKERS[id]?.openPopup(); }, 60);
+      break;
+    }
     case 'osmcat': UI.osmCat = el.dataset.v; UI.osmN = 40; render(); break;
     case 'osmmore': UI.osmN = (UI.osmN || 40) + 60; $('#osmlist').innerHTML = osmListHTML(); break;
     case 'osmadd': {
@@ -2255,6 +2410,7 @@ document.addEventListener('change', e => {
     case 'sleep': stopOp(date, p => { p.sleep = v || null; }); break;
     case 'depart': stopOp(date, p => { p.depart = v || null; }); break;
     case 'mapdaysel': UI.mapDay = v; render(); break;
+    case 'tgnear': UI.tgNear = v; UI.tgN = 40; $('#tglist').innerHTML = tgListHTML(); saveUI(); break;
     case 'osmnear': UI.osmNear = v; UI.osmN = 40; $('#osmlist').innerHTML = osmListHTML(); saveUI(); break;
     case 'padd': if (v) { stopOp(v, p => p.stops.push({ place: el.dataset.place })); toast(`Added to ${dateLabel(v)}`); } break;
     case 'oname': optById(el.dataset.id).name = v; changed(); break;
@@ -2271,6 +2427,7 @@ document.addEventListener('change', e => {
 });
 document.addEventListener('input', e => {
   if (e.target.dataset && e.target.dataset.fx) fxInput(e.target);
+  if (e.target.id === 'tgq') { UI.tgQ = e.target.value; UI.tgN = 40; clearTimeout(document.tgT); document.tgT = setTimeout(() => { $('#tglist').innerHTML = tgListHTML(); saveUI(); }, 150); }
   if (e.target.id === 'osmq') { UI.osmQ = e.target.value; UI.osmN = 40; clearTimeout(document.osmT); document.osmT = setTimeout(() => { $('#osmlist').innerHTML = osmListHTML(); saveUI(); }, 150); }
 });
 
