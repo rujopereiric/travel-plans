@@ -21,6 +21,11 @@ It is one page with no backend and no build step, and works offline once loaded.
   distance, playgrounds included. On a day of your trip, the Plan tab's *Nearby now* card lists the closest suitable
   places with *Add to today*. Location is watched only while Near me is on and the app is on screen, never stored or
   sent anywhere. Lists re-sort after you've moved ~500 m, so cards don't jump around. Distances are straight lines.
+- **🍽️ Food near me:** with Near me on, the Map tab looks up cafés, restaurants, pastry shops and ice cream within 800 m,
+  live from OpenStreetMap (Overpass); any place's map popup has *Food nearby* too. Nothing is stored: Portugal has tens of
+  thousands of places to eat and OpenStreetMap rarely says which suit kids (24 of ~8,500 in the Lisbon area), so the few
+  mapped with a play area, high chair or baby changing come first, then ice cream and terraces, with a Google Maps link
+  for reviews and hours. Needs a connection.
 - **Gentler days by default:** up to 2.5 h of driving and 5.5 h of visits a day, starting at 09:00, with 45 min spare.
 - **A family checklist and booking list:** children's ID, consent letters, car seats, sun and sea safety.
 

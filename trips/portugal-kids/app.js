@@ -25,7 +25,7 @@ const LS_UI = 'tp-ptkids-planner-ui';
 
 // Bump on every change. The app compares it with the app.js on the server, so a phone that kept an old tab open
 // (no reload, so still the old code) is told a newer version exists.
-const APP_BUILD = '2026-10-07.k8';
+const APP_BUILD = '2026-10-07.k9';
 let NEWER = null; // the newer build found on the server, if any
 const AX0 = 5 * 60, AX1 = 23 * 60;           // timeline axis 05:00–23:00
 const DEFAULT_SETTINGS = {
@@ -73,8 +73,9 @@ function geoStart() {
     GEO_ERR = null;
     if (!GEO_SORT || haversine(GEO_SORT, GEO) >= RESORT_KM) {
       GEO_SORT = { lat: GEO.lat, lon: GEO.lon };
-      if (UI.tab === 'map') { const s = $('#geostatus'); if (s) s.textContent = geoStatus(); } else render();
+      if (UI.tab !== 'map') render();
     }
+    if (UI.tab === 'map') { const gb = $('#geobar'); if (gb && (first || !$('#geostatus') || gb.querySelector('[data-act=foodme][disabled]'))) gb.outerHTML = geoBar(); else { const s = $('#geostatus'); if (s) s.textContent = geoStatus(); } }
     geoDraw(first);
   }, err => {
     GEO_ERR = err.code === 1 ? 'Location permission is off for this site. Allow it in the browser’s site settings to use Near me.' : `Couldn't find your location (${err.message || 'timed out'}).`;
@@ -104,6 +105,76 @@ function geoDraw(first) {
     geoDot = L.circleMarker(ll, { radius: 8, color: '#fff', weight: 3, fillColor: '#1a73e8', fillOpacity: 1 }).addTo(MAP).bindTooltip('You are here');
   } else { geoDot.setLatLng(ll); geoAcc.setLatLng(ll).setRadius(GEO.acc); }
   if (UI.tab === 'map' && (UI.follow || first)) first ? MAP.setView(ll, Math.max(MAP.getZoom(), 13)) : MAP.panTo(ll);
+}
+/* ---------- food near me: cafés, restaurants and ice cream, looked up live ---------- */
+// Portugal has tens of thousands of places to eat and OpenStreetMap rarely says which are good with kids, so nothing is
+// stored: one small Overpass query (~800 m around you, or around a place) when you ask, shown as a temporary map layer
+// and a list. Places tagged with a play area, high chair or baby changing come first, then ice cream and terraces.
+const FOOD_SERVERS = ['https://overpass-api.de/api/interpreter', 'https://maps.mail.ru/osm/tools/overpass/api/interpreter', 'https://overpass.private.coffee/api/interpreter'];
+const FOOD_KM = 0.8;
+const FOOD_KIND = { restaurant: ['🍽️', 'Restaurant'], cafe: ['☕', 'Café'], ice_cream: ['🍦', 'Ice cream'], fast_food: ['🍔', 'Fast food'], pastry: ['🥐', 'Pastry shop'] };
+let FOOD = null, foodLayer = null; // FOOD: { at: {lat, lon, label}, items, busy, err }
+const yes = v => v && v !== 'no';
+const foodPerks = t => [yes(t.kids_area) && '🧸 play area', t.highchair === 'yes' && '🪑 high chair', yes(t.changing_table) && '🚼 baby changing',
+  yes(t.outdoor_seating) && '☀️ terrace'].filter(Boolean);
+const foodScore = f => (yes(f.t.kids_area) ? 3 : 0) + (f.t.highchair === 'yes' ? 2 : 0) + (yes(f.t.changing_table) ? 2 : 0) + (f.kind === 'ice_cream' ? 1 : 0)
+  + (yes(f.t.outdoor_seating) ? 0.5 : 0) - (f.kind === 'fast_food' ? 0.5 : 0) - f.km * 2; // a perk is worth a few hundred metres' walk
+async function foodSearch(lat, lon, label) {
+  if (!navigator.onLine) { FOOD = { at: { lat, lon, label }, items: [], err: 'You are offline: food search needs a connection.' }; render(); return; }
+  FOOD = { at: { lat, lon, label }, items: [], busy: true }; render();
+  const r = Math.round(FOOD_KM * 1000);
+  const q = `[out:json][timeout:25];(nwr(around:${r},${lat},${lon})["amenity"~"^(restaurant|cafe|ice_cream|fast_food)$"]["name"];nwr(around:${r},${lat},${lon})["shop"="pastry"]["name"];);out center tags 300;`;
+  let j = null, err = '';
+  for (const s of FOOD_SERVERS) {
+    try {
+      const ctl = new AbortController(), to = setTimeout(() => ctl.abort(), 30000);
+      const res = await fetch(s, { method: 'POST', body: 'data=' + encodeURIComponent(q), headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, signal: ctl.signal });
+      clearTimeout(to);
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      j = await res.json(); break;
+    } catch (e) { err = e.name === 'AbortError' ? 'timed out' : e.message; }
+  }
+  if (!FOOD || FOOD.at.lat !== lat || FOOD.at.lon !== lon) return; // cleared or replaced meanwhile
+  if (!j) { FOOD = { at: FOOD.at, items: [], err: `Couldn't reach OpenStreetMap (${err}). Try again in a minute.` }; render(); return; }
+  const seen = new Set();
+  FOOD.items = (j.elements || []).map(e => {
+    const t = e.tags || {}, la = e.lat ?? e.center?.lat, lo = e.lon ?? e.center?.lon;
+    return la == null ? null : { id: e.type[0] + e.id, name: t.name, kind: t.shop === 'pastry' ? 'pastry' : t.amenity, lat: la, lon: lo, t, km: haversine({ lat, lon }, { lat: la, lon: lo }) };
+  }).filter(f => f && FOOD_KIND[f.kind] && !seen.has(f.name + Math.round(f.lat * 2000)) && seen.add(f.name + Math.round(f.lat * 2000)))
+    .sort((a, b) => foodScore(b) - foodScore(a));
+  FOOD.busy = false; render(); foodDraw(true);
+}
+const foodMapsUrl = f => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${f.name} ${f.lat.toFixed(5)},${f.lon.toFixed(5)}`)}`;
+function foodPopup(f) {
+  const [ic, kn] = FOOD_KIND[f.kind], perks = foodPerks(f.t);
+  return `<h4>${ic} ${esc(f.name)}</h4><div class="tiny muted">${kn} · ${kmText(f.km)} from ${esc(FOOD.at.label)}${f.t.cuisine ? ' · ' + esc(f.t.cuisine.replace(/_/g, ' ').replace(/;/g, ', ')) : ''}</div>
+    ${perks.length ? `<div class="small" style="margin:4px 0">${perks.join(' · ')}</div>` : ''}
+    ${f.t.opening_hours ? `<div class="tiny muted">🕘 ${esc(f.t.opening_hours)} (OpenStreetMap)</div>` : ''}
+    <div class="row small" style="gap:8px;margin-top:4px"><a href="${esc(foodMapsUrl(f))}" target="_blank" rel="noopener">Reviews & hours (Google Maps) ↗</a></div>`;
+}
+function foodDraw(fit) {
+  if (!MAP || typeof L === 'undefined') return;
+  if (foodLayer) foodLayer.clearLayers(); else foodLayer = L.layerGroup().addTo(MAP);
+  if (!FOOD || !FOOD.items.length) return;
+  for (const f of FOOD.items) {
+    const icon = L.divIcon({ className: '', html: `<div class="pinw"><div class="pin" style="--c:#ef6c00;width:22px;height:22px;font-size:12px">${FOOD_KIND[f.kind][0]}</div></div>`, iconSize: [22, 22], iconAnchor: [11, 11], popupAnchor: [0, -10] });
+    L.marker([f.lat, f.lon], { icon }).bindPopup(() => foodPopup(f), { maxWidth: 240 }).bindTooltip(esc(f.name), { direction: 'top', offset: [0, -8] }).addTo(foodLayer);
+  }
+  if (fit) MAP.setView([FOOD.at.lat, FOOD.at.lon], 16);
+}
+function foodPanel() {
+  if (!FOOD) return '';
+  const head = `<div class="row" style="gap:6px;margin-bottom:4px"><b class="grow">🍽️ Food near ${esc(FOOD.at.label)}${FOOD.items.length ? ` (${FOOD.items.length})` : ''}</b><button class="btn small" data-act="foodclear">✕ Hide</button></div>`;
+  if (FOOD.busy) return `<div class="card small" style="margin-bottom:8px">${head}<span class="muted">Looking up cafés and restaurants within ${FOOD_KM * 1000} m…</span></div>`;
+  if (FOOD.err) return `<div class="card small" style="margin-bottom:8px">${head}<span style="color:var(--warn)">${esc(FOOD.err)}</span> <button class="btn small" data-act="foodretry">Retry</button></div>`;
+  if (!FOOD.items.length) return `<div class="card small" style="margin-bottom:8px">${head}<span class="muted">Nothing to eat mapped within ${FOOD_KM * 1000} m.</span></div>`;
+  const n = UI.foodN || 8;
+  return `<div class="card small" style="margin-bottom:8px">${head}
+    <div class="tiny muted" style="margin-bottom:4px">From OpenStreetMap, live. Places with a play area, high chair or baby changing come first; check reviews and hours on Google Maps.</div>
+    ${FOOD.items.slice(0, n).map(f => { const perks = foodPerks(f.t); return `<div class="row" style="gap:6px;margin:5px 0;align-items:flex-start">
+      <span class="grow">${FOOD_KIND[f.kind][0]} <b>${esc(f.name)}</b> <span class="muted">· ${kmText(f.km)}</span>${perks.length ? `<br><span class="tiny">${perks.join(' · ')}</span>` : ''}</span>
+      <button class="btn small" data-act="foodshow" data-id="${esc(f.id)}">Map</button><a class="btn small" href="${esc(foodMapsUrl(f))}" target="_blank" rel="noopener">Maps ↗</a></div>`; }).join('')}
+    ${FOOD.items.length > n ? `<button class="btn small" data-act="foodmore">Show more (${FOOD.items.length - n})</button>` : ''}</div>`;
 }
 // places near you that suit the kids: not skipped, not a town, base or airport; playgrounds included
 const nearbyList = (n, maxKm = Infinity, exclude = new Set()) => !GEO_SORT ? [] : S.places
@@ -1688,10 +1759,11 @@ function mapDays() {
   }).filter(Boolean);
 }
 function renderMapControls() { return renderMapControlsInner() + geoBar() + mapFilterHTML(); }
-const geoBar = () => `<div class="row small" style="gap:6px;margin-bottom:6px;flex-wrap:wrap">
+const geoBar = () => `<div id="geobar"><div class="row small" style="gap:6px;margin-bottom:6px;flex-wrap:wrap">
     <button class="btn small ${UI.near ? 'primary' : ''}" data-act="near" aria-pressed="${!!UI.near}">📍 Near me${UI.near ? ': on' : ''}</button>
     ${UI.near ? `<button class="btn small" data-act="follow" aria-pressed="${!!UI.follow}">${UI.follow ? '✓ Following you' : 'Follow me'}</button>` : ''}
-    <span class="tiny muted grow" id="geostatus">${esc(geoStatus())}</span></div>`;
+    ${UI.near ? `<button class="btn small" data-act="foodme" ${GEO ? '' : 'disabled'}>🍽️ Food near me</button>` : ''}
+    <span class="tiny muted grow" id="geostatus">${esc(geoStatus())}</span></div>${foodPanel()}</div>`;
 function renderMapControlsInner() {
   const days = S.days.filter(d => blockOf(d.date) && d.state !== 'booked');
   const valid = v => v === '__all' || (isOverview(v) && S.blocks.some(b => '__block:' + b.id === v)) || days.some(d => d.date === v);
@@ -1783,7 +1855,7 @@ function buildMarkers() {
   const zoomClass = () => { const z = MAP.getZoom(), c = MAP.getContainer().classList; c.toggle('z-low', z < 8); c.toggle('z-mid', z >= 8 && z < 10); };
   if (!buildMarkers.hooked) { MAP.on('zoomend', zoomClass); buildMarkers.hooked = true; }
   zoomClass();
-  geoDot = geoAcc = null; geoDraw();
+  geoDraw(); foodDraw(); // both update their own layers in place
   mapDirty = false;
 }
 function drawRoute() {
@@ -1835,7 +1907,7 @@ function popupHTML(pid) {
     ${first ? `<div style="margin:4px 0">${esc(first)}</div>` : ''}
     ${p.hours ? `<div class="tiny muted">🕘 ${esc(p.hours.replace('-', '–'))}${p.closed?.length ? ' · closed ' + p.closed.map(x => DOW[x]).join(', ') : ''}</div>` : ''}
     ${p.note && p.note !== p.caution ? `<div class="small muted" style="margin:4px 0">${withEur(esc(p.note))}</div>` : ''}${p.caution ? `<div class="small" style="color:var(--warn)">${withEur(esc(p.caution))}</div>` : ''}
-    <button class="btn small" data-act="pinfo" data-place="${esc(pid)}" style="margin:2px 0 4px">More info & photo</button>
+    <div class="row" style="gap:6px;margin:2px 0 4px"><button class="btn small" data-act="pinfo" data-place="${esc(pid)}">More info & photo</button><button class="btn small" data-act="foodat" data-place="${esc(pid)}">🍽️ Food nearby</button></div>
     ${from}${o ? `<div class="row" style="gap:6px"><button class="btn small primary" data-act="madd" data-place="${esc(pid)}">Add to ${dateLabel(date)}</button>
     <button class="btn small" data-act="msleep" data-place="${esc(pid)}">Sleep here</button></div>` : '<div class="small muted">Pick a single day above to add stops here.</div>'}`;
 }
@@ -1854,6 +1926,7 @@ const HELP_TEXT = {
     <li>The days are gentler by default: up to <b>2.5 h</b> of driving and <b>5.5 h</b> of visits, starting at <b>09:00</b>, with 45 min spare. Change it in ⚙ Settings, or per day.</li>
     <li><b>Playgrounds and more from OpenStreetMap:</b> about 420 public playgrounds (up to 3 near each place in the planner), plus indoor play centres, trampoline parks, water parks, small zoos, farms and mini golf, marked <b>unverified</b>. Auto-plan never adds them on its own: tap <b>🛝 Playground</b> (or another type) on the Places tab and add one to a day. A playground's travel time is a short hop from the place it's next to.</li>
     <li><b>📍 Near me</b> (Map tab, or the Places tab's sort pills): shows where you are and the playgrounds around you on the map and sorts places by distance, playgrounds included. On a day of your trip, the Plan tab shows the closest suitable places with <b>Add to today</b>. Your location is used only while the app is open and Near me is on; it never leaves your phone. Distances are straight lines.</li>
+    <li><b>🍽️ Food:</b> with Near me on, <b>Food near me</b> (Map tab) looks up cafés, restaurants, pastry shops and ice cream within 800 m, live from OpenStreetMap; any place's map popup has <b>Food nearby</b> too. Places mapped with a play area, high chair or baby changing come first (few are), then ice cream and terraces. Needs a connection; check reviews and hours on Google Maps.</li>
     <li>Need a lunch or nap stop? Open a day → <b>+ Add a stop</b> → <b>Break</b>.</li>
     <li>Children's prices vary a lot: most places are free for under-3s, and many have family tickets. Prices are approximate.</li>
   </ul></details><details class="card help"><summary>🇵🇹 Opening hours and getting around (Portugal)</summary><div class="helpbody"><ul>
@@ -2038,6 +2111,13 @@ document.addEventListener('click', e => {
     case 'pick': { const id = el.dataset.place, v = el.dataset.v; S.picks[id] = S.picks[id] === v ? undefined : v; if (!S.picks[id]) delete S.picks[id]; changed(); break; }
     case 'pfilter': UI.pf = { ...(UI.pf || {}), [el.dataset.k]: el.dataset.v }; UI.pn = 60; if (el.dataset.k === 'sort' && el.dataset.v === 'near' && !UI.near) geoSet(true); else render(); break;
     case 'near': geoSet(!UI.near); break;
+    case 'foodme': if (GEO) { UI.foodN = 8; foodSearch(GEO.lat, GEO.lon, 'you'); } break;
+    case 'foodat': { const p = place(el.dataset.place); if (!p) break; MAP && MAP.closePopup(); UI.foodN = 8; if (UI.tab !== 'map') goTab('map'); foodSearch(p.lat, p.lon, p.name); break; }
+    case 'foodretry': if (FOOD) foodSearch(FOOD.at.lat, FOOD.at.lon, FOOD.at.label); break;
+    case 'foodclear': FOOD = null; foodDraw(); render(); break;
+    case 'foodmore': UI.foodN = (UI.foodN || 8) + 10; render(); break;
+    case 'foodshow': { const f = FOOD && FOOD.items.find(x => x.id === el.dataset.id); if (!f || !MAP) break; MAP.setView([f.lat, f.lon], 17);
+      foodLayer.eachLayer(m => { const ll = m.getLatLng(); if (ll.lat === f.lat && ll.lng === f.lon) m.openPopup(); }); window.scrollTo(0, 0); break; }
     case 'follow': UI.follow = !UI.follow; if (UI.follow && GEO && MAP) MAP.setView([GEO.lat, GEO.lon], Math.max(MAP.getZoom(), 14)); render(); break;
     case 'nearadd': { const today = todayISO(); stopOp(today, p => p.stops.push({ place: el.dataset.place })); toast(`Added ${placeName(el.dataset.place)} to today`); break; }
     case 'pmore': UI.pn = (UI.pn || 60) + 60; render(); break;
