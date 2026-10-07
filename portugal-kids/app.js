@@ -11,7 +11,7 @@ const LS_STATE = 'ptkids-planner-v1';
 const LS_UI = 'ptkids-planner-ui';
 // Bump on every change. The app compares it with the app.js on the server, so a phone that kept an old tab open
 // (no reload, so still the old code) is told a newer version exists.
-const APP_BUILD = '2026-10-04.k7';
+const APP_BUILD = '2026-10-07.k8';
 let NEWER = null; // the newer build found on the server, if any
 const AX0 = 5 * 60, AX1 = 23 * 60;           // timeline axis 05:00–23:00
 const DEFAULT_SETTINGS = {
@@ -70,7 +70,16 @@ function geoStart() {
 }
 function geoStop() { if (GEO_WATCH != null && navigator.geolocation) navigator.geolocation.clearWatch(GEO_WATCH); GEO_WATCH = null; }
 function geoSync() { if (UI.near && document.visibilityState === 'visible') geoStart(); else geoStop(); geoDraw(); }
-function geoSet(on) { UI.near = on; if (!on) { GEO = GEO_SORT = null; UI.follow = false; if (UI.pf && UI.pf.sort === 'near') UI.pf.sort = 'best'; } geoSync(); render(); }
+function geoSet(on) {
+  UI.near = on;
+  // playgrounds are hidden on the map by default (hundreds of pins); with Near me on, the ones around you are what you want.
+  // Show them while it's on, and hide them again afterwards only if Near me was what showed them.
+  const f = mf();
+  if (on && f.hide.includes('Playground')) { f.hide = f.hide.filter(c => c !== 'Playground'); UI.pgByNear = true; mapDirty = true; }
+  if (!on && UI.pgByNear) { if (!f.hide.includes('Playground')) f.hide.push('Playground'); UI.pgByNear = false; mapDirty = true; }
+  if (!on) { GEO = GEO_SORT = null; UI.follow = false; if (UI.pf && UI.pf.sort === 'near') UI.pf.sort = 'best'; }
+  geoSync(); render();
+}
 const geoStatus = () => !UI.near ? '' : GEO_ERR ? GEO_ERR : !GEO ? 'Finding where you are…' : `Location found (±${GEO.acc < 1000 ? Math.round(GEO.acc) + ' m' : kmText(GEO.acc / 1000)})`;
 function geoDraw(first) {
   if (!MAP || typeof L === 'undefined') return;
@@ -1830,7 +1839,7 @@ const HELP_TEXT = {
     <li><b>🌧 Rainy day</b> on the Places tab lists indoor places: aquariums, science centres, museums.</li>
     <li>The days are gentler by default: up to <b>2.5 h</b> of driving and <b>5.5 h</b> of visits, starting at <b>09:00</b>, with 45 min spare. Change it in ⚙ Settings, or per day.</li>
     <li><b>Playgrounds and more from OpenStreetMap:</b> about 420 public playgrounds (up to 3 near each place in the planner), plus indoor play centres, trampoline parks, water parks, small zoos, farms and mini golf, marked <b>unverified</b>. Auto-plan never adds them on its own: tap <b>🛝 Playground</b> (or another type) on the Places tab and add one to a day. A playground's travel time is a short hop from the place it's next to.</li>
-    <li><b>📍 Near me</b> (Map tab, or the Places tab's sort pills): shows where you are on the map and sorts places by distance, playgrounds included. On a day of your trip, the Plan tab shows the closest suitable places with <b>Add to today</b>. Your location is used only while the app is open and Near me is on; it never leaves your phone. Distances are straight lines.</li>
+    <li><b>📍 Near me</b> (Map tab, or the Places tab's sort pills): shows where you are and the playgrounds around you on the map and sorts places by distance, playgrounds included. On a day of your trip, the Plan tab shows the closest suitable places with <b>Add to today</b>. Your location is used only while the app is open and Near me is on; it never leaves your phone. Distances are straight lines.</li>
     <li>Need a lunch or nap stop? Open a day → <b>+ Add a stop</b> → <b>Break</b>.</li>
     <li>Children's prices vary a lot: most places are free for under-3s, and many have family tickets. Prices are approximate.</li>
   </ul></details><details class="card help"><summary>🇵🇹 Opening hours and getting around (Portugal)</summary><div class="helpbody"><ul>
@@ -2013,7 +2022,7 @@ document.addEventListener('click', e => {
     case 'flightedit': UI.editTrip = true; render(); scrollTo(0, 0); break;
     case 'wikiretry': IMG_W = null; try { localStorage.removeItem('portugal-imgw'); } catch (e) { } WIKI = {}; for (const k in IMG_FAIL) delete IMG_FAIL[k]; try { localStorage.removeItem(LS_WIKI); } catch (e) { } fetchWiki(); break;
     case 'pick': { const id = el.dataset.place, v = el.dataset.v; S.picks[id] = S.picks[id] === v ? undefined : v; if (!S.picks[id]) delete S.picks[id]; changed(); break; }
-    case 'pfilter': UI.pf = { ...(UI.pf || {}), [el.dataset.k]: el.dataset.v }; UI.pn = 60; if (el.dataset.k === 'sort' && el.dataset.v === 'near' && !UI.near) { UI.near = true; geoSync(); } render(); break;
+    case 'pfilter': UI.pf = { ...(UI.pf || {}), [el.dataset.k]: el.dataset.v }; UI.pn = 60; if (el.dataset.k === 'sort' && el.dataset.v === 'near' && !UI.near) geoSet(true); else render(); break;
     case 'near': geoSet(!UI.near); break;
     case 'follow': UI.follow = !UI.follow; if (UI.follow && GEO && MAP) MAP.setView([GEO.lat, GEO.lon], Math.max(MAP.getZoom(), 14)); render(); break;
     case 'nearadd': { const today = todayISO(); stopOp(today, p => p.stops.push({ place: el.dataset.place })); toast(`Added ${placeName(el.dataset.place)} to today`); break; }
