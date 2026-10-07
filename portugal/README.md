@@ -53,13 +53,13 @@ To fix or add places:
 - **Map:** orange dots when zoomed out, and his logo (`img/tascologo.png`) from zoom 10. The map filter has a *Tascólogo* switch.
 - **+ My places** turns one into a *Tasca* place you can put in a day. Its opening hours and closing days come along.
 
-`tascologo.json` is built from his map export (`parts/tascologo_places.xlsx`) by `tools/tascologo.py`. The script:
+`tascologo.json` is built from his map export by `tools/tascologo.py`. The export itself is his work, so it is not in the repo and not published (`parts/*.xlsx` is git-ignored). The script:
 - leaves out the places abroad (20 in Spain, Morocco, Thailand, Bolivia and the Dominican Republic);
 - merges rows listed twice;
 - converts the Google opening hours;
 - translates the place types to English.
 
-It has 1,215 places. To update it, replace the spreadsheet, then run `python3 portugal/tools/tascologo.py` and `python3 trips/tools/build.py`.
+It has 1,215 places. To update it, export his map again, then run `python3 portugal/tools/tascologo.py path/to/Tascologo_places.xlsx` and `python3 trips/tools/build.py`.
 
 ## Via ferratas
 

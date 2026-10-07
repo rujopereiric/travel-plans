@@ -71,6 +71,48 @@ let UI = { tab: 'plan', open: {}, mapDay: null, cmpBlock: null, theme: 'auto' };
 /* ---------- small utils ---------- */
 const $ = (s, r = document) => r.querySelector(s);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+// Links and image addresses can come from OpenStreetMap, Wikipedia or an imported plan file: only web links
+// (http/https) and relative paths are used, never javascript: or other schemes. Browsers ignore tabs, newlines
+// and leading spaces in a scheme, so those are removed before checking.
+const safeUrl = u => { u = String(u ?? '').trim(); const m = /^([^/?#]*?):/.exec(u.replace(/[\x00-\x20\x7f]/g, '')); return !m || /^https?$/i.test(m[1]) ? u : ''; };
+// A plan file can come from anyone (Import, or a copy saved in this browser). Ids, dates, colours and numbers are put
+// into the page as they are, so they must have their expected shape. Returns what's wrong, or '' when it's fine.
+function unsafePlan(s) {
+  const ID = /^[\w.:-]{1,120}$/, DATE = /^\d{4}-\d{2}-\d{2}$/, COLOR = /^#[0-9a-f]{3,8}$/i, WORD = /^[\w .:+-]{0,40}$/;
+  const arr = v => Array.isArray(v) ? v : [], obj = v => v && typeof v === 'object' ? v : {};
+  const id = v => v == null || ((typeof v === 'string' || typeof v === 'number') && ID.test(String(v)));
+  const num = v => v == null || (typeof v === 'number' && isFinite(v));
+  const date = v => v == null || v === 'auto' || (typeof v === 'string' && DATE.test(v));
+  const word = v => v == null || typeof v === 'boolean' || (typeof v === 'number' && isFinite(v)) || (typeof v === 'string' && WORD.test(v));
+  if (!s || typeof s !== 'object') return 'not a plan';
+  const t = obj(s.trip);
+  if (!date(t.from) || !date(t.to)) return 'trip dates';
+  if (![t.home, t.end, obj(t.arrive).at, obj(t.leave).at].every(id) || ![obj(t.arrive).time, obj(t.leave).time, t.sunLat, t.sunLon].every(word)) return 'trip';
+  for (const v of Object.values(obj(s.settings))) if (!word(v)) return 'settings';
+  for (const r of arr(s.regions)) if (!id(r?.id) || !(r.color == null || COLOR.test(r.color))) return 'regions';
+  for (const p of arr(s.places)) {
+    if (!p || !ID.test(String(p.id)) || !id(p.region) || ![p.lat, p.lon, p.visit, p.priority].every(num)) return 'places';
+    if (p.closed != null && !arr(p.closed).every(x => Number.isInteger(x))) return 'places';
+  }
+  for (const d of arr(s.days)) if (!d || !DATE.test(d.date) || !word(d.state)) return 'days';
+  for (const b of arr(s.blocks)) if (!b || !id(b.id) || !date(b.from) || !date(b.to) || !id(b.active)) return 'blocks';
+  for (const o of arr(s.options)) {
+    if (!o || !id(o.id) || !id(o.block)) return 'plans';
+    for (const [d, p] of Object.entries(obj(o.days))) {
+      if (!DATE.test(d) || !id(obj(p).sleep)) return 'plans';
+      for (const x of arr(obj(p).stops)) if (!x || !id(x.place) || !Object.values(x).every(v => typeof v === 'string' || word(v))) return 'plans';
+    }
+  }
+  for (const x of arr(s.drives)) if (!Array.isArray(x) || !id(x[0]) || !id(x[1]) || !num(x[2]) || !num(x[3]) || !word(x[4]) || !num(x[5])) return 'travel legs';
+  for (const b of arr(s.bookings)) if (!b || !id(b.id) || !id(b.option) || !num(b.est) || !num(b.actual) || !word(b.type) || !word(b.status)) return 'bookings';
+  for (const [k, v] of Object.entries(obj(s.picks))) if (!ID.test(k) || !word(v)) return 'picks';
+  return '';
+}
+// photos and fold-outs: listeners instead of inline handlers, so no data ever ends up inside JavaScript (and the page's
+// Content-Security-Policy can forbid inline scripts). load, error and toggle don't bubble, so listen while capturing.
+document.addEventListener('load', e => { const t = e.target; if (t.tagName === 'IMG' && t.dataset.pid) imgOk(t.dataset.pid, t); }, true);
+document.addEventListener('error', e => { const t = e.target; if (t.tagName === 'IMG' && t.dataset.pid) imgFail(t, t.dataset.pid); }, true);
+document.addEventListener('toggle', e => { const k = e.target.dataset?.uiOpen; if (k) { UI[k] = e.target.open; saveUI(); } }, true);
 const clamp = (x, a, b) => Math.max(a, Math.min(b, x));
 const TOMIN = new Map(); // auto-plan parses the same few times millions of times
 const toMin = t => { if (!t) return null; let v = TOMIN.get(t); if (v === undefined) { const [h, m] = String(t).split(':').map(Number); v = h * 60 + (m || 0); TOMIN.set(t, v); } return v; };
@@ -980,6 +1022,7 @@ async function boot() {
   let file = null;
   if (text) { try { file = JSON.parse(text); } catch (e) { LOAD_ERROR = 'data.json is not valid JSON: ' + e.message; } }
   const fh = text ? hash(text) : null;
+  if (saved && saved.state && unsafePlan(saved.state)) saved = null; // never run a tampered copy
   if (saved && saved.state) {
     S = saved.state; BASE_HASH = saved.base; DIRTY = !!saved.dirty;
     if (file && fh !== saved.base) {
@@ -1046,6 +1089,7 @@ function importJSON(file) {
     try {
       const s = JSON.parse(fr.result);
       if (!Array.isArray(s.days) || !Array.isArray(s.places) || !s.trip) throw new Error('missing trip/days/places');
+      const bad = unsafePlan(s); if (bad) throw new Error(`this file has content that isn't allowed (${bad}), so it was not loaded`);
       if (S && !confirm('Replace your current plan with this file?')) return;
       S = normalize(s); reindex(); LOAD_ERROR = null; PENDING = null; mapDirty = true;
       if (!S.blocks.find(b => b.id === UI.cmpBlock)) UI.cmpBlock = S.blocks[0]?.id;
@@ -1379,7 +1423,7 @@ function renderBook() {
 
 /* ---------- render: conditions tab ---------- */
 function renderCond() {
-  let h = `<h2 style="margin-bottom:6px">⚙ Settings</h2><div class="row" style="flex-wrap:wrap;gap:6px;margin-bottom:6px"><button class="chip hbtn" data-jump="sec-settings">Settings</button><button class="chip hbtn" data-jump="sec-your-data">Your data / backup</button><button class="chip hbtn" data-jump="sec-check-before-you-go">Check before you go</button><button class="chip hbtn" data-jump="sec-checklist">Checklist</button><button class="chip hbtn" data-jump="sec-daylight">Daylight</button></div><h2 id="sec-check-before-you-go">Check before you go</h2><div class="links">${S.links.map(l => `<a class="card" href="${esc(l.url)}" target="_blank" rel="noopener">
+  let h = `<h2 style="margin-bottom:6px">⚙ Settings</h2><div class="row" style="flex-wrap:wrap;gap:6px;margin-bottom:6px"><button class="chip hbtn" data-jump="sec-settings">Settings</button><button class="chip hbtn" data-jump="sec-your-data">Your data / backup</button><button class="chip hbtn" data-jump="sec-check-before-you-go">Check before you go</button><button class="chip hbtn" data-jump="sec-checklist">Checklist</button><button class="chip hbtn" data-jump="sec-daylight">Daylight</button></div><h2 id="sec-check-before-you-go">Check before you go</h2><div class="links">${S.links.map(l => `<a class="card" href="${esc(safeUrl(l.url))}" target="_blank" rel="noopener">
     <div class="row"><b>${esc(l.name)}</b><span class="grow"></span><span class="tiny muted">${esc(l.host || new URL(l.url).host)} ↗</span></div>
     ${l.note ? `<div class="small muted">${esc(l.note)}</div>` : ''}</a>`).join('')}</div>
     <div class="card small"><b>Emergency numbers</b><div class="kv" style="margin-top:6px">
@@ -1513,7 +1557,7 @@ function photoStatus() {
   let msg = WIKI_BUSY ? 'Loading photos from Wikipedia…' : !navigator.onLine && got < n ? `Offline — ${got} of ${n} photos available.`
     : `Photos: ${got} of ${n}` + (failed ? ` · ${failed} failed to display` : '') + (WIKI_ERR ? ` · Wikipedia lookup failed: ${WIKI_ERR}` : '');
   const sample = failed ? Object.values(IMG_FAIL)[0] : '';
-  return `<div id="photostatus" class="row tiny muted" style="margin-bottom:8px"><span class="grow">${esc(msg)}${sample ? `<br>e.g. <a href="${esc(sample)}" target="_blank" rel="noopener">open a failing image</a>` : ''}</span>
+  return `<div id="photostatus" class="row tiny muted" style="margin-bottom:8px"><span class="grow">${esc(msg)}${sample ? `<br>e.g. <a href="${esc(safeUrl(sample))}" target="_blank" rel="noopener">open a failing image</a>` : ''}</span>
     ${got < n && !WIKI_BUSY ? `<button class="btn small" data-act="wikiretry">Retry photos</button>` : ''}</div>`;
 }
 function plannedIn(id) {
@@ -1557,7 +1601,7 @@ function renderMyPlaces() {
     const rest = facts.filter(f => f !== done && f !== stats);
     const ours = (p.links || []).filter(l => /^(📝|▶️)/.test(l.name)), other = (p.links || []).filter(l => !ours.includes(l));
     h += `<article class="card poi ${pk ? 'pk-' + pk : ''}" id="poi-${esc(p.id)}">
-      <div class="poiimg" style="--rc:${rg.color}"><span>${esc(p.cat || '')}</span>${img ? `<img src="${esc(img)}" alt="${esc(p.name)}" loading="lazy" referrerpolicy="no-referrer" onerror="imgFail(this,'${esc(p.id)}')" onload="imgOk('${esc(p.id)}', this)">` : ''}
+      <div class="poiimg" style="--rc:${rg.color}"><span>${esc(p.cat || '')}</span>${img ? `<img src="${esc(safeUrl(img))}" alt="${esc(p.name)}" loading="lazy" referrerpolicy="no-referrer" data-pid="${esc(p.id)}">` : ''}
         ${pk === 'must' ? '<span class="poistar">★ Must-see</span>' : ''}${done ? '<span class="poidone">✓ Done</span>' : ''}</div>
       <div class="poibody">
         <div class="row"><h3 class="grow" style="margin:0">${esc(p.name)}</h3>${p.confidence === 'low' ? '<span class="chip partial">unverified</span>' : ''}<span class="chip">${catInfo(p.cat).icon} ${esc(p.cat || 'Place')}</span></div>
@@ -1565,7 +1609,7 @@ function renderMyPlaces() {
         ${p.caution ? `<div class="small" style="color:var(--warn);margin:2px 0 4px">⚠ ${withEur(esc(p.caution))}</div>` : ''}
         ${p.summary ? `<p class="clamp2" style="margin:0 0 4px">${esc(p.summary)}</p>` : ''}
         ${key ? `<div class="small keyline">${esc(key)}</div>` : ''}
-        ${ours.length ? `<div class="small" style="margin:4px 0">${ours.map(l => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(shortLink(l.name))}</a>`).join(' · ')}</div>` : ''}
+        ${ours.length ? `<div class="small" style="margin:4px 0">${ours.map(l => `<a href="${esc(safeUrl(l.url))}" target="_blank" rel="noopener">${esc(shortLink(l.name))}</a>`).join(' · ')}</div>` : ''}
         <div class="row" style="gap:6px;margin-top:8px">
           <button class="btn small ${pk === 'must' ? 'primary' : ''}" data-act="pick" data-v="must" data-place="${esc(p.id)}" aria-pressed="${pk === 'must'}">★ Must-see</button>
           <button class="btn small ${pk === 'skip' ? 'danger' : ''}" data-act="pick" data-v="skip" data-place="${esc(p.id)}" aria-pressed="${pk === 'skip'}">${pk === 'skip' ? 'Skipped' : 'Skip'}</button>
@@ -1580,11 +1624,11 @@ function renderMyPlaces() {
           ${p.season ? `<div class="seasonal" style="margin:6px 0">☀ ${withEur(esc(p.season))}</div>` : ''}
           ${w.extract ? `<p class="small muted" style="margin:6px 0"><b>From Wikipedia:</b> ${esc(w.extract)}</p>` : ''}
           <div class="row small" style="margin:6px 0;flex-wrap:wrap">
-            ${p.wiki === false ? '' : `<a href="${esc(wurl)}" target="_blank" rel="noopener">Wikipedia ↗</a>`}
+            ${p.wiki === false ? '' : `<a href="${esc(safeUrl(wurl))}" target="_blank" rel="noopener">Wikipedia ↗</a>`}
             <a href="https://www.google.com/maps/dir/?api=1&destination=${p.lat},${p.lon}" target="_blank" rel="noopener">Directions ↗</a>
-            ${other.map(l => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.name)} ↗</a>`).join('')}</div>
-          ${p.sources && p.sources.length ? `<div class="tiny muted">Sources${p.checked ? ` (checked ${esc(dateLabel(p.checked, { day: 'numeric', month: 'short', year: 'numeric' }))}${p.confidence ? `, ${esc(p.confidence)} confidence` : ''})` : ''}: ${p.sources.map(u => `<a href="${esc(u)}" target="_blank" rel="noopener">${esc(u.replace(/^https?:\/\/(www\.)?/, '').split('/')[0])}</a>`).join(', ')}</div>` : ''}
-          ${img ? `<div class="tiny muted" style="margin-top:4px">Photo: <a href="${esc(p.photo ? p.photo : w.commons || wurl)}" target="_blank" rel="noopener">${p.photo ? esc(p.photoCredit || 'custom') : w.commons ? 'Wikimedia Commons' : 'Wikipedia / Wikimedia Commons'}</a></div>` : ''}
+            ${other.map(l => `<a href="${esc(safeUrl(l.url))}" target="_blank" rel="noopener">${esc(l.name)} ↗</a>`).join('')}</div>
+          ${p.sources && p.sources.length ? `<div class="tiny muted">Sources${p.checked ? ` (checked ${esc(dateLabel(p.checked, { day: 'numeric', month: 'short', year: 'numeric' }))}${p.confidence ? `, ${esc(p.confidence)} confidence` : ''})` : ''}: ${p.sources.map(u => `<a href="${esc(safeUrl(u))}" target="_blank" rel="noopener">${esc(u.replace(/^https?:\/\/(www\.)?/, '').split('/')[0])}</a>`).join(', ')}</div>` : ''}
+          ${img ? `<div class="tiny muted" style="margin-top:4px">Photo: <a href="${esc(safeUrl(p.photo ? p.photo : w.commons || wurl))}" target="_blank" rel="noopener">${p.photo ? esc(p.photoCredit || 'custom') : w.commons ? 'Wikimedia Commons' : 'Wikipedia / Wikimedia Commons'}</a></div>` : ''}
         </details>
       </div></article>`;
   }
@@ -1631,7 +1675,7 @@ const COUNTRY_OSM = {"mosque":  "Mosque", "tomb":  "Ancient site", "castle":  "C
 const osmArea = id => OSM_AREAS.find(x => x[0] === id);
 function osmMerge() { // rebuild the merged view from the downloaded areas (areas overlap a little)
   const seen = new Set(), items = [];
-  for (const k of Object.keys(OSM_STORE.areas)) for (const a of OSM_STORE.areas[k].items) if (!seen.has(a[0]) && !OSM_EXCLUDE.has(a[0])) { seen.add(a[0]); items.push(a); }
+  for (const k of Object.keys(OSM_STORE.areas)) for (const a of OSM_STORE.areas[k].items) if (/^[nwr]\d+$/.test(a[0]) && !seen.has(a[0]) && !OSM_EXCLUDE.has(a[0])) { seen.add(a[0]); items.push(a); }
   OSM = items.length || Object.keys(OSM_STORE.areas).length ? { items } : null;
   osmLayerDirty = true;
 }
@@ -1699,7 +1743,8 @@ const osmRow = el => {
     else if (!t.description) t.description = 'Via ferrata (grade not mapped).';
   }
   if (!name || lat == null || OSM_EXCLUDE.has(el.type[0] + el.id)) return null;
-  return [el.type[0] + el.id, name, +lat.toFixed(5), +lon.toFixed(5), osmCat(t, name), t.wikipedia || '', t.website || t['contact:website'] || '', (t['description:en'] || t.description || '').slice(0, 200), t.name !== name ? t.name || '' : ''];
+  if (!/^[nwr]/.test(el.type) || !Number.isSafeInteger(el.id)) return null;
+  return [el.type[0] + el.id, name, +lat.toFixed(5), +lon.toFixed(5), osmCat(t, name), t.wikipedia || '', /^https?:\/\//i.test(t.website || t['contact:website'] || '') ? t.website || t['contact:website'] : '', (t['description:en'] || t.description || '').slice(0, 200), t.name !== name ? t.name || '' : ''];
 };
 /* osm-shared-end */
 const OSM_TIMEOUT = 120000;
@@ -1827,7 +1872,7 @@ function renderOsm() {
       ${busy || queued || !osmArea(id) ? '' : `<button class="btn small ${got ? '' : 'primary'}" data-act="osmload" data-v="${id}">${got ? '↻' : err ? 'Retry' : 'Download'}</button>`}
       ${got && !busy ? `<button class="btn small danger" data-act="osmrm" data-v="${id}" aria-label="Remove ${esc(name)}">✕</button>` : ''}</div>`;
   };
-  const areasCard = `<details class="card" ${!OSM || UI.osmAreasOpen || OSM_BUSY ? 'open' : ''} ontoggle="UI.osmAreasOpen=this.open;saveUI()" style="padding:10px 12px">
+  const areasCard = `<details class="card" ${!OSM || UI.osmAreasOpen || OSM_BUSY ? 'open' : ''} data-ui-open="osmAreasOpen" style="padding:10px 12px">
     <summary><b>Download sights by region</b> <span class="tiny muted">· ${Object.keys(OSM_STORE.areas).filter(k => osmArea(k)).length} of ${OSM_AREAS.length} downloaded</span></summary>
     <p class="small muted" style="margin:6px 0">Everything OpenStreetMap knows in each region: archaeological sites, temples, tombs, museums, fortresses, dive reefs, beaches, desert landmarks, viewpoints and reserves, plus famous mosques and churches. Names, types and links only, so set opening hours after adding one to <b>My places</b>. Kept on your phone for offline use.</p>
     ${OSM_BUSY && OSM_RUN.total > 1 ? `<div class="small" style="margin:6px 0 2px"><b>Region ${Math.min(OSM_RUN.done + 1, OSM_RUN.total)} of ${OSM_RUN.total}</b> · ${esc(osmArea(OSM_BUSY)?.[1] || '')}</div>
@@ -1860,10 +1905,10 @@ function osmListHTML() {
       <div class="tiny muted">${o.local ? '<bdi dir="auto">' + esc(o.local) + '</bdi>' + ' · ' : ''}${Math.round(d)} km from ${esc(placeName(near.id))} (straight line)</div>
       ${o.desc ? `<div class="small" style="margin-top:3px">${esc(o.desc)}</div>` : ''}
       <div class="row small" style="margin-top:6px;gap:10px">
-        ${wurl ? `<a href="${esc(wurl)}" target="_blank" rel="noopener">Wikipedia ↗</a>` : ''}
+        ${wurl ? `<a href="${esc(safeUrl(wurl))}" target="_blank" rel="noopener">Wikipedia ↗</a>` : ''}
         <a href="https://www.google.com/maps/dir/?api=1&destination=${o.lat},${o.lon}" target="_blank" rel="noopener">Directions ↗</a>
-        <a href="${esc(osmUrl(o.id))}" target="_blank" rel="noopener">OSM ↗</a>
-        ${o.web ? `<a href="${esc(o.web)}" target="_blank" rel="noopener">Website ↗</a>` : ''}
+        <a href="${esc(safeUrl(osmUrl(o.id)))}" target="_blank" rel="noopener">OSM ↗</a>
+        ${o.web ? `<a href="${esc(safeUrl(o.web))}" target="_blank" rel="noopener">Website ↗</a>` : ''}
         <span class="grow"></span>
         <button class="btn small" data-act="osmmap" data-osm="${esc(o.id)}">Map</button>
         ${mine ? `<button class="btn small" data-act="pinfo" data-place="${esc(mine.id)}">In my places ✓</button>` : `<button class="btn small primary" data-act="osmadd" data-osm="${esc(o.id)}">+ My places</button>`}
@@ -1917,7 +1962,7 @@ function osmPopup(o) {
   const mine = osmMine(o), wurl = wikiUrl(o.wiki);
   return `<h4>${catInfo(o.cat).icon} ${esc(o.name)}</h4><div class="tiny muted">${esc(o.cat)} · OpenStreetMap${o.local ? ' · ' + '<bdi dir="auto">' + esc(o.local) + '</bdi>' : ''}</div>
     ${o.desc ? `<div style="margin:4px 0">${esc(o.desc)}</div>` : ''}
-    <div class="small" style="margin:4px 0">${wurl ? `<a href="${esc(wurl)}" target="_blank" rel="noopener">Wikipedia ↗</a> · ` : ''}<a href="${esc(osmUrl(o.id))}" target="_blank" rel="noopener">OSM ↗</a></div>
+    <div class="small" style="margin:4px 0">${wurl ? `<a href="${esc(safeUrl(wurl))}" target="_blank" rel="noopener">Wikipedia ↗</a> · ` : ''}<a href="${esc(safeUrl(osmUrl(o.id)))}" target="_blank" rel="noopener">OSM ↗</a></div>
     ${mine ? `<button class="btn small" data-act="pinfo" data-place="${esc(mine.id)}">In my places ✓</button>` : `<button class="btn small primary" data-act="osmadd" data-osm="${esc(o.id)}">+ Add to my places</button>`}`;
 }
 
@@ -1948,7 +1993,7 @@ function mapFilterHTML() {
   const groups = [...CAT_GROUPS.map(g => ({ ...g, list: Object.keys(g.cats).filter(c => known.has(c)) })), ...(extra.length ? [{ id: 'other', name: 'Other', color: '#757575', list: extra }] : [])].filter(g => g.list.length);
   const hidden = f.hide.filter(c => known.has(c)).length;
   const n = c => (f.mine ? mineCount[c] || 0 : 0) + (f.osm && OSM ? osmCount[c] || 0 : 0);
-  return `<details class="mlwrap mfilter" ${UI.filterOpen ? 'open' : ''} ontoggle="UI.filterOpen=this.open;saveUI()">
+  return `<details class="mlwrap mfilter" ${UI.filterOpen ? 'open' : ''} data-ui-open="filterOpen">
     <summary>Filter map${hidden || f.must || !f.mine || (OSM && !f.osm) ? ` · <b>${[hidden ? `${hidden} type${hidden > 1 ? 's' : ''} hidden` : '', f.must ? 'must-sees only' : '', !f.mine ? 'my places hidden' : '', OSM && !f.osm ? '' : ''].filter(Boolean).join(', ') || 'custom'}</b>` : ''}</summary>
     <div class="row" style="gap:6px;margin:6px 0">
       <button class="pchip" data-act="msrc" data-v="mine" aria-pressed="${f.mine}">My places</button>
@@ -2013,7 +2058,7 @@ function renderMapControlsInner() {
     const loading = moving.some(x => !roadsLoaded(x.parts));
     return `<div class="row" style="margin-bottom:6px"><label class="f grow">Showing${sel}</label></div>
       <div class="small" style="margin-bottom:4px"><b>${moving.length} travel day${moving.length === 1 ? '' : 's'}</b> · ${dur(min)} · ${Math.round(km)} km${loading ? ` · <span class="muted">${navigator.onLine ? 'loading road routes…' : 'offline: some routes are straight lines'}</span>` : ''}</div>
-      <details class="mlwrap" ${UI.legendOpen ? 'open' : ''} ontoggle="UI.legendOpen=this.open;saveUI()"><summary>Days (${md.length}) — tap one to zoom in and edit</summary>
+      <details class="mlwrap" ${UI.legendOpen ? 'open' : ''} data-ui-open="legendOpen"><summary>Days (${md.length}) — tap one to zoom in and edit</summary>
       <div class="maplegend">${md.map(x => `<button data-act="mapgo" data-date="${x.date}" class="mlrow"><i style="background:${x.color}"></i>
         <span class="grow"><b>Day ${x.n} · ${dateLabel(x.date, { weekday: 'short', day: 'numeric', month: 'short' })}</b> ${badge(x.r.status)}<br>
         <span class="tiny muted">${x.ids.length > 1 ? x.ids.map(placeName).map(esc).join(' → ') + ` · ${dur(x.r.driveMin)}` : `Stay in ${esc(placeName(x.r.start || S.trip.home))}`}</span></span></button>`).join('')}</div></details>`;
@@ -2107,7 +2152,7 @@ function drawRoute() {
       const road = pt.mode === 'road' && ROUTES[pt.ids.join('>')], ll = pt.ids.map(id => [place(id).lat, place(id).lon]);
       const line = road ? L.polyline(road.pts, { color, weight: 4, opacity: .85 })
         : L.polyline(ll, { color, weight: 3, dashArray: pt.mode === 'road' ? '6 6' : pt.mode === 'flight' ? '2 9' : '12 6', opacity: .85 });
-      line.bindTooltip(overview ? `Day ${x.n} · ${dateLabel(x.date)} · ${dur(x.r.driveMin)}` : pt.mode === 'road' ? 'Road' : `${MODE_ICON[pt.mode]} ${placeName(pt.ids[0])} → ${placeName(pt.ids[1])} · ${dur(pt.min)} door to door`, { sticky: true });
+      line.bindTooltip(overview ? `Day ${x.n} · ${dateLabel(x.date)} · ${dur(x.r.driveMin)}` : pt.mode === 'road' ? 'Road' : `${MODE_ICON[pt.mode]} ${esc(placeName(pt.ids[0]))} → ${esc(placeName(pt.ids[1]))} · ${dur(pt.min)} door to door`, { sticky: true });
       if (overview) line.on('click', () => { UI.mapDay = x.date; render(); });
       line.addTo(routeLayer); bounds.push(...line.getLatLngs());
       if (pt.mode === 'road' && !road) fetchRoute(pt.ids);

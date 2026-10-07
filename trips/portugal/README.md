@@ -46,6 +46,21 @@ To fix or add places:
 2. Run `python3 portugal/tools/assemble.py`.
 3. Run `python3 trips/tools/build.py` to update the copy inside the Trips app.
 
+## Tascas by O Tascólogo
+
+[O Tascólogo](https://tascologo.pt) (Luís Lavoura, [@tascologo](https://www.instagram.com/tascologo/)) hand-picked more than 1,200 tascas and traditional restaurants. The app credits him wherever they appear:
+- **Places → Tascólogo:** the full list, with a credit card on top. You can search by name, town or dish, filter by district, and sort by distance from any place.
+- **Map:** orange dots when zoomed out, and his logo (`img/tascologo.png`) from zoom 10. The map filter has a *Tascólogo* switch.
+- **+ My places** turns one into a *Tasca* place you can put in a day. Its opening hours and closing days come along.
+
+`tascologo.json` is built from his map export by `tools/tascologo.py`. The export itself is his work, so it is not in the repo and not published (`parts/*.xlsx` is git-ignored). The script:
+- leaves out the places abroad (20 in Spain, Morocco, Thailand, Bolivia and the Dominican Republic);
+- merges rows listed twice;
+- converts the Google opening hours;
+- translates the place types to English.
+
+It has 1,215 places. To update it, export his map again, then run `python3 portugal/tools/tascologo.py path/to/Tascologo_places.xlsx` and `python3 trips/tools/build.py`.
+
 ## Via ferratas
 
 The 10 via ferratas in My places come from two sources:

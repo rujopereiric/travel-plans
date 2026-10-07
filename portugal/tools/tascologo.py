@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
-"""Builds portugal/tascologo.json from O Tascólogo's map export (parts/tascologo_places.xlsx).
+"""Builds portugal/tascologo.json from O Tascólogo's map export.
 
 O Tascólogo (Luís Lavoura, https://tascologo.pt) hand-picked more than 1,200 tascas and traditional restaurants.
 The app shows them as their own map layer and Places tab, credited to him, and any of them can be added to My places.
 Places outside Portugal are left out (Spain, Morocco, Thailand…): only the mainland, Madeira and the Azores are kept.
 Rows listed twice (once per list in the export) are merged.
 
-Run: python3 portugal/tools/tascologo.py   (needs openpyxl)
+Run: python3 portugal/tools/tascologo.py path/to/Tascologo_places.xlsx   (needs openpyxl)
+The export itself is his work and is never committed or published: put it anywhere (parts/*.xlsx is git-ignored).
 Each item is [id, name, lat, lon, district, town, type, note, rating, reviews, phone, website, maps, hours, flags]:
   hours: 7 strings, Sunday first: "08:00-15:00,19:00-22:00", "" = closed, "24h"; null when the export has no hours
   flags: "t" = temporarily closed, "n" = no Google listing (a bare address pin)
@@ -15,7 +16,7 @@ import hashlib, json, os, re, sys, datetime
 import openpyxl
 
 here = os.path.dirname(os.path.abspath(__file__)); root = os.path.dirname(here)
-SRC, OUT = os.path.join(root, 'parts', 'tascologo_places.xlsx'), os.path.join(root, 'tascologo.json')
+OUT = os.path.join(root, 'tascologo.json')
 # mainland, Madeira & Porto Santo, Azores: [south, west, north, east]
 BOXES = [(36.9, -9.6, 42.2, -6.15), (32.35, -17.3, 33.15, -16.2), (36.9, -31.3, 39.75, -24.9)]
 DAYS = ['domingo', 'segunda-feira', 'terça-feira', 'quarta-feira', 'quinta-feira', 'sexta-feira', 'sábado']
@@ -53,7 +54,8 @@ def hours(text):
     return [week.get(i, '') for i in range(7)] if len(week) == 7 else None
 
 def main():
-    ws = openpyxl.load_workbook(SRC, read_only=True).worksheets[0]
+    if len(sys.argv) != 2: sys.exit('usage: python3 portugal/tools/tascologo.py path/to/Tascologo_places.xlsx')
+    ws = openpyxl.load_workbook(sys.argv[1], read_only=True).worksheets[0]
     rows = list(ws.iter_rows(values_only=True)); head = rows[0]
     items, seen, foreign = [], {}, []
     for r in (dict(zip(head, x)) for x in rows[1:]):

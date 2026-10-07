@@ -1,7 +1,7 @@
 // Offline support: app files network-first (so edits to data.json show up when online),
 // Leaflet and map tiles cache-first (tiles you've viewed stay available offline).
 // Only ireland-* caches are touched: the other planners on this origin keep theirs.
-const APP = 'ireland-app-v1', TILES = 'ireland-tiles-v1', IMGS = 'ireland-imgs-v1', MAX_TILES = 3000;
+const APP = 'ireland-app-v2', TILES = 'ireland-tiles-v1', IMGS = 'ireland-imgs-v1', MAX_TILES = 3000;
 const SHELL = ['./', 'index.html', 'app.js', 'data.json', 'manifest.webmanifest', 'icon.svg', 'icon-192.png',
   'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css', 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js'];
 
@@ -68,7 +68,8 @@ self.addEventListener('fetch', e => {
   }
   if (url.hostname === 'unpkg.com') {
     e.respondWith(caches.match(req).then(hit => hit || fetch(req).then(res => {
-      const copy = res.clone(); caches.open(APP).then(c => c.put(req, copy)); return res;
+      if (res.ok) { const copy = res.clone(); caches.open(APP).then(c => c.put(req, copy)); } // never keep an error page
+      return res;
     })));
     return;
   }

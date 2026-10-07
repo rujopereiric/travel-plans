@@ -2,7 +2,7 @@
 // Leaflet and map tiles cache-first (tiles you've viewed stay available offline).
 // Only ptkids-* caches are touched: other apps on this origin (portugal/, egypt/, iceland-planner/) keep theirs.
 // (Not portugal-kids-*: the Portugal planner deletes every cache starting with portugal-.)
-const APP = 'ptkids-app-v1', TILES = 'ptkids-tiles-v1', IMGS = 'ptkids-imgs-v1', MAX_TILES = 3000;
+const APP = 'ptkids-app-v2', TILES = 'ptkids-tiles-v1', IMGS = 'ptkids-imgs-v1', MAX_TILES = 3000;
 const SHELL = ['./', 'index.html', 'app.js', 'data.json', 'manifest.webmanifest', 'icon.svg', 'icon-192.png',
   'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css', 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js'];
 
@@ -69,7 +69,8 @@ self.addEventListener('fetch', e => {
   }
   if (url.hostname === 'unpkg.com') {
     e.respondWith(caches.match(req).then(hit => hit || fetch(req).then(res => {
-      const copy = res.clone(); caches.open(APP).then(c => c.put(req, copy)); return res;
+      if (res.ok) { const copy = res.clone(); caches.open(APP).then(c => c.put(req, copy)); } // never keep an error page
+      return res;
     })));
     return;
   }

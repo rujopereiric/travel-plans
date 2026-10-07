@@ -1,7 +1,7 @@
 // Offline support: app files network-first (so edits to data.json show up when online),
 // Leaflet and map tiles cache-first (tiles you've viewed stay available offline).
 // Only egypt-* caches are touched: other apps on this origin (iceland/) keep theirs.
-const APP = 'tp-egypt-app-v3', TILES = 'tp-egypt-tiles-v2', IMGS = 'tp-egypt-imgs-v1', MAX_TILES = 3000;
+const APP = 'tp-egypt-app-v4', TILES = 'tp-egypt-tiles-v2', IMGS = 'tp-egypt-imgs-v1', MAX_TILES = 3000;
 const SHELL = ['./', 'index.html', 'app.js', 'data.json', '../manifest.webmanifest', 'icon.svg',
   'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css', 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js'];
 
@@ -52,7 +52,8 @@ self.addEventListener('fetch', e => {
   }
   if (url.hostname === 'unpkg.com') {
     e.respondWith(caches.match(req).then(hit => hit || fetch(req).then(res => {
-      const copy = res.clone(); caches.open(APP).then(c => c.put(req, copy)); return res;
+      if (res.ok) { const copy = res.clone(); caches.open(APP).then(c => c.put(req, copy)); } // never keep an error page
+      return res;
     })));
     return;
   }
