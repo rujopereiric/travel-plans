@@ -72,7 +72,9 @@ const fmtEur = (v, dp) => '€' + (Math.round(v * 100) === 0 ? '0' : v.toLocaleS
 const eur = n => '≈ ' + fmtEur(toEur(n));
 const money = n => `${isk(n)} <span class="eur">· ${fmtEur(toEur(n))}</span>`;
 // append € to any "1234 ISK" / "3,400 ISK" in free text (already escaped)
-const withEur = html => html.replace(/(~?\d[\d,.]*)\s?(ISK|kr)\b/g, (m, num) => { const v = +num.replace(/[~,]/g, ''); return isFinite(v) && v > 0 ? `${m} <span class="eur">(${fmtEur(toEur(v))})</span>` : m; });
+// Króna amounts have no decimals, and Icelandic writes thousands with a dot: "2.400 ISK", "1,900 kr", "ISK 3,000"
+const iskNum = num => +num.replace(/~/g, '').replace(/[.,](?=\d{3}(\D|$))/g, '');
+const withEur = html => html.replace(/(~?\d[\d,.]*\d|~?\d)\s?(ISK|kr)\b|\bISK\s?(\d[\d,.]*\d|\d)/g, (m, a, _, b) => { const v = iskNum(a || b); return isFinite(v) && v > 0 ? `${m} <span class="eur">(${fmtEur(toEur(v))})</span>` : m; });
 const dateLabel = (d, opts = { weekday: 'short', day: 'numeric', month: 'short' }) => new Date(d + 'T12:00:00Z').toLocaleDateString('en-GB', { ...opts, timeZone: 'UTC' });
 const todayISO = () => new Date().toISOString().slice(0, 10);
 const nowMin = () => { const d = new Date(); return d.getUTCHours() * 60 + d.getUTCMinutes(); };
