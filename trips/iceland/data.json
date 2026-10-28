@@ -2446,7 +2446,7 @@
       "sources": ["https://tjalda.is/en/grenivik/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/Greniv%C3%ADk-2014b-Custom.jpg",
+      "photo": "img/camp/grenivik.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/grenivik/"
     },
@@ -2479,7 +2479,7 @@
       "sources": ["https://tjalda.is/en/arnes/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/%C3%A1rnes-drone-2015-d-Custom.jpg",
+      "photo": "img/camp/arnes.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/arnes/"
     },
@@ -2512,7 +2512,7 @@
       "sources": ["https://tjalda.is/en/basar/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/basar-forsida.jpg",
+      "photo": "img/camp/basar.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/basar/"
     },
@@ -2545,7 +2545,7 @@
       "sources": ["https://tjalda.is/en/eyrarbakki/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/eyrarbakki-forsida.jpg",
+      "photo": "img/camp/eyrarbakki.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/eyrarbakki/"
     },
@@ -2578,7 +2578,7 @@
       "sources": ["https://tjalda.is/en/fludir/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/Fludir-forsida.jpg",
+      "photo": "img/camp/fludir.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/fludir/"
     },
@@ -2611,7 +2611,7 @@
       "sources": ["https://tjalda.is/en/geysir/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/geysir-forsida.jpg",
+      "photo": "img/camp/geysir.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/geysir/"
     },
@@ -2653,7 +2653,7 @@
       ],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/Hellisholar-forsida.jpg",
+      "photo": "img/camp/hellisholar.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/hellisholar/",
       "winterService": "Visit South Iceland"
@@ -2687,7 +2687,7 @@
       "sources": ["https://tjalda.is/en/holaskjol/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/campsite_images/gallery/tjalda/holaskjol/Holaskjol2.jpg",
+      "photo": "img/camp/holaskjol.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/holaskjol/"
     },
@@ -2721,7 +2721,7 @@
       "sources": ["https://tjalda.is/en/hveragerdi/", "https://www.campiceland.is/camping-equipment/all"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/Hveragerdi-forsida.jpg",
+      "photo": "img/camp/hveragerdi.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/hveragerdi/"
     },
@@ -2754,7 +2754,7 @@
       "sources": ["https://tjalda.is/en/hvolsvollur/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/Hvolsvollur-sudurland-forsida-5-Custom.jpg",
+      "photo": "img/camp/hvolsvollur.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/hvolsvollur/"
     },
@@ -2787,7 +2787,7 @@
       "sources": ["https://tjalda.is/en/kirkjubaer/", "https://www.campiceland.is/camping-equipment/all"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/Kirkjub%C3%A6jarklaustur-forsida.jpg",
+      "photo": "img/camp/kirkjubaer.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/kirkjubaer/"
     },
@@ -2816,7 +2816,7 @@
       "sources": ["https://tjalda.is/en/kleifar/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/kleifar-forsida.jpg",
+      "photo": "img/camp/kleifar.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/kleifar/"
     },
@@ -2854,7 +2854,7 @@
       "sources": ["https://tjalda.is/en/gesthus/", "https://www.south.is/en/food-accommodation/camper-winter-service"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/Selfoss-forsida.jpg",
+      "photo": "img/camp/gesthus.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/gesthus/",
       "winterService": "Visit South Iceland"
@@ -2898,7 +2898,7 @@
       ],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/Skaftafell-forsida.jpg",
+      "photo": "img/camp/skaftafell.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/skaftafell/",
       "winterService": "Visit South Iceland"
@@ -2938,7 +2938,7 @@
       "sources": ["https://tjalda.is/en/skjol/", "https://www.south.is/en/food-accommodation/camper-winter-service"],
       "confidence": "low",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/Reykholt--forsida.jpg",
+      "photo": "img/camp/skjol.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/skjol/",
       "winterService": "Visit South Iceland"
@@ -2972,7 +2972,7 @@
       "sources": ["https://tjalda.is/en/stokkseyri/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/stokkseyri_forsida.jpg",
+      "photo": "img/camp/stokkseyri.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/stokkseyri/"
     },
@@ -3008,7 +3008,7 @@
       ],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/gallery/Tjaldsv%C3%A6%C3%B0i%C3%B0%20H%C3%B6fn%20%C3%AD%20Hornafir%C3%B0i",
+      "photo": "img/camp/tjaldsvaedid-hofn-i-hornafirdi.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/tjaldsvaedid-hofn-i-hornafirdi/"
     },
@@ -3041,7 +3041,7 @@
       "sources": ["https://tjalda.is/en/vid-faxa/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/gallery/Tjaldsv%C3%A6%C3%B0i%C3%B0%20vi%C3%B0%20Faxa",
+      "photo": "img/camp/vid-faxa.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/vid-faxa/"
     },
@@ -3074,7 +3074,7 @@
       "sources": ["https://tjalda.is/en/ulfljotsvatn/", "https://www.campiceland.is/camping-equipment/all"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/campsite_images/gallery/tjalda/ulfljotsvatn/Tjalda_main_picture_1.jpg",
+      "photo": "img/camp/ulfljotsvatn.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/ulfljotsvatn/"
     },
@@ -3112,7 +3112,7 @@
       "sources": ["https://tjalda.is/en/uthlid/", "https://www.south.is/en/food-accommodation/camper-winter-service"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/gallery/%C3%9Athl%C3%AD%C3%B0%2C%20Biskupstungu",
+      "photo": "img/camp/uthlid.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/uthlid/",
       "winterService": "Visit South Iceland"
@@ -3146,7 +3146,7 @@
       "sources": ["https://tjalda.is/en/asbrandsstadir/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/Asbrandsssta%C3%B0ir2018-forsida.jpeg",
+      "photo": "img/camp/asbrandsstadir.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/asbrandsstadir/"
     },
@@ -3180,7 +3180,7 @@
       "sources": ["https://tjalda.is/en/berunes/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/gallery/Berunes",
+      "photo": "img/camp/berunes.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/berunes/"
     },
@@ -3214,7 +3214,7 @@
       "sources": ["https://tjalda.is/en/djupivogur/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/gallery/Dj%C3%BApivogur",
+      "photo": "img/camp/djupivogur.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/djupivogur/"
     },
@@ -3247,7 +3247,7 @@
       "sources": ["https://tjalda.is/en/egilsstadir/", "https://www.campiceland.is/camping-equipment/all"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/campsite_images/gallery/tjalda/egilsstadir/Egilssta%C3%B0ir-2019-Custom.jpg",
+      "photo": "img/camp/egilsstadir.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/egilsstadir/"
     },
@@ -3281,7 +3281,7 @@
       "sources": ["https://tjalda.is/en/eskifjordur/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/gallery/Eskifj%C3%B6r%C3%B0ur",
+      "photo": "img/camp/eskifjordur.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/eskifjordur/"
     },
@@ -3315,7 +3315,7 @@
       "sources": ["https://tjalda.is/en/fossardalur/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/Forrardalir_a%C3%B0al.jpeg",
+      "photo": "img/camp/fossardalur.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/fossardalur/"
     },
@@ -3349,7 +3349,7 @@
       "sources": ["https://tjalda.is/en/faskrudsfjordur/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/gallery/F%C3%A1skr%C3%BA%C3%B0sfj%C3%B6r%C3%B0ur",
+      "photo": "img/camp/faskrudsfjordur.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/faskrudsfjordur/"
     },
@@ -3382,7 +3382,7 @@
       "sources": ["https://tjalda.is/en/hallormsstadaskogur/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/gallery/Hallormssta%C3%B0ask%C3%B3gur",
+      "photo": "img/camp/hallormsstadaskogur.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/hallormsstadaskogur/"
     },
@@ -3415,7 +3415,7 @@
       "sources": ["https://tjalda.is/en/hengifoss/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/campsite_images/gallery/tjalda/hengifoss/original_1.jpg",
+      "photo": "img/camp/hengifoss.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/hengifoss/"
     },
@@ -3449,7 +3449,7 @@
       "sources": ["https://tjalda.is/en/reydarfjordur/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/gallery/Rey%C3%B0arfj%C3%B6r%C3%B0ur",
+      "photo": "img/camp/reydarfjordur.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/reydarfjordur/"
     },
@@ -3482,7 +3482,7 @@
       "sources": ["https://tjalda.is/en/seyisfjordur/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/campsite_images/gallery/tjalda/seyisfjordur/sey%C3%B0isfjor%C3%B0ur-2019-a-Custom.jpg",
+      "photo": "img/camp/seyisfjordur.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/seyisfjordur/"
     },
@@ -3515,7 +3515,7 @@
       "sources": ["https://tjalda.is/en/solbrekka/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/campsite_images/gallery/tjalda/solbrekka/Solbrekka.jpg",
+      "photo": "img/camp/solbrekka.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/solbrekka/"
     },
@@ -3549,7 +3549,7 @@
       "sources": ["https://tjalda.is/en/stodvarfjordur/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/gallery/St%C3%B6%C3%B0varfj%C3%B6r%C3%B0ur",
+      "photo": "img/camp/stodvarfjordur.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/stodvarfjordur/"
     },
@@ -3582,7 +3582,7 @@
       "sources": ["https://tjalda.is/en/svartiskogur/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/gallery/Svartisk%C3%B3gur",
+      "photo": "img/camp/svartiskogur.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/svartiskogur/"
     },
@@ -3615,7 +3615,7 @@
       "sources": ["https://tjalda.is/en/sandfellsskogur/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/gallery/Sandfellssk%C3%B3gur",
+      "photo": "img/camp/sandfellsskogur.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/sandfellsskogur/"
     },
@@ -3649,7 +3649,7 @@
       "sources": ["https://tjalda.is/en/kerlingarfjoll/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/campsite_images/gallery/tjalda/kerlingarfjoll/kerlingarfjoll_forsidumynd.jpg",
+      "photo": "img/camp/kerlingarfjoll.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/kerlingarfjoll/"
     },
@@ -3682,7 +3682,7 @@
       "sources": ["https://tjalda.is/en/landmannahellir/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/gallery/Landmannahellir",
+      "photo": "img/camp/landmannahellir.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/landmannahellir/"
     },
@@ -3715,7 +3715,7 @@
       "sources": ["https://tjalda.is/en/strutur/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/gallery/Str%C3%BAtur",
+      "photo": "img/camp/strutur.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/strutur/"
     },
@@ -3749,7 +3749,7 @@
       "sources": ["https://tjalda.is/en/slyppugil/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/gallery/%C3%9E%C3%B3rm%C3%B6rk%20-%20Slyppugil",
+      "photo": "img/camp/slyppugil.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/slyppugil/"
     },
@@ -3782,7 +3782,7 @@
       "sources": ["https://tjalda.is/en/hafnarfjordur/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/campsite_images/gallery/tjalda/hafnarfjordur/original.jpg",
+      "photo": "img/camp/hafnarfjordur.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/hafnarfjordur/"
     },
@@ -3815,7 +3815,7 @@
       "sources": ["https://tjalda.is/en/laugardalur/", "https://www.campiceland.is/camping-equipment/all"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/gallery/Laugardalur",
+      "photo": "img/camp/laugardalur.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/laugardalur/"
     },
@@ -3848,7 +3848,7 @@
       "sources": ["https://tjalda.is/en/mosskogar/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/gallery/Mosssk%C3%B3gar",
+      "photo": "img/camp/mosskogar.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/mosskogar/"
     },
@@ -3881,7 +3881,7 @@
       "sources": ["https://tjalda.is/en/artun/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/gallery/%C3%81rt%C3%BAn",
+      "photo": "img/camp/artun.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/artun/"
     },
@@ -3918,7 +3918,7 @@
       "sources": ["https://tjalda.is/en/asbyrgi/", "https://www.campiceland.is/camping-equipment/all"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/campsite_images/gallery/tjalda/asbyrgi/2022-07-25_11.28.17.jpg",
+      "photo": "img/camp/asbyrgi.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/asbyrgi/"
     },
@@ -3955,7 +3955,7 @@
       "sources": ["https://tjalda.is/en/vesturdalur/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/gallery/%C3%81sbyrgi%20-%20Vesturdalur",
+      "photo": "img/camp/vesturdalur.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/vesturdalur/"
     },
@@ -3989,7 +3989,7 @@
       "sources": ["https://tjalda.is/en/blonduos/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/gallery/Bl%C3%B6ndu%C3%B3s",
+      "photo": "img/camp/blonduos.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/blonduos/"
     },
@@ -4022,7 +4022,7 @@
       "sources": ["https://tjalda.is/en/dalvik/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/gallery/Dalv%C3%ADk",
+      "photo": "img/camp/dalvik.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/dalvik/"
     },
@@ -4064,7 +4064,7 @@
       ],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/gallery/Akureyri%2C%20Hamrar%20v/Kjarnask%C3%B3g",
+      "photo": "img/camp/hamrar.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/hamrar/",
       "winterService": "Visit North Iceland"
@@ -4098,7 +4098,7 @@
       "sources": ["https://tjalda.is/en/hauganes/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/gallery/Hauganes%2C%20Dalv%C3%ADkurbygg%C3%B0",
+      "photo": "img/camp/hauganes.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/hauganes/"
     },
@@ -4131,7 +4131,7 @@
       "sources": ["https://tjalda.is/en/heidarbaer/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/campsite_images/gallery/tjalda/heidarbaer/0f6530ee-b6f7-46b9-93ca-2c0e8bae038e.jpg",
+      "photo": "img/camp/heidarbaer.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/heidarbaer/"
     },
@@ -4173,7 +4173,7 @@
       ],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/gallery/Hl%C3%AD%C3%B0%2C%20M%C3%BDvatni",
+      "photo": "img/camp/hlid.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/hlid/",
       "winterService": "Visit North Iceland"
@@ -4207,7 +4207,7 @@
       "sources": ["https://tjalda.is/en/hofsos/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/gallery/Hofs%C3%B3s",
+      "photo": "img/camp/hofsos.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/hofsos/"
     },
@@ -4252,7 +4252,7 @@
       ],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/Yfirlitsmynd_-_Eyjafjar%C3%B0arsveit_1-100-min.jpg",
+      "photo": "img/camp/eyjafjardarsveit.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/eyjafjardarsveit/",
       "winterService": "Visit North Iceland"
@@ -4287,7 +4287,7 @@
       "sources": ["https://tjalda.is/en/husavik/", "https://www.campiceland.is/camping-equipment/all"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/gallery/H%C3%BAsav%C3%ADk",
+      "photo": "img/camp/husavik.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/husavik/"
     },
@@ -4321,7 +4321,7 @@
       "sources": ["https://tjalda.is/en/kirkjuhvammur/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/gallery/Kirkjuhvammur%2C%20Hvammstanga",
+      "photo": "img/camp/kirkjuhvammur.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/kirkjuhvammur/"
     },
@@ -4354,7 +4354,7 @@
       "sources": ["https://tjalda.is/en/kidagil/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/gallery/Ki%C3%B0adal",
+      "photo": "img/camp/kidagil.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/kidagil/"
     },
@@ -4388,7 +4388,7 @@
       "sources": ["https://tjalda.is/en/kopasker/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/gallery/K%C3%B3pasker",
+      "photo": "img/camp/kopasker.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/kopasker/"
     },
@@ -4421,7 +4421,7 @@
       "sources": ["https://tjalda.is/en/laugar-camping/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/gallery/Laugum%20vi%C3%B0%20Laugav%C3%B6ll",
+      "photo": "img/camp/laugar-camping.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/laugar-camping/"
     },
@@ -4455,7 +4455,7 @@
       "sources": ["https://tjalda.is/en/cja/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/gallery/L%C3%ADfsm%C3%B3tun%2C%20Laugar",
+      "photo": "img/camp/cja.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/cja/"
     },
@@ -4488,7 +4488,7 @@
       "sources": ["https://tjalda.is/en/manarbakki/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/M%C3%A1n%C3%A1rbakki-2021-forsida.jpg",
+      "photo": "img/camp/manarbakki.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/manarbakki/"
     },
@@ -4521,7 +4521,7 @@
       "sources": ["https://tjalda.is/en/olafsfjordur/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/gallery/%C3%93lafsfj%C3%B6r%C3%B0ur",
+      "photo": "img/camp/olafsfjordur.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/olafsfjordur/"
     },
@@ -4554,7 +4554,7 @@
       "sources": ["https://tjalda.is/en/raufarhofn/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/gallery/Raufarh%C3%B6fn",
+      "photo": "img/camp/raufarhofn.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/raufarhofn/"
     },
@@ -4588,7 +4588,7 @@
       "sources": ["https://tjalda.is/en/saudarkrokur/"],
       "confidence": "low",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/gallery/Sau%C3%B0%C3%A1rkr%C3%B3kur",
+      "photo": "img/camp/saudarkrokur.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/saudarkrokur/"
     },
@@ -4622,7 +4622,7 @@
       "sources": ["https://tjalda.is/en/siglufjordur/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/gallery/Siglufj%C3%B6r%C3%B0ur",
+      "photo": "img/camp/siglufjordur.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/siglufjordur/"
     },
@@ -4656,7 +4656,7 @@
       "sources": ["https://tjalda.is/en/skagastrond/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/gallery/Skagastr%C3%B6nd",
+      "photo": "img/camp/skagastrond.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/skagastrond/"
     },
@@ -4689,7 +4689,7 @@
       "sources": ["https://tjalda.is/en/systragil/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/gallery/Systragil",
+      "photo": "img/camp/systragil.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/systragil/"
     },
@@ -4723,7 +4723,7 @@
       "sources": ["https://tjalda.is/en/vaglaskogur/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/gallery/Vaglask%C3%B3gur",
+      "photo": "img/camp/vaglaskogur.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/vaglaskogur/"
     },
@@ -4757,7 +4757,7 @@
       "sources": ["https://tjalda.is/en/varmahlid/"],
       "confidence": "low",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/campsite_images/gallery/tjalda/varmahlid/Varmahli%C3%B0_yfirlit_opnumynd_2.png",
+      "photo": "img/camp/varmahlid.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/varmahlid/"
     },
@@ -4798,7 +4798,7 @@
       ],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/gallery/Grindav%C3%ADk",
+      "photo": "img/camp/grindavik.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/grindavik/",
       "winterService": "Visit Reykjanes"
@@ -4829,7 +4829,7 @@
       "sources": ["https://tjalda.is/en/vestmannaeyjar/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/campsite_images/gallery/tjalda/vestmannaeyjar/e0.jpg",
+      "photo": "img/camp/vestmannaeyjar.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/vestmannaeyjar/"
     },
@@ -4862,7 +4862,7 @@
       "sources": ["https://tjalda.is/en/thakgil/", "https://www.campiceland.is/camping-equipment/all"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/gallery/%C3%9Eakgil",
+      "photo": "img/camp/thakgil.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/thakgil/"
     },
@@ -4896,7 +4896,7 @@
       "sources": ["https://tjalda.is/en/thjorsardalur/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/gallery/%C3%9Ej%C3%B3rs%C3%A1rdalur",
+      "photo": "img/camp/thjorsardalur.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/thjorsardalur/"
     },
@@ -4929,7 +4929,7 @@
       "sources": ["https://tjalda.is/en/thorlakshofn/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/gallery/%C3%9Eorl%C3%A1ksh%C3%B6fn",
+      "photo": "img/camp/thorlakshofn.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/thorlakshofn/"
     },
@@ -4962,7 +4962,7 @@
       "sources": ["https://tjalda.is/en/bolungarvik/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/gallery/Bolungarv%C3%ADk",
+      "photo": "img/camp/bolungarvik.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/bolungarvik/"
     },
@@ -4995,7 +4995,7 @@
       "sources": ["https://tjalda.is/en/breidavik/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/gallery/Brei%C3%B0av%C3%ADk%20vi%C3%B0%20L%C3%A1trabjarg",
+      "photo": "img/camp/breidavik.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/breidavik/"
     },
@@ -5030,7 +5030,7 @@
       "sources": ["https://tjalda.is/en/drangsnes/"],
       "confidence": "low",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/gallery/Drangsnes",
+      "photo": "img/camp/drangsnes.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/drangsnes/"
     },
@@ -5063,7 +5063,7 @@
       "sources": ["https://tjalda.is/en/heydalur/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/campsite_images/gallery/tjalda/heydalur/forsida1.png",
+      "photo": "img/camp/heydalur.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/heydalur/"
     },
@@ -5096,7 +5096,7 @@
       "sources": ["https://tjalda.is/en/holmavik/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/gallery/H%C3%B3lmav%C3%ADk",
+      "photo": "img/camp/holmavik.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/holmavik/"
     },
@@ -5129,7 +5129,7 @@
       "sources": ["https://tjalda.is/en/korpudalur/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/gallery/Korpudalur",
+      "photo": "img/camp/korpudalur.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/korpudalur/"
     },
@@ -5162,7 +5162,7 @@
       "sources": ["https://tjalda.is/en/melanes/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/gallery/Melanes%2C%20Rau%C3%B0asandi",
+      "photo": "img/camp/melanes.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/melanes/"
     },
@@ -5196,7 +5196,7 @@
       "sources": ["https://tjalda.is/en/midjanes/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/Mi%C3%B0janes.jpeg",
+      "photo": "img/camp/midjanes.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/midjanes/"
     },
@@ -5230,7 +5230,7 @@
       "sources": ["https://tjalda.is/en/patreksfjordur/"],
       "confidence": "low",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/gallery/Patreksfj%C3%B6r%C3%B0ur",
+      "photo": "img/camp/patreksfjordur.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/patreksfjordur/"
     },
@@ -5263,7 +5263,7 @@
       "sources": ["https://tjalda.is/en/sudavik/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/tjalda_images/gallery/S%C3%BA%C3%B0av%C3%ADk",
+      "photo": "img/camp/sudavik.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/sudavik/"
     },
@@ -5297,7 +5297,7 @@
       "sources": ["https://tjalda.is/en/talknafjordur/"],
       "confidence": "low",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/campsite_images/gallery/tjalda/talknafjordur/talkna1.png",
+      "photo": "img/camp/talknafjordur.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/talknafjordur/"
     },
@@ -5330,7 +5330,7 @@
       "sources": ["https://tjalda.is/en/tungudalur/", "https://www.campiceland.is/camping-equipment/all"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.eu-west-1.amazonaws.com/default/tjalda_images/gallery/Tungudalur%2C%20%C3%8Dsafir%C3%B0i",
+      "photo": "img/camp/tungudalur.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/tungudalur/"
     },
@@ -5393,7 +5393,7 @@
       "sources": ["https://tjalda.is/en/urartindur-norurfiri/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.eu-west-1.amazonaws.com/default/tjalda_images/gallery/Ur%C3%B0artindur%2C%20Nor%C3%B0urfir%C3%B0i",
+      "photo": "img/camp/urartindur-norurfiri.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/urartindur-norurfiri/"
     },
@@ -5426,7 +5426,7 @@
       "sources": ["https://tjalda.is/en/valgeirsstadir/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.eu-west-1.amazonaws.com/default/tjalda_images/gallery/Valgeirssta%C3%B0ir",
+      "photo": "img/camp/valgeirsstadir.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/valgeirsstadir/"
     },
@@ -5459,7 +5459,7 @@
       "sources": ["https://tjalda.is/en/a-skardsstrond/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.eu-west-1.amazonaws.com/default/tjalda_images/gallery/%C3%81.%20Skar%C3%B0sst%C3%B6nd",
+      "photo": "img/camp/a-skardsstrond.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/a-skardsstrond/"
     },
@@ -5495,7 +5495,7 @@
       "sources": ["https://tjalda.is/en/akranes/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.eu-west-1.amazonaws.com/default/tjalda_images/gallery/Akranes",
+      "photo": "img/camp/akranes.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/akranes/"
     },
@@ -5529,7 +5529,7 @@
       "sources": ["https://tjalda.is/en/arnarstapi/", "https://www.campiceland.is/camping-equipment/all"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.eu-west-1.amazonaws.com/default/tjalda_images/gallery/Arnarstapi",
+      "photo": "img/camp/arnarstapi.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/arnarstapi/"
     },
@@ -5562,7 +5562,7 @@
       "sources": ["https://tjalda.is/en/bjarteyjarsandur/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.eu-west-1.amazonaws.com/default/tjalda_images/gallery/Bjarteyjarsandur",
+      "photo": "img/camp/bjarteyjarsandur.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/bjarteyjarsandur/"
     },
@@ -5596,7 +5596,7 @@
       "sources": ["https://tjalda.is/en/borgarnes/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.eu-west-1.amazonaws.com/default/tjalda_images/gallery/Borgarnes",
+      "photo": "img/camp/borgarnes.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/borgarnes/"
     },
@@ -5629,7 +5629,7 @@
       "sources": ["https://tjalda.is/en/budardalur/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.eu-west-1.amazonaws.com/default/tjalda_images/gallery/Bu%C3%B0ardalur",
+      "photo": "img/camp/budardalur.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/budardalur/"
     },
@@ -5663,7 +5663,7 @@
       "sources": ["https://tjalda.is/en/grundarfjordur/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.eu-west-1.amazonaws.com/default/tjalda_images/gallery/Grundarfj%C3%B6r%C3%B0ur",
+      "photo": "img/camp/grundarfjordur.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/grundarfjordur/"
     },
@@ -5696,7 +5696,7 @@
       "sources": ["https://tjalda.is/en/hallkelsstadahlid/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.eu-west-1.amazonaws.com/default/campsite_images/gallery/tjalda/hallkelsstadahlid/Tjaldst%C3%A6%C3%B0i_Hallkelssta%C3%B0ahl%C3%AD%C3%B0_1.jpg",
+      "photo": "img/camp/hallkelsstadahlid.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/hallkelsstadahlid/"
     },
@@ -5730,7 +5730,7 @@
       "sources": ["https://tjalda.is/en/hellissandur/"],
       "confidence": "low",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.eu-west-1.amazonaws.com/default/campsite_images/gallery/tjalda/hellissandur/Tjaldsv%C3%A6%C3%B0i_a_Hellissandi_sjavarsyn.jpg",
+      "photo": "img/camp/hellissandur.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/hellissandur/"
     },
@@ -5763,7 +5763,7 @@
       "sources": ["https://tjalda.is/en/hladir/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.eu-west-1.amazonaws.com/default/campsite_images/gallery/tjalda/hladir/hladir.jpeg",
+      "photo": "img/camp/hladir.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/hladir/"
     },
@@ -5796,7 +5796,7 @@
       "sources": ["https://tjalda.is/en/husafell/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.eu-west-1.amazonaws.com/default/tjalda_images/gallery/H%C3%BAsafell",
+      "photo": "img/camp/husafell.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/husafell/"
     },
@@ -5829,7 +5829,7 @@
       "sources": ["https://tjalda.is/en/hverinn/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.eu-west-1.amazonaws.com/default/tjalda_images/gallery/Hverinn%2C%20Kleppj%C3%A1rnsreykjum",
+      "photo": "img/camp/hverinn.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/hverinn/"
     },
@@ -5863,7 +5863,7 @@
       "sources": ["https://tjalda.is/en/olafsvik/"],
       "confidence": "low",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.eu-west-1.amazonaws.com/default/campsite_images/gallery/tjalda/olafsvik/frisbigolf_olafsvik71.jpg",
+      "photo": "img/camp/olafsvik.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/olafsvik/"
     },
@@ -5896,7 +5896,7 @@
       "sources": ["https://tjalda.is/en/selskogur-skorradal/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.eu-west-1.amazonaws.com/default/campsite_images/gallery/tjalda/selskogur-skorradal/skorradalur.jpg",
+      "photo": "img/camp/selskogur-skorradal.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/selskogur-skorradal/"
     },
@@ -5930,7 +5930,7 @@
       "sources": ["https://tjalda.is/en/snorrastadir/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.eu-west-1.amazonaws.com/default/tjalda_images/gallery/Snorrasta%C3%B0ir",
+      "photo": "img/camp/snorrastadir.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/snorrastadir/"
     },
@@ -5963,7 +5963,7 @@
       "sources": ["https://tjalda.is/en/stori-lambhagi/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.eu-west-1.amazonaws.com/default/tjalda_images/gallery/St%C3%B3ri%2C%20Lambhagi%204",
+      "photo": "img/camp/stori-lambhagi.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/stori-lambhagi/"
     },
@@ -5996,7 +5996,7 @@
       "sources": ["https://tjalda.is/en/stykkisholmur/", "https://www.campiceland.is/camping-equipment/all"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.eu-west-1.amazonaws.com/default/tjalda_images/gallery/Stykkish%C3%B3lmur",
+      "photo": "img/camp/stykkisholmur.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/stykkisholmur/"
     },
@@ -6030,7 +6030,7 @@
       "sources": ["https://tjalda.is/en/varmaland/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.eu-west-1.amazonaws.com/default/campsite_images/gallery/tjalda/varmaland/varmaland_1.jpg",
+      "photo": "img/camp/varmaland.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/varmaland/"
     },
@@ -6064,7 +6064,7 @@
       "sources": ["https://tjalda.is/en/fjalladyrd-modrudal/"],
       "confidence": "low",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.eu-west-1.amazonaws.com/default/tjalda_images/gallery/M%C3%B6%C3%B0rudalur%20%C3%A1%20Fj%C3%B6llum%20%E2%80%93%20Fjallad%C3%BDr%C3%B0/modrudalur-2018-frontImage.jpg",
+      "photo": "img/camp/fjalladyrd-modrudal.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/fjalladyrd-modrudal/"
     },
@@ -6097,7 +6097,7 @@
       "sources": ["https://tjalda.is/en/bordeyri/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.eu-west-1.amazonaws.com/default/tjalda_images/gallery/Bor%C3%B0eyri/bordeyri-00001-forsida.jpg",
+      "photo": "img/camp/bordeyri.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/bordeyri/"
     },
@@ -6131,7 +6131,7 @@
       "sources": ["https://tjalda.is/en/sandgerdi/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.eu-west-1.amazonaws.com/default/campsite_images/gallery/tjalda/sandgerdi/sandgerdi2.jpeg",
+      "photo": "img/camp/sandgerdi.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/sandgerdi/"
     },
@@ -6164,7 +6164,7 @@
       "sources": ["https://tjalda.is/en/horgsland/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.eu-west-1.amazonaws.com/default/tjalda_images/Horgsland.jpg",
+      "photo": "img/camp/horgsland.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/horgsland/"
     },
@@ -6198,7 +6198,7 @@
       "sources": ["https://tjalda.is/en/blagil/"],
       "confidence": "low",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.eu-west-1.amazonaws.com/default/tjalda_images/blagil.jpeg",
+      "photo": "img/camp/blagil.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/blagil/"
     },
@@ -6231,7 +6231,7 @@
       "sources": ["https://tjalda.is/en/skipalaekur/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.eu-west-1.amazonaws.com/default/tjalda_images/skipal%C3%A6kur2.jpeg",
+      "photo": "img/camp/skipalaekur.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/skipalaekur/"
     },
@@ -6264,7 +6264,7 @@
       "sources": ["https://tjalda.is/en/vatnsholt/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.eu-west-1.amazonaws.com/default/tjalda_images/Vatnsholt_overview-small.jpeg",
+      "photo": "img/camp/vatnsholt.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/vatnsholt/"
     },
@@ -6298,7 +6298,7 @@
       "sources": ["https://tjalda.is/en/lundur/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.eu-west-1.amazonaws.com/default/tjalda_images/131511047_335351844663587_140354628164403093_n.jpeg",
+      "photo": "img/camp/lundur.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/lundur/"
     },
@@ -6331,7 +6331,7 @@
       "sources": ["https://tjalda.is/en/tjaldsvaedid-a-skordum/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.eu-west-1.amazonaws.com/default/tjalda_images/skor%C3%B0in.jpeg",
+      "photo": "img/camp/tjaldsvaedid-a-skordum.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/tjaldsvaedid-a-skordum/"
     },
@@ -6365,7 +6365,7 @@
       "sources": ["https://tjalda.is/en/happycampsite/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.eu-west-1.amazonaws.com/default/tjalda_images/happy_kef.jpeg",
+      "photo": "img/camp/happycampsite.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/happycampsite/"
     },
@@ -6396,7 +6396,7 @@
       "sources": ["https://tjalda.is/en/hunaver/"],
       "confidence": "low",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.eu-west-1.amazonaws.com/default/tjalda_images/tjaldsv%C3%A6%C3%B0i.jpg",
+      "photo": "img/camp/hunaver.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/hunaver/"
     },
@@ -6429,7 +6429,7 @@
       "sources": ["https://tjalda.is/en/laugar/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.eu-west-1.amazonaws.com/default/tjalda_images/Asset_2.png",
+      "photo": "img/camp/laugar.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/laugar/"
     },
@@ -6462,7 +6462,7 @@
       "sources": ["https://tjalda.is/en/atlavik/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.eu-west-1.amazonaws.com/default/tjalda_images/Hallormssta%C3%B0askogur.jpeg",
+      "photo": "img/camp/atlavik.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/atlavik/"
     },
@@ -6495,7 +6495,7 @@
       "sources": ["https://tjalda.is/en/ferdathjonustan-svinafelli/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.eu-west-1.amazonaws.com/default/tjalda_images/Svinafell.jpeg",
+      "photo": "img/camp/ferdathjonustan-svinafelli.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/ferdathjonustan-svinafelli/"
     },
@@ -6528,7 +6528,7 @@
       "sources": ["https://tjalda.is/en/dalbaer/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.eu-west-1.amazonaws.com/default/campsite_images/gallery/tjalda/dalbaer/Dalb%C3%A6r_2023.jpg",
+      "photo": "img/camp/dalbaer.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/dalbaer/"
     },
@@ -6562,7 +6562,7 @@
       "sources": ["https://tjalda.is/en/breiddalsvik/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.eu-west-1.amazonaws.com/default/tjalda_images/210035340_797162291166723_2712215252371491619_n.jpg",
+      "photo": "img/camp/breiddalsvik.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/breiddalsvik/"
     },
@@ -6596,7 +6596,7 @@
       "sources": ["https://tjalda.is/en/arblik/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.eu-west-1.amazonaws.com/default/campsite_images/gallery/tjalda/saelureiturinn-arblik/arblikfors.jpg",
+      "photo": "img/camp/arblik.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/arblik/"
     },
@@ -6630,7 +6630,7 @@
       "sources": ["https://tjalda.is/en/Bakkaflot/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.eu-west-1.amazonaws.com/default/campsite_images/gallery/tjalda/Bakkaflot/Bakkaflotfors2.jpeg",
+      "photo": "img/camp/Bakkaflot.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/Bakkaflot/"
     },
@@ -6663,7 +6663,7 @@
       "sources": ["https://tjalda.is/en/langafit/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.eu-west-1.amazonaws.com/default/campsite_images/gallery/tjalda/langafit/Langafit.jpeg",
+      "photo": "img/camp/langafit.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/langafit/"
     },
@@ -6697,7 +6697,7 @@
       "sources": ["https://tjalda.is/en/stafafell/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.eu-west-1.amazonaws.com/default/campsite_images/gallery/tjalda/stafafell/Stafafell1.jpg",
+      "photo": "img/camp/stafafell.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/stafafell/"
     },
@@ -6730,7 +6730,7 @@
       "sources": ["https://tjalda.is/en/langbrok/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/campsite_images/gallery/tjalda/langbrok/langbrok2.jpg",
+      "photo": "img/camp/langbrok.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/langbrok/"
     },
@@ -6764,7 +6764,7 @@
       "sources": ["https://tjalda.is/en/laugarholl/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/campsite_images/gallery/tjalda/laugarholl/laugarholl3.jpg",
+      "photo": "img/camp/laugarholl.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/laugarholl/"
     },
@@ -6797,7 +6797,7 @@
       "sources": ["https://tjalda.is/en/tjaldsvaedid_djupadal/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/campsite_images/gallery/tjalda/tjaldsvaedid_djupadal/djupa.jpg",
+      "photo": "img/camp/tjaldsvaedid_djupadal.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/tjaldsvaedid_djupadal/"
     },
@@ -6863,7 +6863,7 @@
       "sources": ["https://tjalda.is/en/studlagil/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/campsite_images/gallery/tjalda/studlagil/Stu%C3%B0lagil_Canyon_Camping_3.jpg",
+      "photo": "img/camp/studlagil.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/studlagil/"
     },
@@ -6899,7 +6899,7 @@
       "sources": ["https://tjalda.is/en/borgarfjordur_eystri/", "https://www.campiceland.is/camping-equipment/all"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/campsite_images/gallery/tjalda/borgarfjordur_eystri/borgarfjeyst.jpg",
+      "photo": "img/camp/borgarfjordur_eystri.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/borgarfjordur_eystri/"
     },
@@ -6933,7 +6933,7 @@
       "sources": ["https://tjalda.is/en/smidjunes/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/campsite_images/gallery/tjalda/smidjunes/Smidjunes2.png",
+      "photo": "img/camp/smidjunes.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/smidjunes/"
     },
@@ -6966,7 +6966,7 @@
       "sources": ["https://tjalda.is/en/farnorth-bakkafjordur/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/campsite_images/gallery/tjalda/bakkafjordur/bakki2hreindyr.jpeg",
+      "photo": "img/camp/farnorth-bakkafjordur.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/farnorth-bakkafjordur/"
     },
@@ -7000,7 +7000,7 @@
       "sources": ["https://tjalda.is/en/haukafell/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/campsite_images/gallery/tjalda/haukafell/hauk1.jpeg",
+      "photo": "img/camp/haukafell.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/haukafell/"
     },
@@ -7033,7 +7033,7 @@
       "sources": ["https://tjalda.is/en/gardskagi/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/campsite_images/gallery/tjalda/gardskagi/ji_Haegri_1250x580_CS02_TP.png",
+      "photo": "img/camp/gardskagi.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/gardskagi/"
     },
@@ -7066,7 +7066,7 @@
       "sources": ["https://tjalda.is/en/myllulaekur/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/campsite_images/gallery/tjalda/myllulaekur/mynd_2.jpg",
+      "photo": "img/camp/myllulaekur.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/myllulaekur/"
     },
@@ -7100,7 +7100,7 @@
       "sources": ["https://tjalda.is/en/engimyri/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/campsite_images/gallery/tjalda/engimyri/download.jpeg",
+      "photo": "img/camp/engimyri.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/engimyri/"
     },
@@ -7134,7 +7134,7 @@
       "sources": ["https://tjalda.is/en/illugastadir-vatnsnesi/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/campsite_images/gallery/tjalda/illugastadir-vatnsnesi/Sela.jpeg",
+      "photo": "img/camp/illugastadir-vatnsnesi.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/illugastadir-vatnsnesi/"
     },
@@ -7168,7 +7168,7 @@
       "sources": ["https://tjalda.is/en/hunavellir-campsite/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/campsite_images/gallery/tjalda/hunavellir-campsite/464622447_8691295937616600_177991955405124119.jpg",
+      "photo": "img/camp/hunavellir-campsite.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/hunavellir-campsite/"
     },
@@ -7201,7 +7201,7 @@
       "sources": ["https://tjalda.is/en/Borg/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/campsite_images/gallery/tjalda/Borg/Tjaldsv%C3%A6%C3%B0i1.jpg",
+      "photo": "img/camp/Borg.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/Borg/"
     },
@@ -7235,7 +7235,7 @@
       "sources": ["https://tjalda.is/en/Bildudalur-vid-skrimslasetrid/"],
       "confidence": "low",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/campsite_images/gallery/tjalda/Bildudalur-vid-skrimslasetrid/skrymslasetrid.jpeg",
+      "photo": "img/camp/Bildudalur-vid-skrimslasetrid.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/Bildudalur-vid-skrimslasetrid/"
     },
@@ -7269,7 +7269,7 @@
       "sources": ["https://tjalda.is/en/bjarkalundur-campsite/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/campsite_images/gallery/tjalda/bjarkalundur-campsite/Screenshot_2025-10-02_at_15.19.43.png",
+      "photo": "img/camp/bjarkalundur-campsite.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/bjarkalundur-campsite/"
     },
@@ -7302,7 +7302,7 @@
       "sources": ["https://tjalda.is/en/arhus/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/campsite_images/gallery/tjalda/arhus/arhus.jpg",
+      "photo": "img/camp/arhus.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/arhus/"
     },
@@ -7336,7 +7336,7 @@
       "sources": ["https://tjalda.is/en/farmhouse-lodge/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/campsite_images/gallery/tjalda/farmhouse-lodge/3e8ed764-0792-4758-998c-a87a4a8f30e6.jpg",
+      "photo": "img/camp/farmhouse-lodge.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/farmhouse-lodge/"
     },
@@ -7365,7 +7365,7 @@
       "sources": ["https://tjalda.is/en/vik/", "https://www.campiceland.is/camping-equipment/all"],
       "confidence": "low",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/campsite_images/gallery/tjalda/vik/473532358_1032063128936643_4296235775761325846_n.jpg",
+      "photo": "img/camp/vik.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/vik/"
     },
@@ -7405,7 +7405,7 @@
       ],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/campsite_images/gallery/tjalda/Thorsmork_husdal/139_laugavegur-items-2.2e16d0ba.fill-560x560-c1.webp",
+      "photo": "img/camp/thorsmork_husadal.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/thorsmork_husadal/",
       "winterService": "Visit South Iceland"
@@ -7439,7 +7439,7 @@
       "sources": ["https://tjalda.is/en/thorshofn/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/campsite_images/gallery/tjalda/thorshofn/5b573f7afeb84487809d7bff3d9afbb9.jpg",
+      "photo": "img/camp/thorshofn.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/thorshofn/"
     },
@@ -7472,7 +7472,7 @@
       "sources": ["https://tjalda.is/en/vogar/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/campsite_images/gallery/tjalda/vogar/37775223_10217581869007798_9170315382429319168_o-py8bml3lx2.jpg",
+      "photo": "img/camp/vogar.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/vogar/"
     },
@@ -7513,7 +7513,7 @@
       ],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/campsite_images/gallery/tjalda/Vogum/original.jpg",
+      "photo": "img/camp/Vogum.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/Vogum/",
       "winterService": "Visit North Iceland"
@@ -7548,7 +7548,7 @@
       "sources": ["https://tjalda.is/en/starlight-camping/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/campsite_images/gallery/tjalda/starlight-camping/Starlight.png",
+      "photo": "img/camp/starlight-camping.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/starlight-camping/"
     },
@@ -7581,7 +7581,7 @@
       "sources": ["https://tjalda.is/en/hnjukabyggd/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/campsite_images/gallery/tjalda/hnjukabyggd/hnjukabyggd.png",
+      "photo": "img/camp/hnjukabyggd.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/hnjukabyggd/"
     },
@@ -7615,7 +7615,7 @@
       "sources": ["https://tjalda.is/en/reykholahreppur/"],
       "confidence": "high",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/campsite_images/gallery/tjalda/reykholahreppur/Reykholar_campsite_1.jpg",
+      "photo": "img/camp/reykholahreppur.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/reykholahreppur/"
     },
@@ -7653,7 +7653,7 @@
       ],
       "confidence": "low",
       "checked": "2026-10-28",
-      "photo": "https://is-parka-app.s3.amazonaws.com/default/campsite_images/gallery/tjalda/thingvellir/%C3%9Eingvellir.jpg",
+      "photo": "img/camp/thingvellir.jpg",
       "photoCredit": "tjalda.is",
       "photoPage": "https://tjalda.is/en/thingvellir/",
       "winterService": "Visit South Iceland"

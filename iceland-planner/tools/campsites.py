@@ -94,7 +94,9 @@ for c in TJ:
                    + ([{'name': 'Book', 'url': url(c['prebook'])}] if c['prebook'] else []),
           'sources': [f"https://tjalda.is/en/{c['slug']}/"], 'confidence': 'low' if stale else 'high', 'checked': '2026-10-28'}
     if stale: pl['facts'].append("tjalda.is: the campsite didn't renew its listing for 2026, so these details may be out of date")
-    if c['image']: pl['photo'] = c['image']; pl['photoCredit'] = 'tjalda.is'; pl['photoPage'] = f"https://tjalda.is/en/{c['slug']}/"
+    if c['image']:   # the copy saved by tools/campsite-photos.py works offline; the tjalda.is original doesn't
+        local = f"img/camp/{c['slug']}.jpg"
+        pl['photo'] = local if os.path.exists(os.path.join(root, local)) else c['image']; pl['photoCredit'] = 'tjalda.is'; pl['photoPage'] = f"https://tjalda.is/en/{c['slug']}/"
     places.append(pl); by_tj[c['slug']] = pl
 
 def nearest(lat, lon, pool, km=1.5):

@@ -45,7 +45,7 @@ self.addEventListener('fetch', e => {
       if (hit) return hit;
       try {
         const res = await fetch(req.url, { mode: 'cors', credentials: 'omit' });
-        if (res.ok) c.put(req.url, res.clone()).then(() => trimCache(IMGS, 200)).catch(() => {});
+        if (res.ok) c.put(req.url, res.clone()).then(() => trimCache(IMGS, 1000)).catch(() => {});
         return res;
       } catch (err) { return fetch(req); }
     }));
@@ -60,7 +60,7 @@ self.addEventListener('fetch', e => {
       if (hit) return hit;
       try {
         const res = await fetch(req.url, { mode: 'cors', credentials: 'omit', referrerPolicy: 'no-referrer' });
-        if (res.ok && (res.headers.get('content-type') || '').startsWith('image/')) { c.put(req.url, res.clone()).then(() => trimCache(IMGS, 200)).catch(() => {}); return res; }
+        if (res.ok && (res.headers.get('content-type') || '').startsWith('image/')) { c.put(req.url, res.clone()).then(() => trimCache(IMGS, 1000)).catch(() => {}); return res; }
       } catch (err) { }
       try { return await fetch(req.url, { mode: 'no-cors', credentials: 'omit', referrerPolicy: 'no-referrer' }); }
       catch (e2) { return new Response('', { status: 504 }); }

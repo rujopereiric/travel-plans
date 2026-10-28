@@ -153,7 +153,7 @@ My places lists 159 campsites as ⛺ **Campsite**, fetched 28 Oct 2026:
 
 - **[tjalda.is](https://tjalda.is/en/)** supplies 154 of them. It's the national campsite directory, and its data comes from the operators. Each card has the season, prices, facilities, phone, website and booking link, with the tjalda.is photo.
 - **[Camp Iceland](https://www.campiceland.is/camping-equipment/all)** supplied the first 20 picks. 18 are the same sites as tjalda.is entries and were merged into them, keeping their descriptions. The other 2 stay as they were.
-- **Winter service pages** from Visit South Iceland, Visit North Iceland, Visit Reykjanes and Visit West Iceland list campsites open for campers in winter, and 15 cards. show a **❄ Winter-open** badge. 3 of them aren't on tjalda.is and were added.
+- **Winter service pages** from Visit South Iceland, Visit North Iceland, Visit Reykjanes and Visit West Iceland list campsites open for campers in winter, and 15 cards show a **❄ Winter-open** badge. 3 of them aren't on tjalda.is and were added.
 
 Each card compares the opening dates with your trip dates and shows **✓ Open on your dates**, **◐ Open on some of your dates** or **✗ Closed on your dates**. With the Campsite type selected, the **⛺ Open on my dates** filter hides the closed ones.
 
