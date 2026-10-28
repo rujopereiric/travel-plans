@@ -36,13 +36,16 @@ jobs:
 
       - name: Diagnose (time each query statement)
         if: ${{ github.event.inputs.diagnose == 'true' }}
-        run: node egypt/tools/osm-diagnose.mjs ${{ github.event.inputs.regions }}
+        env:
+          REGIONS: ${{ github.event.inputs.regions }}
+        run: set -f; node egypt/tools/osm-diagnose.mjs $REGIONS
 
       - name: Fetch regions from Overpass (each region is committed and pushed when done)
         if: ${{ github.event.inputs.diagnose != 'true' }}
         env:
           OSM_COMMIT: '1'
+          REGIONS: ${{ github.event.inputs.regions }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          node egypt/tools/osm-update.mjs ${{ github.event.inputs.regions }}
+          set -f; node egypt/tools/osm-update.mjs $REGIONS

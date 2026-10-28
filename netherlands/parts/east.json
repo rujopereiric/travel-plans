@@ -1,0 +1,1545 @@
+{
+  "places": [
+    {
+      "id": "arnhem",
+      "name": "Arnhem",
+      "region": "gelderland",
+      "lat": 51.9851,
+      "lon": 5.8987,
+      "visit": 150,
+      "cat": "Base",
+      "priority": 2,
+      "wiki": "Arnhem",
+      "summary": "Capital of Gelderland on the Rhine, rebuilt after the 1944 Battle of Arnhem, with a lively shopping centre and fashion quarter. The natural base for the Hoge Veluwe, the Open Air Museum and the Airborne sites.",
+      "facts": [
+        "About 35 minutes by train from Utrecht",
+        "Park in a garage or P+R; the centre is compact",
+        "John Frost Bridge, the 'bridge too far', is a short walk from the centre"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "apeldoorn",
+      "name": "Apeldoorn",
+      "region": "gelderland",
+      "lat": 52.2112,
+      "lon": 5.9699,
+      "visit": 120,
+      "cat": "Town",
+      "priority": 2,
+      "wiki": "Apeldoorn",
+      "summary": "Green, spacious town on the eastern edge of the Veluwe, best known for Het Loo Palace. A convenient, cheaper base for the Veluwe forests and the Hoge Veluwe's northern entrance.",
+      "facts": [
+        "Free or cheap parking compared with the big cities",
+        "Apenheul primate park on the edge of town",
+        "Good cycling into the Veluwe woods"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "zwolle",
+      "name": "Zwolle",
+      "region": "gelderland",
+      "lat": 52.5126,
+      "lon": 6.0936,
+      "visit": 150,
+      "cat": "Town",
+      "priority": 2,
+      "wiki": "Zwolle",
+      "summary": "Hanseatic city in Overijssel inside a star-shaped moat, with the Sassenpoort gate, the Peperbus tower and an excellent bookshop in a Dominican church. Good hub for Giethoorn and the IJssel towns.",
+      "facts": [
+        "About 1 hour 10 by train from Amsterdam; rail hub for the north",
+        "Park in a garage by the moat",
+        "Climb the Peperbus tower for views (in season)"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "giethoorn",
+      "name": "Giethoorn",
+      "region": "gelderland",
+      "lat": 52.74,
+      "lon": 6.078,
+      "visit": 180,
+      "cat": "Village",
+      "priority": 3,
+      "wiki": "Giethoorn",
+      "summary": "The 'Venice of the North', a car-free village of thatched farmhouses on islands linked by footbridges and canals. Best explored by quiet electric 'whisper boat' or canoe.",
+      "facts": [
+        "Rent a whisper boat (~€25–35 an hour) — no licence needed",
+        "Very crowded on summer afternoons; go early or stay overnight",
+        "Paid car parks at the edge of the village",
+        "Combine with a boat trip into the Weerribben-Wieden park"
+      ],
+      "sleep": true
+    },
+    {
+      "id": "nijmegen",
+      "name": "Nijmegen",
+      "region": "gelderland",
+      "lat": 51.8426,
+      "lon": 5.8546,
+      "visit": 150,
+      "cat": "Town",
+      "priority": 2,
+      "wiki": "Nijmegen",
+      "summary": "The oldest city in the Netherlands, founded by the Romans on the Waal, with a lively student centre, the Valkhof park and riverside quays.",
+      "facts": [
+        "About 15 minutes by train from Arnhem",
+        "Museum Het Valkhof (Roman finds) free with Museumkaart",
+        "The four-day marches (Vierdaagse) fill the city in mid-July"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "hoge_veluwe",
+      "name": "Hoge Veluwe National Park",
+      "region": "gelderland",
+      "lat": 52.095,
+      "lon": 5.832,
+      "visit": 240,
+      "cat": "Nature reserve",
+      "priority": 3,
+      "wiki": "Hoge Veluwe National Park",
+      "summary": "A 5,400-hectare fenced park of heathland, drifting sand dunes and forest with red deer, wild boar and mouflon. Free white bikes let you cycle between the park's sights.",
+      "facts": [
+        "Park entry ~€15 adult plus a car fee; NOT covered by the Museumkaart (the museum inside is)",
+        "Use the free white bikes from the entrances and the visitor centre",
+        "Wildlife is best at dawn and dusk",
+        "Three entrances: Otterlo, Hoenderloo and Schaarsbergen"
+      ],
+      "season": "Heather blooms purple in August; the deer rut is in September–October."
+    },
+    {
+      "id": "kroller_muller",
+      "name": "Kröller-Müller Museum",
+      "region": "gelderland",
+      "lat": 52.0955,
+      "lon": 5.817,
+      "visit": 180,
+      "cat": "Museum",
+      "priority": 3,
+      "wiki": "Kröller-Müller Museum",
+      "summary": "Museum in the heart of the Hoge Veluwe with the world's second-largest Van Gogh collection, plus Mondrian, Seurat and Picasso, and one of Europe's largest sculpture gardens.",
+      "facts": [
+        "Museum ~€15 on top of park entry; museum part free with Museumkaart (park entry still payable)",
+        "Allow 2–3 hours including the sculpture garden",
+        "Cycle to it on a free white bike from the park entrance"
+      ],
+      "hours": "10:00-17:00",
+      "closed": [
+        1
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "het_loo",
+      "name": "Het Loo Palace",
+      "region": "gelderland",
+      "lat": 52.234,
+      "lon": 5.945,
+      "visit": 180,
+      "cat": "Palace",
+      "priority": 2,
+      "wiki": "Het Loo Palace",
+      "summary": "Royal hunting palace of William III and Mary II, with restored Baroque formal gardens and a new underground museum wing. Home of the House of Orange until 1975.",
+      "facts": [
+        "~€20 adult; free with Museumkaart",
+        "Allow 2–3 hours with the gardens",
+        "Free parking"
+      ],
+      "hours": "10:00-17:00",
+      "needsDaylight": false
+    },
+    {
+      "id": "openluchtmuseum",
+      "name": "Netherlands Open Air Museum",
+      "region": "gelderland",
+      "lat": 52.009,
+      "lon": 5.905,
+      "visit": 240,
+      "cat": "Museum",
+      "priority": 2,
+      "wiki": "Netherlands Open Air Museum",
+      "summary": "Woodland park on the edge of Arnhem with farms, windmills, workshops and whole streets relocated from all over the country, a working tram and the Canon of Dutch history exhibition.",
+      "facts": [
+        "Free with Museumkaart",
+        "Allow at least half a day; many buildings close in winter",
+        "Great with children"
+      ],
+      "hours": "10:00-17:00"
+    },
+    {
+      "id": "airborne_museum",
+      "name": "Airborne Museum Hartenstein",
+      "region": "gelderland",
+      "lat": 51.989,
+      "lon": 5.837,
+      "visit": 120,
+      "cat": "Museum",
+      "priority": 2,
+      "wiki": "Airborne Museum 'Hartenstein'",
+      "summary": "Museum on Operation Market Garden in the villa that was the British headquarters during the Battle of Arnhem in 1944, with an immersive 'Airborne Experience' basement.",
+      "facts": [
+        "Free with Museumkaart",
+        "Arnhem Oosterbeek War Cemetery is a short walk away",
+        "Allow about 2 hours"
+      ],
+      "hours": "10:00-17:00",
+      "needsDaylight": false
+    },
+    {
+      "id": "posbank",
+      "name": "Posbank",
+      "region": "gelderland",
+      "lat": 52.0285,
+      "lon": 6.0193,
+      "visit": 90,
+      "cat": "Viewpoint",
+      "priority": 2,
+      "wiki": "Veluwezoom National Park",
+      "summary": "Rolling heath on the edge of the Veluwezoom National Park with one of the best views in the country over the IJssel valley. Walks start from the pavilion.",
+      "facts": [
+        "Free; paid parking",
+        "Purple heather in August",
+        "Steep cycling climb by Dutch standards"
+      ]
+    },
+    {
+      "id": "deventer",
+      "name": "Deventer",
+      "region": "gelderland",
+      "lat": 52.255,
+      "lon": 6.16,
+      "visit": 150,
+      "cat": "Town",
+      "priority": 2,
+      "wiki": "Deventer",
+      "summary": "Prosperous Hanseatic town on the IJssel, with the Brink square, the Lebuinus church and well-preserved medieval streets. Hosts one of Europe's largest book markets in August.",
+      "facts": [
+        "About 15 minutes by train from Apeldoorn or Zwolle",
+        "Park in a garage near the Brink",
+        "Bergkwartier is the most atmospheric old quarter"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "zutphen",
+      "name": "Zutphen",
+      "region": "gelderland",
+      "lat": 52.139,
+      "lon": 6.196,
+      "visit": 120,
+      "cat": "Town",
+      "priority": 1,
+      "wiki": "Zutphen",
+      "summary": "Small Hanseatic 'tower town' with a remarkable chained medieval library in the St Walburga church and many towers and gates.",
+      "facts": [
+        "The Librije (chained library) can be visited in season",
+        "Combine with Deventer and Bronkhorst",
+        "Free parking at the edge"
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "kampen",
+      "name": "Kampen",
+      "region": "gelderland",
+      "lat": 52.555,
+      "lon": 5.911,
+      "visit": 90,
+      "cat": "Town",
+      "priority": 1,
+      "wiki": "Kampen, Overijssel",
+      "summary": "Hanseatic town on the IJssel with a skyline of gates and towers best seen from across the river, and a replica medieval cog ship.",
+      "facts": [
+        "Free",
+        "The view from the IJssel bridge is the best",
+        "15 minutes from Zwolle by train or car"
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "elburg",
+      "name": "Elburg",
+      "region": "gelderland",
+      "lat": 52.447,
+      "lon": 5.836,
+      "visit": 90,
+      "cat": "Town",
+      "priority": 1,
+      "wiki": "Elburg",
+      "summary": "Tiny fortified town laid out on a perfect grid inside walls and a moat, with a small fishing harbour on the Veluwemeer.",
+      "facts": [
+        "Free",
+        "Walk the ramparts in 30 minutes",
+        "Smoked eel and fish in the harbour"
+      ]
+    },
+    {
+      "id": "weerribben_wieden",
+      "name": "Weerribben-Wieden National Park",
+      "region": "gelderland",
+      "lat": 52.812,
+      "lon": 5.927,
+      "visit": 180,
+      "cat": "Nature reserve",
+      "priority": 2,
+      "wiki": "Weerribben-Wieden National Park",
+      "summary": "The largest peat marsh in north-west Europe, a watery maze of reedbeds, lakes and canals next to Giethoorn. Canoe or punt through it for the otters, purple herons and swallowtail butterflies.",
+      "facts": [
+        "Free; visitor centre at Ossenzijl",
+        "Canoe and boat hire in Ossenzijl, Giethoorn and Blokzijl",
+        "Far quieter than the Giethoorn village canals"
+      ]
+    },
+    {
+      "id": "batavialand",
+      "name": "Batavialand (Nieuw Land), Lelystad",
+      "region": "gelderland",
+      "lat": 52.5194,
+      "lon": 5.4384,
+      "visit": 150,
+      "cat": "Museum",
+      "priority": 2,
+      "wiki": "Lelystad",
+      "summary": "Heritage centre on the IJsselmeer dyke that tells how Flevoland was reclaimed from the sea, with a shipyard where a full replica of the VOC ship Batavia can be boarded.",
+      "facts": [
+        "Book online",
+        "Allow 2–3 hours",
+        "Next to the Batavia Stad outlet centre"
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "oostvaardersplassen",
+      "name": "Oostvaardersplassen",
+      "region": "gelderland",
+      "lat": 52.44,
+      "lon": 5.38,
+      "visit": 150,
+      "cat": "Nature reserve",
+      "priority": 1,
+      "wiki": "Oostvaardersplassen",
+      "summary": "A vast wetland on reclaimed land that has become a wilderness of reedbeds and grassland, with herds of Konik horses, red deer and white-tailed eagles.",
+      "facts": [
+        "Free; visitor centre and hides on the edges",
+        "Bring binoculars",
+        "Great birding in spring and autumn"
+      ]
+    },
+    {
+      "id": "leeuwarden",
+      "name": "Leeuwarden",
+      "region": "north",
+      "lat": 53.2012,
+      "lon": 5.7999,
+      "visit": 150,
+      "cat": "Town",
+      "priority": 2,
+      "wiki": "Leeuwarden",
+      "summary": "Capital of Friesland, a relaxed canal city with the leaning Oldehove tower, the Fries Museum and the Princessehof ceramics museum. Starting and finishing point of the Elfstedentocht, the legendary eleven-cities skating race.",
+      "facts": [
+        "About 2 hours by train from Amsterdam",
+        "Park in a garage or P+R",
+        "Fries Museum and Princessehof free with Museumkaart",
+        "Good base for the Frisian lakes and the eleven cities by car or bike"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "groningen",
+      "name": "Groningen",
+      "region": "north",
+      "lat": 53.2194,
+      "lon": 6.5665,
+      "visit": 180,
+      "cat": "Base",
+      "priority": 3,
+      "wiki": "Groningen",
+      "summary": "Lively university city of the north, with a young population, many bikes, a compact medieval core around the Grote Markt and Martini Tower, and a vibrant nightlife.",
+      "facts": [
+        "About 2 hours 15 by train from Amsterdam",
+        "The centre is car-free inside the ring: use a P+R and the bus",
+        "Good base for wadlopen at Pieterburen and Bourtange"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "groninger_museum",
+      "name": "Groninger Museum",
+      "region": "north",
+      "lat": 53.2122,
+      "lon": 6.5658,
+      "visit": 120,
+      "cat": "Museum",
+      "priority": 2,
+      "wiki": "Groninger Museum",
+      "summary": "Wildly colourful postmodern museum building on an island in front of the station, with changing exhibitions of contemporary art, design and fashion, plus local Expressionists.",
+      "facts": [
+        "~€18 adult; free with Museumkaart",
+        "Allow 1.5–2 hours",
+        "Opposite Groningen station"
+      ],
+      "hours": "10:00-17:00",
+      "closed": [
+        1
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "martinitoren",
+      "name": "Martini Tower",
+      "region": "north",
+      "lat": 53.2193,
+      "lon": 6.5683,
+      "visit": 45,
+      "cat": "Viewpoint",
+      "priority": 1,
+      "wiki": "Martinitoren",
+      "summary": "The 97 m medieval church tower on the Grote Markt, symbol of Groningen, with a view over the city and the flat northern countryside.",
+      "facts": [
+        "Small entry fee",
+        "Combine with the Martinikerk and its garden courtyard",
+        "On the main square"
+      ]
+    },
+    {
+      "id": "harlingen",
+      "name": "Harlingen",
+      "region": "north",
+      "lat": 53.1745,
+      "lon": 5.417,
+      "visit": 120,
+      "cat": "Town",
+      "priority": 2,
+      "wiki": "Harlingen, Netherlands",
+      "summary": "Historic Frisian port town on the Wadden Sea with old harbours full of traditional sailing ships, canal-side merchant houses and ferries to Terschelling and Vlieland.",
+      "facts": [
+        "Ferries to Terschelling and Vlieland from the harbour",
+        "Long-stay car parks near the ferry terminal",
+        "Good fish stalls on the harbour"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "sneek",
+      "name": "Sneek",
+      "region": "north",
+      "lat": 53.033,
+      "lon": 5.659,
+      "visit": 90,
+      "cat": "Town",
+      "priority": 2,
+      "wiki": "Sneek",
+      "summary": "Water-sports town at the heart of the Frisian lakes, known for its 17th-century Waterpoort gate. Hub for sailing and boat rental.",
+      "facts": [
+        "One of the eleven Elfsteden cities",
+        "Boat rental for the lakes",
+        "Sneekweek regatta fills the town in early August"
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "hindeloopen",
+      "name": "Hindeloopen",
+      "region": "north",
+      "lat": 52.942,
+      "lon": 5.401,
+      "visit": 90,
+      "cat": "Village",
+      "priority": 2,
+      "wiki": "Hindeloopen",
+      "summary": "Tiny former seafaring town on the IJsselmeer with narrow streets, wooden bridges and a unique painted-furniture tradition. Home of the skating museum.",
+      "facts": [
+        "Free; car park outside the village",
+        "Schaatsmuseum on the Elfstedentocht",
+        "One of the eleven cities"
+      ]
+    },
+    {
+      "id": "sloten",
+      "name": "Sloten",
+      "region": "north",
+      "lat": 52.895,
+      "lon": 5.646,
+      "visit": 60,
+      "cat": "Village",
+      "priority": 1,
+      "wiki": "Sloten, Friesland",
+      "summary": "The smallest of the Frisian eleven cities, a perfect miniature walled town with a single canal, a windmill on the ramparts and old cannons.",
+      "facts": [
+        "Free",
+        "30 minutes is enough to walk around",
+        "Combine with the Frisian lakes and Woudagemaal"
+      ]
+    },
+    {
+      "id": "dokkum",
+      "name": "Dokkum",
+      "region": "north",
+      "lat": 53.326,
+      "lon": 5.999,
+      "visit": 90,
+      "cat": "Town",
+      "priority": 1,
+      "wiki": "Dokkum",
+      "summary": "Fortified town in the far north of Friesland with star-shaped ramparts, two windmills and the spring where Saint Boniface was killed in 754.",
+      "facts": [
+        "Free",
+        "The final town of the Elfstedentocht route",
+        "Combine with the ferry to Ameland from Holwerd"
+      ]
+    },
+    {
+      "id": "eise_eisinga_planetarium",
+      "name": "Eise Eisinga Planetarium, Franeker",
+      "region": "north",
+      "lat": 53.1871,
+      "lon": 5.5415,
+      "visit": 60,
+      "cat": "Museum",
+      "priority": 2,
+      "wiki": "Eise Eisinga Planetarium",
+      "summary": "The oldest working planetarium in the world (1781), built by a wool-comber into the ceiling of his living room to show the planets moving in real time. UNESCO-listed.",
+      "facts": [
+        "Free with Museumkaart",
+        "Allow about 1 hour",
+        "Franeker's old centre is worth a short stroll"
+      ],
+      "hours": "10:00-17:00",
+      "needsDaylight": false
+    },
+    {
+      "id": "afsluitdijk",
+      "name": "Afsluitdijk",
+      "region": "north",
+      "lat": 53.073,
+      "lon": 5.337,
+      "visit": 60,
+      "cat": "Monument",
+      "priority": 2,
+      "wiki": "Afsluitdijk",
+      "summary": "The 32 km dam built in 1932 that cut off the Zuiderzee and created the IJsselmeer. The Wadden Center at Kornwerderzand explains it, and the Vlieter monument has a viewing tower.",
+      "facts": [
+        "Free; the Wadden Center has a small fee",
+        "Very exposed to wind",
+        "Drive or cycle it on the way between North Holland and Friesland"
+      ]
+    },
+    {
+      "id": "ameland",
+      "name": "Ameland",
+      "region": "north",
+      "lat": 53.451,
+      "lon": 5.775,
+      "visit": 300,
+      "cat": "Island",
+      "priority": 2,
+      "wiki": "Ameland",
+      "summary": "Car-light Wadden island of dunes, a red-and-white lighthouse and long sandy beaches, with four old villages. Quieter and more traditional than Texel.",
+      "facts": [
+        "Wagenborg ferry from Holwerd, ~45 minutes; times depend on the tide",
+        "Leave the car in Holwerd and hire bikes on the island",
+        "Book accommodation ahead in summer"
+      ],
+      "sleep": true
+    },
+    {
+      "id": "terschelling",
+      "name": "Terschelling",
+      "region": "north",
+      "lat": 53.36,
+      "lon": 5.215,
+      "visit": 300,
+      "cat": "Island",
+      "priority": 2,
+      "wiki": "Terschelling",
+      "summary": "Long Wadden island with vast beaches, dune forests and the Boschplaat salt-marsh reserve. West-Terschelling is the lively harbour village with the Brandaris lighthouse.",
+      "facts": [
+        "Doeksen ferry (~2 hours) or fast ferry (~45 minutes) from Harlingen; book ahead in summer",
+        "Bring bikes or hire them on the island",
+        "Oerol theatre festival takes over the island in June"
+      ],
+      "sleep": true
+    },
+    {
+      "id": "holwerd",
+      "name": "Holwerd (Ameland ferry)",
+      "region": "north",
+      "lat": 53.37,
+      "lon": 5.9,
+      "visit": 30,
+      "cat": "Village",
+      "priority": 1,
+      "wiki": "Holwerd",
+      "summary": "Small terp village on the Frisian coast and the ferry port for Ameland, with a long jetty out across the Wadden mud. Wadlopen tours also start here.",
+      "facts": [
+        "Paid long-stay parking at the ferry terminal",
+        "Arrive 30 minutes before departure",
+        "Ferry times shift with the tide"
+      ]
+    },
+    {
+      "id": "wadlopen_pieterburen",
+      "name": "Wadlopen (mudflat hiking) at Pieterburen",
+      "region": "north",
+      "lat": 53.399,
+      "lon": 6.448,
+      "visit": 180,
+      "cat": "Experience",
+      "priority": 3,
+      "wiki": "Mudflat hiking",
+      "summary": "Guided barefoot or booted walks across the exposed Wadden Sea floor at low tide, through mud and tidal gullies — a uniquely Dutch experience in a UNESCO-listed landscape. Pieterburen is the main centre.",
+      "facts": [
+        "Only with a licensed guide; book ahead (~€15–40 depending on length)",
+        "Season roughly May–September; times depend on the tide",
+        "Wear high-top trainers you don't mind ruining and bring dry clothes"
+      ],
+      "caution": "Never walk on the mudflats without a guide: the tide comes in fast and gullies are deep.",
+      "season": "Guided walks run roughly May to September."
+    },
+    {
+      "id": "lauwersmeer",
+      "name": "Lauwersmeer National Park",
+      "region": "north",
+      "lat": 53.38,
+      "lon": 6.22,
+      "visit": 120,
+      "cat": "Nature reserve",
+      "priority": 1,
+      "wiki": "Lauwersmeer National Park",
+      "summary": "Former Wadden inlet closed off in 1969, now a wetland of reed and grassland with excellent birding and a certified Dark Sky park. Ferry port for Schiermonnikoog at Lauwersoog.",
+      "facts": [
+        "Free",
+        "Spoonbills, sea eagles and huge flocks of geese in winter",
+        "Stargazing on clear nights"
+      ]
+    },
+    {
+      "id": "bourtange",
+      "name": "Bourtange",
+      "region": "north",
+      "lat": 53.007,
+      "lon": 7.191,
+      "visit": 120,
+      "cat": "Old town",
+      "priority": 2,
+      "wiki": "Bourtange",
+      "summary": "Perfectly restored 16th-century star fort village by the German border, with moats, bastions and cobbled streets inside the walls.",
+      "facts": [
+        "Free to walk around; small fee for the museum buildings",
+        "Car park outside the fort",
+        "Allow about 2 hours"
+      ]
+    },
+    {
+      "id": "woudagemaal",
+      "name": "Woudagemaal",
+      "region": "north",
+      "lat": 52.8338,
+      "lon": 5.7255,
+      "visit": 75,
+      "cat": "Monument",
+      "priority": 1,
+      "wiki": "Woudagemaal",
+      "summary": "The largest steam-powered pumping station ever built (1920), still used to drain Friesland in emergencies. UNESCO World Heritage site with a visitor centre.",
+      "facts": [
+        "Free with Museumkaart",
+        "Guided tours of the engine hall",
+        "Just south of Lemmer"
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "hunebedcentrum",
+      "name": "Hunebedcentrum, Borger",
+      "region": "north",
+      "lat": 52.923,
+      "lon": 6.792,
+      "visit": 90,
+      "cat": "Monument",
+      "priority": 2,
+      "wiki": "Dolmen",
+      "summary": "Information centre beside the largest of Drenthe's prehistoric hunebeds (dolmen), megalithic tombs about 5,000 years old built from glacial boulders.",
+      "facts": [
+        "The largest hunebed (D27) is free to see",
+        "Small museum with a reconstructed village",
+        "A cycle route links dozens of hunebeds"
+      ]
+    },
+    {
+      "id": "den_bosch",
+      "name": "Den Bosch ('s-Hertogenbosch)",
+      "region": "south",
+      "lat": 51.6884,
+      "lon": 5.3035,
+      "visit": 150,
+      "cat": "Town",
+      "priority": 3,
+      "wiki": "'s-Hertogenbosch",
+      "summary": "Capital of North Brabant and Hieronymus Bosch's home town, with a magnificent Gothic cathedral, a lively Markt and canals that run under the houses. Famous for the chocolate Bossche bol.",
+      "facts": [
+        "About 1 hour by train from Amsterdam",
+        "Park in a garage or P+R",
+        "Try a Bossche bol at Jan de Groot",
+        "Carnival in February takes over the town"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "st_johns_cathedral",
+      "name": "St John's Cathedral",
+      "region": "south",
+      "lat": 51.6878,
+      "lon": 5.3093,
+      "visit": 45,
+      "cat": "Monastery & church",
+      "priority": 2,
+      "wiki": "St. John's Cathedral ('s-Hertogenbosch)",
+      "summary": "The finest Brabantine Gothic church in the Netherlands, with hundreds of quirky carved figures on its flying buttresses that can be seen up close on a rooftop tour.",
+      "facts": [
+        "Free to enter",
+        "Rooftop 'Bosch Experience' tour on the buttresses (small fee, book ahead)",
+        "No visits during services"
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "binnendieze",
+      "name": "Binnendieze boat trip",
+      "region": "south",
+      "lat": 51.687,
+      "lon": 5.306,
+      "visit": 60,
+      "cat": "Boat trip",
+      "priority": 2,
+      "wiki": "Binnendieze",
+      "summary": "Small open boats glide through Den Bosch's medieval underground canal system, passing under houses, streets and arches.",
+      "facts": [
+        "~€12 adult, about 50 minutes",
+        "Book ahead in summer",
+        "Mind your head: low arches"
+      ]
+    },
+    {
+      "id": "efteling",
+      "name": "Efteling",
+      "region": "south",
+      "lat": 51.649,
+      "lon": 5.0475,
+      "visit": 420,
+      "cat": "Theme park",
+      "priority": 3,
+      "wiki": "Efteling",
+      "summary": "The Netherlands' biggest and oldest theme park, famous for its Fairy Tale Forest and atmospheric dark rides, plus roller coasters. Charming for adults as well as children.",
+      "facts": [
+        "Date tickets online ~€45–55 depending on the day",
+        "Paid parking ~€15",
+        "Arrive at opening; plan a full day",
+        "Open almost all year, including a winter season"
+      ],
+      "hours": "10:00-18:00"
+    },
+    {
+      "id": "eindhoven",
+      "name": "Eindhoven",
+      "region": "south",
+      "lat": 51.4416,
+      "lon": 5.4697,
+      "visit": 120,
+      "cat": "Base",
+      "priority": 1,
+      "wiki": "Eindhoven",
+      "summary": "The country's design and technology city, home of Philips, with modern architecture, the Strijp-S creative district and a good bar scene. Practical as a base by the airport rather than for beauty.",
+      "facts": [
+        "Eindhoven Airport is 15–20 minutes by bus",
+        "Dutch Design Week in October",
+        "Park in a garage; the centre is compact"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "van_abbemuseum",
+      "name": "Van Abbemuseum",
+      "region": "south",
+      "lat": 51.4347,
+      "lon": 5.4812,
+      "visit": 90,
+      "cat": "Museum",
+      "priority": 1,
+      "wiki": "Van Abbemuseum",
+      "summary": "Strong modern and contemporary art museum with work by Picasso, Chagall, Kandinsky and El Lissitzky.",
+      "facts": [
+        "Free with Museumkaart",
+        "Allow about 1.5 hours",
+        "In the city centre by the Dommel river"
+      ],
+      "hours": "11:00-17:00",
+      "closed": [
+        1
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "maastricht",
+      "name": "Maastricht",
+      "region": "south",
+      "lat": 50.8487,
+      "lon": 5.688,
+      "visit": 210,
+      "cat": "Base",
+      "priority": 3,
+      "wiki": "Maastricht",
+      "summary": "Elegant city on the Maas in the far south, with Roman roots, grand squares (Vrijthof, Markt), fortifications and a Burgundian love of food that feels more Belgian than Dutch.",
+      "facts": [
+        "About 2.5 hours by train from Amsterdam",
+        "Park in a garage or P+R; the centre is walkable",
+        "Try vlaai (fruit tart) and local beer",
+        "Hilly cycling country nearby"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "boekhandel_dominicanen",
+      "name": "Boekhandel Dominicanen",
+      "region": "south",
+      "lat": 50.8521,
+      "lon": 5.6896,
+      "visit": 30,
+      "cat": "Monastery & church",
+      "priority": 2,
+      "wiki": "Maastricht",
+      "summary": "A bookshop inside a 13th-century Dominican church, with modern shelving rising between Gothic arches and frescoes. Often called one of the world's most beautiful bookshops.",
+      "facts": [
+        "Free",
+        "Café in the choir",
+        "Just off the Markt"
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "sint_pietersberg",
+      "name": "Fort Sint Pieter & Mount Saint Peter caves",
+      "region": "south",
+      "lat": 50.836,
+      "lon": 5.69,
+      "visit": 120,
+      "cat": "Experience",
+      "priority": 2,
+      "wiki": "Sint-Pietersberg",
+      "summary": "Hill south of Maastricht riddled with miles of marl tunnels used for centuries as quarries and wartime shelters, topped by an 18th-century fort with views over the city.",
+      "facts": [
+        "Guided tours only (~1 hour each), book online; combined fort + caves ticket available",
+        "Caves are about 10 °C all year — bring a jacket",
+        "Walk up from the centre along the Maas (~30 minutes)"
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "valkenburg",
+      "name": "Valkenburg aan de Geul",
+      "region": "south",
+      "lat": 50.865,
+      "lon": 5.83,
+      "visit": 120,
+      "cat": "Town",
+      "priority": 2,
+      "wiki": "Valkenburg aan de Geul",
+      "summary": "Busy little resort in the Geul valley with the only hilltop castle ruin in the Netherlands, marl caves and the country's biggest Christmas market in the caves.",
+      "facts": [
+        "Christmas markets in the caves from mid-November",
+        "Can feel touristy; good base for walks in the Limburg hills",
+        "10 minutes by train from Maastricht"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "valkenburg_castle",
+      "name": "Valkenburg Castle ruins",
+      "region": "south",
+      "lat": 50.864,
+      "lon": 5.832,
+      "visit": 60,
+      "cat": "Ruins",
+      "priority": 2,
+      "wiki": "Valkenburg Castle",
+      "summary": "Ruins of the only hilltop castle in the Netherlands, blown up in 1672, with secret passages in the marl underneath and views over Valkenburg.",
+      "facts": [
+        "Combined ticket with the Velvet Cave",
+        "Steep walk or chairlift up",
+        "Allow about 1 hour"
+      ]
+    },
+    {
+      "id": "thorn",
+      "name": "Thorn",
+      "region": "south",
+      "lat": 51.161,
+      "lon": 5.842,
+      "visit": 90,
+      "cat": "Village",
+      "priority": 2,
+      "wiki": "Thorn, Netherlands",
+      "summary": "The 'white village', a former tiny principality ruled by an abbey, with whitewashed brick houses on cobbled streets around the abbey church.",
+      "facts": [
+        "Free; car park at the edge",
+        "Abbey church has a small fee",
+        "Combine with the Maasplassen lakes"
+      ]
+    },
+    {
+      "id": "biesbosch",
+      "name": "Biesbosch National Park",
+      "region": "south",
+      "lat": 51.707,
+      "lon": 4.804,
+      "visit": 180,
+      "cat": "Nature reserve",
+      "priority": 2,
+      "wiki": "Biesbosch",
+      "summary": "One of Europe's largest freshwater tidal wetlands, a labyrinth of creeks, willow woods and islands, with beavers and sea eagles. Best explored by boat or canoe.",
+      "facts": [
+        "Free; boat tours and canoe hire from Drimmelen and the Biesbosch MuseumEiland at Werkendam",
+        "Electric 'fluisterboot' rental, no licence needed",
+        "Easy from Dordrecht or Breda"
+      ]
+    },
+    {
+      "id": "vaalserberg",
+      "name": "Vaalserberg (Three-Country Point)",
+      "region": "south",
+      "lat": 50.7548,
+      "lon": 6.0207,
+      "visit": 60,
+      "cat": "Viewpoint",
+      "priority": 1,
+      "wiki": "Vaalserberg",
+      "summary": "At 322 m the highest point of the European Netherlands, where the Dutch, German and Belgian borders meet, with a viewing tower and a hedge maze.",
+      "facts": [
+        "Free; paid parking",
+        "Wilhelmina tower and the maze charge small fees",
+        "Combine with Vaals or Aachen just across the border"
+      ]
+    },
+    {
+      "id": "geul_valley_walk",
+      "name": "Geul valley walk (Epen)",
+      "region": "south",
+      "lat": 50.776,
+      "lon": 5.912,
+      "visit": 180,
+      "cat": "Hike",
+      "priority": 2,
+      "wiki": "Epen",
+      "summary": "The most un-Dutch landscape in the country: rolling hills, half-timbered farms, orchards and beech woods along the Geul river around Epen and Slenaken.",
+      "facts": [
+        "Many marked loops of 5–15 km from Epen",
+        "Hilly by Dutch standards; good shoes",
+        "Lovely in May for blossom and in autumn colours"
+      ]
+    },
+    {
+      "id": "breda",
+      "name": "Breda",
+      "region": "south",
+      "lat": 51.589,
+      "lon": 4.776,
+      "visit": 150,
+      "cat": "Town",
+      "priority": 2,
+      "wiki": "Breda",
+      "summary": "Lively Brabant city with a Gothic Grote Kerk, the Kasteel van Breda military academy and a big café-lined Grote Markt. Good stop between Rotterdam and the south.",
+      "facts": [
+        "Begijnhof courtyard is free to visit",
+        "Park in a garage or P+R",
+        "Easy access to the Biesbosch"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "heusden",
+      "name": "Heusden",
+      "region": "south",
+      "lat": 51.736,
+      "lon": 5.139,
+      "visit": 90,
+      "cat": "Town",
+      "priority": 2,
+      "wiki": "Heusden",
+      "summary": "Tiny fortress town on the Maas with restored bastions, a harbour, windmills on the ramparts and pretty narrow streets.",
+      "facts": [
+        "Free; car park outside the walls",
+        "Quiet on weekdays",
+        "Combine with Den Bosch or the Loonse en Drunense Duinen"
+      ]
+    },
+    {
+      "id": "nuenen",
+      "name": "Nuenen",
+      "region": "south",
+      "lat": 51.471,
+      "lon": 5.552,
+      "visit": 90,
+      "cat": "Village",
+      "priority": 1,
+      "wiki": "Nuenen",
+      "summary": "Village where Vincent van Gogh lived from 1883 to 1885 and painted The Potato Eaters, with the Vincentre museum and a walking trail past the places he painted.",
+      "facts": [
+        "Vincentre is small; allow about 1 hour",
+        "Free Van Gogh walking route",
+        "15 minutes from Eindhoven"
+      ]
+    },
+    {
+      "id": "loonse_duinen",
+      "name": "Loonse en Drunense Duinen National Park",
+      "region": "south",
+      "lat": 51.656,
+      "lon": 5.15,
+      "visit": 120,
+      "cat": "Nature reserve",
+      "priority": 1,
+      "wiki": "Loonse en Drunense Duinen",
+      "summary": "A landscape of drifting sand dunes in the middle of Brabant, ringed by woods — an unexpected small desert.",
+      "facts": [
+        "Free; parking at the edges",
+        "Good walking and cycling",
+        "Close to Efteling"
+      ]
+    }
+  ],
+  "drives": [
+    [
+      "arnhem",
+      "hoge_veluwe",
+      15,
+      20
+    ],
+    [
+      "arnhem",
+      "kroller_muller",
+      20,
+      25
+    ],
+    [
+      "arnhem",
+      "openluchtmuseum",
+      5,
+      10
+    ],
+    [
+      "arnhem",
+      "airborne_museum",
+      6,
+      12
+    ],
+    [
+      "arnhem",
+      "posbank",
+      12,
+      18
+    ],
+    [
+      "arnhem",
+      "nijmegen",
+      20,
+      25
+    ],
+    [
+      "arnhem",
+      "apeldoorn",
+      30,
+      30
+    ],
+    [
+      "apeldoorn",
+      "het_loo",
+      3,
+      8
+    ],
+    [
+      "apeldoorn",
+      "hoge_veluwe",
+      20,
+      25
+    ],
+    [
+      "apeldoorn",
+      "deventer",
+      17,
+      20
+    ],
+    [
+      "deventer",
+      "zutphen",
+      18,
+      20
+    ],
+    [
+      "zutphen",
+      "arnhem",
+      30,
+      30
+    ],
+    [
+      "apeldoorn",
+      "zwolle",
+      45,
+      35
+    ],
+    [
+      "zwolle",
+      "kampen",
+      15,
+      20
+    ],
+    [
+      "zwolle",
+      "giethoorn",
+      30,
+      35
+    ],
+    [
+      "giethoorn",
+      "weerribben_wieden",
+      15,
+      20
+    ],
+    [
+      "zwolle",
+      "elburg",
+      25,
+      25
+    ],
+    [
+      "elburg",
+      "apeldoorn",
+      35,
+      30
+    ],
+    [
+      "zwolle",
+      "batavialand",
+      60,
+      45
+    ],
+    [
+      "amsterdam",
+      "batavialand",
+      55,
+      45
+    ],
+    [
+      "batavialand",
+      "oostvaardersplassen",
+      12,
+      15
+    ],
+    [
+      "nijmegen",
+      "den_bosch",
+      45,
+      35
+    ],
+    [
+      "arnhem",
+      "eindhoven",
+      85,
+      60
+    ],
+    [
+      "zwolle",
+      "leeuwarden",
+      95,
+      65
+    ],
+    [
+      "zwolle",
+      "groningen",
+      105,
+      70
+    ],
+    [
+      "leeuwarden",
+      "groningen",
+      60,
+      45
+    ],
+    [
+      "amsterdam",
+      "leeuwarden",
+      140,
+      100
+    ],
+    [
+      "leeuwarden",
+      "harlingen",
+      30,
+      25
+    ],
+    [
+      "harlingen",
+      "afsluitdijk",
+      15,
+      15
+    ],
+    [
+      "afsluitdijk",
+      "alkmaar",
+      85,
+      60
+    ],
+    [
+      "leeuwarden",
+      "sneek",
+      25,
+      25
+    ],
+    [
+      "sneek",
+      "sloten",
+      20,
+      25
+    ],
+    [
+      "sneek",
+      "hindeloopen",
+      25,
+      30
+    ],
+    [
+      "sneek",
+      "woudagemaal",
+      30,
+      30
+    ],
+    [
+      "giethoorn",
+      "woudagemaal",
+      35,
+      35
+    ],
+    [
+      "leeuwarden",
+      "eise_eisinga_planetarium",
+      18,
+      20
+    ],
+    [
+      "leeuwarden",
+      "dokkum",
+      25,
+      30
+    ],
+    [
+      "leeuwarden",
+      "holwerd",
+      25,
+      30
+    ],
+    [
+      "dokkum",
+      "holwerd",
+      12,
+      15
+    ],
+    [
+      "groningen",
+      "wadlopen_pieterburen",
+      25,
+      30
+    ],
+    [
+      "groningen",
+      "lauwersmeer",
+      40,
+      40
+    ],
+    [
+      "groningen",
+      "bourtange",
+      60,
+      50
+    ],
+    [
+      "groningen",
+      "hunebedcentrum",
+      45,
+      40
+    ],
+    [
+      "zwolle",
+      "hunebedcentrum",
+      80,
+      60
+    ],
+    [
+      "den_bosch",
+      "efteling",
+      25,
+      25
+    ],
+    [
+      "den_bosch",
+      "heusden",
+      20,
+      20
+    ],
+    [
+      "den_bosch",
+      "loonse_duinen",
+      15,
+      20
+    ],
+    [
+      "den_bosch",
+      "eindhoven",
+      35,
+      30
+    ],
+    [
+      "efteling",
+      "breda",
+      25,
+      25
+    ],
+    [
+      "efteling",
+      "loonse_duinen",
+      8,
+      12
+    ],
+    [
+      "breda",
+      "biesbosch",
+      25,
+      25
+    ],
+    [
+      "dordrecht",
+      "biesbosch",
+      25,
+      25
+    ],
+    [
+      "breda",
+      "den_bosch",
+      50,
+      40
+    ],
+    [
+      "rotterdam",
+      "breda",
+      50,
+      40
+    ],
+    [
+      "middelburg",
+      "breda",
+      105,
+      70
+    ],
+    [
+      "eindhoven",
+      "nuenen",
+      8,
+      15
+    ],
+    [
+      "eindhoven",
+      "ein",
+      8,
+      12
+    ],
+    [
+      "eindhoven",
+      "maastricht",
+      90,
+      65
+    ],
+    [
+      "eindhoven",
+      "thorn",
+      45,
+      40
+    ],
+    [
+      "thorn",
+      "maastricht",
+      50,
+      40
+    ],
+    [
+      "maastricht",
+      "sint_pietersberg",
+      3,
+      8
+    ],
+    [
+      "maastricht",
+      "valkenburg",
+      14,
+      20
+    ],
+    [
+      "valkenburg",
+      "geul_valley_walk",
+      18,
+      25
+    ],
+    [
+      "geul_valley_walk",
+      "vaalserberg",
+      10,
+      15
+    ],
+    [
+      "maastricht",
+      "vaalserberg",
+      30,
+      30
+    ],
+    [
+      "utrecht",
+      "arnhem",
+      60,
+      55,
+      "train",
+      13
+    ],
+    [
+      "arnhem",
+      "nijmegen",
+      18,
+      30,
+      "train",
+      5
+    ],
+    [
+      "amersfoort",
+      "apeldoorn",
+      40,
+      45,
+      "train",
+      9
+    ],
+    [
+      "apeldoorn",
+      "deventer",
+      15,
+      25,
+      "train",
+      4
+    ],
+    [
+      "amsterdam",
+      "zwolle",
+      115,
+      85,
+      "train",
+      20
+    ],
+    [
+      "zwolle",
+      "groningen",
+      100,
+      80,
+      "train",
+      20
+    ],
+    [
+      "zwolle",
+      "leeuwarden",
+      95,
+      80,
+      "train",
+      19
+    ],
+    [
+      "amsterdam",
+      "groningen",
+      185,
+      160,
+      "train",
+      31
+    ],
+    [
+      "leeuwarden",
+      "groningen",
+      55,
+      70,
+      "train",
+      11
+    ],
+    [
+      "leeuwarden",
+      "harlingen",
+      28,
+      40,
+      "train",
+      6
+    ],
+    [
+      "utrecht",
+      "den_bosch",
+      50,
+      45,
+      "train",
+      11
+    ],
+    [
+      "den_bosch",
+      "eindhoven",
+      32,
+      35,
+      "train",
+      8
+    ],
+    [
+      "eindhoven",
+      "maastricht",
+      90,
+      80,
+      "train",
+      18
+    ],
+    [
+      "maastricht",
+      "valkenburg",
+      14,
+      25,
+      "train",
+      3.5
+    ],
+    [
+      "harlingen",
+      "terschelling",
+      30,
+      150,
+      "ferry",
+      15
+    ],
+    [
+      "holwerd",
+      "ameland",
+      10,
+      75,
+      "ferry",
+      9
+    ]
+  ]
+}

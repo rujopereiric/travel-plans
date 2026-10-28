@@ -1,0 +1,1221 @@
+{
+  "places": [
+    {
+      "id": "amman",
+      "name": "Amman",
+      "region": "amman",
+      "lat": 31.9539,
+      "lon": 35.9106,
+      "visit": 180,
+      "cat": "Town",
+      "priority": 3,
+      "wiki": "Amman",
+      "summary": "Jordan's hilly capital, with the Roman theatre, the Citadel and the busy souks of downtown (al-Balad) at its core. The natural arrival point and a good base for day trips to Jerash, the Dead Sea and the desert castles.",
+      "facts": [
+        "Downtown is walkable; taxis are cheap for the hills (insist on the meter)",
+        "Try falafel and hummus downtown and knafeh at Habibah",
+        "Traffic is heavy at rush hour; start day trips early",
+        "Many shops close or open late on Friday"
+      ],
+      "sleep": true,
+      "needsDaylight": false,
+      "season": "Pleasant in spring and autumn; winters are cool and it can even snow, summers hot but drier than the lowlands."
+    },
+    {
+      "id": "amman_citadel",
+      "name": "Amman Citadel (Jabal al-Qal'a)",
+      "region": "amman",
+      "lat": 31.9546,
+      "lon": 35.9343,
+      "visit": 90,
+      "cat": "Ruins",
+      "priority": 3,
+      "wiki": "Amman Citadel",
+      "summary": "Hilltop ruins inhabited since the Bronze Age, with the Temple of Hercules, a Byzantine church and the Umayyad Palace. Gives the best views over downtown Amman and the Roman theatre.",
+      "facts": [
+        "~3 JOD; Covered by the Jordan Pass (~70–80 JOD)",
+        "Includes the Jordan Archaeological Museum",
+        "Best light in late afternoon; short taxi ride from downtown",
+        "Allow 1–1.5 hours"
+      ],
+      "hours": "08:00-17:00"
+    },
+    {
+      "id": "roman_theatre_amman",
+      "name": "Roman Theatre",
+      "region": "amman",
+      "lat": 31.9517,
+      "lon": 35.9394,
+      "visit": 45,
+      "cat": "Ruins",
+      "priority": 2,
+      "wiki": "Roman Theatre (Amman)",
+      "summary": "Restored 2nd-century theatre for about 6,000 spectators cut into the hillside below the Citadel. Small folklore and costume museums are built into its wings, and the Odeon and Hashemite Plaza are next to it.",
+      "facts": [
+        "~2 JOD; Covered by the Jordan Pass (~70–80 JOD)",
+        "Climb to the top rows for the view",
+        "In downtown, walking distance from the souks"
+      ],
+      "hours": "08:00-17:00"
+    },
+    {
+      "id": "jordan_museum",
+      "name": "The Jordan Museum",
+      "region": "amman",
+      "lat": 31.9452,
+      "lon": 35.9276,
+      "visit": 90,
+      "cat": "Museum",
+      "priority": 2,
+      "wiki": "Jordan Museum",
+      "summary": "The national museum in Ras al-Ain, covering Jordan's history from prehistory to today. It holds the 'Ain Ghazal statues, some of the oldest large human figures known, and pieces of the Dead Sea Scrolls.",
+      "facts": [
+        "~5 JOD for foreigners",
+        "Closed on Tuesdays",
+        "Allow 1.5 hours; good on a hot afternoon"
+      ],
+      "closed": [
+        2
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "king_abdullah_mosque",
+      "name": "King Abdullah I Mosque",
+      "region": "amman",
+      "lat": 31.9628,
+      "lon": 35.9128,
+      "visit": 40,
+      "cat": "Mosque",
+      "priority": 2,
+      "wiki": "King Abdullah I Mosque",
+      "summary": "Large modern mosque from 1989 with a blue mosaic dome, one of the few in Jordan that welcomes non-Muslim visitors inside. A small Islamic museum is attached.",
+      "facts": [
+        "Small entry fee (~2 JOD) for non-Muslims",
+        "Modest dress required; women get an abaya at the entrance",
+        "Closed to visitors at Friday prayers"
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "grand_husseini_mosque",
+      "name": "Grand Husseini Mosque",
+      "region": "amman",
+      "lat": 31.9518,
+      "lon": 35.9325,
+      "visit": 20,
+      "cat": "Mosque",
+      "priority": 1,
+      "wiki": "Grand Husseini Mosque",
+      "summary": "Pink-and-white mosque at the heart of downtown, rebuilt in 1924 on the site of a 7th-century mosque. The streets around it are the busiest part of the souk.",
+      "facts": [
+        "Usually viewed from outside; non-Muslims are not always admitted",
+        "Avoid prayer times, especially Friday midday",
+        "In the middle of the downtown souk"
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "rainbow_street",
+      "name": "Rainbow Street (Jabal Amman)",
+      "region": "amman",
+      "lat": 31.953,
+      "lon": 35.9228,
+      "visit": 90,
+      "cat": "Food & market",
+      "priority": 2,
+      "wiki": "Rainbow Street",
+      "summary": "Lively street of cafes, rooftop bars and small shops in the old Jabal Amman district, with 1920s stone houses on the side lanes. Busy in the evening and on the Friday Souk Jara market in summer.",
+      "facts": [
+        "Best in the evening",
+        "Souk Jara flea market on summer Fridays",
+        "Walk down the stairs to downtown"
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "darat_al_funun",
+      "name": "Darat al Funun",
+      "region": "amman",
+      "lat": 31.9583,
+      "lon": 35.9249,
+      "visit": 60,
+      "cat": "Museum",
+      "priority": 1,
+      "wiki": "Amman",
+      "summary": "Contemporary Arab art centre in restored 1920s villas on Jabal al-Weibdeh, with gardens built over the ruins of a Byzantine church. A quiet green escape above downtown.",
+      "facts": [
+        "Free entry",
+        "Combine with the cafes of Jabal al-Weibdeh",
+        "Allow about 1 hour"
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "royal_automobile_museum",
+      "name": "Royal Automobile Museum",
+      "region": "amman",
+      "lat": 31.9846,
+      "lon": 35.8281,
+      "visit": 60,
+      "cat": "Museum",
+      "priority": 1,
+      "wiki": "Royal Automobile Museum",
+      "summary": "Collection of the Hashemite royal family's cars and motorbikes in King Hussein Park, telling the story of modern Jordan through them. Good for car enthusiasts and families.",
+      "facts": [
+        "Small entry fee",
+        "In King Hussein Park, west Amman; reach by taxi",
+        "Allow about 1 hour"
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "iraq_al_amir",
+      "name": "Iraq al-Amir & Qasr al-Abd",
+      "region": "amman",
+      "lat": 31.9126,
+      "lon": 35.752,
+      "visit": 60,
+      "cat": "Ruins",
+      "priority": 2,
+      "wiki": "Qasr al-Abd",
+      "summary": "Rare Hellenistic palace of the 2nd century BC with carved lions and leopards, in a green valley west of Amman. Nearby cliffs have caves that gave the village its name, and a women's craft cooperative.",
+      "facts": [
+        "Small entry fee; Covered by the Jordan Pass (~70–80 JOD)",
+        "About 35 minutes' drive from Amman",
+        "Pretty in spring when the valley is green"
+      ]
+    },
+    {
+      "id": "salt",
+      "name": "As-Salt",
+      "region": "amman",
+      "lat": 32.0392,
+      "lon": 35.7272,
+      "visit": 150,
+      "cat": "Old town",
+      "priority": 2,
+      "wiki": "Salt, Jordan",
+      "summary": "Hill town of honey-coloured Ottoman merchant houses on steep stairways, a UNESCO World Heritage site since 2021. Calmer and more traditional than Amman, with a good historical museum in the Abu Jaber house.",
+      "facts": [
+        "Walk Hammam Street souk and the stairways",
+        "Abu Jaber Museum and the Historic Old Salt Museum",
+        "35–40 minutes from Amman"
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "abu_darwish_mosque",
+      "name": "Abu Darwish Mosque",
+      "region": "amman",
+      "lat": 31.9378,
+      "lon": 35.9286,
+      "visit": 20,
+      "cat": "Mosque",
+      "priority": 1,
+      "wiki": "Jabal al-Ashrafieh",
+      "summary": "Striking black-and-white chequered mosque built in 1961 on Jabal al-Ashrafieh, one of Amman's highest hills. Worth a quick stop for the architecture and the city views.",
+      "facts": [
+        "Usually viewed from outside",
+        "Short taxi ride from downtown",
+        "Best views of Amman from the surrounding hill"
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "jerash",
+      "name": "Jerash",
+      "region": "north",
+      "lat": 32.2808,
+      "lon": 35.8993,
+      "visit": 120,
+      "cat": "Town",
+      "priority": 2,
+      "wiki": "Jerash",
+      "summary": "Modern market town built around one of the best-preserved Roman cities anywhere. Usually a day trip from Amman, but a few guesthouses let you see the ruins early and combine with Ajloun.",
+      "facts": [
+        "Under an hour from Amman",
+        "Lebanese House restaurant is a classic lunch stop",
+        "Combine with Ajloun Castle the same day"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "jerash_ancient_city",
+      "name": "Ancient Jerash (Gerasa)",
+      "region": "north",
+      "lat": 32.2735,
+      "lon": 35.8914,
+      "visit": 180,
+      "cat": "Ruins",
+      "priority": 3,
+      "wiki": "Jerash",
+      "summary": "Vast Greco-Roman city with Hadrian's Arch, the oval forum, a colonnaded street, two theatres and the Temple of Artemis. One of the best-preserved Roman provincial towns in the world.",
+      "facts": [
+        "~10 JOD; Covered by the Jordan Pass (~70–80 JOD)",
+        "Allow 3 hours; bring water and a hat, there is little shade",
+        "Roman army and chariot show (RACE) runs some days for an extra fee",
+        "Arrive at opening to beat tour buses"
+      ],
+      "hours": "08:00-17:00",
+      "season": "Very hot at midday in summer; spring brings wildflowers among the columns."
+    },
+    {
+      "id": "ajloun",
+      "name": "Ajloun",
+      "region": "north",
+      "lat": 32.3326,
+      "lon": 35.7517,
+      "visit": 90,
+      "cat": "Town",
+      "priority": 1,
+      "wiki": "Ajloun",
+      "summary": "Hill town in the green north, below its Ayyubid castle and close to the Ajloun Forest Reserve. A good base for hiking and village homestays.",
+      "facts": [
+        "Guesthouses and RSCN cabins nearby",
+        "Cooler than Amman in summer",
+        "Base for the castle, the forest reserve and village homestays"
+      ],
+      "sleep": true
+    },
+    {
+      "id": "ajloun_castle",
+      "name": "Ajloun Castle (Qal'at ar-Rabad)",
+      "region": "north",
+      "lat": 32.3253,
+      "lon": 35.7272,
+      "visit": 75,
+      "cat": "Castle",
+      "priority": 2,
+      "wiki": "Ajloun Castle",
+      "summary": "12th-century Ayyubid castle built by a general of Saladin to watch the Jordan Valley and the iron mines. Well-preserved halls and towers and wide views to the West Bank on clear days.",
+      "facts": [
+        "~3 JOD; Covered by the Jordan Pass (~70–80 JOD)",
+        "Small museum inside",
+        "Allow 1 hour; parking at the gate"
+      ],
+      "hours": "08:00-17:00"
+    },
+    {
+      "id": "ajloun_forest_reserve",
+      "name": "Ajloun Forest Reserve",
+      "region": "north",
+      "lat": 32.3727,
+      "lon": 35.7747,
+      "visit": 180,
+      "cat": "Nature reserve",
+      "priority": 2,
+      "wiki": "Ajloun Forest Reserve",
+      "summary": "RSCN reserve of evergreen oak, pistachio and strawberry-tree woodland, with marked trails and the Soap House and Biscuit House village projects. A green contrast to the rest of Jordan.",
+      "facts": [
+        "Some trails need an RSCN guide; book at the lodge",
+        "Cabins and tents for overnight stays",
+        "Best in spring (March–May)"
+      ],
+      "sleep": true,
+      "season": "Spring is lush and full of flowers; winter can be wet and cold."
+    },
+    {
+      "id": "umm_qais",
+      "name": "Umm Qais (Gadara)",
+      "region": "north",
+      "lat": 32.6556,
+      "lon": 35.6872,
+      "visit": 120,
+      "cat": "Ruins",
+      "priority": 2,
+      "wiki": "Umm Qais",
+      "summary": "Black-basalt Roman city of the Decapolis on a ridge in the far north, with views over the Sea of Galilee, the Golan and the Yarmouk gorge. The restaurant terrace inside the site is a great lunch stop.",
+      "facts": [
+        "~5 JOD; Covered by the Jordan Pass (~70–80 JOD)",
+        "Small museum in an Ottoman house",
+        "Clearest views in the morning or after rain"
+      ],
+      "hours": "08:00-17:00"
+    },
+    {
+      "id": "pella",
+      "name": "Pella (Tabaqat Fahl)",
+      "region": "north",
+      "lat": 32.45,
+      "lon": 35.617,
+      "visit": 75,
+      "cat": "Ruins",
+      "priority": 1,
+      "wiki": "Pella, Jordan",
+      "summary": "Long-inhabited site in the Jordan Valley foothills, with a small Roman theatre, Byzantine churches and Bronze Age remains. Quiet and rarely visited.",
+      "facts": [
+        "Covered by the Jordan Pass (~70–80 JOD)",
+        "Rest house on the hill with a valley view",
+        "Hot in summer; visit in the morning"
+      ]
+    },
+    {
+      "id": "irbid",
+      "name": "Irbid",
+      "region": "north",
+      "lat": 32.5556,
+      "lon": 35.85,
+      "visit": 90,
+      "cat": "Town",
+      "priority": 1,
+      "wiki": "Irbid",
+      "summary": "Jordan's second-largest urban area and a big student city, with the Dar as-Saraya museum in an Ottoman prison and a lively University Street. A practical base for Umm Qais.",
+      "facts": [
+        "Dar as-Saraya museum in the old centre",
+        "University Street for cheap food and cafes",
+        "About 40 minutes from Umm Qais"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "dibeen_forest",
+      "name": "Dibeen Forest Reserve",
+      "region": "north",
+      "lat": 32.2367,
+      "lon": 35.8167,
+      "visit": 120,
+      "cat": "Nature reserve",
+      "priority": 1,
+      "wiki": "Dibeen Forest Reserve",
+      "summary": "Small RSCN reserve of Aleppo pine and oak near Jerash, popular with local families for picnics. Easy walking trails and a guesthouse.",
+      "facts": [
+        "Quiet on weekdays, busy on Fridays",
+        "Short drive from Jerash",
+        "Pleasant picnic stop in spring"
+      ]
+    },
+    {
+      "id": "anjara",
+      "name": "Anjara (Our Lady of the Mountain)",
+      "region": "north",
+      "lat": 32.306,
+      "lon": 35.755,
+      "visit": 30,
+      "cat": "Monastery & church",
+      "priority": 1,
+      "wiki": "Anjara",
+      "summary": "Village near Ajloun with the Catholic shrine of Our Lady of the Mountain, where Jesus, Mary and the disciples are said to have rested in a cave. A pilgrimage stop on the way to Ajloun.",
+      "facts": [
+        "Free; modest dress",
+        "Five minutes from Ajloun",
+        "Small church with a modern shrine"
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "tell_mar_elias",
+      "name": "Mar Elias (Tell Mar Elias)",
+      "region": "north",
+      "lat": 32.361,
+      "lon": 35.723,
+      "visit": 45,
+      "cat": "Ruins",
+      "priority": 1,
+      "wiki": "Ajloun Governorate",
+      "summary": "Hilltop ruins of a large Byzantine church traditionally linked to the prophet Elijah, with mosaic floors and views over the Ajloun hills. A good stop on village walking routes.",
+      "facts": [
+        "Free or small fee",
+        "Combine with Ajloun Castle and the forest reserve",
+        "Rough access road on the last stretch"
+      ]
+    },
+    {
+      "id": "king_talal_dam",
+      "name": "King Talal Dam",
+      "region": "north",
+      "lat": 32.19,
+      "lon": 35.8,
+      "visit": 20,
+      "cat": "Viewpoint",
+      "priority": 1,
+      "wiki": "King Talal Dam",
+      "summary": "Jordan's largest reservoir, on the Zarqa River between Jerash and the Jordan Valley. A scenic pause on the back road between Jerash and the valley.",
+      "facts": [
+        "Viewpoints along the road",
+        "No swimming",
+        "Quick stop of 15–20 minutes"
+      ]
+    },
+    {
+      "id": "azraq",
+      "name": "Azraq",
+      "region": "east",
+      "lat": 31.835,
+      "lon": 36.814,
+      "visit": 90,
+      "cat": "Town",
+      "priority": 2,
+      "wiki": "Azraq",
+      "summary": "Oasis town in the eastern desert at a crossroads of truck routes, with a Druze and a Chechen quarter. The base for Qasr al-Azraq, the wetland reserve and the desert castles loop.",
+      "facts": [
+        "RSCN Azraq Lodge is the usual place to stay",
+        "Fuel up here before heading further east",
+        "About 1h20 from Amman on Highway 40"
+      ],
+      "sleep": true
+    },
+    {
+      "id": "qasr_al_azraq",
+      "name": "Qasr al-Azraq",
+      "region": "east",
+      "lat": 31.8797,
+      "lon": 36.8281,
+      "visit": 45,
+      "cat": "Castle",
+      "priority": 2,
+      "wiki": "Qasr al-Azraq",
+      "summary": "Black-basalt fortress used by Romans, Ayyubids and Ottomans, and T. E. Lawrence's winter headquarters in 1917–18. Note the huge single-slab stone door.",
+      "facts": [
+        "Covered by the Jordan Pass (~70–80 JOD)",
+        "Allow 45 minutes",
+        "A local guardian often shows you round"
+      ],
+      "hours": "08:00-16:00"
+    },
+    {
+      "id": "qusayr_amra",
+      "name": "Qusayr 'Amra",
+      "region": "east",
+      "lat": 31.802,
+      "lon": 36.586,
+      "visit": 45,
+      "cat": "Castle",
+      "priority": 3,
+      "wiki": "Qusayr 'Amra",
+      "summary": "Small 8th-century Umayyad bathhouse and hunting lodge, a UNESCO site for its frescoes of hunting, bathing, musicians and the zodiac. The finest of the desert castles.",
+      "facts": [
+        "~2 JOD; Covered by the Jordan Pass (~70–80 JOD)",
+        "Small visitor centre with explanations",
+        "On Highway 40 between Amman and Azraq"
+      ],
+      "hours": "08:00-16:00"
+    },
+    {
+      "id": "qasr_kharana",
+      "name": "Qasr Kharana",
+      "region": "east",
+      "lat": 31.729,
+      "lon": 36.463,
+      "visit": 40,
+      "cat": "Castle",
+      "priority": 2,
+      "wiki": "Qasr Kharana",
+      "summary": "Fortress-looking Umayyad building of the early 8th century standing alone on the desert plain. Its two floors of rooms around a courtyard are probably a caravanserai or meeting hall rather than a fort.",
+      "facts": [
+        "Covered by the Jordan Pass (~70–80 JOD)",
+        "Allow 30–45 minutes",
+        "Right beside Highway 40"
+      ],
+      "hours": "08:00-16:00"
+    },
+    {
+      "id": "azraq_wetland_reserve",
+      "name": "Azraq Wetland Reserve",
+      "region": "east",
+      "lat": 31.8327,
+      "lon": 36.825,
+      "visit": 75,
+      "cat": "Nature reserve",
+      "priority": 1,
+      "wiki": "Azraq Wetland Reserve",
+      "summary": "Restored remnant of a once-huge desert oasis, with a boardwalk through pools and reeds. Good for migrating birds and the endemic Azraq killifish.",
+      "facts": [
+        "Small RSCN entry fee",
+        "Best for birds in spring and autumn migration",
+        "Short boardwalk loop of about 1.5 km"
+      ]
+    },
+    {
+      "id": "shaumari_reserve",
+      "name": "Shaumari Wildlife Reserve",
+      "region": "east",
+      "lat": 31.75,
+      "lon": 36.79,
+      "visit": 90,
+      "cat": "Nature reserve",
+      "priority": 1,
+      "wiki": "Shaumari Wildlife Reserve",
+      "summary": "Breeding reserve where the Arabian oryx was reintroduced to Jordan, along with gazelles and onagers. Safari drives are run by the RSCN.",
+      "facts": [
+        "Safaris must be booked through the RSCN",
+        "Early morning is best for animals",
+        "Small RSCN fee",
+        "Few kilometres south of Azraq"
+      ]
+    },
+    {
+      "id": "umm_al_jimal",
+      "name": "Umm el-Jimal",
+      "region": "east",
+      "lat": 32.327,
+      "lon": 36.37,
+      "visit": 90,
+      "cat": "Ruins",
+      "priority": 2,
+      "wiki": "Umm el-Jimal",
+      "summary": "Large ruined Byzantine and early Islamic town built entirely of black basalt, near the Syrian border, with houses, churches and water cisterns still standing several floors high. A UNESCO site since 2024.",
+      "facts": [
+        "Free or small fee; visitor centre at the entrance",
+        "No shade; go early or late",
+        "About 1 hour from Jerash or Azraq"
+      ]
+    },
+    {
+      "id": "qasr_al_hallabat",
+      "name": "Qasr al-Hallabat",
+      "region": "east",
+      "lat": 32.093,
+      "lon": 36.328,
+      "visit": 60,
+      "cat": "Castle",
+      "priority": 1,
+      "wiki": "Qasr al-Hallabat",
+      "summary": "Roman fort turned Umayyad palace, with remains of mosaics and a mosque, and the Hammam as-Sarah bathhouse a few kilometres away. The northern start of the desert castles loop.",
+      "facts": [
+        "Covered by the Jordan Pass (~70–80 JOD)",
+        "Combine with Hammam as-Sarah",
+        "Allow about 1 hour",
+        "Off the road between Zarqa and Azraq"
+      ]
+    },
+    {
+      "id": "qasr_mshatta",
+      "name": "Qasr Mshatta",
+      "region": "east",
+      "lat": 31.74,
+      "lon": 36.003,
+      "visit": 45,
+      "cat": "Ruins",
+      "priority": 1,
+      "wiki": "Mshatta Facade",
+      "summary": "Unfinished 8th-century Umayyad palace just north of Queen Alia Airport. Its famous carved facade is in Berlin's Pergamon Museum, but the brick vaults and remaining stonework are worth a stop before a flight.",
+      "facts": [
+        "Next to the airport; take your passport for the checkpoint",
+        "Allow 30–45 minutes",
+        "Free or small fee"
+      ]
+    },
+    {
+      "id": "qasr_burqu",
+      "name": "Qasr Burqu'",
+      "region": "east",
+      "lat": 32.645,
+      "lon": 37.969,
+      "visit": 90,
+      "cat": "Castle",
+      "priority": 1,
+      "wiki": "Qasr Burqu'",
+      "summary": "Remote Umayyad-era fort on the shore of a seasonal lake in the black basalt desert near the Iraqi border. Pure expedition territory for those wanting real emptiness.",
+      "facts": [
+        "Needs a 4x4 and preferably a local guide",
+        "No services; carry water and fuel",
+        "Plan a full day from Azraq"
+      ],
+      "caution": "Very remote desert tracks close to the border: travel only with a guide and a fully equipped vehicle."
+    },
+    {
+      "id": "qasr_tuba",
+      "name": "Qasr Tuba",
+      "region": "east",
+      "lat": 31.322,
+      "lon": 36.572,
+      "visit": 60,
+      "cat": "Castle",
+      "priority": 1,
+      "wiki": "Qasr Tuba",
+      "summary": "The remotest of the Umayyad desert castles, a huge unfinished brick and stone enclosure in the southern desert. Rarely visited and atmospheric.",
+      "facts": [
+        "Reached only by long desert track; 4x4 and guide needed",
+        "No facilities; carry water and fuel",
+        "Plan a full day"
+      ],
+      "caution": "Remote off-road route with no phone signal or services."
+    },
+    {
+      "id": "dead_sea",
+      "name": "Dead Sea (Sweimeh hotel strip)",
+      "region": "deadsea",
+      "lat": 31.718,
+      "lon": 35.587,
+      "visit": 180,
+      "cat": "Base",
+      "priority": 3,
+      "wiki": "Dead Sea",
+      "summary": "Strip of resort hotels on the north-east shore of the Dead Sea, about 430 m below sea level. Floating in the dense salty water is a classic experience, and the hotels give beach access, freshwater showers and mud.",
+      "facts": [
+        "Hotel day passes are the easiest way to swim",
+        "Bring water shoes; the shore is rocky and salty",
+        "Under an hour from Amman and Madaba"
+      ],
+      "sleep": true,
+      "season": "Hot from May to September (often 40 °C); winter is mild and pleasant.",
+      "caution": "Don't splash or put your head under: the water hurts eyes badly and is dangerous if swallowed; float on your back, stay 10–20 minutes, and shower afterwards."
+    },
+    {
+      "id": "amman_beach",
+      "name": "Amman Beach (public Dead Sea beach)",
+      "region": "deadsea",
+      "lat": 31.7,
+      "lon": 35.587,
+      "visit": 120,
+      "cat": "Beach",
+      "priority": 1,
+      "wiki": "Dead Sea",
+      "summary": "Public beach complex south of the resorts with showers, pools and shade, the cheapest organised way to float in the Dead Sea. Busy with local families on Fridays.",
+      "facts": [
+        "Entry ~20 JOD",
+        "Bring your own towel",
+        "Quieter on weekdays"
+      ],
+      "caution": "Same Dead Sea rules: keep your head out of the water and rinse off afterwards."
+    },
+    {
+      "id": "baptism_site",
+      "name": "Baptism Site (Al-Maghtas / Bethany beyond the Jordan)",
+      "region": "deadsea",
+      "lat": 31.837,
+      "lon": 35.55,
+      "visit": 120,
+      "cat": "Monastery & church",
+      "priority": 2,
+      "wiki": "Al-Maghtas",
+      "summary": "UNESCO site on the Jordan River where John is believed to have baptised Jesus, with excavated Byzantine churches and pools. Visits are by shuttle and guided walk to the river's edge.",
+      "facts": [
+        "~12 JOD; Covered by the Jordan Pass (~70–80 JOD)",
+        "Guided tours by shuttle from the visitor centre",
+        "Allow 2 hours; very hot in summer, go early"
+      ],
+      "hours": "08:00-16:00"
+    },
+    {
+      "id": "mount_nebo",
+      "name": "Mount Nebo",
+      "region": "deadsea",
+      "lat": 31.768,
+      "lon": 35.7258,
+      "visit": 60,
+      "cat": "Viewpoint",
+      "priority": 3,
+      "wiki": "Mount Nebo",
+      "summary": "Hilltop where Moses is said to have seen the Promised Land, with a Franciscan memorial church full of Byzantine mosaics. On clear days you see the Dead Sea, Jericho and even Jerusalem.",
+      "facts": [
+        "Entry ~3 JOD",
+        "Clearest views in the morning or after winter rain",
+        "15 minutes from Madaba"
+      ],
+      "hours": "08:00-17:00"
+    },
+    {
+      "id": "madaba",
+      "name": "Madaba",
+      "region": "deadsea",
+      "lat": 31.7167,
+      "lon": 35.7939,
+      "visit": 150,
+      "cat": "Town",
+      "priority": 3,
+      "wiki": "Madaba",
+      "summary": "Relaxed, partly Christian town known for its Byzantine and Umayyad mosaics, including the famous mosaic map of the Holy Land. A calm alternative to Amman as a base, 30 minutes from the airport.",
+      "facts": [
+        "Many family guesthouses and good restaurants",
+        "Easy base for Mount Nebo, the Dead Sea and the King's Highway",
+        "Visit the mosaic workshops"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "st_george_madaba",
+      "name": "St George's Church & the Madaba Map",
+      "region": "deadsea",
+      "lat": 31.7186,
+      "lon": 35.7938,
+      "visit": 30,
+      "cat": "Monastery & church",
+      "priority": 3,
+      "wiki": "Madaba Map",
+      "summary": "Greek Orthodox church whose floor holds the 6th-century Madaba Map, the oldest surviving map of the Holy Land, with Jerusalem shown in detail. Short but essential.",
+      "facts": [
+        "~1 JOD",
+        "Closed to visits during Sunday morning services",
+        "Modest dress"
+      ],
+      "hours": "08:00-17:00",
+      "needsDaylight": false
+    },
+    {
+      "id": "madaba_archaeological_park",
+      "name": "Madaba Archaeological Park",
+      "region": "deadsea",
+      "lat": 31.716,
+      "lon": 35.796,
+      "visit": 45,
+      "cat": "Ruins",
+      "priority": 2,
+      "wiki": "Madaba",
+      "summary": "Group of excavated churches and a Roman street with some of the finest mosaics in Madaba, including the Church of the Virgin and the Hippolytus Hall. Combined ticket also covers the Church of the Apostles.",
+      "facts": [
+        "~3 JOD; Covered by the Jordan Pass (~70–80 JOD)",
+        "Allow 45 minutes",
+        "In the centre of Madaba, a short walk from St George's"
+      ],
+      "hours": "08:00-17:00",
+      "needsDaylight": false
+    },
+    {
+      "id": "wadi_mujib",
+      "name": "Wadi Mujib Siq Trail",
+      "region": "deadsea",
+      "lat": 31.4669,
+      "lon": 35.5717,
+      "visit": 150,
+      "cat": "Canyon",
+      "priority": 3,
+      "wiki": "Wadi Mujib",
+      "summary": "Wading and scrambling up a narrow sandstone gorge to a waterfall, from the Mujib Adventure Centre on the Dead Sea road. One of Jordan's most fun half-days in summer.",
+      "facts": [
+        "Siq Trail ~21 JOD; guided trails cost more and should be booked with the RSCN",
+        "Open roughly April–October only",
+        "You will get wet up to the waist or chest; wear water shoes, bring a dry bag",
+        "Life jackets are provided"
+      ],
+      "season": "The Siq Trail is closed November–March because of flash-flood risk.",
+      "caution": "Flash floods can hit after rain upstream; the trail closes when there is any risk, follow the rangers."
+    },
+    {
+      "id": "hammamat_main",
+      "name": "Ma'in Hot Springs (Hammamat Ma'in)",
+      "region": "deadsea",
+      "lat": 31.608,
+      "lon": 35.605,
+      "visit": 150,
+      "cat": "Hot spring",
+      "priority": 2,
+      "wiki": "Ma'in",
+      "summary": "Hot waterfalls tumbling down a desert gorge at around 60 °C, on the steep road between Madaba and the Dead Sea. Bathing is in the resort's pools and below the falls.",
+      "facts": [
+        "Entry by resort day pass",
+        "Steep, winding road; drive carefully",
+        "Allow 2–3 hours",
+        "Busy with local families on Fridays"
+      ],
+      "caution": "The water near the source is scalding; bathe only where allowed."
+    },
+    {
+      "id": "machaerus",
+      "name": "Machaerus (Mukawir)",
+      "region": "deadsea",
+      "lat": 31.565,
+      "lon": 35.626,
+      "visit": 60,
+      "cat": "Castle",
+      "priority": 2,
+      "wiki": "Machaerus",
+      "summary": "Herod the Great's hilltop fortress where John the Baptist was imprisoned and beheaded, according to Josephus. A short steep walk leads to the summit with a sweeping view over the Dead Sea.",
+      "facts": [
+        "Covered by the Jordan Pass (~70–80 JOD)",
+        "15-minute climb from the car park",
+        "Beautiful at sunset"
+      ]
+    },
+    {
+      "id": "umm_ar_rasas",
+      "name": "Umm ar-Rasas",
+      "region": "deadsea",
+      "lat": 31.5,
+      "lon": 35.92,
+      "visit": 75,
+      "cat": "Ruins",
+      "priority": 2,
+      "wiki": "Umm ar-Rasas",
+      "summary": "UNESCO site of a Roman camp and Byzantine town with the superb mosaic floor of the Church of St Stephen, showing the cities of the region. A tall stylite tower stands nearby.",
+      "facts": [
+        "Covered by the Jordan Pass (~70–80 JOD)",
+        "Mosaic is under a protective roof",
+        "About 40 minutes south-east of Madaba"
+      ],
+      "hours": "08:00-17:00"
+    },
+    {
+      "id": "dead_sea_panorama",
+      "name": "Dead Sea Panorama Complex",
+      "region": "deadsea",
+      "lat": 31.602,
+      "lon": 35.594,
+      "visit": 45,
+      "cat": "Viewpoint",
+      "priority": 2,
+      "wiki": "Dead Sea",
+      "summary": "Clifftop viewpoint and small museum above the Dead Sea on the road to Ma'in, explaining the sea's geology and shrinking level. Short trails and a restaurant with a superb view.",
+      "facts": [
+        "Small entry fee",
+        "Best at sunset",
+        "Short walk along the cliff edge",
+        "Restaurant with Dead Sea views"
+      ]
+    },
+    {
+      "id": "lots_cave",
+      "name": "Lot's Cave & Museum at the Lowest Point on Earth",
+      "region": "deadsea",
+      "lat": 31.048,
+      "lon": 35.503,
+      "visit": 75,
+      "cat": "Monastery & church",
+      "priority": 1,
+      "wiki": "Lot's Cave",
+      "summary": "Cave and Byzantine monastery on a hillside above Ghor as-Safi, linked to Lot fleeing Sodom. The museum below holds finds from the area and explains the southern Dead Sea.",
+      "facts": [
+        "Covered by the Jordan Pass (~70–80 JOD) (museum)",
+        "Steep stairs to the cave",
+        "Hot most of the year; go early"
+      ]
+    },
+    {
+      "id": "hammam_as_sarah",
+      "name": "Hammam as-Sarah",
+      "region": "east",
+      "lat": 32.075,
+      "lon": 36.346,
+      "visit": 30,
+      "cat": "Ruins",
+      "priority": 1,
+      "wiki": "Qasr al-Hallabat",
+      "summary": "Restored Umayyad bathhouse a few kilometres from Qasr al-Hallabat, with a domed hot room and the remains of its water system. A quick stop on the northern desert-castles loop.",
+      "facts": [
+        "Small open site, usually free",
+        "Combine with Qasr al-Hallabat",
+        "Little shade; go in the morning"
+      ]
+    }
+  ],
+  "drives": [
+    [
+      "amman",
+      "amm",
+      35,
+      35
+    ],
+    [
+      "amman",
+      "jerash",
+      48,
+      50
+    ],
+    [
+      "amman",
+      "salt",
+      30,
+      40
+    ],
+    [
+      "amman",
+      "iraq_al_amir",
+      20,
+      35
+    ],
+    [
+      "amman",
+      "royal_automobile_museum",
+      10,
+      20
+    ],
+    [
+      "amman",
+      "dead_sea",
+      55,
+      50
+    ],
+    [
+      "amman",
+      "madaba",
+      33,
+      40
+    ],
+    [
+      "amman",
+      "mount_nebo",
+      40,
+      45
+    ],
+    [
+      "amman",
+      "baptism_site",
+      50,
+      50
+    ],
+    [
+      "amman",
+      "ajloun",
+      75,
+      75
+    ],
+    [
+      "amman",
+      "irbid",
+      85,
+      75
+    ],
+    [
+      "amman",
+      "azraq",
+      100,
+      80
+    ],
+    [
+      "amman",
+      "qasr_al_hallabat",
+      55,
+      55
+    ],
+    [
+      "salt",
+      "dead_sea",
+      40,
+      45
+    ],
+    [
+      "jerash",
+      "ajloun",
+      25,
+      35
+    ],
+    [
+      "ajloun",
+      "ajloun_castle",
+      4,
+      10
+    ],
+    [
+      "ajloun",
+      "ajloun_forest_reserve",
+      12,
+      20
+    ],
+    [
+      "ajloun",
+      "anjara",
+      5,
+      10
+    ],
+    [
+      "ajloun",
+      "tell_mar_elias",
+      10,
+      20
+    ],
+    [
+      "ajloun",
+      "irbid",
+      32,
+      40
+    ],
+    [
+      "ajloun",
+      "pella",
+      35,
+      50
+    ],
+    [
+      "irbid",
+      "umm_qais",
+      30,
+      35
+    ],
+    [
+      "umm_qais",
+      "pella",
+      40,
+      50
+    ],
+    [
+      "jerash",
+      "irbid",
+      40,
+      40
+    ],
+    [
+      "jerash",
+      "dibeen_forest",
+      10,
+      20
+    ],
+    [
+      "jerash",
+      "king_talal_dam",
+      15,
+      20
+    ],
+    [
+      "jerash",
+      "umm_al_jimal",
+      60,
+      55
+    ],
+    [
+      "pella",
+      "baptism_site",
+      85,
+      75
+    ],
+    [
+      "azraq",
+      "qasr_al_azraq",
+      6,
+      8
+    ],
+    [
+      "azraq",
+      "azraq_wetland_reserve",
+      3,
+      5
+    ],
+    [
+      "azraq",
+      "shaumari_reserve",
+      12,
+      15
+    ],
+    [
+      "azraq",
+      "qusayr_amra",
+      26,
+      22
+    ],
+    [
+      "qusayr_amra",
+      "qasr_kharana",
+      16,
+      15
+    ],
+    [
+      "qasr_kharana",
+      "amman",
+      60,
+      55
+    ],
+    [
+      "azraq",
+      "qasr_al_hallabat",
+      60,
+      50
+    ],
+    [
+      "azraq",
+      "umm_al_jimal",
+      80,
+      60
+    ],
+    [
+      "amm",
+      "qasr_mshatta",
+      5,
+      10
+    ],
+    [
+      "amman",
+      "qasr_mshatta",
+      35,
+      35
+    ],
+    [
+      "azraq",
+      "qasr_burqu",
+      175,
+      180
+    ],
+    [
+      "amm",
+      "qasr_tuba",
+      100,
+      120
+    ],
+    [
+      "dead_sea",
+      "amman_beach",
+      6,
+      8
+    ],
+    [
+      "dead_sea",
+      "baptism_site",
+      15,
+      15
+    ],
+    [
+      "dead_sea",
+      "mount_nebo",
+      25,
+      30
+    ],
+    [
+      "mount_nebo",
+      "madaba",
+      10,
+      15
+    ],
+    [
+      "madaba",
+      "hammamat_main",
+      30,
+      40
+    ],
+    [
+      "dead_sea",
+      "hammamat_main",
+      35,
+      45
+    ],
+    [
+      "dead_sea",
+      "dead_sea_panorama",
+      15,
+      20
+    ],
+    [
+      "dead_sea",
+      "wadi_mujib",
+      38,
+      35
+    ],
+    [
+      "wadi_mujib",
+      "lots_cave",
+      55,
+      45
+    ],
+    [
+      "madaba",
+      "machaerus",
+      33,
+      45
+    ],
+    [
+      "madaba",
+      "umm_ar_rasas",
+      35,
+      40
+    ],
+    [
+      "madaba",
+      "amm",
+      30,
+      30
+    ],
+    [
+      "dead_sea",
+      "amm",
+      70,
+      60
+    ],
+    [
+      "madaba",
+      "dead_sea",
+      40,
+      45
+    ]
+  ]
+}

@@ -1,0 +1,1996 @@
+{
+  "places": [
+    {
+      "id": "amsterdam",
+      "name": "Amsterdam",
+      "region": "amsterdam",
+      "lat": 52.3731,
+      "lon": 4.8926,
+      "visit": 240,
+      "cat": "Base",
+      "priority": 3,
+      "wiki": "Amsterdam",
+      "summary": "The Dutch capital, built around a 17th-century ring of canals lined with gabled merchants' houses, with world-class museums and a lively café and bar scene. Compact and best explored on foot, by bike or by boat.",
+      "facts": [
+        "Don't drive in: city-centre parking costs ~€7.50 an hour; use a P+R (from ~€1–6 a day with public-transport use)",
+        "Museumkaart (~€75 a year) gives free entry to most Dutch museums and pays off after 4–5 visits",
+        "Watch out for cyclists: never walk in the red bike lanes",
+        "Trains from Schiphol to Amsterdam Centraal take about 15 minutes"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "rijksmuseum",
+      "name": "Rijksmuseum",
+      "region": "amsterdam",
+      "lat": 52.36,
+      "lon": 4.8852,
+      "visit": 180,
+      "cat": "Museum",
+      "priority": 3,
+      "wiki": "Rijksmuseum",
+      "summary": "The national museum of the Netherlands, with Rembrandt's Night Watch, Vermeer's Milkmaid and a huge collection of Golden Age painting, ship models and Delftware. One of the great museums of Europe.",
+      "facts": [
+        "~€25 adult; free with Museumkaart, under-18s free",
+        "Book a timed entry slot online (also needed with a Museumkaart)",
+        "Go at opening or after 15:00 to avoid the busiest hours",
+        "The underpass through the building is a public cycle path and free to walk"
+      ],
+      "hours": "09:00-17:00",
+      "needsDaylight": false
+    },
+    {
+      "id": "van_gogh_museum",
+      "name": "Van Gogh Museum",
+      "region": "amsterdam",
+      "lat": 52.3584,
+      "lon": 4.8811,
+      "visit": 120,
+      "cat": "Museum",
+      "priority": 3,
+      "wiki": "Van Gogh Museum",
+      "summary": "The world's largest collection of Van Gogh's paintings and drawings, hung chronologically so you can follow his development from dark Brabant peasant scenes to the Sunflowers and the late Auvers works.",
+      "facts": [
+        "~€22 adult; free with Museumkaart but a timed slot must still be booked",
+        "Tickets are sold online only, for a fixed time slot — book days or weeks ahead in summer",
+        "Allow about 2 hours; the audio guide is worthwhile",
+        "On Museumplein next to the Rijksmuseum and Stedelijk"
+      ],
+      "hours": "09:00-18:00",
+      "needsDaylight": false
+    },
+    {
+      "id": "anne_frank_house",
+      "name": "Anne Frank House",
+      "region": "amsterdam",
+      "lat": 52.3752,
+      "lon": 4.884,
+      "visit": 75,
+      "cat": "Museum",
+      "priority": 3,
+      "wiki": "Anne Frank House",
+      "summary": "The canal-side house where Anne Frank and her family hid from the Nazis for two years, including the secret annexe behind the bookcase. A moving, carefully presented museum about the diary and the Holocaust.",
+      "facts": [
+        "~€16 adult; NOT included in the Museumkaart",
+        "Tickets are sold online only for a timed slot, released about 6 weeks ahead — they sell out fast",
+        "Steep stairs, not suitable for wheelchairs in the annexe",
+        "Allow about 1–1.5 hours"
+      ],
+      "hours": "09:00-22:00",
+      "needsDaylight": false
+    },
+    {
+      "id": "amsterdam_canal_cruise",
+      "name": "Amsterdam canal cruise",
+      "region": "amsterdam",
+      "lat": 52.378,
+      "lon": 4.9,
+      "visit": 75,
+      "cat": "Boat trip",
+      "priority": 3,
+      "wiki": "Canals of Amsterdam",
+      "summary": "A boat trip through the UNESCO-listed canal ring is the best way to grasp how the city was built, gliding past gabled houses, bridges and houseboats. Departures from Centraal Station, Damrak and the Rijksmuseum.",
+      "facts": [
+        "Large glass-topped boats ~€18–20 for an hour; smaller open boats cost more but are nicer",
+        "Evening cruises are lovely when the bridges are lit",
+        "Book ahead in summer or pick a small-boat operator"
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "jordaan",
+      "name": "Jordaan",
+      "region": "amsterdam",
+      "lat": 52.377,
+      "lon": 4.881,
+      "visit": 120,
+      "cat": "Old town",
+      "priority": 2,
+      "wiki": "Jordaan",
+      "summary": "Former working-class quarter west of the canal ring, now a maze of narrow streets, small canals, hidden courtyard almshouses (hofjes), brown cafés and independent shops. Best for wandering.",
+      "facts": [
+        "Free; best on foot",
+        "Monday morning Noordermarkt flea market and Saturday organic market",
+        "Combine with the Nine Streets (Negen Straatjes) shopping area"
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "royal_palace_amsterdam",
+      "name": "Royal Palace Amsterdam (Paleis op de Dam)",
+      "region": "amsterdam",
+      "lat": 52.3731,
+      "lon": 4.8913,
+      "visit": 60,
+      "cat": "Palace",
+      "priority": 2,
+      "wiki": "Royal Palace of Amsterdam",
+      "summary": "Built as the city hall in the 17th century at the height of the Dutch Golden Age, with a vast marble Citizens' Hall. Still used by the King for state occasions.",
+      "facts": [
+        "~€12–15 adult; free with Museumkaart, free audio guide",
+        "Closes for royal events — check the calendar before going",
+        "Right on Dam Square"
+      ],
+      "hours": "10:00-17:00",
+      "needsDaylight": false
+    },
+    {
+      "id": "stedelijk_museum",
+      "name": "Stedelijk Museum",
+      "region": "amsterdam",
+      "lat": 52.358,
+      "lon": 4.8798,
+      "visit": 120,
+      "cat": "Museum",
+      "priority": 2,
+      "wiki": "Stedelijk Museum Amsterdam",
+      "summary": "The Netherlands' leading museum of modern and contemporary art and design: Mondrian, Malevich, De Stijl, Appel and Warhol, in a building nicknamed 'the bathtub'.",
+      "facts": [
+        "~€22 adult; free with Museumkaart",
+        "On Museumplein, quieter than its neighbours",
+        "Allow about 2 hours"
+      ],
+      "hours": "10:00-18:00",
+      "needsDaylight": false
+    },
+    {
+      "id": "rembrandt_house",
+      "name": "Rembrandt House Museum",
+      "region": "amsterdam",
+      "lat": 52.3694,
+      "lon": 4.9012,
+      "visit": 75,
+      "cat": "Museum",
+      "priority": 2,
+      "wiki": "Rembrandt House Museum",
+      "summary": "The house where Rembrandt lived and worked from 1639 to 1658, furnished as in his day, with his studio, etchings and printing demonstrations.",
+      "facts": [
+        "~€18 adult; free with Museumkaart",
+        "Booking a time slot online is recommended",
+        "Next to the Waterlooplein flea market"
+      ],
+      "hours": "10:00-18:00",
+      "needsDaylight": false
+    },
+    {
+      "id": "ons_lieve_heer_op_solder",
+      "name": "Our Lord in the Attic (Ons' Lieve Heer op Solder)",
+      "region": "amsterdam",
+      "lat": 52.3752,
+      "lon": 4.8996,
+      "visit": 60,
+      "cat": "Museum",
+      "priority": 2,
+      "wiki": "Ons' Lieve Heer op Solder",
+      "summary": "A complete 17th-century canal house with a secret Catholic church hidden in its attic, from the time when Catholic worship was banned in public. A small, atmospheric surprise in the old centre.",
+      "facts": [
+        "~€17 adult; free with Museumkaart",
+        "Steep stairs",
+        "On the edge of the Red Light District, near Centraal Station"
+      ],
+      "hours": "10:00-18:00",
+      "needsDaylight": false
+    },
+    {
+      "id": "begijnhof_amsterdam",
+      "name": "Begijnhof",
+      "region": "amsterdam",
+      "lat": 52.3693,
+      "lon": 4.8902,
+      "visit": 30,
+      "cat": "Monastery & church",
+      "priority": 2,
+      "wiki": "Begijnhof, Amsterdam",
+      "summary": "A quiet medieval courtyard of almshouses around a lawn, founded for the Beguines, with Amsterdam's oldest wooden house (Het Houten Huis) and a hidden church.",
+      "facts": [
+        "Free",
+        "Residents live here: keep quiet, no groups; closed in the evening",
+        "Entrance via a small gate off the Spui"
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "vondelpark",
+      "name": "Vondelpark",
+      "region": "amsterdam",
+      "lat": 52.358,
+      "lon": 4.8686,
+      "visit": 60,
+      "cat": "Garden",
+      "priority": 2,
+      "wiki": "Vondelpark",
+      "summary": "Amsterdam's favourite park, a 19th-century landscape of ponds, lawns and an open-air theatre, busy with cyclists, joggers and picnickers on sunny days.",
+      "facts": [
+        "Free, open around the clock",
+        "Ideal break between the Museumplein museums",
+        "Free open-air theatre in summer"
+      ]
+    },
+    {
+      "id": "albert_cuyp_market",
+      "name": "Albert Cuyp Market",
+      "region": "amsterdam",
+      "lat": 52.3557,
+      "lon": 4.8946,
+      "visit": 60,
+      "cat": "Food & market",
+      "priority": 2,
+      "wiki": "Albert Cuyp Market",
+      "summary": "The city's largest street market in the multicultural De Pijp district, with stalls of cheese, herring, fruit and fabrics, and fresh stroopwafels made to order.",
+      "facts": [
+        "Free; roughly 09:00–17:00 Monday to Saturday",
+        "Try raw herring, kibbeling and a warm stroopwafel",
+        "Surrounded by good cafés and restaurants"
+      ],
+      "closed": [
+        0
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "adam_lookout",
+      "name": "A'DAM Lookout",
+      "region": "amsterdam",
+      "lat": 52.3841,
+      "lon": 4.902,
+      "visit": 60,
+      "cat": "Viewpoint",
+      "priority": 1,
+      "wiki": "Amsterdam-Noord",
+      "summary": "Observation deck on top of the A'DAM Tower in Amsterdam-Noord, with a 360° view over the city, harbour and IJ, and a swing over the edge.",
+      "facts": [
+        "~€17 adult, more with the 'Over the Edge' swing",
+        "Free ferry from behind Centraal Station takes 3 minutes",
+        "Good at sunset"
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "haarlem",
+      "name": "Haarlem",
+      "region": "noordholland",
+      "lat": 52.3812,
+      "lon": 4.6366,
+      "visit": 180,
+      "cat": "Town",
+      "priority": 3,
+      "wiki": "Haarlem",
+      "summary": "Handsome historic city around the Grote Markt and the huge St Bavo church, with canals, almshouse courtyards and excellent museums. A relaxed alternative base 15 minutes by train from Amsterdam.",
+      "facts": [
+        "Trains to Amsterdam Centraal every few minutes (~15 minutes)",
+        "Park in a garage or P+R; centre streets are mostly car-free",
+        "Saturday market on the Grote Markt",
+        "Close to the beaches at Zandvoort and Bloemendaal"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "frans_hals_museum",
+      "name": "Frans Hals Museum",
+      "region": "noordholland",
+      "lat": 52.3766,
+      "lon": 4.6332,
+      "visit": 90,
+      "cat": "Museum",
+      "priority": 2,
+      "wiki": "Frans Hals Museum",
+      "summary": "Golden Age portraits by Frans Hals displayed in a 17th-century old men's almshouse around a courtyard garden. Intimate and much quieter than the Amsterdam museums.",
+      "facts": [
+        "~€18 adult; free with Museumkaart",
+        "Allow 1–1.5 hours",
+        "Short walk south of the Grote Markt"
+      ],
+      "hours": "11:00-17:00",
+      "closed": [
+        1
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "teylers_museum",
+      "name": "Teylers Museum",
+      "region": "noordholland",
+      "lat": 52.3803,
+      "lon": 4.6403,
+      "visit": 90,
+      "cat": "Museum",
+      "priority": 2,
+      "wiki": "Teylers Museum",
+      "summary": "The oldest museum in the Netherlands (1784), a perfectly preserved cabinet of fossils, scientific instruments and drawings by Michelangelo and Rembrandt in period display cases.",
+      "facts": [
+        "~€17 adult; free with Museumkaart",
+        "The Oval Room is the highlight",
+        "On the Spaarne river"
+      ],
+      "hours": "10:00-17:00",
+      "needsDaylight": false
+    },
+    {
+      "id": "zaanse_schans",
+      "name": "Zaanse Schans",
+      "region": "noordholland",
+      "lat": 52.474,
+      "lon": 4.8175,
+      "visit": 150,
+      "cat": "Windmill",
+      "priority": 3,
+      "wiki": "Zaanse Schans",
+      "summary": "Riverside open-air collection of working windmills, green wooden houses, a clog workshop and cheese farm on the Zaan. Touristy but the easiest place near Amsterdam to step inside working mills.",
+      "facts": [
+        "Free to enter the area; mills and museums charge ~€5–8 each (Zaans Museum free with Museumkaart)",
+        "Paid car park; or take the train to Zaandijk Zaanse Schans and walk 15 minutes",
+        "Very busy with tour coaches from mid-morning: arrive early or late afternoon",
+        "Mills open mainly April–October"
+      ]
+    },
+    {
+      "id": "alkmaar",
+      "name": "Alkmaar",
+      "region": "noordholland",
+      "lat": 52.6324,
+      "lon": 4.7534,
+      "visit": 150,
+      "cat": "Town",
+      "priority": 2,
+      "wiki": "Alkmaar",
+      "summary": "Lively canal town best known for its traditional cheese market, with a well-kept old centre, the Grote Kerk and the Waag weigh house. A good base for the north and the ferry to Texel.",
+      "facts": [
+        "About 35–40 minutes by train from Amsterdam",
+        "Park in a garage at the edge of the centre",
+        "Base for Texel: drive or take bus/train to Den Helder for the ferry"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "alkmaar_cheese_market",
+      "name": "Alkmaar Cheese Market",
+      "region": "noordholland",
+      "lat": 52.6316,
+      "lon": 4.7487,
+      "visit": 90,
+      "cat": "Food & market",
+      "priority": 2,
+      "wiki": "Dutch cheese markets",
+      "summary": "A centuries-old cheese market re-enacted on the Waagplein: cheese carriers in white with coloured straw hats trot wheels of Gouda on wooden barrows to the weigh house.",
+      "facts": [
+        "Free; Fridays 10:00–12:30 from late March to late September only",
+        "Arrive by 09:30 for a front-row spot by the ropes",
+        "Cheese stalls and the Dutch Cheese Museum in the Waag"
+      ],
+      "season": "Only held on Fridays from late March to late September."
+    },
+    {
+      "id": "volendam",
+      "name": "Volendam",
+      "region": "noordholland",
+      "lat": 52.495,
+      "lon": 5.071,
+      "visit": 90,
+      "cat": "Village",
+      "priority": 1,
+      "wiki": "Volendam",
+      "summary": "Former fishing village on the IJsselmeer with a busy harbour-front promenade, souvenir shops and smoked-eel stalls. Very touristy, but the boat to Marken makes a nice combination.",
+      "facts": [
+        "Free; paid parking at the edge of the village",
+        "Try smoked eel or kibbeling on the dyke",
+        "Marken Express boat to Marken every 30–45 minutes (~30 minutes, spring–autumn)"
+      ]
+    },
+    {
+      "id": "edam",
+      "name": "Edam",
+      "region": "noordholland",
+      "lat": 52.513,
+      "lon": 5.048,
+      "visit": 90,
+      "cat": "Village",
+      "priority": 2,
+      "wiki": "Edam",
+      "summary": "Small, quiet canal town that gave its name to the cheese, with lifting bridges, a cheese weigh house and a summer cheese market. Far calmer than nearby Volendam.",
+      "facts": [
+        "Free; park at the edge of town",
+        "Cheese market on Wednesday mornings in July and August",
+        "Easy to cycle from Volendam (3 km)"
+      ]
+    },
+    {
+      "id": "marken",
+      "name": "Marken",
+      "region": "noordholland",
+      "lat": 52.459,
+      "lon": 5.103,
+      "visit": 90,
+      "cat": "Village",
+      "priority": 2,
+      "wiki": "Marken",
+      "summary": "Former island of wooden houses on mounds, painted green and black, joined to the mainland by a causeway. A walk out to the little Paard van Marken lighthouse is a highlight.",
+      "facts": [
+        "Free; car park at the village entrance (cars not allowed in)",
+        "Combine with Volendam by the Marken Express boat",
+        "Walk to the lighthouse takes about 45 minutes each way"
+      ]
+    },
+    {
+      "id": "hoorn",
+      "name": "Hoorn",
+      "region": "noordholland",
+      "lat": 52.642,
+      "lon": 5.06,
+      "visit": 150,
+      "cat": "Town",
+      "priority": 2,
+      "wiki": "Hoorn",
+      "summary": "Prosperous former VOC port on the IJsselmeer with a picturesque harbour, the Hoofdtoren tower and a Golden Age centre. Starting point of the steam tram to Medemblik.",
+      "facts": [
+        "About 35–40 minutes by train from Amsterdam",
+        "Steam tram Hoorn–Medemblik runs April–October (combined with a boat back)",
+        "Westfries Museum on the Roode Steen square (Museumkaart)"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "zuiderzee_museum",
+      "name": "Zuiderzee Museum, Enkhuizen",
+      "region": "noordholland",
+      "lat": 52.7095,
+      "lon": 5.288,
+      "visit": 210,
+      "cat": "Museum",
+      "priority": 2,
+      "wiki": "Zuiderzee Museum",
+      "summary": "Large open-air museum of relocated houses, shops and workshops from the old Zuiderzee fishing towns, with craftspeople at work and an indoor museum of boats.",
+      "facts": [
+        "~€20 adult; free with Museumkaart",
+        "The open-air part is open roughly April–October only",
+        "Enkhuizen old town and harbours are worth a stroll too",
+        "Allow at least half a day"
+      ],
+      "hours": "10:00-17:00",
+      "season": "The open-air museum is only open from spring to autumn."
+    },
+    {
+      "id": "muiderslot",
+      "name": "Muiderslot",
+      "region": "noordholland",
+      "lat": 52.3343,
+      "lon": 5.0715,
+      "visit": 90,
+      "cat": "Castle",
+      "priority": 2,
+      "wiki": "Muiderslot",
+      "summary": "Moated brick castle from the 13th century at the mouth of the Vecht, the best-preserved medieval castle in the Netherlands, with furnished rooms and a herb garden.",
+      "facts": [
+        "~€18 adult; free with Museumkaart",
+        "20 minutes' drive from Amsterdam",
+        "Children's activities and falconry in summer"
+      ],
+      "hours": "10:00-17:00"
+    },
+    {
+      "id": "naarden",
+      "name": "Naarden Vesting",
+      "region": "noordholland",
+      "lat": 52.296,
+      "lon": 5.162,
+      "visit": 120,
+      "cat": "Old town",
+      "priority": 2,
+      "wiki": "Naarden",
+      "summary": "Small town inside a near-perfect star-shaped fortress of double moats and bastions, with a fortress museum in the casemates. Best walked or seen by boat around the walls.",
+      "facts": [
+        "Free to walk the ramparts; Vestingmuseum free with Museumkaart",
+        "Boat trips around the moats in summer",
+        "About 25 minutes from Amsterdam"
+      ]
+    },
+    {
+      "id": "texel",
+      "name": "Texel (Den Burg)",
+      "region": "noordholland",
+      "lat": 53.055,
+      "lon": 4.797,
+      "visit": 240,
+      "cat": "Island",
+      "priority": 3,
+      "wiki": "Texel",
+      "summary": "The largest Wadden island, an easy ferry hop from Den Helder, with long sandy beaches, dunes, sheep, bird reserves and cycling paths. Den Burg is the main village.",
+      "facts": [
+        "TESO ferry Den Helder–'t Horntje every hour, 20 minutes; pay for the return only (~€3 foot passenger, ~€40 car)",
+        "Bring or hire bikes: the island is made for cycling",
+        "Book accommodation ahead in summer"
+      ],
+      "sleep": true
+    },
+    {
+      "id": "dunes_of_texel",
+      "name": "Dunes of Texel National Park & Ecomare",
+      "region": "noordholland",
+      "lat": 53.075,
+      "lon": 4.748,
+      "visit": 150,
+      "cat": "Nature reserve",
+      "priority": 2,
+      "wiki": "Dunes of Texel National Park",
+      "summary": "Dunes, heath and salt marshes along Texel's west coast, including the tidal inlet of De Slufter. Ecomare at De Koog combines a seal sanctuary with a nature museum.",
+      "facts": [
+        "Ecomare ~€18 adult",
+        "Seal feeding at Ecomare at fixed times",
+        "Good cycling and walking trails; stay on paths in the breeding season"
+      ]
+    },
+    {
+      "id": "zandvoort",
+      "name": "Zandvoort beach",
+      "region": "noordholland",
+      "lat": 52.374,
+      "lon": 4.53,
+      "visit": 120,
+      "cat": "Beach",
+      "priority": 1,
+      "wiki": "Zandvoort",
+      "summary": "The closest seaside resort to Amsterdam, with a long, wide sandy beach lined with beach pavilions. Crowded on hot summer weekends.",
+      "facts": [
+        "Direct trains from Amsterdam via Haarlem (~30 minutes)",
+        "Parking is expensive and fills up on sunny days — take the train",
+        "Quieter beaches north at Bloemendaal"
+      ],
+      "season": "Sea water is cold; swimmable only in July–August for most."
+    },
+    {
+      "id": "kennemerland",
+      "name": "Zuid-Kennemerland National Park",
+      "region": "noordholland",
+      "lat": 52.41,
+      "lon": 4.575,
+      "visit": 150,
+      "cat": "Nature reserve",
+      "priority": 2,
+      "wiki": "Zuid-Kennemerland National Park",
+      "summary": "Coastal dunes, woods and lakes between Haarlem and the sea, home to free-roaming wisent (European bison), Scottish Highland cattle and fallow deer.",
+      "facts": [
+        "Free; paid parking at the entrances",
+        "Visitor centre De Zandwaaier at Bloemendaal",
+        "Good walking and cycling loops to the beach"
+      ]
+    },
+    {
+      "id": "leiden",
+      "name": "Leiden",
+      "region": "zuidholland",
+      "lat": 52.1584,
+      "lon": 4.4925,
+      "visit": 180,
+      "cat": "Town",
+      "priority": 3,
+      "wiki": "Leiden",
+      "summary": "University city on canals, Rembrandt's birthplace, with an excellent set of museums, almshouse courtyards and windmills. A good-value base between Amsterdam, Keukenhof and The Hague.",
+      "facts": [
+        "About 35 minutes by train from Amsterdam, 15 from Schiphol",
+        "Park in a garage or P+R; the centre is walkable",
+        "Saturday market along the Nieuwe Rijn",
+        "Closest town to Keukenhof (bus from Leiden Centraal in season)"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "rijksmuseum_van_oudheden",
+      "name": "National Museum of Antiquities (RMO)",
+      "region": "zuidholland",
+      "lat": 52.1584,
+      "lon": 4.4857,
+      "visit": 120,
+      "cat": "Museum",
+      "priority": 2,
+      "wiki": "Rijksmuseum van Oudheden",
+      "summary": "The Dutch national archaeology museum, with a real Egyptian temple (Taffeh) in its hall, mummies and Greek, Roman and early Dutch collections.",
+      "facts": [
+        "~€17 adult; free with Museumkaart",
+        "Good for children",
+        "Central Leiden on the Rapenburg"
+      ],
+      "hours": "10:00-17:00",
+      "closed": [
+        1
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "keukenhof",
+      "name": "Keukenhof",
+      "region": "zuidholland",
+      "lat": 52.2696,
+      "lon": 4.5468,
+      "visit": 180,
+      "cat": "Garden",
+      "priority": 3,
+      "wiki": "Keukenhof",
+      "summary": "The world's best-known spring flower garden: about seven million tulips, daffodils and hyacinths planted each year in 32 hectares of landscaped park, surrounded by the bulb fields.",
+      "facts": [
+        "Open only about 8 weeks, mid-March to mid-May; ~€20 adult, NOT in the Museumkaart",
+        "Buy dated online tickets in advance; also book a time slot for parking (~€8)",
+        "Arrive at opening or after 16:00 to avoid the crowds",
+        "Express bus from Schiphol and Leiden in season"
+      ],
+      "hours": "08:00-19:30",
+      "early": true,
+      "season": "Tulips usually peak mid to late April; open only from mid-March to mid-May."
+    },
+    {
+      "id": "bulb_fields_bike_ride",
+      "name": "Bulb fields bike ride (Bollenstreek)",
+      "region": "zuidholland",
+      "lat": 52.258,
+      "lon": 4.556,
+      "visit": 150,
+      "cat": "Bike ride",
+      "priority": 2,
+      "wiki": "Bollenstreek",
+      "summary": "Cycling the flat country lanes between Lisse, Hillegom and Noordwijkerhout through striped fields of tulips and hyacinths in bloom. Bikes can be hired opposite Keukenhof.",
+      "facts": [
+        "Bike hire ~€15–20 a day",
+        "Fields are private: look from the road, don't walk into them",
+        "Signposted routes with numbered junctions (knooppunten)"
+      ],
+      "season": "Fields bloom from late March (daffodils, hyacinths) to early May (tulips); the flowers are cut soon after."
+    },
+    {
+      "id": "the_hague",
+      "name": "The Hague (Den Haag)",
+      "region": "zuidholland",
+      "lat": 52.0799,
+      "lon": 4.3113,
+      "visit": 180,
+      "cat": "Base",
+      "priority": 3,
+      "wiki": "The Hague",
+      "summary": "Seat of the Dutch government and royal family, an elegant city of embassies, palaces and fine museums, with the beach at Scheveningen 15 minutes away by tram.",
+      "facts": [
+        "The Binnenhof parliament complex is under renovation until around 2028",
+        "Park in a P+R or garage; trams cover the city",
+        "The Hague Centraal and Hollands Spoor stations both have intercity trains"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "mauritshuis",
+      "name": "Mauritshuis",
+      "region": "zuidholland",
+      "lat": 52.0804,
+      "lon": 4.3143,
+      "visit": 90,
+      "cat": "Museum",
+      "priority": 3,
+      "wiki": "Mauritshuis",
+      "summary": "A small 17th-century palace holding a superb collection of Dutch Golden Age art, including Vermeer's Girl with a Pearl Earring and View of Delft and Rembrandt's Anatomy Lesson.",
+      "facts": [
+        "~€18 adult; free with Museumkaart",
+        "Booking a time slot online is recommended",
+        "Allow 1.5 hours; compact and easy to see"
+      ],
+      "hours": "10:00-18:00",
+      "needsDaylight": false
+    },
+    {
+      "id": "scheveningen",
+      "name": "Scheveningen",
+      "region": "zuidholland",
+      "lat": 52.111,
+      "lon": 4.277,
+      "visit": 120,
+      "cat": "Beach",
+      "priority": 2,
+      "wiki": "Scheveningen",
+      "summary": "The Hague's seaside district, with a long sandy beach, the grand Kurhaus hotel, a pier with a Ferris wheel and a fishing harbour with good fish restaurants.",
+      "facts": [
+        "Tram 1 or 9 from the centre (~20 minutes)",
+        "Paid parking; garages fill on sunny weekends",
+        "Harbour side is quieter and better for food"
+      ]
+    },
+    {
+      "id": "madurodam",
+      "name": "Madurodam",
+      "region": "zuidholland",
+      "lat": 52.0995,
+      "lon": 4.299,
+      "visit": 120,
+      "cat": "Theme park",
+      "priority": 1,
+      "wiki": "Madurodam",
+      "summary": "Miniature park showing the Netherlands' famous buildings, canals, ports and Schiphol at 1:25 scale, with interactive models. Popular with families.",
+      "facts": [
+        "Book online for a discount",
+        "Allow about 2 hours",
+        "Between the centre and Scheveningen"
+      ],
+      "hours": "10:00-18:00"
+    },
+    {
+      "id": "delft",
+      "name": "Delft",
+      "region": "zuidholland",
+      "lat": 52.0116,
+      "lon": 4.3571,
+      "visit": 180,
+      "cat": "Town",
+      "priority": 3,
+      "wiki": "Delft",
+      "summary": "Picture-perfect canal town of Vermeer and Delft Blue pottery, with a grand Markt between the Nieuwe Kerk and the town hall. Small, walkable and lovely in the evening.",
+      "facts": [
+        "10–15 minutes by train from The Hague or Rotterdam",
+        "Park in a garage at the edge; the centre is largely car-free",
+        "Thursday market on the Markt",
+        "Royal Delft pottery factory tours south of the centre"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "nieuwe_kerk_delft",
+      "name": "Nieuwe Kerk, Delft",
+      "region": "zuidholland",
+      "lat": 52.0121,
+      "lon": 4.3609,
+      "visit": 60,
+      "cat": "Monastery & church",
+      "priority": 2,
+      "wiki": "Nieuwe Kerk (Delft)",
+      "summary": "Gothic church on the Markt holding the mausoleum of William of Orange and the royal family's burial vault. Climb the 376 steps of the tower for a view to The Hague and Rotterdam.",
+      "facts": [
+        "Combined ticket with the Oude Kerk; tower climb extra",
+        "Tower climb is narrow and steep",
+        "Allow about 1 hour"
+      ],
+      "hours": "10:00-17:00",
+      "closed": [
+        0
+      ]
+    },
+    {
+      "id": "rotterdam",
+      "name": "Rotterdam",
+      "region": "zuidholland",
+      "lat": 51.922,
+      "lon": 4.48,
+      "visit": 180,
+      "cat": "Base",
+      "priority": 3,
+      "wiki": "Rotterdam",
+      "summary": "Europe's largest port city, rebuilt after 1940 as a showcase of bold modern architecture, with a lively food scene, the Erasmus Bridge and the Maas river. Feels nothing like the canal towns.",
+      "facts": [
+        "Park in a P+R and use the metro; city garages are expensive",
+        "Water taxis and waterbuses cross the Maas",
+        "~40 minutes by intercity from Amsterdam"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "markthal",
+      "name": "Markthal",
+      "region": "zuidholland",
+      "lat": 51.92,
+      "lon": 4.4873,
+      "visit": 60,
+      "cat": "Food & market",
+      "priority": 2,
+      "wiki": "Markthal",
+      "summary": "A giant horseshoe of apartments arching over a covered food hall, its ceiling painted with a huge fruit-and-vegetable mural. Good for a quick lunch.",
+      "facts": [
+        "Free",
+        "Outdoor Blaak market on Tuesdays and Saturdays next door",
+        "Cube Houses are across the road"
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "cube_houses",
+      "name": "Cube Houses (Kubuswoningen)",
+      "region": "zuidholland",
+      "lat": 51.9203,
+      "lon": 4.4907,
+      "visit": 30,
+      "cat": "Monument",
+      "priority": 2,
+      "wiki": "Cube houses",
+      "summary": "Piet Blom's 1984 tilted yellow cube houses on poles above a street near the Old Harbour. One show cube is open to visitors.",
+      "facts": [
+        "Show cube ~€3–4",
+        "Next to the Markthal and the Old Harbour",
+        "15–30 minutes is enough"
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "euromast",
+      "name": "Euromast",
+      "region": "zuidholland",
+      "lat": 51.9054,
+      "lon": 4.4666,
+      "visit": 60,
+      "cat": "Viewpoint",
+      "priority": 1,
+      "wiki": "Euromast",
+      "summary": "185 m observation tower beside the Park, with a viewing deck and a rotating glass lift to the top giving views over the port and skyline.",
+      "facts": [
+        "Adult ticket ~€19",
+        "Choose a clear day",
+        "Walkable from Delfshaven"
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "depot_boijmans",
+      "name": "Depot Boijmans Van Beuningen",
+      "region": "zuidholland",
+      "lat": 51.9137,
+      "lon": 4.4706,
+      "visit": 90,
+      "cat": "Museum",
+      "priority": 2,
+      "wiki": "Depot Museum Boijmans Van Beuningen",
+      "summary": "The world's first publicly accessible art storage building, a mirrored bowl in the Museumpark where you can wander among stored masterpieces and restorers at work, with a rooftop birch forest.",
+      "facts": [
+        "Book a time slot online",
+        "The rooftop restaurant and terrace give a good city view",
+        "Allow about 1.5 hours"
+      ],
+      "hours": "11:00-17:00",
+      "closed": [
+        1
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "delfshaven",
+      "name": "Delfshaven",
+      "region": "zuidholland",
+      "lat": 51.907,
+      "lon": 4.447,
+      "visit": 60,
+      "cat": "Old town",
+      "priority": 1,
+      "wiki": "Delfshaven",
+      "summary": "The only part of old Rotterdam to survive the 1940 bombing: a small harbour with old warehouses, a windmill and the church where the Pilgrim Fathers prayed before sailing to America.",
+      "facts": [
+        "Free",
+        "Metro or tram from the centre",
+        "Good brown cafés and a craft brewery on the harbour"
+      ]
+    },
+    {
+      "id": "kinderdijk",
+      "name": "Kinderdijk",
+      "region": "zuidholland",
+      "lat": 51.885,
+      "lon": 4.639,
+      "visit": 150,
+      "cat": "Windmill",
+      "priority": 3,
+      "wiki": "Kinderdijk",
+      "summary": "UNESCO-listed line of 19 18th-century windmills along the polder canals, built to drain the land. The most iconic windmill landscape in the country; two mills can be visited inside.",
+      "facts": [
+        "~€19 adult for the mill interiors, film and boat; walking or cycling the path along the mills is free",
+        "Waterbus from Rotterdam (Erasmusbrug) is the nicest way to come",
+        "Paid car park; arrive early to beat the coach groups",
+        "Mills turn on Saturdays in season"
+      ]
+    },
+    {
+      "id": "gouda",
+      "name": "Gouda",
+      "region": "zuidholland",
+      "lat": 52.011,
+      "lon": 4.7106,
+      "visit": 120,
+      "cat": "Town",
+      "priority": 2,
+      "wiki": "Gouda",
+      "summary": "Small canal town with a Gothic town hall standing alone on a triangular market square, the long St John's church with famous 16th-century stained glass, and of course cheese.",
+      "facts": [
+        "Traditional cheese market Thursday mornings (about 10:00–12:30), April to August",
+        "St Janskerk ~€10, worth it for the windows",
+        "Fresh stroopwafels were invented here"
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "dordrecht",
+      "name": "Dordrecht",
+      "region": "zuidholland",
+      "lat": 51.8133,
+      "lon": 4.69,
+      "visit": 120,
+      "cat": "Town",
+      "priority": 2,
+      "wiki": "Dordrecht",
+      "summary": "The oldest city in Holland, on a river junction, with old harbours, merchant houses and the massive Grote Kerk tower. Gateway to the Biesbosch.",
+      "facts": [
+        "Waterbus to Rotterdam and Kinderdijk",
+        "Climb the Grote Kerk tower for river views",
+        "Dordrechts Museum free with Museumkaart"
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "utrecht",
+      "name": "Utrecht",
+      "region": "utrecht",
+      "lat": 52.0907,
+      "lon": 5.1214,
+      "visit": 180,
+      "cat": "Base",
+      "priority": 3,
+      "wiki": "Utrecht",
+      "summary": "Lively university city with a medieval centre around the Dom tower, and unique two-level canals whose old wharf cellars are now cafés at water level. Less touristy than Amsterdam and very central.",
+      "facts": [
+        "~25 minutes by train from Amsterdam; Utrecht Centraal is the country's rail hub",
+        "Park at P+R Papendorp or Westraven and take the tram",
+        "Hire a canal boat or pedal boat on the Oudegracht"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "dom_tower",
+      "name": "Dom Tower",
+      "region": "utrecht",
+      "lat": 52.0908,
+      "lon": 5.1217,
+      "visit": 75,
+      "cat": "Monument",
+      "priority": 2,
+      "wiki": "Dom Tower of Utrecht",
+      "summary": "At 112 m the tallest church tower in the Netherlands, climbed by 465 steps with a guide. On a clear day you can see Amsterdam.",
+      "facts": [
+        "~€12 adult; guided tours only, book online in advance",
+        "Not for those with vertigo or knee problems",
+        "Underground DOMunder tour shows the Roman fort foundations"
+      ],
+      "hours": "10:00-17:00"
+    },
+    {
+      "id": "oudegracht",
+      "name": "Oudegracht wharves",
+      "region": "utrecht",
+      "lat": 52.0905,
+      "lon": 5.119,
+      "visit": 60,
+      "cat": "Old town",
+      "priority": 2,
+      "wiki": "Oudegracht",
+      "summary": "Utrecht's main canal with its medieval wharves and cellars right at the waterline, now terraces and restaurants. Unlike any other Dutch canal.",
+      "facts": [
+        "Free",
+        "Canal cruises leave from the Oudegracht (~1 hour)",
+        "Lovely on summer evenings"
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "rietveld_schroder_house",
+      "name": "Rietveld Schröder House",
+      "region": "utrecht",
+      "lat": 52.0853,
+      "lon": 5.1477,
+      "visit": 60,
+      "cat": "Museum",
+      "priority": 2,
+      "wiki": "Rietveld Schröder House",
+      "summary": "UNESCO-listed 1924 house by Gerrit Rietveld, the purest built expression of De Stijl with movable walls and primary colours. Small and visited by guided tour.",
+      "facts": [
+        "Book ahead via the Centraal Museum; small groups only",
+        "Free with Museumkaart (booking still required)",
+        "Bus or 20-minute walk from the centre"
+      ],
+      "closed": [
+        1
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "spoorwegmuseum",
+      "name": "Railway Museum (Spoorwegmuseum)",
+      "region": "utrecht",
+      "lat": 52.088,
+      "lon": 5.133,
+      "visit": 150,
+      "cat": "Museum",
+      "priority": 1,
+      "wiki": "Railway Museum (Netherlands)",
+      "summary": "National railway museum in an old station, with historic locomotives and themed rides. A strong choice with children.",
+      "facts": [
+        "Book online",
+        "Allow 2–3 hours",
+        "Short walk or shuttle train from Utrecht Centraal"
+      ],
+      "closed": [
+        1
+      ],
+      "hours": "10:00-17:00",
+      "needsDaylight": false
+    },
+    {
+      "id": "castle_de_haar",
+      "name": "Castle De Haar",
+      "region": "utrecht",
+      "lat": 52.1213,
+      "lon": 4.985,
+      "visit": 150,
+      "cat": "Castle",
+      "priority": 3,
+      "wiki": "De Haar Castle",
+      "summary": "The largest castle in the Netherlands, a fairy-tale neo-Gothic rebuild (1892) of a medieval ruin, with lavish interiors and extensive formal gardens and moats.",
+      "facts": [
+        "Book online; castle interior and gardens ticket ~€20",
+        "Free car park",
+        "20 minutes' drive from Utrecht; the gardens alone are worth a visit"
+      ],
+      "hours": "11:00-17:00"
+    },
+    {
+      "id": "amersfoort",
+      "name": "Amersfoort",
+      "region": "utrecht",
+      "lat": 52.1561,
+      "lon": 5.3878,
+      "visit": 150,
+      "cat": "Town",
+      "priority": 2,
+      "wiki": "Amersfoort",
+      "summary": "Medieval town with a ring of canals, the Koppelpoort water gate and the tall Onze Lieve Vrouwetoren. Lively but rarely crowded, and the birthplace of Mondrian.",
+      "facts": [
+        "15 minutes by train from Utrecht",
+        "Park in a garage near the old town",
+        "Mondriaanhuis free with Museumkaart"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "amerongen_castle",
+      "name": "Amerongen Castle",
+      "region": "utrecht",
+      "lat": 52.003,
+      "lon": 5.4608,
+      "visit": 90,
+      "cat": "Castle",
+      "priority": 1,
+      "wiki": "Amerongen Castle",
+      "summary": "Moated 17th-century country house where the German Kaiser Wilhelm II stayed after fleeing in 1918, with original interiors and gardens.",
+      "facts": [
+        "Free with Museumkaart",
+        "Allow about 1.5 hours with the gardens",
+        "Combine with the Utrechtse Heuvelrug and Wijk bij Duurstede"
+      ],
+      "closed": [
+        1
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "utrechtse_heuvelrug",
+      "name": "Utrechtse Heuvelrug National Park",
+      "region": "utrecht",
+      "lat": 52.033,
+      "lon": 5.4,
+      "visit": 150,
+      "cat": "Nature reserve",
+      "priority": 1,
+      "wiki": "Utrechtse Heuvelrug National Park",
+      "summary": "A glacial ridge of forest and heath east of Utrecht, with walking and cycling trails and views over the Rhine valley from the Amerongse Berg.",
+      "facts": [
+        "Free",
+        "Many marked walks of 5–10 km",
+        "Heather blooms in August"
+      ]
+    },
+    {
+      "id": "wijk_bij_duurstede",
+      "name": "Wijk bij Duurstede",
+      "region": "utrecht",
+      "lat": 51.975,
+      "lon": 5.34,
+      "visit": 90,
+      "cat": "Town",
+      "priority": 1,
+      "wiki": "Wijk bij Duurstede",
+      "summary": "Small fortified town on the Lek, once the Viking-era trading town of Dorestad, with a castle park and the windmill Rijn en Lek painted by Jacob van Ruisdael.",
+      "facts": [
+        "Free",
+        "Pleasant cycling along the river dykes",
+        "Quiet, few tourists"
+      ]
+    },
+    {
+      "id": "fort_vechten",
+      "name": "Fort Vechten – Waterline Museum",
+      "region": "utrecht",
+      "lat": 52.056,
+      "lon": 5.17,
+      "visit": 90,
+      "cat": "Museum",
+      "priority": 1,
+      "wiki": "Dutch Waterline",
+      "summary": "The largest fort of the UNESCO-listed Dutch Water Line, with a museum explaining how the land was flooded to stop invaders.",
+      "facts": [
+        "Free with Museumkaart",
+        "Easy by bike from Utrecht (~25 minutes)",
+        "Combine with a ride along the forts"
+      ],
+      "closed": [
+        1
+      ]
+    },
+    {
+      "id": "loosdrecht_lakes",
+      "name": "Loosdrecht Lakes",
+      "region": "utrecht",
+      "lat": 52.2,
+      "lon": 5.07,
+      "visit": 120,
+      "cat": "Lake",
+      "priority": 1,
+      "wiki": "Loosdrecht",
+      "summary": "Lakes formed by peat digging along the Vecht river, with sailing, rental boats and cycling between villages and country houses.",
+      "facts": [
+        "Rent an electric boat for a few hours",
+        "Cycle the Vecht valley with its country estates",
+        "Busy on summer weekends"
+      ]
+    },
+    {
+      "id": "middelburg",
+      "name": "Middelburg",
+      "region": "zeeland",
+      "lat": 51.4988,
+      "lon": 3.6136,
+      "visit": 150,
+      "cat": "Town",
+      "priority": 3,
+      "wiki": "Middelburg, Zeeland",
+      "summary": "Capital of Zeeland, a prosperous medieval trading town rebuilt after 1940, with a large abbey complex, a fine Gothic town hall and quiet streets of merchant houses. The best base for Walcheren.",
+      "facts": [
+        "About 2.5 hours by train from Amsterdam",
+        "Park in a garage or at the edge; the centre is compact",
+        "Thursday market on the Markt",
+        "Close to the beaches at Domburg and Zoutelande"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "middelburg_abbey",
+      "name": "Middelburg Abbey & Lange Jan",
+      "region": "zeeland",
+      "lat": 51.5,
+      "lon": 3.613,
+      "visit": 90,
+      "cat": "Monastery & church",
+      "priority": 2,
+      "wiki": "Middelburg Abbey",
+      "summary": "Medieval abbey complex housing the provincial government, the Zeeuws Museum with its Zeeland tapestries, and the 91 m Lange Jan tower.",
+      "facts": [
+        "Zeeuws Museum free with Museumkaart",
+        "Climb the Lange Jan for views over Walcheren (in season)",
+        "Abbey courtyard free"
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "veere",
+      "name": "Veere",
+      "region": "zeeland",
+      "lat": 51.549,
+      "lon": 3.667,
+      "visit": 90,
+      "cat": "Village",
+      "priority": 2,
+      "wiki": "Veere",
+      "summary": "Tiny former port that once held the Scottish wool trade monopoly, with a huge unfinished church, a Gothic town hall and a yacht harbour on the Veerse Meer.",
+      "facts": [
+        "Free; park at the edge of the village",
+        "Lovely cycle from Middelburg (~7 km)",
+        "Quiet in the evening once day-trippers leave"
+      ]
+    },
+    {
+      "id": "zierikzee",
+      "name": "Zierikzee",
+      "region": "zeeland",
+      "lat": 51.65,
+      "lon": 3.918,
+      "visit": 120,
+      "cat": "Town",
+      "priority": 2,
+      "wiki": "Zierikzee",
+      "summary": "Well-preserved old harbour town on Schouwen-Duiveland with harbour gates, the tall unfinished St Lievens tower and narrow streets. Departure point for seal-watching trips on the Oosterschelde.",
+      "facts": [
+        "Park outside the ring canal",
+        "Thursday market",
+        "Base for Neeltje Jans and the Watersnoodmuseum"
+      ],
+      "sleep": true,
+      "needsDaylight": false
+    },
+    {
+      "id": "neeltje_jans",
+      "name": "Delta Works: Oosterscheldekering & Neeltje Jans",
+      "region": "zeeland",
+      "lat": 51.64,
+      "lon": 3.702,
+      "visit": 180,
+      "cat": "Monument",
+      "priority": 3,
+      "wiki": "Oosterscheldekering",
+      "summary": "The largest of the Delta Works, a 9 km storm-surge barrier with giant sliding gates built after the 1953 flood. The Deltapark Neeltje Jans on the artificial island explains it and lets you walk inside a pier.",
+      "facts": [
+        "Deltapark ~€27 adult with exhibitions, seal show and boat trip",
+        "Driving across the barrier is free",
+        "Allow half a day for the park"
+      ],
+      "hours": "10:00-17:00"
+    },
+    {
+      "id": "watersnoodmuseum",
+      "name": "Watersnoodmuseum",
+      "region": "zeeland",
+      "lat": 51.622,
+      "lon": 4.023,
+      "visit": 120,
+      "cat": "Museum",
+      "priority": 2,
+      "wiki": "Watersnoodmuseum",
+      "summary": "Moving museum about the 1953 North Sea flood that killed 1,836 people, set inside four concrete caissons used to close the last dike breach at Ouwerkerk.",
+      "facts": [
+        "Free with Museumkaart",
+        "Allow about 2 hours",
+        "Free parking"
+      ],
+      "hours": "10:00-17:00",
+      "closed": [
+        1
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "domburg",
+      "name": "Domburg",
+      "region": "zeeland",
+      "lat": 51.564,
+      "lon": 3.497,
+      "visit": 120,
+      "cat": "Beach",
+      "priority": 2,
+      "wiki": "Domburg",
+      "summary": "Zeeland's oldest seaside resort, with a broad sandy beach backed by high dunes and an elegant small-town centre that drew artists such as Mondrian.",
+      "facts": [
+        "Paid parking behind the dunes",
+        "Wooded dune walks towards Oostkapelle",
+        "Good base for a beach stay"
+      ],
+      "sleep": true,
+      "season": "Busiest in July–August; spring and September are calmer."
+    },
+    {
+      "id": "zoutelande",
+      "name": "Zoutelande",
+      "region": "zeeland",
+      "lat": 51.5013,
+      "lon": 3.4842,
+      "visit": 120,
+      "cat": "Beach",
+      "priority": 1,
+      "wiki": "Zoutelande",
+      "summary": "Small resort on the south-west coast of Walcheren, the only Dutch North Sea beach facing south-west, with sunny afternoons and big ships passing to Antwerp.",
+      "facts": [
+        "Paid parking",
+        "Walk the dyke to Westkapelle",
+        "Swimming in summer only"
+      ]
+    },
+    {
+      "id": "westkapelle_lighthouse",
+      "name": "Westkapelle Lighthouse (Westkapelle Hoog)",
+      "region": "zeeland",
+      "lat": 51.5292,
+      "lon": 3.4423,
+      "visit": 45,
+      "cat": "Lighthouse",
+      "priority": 1,
+      "wiki": "Westkapelle",
+      "summary": "A lighthouse built on top of the tower of a medieval church, standing in the middle of the village behind the sea dyke. Climb it for a view over Walcheren.",
+      "facts": [
+        "Small entry fee to climb, in season",
+        "Polderhuis museum on the 1944 inundation nearby",
+        "Combine with the Westkapelle sea dyke"
+      ]
+    },
+    {
+      "id": "vlissingen",
+      "name": "Vlissingen",
+      "region": "zeeland",
+      "lat": 51.443,
+      "lon": 3.573,
+      "visit": 90,
+      "cat": "Town",
+      "priority": 1,
+      "wiki": "Vlissingen",
+      "summary": "Port town at the mouth of the Westerschelde, with a seafront boulevard where huge container ships pass close by, and a pedestrian ferry to Breskens.",
+      "facts": [
+        "Watch ships from the Boulevard de Ruyter",
+        "Fast foot ferry to Breskens in Zeeuws-Vlaanderen",
+        "Muzeeum (maritime) free with Museumkaart"
+      ],
+      "needsDaylight": false
+    },
+    {
+      "id": "oosterschelde_seal_trip",
+      "name": "Oosterschelde seal-spotting boat trip",
+      "region": "zeeland",
+      "lat": 51.646,
+      "lon": 3.92,
+      "visit": 120,
+      "cat": "Boat trip",
+      "priority": 1,
+      "wiki": "Oosterschelde National Park",
+      "summary": "Boat trips from Zierikzee into the Oosterschelde National Park, the largest Dutch national park, to see harbour and grey seals hauled out on sandbanks.",
+      "facts": [
+        "Book ahead; trips depend on the tide",
+        "Bring binoculars and warm layers",
+        "Spring to autumn"
+      ]
+    },
+    {
+      "id": "renesse",
+      "name": "Renesse",
+      "region": "zeeland",
+      "lat": 51.733,
+      "lon": 3.775,
+      "visit": 120,
+      "cat": "Beach",
+      "priority": 1,
+      "wiki": "Renesse",
+      "summary": "Popular resort on Schouwen-Duiveland with one of the widest beaches in the country and dunes behind; the Brouwersdam nearby is a kitesurf hotspot.",
+      "facts": [
+        "Paid parking",
+        "Busy with young holidaymakers in summer",
+        "Moriaanshoofd beach is quieter"
+      ]
+    },
+    {
+      "id": "yerseke",
+      "name": "Yerseke",
+      "region": "zeeland",
+      "lat": 51.493,
+      "lon": 4.051,
+      "visit": 90,
+      "cat": "Village",
+      "priority": 1,
+      "wiki": "Yerseke",
+      "summary": "The mussel and oyster capital of the Netherlands, with oyster pits along the Oosterschelde and seafood restaurants on the harbour.",
+      "facts": [
+        "Mussel season runs roughly July to April",
+        "Oyster tasting at the pits by the dyke",
+        "Day trip from Middelburg or Zierikzee"
+      ]
+    },
+    {
+      "id": "sluis",
+      "name": "Sluis",
+      "region": "zeeland",
+      "lat": 51.309,
+      "lon": 3.386,
+      "visit": 90,
+      "cat": "Town",
+      "priority": 1,
+      "wiki": "Sluis",
+      "summary": "Tiny fortified town in Zeeuws-Vlaanderen near the Belgian border, with the only belfry in the Netherlands and a windmill on the ramparts. Close to Bruges.",
+      "facts": [
+        "Free",
+        "Busy with Belgian shoppers on weekends",
+        "Reach via the Westerschelde tunnel (toll ~€5)"
+      ]
+    }
+  ],
+  "drives": [
+    [
+      "ams",
+      "amsterdam",
+      20,
+      25
+    ],
+    [
+      "amsterdam",
+      "haarlem",
+      20,
+      30
+    ],
+    [
+      "amsterdam",
+      "zaanse_schans",
+      17,
+      25
+    ],
+    [
+      "amsterdam",
+      "volendam",
+      22,
+      25
+    ],
+    [
+      "amsterdam",
+      "muiderslot",
+      15,
+      20
+    ],
+    [
+      "amsterdam",
+      "naarden",
+      25,
+      25
+    ],
+    [
+      "amsterdam",
+      "utrecht",
+      45,
+      45
+    ],
+    [
+      "amsterdam",
+      "leiden",
+      45,
+      40
+    ],
+    [
+      "amsterdam",
+      "alkmaar",
+      40,
+      40
+    ],
+    [
+      "amsterdam",
+      "hoorn",
+      45,
+      40
+    ],
+    [
+      "amsterdam",
+      "rotterdam",
+      78,
+      65
+    ],
+    [
+      "ams",
+      "haarlem",
+      15,
+      20
+    ],
+    [
+      "ams",
+      "leiden",
+      30,
+      25
+    ],
+    [
+      "ams",
+      "keukenhof",
+      30,
+      30
+    ],
+    [
+      "haarlem",
+      "zandvoort",
+      10,
+      20
+    ],
+    [
+      "haarlem",
+      "kennemerland",
+      6,
+      15
+    ],
+    [
+      "haarlem",
+      "alkmaar",
+      35,
+      40
+    ],
+    [
+      "haarlem",
+      "keukenhof",
+      20,
+      30
+    ],
+    [
+      "volendam",
+      "edam",
+      3,
+      7
+    ],
+    [
+      "volendam",
+      "marken",
+      15,
+      20
+    ],
+    [
+      "edam",
+      "hoorn",
+      20,
+      20
+    ],
+    [
+      "hoorn",
+      "zuiderzee_museum",
+      20,
+      20
+    ],
+    [
+      "alkmaar",
+      "hoorn",
+      27,
+      30
+    ],
+    [
+      "zaanse_schans",
+      "alkmaar",
+      30,
+      30
+    ],
+    [
+      "alkmaar",
+      "texel",
+      60,
+      80
+    ],
+    [
+      "texel",
+      "dunes_of_texel",
+      8,
+      12
+    ],
+    [
+      "muiderslot",
+      "naarden",
+      10,
+      12
+    ],
+    [
+      "naarden",
+      "amersfoort",
+      30,
+      30
+    ],
+    [
+      "leiden",
+      "keukenhof",
+      15,
+      20
+    ],
+    [
+      "keukenhof",
+      "bulb_fields_bike_ride",
+      2,
+      5
+    ],
+    [
+      "leiden",
+      "the_hague",
+      20,
+      25
+    ],
+    [
+      "the_hague",
+      "scheveningen",
+      5,
+      15
+    ],
+    [
+      "the_hague",
+      "madurodam",
+      3,
+      10
+    ],
+    [
+      "the_hague",
+      "delft",
+      10,
+      20
+    ],
+    [
+      "delft",
+      "rotterdam",
+      15,
+      20
+    ],
+    [
+      "rotterdam",
+      "delfshaven",
+      4,
+      10
+    ],
+    [
+      "rotterdam",
+      "kinderdijk",
+      20,
+      25
+    ],
+    [
+      "rotterdam",
+      "gouda",
+      25,
+      25
+    ],
+    [
+      "rotterdam",
+      "dordrecht",
+      25,
+      25
+    ],
+    [
+      "dordrecht",
+      "kinderdijk",
+      12,
+      20
+    ],
+    [
+      "leiden",
+      "gouda",
+      35,
+      35
+    ],
+    [
+      "gouda",
+      "utrecht",
+      35,
+      30
+    ],
+    [
+      "utrecht",
+      "rotterdam",
+      60,
+      45
+    ],
+    [
+      "rotterdam",
+      "middelburg",
+      115,
+      80
+    ],
+    [
+      "utrecht",
+      "castle_de_haar",
+      15,
+      20
+    ],
+    [
+      "utrecht",
+      "amersfoort",
+      25,
+      25
+    ],
+    [
+      "utrecht",
+      "fort_vechten",
+      6,
+      12
+    ],
+    [
+      "utrecht",
+      "wijk_bij_duurstede",
+      25,
+      25
+    ],
+    [
+      "wijk_bij_duurstede",
+      "amerongen_castle",
+      10,
+      12
+    ],
+    [
+      "amersfoort",
+      "utrechtse_heuvelrug",
+      20,
+      25
+    ],
+    [
+      "utrechtse_heuvelrug",
+      "amerongen_castle",
+      8,
+      12
+    ],
+    [
+      "utrecht",
+      "loosdrecht_lakes",
+      20,
+      25
+    ],
+    [
+      "utrecht",
+      "arnhem",
+      65,
+      50
+    ],
+    [
+      "utrecht",
+      "den_bosch",
+      55,
+      45
+    ],
+    [
+      "amersfoort",
+      "apeldoorn",
+      45,
+      35
+    ],
+    [
+      "amersfoort",
+      "zwolle",
+      70,
+      50
+    ],
+    [
+      "middelburg",
+      "veere",
+      7,
+      12
+    ],
+    [
+      "middelburg",
+      "vlissingen",
+      7,
+      12
+    ],
+    [
+      "middelburg",
+      "domburg",
+      15,
+      20
+    ],
+    [
+      "middelburg",
+      "zoutelande",
+      12,
+      18
+    ],
+    [
+      "domburg",
+      "westkapelle_lighthouse",
+      6,
+      10
+    ],
+    [
+      "zoutelande",
+      "westkapelle_lighthouse",
+      5,
+      8
+    ],
+    [
+      "middelburg",
+      "neeltje_jans",
+      22,
+      25
+    ],
+    [
+      "neeltje_jans",
+      "zierikzee",
+      20,
+      20
+    ],
+    [
+      "zierikzee",
+      "renesse",
+      18,
+      20
+    ],
+    [
+      "zierikzee",
+      "oosterschelde_seal_trip",
+      1,
+      5
+    ],
+    [
+      "zierikzee",
+      "watersnoodmuseum",
+      10,
+      12
+    ],
+    [
+      "middelburg",
+      "yerseke",
+      35,
+      30
+    ],
+    [
+      "middelburg",
+      "sluis",
+      55,
+      50
+    ],
+    [
+      "zierikzee",
+      "rotterdam",
+      70,
+      60
+    ],
+    [
+      "ams",
+      "amsterdam",
+      17,
+      35,
+      "train",
+      6
+    ],
+    [
+      "ams",
+      "leiden",
+      30,
+      40,
+      "train",
+      7.5
+    ],
+    [
+      "amsterdam",
+      "haarlem",
+      18,
+      35,
+      "train",
+      5
+    ],
+    [
+      "amsterdam",
+      "zaanse_schans",
+      17,
+      40,
+      "train",
+      4
+    ],
+    [
+      "amsterdam",
+      "alkmaar",
+      40,
+      55,
+      "train",
+      9
+    ],
+    [
+      "amsterdam",
+      "hoorn",
+      45,
+      55,
+      "train",
+      9.5
+    ],
+    [
+      "amsterdam",
+      "leiden",
+      40,
+      55,
+      "train",
+      10
+    ],
+    [
+      "leiden",
+      "the_hague",
+      15,
+      30,
+      "train",
+      4
+    ],
+    [
+      "the_hague",
+      "delft",
+      9,
+      25,
+      "train",
+      3
+    ],
+    [
+      "delft",
+      "rotterdam",
+      14,
+      30,
+      "train",
+      4
+    ],
+    [
+      "amsterdam",
+      "rotterdam",
+      75,
+      75,
+      "train",
+      18
+    ],
+    [
+      "amsterdam",
+      "utrecht",
+      40,
+      45,
+      "train",
+      9.5
+    ],
+    [
+      "utrecht",
+      "amersfoort",
+      22,
+      35,
+      "train",
+      6
+    ],
+    [
+      "utrecht",
+      "rotterdam",
+      55,
+      55,
+      "train",
+      12.5
+    ],
+    [
+      "rotterdam",
+      "gouda",
+      23,
+      35,
+      "train",
+      5.5
+    ],
+    [
+      "rotterdam",
+      "dordrecht",
+      20,
+      30,
+      "train",
+      5
+    ],
+    [
+      "rotterdam",
+      "middelburg",
+      120,
+      120,
+      "train",
+      25
+    ],
+    [
+      "rotterdam",
+      "kinderdijk",
+      20,
+      60,
+      "ferry",
+      5
+    ],
+    [
+      "volendam",
+      "marken",
+      6,
+      40,
+      "ferry",
+      9
+    ]
+  ]
+}

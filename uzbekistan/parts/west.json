@@ -1,0 +1,1249 @@
+{
+ "places": [
+  {
+   "id": "nurata",
+   "name": "Nurata",
+   "region": "nurata",
+   "lat": 40.5628,
+   "lon": 65.6904,
+   "visit": 90,
+   "cat": "Town",
+   "priority": 2,
+   "wiki": "Nurota",
+   "summary": "Small oasis town at the foot of the Nurata mountains with a holy spring and the remains of a fortress attributed to Alexander the Great. Gateway to the Aydarkul yurt camps and village homestays.",
+   "facts": [
+    "Usually visited en route between Samarkand/Bukhara and the yurt camps",
+    "Simple guesthouses only",
+    "Very hot in summer"
+   ],
+   "sleep": true
+  },
+  {
+   "id": "nurata_chashma",
+   "name": "Chashma Spring complex",
+   "region": "nurata",
+   "lat": 40.5555,
+   "lon": 65.6845,
+   "visit": 40,
+   "cat": "Mosque & madrasa",
+   "priority": 2,
+   "wiki": "Nurota",
+   "summary": "Pilgrimage complex around a sacred spring full of fish, with a domed mosque and a bathhouse, believed to have formed where a meteorite fell. Popular with local pilgrims.",
+   "facts": [
+    "Free",
+    "Modest dress",
+    "Next to the fortress hill"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "nur_fortress",
+   "name": "Nur Fortress (Alexander's fortress)",
+   "region": "nurata",
+   "lat": 40.5545,
+   "lon": 65.6815,
+   "visit": 30,
+   "cat": "Ruins",
+   "priority": 1,
+   "wiki": "Nurota",
+   "summary": "Earthen remains of the ancient fortress on a hill above the Chashma spring, traditionally said to have been founded by Alexander the Great. Climb for views over the town and the mountains.",
+   "facts": [
+    "Free",
+    "Short, steep walk",
+    "Best at sunset"
+   ]
+  },
+  {
+   "id": "aydarkul",
+   "name": "Aydarkul yurt camp",
+   "region": "nurata",
+   "lat": 41.0846,
+   "lon": 65.9625,
+   "visit": 960,
+   "cat": "Base",
+   "priority": 3,
+   "wiki": "Aydar Lake",
+   "summary": "Yurt camps in the Kyzylkum desert north of the Nurata mountains, where you sleep in felt yurts, ride camels and eat plov around a campfire under the stars. A favourite overnight stop between Samarkand and Bukhara.",
+   "facts": [
+    "Book ahead; overnight packages usually include dinner, breakfast and a camel ride",
+    "Bring a warm layer – desert nights are cold even in late spring",
+    "Combine with a swim at Aydarkul lake"
+   ],
+   "sleep": true,
+   "season": "Best April–June and September–October; very hot in midsummer and cold in winter."
+  },
+  {
+   "id": "yangigazgan_camps",
+   "name": "Yangigazgan desert camps",
+   "region": "nurata",
+   "lat": 40.9478,
+   "lon": 65.6126,
+   "visit": 120,
+   "cat": "Base",
+   "priority": 1,
+   "wiki": "Kyzylkum Desert",
+   "summary": "Cluster of tourist yurt camps around the village of Yangigazgan on the desert side of the Nurata mountains. An alternative base for camel rides and stargazing.",
+   "facts": [
+    "Book through an agency or directly",
+    "Facilities are basic; shared bathrooms",
+    "Nights can be cold"
+   ],
+   "sleep": true
+  },
+  {
+   "id": "kyzylkum_camel",
+   "name": "Kyzylkum camel ride",
+   "region": "nurata",
+   "lat": 41.075,
+   "lon": 65.95,
+   "visit": 60,
+   "cat": "Desert",
+   "priority": 2,
+   "wiki": "Kyzylkum Desert",
+   "summary": "Short camel ride over the sand dunes and scrub of the Kyzylkum ('red sand') desert around the yurt camps, ideally at sunset.",
+   "facts": [
+    "Usually included or bookable at the camps",
+    "Sunset or early morning rides are the most pleasant",
+    "Wear long trousers"
+   ]
+  },
+  {
+   "id": "aydar_lake",
+   "name": "Aydarkul Lake",
+   "region": "nurata",
+   "lat": 41.03,
+   "lon": 66.15,
+   "visit": 120,
+   "cat": "Lake",
+   "priority": 2,
+   "wiki": "Aydar Lake",
+   "summary": "Large brackish lake formed in the 1970s by floodwater from the Syr Darya, stretching for some 250 km across the desert. Camps drive guests to its sandy shore for a swim and fishing.",
+   "facts": [
+    "About 20–30 minutes' drive from the yurt camps",
+    "Bring water shoes, sun protection and drinking water",
+    "Mosquitoes in the evening in summer"
+   ]
+  },
+  {
+   "id": "sentob",
+   "name": "Sentob",
+   "region": "nurata",
+   "lat": 40.6062,
+   "lon": 66.6719,
+   "visit": 180,
+   "cat": "Village",
+   "priority": 2,
+   "wiki": "Sentob",
+   "summary": "Tajik-speaking mountain village in the Nurata range with stone houses, walnut trees and a stream. Community homestays and hikes to neighbouring villages such as Asraf and Hayat.",
+   "facts": [
+    "Homestays with meals; book ahead",
+    "Day hikes between villages, ideally with a local guide",
+    "Very little phone coverage"
+   ],
+   "sleep": true,
+   "season": "Pleasant from April to October; spring brings blossom and green slopes."
+  },
+  {
+   "id": "asraf",
+   "name": "Asraf",
+   "region": "nurata",
+   "lat": 40.555,
+   "lon": 66.8433,
+   "visit": 120,
+   "cat": "Village",
+   "priority": 1,
+   "wiki": "Nurota",
+   "summary": "Remote village in a narrow valley east of Sentob with terraced orchards and a waterfall, reached on a classic village-to-village hike. Homestays available.",
+   "facts": [
+    "Hike from Sentob takes most of a day",
+    "Homestays offer simple rooms and home cooking",
+    "Bring cash"
+   ],
+   "sleep": true
+  },
+  {
+   "id": "sarmishsay",
+   "name": "Sarmishsay petroglyphs",
+   "region": "nurata",
+   "lat": 40.3111,
+   "lon": 65.6398,
+   "visit": 120,
+   "cat": "Ruins",
+   "priority": 2,
+   "wiki": "Sarmishsay",
+   "summary": "Gorge in the Karatau hills north-east of Navoi with thousands of rock carvings from the Stone Age to the Middle Ages – hunters, animals and solar symbols.",
+   "facts": [
+    "Free; go with a guide or knowledgeable driver to find the best panels",
+    "About 45 minutes from Navoi",
+    "Shadeless rocky terrain; carry water"
+   ]
+  },
+  {
+   "id": "navoi",
+   "name": "Navoi",
+   "region": "nurata",
+   "lat": 40.0844,
+   "lon": 65.3792,
+   "visit": 60,
+   "cat": "Town",
+   "priority": 1,
+   "wiki": "Navoiy",
+   "summary": "Modern industrial city on the Samarkand–Bukhara railway, useful as a stopover and base for Sarmishsay, Rabati Malik and Nurata.",
+   "facts": [
+    "Afrosiyob/Sharq trains stop here",
+    "Hotels and taxis available",
+    "Few sights of its own"
+   ],
+   "sleep": true,
+   "needsDaylight": false
+  },
+  {
+   "id": "bukhara",
+   "name": "Bukhara",
+   "region": "bukhara",
+   "lat": 39.7738,
+   "lon": 64.42,
+   "visit": 180,
+   "cat": "Town",
+   "priority": 3,
+   "wiki": "Bukhara",
+   "summary": "Holy city of Central Asia and the most intact Silk Road town, its lanes, domed bazaars, mosques and madrasas centred on the Lyabi-hauz pool. Easily the most atmospheric place to stay; allow two or three days.",
+   "facts": [
+    "Afrosiyob train from Tashkent ~4 h, from Samarkand ~1.5 h; the station is in Kagan, 15 km away",
+    "The old centre is compact and walkable",
+    "Modest dress in mosques; some sites charge photo fees"
+   ],
+   "sleep": true,
+   "needsDaylight": false,
+   "season": "Very hot June–August; April–May and September–October are ideal."
+  },
+  {
+   "id": "lyabi_hauz",
+   "name": "Lyabi-hauz Ensemble",
+   "region": "bukhara",
+   "lat": 39.7731,
+   "lon": 64.4203,
+   "visit": 45,
+   "cat": "Mosque & madrasa",
+   "priority": 3,
+   "wiki": "Lab-i Hauz",
+   "summary": "Shaded pool ringed by mulberry trees, teahouses and the Nadir Divan-Beghi and Kukeldash madrasas – the social heart of old Bukhara. Lovely in the evening.",
+   "facts": [
+    "Free to wander; madrasas host craft shops",
+    "Folk show with dinner in Nadir Divan-Beghi in season",
+    "Nasreddin Hodja statue is a favourite photo stop"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "po_i_kalyan",
+   "name": "Po-i-Kalyan (Kalyan Minaret and Mosque)",
+   "region": "bukhara",
+   "lat": 39.7758,
+   "lon": 64.4142,
+   "visit": 60,
+   "cat": "Mosque & madrasa",
+   "priority": 3,
+   "wiki": "Po-i-Kalyan",
+   "summary": "Bukhara's iconic ensemble: the 47 m Kalyan Minaret of 1127, spared by Genghis Khan, the vast Kalyan Mosque and the working Mir-i-Arab Madrasa facing it. Superb at sunset and lit at night.",
+   "facts": [
+    "Kalyan Mosque ticket ~20,000–30,000 UZS (approx.); Mir-i-Arab is viewed from the entrance only",
+    "Minaret is not open for climbing",
+    "Visit at golden hour and again after dark"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "ark_bukhara",
+   "name": "Ark of Bukhara",
+   "region": "bukhara",
+   "lat": 39.7779,
+   "lon": 64.4111,
+   "visit": 75,
+   "cat": "Fortress",
+   "priority": 3,
+   "wiki": "Ark of Bukhara",
+   "summary": "Massive earthen citadel of the emirs of Bukhara, inhabited for more than a millennium, with a ramped gateway, throne room, mosque and small museums. Its walls dominate the Registan square.",
+   "facts": [
+    "Ticket ~60,000 UZS (approx.)",
+    "Allow 1–1.5 hours",
+    "Opposite the Bolo Hauz Mosque"
+   ],
+   "hours": "09:00-17:00"
+  },
+  {
+   "id": "bolo_hauz",
+   "name": "Bolo Hauz Mosque",
+   "region": "bukhara",
+   "lat": 39.7787,
+   "lon": 64.406,
+   "visit": 20,
+   "cat": "Mosque & madrasa",
+   "priority": 2,
+   "wiki": "Bolo Haouz Mosque",
+   "summary": "Emir's Friday mosque of 1712 facing the Ark, famous for its iwan of tall carved wooden columns reflected in a pool.",
+   "facts": [
+    "Free outside prayer times",
+    "Modest dress",
+    "Most photogenic in the late afternoon"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "samanid_mausoleum",
+   "name": "Samanid Mausoleum",
+   "region": "bukhara",
+   "lat": 39.7769,
+   "lon": 64.4006,
+   "visit": 30,
+   "cat": "Mausoleum",
+   "priority": 3,
+   "wiki": "Samanid Mausoleum",
+   "summary": "10th-century brick tomb of the Samanid dynasty in a park west of the Ark, with intricate basket-weave brickwork. One of the masterpieces of early Islamic architecture.",
+   "facts": [
+    "Small ticket (~20,000 UZS, approx.)",
+    "Light changes the brick patterns – late afternoon is best",
+    "In Samanid Park, next to Chashma-Ayub"
+   ]
+  },
+  {
+   "id": "chashma_ayub",
+   "name": "Chashma-Ayub Mausoleum",
+   "region": "bukhara",
+   "lat": 39.7781,
+   "lon": 64.4022,
+   "visit": 30,
+   "cat": "Mausoleum",
+   "priority": 1,
+   "wiki": "Chashma-Ayub Mausoleum",
+   "summary": "Shrine over a spring said to have been struck by the prophet Job, with an unusual conical dome; inside is a small museum of water supply in Bukhara.",
+   "facts": [
+    "Small ticket",
+    "Next to the Samanid Mausoleum",
+    "Bukhara Siege Memorial and bazaar nearby"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "magoki_attori",
+   "name": "Magoki-Attori Mosque",
+   "region": "bukhara",
+   "lat": 39.7732,
+   "lon": 64.4183,
+   "visit": 25,
+   "cat": "Mosque & madrasa",
+   "priority": 2,
+   "wiki": "Magok-i-Attari Mosque",
+   "summary": "Bukhara's oldest surviving mosque, sunk below today's street level, with a 12th-century carved facade over earlier foundations. Now a carpet museum.",
+   "facts": [
+    "Small ticket for the carpet museum",
+    "Between Lyabi-hauz and the trading domes",
+    "Look for the layers of the old city around it"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "trading_domes",
+   "name": "Trading domes (Toqi)",
+   "region": "bukhara",
+   "lat": 39.7745,
+   "lon": 64.4175,
+   "visit": 60,
+   "cat": "Food & market",
+   "priority": 2,
+   "wiki": "Bukhara",
+   "summary": "16th-century domed bazaars at old crossroads – Toqi Sarrofon (money changers), Toqi Telpak Furushon (hats) and Toqi Zargaron (jewellers) – still full of craft and souvenir stalls.",
+   "facts": [
+    "Free; shops open roughly 09:00 to dusk",
+    "Bargain politely; compare prices for suzanis and knives",
+    "Look for blacksmith and miniature-painting workshops nearby"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "ulugbek_abdulaziz",
+   "name": "Ulugbek and Abdulaziz Khan Madrasas",
+   "region": "bukhara",
+   "lat": 39.7766,
+   "lon": 64.4177,
+   "visit": 30,
+   "cat": "Mosque & madrasa",
+   "priority": 2,
+   "wiki": "Abdulaziz Khan Madrasah",
+   "summary": "Facing pair of madrasas: Ulugh Beg's 1417 school, the oldest in Central Asia, and the more flamboyant 17th-century Abdulaziz Khan Madrasa with rare figurative tilework.",
+   "facts": [
+    "Small ticket (~20,000 UZS each, approx.)",
+    "Next to Toqi Zargaron",
+    "Craft shops inside"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "chor_minor",
+   "name": "Chor Minor",
+   "region": "bukhara",
+   "lat": 39.7748,
+   "lon": 64.4274,
+   "visit": 20,
+   "cat": "Monument",
+   "priority": 2,
+   "wiki": "Chor Minor",
+   "summary": "Quirky 1807 gatehouse with four turquoise-domed minarets, tucked into a residential lane east of Lyabi-hauz. Climb to the roof for a close look.",
+   "facts": [
+    "Small fee to go up",
+    "10 minutes' walk from Lyabi-hauz",
+    "Best in morning light"
+   ]
+  },
+  {
+   "id": "sitorai_mokhi_khosa",
+   "name": "Sitorai Mokhi-Khosa Palace",
+   "region": "bukhara",
+   "lat": 39.8126,
+   "lon": 64.4404,
+   "visit": 75,
+   "cat": "Palace",
+   "priority": 2,
+   "wiki": "Sitorai Mokhi-Khosa",
+   "summary": "Summer palace of the last emir of Bukhara, a curious mix of Russian and Uzbek styles with a mirrored White Hall, harem pavilion and gardens with peacocks.",
+   "facts": [
+    "Ticket ~40,000 UZS (approx.)",
+    "About 15 minutes north of the centre by taxi",
+    "Allow 1–1.5 hours"
+   ],
+   "hours": "09:00-17:00",
+   "needsDaylight": false
+  },
+  {
+   "id": "bahauddin_naqshband",
+   "name": "Bahauddin Naqshband Complex",
+   "region": "bukhara",
+   "lat": 39.7994,
+   "lon": 64.5351,
+   "visit": 60,
+   "cat": "Mausoleum",
+   "priority": 2,
+   "wiki": "Baha' al-Din Naqshband",
+   "summary": "Memorial complex of the founder of the Naqshbandi Sufi order, Central Asia's most important pilgrimage site, with courtyards, mosques and a sacred tree. Lively on Fridays and holidays.",
+   "facts": [
+    "Free",
+    "About 20 minutes east of Bukhara",
+    "Modest dress; women cover their hair"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "chor_bakr",
+   "name": "Chor-Bakr Necropolis",
+   "region": "bukhara",
+   "lat": 39.7744,
+   "lon": 64.3344,
+   "visit": 45,
+   "cat": "Mausoleum",
+   "priority": 2,
+   "wiki": "Chor-Bakr",
+   "summary": "Walled 'city of the dead' west of Bukhara, a necropolis of the Juybari sheikhs with a mosque, khanaka and lanes of family tombs. Peaceful and seldom crowded.",
+   "facts": [
+    "Ticket ~20,000–30,000 UZS (approx.)",
+    "About 15 minutes by taxi",
+    "Combine with the Samanid Mausoleum"
+   ]
+  },
+  {
+   "id": "gijduvan",
+   "name": "Gijduvan",
+   "region": "bukhara",
+   "lat": 40.1,
+   "lon": 64.6667,
+   "visit": 60,
+   "cat": "Town",
+   "priority": 1,
+   "wiki": "Gijduvon",
+   "summary": "Market town north-east of Bukhara, famous for its ceramics with warm brown, yellow and green glazes and for Gijduvan-style shashlik. Has a 15th-century Ulugh Beg madrasa.",
+   "facts": [
+    "On the road from Bukhara towards Nurata/Samarkand",
+    "Try the local kebab restaurants",
+    "About 50 minutes from Bukhara"
+   ]
+  },
+  {
+   "id": "gijduvan_ceramics",
+   "name": "Narzullaev Ceramics Workshop",
+   "region": "bukhara",
+   "lat": 40.1011,
+   "lon": 64.6785,
+   "visit": 60,
+   "cat": "Experience",
+   "priority": 2,
+   "wiki": "Gijduvon",
+   "summary": "Family ceramics workshop and museum in Gijduvan run by a dynasty of master potters, where you can watch wheel-throwing and glazing and buy pieces.",
+   "facts": [
+    "Free visit; pieces for sale",
+    "Call ahead for a demonstration",
+    "Pieces are well packed for travel"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "vobkent_minaret",
+   "name": "Vobkent Minaret",
+   "region": "bukhara",
+   "lat": 40.0181,
+   "lon": 64.5283,
+   "visit": 20,
+   "cat": "Monument",
+   "priority": 1,
+   "wiki": "Vobkent",
+   "summary": "Slender 39 m brick minaret of 1196 in the small town of Vobkent, decorated with bands of patterned brickwork and inscriptions.",
+   "facts": [
+    "Free to view from outside",
+    "On the road to Gijduvan, 35 minutes from Bukhara",
+    "Quick photo stop"
+   ]
+  },
+  {
+   "id": "rabati_malik",
+   "name": "Rabati Malik Caravanserai",
+   "region": "bukhara",
+   "lat": 40.1228,
+   "lon": 65.1481,
+   "visit": 30,
+   "cat": "Ruins",
+   "priority": 1,
+   "wiki": "Rabati Malik",
+   "summary": "Monumental portal of an 11th-century royal caravanserai on the Samarkand–Bukhara road, with a restored domed sardoba (water cistern) across the road.",
+   "facts": [
+    "Small fee",
+    "Roadside stop between Navoi and Bukhara",
+    "Little shade"
+   ]
+  },
+  {
+   "id": "khiva",
+   "name": "Khiva (Itchan Kala)",
+   "region": "khorezm",
+   "lat": 41.3786,
+   "lon": 60.36,
+   "visit": 240,
+   "cat": "Old town",
+   "priority": 3,
+   "wiki": "Itchan Kala",
+   "summary": "Perfectly preserved walled inner town of the Khiva khanate, packed with madrasas, minarets, palaces and mosques, a UNESCO site that feels like an open-air museum. Magical at sunrise and after dark.",
+   "facts": [
+    "One combined ticket (~200,000 UZS, approx., valid 2 days) covers most museums; some extras charged separately",
+    "Stay inside or just outside the walls to enjoy it early and late",
+    "Modest dress in mosques and shrines"
+   ],
+   "sleep": true,
+   "needsDaylight": false,
+   "season": "Very hot June–August, freezing in January; April–May and September–October are best."
+  },
+  {
+   "id": "kalta_minor",
+   "name": "Kalta Minor",
+   "region": "khorezm",
+   "lat": 41.3783,
+   "lon": 60.358,
+   "visit": 15,
+   "cat": "Monument",
+   "priority": 3,
+   "wiki": "Itchan Kala",
+   "summary": "Fat, unfinished turquoise-tiled minaret of 1855, intended to be the tallest in the Islamic world but abandoned at 29 m. Khiva's emblem, beside the Mohammed Amin Khan Madrasa.",
+   "facts": [
+    "Viewed from outside; inside the combined-ticket area",
+    "Next to the west gate (Ota Darvoza)",
+    "Beautiful in early morning"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "kunya_ark",
+   "name": "Kunya-Ark Citadel",
+   "region": "khorezm",
+   "lat": 41.3789,
+   "lon": 60.3582,
+   "visit": 60,
+   "cat": "Fortress",
+   "priority": 2,
+   "wiki": "Itchan Kala",
+   "summary": "The khans' fortress-residence inside the west gate, with a tiled summer mosque, throne room and mint. Its Ak Sheikh Bobo bastion is the classic sunset viewpoint over Khiva's domes and minarets.",
+   "facts": [
+    "Included in the combined ticket; the watchtower costs extra (~20,000–30,000 UZS, approx.)",
+    "Go up the watchtower an hour before sunset",
+    "About 1 hour"
+   ],
+   "hours": "09:00-18:00"
+  },
+  {
+   "id": "juma_mosque_khiva",
+   "name": "Juma Mosque",
+   "region": "khorezm",
+   "lat": 41.3788,
+   "lon": 60.3612,
+   "visit": 30,
+   "cat": "Mosque & madrasa",
+   "priority": 3,
+   "wiki": "Juma Mosque, Khiva",
+   "summary": "Unusual hypostyle mosque whose dim hall is supported by 218 carved wooden columns, some dating back to the 10th–11th centuries.",
+   "facts": [
+    "Included in the combined ticket; minaret climb extra",
+    "Best when the sun shines through the skylights",
+    "About 30 minutes"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "islam_khoja_minaret",
+   "name": "Islam Khoja Minaret and Madrasa",
+   "region": "khorezm",
+   "lat": 41.3766,
+   "lon": 60.3603,
+   "visit": 45,
+   "cat": "Monument",
+   "priority": 2,
+   "wiki": "Itchan Kala",
+   "summary": "Khiva's tallest minaret (about 57 m), built in 1910 with bands of turquoise tiles, beside a small madrasa that houses an applied-arts museum. The climb gives the best view of the town.",
+   "facts": [
+    "Minaret climb extra (~20,000–30,000 UZS, approx.)",
+    "Steep, dark, narrow stairs",
+    "Museum included in the combined ticket"
+   ]
+  },
+  {
+   "id": "tash_hauli",
+   "name": "Tash Hauli Palace",
+   "region": "khorezm",
+   "lat": 41.3782,
+   "lon": 60.3616,
+   "visit": 60,
+   "cat": "Palace",
+   "priority": 3,
+   "wiki": "Toshhovli Palace",
+   "summary": "Allakuli Khan's 1830s palace with a harem courtyard of tall carved wooden columns and walls of exquisite blue-and-white majolica tiles. The finest interiors in Khiva.",
+   "facts": [
+    "Included in the combined ticket",
+    "About 1 hour",
+    "Near the east gate"
+   ],
+   "hours": "09:00-18:00",
+   "needsDaylight": false
+  },
+  {
+   "id": "pahlavon_mahmud",
+   "name": "Pahlavon Mahmud Mausoleum",
+   "region": "khorezm",
+   "lat": 41.377,
+   "lon": 60.3594,
+   "visit": 30,
+   "cat": "Mausoleum",
+   "priority": 2,
+   "wiki": "Pahlavon Mahmud Complex",
+   "summary": "Shrine of Khiva's patron saint, a 14th-century poet, furrier and wrestler, with a turquoise dome and some of the most beautiful tilework in the city. Local couples come here to be blessed.",
+   "facts": [
+    "Separate small ticket may apply",
+    "Modest dress; it is a place of pilgrimage",
+    "Quieter in the early morning"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "allakuli_khan_bazaar",
+   "name": "Allakuli Khan Madrasa, Caravanserai and Bazaar",
+   "region": "khorezm",
+   "lat": 41.3785,
+   "lon": 60.3625,
+   "visit": 40,
+   "cat": "Food & market",
+   "priority": 1,
+   "wiki": "Itchan Kala",
+   "summary": "Group of 19th-century buildings by the east gate (Palvan Darvoza): a madrasa, a caravanserai and a covered bazaar that still leads to the busy farmers' market outside the walls.",
+   "facts": [
+    "Free to walk through the bazaar",
+    "Market outside the east gate is liveliest in the morning",
+    "Good place to try Khorezmian shivit oshi (green dill noodles) nearby"
+   ],
+   "needsDaylight": false
+  },
+  {
+   "id": "nurullabay_palace",
+   "name": "Nurullabay Palace",
+   "region": "khorezm",
+   "lat": 41.3828,
+   "lon": 60.3567,
+   "visit": 45,
+   "cat": "Palace",
+   "priority": 2,
+   "wiki": "Dishan Kala",
+   "summary": "Early-20th-century palace in the outer town (Dishan Kala), mixing Khorezmian woodwork and tiles with European stoves, chandeliers and Russian-made ceramics.",
+   "facts": [
+    "Separate ticket (~25,000–50,000 UZS, approx.) or included in some combined tickets",
+    "5 minutes' walk north of the west gate",
+    "About 45 minutes"
+   ],
+   "hours": "09:00-18:00",
+   "needsDaylight": false
+  },
+  {
+   "id": "urgench",
+   "name": "Urgench",
+   "region": "khorezm",
+   "lat": 41.55,
+   "lon": 60.6333,
+   "visit": 60,
+   "cat": "Town",
+   "priority": 1,
+   "wiki": "Urgench",
+   "summary": "Modern regional capital of Khorezm with the airport and main railway station for Khiva, 35 km away. A practical base with a few big hotels but little to see.",
+   "facts": [
+    "Taxi to Khiva ~30–40 min; a trolleybus line also links the two",
+    "Gateway for the desert fortresses across the Amu Darya",
+    "Flights to Tashkent several times a day"
+   ],
+   "sleep": true,
+   "needsDaylight": false
+  },
+  {
+   "id": "ayaz_kala",
+   "name": "Ayaz Kala",
+   "region": "khorezm",
+   "lat": 42.0097,
+   "lon": 61.0272,
+   "visit": 120,
+   "cat": "Fortress",
+   "priority": 3,
+   "wiki": "Ayaz-Kala",
+   "summary": "The most spectacular of the Khorezm desert fortresses: mud-brick citadels on hilltops above the Kyzylkum, dating from the 4th century BC to the 7th century AD. A yurt camp below lets you stay overnight.",
+   "facts": [
+    "Free or small fee; climbing to the upper fort takes 15–20 minutes",
+    "Yurt camp offers dinner and overnight stays – book ahead",
+    "Sunset and sunrise are the best times"
+   ],
+   "sleep": true,
+   "caution": "Steep sandy paths and crumbling walls – stay off the ramparts' edges."
+  },
+  {
+   "id": "toprak_kala",
+   "name": "Toprak Kala",
+   "region": "khorezm",
+   "lat": 41.9272,
+   "lon": 60.8222,
+   "visit": 60,
+   "cat": "Fortress",
+   "priority": 2,
+   "wiki": "Toprak-Kala",
+   "summary": "Rectangular walled city and palace complex of the Khorezmian kings from the 1st–4th centuries AD, with high towers and excavated halls.",
+   "facts": [
+    "Small fee",
+    "Combine with Kyzyl Kala nearby (6 km)",
+    "No shade; bring water and a hat"
+   ]
+  },
+  {
+   "id": "kyzyl_kala",
+   "name": "Kyzyl Kala",
+   "region": "khorezm",
+   "lat": 41.93,
+   "lon": 60.7841,
+   "visit": 30,
+   "cat": "Fortress",
+   "priority": 1,
+   "wiki": "Kyzyl-Kala",
+   "summary": "Compact square fortress of red mud-brick, partly restored, standing alone in fields on the road between the Amu Darya and Toprak Kala.",
+   "facts": [
+    "Free or small fee",
+    "Quick stop between Toprak Kala and Urgench",
+    "Restored walls give a sense of the original look"
+   ]
+  },
+  {
+   "id": "guldursun_kala",
+   "name": "Guldursun Kala",
+   "region": "khorezm",
+   "lat": 41.6931,
+   "lon": 60.9815,
+   "visit": 45,
+   "cat": "Fortress",
+   "priority": 1,
+   "wiki": "Guldursun-Kala",
+   "summary": "Large ruined fortress with crumbling towers, wrapped in a legend of a princess who betrayed the city to the Mongols. Closest of the desert fortresses to Urgench and Khiva.",
+   "facts": [
+    "Free",
+    "Can be combined with Toprak and Ayaz Kala in a half-day loop",
+    "Very exposed – avoid midday in summer"
+   ]
+  },
+  {
+   "id": "nukus",
+   "name": "Nukus",
+   "region": "karakalpak",
+   "lat": 42.46,
+   "lon": 59.61,
+   "visit": 90,
+   "cat": "Town",
+   "priority": 2,
+   "wiki": "Nukus",
+   "summary": "Capital of Karakalpakstan, a low Soviet-built city visited mainly for the Savitsky Museum and as the starting point for trips to Moynaq and the Aral Sea.",
+   "facts": [
+    "Flights to Tashkent; trains towards Tashkent and Khiva",
+    "Arrange 4x4 trips to the Aral Sea here",
+    "Hotels are limited but adequate"
+   ],
+   "sleep": true,
+   "needsDaylight": false
+  },
+  {
+   "id": "savitsky_museum",
+   "name": "Savitsky Museum (Nukus Museum of Art)",
+   "region": "karakalpak",
+   "lat": 42.4658,
+   "lon": 59.6123,
+   "visit": 150,
+   "cat": "Museum",
+   "priority": 3,
+   "wiki": "Nukus Museum of Art",
+   "summary": "Extraordinary collection of banned Soviet avant-garde art rescued by Igor Savitsky, plus Karakalpak jewellery, textiles and Khorezmian archaeology. One of the most important art museums in the former USSR.",
+   "facts": [
+    "Ticket ~50,000 UZS (approx.); photo permit extra",
+    "Allow 2–3 hours; guided tours in English are worth booking",
+    "Only part of the collection is shown at a time"
+   ],
+   "hours": "09:00-17:00",
+   "needsDaylight": false
+  },
+  {
+   "id": "mizdakhan",
+   "name": "Mizdakhan Necropolis",
+   "region": "karakalpak",
+   "lat": 42.3978,
+   "lon": 59.3844,
+   "visit": 75,
+   "cat": "Mausoleum",
+   "priority": 2,
+   "wiki": "Mizdahkan",
+   "summary": "Vast hilltop necropolis near Khodjeyli used for over two thousand years, with domed mausoleums, the legendary tomb of Adam and the ruins of the Gyaur Kala fortress.",
+   "facts": [
+    "Free or small fee",
+    "About 25 minutes from Nukus",
+    "Pilgrims stack bricks for wishes at the Mazlumkhan Sulu crypt – respect the customs"
+   ]
+  },
+  {
+   "id": "chilpik",
+   "name": "Chilpik",
+   "region": "karakalpak",
+   "lat": 42.2642,
+   "lon": 60.0699,
+   "visit": 30,
+   "cat": "Ruins",
+   "priority": 1,
+   "wiki": "Nukus",
+   "summary": "Round mud-brick Zoroastrian dakhma (tower of silence) on a lone hill beside the Amu Darya, where bodies were once exposed to vultures.",
+   "facts": [
+    "Free",
+    "Right on the Nukus–Urgench road (~43 km from Nukus)",
+    "10-minute climb on loose ground"
+   ]
+  },
+  {
+   "id": "moynaq",
+   "name": "Moynaq",
+   "region": "karakalpak",
+   "lat": 43.7643,
+   "lon": 59.0297,
+   "visit": 90,
+   "cat": "Town",
+   "priority": 2,
+   "wiki": "Moynaq",
+   "summary": "Former Aral Sea fishing port now more than 100 km from the water, with a small museum about the disaster. A sobering, unforgettable stop.",
+   "facts": [
+    "About 3 hours from Nukus by road",
+    "Stihia electronic music festival takes place here some years",
+    "A few guesthouses and a hotel"
+   ],
+   "sleep": true
+  },
+  {
+   "id": "moynaq_ship_cemetery",
+   "name": "Moynaq ship cemetery",
+   "region": "karakalpak",
+   "lat": 43.787,
+   "lon": 59.02,
+   "visit": 45,
+   "cat": "Monument",
+   "priority": 3,
+   "wiki": "Moynaq",
+   "summary": "Rusting fishing boats stranded on the sands of the former seabed below the old shoreline, the most powerful symbol of the Aral Sea catastrophe. A memorial and museum stand on the cliff above.",
+   "facts": [
+    "Free; small fee for the museum",
+    "Best at sunset",
+    "Wear sturdy shoes; metal edges are sharp"
+   ]
+  },
+  {
+   "id": "aral_sea",
+   "name": "Aral Sea shore (Ustyurt camps)",
+   "region": "karakalpak",
+   "lat": 44.5,
+   "lon": 58.5,
+   "visit": 600,
+   "cat": "Lake",
+   "priority": 2,
+   "wiki": "Aral Sea",
+   "summary": "The remaining western basin of the Aral Sea below the cliffs of the Ustyurt plateau, reached by 4x4 across the dried seabed, with yurt camps for an overnight stay. Desolate and moving.",
+   "facts": [
+    "Only by organised 4x4 tour, usually 2 days from Nukus or Moynaq",
+    "Bring cash, warm clothes and wet wipes; very basic facilities",
+    "Very salty water – you float easily"
+   ],
+   "sleep": true,
+   "caution": "Remote off-road trip with no phone signal for long stretches; go only with an experienced operator."
+  },
+  {
+   "id": "sudochye",
+   "name": "Sudochye Lake",
+   "region": "karakalpak",
+   "lat": 43.5112,
+   "lon": 58.6104,
+   "visit": 90,
+   "cat": "Nature reserve",
+   "priority": 1,
+   "wiki": "Aral Sea",
+   "summary": "Wetland system in the old Amu Darya delta near Moynaq, an important stopover for migrating birds, with an abandoned fishing village on its shore.",
+   "facts": [
+    "Reached by rough tracks; usually visited on Aral Sea tours",
+    "Best for birds in spring and autumn",
+    "Bring insect repellent"
+   ]
+  }
+ ],
+ "drives": [
+  [
+   "samarkand",
+   "nurata",
+   200,
+   200
+  ],
+  [
+   "bukhara",
+   "navoi",
+   100,
+   90
+  ],
+  [
+   "samarkand",
+   "navoi",
+   165,
+   150
+  ],
+  [
+   "navoi",
+   "nurata",
+   75,
+   70
+  ],
+  [
+   "navoi",
+   "sarmishsay",
+   35,
+   45
+  ],
+  [
+   "nurata",
+   "nurata_chashma",
+   1,
+   5
+  ],
+  [
+   "nurata",
+   "yangigazgan_camps",
+   45,
+   55
+  ],
+  [
+   "yangigazgan_camps",
+   "aydarkul",
+   45,
+   50
+  ],
+  [
+   "nurata",
+   "aydarkul",
+   80,
+   90
+  ],
+  [
+   "aydarkul",
+   "kyzylkum_camel",
+   2,
+   5
+  ],
+  [
+   "aydarkul",
+   "aydar_lake",
+   20,
+   30
+  ],
+  [
+   "aydarkul",
+   "sentob",
+   85,
+   100
+  ],
+  [
+   "nurata",
+   "sentob",
+   100,
+   110
+  ],
+  [
+   "sentob",
+   "asraf",
+   25,
+   40
+  ],
+  [
+   "samarkand",
+   "navoi",
+   165,
+   120,
+   "train",
+   120000
+  ],
+  [
+   "bukhara",
+   "navoi",
+   100,
+   70,
+   "train",
+   80000
+  ],
+  [
+   "bhk",
+   "bukhara",
+   5,
+   15
+  ],
+  [
+   "bukhara",
+   "sitorai_mokhi_khosa",
+   6,
+   15
+  ],
+  [
+   "bukhara",
+   "bahauddin_naqshband",
+   12,
+   20
+  ],
+  [
+   "bukhara",
+   "chor_bakr",
+   7,
+   15
+  ],
+  [
+   "bukhara",
+   "vobkent_minaret",
+   30,
+   35
+  ],
+  [
+   "vobkent_minaret",
+   "gijduvan",
+   25,
+   30
+  ],
+  [
+   "bukhara",
+   "gijduvan",
+   45,
+   50
+  ],
+  [
+   "gijduvan",
+   "gijduvan_ceramics",
+   1,
+   5
+  ],
+  [
+   "bukhara",
+   "rabati_malik",
+   85,
+   80
+  ],
+  [
+   "rabati_malik",
+   "navoi",
+   20,
+   25
+  ],
+  [
+   "gijduvan",
+   "nurata",
+   150,
+   150
+  ],
+  [
+   "bukhara",
+   "khiva",
+   450,
+   390
+  ],
+  [
+   "bukhara",
+   "khiva",
+   470,
+   450,
+   "train",
+   200000
+  ],
+  [
+   "bukhara",
+   "urgench",
+   460,
+   420,
+   "train",
+   180000
+  ],
+  [
+   "tashkent",
+   "khiva",
+   1000,
+   960,
+   "train",
+   350000
+  ],
+  [
+   "ugc",
+   "urgench",
+   5,
+   15
+  ],
+  [
+   "urgench",
+   "khiva",
+   35,
+   40
+  ],
+  [
+   "ugc",
+   "khiva",
+   40,
+   45
+  ],
+  [
+   "khiva",
+   "nurullabay_palace",
+   1,
+   5
+  ],
+  [
+   "urgench",
+   "guldursun_kala",
+   50,
+   55
+  ],
+  [
+   "urgench",
+   "kyzyl_kala",
+   55,
+   60
+  ],
+  [
+   "kyzyl_kala",
+   "toprak_kala",
+   6,
+   10
+  ],
+  [
+   "toprak_kala",
+   "ayaz_kala",
+   30,
+   40
+  ],
+  [
+   "guldursun_kala",
+   "ayaz_kala",
+   50,
+   60
+  ],
+  [
+   "khiva",
+   "guldursun_kala",
+   70,
+   75
+  ],
+  [
+   "urgench",
+   "nukus",
+   150,
+   150
+  ],
+  [
+   "khiva",
+   "nukus",
+   190,
+   180
+  ],
+  [
+   "ncu",
+   "nukus",
+   5,
+   15
+  ],
+  [
+   "nukus",
+   "mizdakhan",
+   20,
+   25
+  ],
+  [
+   "nukus",
+   "chilpik",
+   43,
+   40
+  ],
+  [
+   "chilpik",
+   "toprak_kala",
+   90,
+   90
+  ],
+  [
+   "chilpik",
+   "urgench",
+   110,
+   105
+  ],
+  [
+   "nukus",
+   "moynaq",
+   200,
+   180
+  ],
+  [
+   "moynaq",
+   "moynaq_ship_cemetery",
+   2,
+   5
+  ],
+  [
+   "moynaq",
+   "sudochye",
+   70,
+   90
+  ],
+  [
+   "moynaq",
+   "aral_sea",
+   200,
+   300
+  ],
+  [
+   "nukus",
+   "aral_sea",
+   400,
+   420
+  ]
+ ]
+}

@@ -77,7 +77,7 @@ BOOKINGS = [
 # places the app used to ship: removed from people's saved plans too (see mergePlaceInfo in app.js)
 RETIRED = ['vf_fenda_arrabida', 'vf_w1020660385', 'vf_w1423046860', 'vf_w1495724926', 'vf_w1536553295', 'vf_w942931968']
 CATEGORIES = ['Town', 'Base', 'Old town', 'Castle', 'Palace', 'Monastery & church', 'Monument', 'Ruins', 'Museum', 'Village', 'Wine',
-  'Food & market', 'Experience', 'Beach', 'Coast', 'Boat trip', 'Surf', 'Whale watching', 'Lighthouse', 'Viewpoint', 'Garden', 'Hike',
+  'Food & market', 'Tasca', 'Experience', 'Beach', 'Coast', 'Boat trip', 'Surf', 'Whale watching', 'Lighthouse', 'Viewpoint', 'Garden', 'Hike',
   'Mountain', 'Waterfall', 'Lake', 'Hot spring', 'Cave', 'Nature reserve', 'Via ferrata', 'Climbing', 'Airport']
 
 def main():

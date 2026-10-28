@@ -1,7 +1,7 @@
 // Offline support: app files network-first (so edits to data.json show up when online),
 // Leaflet and map tiles cache-first (tiles you've viewed stay available offline).
 // caches are prefixed 'icelandp-' (the app moved from /iceland/, whose old 'iceland-*' caches are removed here)
-const APP = 'icelandp-app-v2', TILES = 'icelandp-tiles-v2', IMGS = 'icelandp-imgs-v1', MAX_TILES = 2000;
+const APP = 'icelandp-app-v3', TILES = 'icelandp-tiles-v2', IMGS = 'icelandp-imgs-v1', MAX_TILES = 2000;
 const SHELL = ['./', 'index.html', 'app.js', 'data.json', 'app-v2.webmanifest', 'icon.svg', 'icon-192.png', 'icon-512.png', 'icon-maskable-512.png',
   'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css', 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js'];
 
@@ -56,7 +56,8 @@ self.addEventListener('fetch', e => {
   }
   if (url.hostname === 'unpkg.com') {
     e.respondWith(caches.match(req).then(hit => hit || fetch(req).then(res => {
-      const copy = res.clone(); caches.open(APP).then(c => c.put(req, copy)); return res;
+      if (res.ok) { const copy = res.clone(); caches.open(APP).then(c => c.put(req, copy)); } // never keep an error page
+      return res;
     })));
     return;
   }
