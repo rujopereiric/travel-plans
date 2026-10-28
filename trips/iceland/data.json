@@ -2812,7 +2812,7 @@
         "Facilities: Pets allowed on a leash, Cold water, Toilets",
         "Phone: +354 8617546/4874675"
       ],
-      "links": [{"name": "Website", "url": "https://."}, {"name": "tjalda.is", "url": "https://tjalda.is/en/kleifar/"}],
+      "links": [{"name": "tjalda.is", "url": "https://tjalda.is/en/kleifar/"}],
       "sources": ["https://tjalda.is/en/kleifar/"],
       "confidence": "high",
       "checked": "2026-10-28",
@@ -3139,10 +3139,7 @@
         "Facilities: Electricity, Golf course, Cooking facilities, Pets allowed on a leash, Waste disposal for mobile homes, Shower, Sleeping bag accommodation, Washing machine",
         "Phone: +354 473-1459 / 853-0966 / 855-5825"
       ],
-      "links": [
-        {"name": "Website", "url": "https://www.asbrandsstadircottage.com"},
-        {"name": "tjalda.is", "url": "https://tjalda.is/en/asbrandsstadir/"}
-      ],
+      "links": [{"name": "tjalda.is", "url": "https://tjalda.is/en/asbrandsstadir/"}],
       "sources": ["https://tjalda.is/en/asbrandsstadir/"],
       "confidence": "high",
       "checked": "2026-10-28",
@@ -3173,7 +3170,7 @@
         "Phone: +354 8697227"
       ],
       "links": [
-        {"name": "Website", "url": "https://www.berunes.is"},
+        {"name": "Website", "url": "https://berunes.is"},
         {"name": "tjalda.is", "url": "https://tjalda.is/en/berunes/"},
         {"name": "Book", "url": "https://parka.is/camping/berunes/reserve/#reservation"}
       ],
@@ -3982,7 +3979,6 @@
         "Phone: +354 8371300"
       ],
       "links": [
-        {"name": "Website", "url": "https://."},
         {"name": "tjalda.is", "url": "https://tjalda.is/en/blonduos/"},
         {"name": "Book", "url": "https://parka.is/blonduos/?#reservation#reservation"}
       ],
@@ -4615,7 +4611,7 @@
         "Phone: +354 416 0580"
       ],
       "links": [
-        {"name": "Website", "url": "https://www.evanger.is"},
+        {"name": "Website", "url": "https://evanger.is"},
         {"name": "tjalda.is", "url": "https://tjalda.is/en/siglufjordur/"},
         {"name": "Book", "url": "https://parka.is/camping/siglufjordur/"}
       ],
@@ -4785,7 +4781,6 @@
         "Phone: +354 6607310"
       ],
       "links": [
-        {"name": "Website", "url": "https://www.grindavikcampsite.com"},
         {"name": "tjalda.is", "url": "https://tjalda.is/en/grindavik/"},
         {
           "name": "Visit Reykjanes: winter service",
@@ -4956,7 +4951,7 @@
         "Phone: +354 456-7381"
       ],
       "links": [
-        {"name": "Website", "url": "https://www.bolungarvik.is/sund"},
+        {"name": "Website", "url": "https://www.bolungarvik.is"},
         {"name": "tjalda.is", "url": "https://tjalda.is/en/bolungarvik/"}
       ],
       "sources": ["https://tjalda.is/en/bolungarvik/"],
@@ -5290,10 +5285,7 @@
         "Phone: +354 823-9987",
         "tjalda.is: the campsite didn't renew its listing for 2026, so these details may be out of date"
       ],
-      "links": [
-        {"name": "Website", "url": "https://."},
-        {"name": "tjalda.is", "url": "https://tjalda.is/en/talknafjordur/"}
-      ],
+      "links": [{"name": "tjalda.is", "url": "https://tjalda.is/en/talknafjordur/"}],
       "sources": ["https://tjalda.is/en/talknafjordur/"],
       "confidence": "low",
       "checked": "2026-10-28",
@@ -5485,13 +5477,7 @@
         "Facilities: Electricity, Golf course, Swimming pool, Washing machine, Playground",
         "Phone: +354 7902266"
       ],
-      "links": [
-        {
-          "name": "Website",
-          "url": "https://www.west.is/en/destinations/towns-regions/visit-akranes-and-hvalfjordur"
-        },
-        {"name": "tjalda.is", "url": "https://tjalda.is/en/akranes/"}
-      ],
+      "links": [{"name": "tjalda.is", "url": "https://tjalda.is/en/akranes/"}],
       "sources": ["https://tjalda.is/en/akranes/"],
       "confidence": "high",
       "checked": "2026-10-28",
@@ -5622,10 +5608,7 @@
         "Facilities: Electricity, Cooking facilities, Food service, Pets allowed on a leash, Waste disposal for mobile homes, Shower, Cottages, Washing machine",
         "Phone: +354 767-2100"
       ],
-      "links": [
-        {"name": "Website", "url": "https://www.west.is/en/destinations/towns-regions/visit-dalir"},
-        {"name": "tjalda.is", "url": "https://tjalda.is/en/budardalur/"}
-      ],
+      "links": [{"name": "tjalda.is", "url": "https://tjalda.is/en/budardalur/"}],
       "sources": ["https://tjalda.is/en/budardalur/"],
       "confidence": "high",
       "checked": "2026-10-28",
@@ -6392,7 +6375,7 @@
         "Phone: +354 8927172",
         "tjalda.is: the campsite didn't renew its listing for 2026, so these details may be out of date"
       ],
-      "links": [{"name": "Website", "url": "https://."}, {"name": "tjalda.is", "url": "https://tjalda.is/en/hunaver/"}],
+      "links": [{"name": "tjalda.is", "url": "https://tjalda.is/en/hunaver/"}],
       "sources": ["https://tjalda.is/en/hunaver/"],
       "confidence": "low",
       "checked": "2026-10-28",
@@ -7678,11 +7661,8 @@
         "Access: 2WD / Camper Accessible",
         "Facilities: Heated Washhouse, Hot Showers, Ranger Visitor Center, Hiking Trails"
       ],
-      "links": [{"name": "Website", "url": "https://www.thingvellir.is/en/plan-your-visit/camping-in-thingvellir/"}],
-      "sources": [
-        "https://www.campiceland.is/camping-equipment/all",
-        "https://www.thingvellir.is/en/plan-your-visit/camping-in-thingvellir/"
-      ],
+      "links": [{"name": "Website", "url": "https://www.thingvellir.is/en/service/camping/"}],
+      "sources": ["https://www.campiceland.is/camping-equipment/all", "https://www.thingvellir.is/en/service/camping/"],
       "confidence": "medium",
       "checked": "2026-10-28",
       "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/%C3%9Eingvellir_from_the_information_centre.JPG/960px-%C3%9Eingvellir_from_the_information_centre.JPG",

@@ -145,6 +145,23 @@ for w in WI['providers']:
     m['facts'].insert(1 if m['facts'] else 0, f'Winter: {office} lists it as open for campers in winter')
     m['links'].append({'name': f'{office}: winter service', 'url': w['url']})
     m['sources'].append(page)
+# Links checked 28 Oct 2026. None = drop: the domain lapsed and now serves something else, or no longer exists.
+LINK_FIXES = {
+    'https://www.grindavikcampsite.com': None,          # taken over: redirects to a gambling site
+    'https://www.asbrandsstadircottage.com': None,      # domain no longer resolves
+    'https://www.berunes.is': 'https://berunes.is',     # www. has no valid certificate
+    'https://www.evanger.is': 'https://evanger.is',     # www. doesn't answer
+    'https://www.bolungarvik.is/sund': 'https://www.bolungarvik.is',
+    'https://www.west.is/en/destinations/towns-regions/visit-akranes-and-hvalfjordur': None,   # 404; the tjalda.is link stays
+    'https://www.west.is/en/destinations/towns-regions/visit-dalir': None,
+    'https://www.thingvellir.is/en/plan-your-visit/camping-in-thingvellir/': 'https://www.thingvellir.is/en/service/camping/',
+}
+def fix_link(u):
+    if not re.match(r'https?://[^/]*[a-z]\.[a-z]{2,}', u, re.I): return None   # "https://." from an empty field
+    return LINK_FIXES.get(u.rstrip('/'), LINK_FIXES.get(u, u))
+for x in places:
+    x['links'] = [dict(l, url=fix_link(l['url'])) for l in x['links'] if fix_link(l['url'])]
+    x['sources'] = [fix_link(u) for u in x['sources'] if fix_link(u)]
 for x in places: x.pop('campiceland', None)
 assert len({x['id'] for x in places}) == len(places), [i for i in {x['id'] for x in places} if sum(y['id'] == i for y in places) > 1]
 data['places'] = others + places
