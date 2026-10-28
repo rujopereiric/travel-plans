@@ -1,0 +1,123 @@
+{
+ "note": "Campsites the regional tourism offices (linked from Visit Iceland) list as open for campers in winter. Fetched 28 Oct 2026. East Iceland and the Westfjords have no such page. Matched to campsites by location (within 1.5 km).",
+ "pages": {
+  "South": "https://www.south.is/en/food-accommodation/camper-winter-service",
+  "North": "https://www.northiceland.is/en/food-accommodation/camping/camper-winter-service",
+  "Reykjanes": "https://www.visitreykjanes.is/en/food-accommodation/camper-winter-service",
+  "West": "https://www.west.is/en/food-accommodation/accommodation/camper-winter-service"
+ },
+ "providers": [
+  {
+   "region": "South",
+   "name": "Uthlid Iceland Cottages",
+   "url": "https://www.south.is/en/food-accommodation/camper-winter-service/uthlid-iceland-cottages",
+   "lat": 64.27923,
+   "lon": -20.44446
+  },
+  {
+   "region": "South",
+   "name": "Skjól Center",
+   "url": "https://www.south.is/en/food-accommodation/camper-winter-service/skjol-center",
+   "lat": 64.31241,
+   "lon": -20.22313
+  },
+  {
+   "region": "South",
+   "name": "Hellishólar Travel Service",
+   "url": "https://www.south.is/en/food-accommodation/camper-winter-service/hellisholar-travel-service",
+   "lat": 63.72462,
+   "lon": -20.03722
+  },
+  {
+   "region": "South",
+   "name": "Hotel Laugarvatn",
+   "url": "https://www.south.is/en/food-accommodation/camper-winter-service/laugarvatn-hi-hostel",
+   "lat": 64.21802,
+   "lon": -20.73297
+  },
+  {
+   "region": "South",
+   "name": "Volcano Huts Þórsmörk",
+   "url": "https://www.south.is/en/food-accommodation/camper-winter-service/volcano-huts-thorsmork",
+   "lat": 63.6909,
+   "lon": -19.5415
+  },
+  {
+   "region": "South",
+   "name": "Skaftafell Visitor Centre, Skaftafell",
+   "url": "https://www.south.is/en/food-accommodation/camper-winter-service/skaftafell-visitor-centre-skaftafell",
+   "lat": 64.01645,
+   "lon": -16.96687
+  },
+  {
+   "region": "South",
+   "name": "Guesthouse Selfoss",
+   "url": "https://www.south.is/en/food-accommodation/camper-winter-service/guesthouse-selfoss",
+   "lat": 63.93305,
+   "lon": -20.98879
+  },
+  {
+   "region": "South",
+   "name": "Thingvellir National park",
+   "url": "https://www.south.is/en/food-accommodation/camper-winter-service/thingvellir-national-park",
+   "lat": 64.27986,
+   "lon": -21.0881
+  },
+  {
+   "region": "North",
+   "name": "Vogar Camping Ground - Vogar Travel Service",
+   "url": "https://www.northiceland.is/en/food-accommodation/camping/camper-winter-service/vogar-camping-ground-vogar-travel-service",
+   "lat": 65.6246,
+   "lon": -16.91699
+  },
+  {
+   "region": "North",
+   "name": "Hlíð Travel Service",
+   "url": "https://www.northiceland.is/en/food-accommodation/camping/camper-winter-service/hlid-travel-service",
+   "lat": 65.64932,
+   "lon": -16.91829
+  },
+  {
+   "region": "North",
+   "name": "Vogar",
+   "url": "https://www.northiceland.is/en/food-accommodation/camping/camper-winter-service/vogar",
+   "lat": 65.62353,
+   "lon": -16.91698
+  },
+  {
+   "region": "North",
+   "name": "Akureyri - Hamrar, Kjarnaskógur Camping Ground",
+   "url": "https://www.northiceland.is/en/food-accommodation/camping/camper-winter-service/akureyri-hamrar-kjarnaskogur-camping-ground",
+   "lat": 65.64806,
+   "lon": -18.09816
+  },
+  {
+   "region": "North",
+   "name": "Hrafnagil Camping site",
+   "url": "https://www.northiceland.is/en/food-accommodation/camping/camper-winter-service/hrafnagil-camping-site",
+   "lat": 65.57328,
+   "lon": -18.09118
+  },
+  {
+   "region": "Reykjanes",
+   "name": "Grindavík Campsite",
+   "url": "https://www.visitreykjanes.is/en/food-accommodation/camper-winter-service/grindavik-campsite",
+   "lat": 63.84432,
+   "lon": -22.42294
+  },
+  {
+   "region": "West",
+   "name": "The Freezer Hostel & Culture Centre",
+   "url": "https://www.west.is/en/food-accommodation/camping/camper-winter-service/the-freezer-hostel-culture-centre",
+   "lat": 64.92226,
+   "lon": -23.81959
+  },
+  {
+   "region": "West",
+   "name": "Fossatún Pod Village",
+   "url": "https://www.west.is/en/food-accommodation/camping/camper-winter-service/fossatun-pod-village",
+   "lat": 64.59119,
+   "lon": -21.57367
+  }
+ ]
+}

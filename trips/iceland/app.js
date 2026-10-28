@@ -856,13 +856,16 @@ async function boot() {
 }
 // Descriptive place fields aren't edited in the app, so newer data.json content can be merged into a locally edited plan
 // without asking: new places, categories, summaries, photos titles, links, priorities and sleep flags.
-const INFO_FIELDS = ['lat', 'lon', 'visit', 'sources', 'confidence', 'checked', 'cat', 'summary', 'facts', 'winter', 'wiki', 'links', 'photo', 'photoCredit', 'photoPage', 'caution', 'note', 'priority', 'sleep', 'suggest', 'needsDaylight'];
+const INFO_FIELDS = ['lat', 'lon', 'visit', 'sources', 'confidence', 'checked', 'cat', 'summary', 'facts', 'winter', 'wiki', 'links', 'photo', 'photoCredit', 'photoPage', 'caution', 'note', 'priority', 'sleep', 'suggest', 'needsDaylight', 'season', 'seasonText', 'winterService'];
+// Fields a newer data.json can take away (e.g. the old campsite winter notes, now replaced by season dates)
+const DROPPABLE = ['winter', 'caution', 'photo', 'photoCredit', 'photoPage', 'season', 'seasonText', 'winterService'];
 function mergePlaceInfo(local, file) {
   local.places = local.places || [];
   for (const fp of file.places || []) {
     const lp = local.places.find(p => p.id === fp.id);
     if (!lp) { local.places.push(fp); continue; }
     for (const k of INFO_FIELDS) if (fp[k] !== undefined) lp[k] = fp[k];
+    for (const k of DROPPABLE) if (fp[k] === undefined) delete lp[k];
   }
   if (file.categories) local.categories = file.categories;
   for (const fr of file.regions || []) if (!(local.regions || []).some(r => r.id === fr.id)) (local.regions = local.regions || []).push(fr);
@@ -1357,8 +1360,20 @@ function renderPlaces() {
   if (UI.pmode === 'osm') return seg + renderOsm();
   return seg + renderMyPlaces();
 }
+// Campsite seasons: {yearRound} or {from:[m,d], to:[m,d]} (may wrap past New Year), plus winter:true when the regional
+// tourist office lists it as open for campers in winter. Returns open / partly / closed for the trip's days, or null.
+function seasonOn(p) {
+  const s = p.season;
+  if (!s) return null;
+  if (s.yearRound || (s.winter && !s.from)) return 'open';
+  const md = ([m, d]) => m * 100 + d, a = md(s.from), b = md(s.to);
+  const inSeason = iso => { const v = +iso.slice(5, 7) * 100 + +iso.slice(8, 10); return a <= b ? v >= a && v <= b : v >= a || v <= b; };
+  const n = S.days.filter(d => s.winter || inSeason(d.date)).length;
+  return n === S.days.length ? 'open' : n ? 'partly' : 'closed';
+}
+const SEASON_CHIP = { open: ['free', '✓ Open on your dates'], partly: ['partial', '◐ Open on some of your dates'], closed: ['closed', '✗ Closed on your dates'] };
 function renderMyPlaces() {
-  const pf = UI.pf || {}, cat = pf.cat || 'all', reg = pf.region || 'all', only = pf.only || 'all';
+  const pf = UI.pf || {}, cat = pf.cat || 'all', reg = pf.region || 'all', only = pf.only === 'open' && cat !== 'Campsite' ? 'all' : pf.only || 'all';
   const cats = (S.categories || []).filter(c => S.places.some(p => p.cat === c));
   const musts = S.places.filter(p => pick(p.id) === 'must'), skips = S.places.filter(p => pick(p.id) === 'skip');
   const chip = (k, v, label, on) => `<button class="pchip" data-act="pfilter" data-k="${k}" data-v="${esc(v)}" aria-pressed="${on}">${label}</button>`;
@@ -1367,12 +1382,12 @@ function renderMyPlaces() {
       <div class="muted" style="margin-top:8px">★ ${musts.length} must-see · ${skips.length} skipped</div>
       <div class="row" style="margin-top:6px">${S.blocks.map(b => `<button class="btn small primary" data-act="autoplan" data-block="${b.id}">Auto-plan ${esc(b.name.split('·')[0].trim())}</button>`).join('')}</div></div>
     ${photoStatus()}
-    <div class="pchips">${chip('only', 'all', 'All', only === 'all')}${chip('only', 'must', '★ Must-see', only === 'must')}${chip('only', 'unplanned', 'Not in plan', only === 'unplanned')}${chip('only', 'skip', 'Skipped', only === 'skip')}</div>
+    <div class="pchips">${chip('only', 'all', 'All', only === 'all')}${chip('only', 'must', '★ Must-see', only === 'must')}${chip('only', 'unplanned', 'Not in plan', only === 'unplanned')}${chip('only', 'skip', 'Skipped', only === 'skip')}${cat === 'Campsite' ? chip('only', 'open', '⛺ Open on my dates', only === 'open') : ''}</div>
     <div class="pchips">${chip('cat', 'all', 'All types', cat === 'all')}${cats.map(c => chip('cat', c, esc(c), cat === c)).join('')}</div>
     <div class="pchips">${chip('region', 'all', 'All regions', reg === 'all')}${S.regions.map(r => chip('region', r.id, `<span style="color:${r.color}">●</span> ${esc(r.name)}`, reg === r.id)).join('')}</div>`;
   const days = S.days.filter(d => blockOf(d.date) && d.state !== 'booked');
   const list = S.places.filter(p => (cat === 'all' || p.cat === cat) && (reg === 'all' || p.region === reg)
-    && (only === 'all' ? pick(p.id) !== 'skip' : only === 'unplanned' ? !plannedIn(p.id).some(x => x.active) && pick(p.id) !== 'skip' : pick(p.id) === only));
+    && (only === 'all' ? pick(p.id) !== 'skip' : only === 'open' ? pick(p.id) !== 'skip' && /open|partly/.test(seasonOn(p)) : only === 'unplanned' ? !plannedIn(p.id).some(x => x.active) && pick(p.id) !== 'skip' : pick(p.id) === only));
   if (!list.length) h += `<p class="empty">No places match these filters.</p>`;
   for (const p of list) {
     const rg = region(p.region), w = WIKI[p.id] || {}, pk = pick(p.id), where = plannedIn(p.id);
@@ -1385,6 +1400,7 @@ function renderMyPlaces() {
         <div class="row"><h3 class="grow" style="margin:0">${esc(p.name)}</h3>${p.confidence === 'low' ? '<span class="chip partial">unverified</span>' : ''}<span class="chip">${catInfo(p.cat).icon} ${esc(p.cat || 'Place')}</span></div>
         ${p.caution ? `<div class="small" style="color:var(--warn);margin:4px 0">⚠ ${withEur(esc(p.caution))}</div>` : ''}
         <div class="tiny" style="color:${rg.color};margin:2px 0 6px">${esc(rg.name)}${p.visit === 0 ? '' : ` · ~${p.visit ?? 45} min`}${p.id !== S.trip.home ? ` · ${drive(S.trip.home, p.id).km} km from ${esc(placeName(S.trip.home))}` : ''}</div>
+        ${p.season !== undefined ? `<div class="row" style="gap:6px;margin:0 0 6px">${p.season ? `<span class="chip ${SEASON_CHIP[seasonOn(p)][0]}">${SEASON_CHIP[seasonOn(p)][1]}</span>` : '<span class="chip">Opening dates unknown</span>'}${p.winterService ? `<span class="chip" title="${esc(p.winterService)} lists it as open for campers in winter">❄ Winter-open</span>` : ''}</div>` : ''}
         ${p.summary ? `<p style="margin:0 0 6px">${esc(p.summary)}</p>` : ''}
         ${p.facts && p.facts.length ? `<ul class="facts">${p.facts.map(f => `<li>${withEur(esc(f))}</li>`).join('')}</ul>` : ''}
         ${p.winter ? `<div class="seasonal" style="margin:6px 0">❄ ${withEur(esc(p.winter))}</div>` : ''}
