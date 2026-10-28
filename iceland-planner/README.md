@@ -146,3 +146,14 @@ The **€** chip at the top right shows the current rate. Tap it to open a two-w
 
 Your edits in the app are saved in the browser's localStorage. **Export** writes a file in the same format as `data.json`,
 so you can commit it as the new `data.json`. If `data.json` changes while you have unsaved local edits, the app asks which version to keep.
+
+## Campsites
+
+20 campsites from [Camp Iceland](https://www.campiceland.is/camping-equipment/all), fetched 28 Oct 2026, are in My places as ⛺ **Campsite**. Each has its opening season, road access, facilities, official site, exact GPS and an area photo from Wikimedia Commons, credited on the card.
+
+- **Seasonal sites** carry a ❄ note with their opening dates. Most close by mid- to late September.
+- **Not used by auto-plan:** campsites aren't suggested as stops. Use **Sleep here** on the map to end a day at one.
+- **All of Iceland** also lists every campsite mapped in OpenStreetMap.
+
+The parsed list is in `parts/campsites-campiceland.json`. To add the campsites to `data.json` again after editing it, run `python3 iceland-planner/tools/campsites.py`.
+

@@ -1,0 +1,442 @@
+[
+ {
+  "name": "Reykjavík Eco Campsite (Laugardalur)",
+  "season": "Open Year-Round",
+  "access": "2WD / Camper Accessible",
+  "location": "Reykjavík & Capital Region",
+  "lat": 64.1466,
+  "lon": -21.8675,
+  "summary": "Located in lush Laugardalur park directly beside Laugardalslaug—Reykjavík’s largest geothermal swimming pool with seven hot tubs and a steam bath. Ideal first or final night base 45 minutes from KEF Airport.",
+  "facilities": [
+   "Heated Indoor Kitchen",
+   "Hot Showers Included",
+   "Electricity Hookups",
+   "Gear Swap Shelf"
+  ],
+  "url": "https://www.reykjavikcampsite.is/",
+  "photo": {
+   "what": "Reykjavík",
+   "page": "https://commons.wikimedia.org/wiki/File:Reykjav%C3%ADk,_view_from_Hallgr%C3%ADmskirkja_(2).jpg",
+   "author": "Olga Ernst",
+   "license": "CC BY-SA 4.0"
+  }
+ },
+ {
+  "name": "Þingvellir National Park Campsite (Leirar)",
+  "season": "Open Year-Round (Pods May–Sept)",
+  "access": "2WD / Camper Accessible",
+  "location": "Golden Circle (45 min from Reykjavík)",
+  "lat": 64.2658,
+  "lon": -21.1189,
+  "summary": "Camp inside a UNESCO World Heritage site where the North American and Eurasian tectonic plates drift apart. Quiet birch-wooded pitches within walking distance of Almannagjá gorge and Silfra fissure.",
+  "facilities": [
+   "Heated Washhouse",
+   "Hot Showers",
+   "Ranger Visitor Center",
+   "Hiking Trails"
+  ],
+  "url": "https://www.thingvellir.is/en/plan-your-visit/camping-in-thingvellir/",
+  "photo": {
+   "what": "Þingvellir",
+   "page": "https://commons.wikimedia.org/wiki/File:%C3%9Eingvellir_from_the_information_centre.JPG",
+   "author": "Ivan Sabljak",
+   "license": "CC BY-SA 3.0"
+  }
+ },
+ {
+  "name": "Úlfljótsvatn Lakeside Campsite",
+  "season": "May 15 – Sept 15",
+  "access": "2WD / Camper Accessible",
+  "location": "Golden Circle South (Near Selfoss)",
+  "lat": 64.1052,
+  "lon": -21.0285,
+  "summary": "One of the best family and campervan campsites on the Golden Circle, set on the shores of Lake Úlfljótsvatn just south of Þingvellir. Accepts the Iceland Camping Card and has spacious level grass zones.",
+  "facilities": [
+   "Camping Card Accepted",
+   "Hot Showers",
+   "Playgrounds & Lake",
+   "Electricity Hookups"
+  ],
+  "url": "https://ulfljotsvatn.is/en/",
+  "photo": {
+   "what": "Úlfljótsvatn lake",
+   "page": "https://commons.wikimedia.org/wiki/File:%C3%9Alflj%C3%B3tsvatn_Iceland_019.jpg",
+   "author": "Hansueli Krapf",
+   "license": "CC BY-SA 3.0"
+  }
+ },
+ {
+  "name": "Reykjamörk Hveragerði Geothermal Campsite",
+  "season": "May 1 – Sept 30",
+  "access": "2WD / Camper Accessible",
+  "location": "Hveragerði (Route 1 • 45 km from Reykjavík)",
+  "lat": 63.9989,
+  "lon": -21.1864,
+  "summary": "Sheltered by mature trees in the geothermal town of Hveragerði—just 5 minutes from the trailhead for the Reykjadalur Hot Spring Thermal River hike.",
+  "facilities": [
+   "Indoor Kitchen",
+   "Hot Showers",
+   "Electricity Hookups",
+   "Near Reykjadalur Hot River"
+  ],
+  "url": "https://tjalda.is/en/reykjamork-hveragerdi/",
+  "photo": {
+   "what": "Hveragerði",
+   "page": "https://commons.wikimedia.org/wiki/File:Hveragerdi10.JPG",
+   "author": "TommyBee",
+   "license": "Public domain"
+  }
+ },
+ {
+  "name": "Skógar Campsite (Beneath Skógafoss Waterfall)",
+  "season": "Open Year-Round",
+  "access": "2WD / Camper Accessible",
+  "location": "South Coast (Route 1 • 155 km from Reykjavík)",
+  "lat": 63.5297,
+  "lon": -19.5134,
+  "summary": "Pitch your tent or park your campervan on flat grass directly facing the 60-meter curtain of Skógafoss. Unbeatable for photographing the waterfall under the Midnight Sun or Northern Lights after day-trippers leave.",
+  "facilities": [
+   "Waterfall Views",
+   "Toilets & Showers",
+   "Fimmvörðuháls Trailhead",
+   "Open Year-Round"
+  ],
+  "url": "https://tjalda.is/en/skogar/",
+  "photo": {
+   "what": "Skógafoss",
+   "page": "https://commons.wikimedia.org/wiki/File:2008-05-24_35_Sk%C3%B3gafoss.jpg",
+   "author": "Hansueli Krapf",
+   "license": "CC BY-SA 3.0"
+  }
+ },
+ {
+  "name": "Vík í Mýrdal Campsite",
+  "season": "May 1 – Nov 30",
+  "access": "2WD / Camper Accessible",
+  "location": "South Coast (Vík • 187 km from Reykjavík)",
+  "lat": 63.4214,
+  "lon": -19.0016,
+  "summary": "Located 5 minutes from Reynisfjara black sand beach and Dyrhólaey puffin cliffs. Features a large heated indoor dining hall and kitchen—a lifesaver during windy South Coast evenings.",
+  "facilities": [
+   "Large Heated Dining Hall",
+   "Indoor Cooking",
+   "Hot Showers",
+   "Electricity Hookups"
+  ],
+  "url": "https://www.vikcamping.is/",
+  "photo": {
+   "what": "Reynisdrangar",
+   "page": "https://commons.wikimedia.org/wiki/File:Reynisdrangar_basalt_rocks.jpg",
+   "author": "Jakub Fryš",
+   "license": "CC BY-SA 4.0"
+  }
+ },
+ {
+  "name": "Þakgil Canyon Campsite (Natural Cave Dining Hall)",
+  "season": "June 1 – Sept 15",
+  "access": "2WD / Camper Accessible",
+  "location": "South Iceland (22 km inland from Vík via Route 214)",
+  "lat": 63.5322,
+  "lon": -18.8878,
+  "summary": "Arguably Iceland’s most atmospheric campsite: a dramatic moss-walled canyon that blocks coastal gales, featuring a communal candlelit dining hall with grills inside a natural volcanic rock cave.",
+  "facilities": [
+   "Natural Cave Dining Hall",
+   "Extreme Wind Shelter",
+   "Hot Showers",
+   "Glacier View Trails"
+  ],
+  "url": "https://www.thakgil.is/",
+  "photo": {
+   "what": "Þakgil campsite",
+   "page": "https://commons.wikimedia.org/wiki/File:%C3%9Eakgil_Canyon_Campsite,_Iceland_-_Eric_Marchese.jpg",
+   "author": "Eric Marchese",
+   "license": "CC BY-SA 4.0"
+  }
+ },
+ {
+  "name": "Kirkjubæjarklaustur Campsite (Kirkjubær II)",
+  "season": "May 1 – Sept 30",
+  "access": "2WD / Camper Accessible",
+  "location": "South Coast (Midway between Vík & Skaftafell)",
+  "lat": 63.7908,
+  "lon": -18.0578,
+  "summary": "Sheltered beneath steep green cliffs 10 minutes east of Fjaðrárgljúfur canyon. Well-Protected from wind with grassy pitches and easy walking access to Systrafoss waterfall and the town swimming pool.",
+  "facilities": [
+   "Hot Showers",
+   "Sheltered Grass Pitches",
+   "Washing Machine",
+   "Near Fjaðrárgljúfur"
+  ],
+  "url": "https://tjalda.is/en/kirkjubaejarklaustur-ii/",
+  "photo": {
+   "what": "Kirkjubæjarklaustur",
+   "page": "https://commons.wikimedia.org/wiki/File:Kirkjub%C3%A6jarklaustur_Aerial_2023_B.jpg",
+   "author": "Eysteinn Guðni Guðnason",
+   "license": "CC BY-SA 4.0"
+  }
+ },
+ {
+  "name": "Skaftafell Campground (Vatnajökull National Park)",
+  "season": "Open Year-Round (Winter Ready)",
+  "access": "2WD / Camper Accessible",
+  "location": "Southeast Iceland (Route 1 • 326 km from Reykjavík)",
+  "lat": 64.0156,
+  "lon": -16.9686,
+  "summary": "Basecamp beneath Europe’s largest ice cap. Step straight out of your tent or campervan onto the trail to basalt-columned Svartifoss waterfall and guided glacier hikes on Falljökull, 45 minutes from Jökulsárlón.",
+  "facilities": [
+   "Open Year-Round",
+   "Modern Washhouses",
+   "Electricity Hookups",
+   "Laundry"
+  ],
+  "url": "https://www.vatnajokulsthjodgardur.is/en/areas/skaftafell/interpretation-and-services/skaftafell-campground",
+  "photo": {
+   "what": "Skaftafell",
+   "page": "https://commons.wikimedia.org/wiki/File:Skaftafell_Aerial_2023.jpg",
+   "author": "Eysteinn Guðni Guðnason",
+   "license": "CC BY-SA 4.0"
+  }
+ },
+ {
+  "name": "Höfn Camping Ground (Vestrahorn & Glacier Views)",
+  "season": "Open Year-Round",
+  "access": "2WD / Camper Accessible",
+  "location": "Southeast Iceland (Höfn • 455 km from Reykjavík)",
+  "lat": 64.2583,
+  "lon": -15.2039,
+  "summary": "Panoramic views across the Hornafjörður lagoon toward three Vatnajökull outlet glaciers, 15 minutes from dramatic Vestrahorn (Stokksnes) black sand dunes and walking distance to Höfn’s famous langoustine restaurants.",
+  "facilities": [
+   "Indoor Kitchen & Lounge",
+   "Hot Showers",
+   "Electricity Hookups",
+   "Near Stokksnes / Vestrahorn"
+  ],
+  "url": "https://www.hofncamping.is/",
+  "photo": {
+   "what": "Höfn harbor",
+   "page": "https://commons.wikimedia.org/wiki/File:Hofn_-_harbour_and_mountains.jpg",
+   "author": "Bernard McManus",
+   "license": "CC BY 2.0"
+  }
+ },
+ {
+  "name": "Egilsstaðir Camp & Hostel (East Iceland Hub)",
+  "season": "Open Year-Round",
+  "access": "2WD / Camper Accessible",
+  "location": "East Iceland (Route 1 • 635 km from Reykjavík)",
+  "lat": 65.2642,
+  "lon": -14.3942,
+  "summary": "One of the highest-rated year-round facilities on the Ring Road: 24/7 heated bathrooms, outdoor dishwashing stations, luggage lockers, and easy day-trip access to Vök Baths, Seyðisfjörður, and Stuðlagil Canyon.",
+  "facilities": [
+   "Open Year-Round",
+   "24/7 Heated Washrooms",
+   "Laundry & Dryers",
+   "Cafe & Reception"
+  ],
+  "url": "https://campingeast.is/",
+  "photo": {
+   "what": "Egilsstaðir",
+   "page": "https://commons.wikimedia.org/wiki/File:Egilssta%C3%B0ir_2023.jpg",
+   "author": "Eysteinn Guðni Guðnason",
+   "license": "CC BY-SA 4.0"
+  }
+ },
+ {
+  "name": "Borgarfjörður Eystri Campsite (Hafnarhólmi Puffins)",
+  "season": "May 15 – Sept 15",
+  "access": "2WD / Camper Accessible",
+  "location": "Eastfjords (70 km from Egilsstaðir via Route 94)",
+  "lat": 65.5247,
+  "lon": -13.8147,
+  "summary": "Built directly around Álfaborg (\"Elf Rock\") in a tranquil fjord village 5 minutes from Hafnarhólmi marina, where 10,000+ Atlantic puffins nest within arm’s reach between May and mid-August.",
+  "facilities": [
+   "Heated Indoor Kitchen",
+   "Footbath & Showers",
+   "5 Min to Puffin Colony",
+   "Dyrfjöll Hiking Trails"
+  ],
+  "url": "https://www.borgarfjordureystri.is/en/camping",
+  "photo": {
+   "what": "Borgarfjörður eystri",
+   "page": "https://commons.wikimedia.org/wiki/File:Borgarfj%C3%B6r%C3%B0ur_eystri_2023_A.jpg",
+   "author": "Eysteinn Guðni Guðnason",
+   "license": "CC BY-SA 4.0"
+  }
+ },
+ {
+  "name": "Mývatn Lakeside Campsite (Hlíð / Reykjahlíð)",
+  "season": "May 1 – Oct 15 (Winter Spots)",
+  "access": "2WD / Camper Accessible",
+  "location": "North Iceland (Lake Mývatn • Diamond Circle)",
+  "lat": 65.6419,
+  "lon": -16.9114,
+  "summary": "Set amidst lava fields overlooking Lake Mývatn, 5 minutes from Mývatn Nature Baths, Hverir boiling mud pots, and Krafla volcanic crater. Tip: Pack a head net in June/July for harmless lakeside midges.",
+  "facilities": [
+   "Lava Field Pitches",
+   "Hot Showers",
+   "Indoor Cooking Area",
+   "5 Min to Nature Baths"
+  ],
+  "url": "https://www.myvatnaccommodation.is/",
+  "photo": {
+   "what": "Mývatn",
+   "page": "https://commons.wikimedia.org/wiki/File:M%C3%BDvatn-pjt.jpg",
+   "author": "Pjt56",
+   "license": "CC BY-SA 4.0"
+  }
+ },
+ {
+  "name": "Ásbyrgi Canyon Campground (Vatnajökull NP North)",
+  "season": "May 15 – Sept 30",
+  "access": "2WD / Camper Accessible",
+  "location": "Diamond Circle (Route 85 • Near Dettifoss & Húsavík)",
+  "lat": 66.0172,
+  "lon": -16.5036,
+  "summary": "Tucked inside a giant horseshoe-shaped canyon with 100-meter vertical cliffs and a dense birch forest. One of the warmest, most wind-sheltered microclimates anywhere in Iceland.",
+  "facilities": [
+   "100m Canyon Wall Shelter",
+   "Hot Showers",
+   "Drying Room",
+   "Electricity Hookups"
+  ],
+  "url": "https://www.vatnajokulsthjodgardur.is/en/areas/jokulsargljufur/plan-your-visit/camping",
+  "photo": {
+   "what": "Ásbyrgi",
+   "page": "https://commons.wikimedia.org/wiki/File:Asbyrgi-Eyjan-June2022.jpg",
+   "author": "Gummao",
+   "license": "CC BY-SA 4.0"
+  }
+ },
+ {
+  "name": "Húsavík Campground (Whale Capital & Geosea)",
+  "season": "May 15 – Sept 30",
+  "access": "2WD / Camper Accessible",
+  "location": "North Iceland (Húsavík • Route 85)",
+  "lat": 66.0522,
+  "lon": -17.3381,
+  "summary": "Conveniently located at the northern entrance to Húsavík—5 minutes from the whale watching harbor and the clifftop Geosea Geothermal Sea Baths overlooking Skjálfandi Bay.",
+  "facilities": [
+   "Camping Card Accepted",
+   "Hot Showers",
+   "Electricity Hookups",
+   "Near Geosea Baths"
+  ],
+  "url": "https://tjalda.is/en/husavik/",
+  "photo": {
+   "what": "Húsavík harbor",
+   "page": "https://commons.wikimedia.org/wiki/File:Harbor_of_Husavik.jpg",
+   "author": "Pce",
+   "license": "Public domain"
+  }
+ },
+ {
+  "name": "Hamrar Outdoor Recreation Area (Akureyri)",
+  "season": "Open Year-Round",
+  "access": "2WD / Camper Accessible",
+  "location": "North Iceland (Kjarnaskógur Forest • 4 km from Akureyri)",
+  "lat": 65.6478,
+  "lon": -18.1258,
+  "summary": "Sprawling across tree-lined zones bordering Kjarnaskógur forest. Features heated service buildings, laundry, boat rentals, and easy access to downtown Akureyri and the Forest Lagoon.",
+  "facilities": [
+   "Open Year-Round",
+   "Forest Wind Shelter",
+   "Indoor Kitchens",
+   "Laundry Facilities"
+  ],
+  "url": "https://www.hamrarcamping.is/",
+  "photo": {
+   "what": "Akureyri",
+   "page": "https://commons.wikimedia.org/wiki/File:Akureyri_-_Skapti_Hallgr%C3%ADmsson.jpg",
+   "author": "Kaldbakstindur",
+   "license": "CC BY-SA 4.0"
+  }
+ },
+ {
+  "name": "Stykkishólmur Campsite (Snæfellsnes & Ferry Port)",
+  "season": "May 1 – Sept 30 (Winter Hookups)",
+  "access": "2WD / Camper Accessible",
+  "location": "Snæfellsnes Peninsula (Route 54)",
+  "lat": 65.0714,
+  "lon": -22.7306,
+  "summary": "Steps from Stykkishólmur’s mineral thermal pool, Súgandisey lighthouse, and the Baldur ferry terminal to the Westfjords. Only 25 minutes from iconic Mt. Kirkjufell.",
+  "facilities": [
+   "Camping Card Accepted",
+   "Adjacent Thermal Pool",
+   "Electricity Hookups",
+   "Near Kirkjufell"
+  ],
+  "url": "https://tjalda.is/en/stykkisholmur/",
+  "photo": {
+   "what": "Stykkishólmur",
+   "page": "https://commons.wikimedia.org/wiki/File:1_aerial_pano_stykkish%C3%B3lmur_2017.jpg",
+   "author": "Chensiyuan",
+   "license": "CC BY-SA 4.0"
+  }
+ },
+ {
+  "name": "Arnarstapi & Olafsvík Coastal Campsites",
+  "season": "May 15 – Sept 30",
+  "access": "2WD / Camper Accessible",
+  "location": "Snæfellsjökull National Park Edge (Route 574)",
+  "lat": 64.7692,
+  "lon": -23.6258,
+  "summary": "Sleep right between the glacier-capped cone of Snæfellsjökull volcano and the basalt sea arches of Arnarstapi and Hellnar. Ideal base for Djúpalónssandur beach and whale watching from Ólafsvík.",
+  "facilities": [
+   "Glacier & Ocean Views",
+   "Hot Showers",
+   "Coastal Cliff Trailhead",
+   "Restaurants Nearby"
+  ],
+  "url": "https://tjalda.is/en/arnarstapi/",
+  "photo": {
+   "what": "Arnarstapi",
+   "page": "https://commons.wikimedia.org/wiki/File:Arnarstapi_2024_(0754).jpg",
+   "author": "Steinninn",
+   "license": "CC BY 4.0"
+  }
+ },
+ {
+  "name": "Tungudalur Waterfall Campsite (Ísafjörður, Westfjords)",
+  "season": "May 15 – Sept 15",
+  "access": "2WD / Camper Accessible",
+  "location": "Westfjords (Ísafjörður • Route 60/61)",
+  "lat": 66.0592,
+  "lon": -23.1869,
+  "summary": "Nestled in a birch-forested valley with the Buná river and waterfall cascading right through the campground. Perfect basecamp for exploring Dynjandi waterfall and Hornstrandir nature reserve boats.",
+  "facilities": [
+   "Waterfall On-Site",
+   "Birch Tree Shelter",
+   "Hot Showers",
+   "Indoor Dining Room"
+  ],
+  "url": "https://tjalda.is/en/tungudalur-isafjordur/",
+  "photo": {
+   "what": "Ísafjörður",
+   "page": "https://commons.wikimedia.org/wiki/File:Isafjordur_harbour.jpg",
+   "author": "Ouicoude",
+   "license": "CC BY-SA 3.0"
+  }
+ },
+ {
+  "name": "Landmannalaugar Highland Basecamp (F208)",
+  "season": "Late June – Mid-Sept (F-Road)",
+  "access": "4x4 F-Road Only",
+  "location": "Central Highlands (Fjallabak Nature Reserve • F208)",
+  "lat": 63.9908,
+  "lon": -19.0611,
+  "summary": "Set beside a natural geothermal bathing river surrounded by rainbow rhyolite mountains and obsidian lava fields. Tip: Park your 4x4 at the footbridge lot BEFORE the deep river crossing.",
+  "facilities": [
+   "Natural Hot Spring River",
+   "Heated Mountain Hut Toilets",
+   "Coin Showers",
+   "Laugavegur Trailhead"
+  ],
+  "url": "https://www.fi.is/en/mountain-huts/all-mountain-huts/landmannalaugar",
+  "photo": {
+   "what": "Landmannalaugar",
+   "page": "https://commons.wikimedia.org/wiki/File:Landmannalaugar_Campsite.jpg",
+   "author": "Anjali Kiggal",
+   "license": "CC BY-SA 4.0"
+  }
+ }
+]

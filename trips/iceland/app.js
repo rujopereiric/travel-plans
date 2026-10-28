@@ -813,7 +813,7 @@ async function boot() {
 }
 // Descriptive place fields aren't edited in the app, so newer data.json content can be merged into a locally edited plan
 // without asking: new places, categories, summaries, photos titles, links, priorities and sleep flags.
-const INFO_FIELDS = ['lat', 'lon', 'visit', 'sources', 'confidence', 'checked', 'cat', 'summary', 'facts', 'winter', 'wiki', 'links', 'photo', 'caution', 'note', 'priority', 'sleep', 'suggest', 'needsDaylight'];
+const INFO_FIELDS = ['lat', 'lon', 'visit', 'sources', 'confidence', 'checked', 'cat', 'summary', 'facts', 'winter', 'wiki', 'links', 'photo', 'photoCredit', 'photoPage', 'caution', 'note', 'priority', 'sleep', 'suggest', 'needsDaylight'];
 function mergePlaceInfo(local, file) {
   local.places = local.places || [];
   for (const fp of file.places || []) {
@@ -1226,7 +1226,7 @@ async function wikiPages(titles) {
 }
 async function fetchWiki() {
   if (!S || WIKI_BUSY || !navigator.onLine) return;
-  const need = S.places.filter(p => !WIKI[p.id] || (!WIKI[p.id].img && Date.now() - WIKI[p.id].at > 10 * 60 * 1000));
+  const need = S.places.filter(p => p.wiki !== false && (!WIKI[p.id] || (!WIKI[p.id].img && Date.now() - WIKI[p.id].at > 10 * 60 * 1000)));
   if (!need.length) return;
   WIKI_BUSY = true; WIKI_ERR = null; if (UI.tab === 'places') render();
   const store = (p, pg) => { WIKI[p.id] = pg ? { title: pg.title, img: pg.thumbnail?.source, extract: pg.extract, url: pg.fullurl, at: Date.now() } : { none: true, at: Date.now() }; };
@@ -1340,13 +1340,13 @@ function renderMyPlaces() {
       <div class="poibody">
         <div class="row"><h3 class="grow" style="margin:0">${esc(p.name)}</h3>${p.confidence === 'low' ? '<span class="chip partial">unverified</span>' : ''}<span class="chip">${catInfo(p.cat).icon} ${esc(p.cat || 'Place')}</span></div>
         ${p.caution ? `<div class="small" style="color:var(--warn);margin:4px 0">⚠ ${withEur(esc(p.caution))}</div>` : ''}
-        <div class="tiny" style="color:${rg.color};margin:2px 0 6px">${esc(rg.name)} · ~${p.visit ?? 45} min${p.id !== S.trip.home ? ` · ${drive(S.trip.home, p.id).km} km from ${esc(placeName(S.trip.home))}` : ''}</div>
+        <div class="tiny" style="color:${rg.color};margin:2px 0 6px">${esc(rg.name)}${p.visit === 0 ? '' : ` · ~${p.visit ?? 45} min`}${p.id !== S.trip.home ? ` · ${drive(S.trip.home, p.id).km} km from ${esc(placeName(S.trip.home))}` : ''}</div>
         ${p.summary ? `<p style="margin:0 0 6px">${esc(p.summary)}</p>` : ''}
         ${p.facts && p.facts.length ? `<ul class="facts">${p.facts.map(f => `<li>${withEur(esc(f))}</li>`).join('')}</ul>` : ''}
         ${p.winter ? `<div class="seasonal" style="margin:6px 0">❄ ${withEur(esc(p.winter))}</div>` : ''}
         ${w.extract ? `<details class="small"><summary>From Wikipedia</summary><p class="muted" style="margin:4px 0">${esc(w.extract)}</p></details>` : ''}
         <div class="row small" style="margin:8px 0">
-          <a href="${esc(wurl)}" target="_blank" rel="noopener">Wikipedia ↗</a>
+          ${p.wiki === false ? '' : `<a href="${esc(wurl)}" target="_blank" rel="noopener">Wikipedia ↗</a>`}
           <a href="https://www.google.com/maps/dir/?api=1&destination=${p.lat},${p.lon}" target="_blank" rel="noopener">Directions ↗</a>
           ${(p.links || []).map(l => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.name)} ↗</a>`).join('')}</div>
         ${p.sources && p.sources.length ? `<details class="tiny" style="margin-bottom:6px"><summary>Sources${p.checked ? ` · checked ${esc(dateLabel(p.checked, { day: 'numeric', month: 'short', year: 'numeric' }))}` : ''}${p.confidence ? ` · ${esc(p.confidence)} confidence` : ''}</summary>
@@ -1358,7 +1358,7 @@ function renderMyPlaces() {
           <button class="btn small" data-act="pmap" data-place="${esc(p.id)}">Map</button>
           <select data-act="padd" data-place="${esc(p.id)}" class="grow" style="min-width:110px"><option value="">Add to day…</option>${days.map(d => `<option value="${d.date}">${dateLabel(d.date)}</option>`).join('')}</select>
         </div>
-        ${img ? `<div class="tiny muted" style="margin-top:6px">Photo: <a href="${esc(p.photo ? p.photo : w.commons || wurl)}" target="_blank" rel="noopener">${p.photo ? 'custom' : w.commons ? 'Wikimedia Commons' : 'Wikipedia / Wikimedia Commons'}</a></div>` : ''}
+        ${img ? `<div class="tiny muted" style="margin-top:6px">Photo: <a href="${esc(p.photo ? p.photoPage || p.photo : w.commons || wurl)}" target="_blank" rel="noopener">${p.photo ? esc(p.photoCredit || 'custom') : w.commons ? 'Wikimedia Commons' : 'Wikipedia / Wikimedia Commons'}</a></div>` : ''}
       </div></article>`;
   }
   if (!navigator.onLine && S.places.some(p => !WIKI[p.id])) h += `<p class="tiny muted">Photos load the first time you open this tab online, and are kept for offline use.</p>`;
@@ -1383,9 +1383,11 @@ nwr["leisure"="swimming_pool"]["name"]["access"!~"private"](area.is);
 nwr["leisure"="nature_reserve"]["name"](area.is);
 nwr["boundary"="national_park"]["name"](area.is);
 nwr["man_made"="lighthouse"]["name"](area.is);
+nwr["tourism"="camp_site"]["name"](area.is);
 );out center tags qt;`;
 function osmCat(t) {
   const n = t.natural, tr = t.tourism;
+  if (tr === 'camp_site') return 'Campsite';
   if (n === 'waterfall' || t.waterway === 'waterfall') return 'Waterfall';
   if (n === 'hot_spring' || t.amenity === 'public_bath') return 'Hot spring';
   if (t.leisure === 'swimming_pool') return 'Pool';
@@ -1554,6 +1556,7 @@ const CAT_GROUPS = [
   { id: 'nature', name: 'Nature', color: '#2e7d32', cats: { 'National park': '🌲', 'Nature reserve': '🌿', Hike: '🥾', Viewpoint: '🔭' } },
   { id: 'culture', name: 'Culture', color: '#8e24aa', cats: { Museum: '🏛️', Historic: '🏚️', Art: '🎨', Landmark: '📍', Attraction: '⭐' } },
   { id: 'tours', name: 'Tours', color: '#ef6c00', cats: { Tour: '🚙' } },
+  { id: 'camping', name: 'Camping', color: '#558b2f', cats: { Campsite: '⛺' } },
   { id: 'practical', name: 'Practical', color: '#546e7a', cats: { Town: '🏘️', Stay: '🛏️', Food: '🍲', Transport: '✈️' } },
 ];
 const CAT_INFO = {};
