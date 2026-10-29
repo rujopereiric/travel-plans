@@ -1446,10 +1446,25 @@ nwr["leisure"="nature_reserve"]["name"](area.is);
 nwr["boundary"="national_park"]["name"](area.is);
 nwr["man_made"="lighthouse"]["name"](area.is);
 nwr["tourism"="camp_site"]["name"](area.is);
+nwr["shop"="supermarket"](area.is);
+nwr["shop"="convenience"]["brand"~"Kjörbúðin|Krambúðin|10-11"](area.is);
 );out center tags qt;`;
+// Supermarkets: OpenStreetMap has no prices, so the price level comes from the chain
+const SHOP_TIERS = [
+  [/b[oó]nus|pr[ií]s/i, 'Budget chain: usually the cheapest. Shorter opening hours.'],
+  [/kr[oó]nan|nett[oó]/i, 'Low-price chain, close to Bónus prices, with longer opening hours.'],
+  [/kj[oö]rb[uú]/i, 'Village shop: higher prices, but often the only one for a long way.'],
+  [/hagkaup/i, 'Bigger range, but pricier than the discount chains.'],
+  [/10-11|kramb[uú]/i, 'Convenience prices: fine for top-ups, not for the weekly shop.'],
+];
+function shopDesc(t, name) {
+  const tier = SHOP_TIERS.find(([re]) => re.test(t.brand || '') || re.test(name));
+  return [tier ? tier[1] : '', t.opening_hours ? `Hours on OpenStreetMap (may be out of date): ${t.opening_hours}` : ''].filter(Boolean).join(' ');
+}
 function osmCat(t) {
   const n = t.natural, tr = t.tourism;
   if (tr === 'camp_site') return 'Campsite';
+  if (t.shop) return 'Supermarket';
   if (n === 'waterfall' || t.waterway === 'waterfall') return 'Waterfall';
   if (n === 'hot_spring' || t.amenity === 'public_bath') return 'Hot spring';
   if (t.leisure === 'swimming_pool') return 'Pool';
@@ -1478,11 +1493,11 @@ async function loadOSM() {
       if (!res.ok) throw new Error('HTTP ' + res.status);
       const j = await res.json(), seen = new Set(), items = [];
       for (const el of j.elements || []) {
-        const t = el.tags || {}, lat = el.lat ?? el.center?.lat, lon = el.lon ?? el.center?.lon, name = t['name:en'] || t.name;
+        const t = el.tags || {}, lat = el.lat ?? el.center?.lat, lon = el.lon ?? el.center?.lon, name = t['name:en'] || t.name || (t.shop && t.brand);
         if (!name || lat == null || !/^[nwr]/.test(el.type) || !Number.isSafeInteger(el.id)) continue;
         const key = name.toLowerCase() + '|' + lat.toFixed(3) + '|' + lon.toFixed(3);
         if (seen.has(key)) continue; seen.add(key);
-        items.push([el.type[0] + el.id, name, +lat.toFixed(5), +lon.toFixed(5), osmCat(t), t.wikipedia || '', /^https?:\/\//i.test(t.website || t['contact:website'] || '') ? t.website || t['contact:website'] : '', (t['description:en'] || t.description || '').slice(0, 200), t.name !== name ? t.name || '' : '']);
+        items.push([el.type[0] + el.id, name, +lat.toFixed(5), +lon.toFixed(5), osmCat(t), t.wikipedia || '', /^https?:\/\//i.test(t.website || t['contact:website'] || '') ? t.website || t['contact:website'] : '', (t.shop ? shopDesc(t, name) : t['description:en'] || t.description || '').slice(0, 200), t.name && t.name !== name ? t.name || '' : '']);
       }
       OSM = { at: Date.now(), src: url.split('/')[2], items };
       try { localStorage.setItem(LS_OSM, JSON.stringify(OSM)); } catch (e) { OSM_ERR = 'Loaded, but too big to keep offline on this device.'; }
@@ -1500,7 +1515,7 @@ function osmMine(o) { // already one of my places? (same OSM id, or same name wi
   const nm = o.name.toLowerCase();
   return S.places.find(p => haversine(p, o) < 1 && (p.name.toLowerCase().includes(nm) || nm.includes(p.name.toLowerCase().split(' ')[0]))) || null;
 }
-const OSM_VISIT = { Waterfall: 30, 'Hot spring': 60, Pool: 75, Geothermal: 30, Crater: 40, Cave: 45, Beach: 30, Glacier: 45, Mountain: 30, Landmark: 20, Lighthouse: 20, Viewpoint: 15, Museum: 60, Art: 10, 'Nature reserve': 45, Historic: 20, Attraction: 30 };
+const OSM_VISIT = { Waterfall: 30, 'Hot spring': 60, Pool: 75, Geothermal: 30, Crater: 40, Cave: 45, Beach: 30, Glacier: 45, Mountain: 30, Landmark: 20, Lighthouse: 20, Viewpoint: 15, Museum: 60, Art: 10, 'Nature reserve': 45, Historic: 20, Attraction: 30, Supermarket: 20 };
 function promoteOSM(o) {
   if (osmMine(o)) return osmMine(o);
   let near = null, nd = Infinity;
@@ -1510,7 +1525,8 @@ function promoteOSM(o) {
     summary: o.desc || `${o.cat} listed on OpenStreetMap${o.local ? ` (Icelandic name: ${o.local})` : ''}. No details checked yet.`, facts: [], wiki: w ? w[1] : o.name,
     links: [{ name: 'OpenStreetMap', url: osmUrl(o.id) }, ...(wikiUrl(o.wiki) && !w ? [{ name: 'Wikipedia', url: wikiUrl(o.wiki) }] : []), ...(o.web ? [{ name: 'Website', url: o.web }] : [])],
     priority: 1, sources: [osmUrl(o.id)], confidence: 'low', checked: todayISO() };
-  if (['Museum', 'Pool', 'Hot spring', 'Art'].includes(o.cat)) p.needsDaylight = false;
+  if (['Museum', 'Pool', 'Hot spring', 'Art', 'Supermarket'].includes(o.cat)) p.needsDaylight = false;
+  if (o.cat === 'Supermarket') p.suggest = false;   // a stop you add yourself, never an auto-plan sight
   S.places.push(p);
   if (!(S.categories || []).includes(o.cat)) (S.categories = S.categories || []).push(o.cat);
   reindex(); mapDirty = true; delete WIKI[p.id];
@@ -1518,7 +1534,7 @@ function promoteOSM(o) {
 }
 function renderOsm() {
   if (!OSM) return `<div class="card"><h3 style="margin-top:0">Every named sight in Iceland</h3>
-    <p class="small">This loads every named waterfall, hot spring, pool, geyser, crater, cave, beach, viewpoint, museum, historic site, lighthouse and nature reserve that OpenStreetMap knows about in Iceland — usually several thousand. It's a one-off download (a few MB), kept on your phone for offline use.</p>
+    <p class="small">This loads every named waterfall, hot spring, pool, geyser, crater, cave, beach, viewpoint, museum, historic site, lighthouse, nature reserve, campsite and supermarket that OpenStreetMap knows about in Iceland — usually several thousand. It's a one-off download (a few MB), kept on your phone for offline use.</p>
     <p class="small muted">These come with names, types and links only — not my summaries, fees or winter notes. Add the ones you like to <b>My places</b> to plan them.</p>
     ${OSM_ERR ? `<p class="small" style="color:var(--bad)">${esc(OSM_ERR)}</p>` : ''}
     <button class="btn primary" data-act="osmload" ${OSM_BUSY ? 'disabled' : ''}>${OSM_BUSY ? 'Loading… (can take 30–60 s)' : 'Load all of Iceland'}</button></div>`;
@@ -1530,6 +1546,7 @@ function renderOsm() {
       <button class="btn small" data-act="osmload" ${OSM_BUSY ? 'disabled' : ''}>${OSM_BUSY ? 'Updating…' : 'Refresh'}</button></div>
     <div class="row" style="margin-bottom:8px"><input type="search" id="osmq" data-osmq placeholder="Search ${OSM.items.length.toLocaleString('en-GB')} places…" value="${esc(UI.osmQ || '')}" class="grow" autocomplete="off">
       <label class="f">Nearest to<select data-act="osmnear">${placeOptions(near)}</select></label></div>
+    ${counts.Supermarket ? '' : `<p class="tiny muted">Loaded before supermarkets were added: tap <b>Refresh</b> to get them.</p>`}
     <div class="pchips">${chip('all', 'All types', cat === 'all')}${cats.map(c => chip(c, `${esc(c)} <span class="muted">${counts[c]}</span>`, cat === c)).join('')}</div>
     <div id="osmlist">${osmListHTML()}</div>`;
 }
@@ -1619,7 +1636,7 @@ const CAT_GROUPS = [
   { id: 'culture', name: 'Culture', color: '#8e24aa', cats: { Museum: '🏛️', Historic: '🏚️', Art: '🎨', Landmark: '📍', Attraction: '⭐' } },
   { id: 'tours', name: 'Tours', color: '#ef6c00', cats: { Tour: '🚙' } },
   { id: 'camping', name: 'Camping', color: '#558b2f', cats: { Campsite: '⛺' } },
-  { id: 'practical', name: 'Practical', color: '#546e7a', cats: { Town: '🏘️', Stay: '🛏️', Food: '🍲', Transport: '✈️' } },
+  { id: 'practical', name: 'Practical', color: '#546e7a', cats: { Town: '🏘️', Stay: '🛏️', Food: '🍲', Transport: '✈️', Supermarket: '🛒' } },
 ];
 const CAT_INFO = {};
 for (const g of CAT_GROUPS) for (const [c, icon] of Object.entries(g.cats)) CAT_INFO[c] = { icon, color: g.color, group: g.id };

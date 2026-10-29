@@ -115,13 +115,14 @@ Filter by type, region, must-see, skipped, or "not in plan".
 ## All of Iceland (OpenStreetMap)
 
 In the Places tab, switch to **All of Iceland** and tap **Load all of Iceland**. One query to the free OpenStreetMap Overpass API fetches every named sight it knows about in Iceland, usually several thousand:
-waterfalls, hot springs, pools, geysers, craters, caves, beaches, glaciers, viewpoints, museums, artworks, historic sites, lighthouses and nature reserves (peaks only if they have a Wikipedia article).
+waterfalls, hot springs, pools, geysers, craters, caves, beaches, glaciers, viewpoints, museums, artworks, historic sites, lighthouses, nature reserves, campsites and supermarkets (peaks only if they have a Wikipedia article).
 They're stored compactly in the browser for offline use (a few hundred KB).
 
 - **Search:** by name (accents optional: "grindavik" finds Grindavík), filter by type, and sort by straight-line distance from any of your places.
 - **Map:** the map's layer menu has an **All of Iceland (OSM)** layer that shows every item as a small grey dot.
 - **+ My places:** turns an item into a normal place. It's priority 1 and marked unverified, with links to OSM, Wikipedia and its website, and a photo if Wikipedia has one.
   You can then plan it, auto-plan it and mark it as a must-see. Its road distances are fetched for that place only.
+- **🛒 Supermarkets:** choose the Supermarket type and set **Nearest to** a place on your route to find the closest shop. Each one says how pricey its chain is: Bónus and Prís are the cheapest, Krónan and Nettó close behind, Kjörbúðin village shops, Hagkaup, 10-11 and Krambúðin cost more. Opening hours show when OpenStreetMap has them. If you loaded All of Iceland before supermarkets were added, tap **Refresh**.
 - These items have no summaries, fees or winter notes, so check them before you go. Data © OpenStreetMap contributors (ODbL).
 
 ## Euros and the currency tab
