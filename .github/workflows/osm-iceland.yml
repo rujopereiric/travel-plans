@@ -22,7 +22,7 @@ concurrency:
 jobs:
   update:
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 330   # GitHub stops any job at 6 h; busy Overpass servers have needed more than 2 h
     steps:
       - uses: actions/checkout@v4
 
