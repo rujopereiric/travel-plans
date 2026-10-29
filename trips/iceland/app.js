@@ -819,10 +819,23 @@ function normalize(s) {
   return s;
 }
 function reindex() { PLACE_IDX = {}; for (const p of S.places) PLACE_IDX[p.id] = p; DRIVE_CACHE.clear(); GRAPH = null; GRAPH_DIST.clear(); }
+// The browser gives this whole site, every planner on it, one localStorage allowance of about 5 MB. When a save
+// doesn't fit, make room by deleting data that can be downloaded again (map places, Wikipedia text, routes): this
+// app's first, then the other planners'. Plans, settings and exchange rates are never deleted.
+const REFETCHABLE = /-(osm|wiki|routes|roads)$/;
+function freeStorage(all) {
+  const own = LS_WIKI.replace(/wiki$/, ''), keys = [];
+  for (let i = 0; i < localStorage.length; i++) { const k = localStorage.key(i); if (REFETCHABLE.test(k) && (all || k.startsWith(own))) keys.push(k); }
+  keys.forEach(k => localStorage.removeItem(k));
+  return keys.length;
+}
 function persist(dirty = true) {
   if (dirty) DIRTY = true;
-  try { localStorage.setItem(LS_STATE, JSON.stringify({ state: S, base: BASE_HASH, dirty: DIRTY, saved: new Date().toISOString() })); }
-  catch (e) { toast('Could not save to this browser — export to keep your edits'); }
+  const json = JSON.stringify({ state: S, base: BASE_HASH, dirty: DIRTY, saved: new Date().toISOString() });
+  for (const free of [null, 'own', 'all']) {
+    try { if (free && !freeStorage(free === 'all')) continue; localStorage.setItem(LS_STATE, json); return; } catch (e) { }
+  }
+  toast('Could not save to this browser — export to keep your edits');
 }
 function saveUI() { try { localStorage.setItem(LS_UI, JSON.stringify(UI)); } catch (e) { } }
 function changed() { DRIVE_CACHE.clear(); GRAPH = null; GRAPH_DIST.clear(); persist(true); render(); fetchRoadMatrix(); }
@@ -1432,7 +1445,17 @@ function renderMyPlaces() {
 // in Iceland. Stored compactly for offline use; any item can be promoted into "My places".
 const LS_OSM = 'iceland-osm';
 let OSM = null, OSM_BUSY = false, OSM_ERR = null;
+// The OSM list (~250 KB) is kept in IndexedDB, which has far more room than the ~5 MB localStorage allowance that every
+// planner on this site shares. An older copy in localStorage is moved across.
+const idb = (() => {
+  let db;
+  const open = () => db || (db = new Promise((res, rej) => { const r = indexedDB.open('iceland-planner', 1); r.onupgradeneeded = () => r.result.createObjectStore('kv'); r.onsuccess = () => res(r.result); r.onerror = () => rej(r.error); }));
+  const run = (mode, f) => open().then(d => new Promise((res, rej) => { const t = d.transaction('kv', mode), q = f(t.objectStore('kv')); t.oncomplete = () => res(q.result); t.onerror = t.onabort = () => rej(t.error); }));
+  return { get: k => run('readonly', st => st.get(k)), set: (k, v) => run('readwrite', st => st.put(v, k)) };
+})();
 try { OSM = JSON.parse(localStorage.getItem(LS_OSM) || 'null'); } catch (e) { }
+if (OSM) idb.set('osm', OSM).then(() => localStorage.removeItem(LS_OSM)).catch(() => { });
+else idb.get('osm').then(v => { if (v && !OSM) { OSM = v; osmLayerDirty = true; mapDirty = true; render(); } }).catch(() => { });
 const OVERPASS = ['https://overpass-api.de/api/interpreter', 'https://overpass.kumi.systems/api/interpreter'];
 /* osm-shared-start: also run by tools/osm-update.mjs (GitHub Action) to prepare osm/iceland.json */
 const OSM_BOX = [63.0, -25.0, 67.0, -13.0];   // south, west, north, east: all of Iceland and nothing else
@@ -1507,7 +1530,7 @@ async function loadOSM() {
   OSM_BUSY = true; OSM_ERR = null; render();
   const done = (items, src, at) => {
     OSM = { at, src, items };
-    try { localStorage.setItem(LS_OSM, JSON.stringify(OSM)); } catch (e) { OSM_ERR = 'Loaded, but too big to keep offline on this device.'; }
+    idb.set('osm', OSM).catch(() => { OSM_ERR = 'Loaded, but this device wouldn\'t let it be kept for offline use.'; render(); });
     OSM_BUSY = false; osmLayerDirty = true; mf().osm = true; UI.osmLayer = true; mapDirty = true; render();
   };
   const errs = [];

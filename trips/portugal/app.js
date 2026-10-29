@@ -890,10 +890,23 @@ function normalize(s) {
   return s;
 }
 function reindex() { PLACE_IDX = {}; for (const p of S.places) PLACE_IDX[p.id] = p; SUN_AT.clear(); clearTravel(); }
+// The browser gives this whole site, every planner on it, one localStorage allowance of about 5 MB. When a save
+// doesn't fit, make room by deleting data that can be downloaded again (map places, Wikipedia text, routes): this
+// app's first, then the other planners'. Plans, settings and exchange rates are never deleted.
+const REFETCHABLE = /-(osm|wiki|routes|roads)$/;
+function freeStorage(all) {
+  const own = LS_WIKI.replace(/wiki$/, ''), keys = [];
+  for (let i = 0; i < localStorage.length; i++) { const k = localStorage.key(i); if (REFETCHABLE.test(k) && (all || k.startsWith(own))) keys.push(k); }
+  keys.forEach(k => localStorage.removeItem(k));
+  return keys.length;
+}
 function persist(dirty = true) {
   if (dirty) DIRTY = true;
-  try { localStorage.setItem(LS_STATE, JSON.stringify({ state: S, base: BASE_HASH, dirty: DIRTY, saved: new Date().toISOString() })); }
-  catch (e) { toast('Could not save to this browser — export to keep your edits'); }
+  const json = JSON.stringify({ state: S, base: BASE_HASH, dirty: DIRTY, saved: new Date().toISOString() });
+  for (const free of [null, 'own', 'all']) {
+    try { if (free && !freeStorage(free === 'all')) continue; localStorage.setItem(LS_STATE, json); return; } catch (e) { }
+  }
+  toast('Could not save to this browser — export to keep your edits');
 }
 function saveUI() { try { localStorage.setItem(LS_UI, JSON.stringify(UI)); } catch (e) { } }
 function changed() { clearTravel(); persist(true); render(); fetchRoadMatrix(); }
