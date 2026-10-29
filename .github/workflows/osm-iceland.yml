@@ -1,0 +1,40 @@
+name: Update Iceland OSM data
+
+# Prepares iceland-planner/osm/iceland.json (every named sight, campsite and supermarket in Iceland, from OpenStreetMap)
+# so the Iceland planner downloads a ready file instead of querying the public Overpass servers from a phone.
+on:
+  workflow_dispatch:
+    inputs:
+      force:
+        description: 'Fetch even if the file is less than 20 days old'
+        type: boolean
+        default: true
+  schedule:
+    - cron: '57 3 * * *'   # daily at 03:57 UTC (quiet hours); only fetches when the file is missing or >20 days old
+
+permissions:
+  contents: write
+
+concurrency:
+  group: osm-iceland
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Fetch Iceland from Overpass and commit the file
+        env:
+          OSM_COMMIT: '1'
+          FORCE: ${{ github.event.inputs.force == 'true' && '--force' || '' }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          node iceland-planner/tools/osm-update.mjs $FORCE

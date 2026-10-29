@@ -62,7 +62,7 @@
           }
         ]
       },
-      "skip": ["parts", "tools"]
+      "skip": ["osm", "parts", "tools"], "jsReplace": {"fetch('osm/iceland.json'": "fetch('../../iceland-planner/osm/iceland.json'"}
     },
     {
       "id": "egypt",

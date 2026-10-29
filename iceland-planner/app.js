@@ -1420,21 +1420,23 @@ const LS_OSM = 'iceland-osm';
 let OSM = null, OSM_BUSY = false, OSM_ERR = null;
 try { OSM = JSON.parse(localStorage.getItem(LS_OSM) || 'null'); } catch (e) { }
 const OVERPASS = ['https://overpass-api.de/api/interpreter', 'https://overpass.kumi.systems/api/interpreter'];
-const OSM_QUERY = `[out:json][timeout:180];area["ISO3166-1"="IS"][admin_level=2]->.is;(
-nwr["natural"~"^(waterfall|hot_spring|geyser|volcano|cave_entrance|arch|beach|glacier|sinkhole|rock|stone|cliff)$"]["name"](area.is);
-nwr["waterway"="waterfall"]["name"](area.is);
-nwr["natural"="peak"]["name"]["wikipedia"](area.is);
-nwr["tourism"~"^(attraction|viewpoint|museum|gallery|artwork|zoo|theme_park)$"]["name"](area.is);
-nwr["historic"]["name"](area.is);
-nwr["amenity"="public_bath"]["name"](area.is);
-nwr["leisure"="swimming_pool"]["name"]["access"!~"private"](area.is);
-nwr["leisure"="nature_reserve"]["name"](area.is);
-nwr["boundary"="national_park"]["name"](area.is);
-nwr["man_made"="lighthouse"]["name"](area.is);
-nwr["tourism"="camp_site"]["name"](area.is);
-nwr["shop"="supermarket"](area.is);
-nwr["shop"="convenience"]["brand"~"Kjörbúðin|Krambúðin|10-11"](area.is);
-);out center tags qt;`;
+/* osm-shared-start: also run by tools/osm-update.mjs (GitHub Action) to prepare osm/iceland.json */
+const OSM_BOX = [63.0, -25.0, 67.0, -13.0];   // south, west, north, east: all of Iceland and nothing else
+const osmQuery = (box = OSM_BOX, timeout = 180) => { const b = `(${box.join(',')})`; return `[out:json][timeout:${timeout}];(
+nwr["natural"~"^(waterfall|hot_spring|geyser|volcano|cave_entrance|arch|beach|glacier|sinkhole|rock|stone|cliff)$"]["name"]${b};
+nwr["waterway"="waterfall"]["name"]${b};
+nwr["natural"="peak"]["name"]["wikipedia"]${b};
+nwr["tourism"~"^(attraction|viewpoint|museum|gallery|artwork|zoo|theme_park)$"]["name"]${b};
+nwr["historic"]["name"]${b};
+nwr["amenity"="public_bath"]["name"]${b};
+nwr["leisure"="swimming_pool"]["name"]["access"!~"private"]${b};
+nwr["leisure"="nature_reserve"]["name"]${b};
+nwr["boundary"="national_park"]["name"]${b};
+nwr["man_made"="lighthouse"]["name"]${b};
+nwr["tourism"="camp_site"]["name"]${b};
+nwr["shop"="supermarket"]${b};
+nwr["shop"="convenience"]["brand"~"Kjörbúðin|Krambúðin|10-11"]${b};
+);out center tags qt;`; };
 // Supermarkets: OpenStreetMap has no prices, so the price level comes from the chain
 const SHOP_TIERS = [
   [/b[oó]nus|pr[ií]s/i, 'Budget chain: usually the cheapest. Shorter opening hours.'],
@@ -1469,28 +1471,46 @@ function osmCat(t) {
   if (t.historic) return 'Historic';
   return 'Attraction';
 }
+// One Overpass element → a compact row, or null. Rows: [id, name, lat, lon, cat, wikipedia, website, description, local name]
+function osmRow(el) {
+  const t = el.tags || {}, lat = el.lat ?? el.center?.lat, lon = el.lon ?? el.center?.lon, name = t['name:en'] || t.name || (t.shop && t.brand);
+  if (!name || lat == null || !/^[nwr]/.test(el.type) || !Number.isSafeInteger(el.id)) return null;
+  const web = t.website || t['contact:website'] || '';
+  return [el.type[0] + el.id, name, +lat.toFixed(5), +lon.toFixed(5), osmCat(t), t.wikipedia || '', /^https?:\/\//i.test(web) ? web : '',
+    (t.shop ? shopDesc(t, name) : t['description:en'] || t.description || '').slice(0, 200), t.name && t.name !== name ? t.name : ''];
+}
+// the same place mapped twice (a node and a building outline) shows once
+function osmDedupe(rows) {
+  const seen = new Set();
+  return rows.filter(r => { const k = r[1].toLowerCase() + '|' + r[2].toFixed(3) + '|' + r[3].toFixed(3); return !seen.has(k) && seen.add(k); });
+}
+/* osm-shared-end */
+// The GitHub Action keeps osm/iceland.json fresh, so the phone downloads a ready file. Asking Overpass directly is
+// only the fallback: one query for the whole country is heavy, and the public servers often time out or throttle it.
 async function loadOSM() {
   if (OSM_BUSY) return;
   if (!navigator.onLine) { OSM_ERR = 'You are offline.'; render(); return; }
   OSM_BUSY = true; OSM_ERR = null; render();
+  const done = (items, src, at) => {
+    OSM = { at, src, items };
+    try { localStorage.setItem(LS_OSM, JSON.stringify(OSM)); } catch (e) { OSM_ERR = 'Loaded, but too big to keep offline on this device.'; }
+    OSM_BUSY = false; osmLayerDirty = true; mf().osm = true; UI.osmLayer = true; mapDirty = true; render();
+  };
+  const errs = [];
+  try {
+    const res = await fetch('osm/iceland.json', { cache: 'no-cache' });
+    if (res.ok) { const j = await res.json(); if (Array.isArray(j.items) && j.items.length) return done(j.items, 'prepared file', j.at || Date.now()); }
+    else if (res.status !== 404) errs.push(`osm/iceland.json: HTTP ${res.status}`);
+  } catch (e) { errs.push(`osm/iceland.json: ${e.message}`); }
   for (const url of OVERPASS) {
     try {
-      const res = await fetch(url, { method: 'POST', body: 'data=' + encodeURIComponent(OSM_QUERY), headers: { 'Content-Type': 'application/x-www-form-urlencoded' } });
+      const res = await fetch(url, { method: 'POST', body: 'data=' + encodeURIComponent(osmQuery()), headers: { 'Content-Type': 'application/x-www-form-urlencoded' } });
       if (!res.ok) throw new Error('HTTP ' + res.status);
-      const j = await res.json(), seen = new Set(), items = [];
-      for (const el of j.elements || []) {
-        const t = el.tags || {}, lat = el.lat ?? el.center?.lat, lon = el.lon ?? el.center?.lon, name = t['name:en'] || t.name || (t.shop && t.brand);
-        if (!name || lat == null || !/^[nwr]/.test(el.type) || !Number.isSafeInteger(el.id)) continue;
-        const key = name.toLowerCase() + '|' + lat.toFixed(3) + '|' + lon.toFixed(3);
-        if (seen.has(key)) continue; seen.add(key);
-        items.push([el.type[0] + el.id, name, +lat.toFixed(5), +lon.toFixed(5), osmCat(t), t.wikipedia || '', /^https?:\/\//i.test(t.website || t['contact:website'] || '') ? t.website || t['contact:website'] : '', (t.shop ? shopDesc(t, name) : t['description:en'] || t.description || '').slice(0, 200), t.name && t.name !== name ? t.name || '' : '']);
-      }
-      OSM = { at: Date.now(), src: url.split('/')[2], items };
-      try { localStorage.setItem(LS_OSM, JSON.stringify(OSM)); } catch (e) { OSM_ERR = 'Loaded, but too big to keep offline on this device.'; }
-      OSM_BUSY = false; osmLayerDirty = true; mf().osm = true; UI.osmLayer = true; mapDirty = true; render(); return;
-    } catch (e) { OSM_ERR = `${url.split('/')[2]}: ${e.message}`; }
+      const j = await res.json();
+      return done(osmDedupe((j.elements || []).map(osmRow).filter(Boolean)), url.split('/')[2], Date.now());
+    } catch (e) { errs.push(`${url.split('/')[2]}: ${e.message}`); }
   }
-  OSM_BUSY = false; render();
+  OSM_ERR = errs.join(' · '); OSM_BUSY = false; render();
 }
 const osmObj = a => ({ id: a[0], name: a[1], lat: a[2], lon: a[3], cat: a[4], wiki: a[5], web: a[6], desc: a[7], local: a[8] });
 const osmUrl = id => `https://www.openstreetmap.org/${{ n: 'node', w: 'way', r: 'relation' }[id[0]]}/${id.slice(1)}`;

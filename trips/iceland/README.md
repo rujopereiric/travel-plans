@@ -114,9 +114,11 @@ Filter by type, region, must-see, skipped, or "not in plan".
 
 ## All of Iceland (OpenStreetMap)
 
-In the Places tab, switch to **All of Iceland** and tap **Load all of Iceland**. One query to the free OpenStreetMap Overpass API fetches every named sight it knows about in Iceland, usually several thousand:
+In the Places tab, switch to **All of Iceland** and tap **Load all of Iceland**. It downloads every named sight OpenStreetMap knows about in Iceland, usually several thousand:
 waterfalls, hot springs, pools, geysers, craters, caves, beaches, glaciers, viewpoints, museums, artworks, historic sites, lighthouses, nature reserves, campsites and supermarkets (peaks only if they have a Wikipedia article).
 They're stored compactly in the browser for offline use (a few hundred KB).
+
+The phone doesn't query OpenStreetMap itself: one query for the whole country is heavy, and the public Overpass servers often time out or throttle it. A GitHub Action (`.github/workflows/osm-iceland.yml`) runs `tools/osm-update.mjs` every night, refreshes `osm/iceland.json` when it's more than 20 days old, and commits it. The app downloads that file and only asks Overpass directly if the file is missing. To refresh it now, run the **Update Iceland OSM data** workflow from the Actions tab.
 
 - **Search:** by name (accents optional: "grindavik" finds Grindavík), filter by type, and sort by straight-line distance from any of your places.
 - **Map:** the map's layer menu has an **All of Iceland (OSM)** layer that shows every item as a small grey dot.
